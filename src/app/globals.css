@@ -1,26 +1,132 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ─────────────────────────────────────────────
+   Public ID — Brand design tokens (실측 BI 기반)
+   teal #08A0B8 · lime #C8D820 · yellow #FFE000 · navy #204050
+   ───────────────────────────────────────────── */
+@theme {
+  --color-teal: #08a0b8;
+  --color-teal-600: #0a8296;
+  --color-teal-700: #0b6c7d;
+  --color-teal-100: #dff3f6;
+
+  --color-lime: #c8d820;
+  --color-lime-600: #a9b81b;
+
+  --color-yellow: #ffe000;
+
+  --color-navy: #204050;
+  --color-navy-700: #19323f;
+  --color-navy-800: #122631;
+
+  --color-ink: #1b2227;
+  --color-ink-soft: #57636b;
+
+  --color-cloud: #f5f8f8;
+  --color-line: #e4eaeb;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-pretendard), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-poppins), var(--font-pretendard), ui-sans-serif, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  /* signature arch gradient (lime → teal), the logo's bridge motif */
+  --arch: linear-gradient(95deg, #c8d820 0%, #7cc63f 42%, #08a0b8 100%);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* Korean: break at word (eojeol) boundaries, never mid-word; only long
+     Latin strings (emails/URLs) may break to avoid overflow. */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* Headlines & balanced copy wrap more evenly */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--color-teal);
+  color: #fff;
+}
+
+/* Signature arch gradient utilities */
+.bg-arch {
+  background-image: var(--arch);
+}
+.text-arch {
+  background-image: var(--arch);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.border-arch {
+  border-image: var(--arch) 1;
+}
+
+/* Scroll reveal (paired with components/Reveal.tsx) */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Animated underline link (arch gradient) */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 2px;
+  width: 0;
+  background-image: var(--arch);
+  transition: width 0.3s ease;
+}
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* Visible keyboard focus (legible on light, navy, and arch surfaces) */
+:focus-visible {
+  outline: 2px solid var(--color-teal-700);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
