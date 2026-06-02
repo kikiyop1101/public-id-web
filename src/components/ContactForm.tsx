@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 // 문의는 Web3Forms를 통해 public-id@naver.com 으로 수신됩니다.
 // 키 발급(무료, 30초): https://web3forms.com 에서 public-id@naver.com 입력 → 받은 Access Key를 아래에 넣으세요.
 // 키가 비어 있으면 임시로 '메일 작성창 열기'로 동작합니다.
-const WEB3FORMS_ACCESS_KEY = "";
+const WEB3FORMS_ACCESS_KEY = "3ea63b3e-2e66-41da-a857-3ae8594354b7";
 
 const field =
   "w-full rounded-xl border border-line bg-white px-4 py-3 text-[15px] text-ink outline-none transition focus:border-teal focus:ring-2 focus:ring-teal/20";
