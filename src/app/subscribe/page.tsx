@@ -3,6 +3,7 @@ import PageHero from "@/components/PageHero";
 import Subscription from "@/components/sections/Subscription";
 import HowItWorks from "@/components/sections/HowItWorks";
 import Pricing from "@/components/sections/Pricing";
+import Faq from "@/components/sections/Faq";
 
 export const metadata: Metadata = {
   title: "구독 서비스",
@@ -28,6 +29,7 @@ export default function SubscribePage() {
       <Subscription pricing />
       <HowItWorks />
       <Pricing />
+      <Faq />
     </>
   );
 }
