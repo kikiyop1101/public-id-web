@@ -4,8 +4,7 @@ import { useState, type ChangeEvent, type FormEvent } from "react";
 import { site } from "@/lib/site";
 
 // 문의는 Web3Forms를 통해 public-id@naver.com 으로 수신됩니다.
-// 키 발급(무료, 30초): https://web3forms.com 에서 public-id@naver.com 입력 → 받은 Access Key를 아래에 넣으세요.
-// 키가 비어 있으면 임시로 '메일 작성창 열기'로 동작합니다.
+// 공개용 클라이언트 키(노출 안전) — 교체가 필요하면 web3forms.com에서 재발급.
 const WEB3FORMS_ACCESS_KEY = "3ea63b3e-2e66-41da-a857-3ae8594354b7";
 
 const field =
@@ -22,6 +21,7 @@ export default function ContactForm() {
     message: "",
   });
   const [status, setStatus] = useState<Status>("idle");
+  const [botcheck, setBotcheck] = useState(false);
 
   const set =
     (k: keyof Fields) =>
@@ -30,16 +30,7 @@ export default function ContactForm() {
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-
-    if (!WEB3FORMS_ACCESS_KEY) {
-      // 키 발급 전 임시 동작: 메일 작성창 열기
-      const subject = encodeURIComponent(`[퍼블릭아이디 문의] ${f.name}`.trim());
-      const body = encodeURIComponent(
-        `이름/회사: ${f.name}\n이메일: ${f.email}\n연락처: ${f.phone}\n\n${f.message}`,
-      );
-      window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
-      return;
-    }
+    if (status === "sending") return;
 
     setStatus("sending");
     try {
@@ -48,6 +39,7 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
+          botcheck,
           subject: `[퍼블릭아이디 문의] ${f.name}`,
           from_name: f.name,
           name: f.name,
@@ -88,6 +80,17 @@ export default function ContactForm() {
       onSubmit={onSubmit}
       className="rounded-3xl border border-line bg-white p-6 shadow-sm sm:p-8"
     >
+      {/* Honeypot — humans never see this; Web3Forms drops submissions where bots tick it */}
+      <input
+        type="checkbox"
+        name="botcheck"
+        checked={botcheck}
+        onChange={(e) => setBotcheck(e.target.checked)}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="absolute -left-[9999px] h-px w-px opacity-0"
+      />
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="block">
           <span className="mb-1.5 block text-sm font-medium text-ink">
@@ -95,6 +98,9 @@ export default function ContactForm() {
           </span>
           <input
             required
+            name="name"
+            autoComplete="name"
+            maxLength={100}
             value={f.name}
             onChange={set("name")}
             className={field}
@@ -106,6 +112,10 @@ export default function ContactForm() {
             연락처
           </span>
           <input
+            name="phone"
+            type="tel"
+            autoComplete="tel"
+            maxLength={40}
             value={f.phone}
             onChange={set("phone")}
             className={field}
@@ -118,7 +128,10 @@ export default function ContactForm() {
         <span className="mb-1.5 block text-sm font-medium text-ink">이메일</span>
         <input
           required
+          name="email"
           type="email"
+          autoComplete="email"
+          maxLength={200}
           value={f.email}
           onChange={set("email")}
           className={field}
@@ -132,6 +145,8 @@ export default function ContactForm() {
         </span>
         <textarea
           required
+          name="message"
+          maxLength={4000}
           rows={5}
           value={f.message}
           onChange={set("message")}

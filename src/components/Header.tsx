@@ -18,8 +18,13 @@ export default function Header() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    if (open) window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
     };
   }, [open]);
 
@@ -95,13 +100,14 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile drawer */}
+      {/* Mobile drawer — `invisible` keeps the closed menu out of the tab order */}
       <div
+        aria-hidden={!open}
         className={cn(
           "fixed inset-x-0 top-[68px] z-40 border-t border-line bg-white transition-all duration-300 lg:hidden",
           open
-            ? "pointer-events-auto translate-y-0 opacity-100"
-            : "pointer-events-none -translate-y-2 opacity-0",
+            ? "visible pointer-events-auto translate-y-0 opacity-100"
+            : "invisible pointer-events-none -translate-y-2 opacity-0",
         )}
       >
         <nav className="flex flex-col gap-1 px-5 py-4">

@@ -40,4 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-.vercel
+# local operational notes / agent state (repo is public — never publish these)
+.omc/
+_세션복원-홈페이지.md

@@ -52,5 +52,9 @@ export default function Button({
       </Link>
     );
   }
-  return <button className={cls}>{children}</button>;
+  return (
+    <button type="button" className={cls}>
+      {children}
+    </button>
+  );
 }
