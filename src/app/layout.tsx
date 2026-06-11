@@ -86,7 +86,9 @@ export default function RootLayout({
     logo: `${site.url}/logo.png`,
     image: `${site.url}/og.png`,
     description:
-      "전용 마스코트·매월 웹툰·디자인 시스템 구독과 노면표시·안전표지 정기 시설 관리를 제공하는 KIDP 종합산업디자인전문회사이자 인증 사회적기업.",
+      "전용 마스코트·매월 웹툰·디자인 시스템 구독과 친환경 그래픽 노면표시재 기반 노면표시·안전표지 정기 시설 관리를 제공하는 KIDP 종합산업디자인전문회사이자 인증 사회적기업.",
+    foundingDate: "2017",
+    founder: { "@type": "Person", name: site.ceo },
     telephone: site.tel,
     faxNumber: site.fax,
     email: site.email,
@@ -97,7 +99,56 @@ export default function RootLayout({
       streetAddress: "한누리대로 2135, A동 401호 (보람동 628-2, 스타힐타워1)",
       addressCountry: "KR",
     },
-    sameAs: [site.blog, ...site.stores.map((s) => s.href)],
+    areaServed: "KR",
+    knowsAbout: [
+      "친환경 그래픽 노면표시재",
+      "노란발자국",
+      "노란볼라드",
+      "디자인구독 서비스",
+      "마스코트 제작",
+      "웹툰",
+      "안전시설관리",
+      "웨이파인딩",
+      "어린이보호구역 디자인",
+      "CPTED",
+      "친환경 직물시트",
+      "듀폰 타이벡 홍보판촉물",
+      "공공디자인",
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "디자인 구독 플랜",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          name: "Basic",
+          price: "1100000",
+          priceCurrency: "KRW",
+          description:
+            "전용 마스코트·월 1편 웹툰·기본 로고/컬러 가이드·SNS 프로필 키트 (연)",
+        },
+        {
+          "@type": "Offer",
+          name: "Standard",
+          price: "4000000",
+          priceCurrency: "KRW",
+          description:
+            "디자인 시스템·마스코트 변형·월 1편 웹툰·SNS 템플릿·월 1회 디자인 요청·원본 제공 (연)",
+        },
+        {
+          "@type": "Offer",
+          name: "Premium",
+          description:
+            "Standard 전체 + 전담 디자이너 + 노면표시·안전시설 정기 관리 (맞춤 견적)",
+        },
+      ],
+    },
+    sameAs: [
+      site.blog,
+      site.youtube,
+      site.instagram,
+      ...site.stores.map((s) => s.href),
+    ],
   };
 
   return (

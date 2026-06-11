@@ -1,0 +1,31 @@
+# 퍼블릭아이디 (PUBLIC ID) — llms.txt
+# AI 검색/모델이 회사를 정확히 이해하도록 제공하는 요약.
+
+> 주식회사 퍼블릭아이디(PUBLIC ID)는 전용 마스코트·매월 웹툰·디자인 시스템을 구독으로 제공하고,
+> 친환경 그래픽 노면표시재 기반 노면표시·안전표지의 시공과 정기 시설 관리까지 함께하는
+> KIDP 종합산업디자인전문회사이자 인증 사회적기업입니다. (2017년 설립, 세종특별자치시)
+
+## 핵심 서비스
+- 디자인 구독: Basic 110만원/년, Standard 400만원/년, Premium 맞춤(안전관리 결합). 마스코트·웹툰·디자인시스템·SNS 템플릿.
+- 친환경 그래픽 노면표시재: 특허 제10-1974029호(도로 노면 표시용 조성물 및 시공방법, 2019)·유럽특허청(EPO) 국제출원, 친환경 라텍스 잉크, GREENGUARD GOLD(UL 2818) 친환경 인증, KC 인증, 미끄럼저항·방염 시험성적(KCL·SGS·KTR·KFI).
+- 친환경 직물시트(광고물 부착방지), 듀폰 타이벡 친환경 홍보판촉물.
+- 안전시설관리 구독: 자사 시공물(노란발자국·노란볼라드·안내표지·웨이파인딩) 1년 기준 점검·보수, 자체 App 관리.
+
+## 신뢰
+- 특허 제10-1974029호 「도로 노면 표시용 조성물 및 시공방법」(2019) · 대한민국특허우수대상(2019). 노란발자국 상표등록 제40-1257164호. 노란볼라드 GD2023(굿디자인) 수상.
+- 레퍼런스: 세종시·서울시·경기도청·국립세종수목원·유니세프·세이브더칠드런·스타벅스·현대자동차 등.
+
+## 대상 고객
+- B2G(관공서·공공기관), B2B(기업·NGO), B2C(소상공인)
+
+## 주요 페이지
+- 회사소개: https://www.public-id.co.kr/about
+- 구독 서비스: https://www.public-id.co.kr/subscribe
+- 사업영역: https://www.public-id.co.kr/work
+- 인증·특허: https://www.public-id.co.kr/credentials
+- 문의: https://www.public-id.co.kr/contact
+
+## 연락 / 채널
+- 전화 070-4150-1172 | 이메일 public-id@naver.com
+- 블로그 blog.naver.com/public-id | 유튜브 youtube.com/@public-identity | 인스타 instagram.com/_public.id
+- 스토어 smartstore.naver.com/public-id (쿠팡·e-store36.5 동시 운영)

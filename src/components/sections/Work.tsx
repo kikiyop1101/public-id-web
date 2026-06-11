@@ -54,6 +54,33 @@ const clients = [
   "스타벅스 · 현대자동차 · 유한양행 · 에버랜드 등 다수 기업",
 ];
 
+const productJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "친환경 그래픽 노면표시재",
+  brand: { "@type": "Brand", name: "퍼블릭아이디" },
+  manufacturer: { "@type": "Organization", name: "주식회사 퍼블릭아이디" },
+  description:
+    "자체 특허(제10-1974029호, 도로 노면 표시용 조성물 및 시공방법)와 유럽특허청(EPO) 국제출원 기술 기반의 친환경 그래픽 노면표시재. 친환경 라텍스 잉크로 인쇄하며 GREENGUARD GOLD(UL 2818) 친환경 인증, KC 인증, 미끄럼저항·유해물질 불검출·방염 시험성적(KCL·SGS·KTR·KFI)을 보유. 노란발자국·노란볼라드·어린이보호구역·웨이파인딩 등에 적용.",
+  category: "도로 노면표시재 / 안전표지",
+  material: "친환경 라텍스 잉크",
+  additionalProperty: [
+    { "@type": "PropertyValue", name: "특허", value: "제10-1974029호 (도로 노면 표시용 조성물 및 시공방법, 2019)" },
+    { "@type": "PropertyValue", name: "국제출원", value: "유럽특허청(EPO) PCT 국제출원" },
+    { "@type": "PropertyValue", name: "잉크", value: "친환경 라텍스" },
+    { "@type": "PropertyValue", name: "친환경 인증", value: "GREENGUARD GOLD (UL 2818 저휘발성)" },
+    { "@type": "PropertyValue", name: "국가통합인증", value: "KC 인증" },
+    { "@type": "PropertyValue", name: "시험성적", value: "미끄럼저항·유해물질 불검출·방염 (KCL·SGS·KTR·KFI)" },
+  ],
+  offers: {
+    "@type": "Offer",
+    url: "https://smartstore.naver.com/public-id",
+    priceCurrency: "KRW",
+    availability: "https://schema.org/InStock",
+    seller: { "@type": "Organization", name: "주식회사 퍼블릭아이디" },
+  },
+};
+
 export default function Work({
   moreHref,
   tint,
@@ -63,6 +90,12 @@ export default function Work({
 }) {
   return (
     <section id="work" className={cn("py-20 sm:py-28", tint && "bg-cloud/50")}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(productJsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <Container>
         <Reveal className="max-w-2xl">
           <p className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">
