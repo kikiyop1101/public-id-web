@@ -64,9 +64,9 @@ export default function KakaoMap({
       (f) => typeof f.lat === "number" && typeof f.lng === "number",
     );
     const images: Record<string, any> = {
-      active: pinImage(kakao, STATUS_META.active.color),
-      expiring: pinImage(kakao, STATUS_META.expiring.color),
-      expired: pinImage(kakao, STATUS_META.expired.color),
+      active: pinImage(kakao, STATUS_META.active.pin),
+      expiring: pinImage(kakao, STATUS_META.expiring.pin),
+      expired: pinImage(kakao, STATUS_META.expired.pin),
     };
     const markers = mappable.map((f) => {
       const marker = new kakao.maps.Marker({

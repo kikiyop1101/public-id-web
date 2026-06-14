@@ -69,12 +69,17 @@ export function fmtDate(d: Date): string {
   return `${y}-${m}-${day}`;
 }
 
-// Fixed status colors (semantic traffic-light). The site is light-themed.
+// 상태 색 — 퍼블릭아이디 브랜드 컬러 기반.
+//  pin  = 지도 마커(선명한 상징색)  ·  text = 흰 배경 위 가독 텍스트  ·  bg = pill 배경
+//  운영중=청록(teal #08A0B8) · 만료임박=세이프티옐로우(#FFE000) · 관리종료=빨강(브랜드에 빨강이 없어 유지)
 export const STATUS_META: Record<
   Status,
-  { label: string; color: string; bg: string; text: string }
+  { label: string; pin: string; text: string; bg: string }
 > = {
-  active: { label: "운영중", color: "#16A34A", bg: "rgba(22,163,74,0.12)", text: "#15803D" },
-  expiring: { label: "만료 임박", color: "#F59E0B", bg: "rgba(245,158,11,0.16)", text: "#B45309" },
-  expired: { label: "관리 종료", color: "#DC2626", bg: "rgba(220,38,38,0.12)", text: "#B91C1C" },
+  active: { label: "운영중", pin: "#08A0B8", text: "#0B6C7D", bg: "rgba(8,160,184,0.12)" },
+  expiring: { label: "만료 임박", pin: "#FFE000", text: "#8A6A00", bg: "rgba(255,224,0,0.22)" },
+  expired: { label: "관리 종료", pin: "#DC2626", text: "#B91C1C", bg: "rgba(220,38,38,0.12)" },
 };
+
+// 총계 등 중립 강조에 쓰는 가장 진한 브랜드색(네이비).
+export const BRAND_DARK = "#204050";
