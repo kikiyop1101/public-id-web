@@ -9,14 +9,15 @@ export type Facility = {
   address: string;
   lat?: number; // 주소에서 자동 변환 (geocode.ts)
   lng?: number;
-  installDate: string; // YYYY-MM-DD (설치일)
+  plannedDate?: string; // 설치예정일 — 아직 설치 전이면 설정 (status=planned)
+  installDate: string; // YYYY-MM-DD (설치일); 설치 전이면 빈 값
   endDate?: string; // 관리종료일 — optional; defaults to 설치일 + 1년
   quantity?: string; // 수량 (예: "볼라드 14본")
   photo?: string; // 현장 사진 URL
   note?: string;
 };
 
-export type Status = "active" | "expiring" | "expired";
+export type Status = "planned" | "active" | "expiring" | "expired";
 
 // "만료 임박" window — facilities ending within this many days are flagged amber.
 export const EXPIRING_DAYS = 30;
@@ -50,10 +51,19 @@ export function daysLeftOf(f: Facility, now: Date): number {
 }
 
 export function statusOf(f: Facility, now: Date): Status {
+  if (!f.installDate || !f.installDate.trim()) return "planned";
   const d = daysLeftOf(f, now);
   if (d < 0) return "expired";
   if (d <= EXPIRING_DAYS) return "expiring";
   return "active";
+}
+
+// 설치예정일까지 남은 일수(설치 전 시설용). 양수=예정, 음수=지남.
+export function plannedDaysOf(f: Facility, now: Date): number | null {
+  if (!f.plannedDate) return null;
+  return Math.ceil(
+    (new Date(`${f.plannedDate}T00:00:00`).getTime() - now.getTime()) / 86_400_000,
+  );
 }
 
 export function ddayLabel(daysLeft: number): string {
@@ -76,6 +86,7 @@ export const STATUS_META: Record<
   Status,
   { label: string; pin: string; text: string; bg: string }
 > = {
+  planned: { label: "설치 예정", pin: "#C8D820", text: "#5E6E00", bg: "rgba(200,216,32,0.22)" },
   active: { label: "운영중", pin: "#08A0B8", text: "#0B6C7D", bg: "rgba(8,160,184,0.12)" },
   expiring: { label: "만료 임박", pin: "#FFE000", text: "#8A6A00", bg: "rgba(255,224,0,0.22)" },
   expired: { label: "관리 종료", pin: "#DC2626", text: "#B91C1C", bg: "rgba(220,38,38,0.12)" },

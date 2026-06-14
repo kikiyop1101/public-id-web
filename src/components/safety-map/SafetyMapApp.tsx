@@ -7,6 +7,7 @@ import {
   type Status,
   statusOf,
   daysLeftOf,
+  plannedDaysOf,
   endDateOf,
   fmtDate,
   ddayLabel,
@@ -27,6 +28,18 @@ function StatusPill({ status }: { status: Status }) {
       {m.label}
     </span>
   );
+}
+
+function ddayDisplay(f: Facility, now: Date): { text: string; color: string } {
+  const st = statusOf(f, now);
+  if (st === "planned") {
+    const pd = plannedDaysOf(f, now);
+    return {
+      text: pd == null ? "예정" : pd >= 0 ? `D-${pd}` : "지남",
+      color: STATUS_META.planned.text,
+    };
+  }
+  return { text: ddayLabel(daysLeftOf(f, now)), color: STATUS_META[st].text };
 }
 
 export default function SafetyMapApp({ token }: { token?: string }) {
@@ -103,7 +116,7 @@ export default function SafetyMapApp({ token }: { token?: string }) {
   }, [facilities, typeF, clientF, q]);
 
   const counts = useMemo(() => {
-    const c = { total: base.length, active: 0, expiring: 0, expired: 0 };
+    const c = { total: base.length, planned: 0, active: 0, expiring: 0, expired: 0 };
     if (now) for (const f of base) c[statusOf(f, now)]++;
     return c;
   }, [base, now]);
@@ -112,8 +125,13 @@ export default function SafetyMapApp({ token }: { token?: string }) {
     if (!now) return [] as Facility[];
     return base
       .filter((f) => statusF === "all" || statusOf(f, now) === statusF)
-      .map((f) => ({ f, d: daysLeftOf(f, now) }))
-      .sort((a, b) => a.d - b.d)
+      .map((f) => {
+        const st = statusOf(f, now);
+        const key =
+          st === "planned" ? 1e9 + (plannedDaysOf(f, now) ?? 0) : daysLeftOf(f, now);
+        return { f, key };
+      })
+      .sort((a, b) => a.key - b.key)
       .map((x) => x.f);
   }, [base, statusF, now]);
 
@@ -137,7 +155,7 @@ export default function SafetyMapApp({ token }: { token?: string }) {
       <div className="rounded-2xl border border-line bg-cloud p-10 text-center">
         <p className="font-semibold text-ink">유효하지 않은 링크입니다</p>
         <p className="mt-2 text-sm text-ink-soft">
-          링크를 다시 확인해 주세요. 문의: {""}
+          링크를 다시 확인해 주세요.{" "}
           <a href="/contact" className="text-teal-700 underline">
             문의하기
           </a>
@@ -147,6 +165,7 @@ export default function SafetyMapApp({ token }: { token?: string }) {
 
   const kpis: { key: StatusFilter; label: string; value: number; color: string }[] = [
     { key: "all", label: "총 시설물", value: counts.total, color: BRAND_DARK },
+    { key: "planned", label: "설치 예정", value: counts.planned, color: STATUS_META.planned.text },
     { key: "active", label: "운영중", value: counts.active, color: "#08A0B8" },
     { key: "expiring", label: "만료 임박 · D-30", value: counts.expiring, color: STATUS_META.expiring.text },
     { key: "expired", label: "관리 종료", value: counts.expired, color: STATUS_META.expired.text },
@@ -176,7 +195,7 @@ export default function SafetyMapApp({ token }: { token?: string }) {
         </div>
       )}
 
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-5">
         {kpis.map((k) => {
           const isActive = statusF === k.key && k.key !== "all";
           return (
@@ -228,6 +247,7 @@ export default function SafetyMapApp({ token }: { token?: string }) {
           className="rounded-lg border border-line bg-white px-3 py-2 text-sm text-ink outline-none focus:border-teal"
         >
           <option value="all">전체 상태</option>
+          <option value="planned">설치 예정</option>
           <option value="active">운영중</option>
           <option value="expiring">만료 임박</option>
           <option value="expired">관리 종료</option>
@@ -258,6 +278,7 @@ export default function SafetyMapApp({ token }: { token?: string }) {
               const st = statusOf(f, now);
               const Icon = typeIcon(f.type);
               const isSel = f.id === selectedId;
+              const dd = ddayDisplay(f, now);
               return (
                 <button
                   key={f.id}
@@ -280,9 +301,9 @@ export default function SafetyMapApp({ token }: { token?: string }) {
                   <StatusPill status={st} />
                   <span
                     className="w-10 shrink-0 text-right text-xs font-medium"
-                    style={{ color: STATUS_META[st].text }}
+                    style={{ color: dd.color }}
                   >
-                    {ddayLabel(daysLeftOf(f, now))}
+                    {dd.text}
                   </span>
                 </button>
               );
@@ -310,7 +331,7 @@ export default function SafetyMapApp({ token }: { token?: string }) {
 
       <p className="mt-4 text-xs text-ink-soft">
         ※ 데이터는 구글 시트에서 자동으로 불러옵니다(수정 후 최대 1분 내 반영). 마커
-        색은 상태(운영중·임박·만료), 아이콘은 시설 종류를 나타냅니다.
+        색은 상태(설치 예정·운영중·임박·만료), 아이콘은 시설 종류를 나타냅니다.
       </p>
     </div>
   );
@@ -326,14 +347,9 @@ function SelectedDetail({
   onClose: () => void;
 }) {
   const st = statusOf(f, now);
-  const d = daysLeftOf(f, now);
   const Icon = typeIcon(f.type);
-  const install = new Date(`${f.installDate}T00:00:00`).getTime();
-  const end = endDateOf(f).getTime();
-  const pct = Math.max(
-    0,
-    Math.min(100, Math.round(((now.getTime() - install) / (end - install)) * 100)),
-  );
+  const isPlanned = st === "planned";
+
   return (
     <div className="mt-4 overflow-hidden rounded-2xl border border-line bg-white">
       <div className="grid gap-0 md:grid-cols-[260px_1fr]">
@@ -371,28 +387,62 @@ function SelectedDetail({
           <dl className="mt-4 grid grid-cols-1 gap-x-6 gap-y-2 text-sm sm:grid-cols-2">
             <Row label="주소" value={f.address} />
             {f.quantity && <Row label="수량" value={f.quantity} />}
-            <Row label="설치일" value={f.installDate} />
-            <Row
-              label="관리종료일"
-              value={`${fmtDate(endDateOf(f))}${f.endDate ? "" : " (자동)"}`}
-              valueColor={STATUS_META[st].text}
-            />
+            {isPlanned ? (
+              <Row
+                label="설치 예정일"
+                value={f.plannedDate || "미정"}
+                valueColor={STATUS_META.planned.text}
+              />
+            ) : (
+              <>
+                <Row label="설치일" value={f.installDate} />
+                <Row
+                  label="관리종료일"
+                  value={`${fmtDate(endDateOf(f))}${f.endDate ? "" : " (자동)"}`}
+                  valueColor={STATUS_META[st].text}
+                />
+              </>
+            )}
           </dl>
 
-          <div className="mt-4">
-            <div className="mb-1 flex justify-between text-xs text-ink-soft">
-              <span>관리기간</span>
-              <span style={{ color: STATUS_META[st].text }}>{ddayLabel(d)}</span>
+          {isPlanned ? (
+            <div
+              className="mt-4 rounded-xl bg-cloud px-4 py-3 text-sm"
+              style={{ color: STATUS_META.planned.text }}
+            >
+              아직 설치 전입니다
+              {f.plannedDate ? ` — 설치 예정일 ${f.plannedDate}` : ""}.
             </div>
-            <div className="h-2 overflow-hidden rounded-full bg-cloud">
-              <div
-                className="h-full rounded-full"
-                style={{ width: `${pct}%`, background: STATUS_META[st].pin }}
-              />
-            </div>
-            {f.note && <p className="mt-3 text-sm text-ink-soft">{f.note}</p>}
-          </div>
+          ) : (
+            <PeriodBar f={f} now={now} st={st} />
+          )}
+          {f.note && <p className="mt-3 text-sm text-ink-soft">{f.note}</p>}
         </div>
+      </div>
+    </div>
+  );
+}
+
+function PeriodBar({ f, now, st }: { f: Facility; now: Date; st: Status }) {
+  const install = new Date(`${f.installDate}T00:00:00`).getTime();
+  const end = endDateOf(f).getTime();
+  const pct = Math.max(
+    0,
+    Math.min(100, Math.round(((now.getTime() - install) / (end - install)) * 100)),
+  );
+  return (
+    <div className="mt-4">
+      <div className="mb-1 flex justify-between text-xs text-ink-soft">
+        <span>관리기간</span>
+        <span style={{ color: STATUS_META[st].text }}>
+          {ddayLabel(daysLeftOf(f, now))}
+        </span>
+      </div>
+      <div className="h-2 overflow-hidden rounded-full bg-cloud">
+        <div
+          className="h-full rounded-full"
+          style={{ width: `${pct}%`, background: STATUS_META[st].pin }}
+        />
       </div>
     </div>
   );
