@@ -86,7 +86,7 @@ export const STATUS_META: Record<
   Status,
   { label: string; pin: string; text: string; bg: string }
 > = {
-  planned: { label: "설치 예정", pin: "#C8D820", text: "#5E6E00", bg: "rgba(200,216,32,0.22)" },
+  planned: { label: "설치 예정", pin: "#204050", text: "#204050", bg: "rgba(32,64,80,0.10)" },
   active: { label: "운영중", pin: "#08A0B8", text: "#0B6C7D", bg: "rgba(8,160,184,0.12)" },
   expiring: { label: "만료 임박", pin: "#FFE000", text: "#8A6A00", bg: "rgba(255,224,0,0.22)" },
   expired: { label: "관리 종료", pin: "#DC2626", text: "#B91C1C", bg: "rgba(220,38,38,0.12)" },
