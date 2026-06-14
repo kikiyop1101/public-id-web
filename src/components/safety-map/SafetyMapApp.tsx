@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import KakaoMap from "./KakaoMap";
-import { sampleFacilities } from "@/data/facilities.sample";
+import { geocodeAddresses } from "@/lib/geocode";
 import {
   type Facility,
   type Status,
@@ -30,6 +30,10 @@ function StatusPill({ status }: { status: Status }) {
 
 export default function SafetyMapApp() {
   const [now, setNow] = useState<Date | null>(null);
+  const [raw, setRaw] = useState<Facility[] | null>(null);
+  const [coords, setCoords] = useState<Record<string, { lat: number; lng: number }>>({});
+  const [loadError, setLoadError] = useState(false);
+
   const [audience, setAudience] = useState<"public" | "client">("public");
   const [typeF, setTypeF] = useState("all");
   const [clientF, setClientF] = useState("all");
@@ -39,17 +43,47 @@ export default function SafetyMapApp() {
 
   useEffect(() => setNow(new Date()), []);
 
-  const facilities = sampleFacilities;
+  useEffect(() => {
+    fetch("/api/facilities")
+      .then((r) => r.json())
+      .then((d) => setRaw(Array.isArray(d.facilities) ? d.facilities : []))
+      .catch(() => {
+        setRaw([]);
+        setLoadError(true);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (!raw || raw.length === 0) return;
+    let cancelled = false;
+    geocodeAddresses(raw.map((f) => f.address))
+      .then((c) => {
+        if (!cancelled) setCoords(c);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, [raw]);
+
+  const facilities: Facility[] = useMemo(
+    () =>
+      (raw ?? []).map((f) => {
+        const c = coords[f.address.trim()];
+        return c ? { ...f, lat: c.lat, lng: c.lng } : f;
+      }),
+    [raw, coords],
+  );
+
   const types = useMemo(
-    () => Array.from(new Set(facilities.map((f) => f.type))),
+    () => Array.from(new Set(facilities.map((f) => f.type).filter(Boolean))),
     [facilities],
   );
   const clients = useMemo(
-    () => Array.from(new Set(facilities.map((f) => f.client))).sort(),
+    () => Array.from(new Set(facilities.map((f) => f.client).filter(Boolean))).sort(),
     [facilities],
   );
 
-  // base = everything except the status filter (drives the KPI counts)
   const base = useMemo(() => {
     const needle = q.trim().toLowerCase();
     return facilities.filter(
@@ -63,8 +97,7 @@ export default function SafetyMapApp() {
 
   const counts = useMemo(() => {
     const c = { total: base.length, active: 0, expiring: 0, expired: 0 };
-    if (now)
-      for (const f of base) c[statusOf(f, now)]++;
+    if (now) for (const f of base) c[statusOf(f, now)]++;
     return c;
   }, [base, now]);
 
@@ -77,12 +110,17 @@ export default function SafetyMapApp() {
       .map((x) => x.f);
   }, [base, statusF, now]);
 
+  const unmapped = useMemo(
+    () => filtered.filter((f) => f.lat == null || f.lng == null).length,
+    [filtered],
+  );
+
   const selected = useMemo(
     () => facilities.find((f) => f.id === selectedId) ?? null,
     [facilities, selectedId],
   );
 
-  if (!now)
+  if (!now || raw === null)
     return (
       <div className="h-[520px] animate-pulse rounded-2xl border border-line bg-cloud" />
     );
@@ -90,7 +128,7 @@ export default function SafetyMapApp() {
   const kpis: { key: StatusFilter; label: string; value: number; color?: string }[] = [
     { key: "all", label: "총 시설물", value: counts.total },
     { key: "active", label: "운영중", value: counts.active, color: STATUS_META.active.text },
-    { key: "expiring", label: `만료 임박 · D-30`, value: counts.expiring, color: STATUS_META.expiring.text },
+    { key: "expiring", label: "만료 임박 · D-30", value: counts.expiring, color: STATUS_META.expiring.text },
     { key: "expired", label: "관리 종료", value: counts.expired, color: STATUS_META.expired.text },
   ];
 
@@ -124,8 +162,13 @@ export default function SafetyMapApp() {
       {audience === "client" && (
         <div className="mb-4 rounded-xl border border-line bg-cloud px-4 py-3 text-sm text-ink-soft">
           발주처 전용 보기는 <b className="font-semibold text-ink">2단계</b>에서
-          제공됩니다 — 각 발주처에 자기 시설만 보이는 전용 링크가 발급됩니다. 지금은
-          공개 실적 데이터로 미리 보실 수 있어요.
+          제공됩니다 — 각 발주처에 자기 시설만 보이는 전용 링크가 발급됩니다.
+        </div>
+      )}
+
+      {loadError && (
+        <div className="mb-4 rounded-xl border border-line bg-cloud px-4 py-3 text-sm text-ink-soft">
+          시설 데이터를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.
         </div>
       )}
 
@@ -198,11 +241,14 @@ export default function SafetyMapApp() {
         <div className="order-2 flex max-h-[520px] flex-col overflow-hidden rounded-2xl border border-line lg:order-1">
           <div className="flex items-center justify-between border-b border-line px-4 py-2.5 text-xs text-ink-soft">
             <span>시설 목록 {filtered.length}</span>
+            {unmapped > 0 && <span>지도 미표시 {unmapped}</span>}
           </div>
           <div className="flex-1 overflow-y-auto">
             {filtered.length === 0 && (
               <div className="px-4 py-10 text-center text-sm text-ink-soft">
-                조건에 맞는 시설이 없습니다.
+                {facilities.length === 0
+                  ? "시트에 등록된 시설이 없습니다."
+                  : "조건에 맞는 시설이 없습니다."}
               </div>
             )}
             {filtered.map((f) => {
@@ -260,8 +306,8 @@ export default function SafetyMapApp() {
       )}
 
       <p className="mt-4 text-xs text-ink-soft">
-        ※ 현재 표시되는 데이터는 예시입니다. 실제 운영 시 구글 시트로 관리되며,
-        마커 색은 상태(운영중·임박·만료)를, 아이콘은 시설 종류를 나타냅니다.
+        ※ 데이터는 구글 시트에서 자동으로 불러옵니다(수정 후 최대 1분 내 반영). 마커
+        색은 상태(운영중·임박·만료), 아이콘은 시설 종류를 나타냅니다.
       </p>
     </div>
   );
@@ -333,9 +379,7 @@ function SelectedDetail({
           <div className="mt-4">
             <div className="mb-1 flex justify-between text-xs text-ink-soft">
               <span>관리기간</span>
-              <span style={{ color: STATUS_META[st].color }}>
-                {ddayLabel(d)}
-              </span>
+              <span style={{ color: STATUS_META[st].color }}>{ddayLabel(d)}</span>
             </div>
             <div className="h-2 overflow-hidden rounded-full bg-cloud">
               <div
@@ -343,9 +387,7 @@ function SelectedDetail({
                 style={{ width: `${pct}%`, background: STATUS_META[st].color }}
               />
             </div>
-            {f.note && (
-              <p className="mt-3 text-sm text-ink-soft">{f.note}</p>
-            )}
+            {f.note && <p className="mt-3 text-sm text-ink-soft">{f.note}</p>}
           </div>
         </div>
       </div>

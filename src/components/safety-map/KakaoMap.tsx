@@ -60,12 +60,15 @@ export default function KakaoMap({
     const clusterer = clustererRef.current;
     if (!ready || !kakao || !map || !clusterer) return;
     clusterer.clear();
+    const mappable = facilities.filter(
+      (f) => typeof f.lat === "number" && typeof f.lng === "number",
+    );
     const images: Record<string, any> = {
       active: pinImage(kakao, STATUS_META.active.color),
       expiring: pinImage(kakao, STATUS_META.expiring.color),
       expired: pinImage(kakao, STATUS_META.expired.color),
     };
-    const markers = facilities.map((f) => {
+    const markers = mappable.map((f) => {
       const marker = new kakao.maps.Marker({
         position: new kakao.maps.LatLng(f.lat, f.lng),
         image: images[statusOf(f, now)],

@@ -7,8 +7,8 @@ export type Facility = {
   client: string; // 발주처
   name: string; // 명칭/위치
   address: string;
-  lat: number;
-  lng: number;
+  lat?: number; // 주소에서 자동 변환 (geocode.ts)
+  lng?: number;
   installDate: string; // YYYY-MM-DD (설치일)
   endDate?: string; // 관리종료일 — optional; defaults to 설치일 + 1년
   quantity?: string; // 수량 (예: "볼라드 14본")
