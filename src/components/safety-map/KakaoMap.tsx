@@ -65,9 +65,10 @@ export default function KakaoMap({
     );
     const images: Record<string, any> = {
       planned: pinImage(kakao, STATUS_META.planned.pin),
-      active: pinImage(kakao, STATUS_META.active.pin),
-      expiring: pinImage(kakao, STATUS_META.expiring.pin),
-      expired: pinImage(kakao, STATUS_META.expired.pin),
+      installed: pinImage(kakao, STATUS_META.installed.pin),
+      managed: pinImage(kakao, STATUS_META.managed.pin),
+      ended: pinImage(kakao, STATUS_META.ended.pin),
+      demolished: pinImage(kakao, STATUS_META.demolished.pin),
     };
     const markers = mappable.map((f) => {
       const marker = new kakao.maps.Marker({

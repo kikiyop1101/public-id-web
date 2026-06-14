@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import KakaoMap from "./KakaoMap";
 import { geocodeAddresses } from "@/lib/geocode";
 import {
@@ -8,7 +8,7 @@ import {
   statusOf,
   daysLeftOf,
   plannedDaysOf,
-  endDateOf,
+  maintenanceEnd,
   fmtDate,
   ddayLabel,
   typeIcon,
@@ -17,6 +17,14 @@ import {
 } from "@/lib/facilities";
 
 type StatusFilter = "all" | Status;
+
+const RANK: Record<Status, number> = {
+  managed: 0,
+  planned: 1,
+  installed: 2,
+  ended: 3,
+  demolished: 4,
+};
 
 function StatusPill({ status }: { status: Status }) {
   const m = STATUS_META[status];
@@ -39,7 +47,11 @@ function ddayDisplay(f: Facility, now: Date): { text: string; color: string } {
       color: STATUS_META.planned.text,
     };
   }
-  return { text: ddayLabel(daysLeftOf(f, now)), color: STATUS_META[st].text };
+  if (st === "managed")
+    return { text: ddayLabel(daysLeftOf(f, now)), color: STATUS_META.managed.text };
+  if (st === "installed") return { text: "완료", color: STATUS_META.installed.text };
+  if (st === "ended") return { text: "종료", color: STATUS_META.ended.text };
+  return { text: "철거", color: STATUS_META.demolished.text };
 }
 
 export default function SafetyMapApp({ token }: { token?: string }) {
@@ -116,7 +128,7 @@ export default function SafetyMapApp({ token }: { token?: string }) {
   }, [facilities, typeF, clientF, q]);
 
   const counts = useMemo(() => {
-    const c = { total: base.length, planned: 0, active: 0, expiring: 0, expired: 0 };
+    const c = { total: base.length, planned: 0, installed: 0, managed: 0, ended: 0, demolished: 0 };
     if (now) for (const f of base) c[statusOf(f, now)]++;
     return c;
   }, [base, now]);
@@ -127,9 +139,13 @@ export default function SafetyMapApp({ token }: { token?: string }) {
       .filter((f) => statusF === "all" || statusOf(f, now) === statusF)
       .map((f) => {
         const st = statusOf(f, now);
-        const key =
-          st === "planned" ? 1e9 + (plannedDaysOf(f, now) ?? 0) : daysLeftOf(f, now);
-        return { f, key };
+        const sub =
+          st === "managed"
+            ? daysLeftOf(f, now)
+            : st === "planned"
+              ? (plannedDaysOf(f, now) ?? 0)
+              : 0;
+        return { f, key: RANK[st] * 1_000_000 + sub };
       })
       .sort((a, b) => a.key - b.key)
       .map((x) => x.f);
@@ -166,9 +182,10 @@ export default function SafetyMapApp({ token }: { token?: string }) {
   const kpis: { key: StatusFilter; label: string; value: number; color: string }[] = [
     { key: "all", label: "총 시설물", value: counts.total, color: BRAND_DARK },
     { key: "planned", label: "설치 예정", value: counts.planned, color: STATUS_META.planned.text },
-    { key: "active", label: "운영중", value: counts.active, color: "#08A0B8" },
-    { key: "expiring", label: "만료 임박 · D-30", value: counts.expiring, color: STATUS_META.expiring.text },
-    { key: "expired", label: "관리 종료", value: counts.expired, color: STATUS_META.expired.text },
+    { key: "installed", label: "설치 완료", value: counts.installed, color: STATUS_META.installed.text },
+    { key: "managed", label: "관리중", value: counts.managed, color: "#08A0B8" },
+    { key: "ended", label: "관리 종료", value: counts.ended, color: STATUS_META.ended.text },
+    { key: "demolished", label: "철거 완료", value: counts.demolished, color: STATUS_META.demolished.text },
   ];
 
   const toggleStatus = (k: StatusFilter) =>
@@ -195,7 +212,7 @@ export default function SafetyMapApp({ token }: { token?: string }) {
         </div>
       )}
 
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-5">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
         {kpis.map((k) => {
           const isActive = statusF === k.key && k.key !== "all";
           return (
@@ -248,9 +265,10 @@ export default function SafetyMapApp({ token }: { token?: string }) {
         >
           <option value="all">전체 상태</option>
           <option value="planned">설치 예정</option>
-          <option value="active">운영중</option>
-          <option value="expiring">만료 임박</option>
-          <option value="expired">관리 종료</option>
+          <option value="installed">설치 완료</option>
+          <option value="managed">관리중</option>
+          <option value="ended">관리 종료</option>
+          <option value="demolished">철거 완료</option>
         </select>
         <input
           value={q}
@@ -331,7 +349,8 @@ export default function SafetyMapApp({ token }: { token?: string }) {
 
       <p className="mt-4 text-xs text-ink-soft">
         ※ 데이터는 구글 시트에서 자동으로 불러옵니다(수정 후 최대 1분 내 반영). 마커
-        색은 상태(설치 예정·운영중·임박·만료), 아이콘은 시설 종류를 나타냅니다.
+        색은 상태(설치 예정·설치 완료·관리중·관리 종료·철거 완료), 아이콘은 시설
+        종류를 나타냅니다.
       </p>
     </div>
   );
@@ -348,7 +367,7 @@ function SelectedDetail({
 }) {
   const st = statusOf(f, now);
   const Icon = typeIcon(f.type);
-  const isPlanned = st === "planned";
+  const me = maintenanceEnd(f);
 
   return (
     <div className="mt-4 overflow-hidden rounded-2xl border border-line bg-white">
@@ -387,35 +406,49 @@ function SelectedDetail({
           <dl className="mt-4 grid grid-cols-1 gap-x-6 gap-y-2 text-sm sm:grid-cols-2">
             <Row label="주소" value={f.address} />
             {f.quantity && <Row label="수량" value={f.quantity} />}
-            {isPlanned ? (
+
+            {st === "planned" && (
               <Row
                 label="설치 예정일"
                 value={f.plannedDate || "미정"}
                 valueColor={STATUS_META.planned.text}
               />
-            ) : (
-              <>
-                <Row label="설치일" value={f.installDate} />
-                <Row
-                  label="관리종료일"
-                  value={`${fmtDate(endDateOf(f))}${f.endDate ? "" : " (자동)"}`}
-                  valueColor={STATUS_META[st].text}
-                />
-              </>
+            )}
+            {st !== "planned" && <Row label="설치일" value={f.installDate} />}
+            {(st === "managed" || st === "ended") && f.maintenancePeriod && (
+              <Row label="유지보수기간" value={f.maintenancePeriod} />
+            )}
+            {(st === "managed" || st === "ended") && me && (
+              <Row
+                label="관리 종료일"
+                value={fmtDate(me)}
+                valueColor={STATUS_META[st].text}
+              />
+            )}
+            {st === "demolished" && (
+              <Row
+                label="철거 완료일"
+                value={f.demolishedDate || "—"}
+                valueColor={STATUS_META.demolished.text}
+              />
             )}
           </dl>
 
-          {isPlanned ? (
-            <div
-              className="mt-4 rounded-xl bg-cloud px-4 py-3 text-sm"
-              style={{ color: STATUS_META.planned.text }}
-            >
+          {(st === "managed" || st === "ended") && me ? (
+            <PeriodBar f={f} now={now} st={st} />
+          ) : st === "planned" ? (
+            <Note color={STATUS_META.planned.text}>
               아직 설치 전입니다
               {f.plannedDate ? ` — 설치 예정일 ${f.plannedDate}` : ""}.
-            </div>
-          ) : (
-            <PeriodBar f={f} now={now} st={st} />
-          )}
+            </Note>
+          ) : st === "installed" ? (
+            <Note color={STATUS_META.installed.text}>
+              설치 완료된 시설입니다 (유지보수 계약 미설정).
+            </Note>
+          ) : st === "demolished" ? (
+            <Note color={STATUS_META.demolished.text}>철거 완료된 시설입니다.</Note>
+          ) : null}
+
           {f.note && <p className="mt-3 text-sm text-ink-soft">{f.note}</p>}
         </div>
       </div>
@@ -424,8 +457,10 @@ function SelectedDetail({
 }
 
 function PeriodBar({ f, now, st }: { f: Facility; now: Date; st: Status }) {
+  const me = maintenanceEnd(f);
+  if (!me || !f.installDate) return null;
   const install = new Date(`${f.installDate}T00:00:00`).getTime();
-  const end = endDateOf(f).getTime();
+  const end = me.getTime();
   const pct = Math.max(
     0,
     Math.min(100, Math.round(((now.getTime() - install) / (end - install)) * 100)),
@@ -433,7 +468,7 @@ function PeriodBar({ f, now, st }: { f: Facility; now: Date; st: Status }) {
   return (
     <div className="mt-4">
       <div className="mb-1 flex justify-between text-xs text-ink-soft">
-        <span>관리기간</span>
+        <span>유지보수 기간</span>
         <span style={{ color: STATUS_META[st].text }}>
           {ddayLabel(daysLeftOf(f, now))}
         </span>
@@ -444,6 +479,17 @@ function PeriodBar({ f, now, st }: { f: Facility; now: Date; st: Status }) {
           style={{ width: `${pct}%`, background: STATUS_META[st].pin }}
         />
       </div>
+    </div>
+  );
+}
+
+function Note({ color, children }: { color: string; children: ReactNode }) {
+  return (
+    <div
+      className="mt-4 rounded-xl bg-cloud px-4 py-3 text-sm"
+      style={{ color }}
+    >
+      {children}
     </div>
   );
 }
