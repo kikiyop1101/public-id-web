@@ -1,6 +1,6 @@
 "use client";
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { loadKakaoMaps } from "@/lib/kakao";
 import { type Facility, statusOf, STATUS_META } from "@/lib/facilities";
 
@@ -10,6 +10,16 @@ function pinImage(kakao: any, color: string) {
   return new kakao.maps.MarkerImage(url, new kakao.maps.Size(30, 38), {
     offset: new kakao.maps.Point(15, 38),
   });
+}
+
+function mappableOf(facilities: Facility[]) {
+  return facilities.filter(
+    (f) =>
+      typeof f.lat === "number" &&
+      typeof f.lng === "number" &&
+      !Number.isNaN(f.lat) &&
+      !Number.isNaN(f.lng),
+  );
 }
 
 export default function KakaoMap({
@@ -27,8 +37,25 @@ export default function KakaoMap({
   const kakaoRef = useRef<any>(null);
   const mapRef = useRef<any>(null);
   const clustererRef = useRef<any>(null);
+  // keep latest data for the effect without making it a dependency
+  const dataRef = useRef({ facilities, now, onSelect });
+  dataRef.current = { facilities, now, onSelect };
   const [error, setError] = useState(false);
   const [ready, setReady] = useState(false);
+
+  // Stable signature of the plotted points. The marker/bounds effect runs ONLY
+  // when this changes — preventing repeated setBounds() on identical re-renders,
+  // which was aborting in-flight map tiles (blank map with many markers).
+  const sig = useMemo(
+    () =>
+      mappableOf(facilities)
+        .map(
+          (f) =>
+            `${f.id}:${f.lat!.toFixed(5)},${f.lng!.toFixed(5)}:${statusOf(f, now)}`,
+        )
+        .join("|"),
+    [facilities, now],
+  );
 
   useEffect(() => {
     let cancelled = false;
@@ -38,12 +65,12 @@ export default function KakaoMap({
         kakaoRef.current = kakao;
         mapRef.current = new kakao.maps.Map(boxRef.current, {
           center: new kakao.maps.LatLng(36.5, 127.8),
-          level: 13,
+          level: 12,
         });
         clustererRef.current = new kakao.maps.MarkerClusterer({
           map: mapRef.current,
           averageCenter: true,
-          minLevel: 8,
+          minLevel: 7,
           gridSize: 70,
         });
         setReady(true);
@@ -59,10 +86,10 @@ export default function KakaoMap({
     const map = mapRef.current;
     const clusterer = clustererRef.current;
     if (!ready || !kakao || !map || !clusterer) return;
+    const { facilities, now, onSelect } = dataRef.current;
+    const mappable = mappableOf(facilities);
+
     clusterer.clear();
-    const mappable = facilities.filter(
-      (f) => typeof f.lat === "number" && typeof f.lng === "number",
-    );
     const images: Record<string, any> = {
       planned: pinImage(kakao, STATUS_META.planned.pin),
       installed: pinImage(kakao, STATUS_META.installed.pin),
@@ -80,23 +107,34 @@ export default function KakaoMap({
       return marker;
     });
     clusterer.addMarkers(markers);
-    if (facilities.length) {
+
+    if (mappable.length) {
       const bounds = new kakao.maps.LatLngBounds();
-      facilities.forEach((f) =>
+      mappable.forEach((f) =>
         bounds.extend(new kakao.maps.LatLng(f.lat, f.lng)),
       );
       map.setBounds(bounds);
-      if (facilities.length === 1) map.setLevel(6);
+      if (mappable.length === 1) map.setLevel(5);
     }
+    // force a tile re-fetch after the view settles (recovers any aborted tiles)
+    const t = setTimeout(() => {
+      try {
+        map.relayout();
+      } catch {
+        /* noop */
+      }
+    }, 250);
+    return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [facilities, ready, now]);
+  }, [sig, ready]);
 
   useEffect(() => {
     const kakao = kakaoRef.current;
     const map = mapRef.current;
     if (!ready || !kakao || !map || !selectedId) return;
-    const f = facilities.find((x) => x.id === selectedId);
-    if (f) map.panTo(new kakao.maps.LatLng(f.lat, f.lng));
+    const f = dataRef.current.facilities.find((x) => x.id === selectedId);
+    if (f && typeof f.lat === "number" && typeof f.lng === "number")
+      map.panTo(new kakao.maps.LatLng(f.lat, f.lng));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedId, ready]);
 
