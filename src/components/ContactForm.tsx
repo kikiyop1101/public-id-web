@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type ChangeEvent, type FormEvent } from "react";
+import { useEffect, useState, type ChangeEvent, type FormEvent } from "react";
 import { site } from "@/lib/site";
 
 // 문의는 Web3Forms를 통해 public-id@naver.com 으로 수신됩니다.
@@ -22,6 +22,12 @@ export default function ContactForm() {
   });
   const [status, setStatus] = useState<Status>("idle");
   const [botcheck, setBotcheck] = useState(false);
+
+  // 홈페이지 도우미에서 넘어온 상담 내용(?msg=)을 문의 내용에 미리 채운다.
+  useEffect(() => {
+    const msg = new URLSearchParams(window.location.search).get("msg");
+    if (msg) setF((p) => ({ ...p, message: msg }));
+  }, []);
 
   const set =
     (k: keyof Fields) =>
