@@ -190,7 +190,7 @@ export default function Subscription({
                     <p className="shrink-0 font-bold text-teal-700">4,000,000원부터</p>
                   </div>
                   <p className="border-t border-line pt-3 text-xs leading-relaxed text-ink-soft">
-                    사회적경제 기업(사회적기업·협동조합·마을기업·자활기업)은 할인 적용
+                    표시 금액은 기준가입니다 · 사회적경제 기업(사회적기업·협동조합·마을기업·자활기업)은 할인 적용 · 정확한 견적은 문의
                   </p>
                 </div>
               )}
@@ -267,7 +267,7 @@ export default function Subscription({
                     <p className="shrink-0 font-bold text-yellow">88,000원 / ㎡</p>
                   </div>
                   <p className="border-t border-white/10 pt-3 text-xs leading-relaxed text-white/60">
-                    현장 실측 및 시공비 별도 · 설치 시 1년 유지보수 보장
+                    표시 금액은 기준가입니다 · 현장 실측·시공비 별도 · 설치 시 1년 유지보수 보장 · 정확한 견적은 문의
                   </p>
                 </div>
               )}
