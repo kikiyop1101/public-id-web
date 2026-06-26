@@ -2,20 +2,20 @@
 
 /* ─────────────────────────────────────────────
    Public ID — Brand design tokens (실측 BI 기반)
-   teal #08A0B8 · lime #C8D820 · yellow #FFE000 · navy #204050
+   teal #069CBB · lime #CADA1F · yellow #FFD200 · navy #16303D
    ───────────────────────────────────────────── */
 @theme {
-  --color-teal: #08a0b8;
+  --color-teal: #069CBB;
   --color-teal-600: #0a8296;
   --color-teal-700: #0b6c7d;
   --color-teal-100: #dff3f6;
 
-  --color-lime: #c8d820;
+  --color-lime: #CADA1F;
   --color-lime-600: #a9b81b;
 
-  --color-yellow: #ffe000;
+  --color-yellow: #FFD200;
 
-  --color-navy: #204050;
+  --color-navy: #16303D;
   --color-navy-700: #19323f;
   --color-navy-800: #122631;
 
@@ -33,7 +33,7 @@
 
 :root {
   /* signature arch gradient (lime → teal), the logo's bridge motif */
-  --arch: linear-gradient(95deg, #c8d820 0%, #7cc63f 42%, #08a0b8 100%);
+  --arch: linear-gradient(95deg, #CADA1F 0%, #7cc63f 42%, #069CBB 100%);
 }
 
 html {

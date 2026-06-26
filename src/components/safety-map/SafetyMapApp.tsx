@@ -183,7 +183,7 @@ export default function SafetyMapApp({ token }: { token?: string }) {
     { key: "all", label: "총 시설물", value: counts.total, color: BRAND_DARK },
     { key: "planned", label: "설치 예정", value: counts.planned, color: STATUS_META.planned.text },
     { key: "installed", label: "설치 완료", value: counts.installed, color: STATUS_META.installed.text },
-    { key: "managed", label: "관리중", value: counts.managed, color: "#08A0B8" },
+    { key: "managed", label: "관리중", value: counts.managed, color: "#069CBB" },
     { key: "ended", label: "관리 종료", value: counts.ended, color: STATUS_META.ended.text },
     { key: "demolished", label: "철거 완료", value: counts.demolished, color: STATUS_META.demolished.text },
   ];
