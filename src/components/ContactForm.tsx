@@ -26,6 +26,8 @@ export default function ContactForm() {
   // 홈페이지 도우미에서 넘어온 상담 내용(?msg=)을 문의 내용에 미리 채운다.
   useEffect(() => {
     const msg = new URLSearchParams(window.location.search).get("msg");
+    // 마운트 시 URL 쿼리(?msg=)를 1회 반영 — 클라이언트 전용 초기화라 의도된 패턴.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (msg) setF((p) => ({ ...p, message: msg }));
   }, []);
 

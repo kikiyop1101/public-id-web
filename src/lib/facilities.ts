@@ -1,4 +1,4 @@
-import type { ComponentType, SVGProps } from "react";
+import { createElement, type ComponentType, type SVGProps } from "react";
 import { Footprint, Bollard, Sign, Sparkle, Banner, MapPin } from "@/components/icons";
 
 export type Facility = {
@@ -35,6 +35,15 @@ const TYPE_ICON: Record<string, Icon> = {
 
 export function typeIcon(type: string): Icon {
   return TYPE_ICON[type.trim()] ?? MapPin;
+}
+
+// 시설 종류 → 아이콘을 렌더하는 안정적 컴포넌트. typeIcon 결과를 render 중
+// 지역 변수(<Icon/>)로 바인딩하지 않아 react-hooks/static-components 규칙을 만족한다.
+export function TypeIcon({
+  type,
+  ...props
+}: { type: string } & SVGProps<SVGSVGElement>) {
+  return createElement(typeIcon(type), props);
 }
 
 // "1년"=12, "6개월"=6, "1년 6개월"=18 → 개월수

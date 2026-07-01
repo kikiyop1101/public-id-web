@@ -11,7 +11,7 @@ import {
   maintenanceEnd,
   fmtDate,
   ddayLabel,
-  typeIcon,
+  TypeIcon,
   STATUS_META,
   BRAND_DARK,
 } from "@/lib/facilities";
@@ -67,6 +67,9 @@ export default function SafetyMapApp({ token }: { token?: string }) {
   const [q, setQ] = useState("");
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
+  // 클라이언트 마운트 시점의 현재 시각. 서버에선 null(스켈레톤)로 두어 hydration
+  // 불일치를 피하므로, 마운트 후 1회 setState 하는 것은 의도된 패턴이다.
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setNow(new Date()), []);
 
   useEffect(() => {
@@ -294,7 +297,6 @@ export default function SafetyMapApp({ token }: { token?: string }) {
             )}
             {filtered.map((f) => {
               const st = statusOf(f, now);
-              const Icon = typeIcon(f.type);
               const isSel = f.id === selectedId;
               const dd = ddayDisplay(f, now);
               return (
@@ -304,7 +306,8 @@ export default function SafetyMapApp({ token }: { token?: string }) {
                   onClick={() => setSelectedId(f.id)}
                   className={`flex w-full items-center gap-3 border-b border-line px-4 py-3 text-left transition hover:bg-cloud ${isSel ? "bg-cloud" : ""}`}
                 >
-                  <Icon
+                  <TypeIcon
+                    type={f.type}
                     className="h-5 w-5 shrink-0"
                     style={{ color: STATUS_META[st].text }}
                   />
@@ -366,7 +369,6 @@ function SelectedDetail({
   onClose: () => void;
 }) {
   const st = statusOf(f, now);
-  const Icon = typeIcon(f.type);
   const me = maintenanceEnd(f);
 
   return (
@@ -382,7 +384,8 @@ function SelectedDetail({
         )}
         <div className="p-5">
           <div className="flex items-start gap-3">
-            <Icon
+            <TypeIcon
+              type={f.type}
               className="mt-0.5 h-6 w-6 shrink-0"
               style={{ color: STATUS_META[st].text }}
             />

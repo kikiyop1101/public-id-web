@@ -37,9 +37,13 @@ export default function KakaoMap({
   const kakaoRef = useRef<any>(null);
   const mapRef = useRef<any>(null);
   const clustererRef = useRef<any>(null);
-  // keep latest data for the effect without making it a dependency
+  // keep latest data for the effect without making it a dependency.
+  // 렌더 중 ref를 쓰지 않도록(react-hooks/refs) 매 커밋 effect에서 갱신 — 아래
+  // 마커/panTo effect보다 먼저 선언돼 항상 최신값을 읽는다.
   const dataRef = useRef({ facilities, now, onSelect });
-  dataRef.current = { facilities, now, onSelect };
+  useEffect(() => {
+    dataRef.current = { facilities, now, onSelect };
+  });
   const [error, setError] = useState(false);
   const [ready, setReady] = useState(false);
 
@@ -125,7 +129,6 @@ export default function KakaoMap({
       }
     }, 250);
     return () => clearTimeout(t);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sig, ready]);
 
   useEffect(() => {
@@ -135,7 +138,6 @@ export default function KakaoMap({
     const f = dataRef.current.facilities.find((x) => x.id === selectedId);
     if (f && typeof f.lat === "number" && typeof f.lng === "number")
       map.panTo(new kakao.maps.LatLng(f.lat, f.lng));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedId, ready]);
 
   if (error) {
