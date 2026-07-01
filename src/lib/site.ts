@@ -22,6 +22,7 @@ export const site = {
     { label: "사업영역", en: "Work", href: "/work" },
     { label: "회사소개", en: "About", href: "/about" },
     { label: "인증·특허", en: "Credentials", href: "/credentials" },
+    { label: "실적", en: "Track Record", href: "/credibility" },
     { label: "안전관리 지도", en: "Safety Map", href: "/safety-map" },
     { label: "소식", en: "News", href: "/news" },
     { label: "문의", en: "Contact", href: "/contact" },
