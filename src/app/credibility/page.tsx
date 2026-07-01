@@ -20,6 +20,12 @@ const stats = [
   { v: `${c.repeatRatePct}`, u: "%", k: "재거래율", s: "다시 찾는 파트너" },
 ];
 
+const clients = [
+  { label: "관공서·지자체", names: "세종특별자치시 · 서울특별시 · 서초구청 · 경기도청 · 경기남부경찰청 · 국립세종수목원 등 다수" },
+  { label: "NGO 단체", names: "유니세프 한국위원회 · 세이브더칠드런 등 다수" },
+  { label: "기업", names: "스타벅스 · 현대자동차 · 유한양행 · 에버랜드 등 다수" },
+];
+
 // ── 성장 곡선 SVG(빌드 시 서버 렌더 · 클라이언트 JS 0) ──
 function GrowthChart() {
   const W = 720, H = 280, L = 52, R = 24, T = 24, B = 44;
@@ -162,6 +168,29 @@ export default function CredibilityPage() {
               </div>
             </Reveal>
           </div>
+        </Container>
+      </section>
+
+      {/* 함께한 곳 */}
+      <section className="pb-16 sm:pb-20">
+        <Container>
+          <Reveal>
+            <div className="rounded-3xl border border-line bg-white p-7 shadow-sm sm:p-9">
+              <div className="h-1.5 w-12 rounded-full bg-arch" />
+              <h2 className="mt-4 text-xl font-bold text-ink">함께한 곳</h2>
+              <p className="mt-1 text-sm text-ink-soft">
+                관공서·지자체부터 글로벌 기업·NGO까지, 다양한 분야에서 신뢰를 쌓아 왔습니다.
+              </p>
+              <div className="mt-6 grid gap-4 sm:grid-cols-3">
+                {clients.map((cl) => (
+                  <div key={cl.label} className="rounded-2xl bg-cloud/60 p-5">
+                    <div className="font-display text-sm font-semibold text-teal-700">{cl.label}</div>
+                    <p className="mt-2 text-sm font-medium leading-relaxed text-navy/75">{cl.names}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
         </Container>
       </section>
 

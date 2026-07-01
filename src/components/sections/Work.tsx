@@ -48,12 +48,6 @@ const works: WorkItem[] = [
   },
 ];
 
-const clients = [
-  "세종특별자치시 · 서울특별시 · 서초구청 · 경기도청 · 경기남부경찰청 · 국립세종수목원 등 다수 관공서·지방자치단체",
-  "유니세프 한국위원회 · 세이브더칠드런 등 다수 NGO 단체",
-  "스타벅스 · 현대자동차 · 유한양행 · 에버랜드 등 다수 기업",
-];
-
 const productJsonLd = {
   "@context": "https://schema.org",
   "@type": "Product",
@@ -166,22 +160,6 @@ export default function Work({
             </Reveal>
           ))}
         </div>
-
-        <Reveal className="mt-14">
-          <p className="text-center text-sm font-medium text-ink-soft">
-            함께한 곳
-          </p>
-          <ul className="mx-auto mt-4 max-w-3xl space-y-2 text-center">
-            {clients.map((c) => (
-              <li
-                key={c}
-                className="text-sm font-semibold leading-relaxed text-navy/75"
-              >
-                {c}
-              </li>
-            ))}
-          </ul>
-        </Reveal>
       </Container>
     </section>
   );
