@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toast (토스트) — PI-DS 퍼블릭아이디 디자인시스템</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){var t=localStorage.getItem("pids-theme");if(t)document.documentElement.setAttribute("data-theme",t);})();</script>
+</head>
+<body>
+<a class="pi-skiplink" href="#main">본문 바로가기</a>
+<header class="site-header">
+  <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  <a class="site-brand" href="../index.html">PI-DS</a>
+  <div class="site-search">
+    <input type="search" id="search" placeholder="검색 (컴포넌트·토큰·규칙)" aria-label="문서 검색" autocomplete="off">
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="theme-toggle" type="button" aria-label="라이트/다크 전환">◐</button>
+</header>
+<div class="site-body">
+<nav class="site-nav" aria-label="문서 목차">
+<div class="nav-group"><div class="nav-group-title">시작</div><ul><li><a href="../index.html">홈 · 원칙</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Foundations</div><ul><li><a href="../foundations/color.html">Color</a></li><li><a href="../foundations/typography.html">Typography</a></li><li><a href="../foundations/spacing.html">Spacing</a></li><li><a href="../foundations/motion.html">Motion</a></li><li><a href="../foundations/layout.html">Layout</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 액션</div><ul><li><a href="../components/button.html">Button</a></li><li><a href="../components/link.html">Link</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 컨테이너</div><ul><li><a href="../components/card.html">Card</a></li><li><a href="../components/callout-alert.html">Callout · Alert</a></li><li><a href="../components/accordion.html">Accordion · Disclosure</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 내비게이션</div><ul><li><a href="../components/tab.html">Tab</a></li><li><a href="../components/breadcrumb.html">Breadcrumb</a></li><li><a href="../components/pagination.html">Pagination</a></li><li><a href="../components/skip-link.html">Skip Link</a></li><li><a href="../components/step-indicator.html">Step Indicator</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 폼</div><ul><li><a href="../components/input.html">Input</a></li><li><a href="../components/select-controls.html">Checkbox · Radio · Toggle · Select</a></li><li><a href="../components/file-upload.html">File Upload</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 데이터</div><ul><li><a href="../components/table.html">Table</a></li><li><a href="../components/kpi.html">KPI / Stat</a></li><li><a href="../components/chip-badge.html">Chip · Badge</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 오버레이</div><ul><li><a href="../components/modal.html">Modal</a></li><li><a href="../components/toast.html" class="active" aria-current="page">Toast</a></li><li><a href="../components/tooltip.html">Tooltip</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 피드백</div><ul><li><a href="../components/spinner.html">Spinner</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Content</div><ul><li><a href="../content/ux-writing.html">UX Writing</a></li></ul></div>
+
+</nav>
+<main class="site-main" id="main">
+<article class="doc"><h1 id="toast-토스트">Toast (토스트)</h1>
+<p>화면 가장자리에 잠깐 나타났다 스스로 사라지며 작업 결과를 알린다. <strong>Callout/Alert(페이지에 고정 노출되는 상시 안내)와 역할이 다르다</strong> — 토스트는 발행·저장 완료 같은 순간 피드백 전용이다.</p>
+<h2 id="정의">정의</h2>
+<p>화면 가장자리에 잠깐 나타났다 스스로 사라지며 작업 결과를 알리는 순간 피드백 컴포넌트다.</p>
+<h2 id="anatomy">Anatomy</h2>
+<svg viewBox="0 0 420 150" width="420" height="150" role="img" aria-label="토스트 해부도" style="max-width:100%">
+  <rect x="90" y="55" width="240" height="48" rx="8" fill="var(--toast-bg)"/>
+  <circle cx="118" cy="79" r="9" fill="none" stroke="var(--toast-fg)" stroke-width="2"/>
+  <path d="M114 79l3 3 5-6" fill="none" stroke="var(--toast-fg)" stroke-width="2"/>
+  <text x="138" y="84" font-size="14" fill="var(--toast-fg)" font-family="inherit">발행을 완료했습니다.</text>
+  <line x1="210" y1="55" x2="210" y2="30" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="150" y="24" font-size="12" fill="currentColor">① 토스트 컨테이너</text>
+  <line x1="118" y1="88" x2="118" y2="126" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="70" y="140" font-size="12" fill="currentColor">② 상태 아이콘(선택)</text>
+  <line x1="240" y1="88" x2="240" y2="120" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="248" y="132" font-size="12" fill="currentColor">③ 메시지</text>
+</svg>
+<div class="table-wrap"><table><thead><tr><th>부위</th><th>토큰</th></tr></thead><tbody><tr><td>① 컨테이너</td><td>bg <code>--toast-bg</code>(네이비) · fg <code>--toast-fg</code> · 모서리 <code>--toast-radius</code> · 패딩 <code>--toast-pad-y</code>/<code>--toast-pad-x</code> · 그림자 <code>--toast-shadow</code> · <code>z-index: var(--z-toast)</code></td></tr><tr><td>② 상태 아이콘(선택)</td><td>라인 SVG <code>stroke="currentColor"</code></td></tr><tr><td>③ 메시지</td><td><code>--text-body-sm</code> · 1줄 권장</td></tr></tbody></table></div>
+<h2 id="변형">변형</h2>
+<div class="table-wrap"><table><thead><tr><th>변형</th><th>용도 · 표시 시간</th></tr></thead><tbody><tr><td>정보(기본)</td><td>저장·발행 완료 알림 — 2~3초 후 자동 소멸</td></tr><tr><td>경고</td><td>실패·주의 알림 — 3~4초 유지 + 좌측 상태 바 <code>--color-state-warning-solid</code></td></tr></tbody></table></div>
+<h2 id="상태">상태</h2>
+<div class="table-wrap"><table><thead><tr><th>상태</th><th>규칙</th></tr></thead><tbody><tr><td>Enter</td><td>아래에서 올라오며 fade-in(<code>--duration-base</code> <code>--easing-out</code>)</td></tr><tr><td>Visible</td><td>정보 2~3초 / 경고 3~4초 유지(KRDS 기준)</td></tr><tr><td>Hover(선택)</td><td>커서를 올리면 자동 소멸 타이머 일시정지(권장)</td></tr><tr><td>Exit</td><td>fade-out 후 DOM에서 제거</td></tr></tbody></table></div>
+<h2 id="do-don-t">Do / Don't</h2>
+<div class="dd-pair"><div class="dd-card dd-do"><div class="dd-label">Do</div><ul><li>저장·발행 완료 같은 <strong>순간 피드백</strong>에만 쓰고 스스로 사라지게 한다.</li><li>메시지는 결과를 한 줄로 담는다("카드뉴스를 저장했습니다").</li><li>되돌리기 같은 액션이 붙으면 버튼 하나까지만, 아니면 표시 시간을 넉넉히 준다.</li></ul></div><div class="dd-card dd-dont"><div class="dd-label">Don't</div><ul><li>폼 필드별 검증 오류에 토스트를 쓰지 말 것 — 인라인 에러(Input Error 상태)를 쓴다.</li><li>상시 확인해야 할 안내를 토스트로 띄우지 말 것 — 그건 Callout·Alert(페이지 고정)다.</li><li>토스트를 여러 개 쌓아 화면을 가리지 말 것 — 한 번에 1개, 순차 표시한다.</li></ul></div></div>
+<h2 id="콘텐츠-규칙">콘텐츠 규칙</h2>
+<ul><li>메시지는 <strong>결과 서술 1문장</strong>(≤25자), 완료형으로("발행했습니다").</li><li>오류 토스트는 무엇이 실패했는지 + 다음 행동을 짧게("발행 실패 — 잠시 후 다시 시도").</li><li>이모지·느낌표를 남발하지 않는다 — 상태는 아이콘·색으로 전달한다.</li></ul>
+<h2 id="키보드-인터랙션">키보드 인터랙션</h2>
+<div class="table-wrap"><table><thead><tr><th>키</th><th>동작</th></tr></thead><tbody><tr><td><code>Tab</code></td><td>닫기·액션 버튼이 있을 때만 그 버튼으로 포커스 이동</td></tr><tr><td><code>Enter</code> / <code>Space</code></td><td>포커스된 닫기·액션 버튼 실행</td></tr><tr><td><code>Esc</code></td><td>액션형 토스트 닫기</td></tr></tbody></table></div>
+<p>순수 정보 토스트는 포커스를 받지 않는다 — 자동 소멸한다.</p>
+<h2 id="접근성">접근성</h2>
+<ul><li>컨테이너에 정보는 <code>role="status"</code> + <code>aria-live="polite"</code>, 경고·오류는 <code>role="alert"</code> + <code>aria-live="assertive"</code> — 스크린리더가 자동 낭독한다.</li><li>소멸 시간이 짧으면 못 읽는 사용자가 생긴다 — 중요한 내용을 토스트에만 의존하지 않는다.</li><li>색만으로 성패를 구분하지 않는다(아이콘·텍스트 병기). 닫기 버튼은 <code>aria-label="닫기"</code>.</li><li>애니메이션은 <code>prefers-reduced-motion</code>에서 제거한다(즉시 표시·제거). 기준: <code>../guidelines/accessibility.md</code>.</li></ul>
+<h2 id="코드">코드</h2>
+<div class="pi-demo" data-demo>
+<button class="pi-button" type="button" data-toast="발행을 완료했습니다.">토스트 띄우기</button>
+<div class="pi-toast-region" role="status" aria-live="polite" aria-atomic="true"></div>
+</div>
+<div class="code-block"><div class="code-lang">html</div><pre><code>&lt;button class="pi-button" type="button" data-toast="발행을 완료했습니다."&gt;토스트 띄우기&lt;/button&gt;
+&lt;div class="pi-toast-region" role="status" aria-live="polite" aria-atomic="true"&gt;&lt;/div&gt;</code></pre></div>
+<div class="code-block"><div class="code-lang">css</div><pre><code>.pi-toast-region {
+  position: fixed; left: 50%; bottom: var(--space-8); transform: translateX(-50%);
+  display: flex; flex-direction: column; gap: var(--space-3); align-items: center;
+  z-index: var(--z-toast); pointer-events: none;
+}
+.pi-toast {
+  display: inline-flex; align-items: center; gap: var(--space-3);
+  padding: var(--toast-pad-y) var(--toast-pad-x);
+  border-radius: var(--toast-radius);
+  background: var(--toast-bg);
+  color: var(--toast-fg);
+  box-shadow: var(--toast-shadow);
+  font: var(--text-body-sm);
+  word-break: keep-all; pointer-events: auto;
+  opacity: 0; transform: translateY(var(--space-4));
+  transition: opacity var(--duration-base) var(--easing-out),
+              transform var(--duration-base) var(--easing-out);
+}
+.pi-toast.is-visible { opacity: 1; transform: translateY(0); }
+.pi-toast--warning { border-left: var(--border-thick) solid var(--color-state-warning-solid); }
+@media (prefers-reduced-motion: reduce) { .pi-toast { transition: none; } }</code></pre></div>
+<div class="code-block"><div class="code-lang">js</div><pre><code>const region = document.querySelector(".pi-toast-region");
+document.querySelectorAll("[data-toast]").forEach((trigger) =&gt; {
+  trigger.addEventListener("click", () =&gt; {
+    const toast = document.createElement("div");
+    toast.className = "pi-toast";
+    toast.textContent = trigger.dataset.toast;
+    region.appendChild(toast);
+    requestAnimationFrame(() =&gt; toast.classList.add("is-visible"));
+    setTimeout(() =&gt; {
+      toast.classList.remove("is-visible");
+      toast.addEventListener("transitionend", () =&gt; toast.remove(), { once: true });
+    }, 2500);
+  });
+});</code></pre></div>
+<h2 id="changelog">Changelog</h2>
+<div class="table-wrap"><table><thead><tr><th>날짜</th><th>변경</th></tr></thead><tbody><tr><td>2026-07-15</td><td>문서 계약(10섹션) 적용 — Anatomy 도해·정보/경고 변형·표시 시간·자동 소멸 실코드 신설. Callout/Alert와의 역할 구분 명시, KRDS 벤치마킹 규격 승계</td></tr></tbody></table></div></article>
+</main>
+</div>
+<script>window.PIDS_REL="../";</script>
+<script src="../assets/site.js"></script>
+<script>
+const region = document.querySelector(".pi-toast-region");
+document.querySelectorAll("[data-toast]").forEach((trigger) => {
+  trigger.addEventListener("click", () => {
+    const toast = document.createElement("div");
+    toast.className = "pi-toast";
+    toast.textContent = trigger.dataset.toast;
+    region.appendChild(toast);
+    requestAnimationFrame(() => toast.classList.add("is-visible"));
+    setTimeout(() => {
+      toast.classList.remove("is-visible");
+      toast.addEventListener("transitionend", () => toast.remove(), { once: true });
+    }, 2500);
+  });
+});
+</script>
+</body>
+</html>

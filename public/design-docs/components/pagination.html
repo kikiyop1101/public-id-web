@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pagination (페이지네이션) — PI-DS 퍼블릭아이디 디자인시스템</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){var t=localStorage.getItem("pids-theme");if(t)document.documentElement.setAttribute("data-theme",t);})();</script>
+</head>
+<body>
+<a class="pi-skiplink" href="#main">본문 바로가기</a>
+<header class="site-header">
+  <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  <a class="site-brand" href="../index.html">PI-DS</a>
+  <div class="site-search">
+    <input type="search" id="search" placeholder="검색 (컴포넌트·토큰·규칙)" aria-label="문서 검색" autocomplete="off">
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="theme-toggle" type="button" aria-label="라이트/다크 전환">◐</button>
+</header>
+<div class="site-body">
+<nav class="site-nav" aria-label="문서 목차">
+<div class="nav-group"><div class="nav-group-title">시작</div><ul><li><a href="../index.html">홈 · 원칙</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Foundations</div><ul><li><a href="../foundations/color.html">Color</a></li><li><a href="../foundations/typography.html">Typography</a></li><li><a href="../foundations/spacing.html">Spacing</a></li><li><a href="../foundations/motion.html">Motion</a></li><li><a href="../foundations/layout.html">Layout</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 액션</div><ul><li><a href="../components/button.html">Button</a></li><li><a href="../components/link.html">Link</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 컨테이너</div><ul><li><a href="../components/card.html">Card</a></li><li><a href="../components/callout-alert.html">Callout · Alert</a></li><li><a href="../components/accordion.html">Accordion · Disclosure</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 내비게이션</div><ul><li><a href="../components/tab.html">Tab</a></li><li><a href="../components/breadcrumb.html">Breadcrumb</a></li><li><a href="../components/pagination.html" class="active" aria-current="page">Pagination</a></li><li><a href="../components/skip-link.html">Skip Link</a></li><li><a href="../components/step-indicator.html">Step Indicator</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 폼</div><ul><li><a href="../components/input.html">Input</a></li><li><a href="../components/select-controls.html">Checkbox · Radio · Toggle · Select</a></li><li><a href="../components/file-upload.html">File Upload</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 데이터</div><ul><li><a href="../components/table.html">Table</a></li><li><a href="../components/kpi.html">KPI / Stat</a></li><li><a href="../components/chip-badge.html">Chip · Badge</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 오버레이</div><ul><li><a href="../components/modal.html">Modal</a></li><li><a href="../components/toast.html">Toast</a></li><li><a href="../components/tooltip.html">Tooltip</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 피드백</div><ul><li><a href="../components/spinner.html">Spinner</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Content</div><ul><li><a href="../content/ux-writing.html">UX Writing</a></li></ul></div>
+
+</nav>
+<main class="site-main" id="main">
+<article class="doc"><h1 id="pagination-페이지네이션">Pagination (페이지네이션)</h1>
+<p>긴 목록을 여러 페이지로 나눠 탐색하는 내비게이션 컴포넌트. 안전표지 700종 카탈로그 같은 대량 목록 UI에 쓴다.</p>
+<h2 id="정의">정의</h2>
+<p>긴 목록을 여러 페이지로 나눠 앞뒤·특정 페이지로 이동하게 하는 내비게이션 컴포넌트다.</p>
+<h2 id="anatomy">Anatomy</h2>
+<svg viewBox="0 0 420 120" width="420" height="120" role="img" aria-label="페이지네이션 해부도" style="max-width:100%">
+  <rect x="20" y="40" width="40" height="40" rx="8" fill="var(--color-bg-canvas)" stroke="var(--color-border-default)"/>
+  <text x="34" y="66" font-size="18" fill="currentColor">‹</text>
+  <rect x="70" y="40" width="40" height="40" rx="8" fill="var(--color-bg-canvas)" stroke="var(--color-border-default)"/>
+  <text x="86" y="66" font-size="15" fill="currentColor">1</text>
+  <rect x="120" y="40" width="40" height="40" rx="8" fill="var(--color-brand-primary)"/>
+  <text x="136" y="66" font-size="15" font-weight="700" fill="var(--color-text-on-brand)">2</text>
+  <rect x="170" y="40" width="40" height="40" rx="8" fill="var(--color-bg-canvas)" stroke="var(--color-border-default)"/>
+  <text x="186" y="66" font-size="15" fill="currentColor">3</text>
+  <text x="224" y="66" font-size="16" fill="var(--color-text-faint)">…</text>
+  <rect x="250" y="40" width="40" height="40" rx="8" fill="var(--color-bg-canvas)" stroke="var(--color-border-default)"/>
+  <text x="261" y="66" font-size="14" fill="currentColor">35</text>
+  <rect x="300" y="40" width="40" height="40" rx="8" fill="var(--color-bg-canvas)" stroke="var(--color-border-default)"/>
+  <text x="316" y="66" font-size="18" fill="currentColor">›</text>
+  <line x1="40" y1="40" x2="40" y2="20" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="18" y="15" font-size="12" fill="currentColor">① 이전/다음</text>
+  <line x1="140" y1="40" x2="140" y2="18" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="150" y="14" font-size="12" fill="currentColor">③ 현재 페이지</text>
+  <line x1="90" y1="80" x2="90" y2="100" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="66" y="114" font-size="12" fill="currentColor">② 페이지 번호</text>
+  <line x1="224" y1="72" x2="224" y2="100" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="206" y="114" font-size="12" fill="currentColor">④ 생략(…)</text>
+</svg>
+<div class="table-wrap"><table><thead><tr><th>부위</th><th>토큰</th></tr></thead><tbody><tr><td>① 이전/다음 버튼</td><td>크기 <code>--pagination-size</code>(44) · 모서리 <code>--pagination-radius</code> · 글자 <code>--pagination-fg</code>, 첫/끝 페이지에서 <code>disabled</code></td></tr><tr><td>② 페이지 번호</td><td>크기 <code>--pagination-size</code> · 글자 <code>--pagination-fg</code></td></tr><tr><td>③ 현재 페이지</td><td>bg <code>--pagination-bg-current</code> · 글자 <code>--pagination-fg-current</code> · <code>aria-current="page"</code>(링크 아님)</td></tr><tr><td>④ 생략(…)</td><td>페이지가 많을 때 중간을 접는 비인터랙티브 텍스트</td></tr></tbody></table></div>
+<h2 id="변형">변형</h2>
+<div class="table-wrap"><table><thead><tr><th>변형</th><th>용도</th></tr></thead><tbody><tr><td>번호형(기본)</td><td>페이지 수가 적당할 때(약 10쪽 이하) 번호를 전부 노출</td></tr><tr><td>생략형</td><td>페이지가 많을 때(카탈로그 700종 등) 처음·끝·현재 주변만 + 생략(…)</td></tr><tr><td>간이형</td><td>번호 없이 이전/다음만 — 모바일·무한스크롤 대체</td></tr></tbody></table></div>
+<h2 id="상태">상태</h2>
+<div class="table-wrap"><table><thead><tr><th>상태</th><th>번호 버튼</th><th>이전/다음</th><th>현재 페이지</th></tr></thead><tbody><tr><td>Default</td><td>fg <code>--pagination-fg</code></td><td>fg <code>--pagination-fg</code></td><td>bg <code>--pagination-bg-current</code> / fg <code>--pagination-fg-current</code></td></tr><tr><td>Hover</td><td>bg <code>--color-bg-subtle</code></td><td>bg <code>--color-bg-subtle</code></td><td>— (현재는 hover 없음)</td></tr><tr><td>Focus</td><td><code>box-shadow: var(--focus-ring)</code></td><td>동일</td><td>해당 없음(링크 아님)</td></tr><tr><td>Disabled</td><td>—</td><td><code>opacity: var(--opacity-disabled)</code> + <code>cursor: not-allowed</code>(첫/끝)</td><td>—</td></tr></tbody></table></div>
+<h2 id="do-don-t">Do / Don't</h2>
+<div class="dd-pair"><div class="dd-card dd-do"><div class="dd-label">Do</div><ul><li>이전·다음 + 숫자 + 현재 페이지 강조를 함께 제공한다 — 지금 어디인지 바로 알게.</li><li>항목이 20개 이상일 때만 쓴다(700종 안전표지 카탈로그 등) — 그 미만은 한 화면에 전부 보인다.</li><li>페이지가 많으면 처음·끝·현재 주변만 남기고 생략(…)으로 접는다.</li></ul></div><div class="dd-card dd-dont"><div class="dd-label">Don't</div><ul><li>20개 미만 목록에 페이지네이션을 붙이지 말 것 — 전체 표시가 더 빠르다(KRDS 권장).</li><li>현재 페이지를 클릭 가능한 링크로 두지 말 것 — 이동할 곳이 없다(<code>aria-current</code>로 표시).</li><li>터치 타겟을 44px 미만으로 줄이지 말 것 — 손가락·저시력 접근성 미달.</li></ul></div></div>
+<h2 id="콘텐츠-규칙">콘텐츠 규칙</h2>
+<ul><li>이전/다음이 아이콘만일 때도 <code>aria-label</code>("이전 페이지"·"다음 페이지")을 반드시 준다.</li><li>페이지 번호는 아라비아 숫자만 — "1페이지"처럼 단위를 붙이지 않는다.</li><li>총 개수를 함께 보이면 "총 700종" 형식으로(숫자 뒤 단위 붙임).</li><li>전역 규칙: <code>../guidelines/ux-writing.md</code>.</li></ul>
+<h2 id="키보드-인터랙션">키보드 인터랙션</h2>
+<div class="table-wrap"><table><thead><tr><th>키</th><th>동작</th></tr></thead><tbody><tr><td><code>Tab</code></td><td>페이지 링크·이전/다음으로 순차 이동(포커스 링 표시)</td></tr><tr><td><code>Enter</code></td><td>포커스된 페이지로 이동</td></tr></tbody></table></div>
+<h2 id="접근성">접근성</h2>
+<ul><li><code>&lt;nav aria-label="페이지네이션"&gt;</code> 안에 <code>&lt;ol&gt;</code>·<code>&lt;li&gt;</code> 목록으로 구성한다.</li><li>현재 페이지 항목에 <code>aria-current="page"</code> — 스크린리더가 위치를 알린다.</li><li>각 버튼 히트영역 ≥ <code>--pagination-size</code>(44px = <code>--target-min</code>).</li><li>이전/다음은 아이콘만일 때 <code>aria-label</code> 필수, 첫/끝에서 <code>disabled</code>(또는 <code>aria-disabled</code>).</li><li>기준: <code>../guidelines/accessibility.md</code>.</li></ul>
+<h2 id="코드">코드</h2>
+<div class="pi-demo" data-demo>
+<nav class="pi-pagination" aria-label="페이지네이션">
+  <ol class="pi-pagination__list">
+    <li><a class="pi-pagination__link pi-pagination__link--nav" href="?page=1" aria-label="이전 페이지">&#8249;</a></li>
+    <li><a class="pi-pagination__link" href="?page=1">1</a></li>
+    <li><span class="pi-pagination__link pi-pagination__current" aria-current="page">2</span></li>
+    <li><a class="pi-pagination__link" href="?page=3">3</a></li>
+    <li><span class="pi-pagination__ellipsis" aria-hidden="true">&#8230;</span></li>
+    <li><a class="pi-pagination__link" href="?page=35">35</a></li>
+    <li><a class="pi-pagination__link pi-pagination__link--nav" href="?page=3" aria-label="다음 페이지">&#8250;</a></li>
+  </ol>
+</nav>
+</div>
+<div class="code-block"><div class="code-lang">html</div><pre><code>&lt;nav class="pi-pagination" aria-label="페이지네이션"&gt;
+  &lt;ol class="pi-pagination__list"&gt;
+    &lt;li&gt;&lt;a class="pi-pagination__link pi-pagination__link--nav" href="?page=1" aria-label="이전 페이지"&gt;&amp;#8249;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="pi-pagination__link" href="?page=1"&gt;1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span class="pi-pagination__link pi-pagination__current" aria-current="page"&gt;2&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="pi-pagination__link" href="?page=3"&gt;3&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span class="pi-pagination__ellipsis" aria-hidden="true"&gt;&amp;#8230;&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="pi-pagination__link" href="?page=35"&gt;35&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="pi-pagination__link pi-pagination__link--nav" href="?page=3" aria-label="다음 페이지"&gt;&amp;#8250;&lt;/a&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;</code></pre></div>
+<div class="code-block"><div class="code-lang">css</div><pre><code>.pi-pagination__list {
+  display: flex; align-items: center; gap: var(--space-2);
+  list-style: none; margin: 0; padding: 0;
+}
+.pi-pagination__link {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: var(--pagination-size); min-height: var(--pagination-size);
+  padding: 0 var(--space-3);
+  border-radius: var(--pagination-radius);
+  color: var(--pagination-fg);
+  font: var(--text-label);
+  text-decoration: none; word-break: keep-all;
+  transition: background var(--duration-base) var(--easing-out);
+}
+a.pi-pagination__link:hover { background: var(--color-bg-subtle); }
+a.pi-pagination__link:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+.pi-pagination__current {
+  background: var(--pagination-bg-current);
+  color: var(--pagination-fg-current);
+  font-weight: var(--font-weight-bold);
+}
+.pi-pagination__ellipsis {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: var(--pagination-size); min-height: var(--pagination-size);
+  color: var(--color-text-faint);
+}
+.pi-pagination__link--nav[aria-disabled="true"],
+.pi-pagination__link--nav:disabled { opacity: var(--opacity-disabled); cursor: not-allowed; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pi-pagination__link { transition: none; }
+}</code></pre></div>
+<h2 id="changelog">Changelog</h2>
+<div class="table-wrap"><table><thead><tr><th>날짜</th><th>변경</th></tr></thead><tbody><tr><td>2026-07-15</td><td>문서 계약(10섹션) 적용 — KRDS 벤치마킹 규격(2026-07-15) 승계, Anatomy 도해·변형·상태·콘텐츠 규칙·키보드·실코드 신설</td></tr></tbody></table></div></article>
+</main>
+</div>
+<script>window.PIDS_REL="../";</script>
+<script src="../assets/site.js"></script>
+
+</body>
+</html>

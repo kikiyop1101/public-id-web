@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Layout (레이아웃·그리드) — PI-DS 퍼블릭아이디 디자인시스템</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){var t=localStorage.getItem("pids-theme");if(t)document.documentElement.setAttribute("data-theme",t);})();</script>
+</head>
+<body>
+<a class="pi-skiplink" href="#main">본문 바로가기</a>
+<header class="site-header">
+  <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  <a class="site-brand" href="../index.html">PI-DS</a>
+  <div class="site-search">
+    <input type="search" id="search" placeholder="검색 (컴포넌트·토큰·규칙)" aria-label="문서 검색" autocomplete="off">
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="theme-toggle" type="button" aria-label="라이트/다크 전환">◐</button>
+</header>
+<div class="site-body">
+<nav class="site-nav" aria-label="문서 목차">
+<div class="nav-group"><div class="nav-group-title">시작</div><ul><li><a href="../index.html">홈 · 원칙</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Foundations</div><ul><li><a href="../foundations/color.html">Color</a></li><li><a href="../foundations/typography.html">Typography</a></li><li><a href="../foundations/spacing.html">Spacing</a></li><li><a href="../foundations/motion.html">Motion</a></li><li><a href="../foundations/layout.html" class="active" aria-current="page">Layout</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 액션</div><ul><li><a href="../components/button.html">Button</a></li><li><a href="../components/link.html">Link</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 컨테이너</div><ul><li><a href="../components/card.html">Card</a></li><li><a href="../components/callout-alert.html">Callout · Alert</a></li><li><a href="../components/accordion.html">Accordion · Disclosure</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 내비게이션</div><ul><li><a href="../components/tab.html">Tab</a></li><li><a href="../components/breadcrumb.html">Breadcrumb</a></li><li><a href="../components/pagination.html">Pagination</a></li><li><a href="../components/skip-link.html">Skip Link</a></li><li><a href="../components/step-indicator.html">Step Indicator</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 폼</div><ul><li><a href="../components/input.html">Input</a></li><li><a href="../components/select-controls.html">Checkbox · Radio · Toggle · Select</a></li><li><a href="../components/file-upload.html">File Upload</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 데이터</div><ul><li><a href="../components/table.html">Table</a></li><li><a href="../components/kpi.html">KPI / Stat</a></li><li><a href="../components/chip-badge.html">Chip · Badge</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 오버레이</div><ul><li><a href="../components/modal.html">Modal</a></li><li><a href="../components/toast.html">Toast</a></li><li><a href="../components/tooltip.html">Tooltip</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 피드백</div><ul><li><a href="../components/spinner.html">Spinner</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Content</div><ul><li><a href="../content/ux-writing.html">UX Writing</a></li></ul></div>
+
+</nav>
+<main class="site-main" id="main">
+<article class="doc"><h1 id="layout-레이아웃-그리드">Layout (레이아웃·그리드)</h1>
+<p>화면을 나누는 규격 — 브레이크포인트·컨테이너·12컬럼 그리드·간격 적용 규칙과 정형 레이아웃 3종. 값의 정본은 <code>--layout-*</code> 토큰(2026-07-15 신설).</p>
+<h2 id="브레이크포인트-3단계">브레이크포인트 — 3단계</h2>
+<div class="table-wrap"><table><thead><tr><th>구간</th><th>범위</th><th>대상</th></tr></thead><tbody><tr><td>Mobile</td><td>&lt; 768px</td><td>스마트폰 — 1컬럼, 내비는 드로어</td></tr><tr><td>Tablet</td><td>768 ~ 1199px</td><td>태블릿·좁은 창 — 그리드 축소(12→8칸 감각)</td></tr><tr><td>Desktop</td><td>≥ 1200px</td><td>데스크톱 — 풀 그리드 + 고정 사이드바</td></tr></tbody></table></div>
+<ul><li><code>@media</code>에서는 CSS 변수를 쓸 수 없으므로 <strong>768px·1200px 값 자체가 정본</strong>이다(<code>--layout-bp-tablet</code>·<code>--layout-bp-desktop</code> 토큰과 항상 일치시킨다).</li><li>구간을 늘리고 싶어도 3단계를 유지한다 — 채널이 많은 대신 규칙은 적게.</li></ul>
+<h2 id="컨테이너-폭">컨테이너·폭</h2>
+<div class="table-wrap"><table><thead><tr><th>용도</th><th>토큰</th><th>값</th></tr></thead><tbody><tr><td>페이지 컨테이너 최대폭</td><td><code>--layout-container-max</code></td><td>1200px</td></tr><tr><td>본문(읽는 글) 최대폭</td><td><code>--layout-content-max</code></td><td>860px</td></tr><tr><td>사이드바 폭</td><td><code>--layout-sidebar-width</code></td><td>240px</td></tr></tbody></table></div>
+<ul><li>읽는 글(문서·블로그)은 컨테이너가 넓어도 <strong>본문은 860px</strong>을 넘기지 않는다(한 줄이 길면 가독성이 급락).</li><li>컨테이너 좌우 패딩: 모바일 <code>--space-5</code>, 데스크톱 <code>--space-8</code>.</li></ul>
+<h2 id="12컬럼-그리드">12컬럼 그리드</h2>
+<div class="pi-demo" data-demo>
+<div class="pi-container">
+  <div class="pi-grid">
+    <div class="pi-col-8"><article class="pi-card"><h3 class="pi-card__title">본문 영역 (8칸)</h3><p class="pi-card__body">주 콘텐츠가 들어갑니다.</p></article></div>
+    <div class="pi-col-4"><article class="pi-card"><h3 class="pi-card__title">보조 영역 (4칸)</h3><p class="pi-card__body">요약·링크 등.</p></article></div>
+    <div class="pi-col-4"><article class="pi-card"><h3 class="pi-card__title">카드 A</h3></article></div>
+    <div class="pi-col-4"><article class="pi-card"><h3 class="pi-card__title">카드 B</h3></article></div>
+    <div class="pi-col-4"><article class="pi-card"><h3 class="pi-card__title">카드 C</h3></article></div>
+  </div>
+</div>
+</div>
+<div class="code-block"><div class="code-lang">html</div><pre><code>&lt;div class="pi-container"&gt;
+  &lt;div class="pi-grid"&gt;
+    &lt;div class="pi-col-8"&gt;&lt;article class="pi-card"&gt;&lt;h3 class="pi-card__title"&gt;본문 영역 (8칸)&lt;/h3&gt;&lt;p class="pi-card__body"&gt;주 콘텐츠가 들어갑니다.&lt;/p&gt;&lt;/article&gt;&lt;/div&gt;
+    &lt;div class="pi-col-4"&gt;&lt;article class="pi-card"&gt;&lt;h3 class="pi-card__title"&gt;보조 영역 (4칸)&lt;/h3&gt;&lt;p class="pi-card__body"&gt;요약·링크 등.&lt;/p&gt;&lt;/article&gt;&lt;/div&gt;
+    &lt;div class="pi-col-4"&gt;&lt;article class="pi-card"&gt;&lt;h3 class="pi-card__title"&gt;카드 A&lt;/h3&gt;&lt;/article&gt;&lt;/div&gt;
+    &lt;div class="pi-col-4"&gt;&lt;article class="pi-card"&gt;&lt;h3 class="pi-card__title"&gt;카드 B&lt;/h3&gt;&lt;/article&gt;&lt;/div&gt;
+    &lt;div class="pi-col-4"&gt;&lt;article class="pi-card"&gt;&lt;h3 class="pi-card__title"&gt;카드 C&lt;/h3&gt;&lt;/article&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+<div class="code-block"><div class="code-lang">css</div><pre><code>.pi-container {
+  max-width: var(--layout-container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-5);
+}
+.pi-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+.pi-col-3 { grid-column: span 3; }
+.pi-col-4 { grid-column: span 4; }
+.pi-col-6 { grid-column: span 6; }
+.pi-col-8 { grid-column: span 8; }
+.pi-col-12 { grid-column: span 12; }
+
+/* Tablet(768~1199): 절반 이하 칸은 6칸으로 확대 */
+@media (max-width: 1199px) {
+  .pi-col-3, .pi-col-4 { grid-column: span 6; }
+}
+/* Mobile(&lt;768): 전부 한 컬럼 */
+@media (max-width: 767px) {
+  .pi-container { padding-inline: var(--space-5); }
+  [class*="pi-col-"] { grid-column: span 12; }
+}
+@media (min-width: 1200px) {
+  .pi-container { padding-inline: var(--space-8); }
+}</code></pre></div>
+<h2 id="간격-적용-규칙-스케일은-있는데-언제-뭘-쓰나">간격 적용 규칙 (스케일은 있는데 언제 뭘 쓰나)</h2>
+<div class="table-wrap"><table><thead><tr><th>자리</th><th>토큰</th><th>감각</th></tr></thead><tbody><tr><td>섹션 사이(세로 리듬)</td><td><code>--space-11</code> ~ <code>--space-13</code></td><td>주제가 바뀐다</td></tr><tr><td>제목 ↔ 본문</td><td><code>--space-3</code> ~ <code>--space-4</code></td><td>붙어 있다</td></tr><tr><td>문단 사이</td><td><code>--space-4</code></td><td>숨 고르기</td></tr><tr><td>카드 그리드 gap</td><td><code>--space-5</code></td><td>한 무리</td></tr><tr><td>카드 내부 패딩</td><td><code>--card-pad</code></td><td>컴포넌트 토큰 우선</td></tr></tbody></table></div>
+<ul><li>규칙: <strong>같은 위계 = 같은 간격</strong>. 섹션마다 간격이 다르면 위계가 무너진다.</li><li>임의 px를 만들지 말고 스케일에서 고른다 — 스케일에 없는 간격이 필요하면 설계를 의심한다.</li></ul>
+<h2 id="정형-레이아웃-3종-자주-쓰는-화면의-기본형">정형 레이아웃 3종 (자주 쓰는 화면의 기본형)</h2>
+<h3 id="히어로-카드-그리드-마케팅-소개">① 히어로 + 카드 그리드 (마케팅·소개)</h3>
+<div class="code-block"><div class="code-lang">css</div><pre><code>.pi-layout-hero { padding-block: var(--space-13); text-align: center; }
+.pi-layout-hero .pi-layout-hero__copy { max-width: var(--layout-content-max); margin-inline: auto; }
+.pi-layout-hero + .pi-grid { margin-top: var(--space-10); }</code></pre></div>
+<p>히어로(핵심 카피 1개 + CTA 버튼 1개) 아래 3~4칸 카드 그리드. 히어로에 문장을 쌓지 않는다 — 한 화면 한 메시지.</p>
+<h3 id="문서형-가이드-매뉴얼-이-문서-사이트가-이-형태">② 문서형 (가이드·매뉴얼 — 이 문서 사이트가 이 형태)</h3>
+<div class="code-block"><div class="code-lang">css</div><pre><code>.pi-layout-doc { display: grid; grid-template-columns: var(--layout-sidebar-width) minmax(0, 1fr); }
+.pi-layout-doc__main { max-width: var(--layout-content-max); margin-inline: auto; padding: var(--space-8); }
+@media (max-width: 767px) { .pi-layout-doc { grid-template-columns: 1fr; } }</code></pre></div>
+<p>좌 고정 사이드바(내비) + 본문 860px. 모바일에서 사이드바는 드로어로 전환.</p>
+<h3 id="카탈로그형-제품-목록-안전표지-카탈로그-등">③ 카탈로그형 (제품 목록 — 안전표지 카탈로그 등)</h3>
+<div class="code-block"><div class="code-lang">css</div><pre><code>.pi-layout-catalog__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--layout-sidebar-width), 1fr));
+  gap: var(--space-5);
+}
+.pi-layout-catalog__toolbar { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-6); }</code></pre></div>
+<p>상단 툴바(필터 Chip·검색) + <code>auto-fill</code> 카드 그리드 + 하단 Pagination(20개 초과 시). 카드 크기는 그리드가 계산 — 개별 카드에 폭을 주지 않는다.</p>
+<h2 id="관련">관련</h2>
+<ul><li>한글 줄바꿈·본문 타이포 → <code>korean-typography.md</code> (keep-all·좌측정렬)</li><li>카드·페이지네이션 규격 → <code>../components/card.md</code>·<code>../components/pagination.md</code></li></ul></article>
+</main>
+</div>
+<script>window.PIDS_REL="../";</script>
+<script src="../assets/site.js"></script>
+
+</body>
+</html>

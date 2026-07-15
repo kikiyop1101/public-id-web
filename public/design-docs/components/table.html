@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Table (표) — PI-DS 퍼블릭아이디 디자인시스템</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){var t=localStorage.getItem("pids-theme");if(t)document.documentElement.setAttribute("data-theme",t);})();</script>
+</head>
+<body>
+<a class="pi-skiplink" href="#main">본문 바로가기</a>
+<header class="site-header">
+  <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  <a class="site-brand" href="../index.html">PI-DS</a>
+  <div class="site-search">
+    <input type="search" id="search" placeholder="검색 (컴포넌트·토큰·규칙)" aria-label="문서 검색" autocomplete="off">
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="theme-toggle" type="button" aria-label="라이트/다크 전환">◐</button>
+</header>
+<div class="site-body">
+<nav class="site-nav" aria-label="문서 목차">
+<div class="nav-group"><div class="nav-group-title">시작</div><ul><li><a href="../index.html">홈 · 원칙</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Foundations</div><ul><li><a href="../foundations/color.html">Color</a></li><li><a href="../foundations/typography.html">Typography</a></li><li><a href="../foundations/spacing.html">Spacing</a></li><li><a href="../foundations/motion.html">Motion</a></li><li><a href="../foundations/layout.html">Layout</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 액션</div><ul><li><a href="../components/button.html">Button</a></li><li><a href="../components/link.html">Link</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 컨테이너</div><ul><li><a href="../components/card.html">Card</a></li><li><a href="../components/callout-alert.html">Callout · Alert</a></li><li><a href="../components/accordion.html">Accordion · Disclosure</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 내비게이션</div><ul><li><a href="../components/tab.html">Tab</a></li><li><a href="../components/breadcrumb.html">Breadcrumb</a></li><li><a href="../components/pagination.html">Pagination</a></li><li><a href="../components/skip-link.html">Skip Link</a></li><li><a href="../components/step-indicator.html">Step Indicator</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 폼</div><ul><li><a href="../components/input.html">Input</a></li><li><a href="../components/select-controls.html">Checkbox · Radio · Toggle · Select</a></li><li><a href="../components/file-upload.html">File Upload</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 데이터</div><ul><li><a href="../components/table.html" class="active" aria-current="page">Table</a></li><li><a href="../components/kpi.html">KPI / Stat</a></li><li><a href="../components/chip-badge.html">Chip · Badge</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 오버레이</div><ul><li><a href="../components/modal.html">Modal</a></li><li><a href="../components/toast.html">Toast</a></li><li><a href="../components/tooltip.html">Tooltip</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 피드백</div><ul><li><a href="../components/spinner.html">Spinner</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Content</div><ul><li><a href="../content/ux-writing.html">UX Writing</a></li></ul></div>
+
+</nav>
+<main class="site-main" id="main">
+<article class="doc"><h1 id="table-표">Table (표)</h1>
+<p>행과 열로 데이터를 비교·조회한다. 헤더는 네이비 솔리드, 숫자 열은 자릿수 정렬(<code>.num</code>).</p>
+<h2 id="정의">정의</h2>
+<p>행과 열로 정렬된 데이터를 비교·조회하도록 보여주는 컴포넌트다.</p>
+<h2 id="anatomy">Anatomy</h2>
+<svg viewBox="0 0 420 175" width="420" height="175" role="img" aria-label="표 해부도" style="max-width:100%">
+  <rect x="70" y="34" width="250" height="32" fill="var(--table-header-bg)"/>
+  <text x="84" y="55" font-size="12" font-weight="700" fill="var(--table-header-fg)">제품</text>
+  <text x="306" y="55" font-size="11" font-weight="700" fill="var(--table-header-fg)" text-anchor="end">월 구독료</text>
+  <rect x="70" y="66" width="250" height="30" fill="var(--color-bg-canvas)" stroke="var(--table-cell-border)"/>
+  <text x="84" y="85" font-size="12" fill="currentColor">노면표시재</text>
+  <text x="306" y="85" font-size="12" fill="currentColor" text-anchor="end">132,000</text>
+  <rect x="70" y="96" width="250" height="30" fill="var(--table-row-alt-bg)" stroke="var(--table-cell-border)"/>
+  <text x="84" y="115" font-size="12" fill="currentColor">직물시트</text>
+  <text x="306" y="115" font-size="12" fill="currentColor" text-anchor="end">98,000</text>
+  <line x1="320" y1="50" x2="336" y2="50" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="340" y="54" font-size="12" fill="currentColor">① 헤더</text>
+  <line x1="320" y1="81" x2="336" y2="81" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="340" y="85" font-size="12" fill="currentColor">② 셀·보더</text>
+  <line x1="320" y1="111" x2="336" y2="111" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="340" y="115" font-size="12" fill="currentColor">③ 짝수 행</text>
+  <line x1="290" y1="126" x2="290" y2="146" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="196" y="162" font-size="12" fill="currentColor">④ 숫자 열(우측 정렬)</text>
+</svg>
+<div class="table-wrap"><table><thead><tr><th>부위</th><th>토큰</th></tr></thead><tbody><tr><td>① 헤더</td><td>bg <code>--table-header-bg</code>(네이비) · 글자 <code>--table-header-fg</code>(흰) · 굵기 <code>--font-weight-bold</code></td></tr><tr><td>② 셀·보더</td><td>경계 <code>--table-cell-border</code>(1px) · 글자 <code>--text-body-sm</code></td></tr><tr><td>③ 짝수 행</td><td>bg <code>--table-row-alt-bg</code>(연그레이) — zebra 가독성</td></tr><tr><td>④ 숫자 열</td><td><code>font-variant-numeric: tabular-nums</code> + 우측 정렬(<code>.num</code>)</td></tr></tbody></table></div>
+<h2 id="변형">변형</h2>
+<div class="table-wrap"><table><thead><tr><th>변형</th><th>용도</th></tr></thead><tbody><tr><td>기본</td><td>비교·조회용 데이터 표</td></tr><tr><td>Compact</td><td>행이 많은 카탈로그(패딩 축소) — <code>.pi-table--compact</code></td></tr></tbody></table></div>
+<h2 id="상태">상태</h2>
+<div class="table-wrap"><table><thead><tr><th>상태</th><th>값</th></tr></thead><tbody><tr><td>Default</td><td>헤더 <code>--table-header-bg</code> · 셀 보더 <code>--table-cell-border</code> · 짝수 행 <code>--table-row-alt-bg</code></td></tr><tr><td>Hover(행, 선택)</td><td>행 bg <code>--color-bg-subtle</code> — 열이 많은 표에서 행 추적용(선택 적용)</td></tr></tbody></table></div>
+<h2 id="do-don-t">Do / Don't</h2>
+<div class="dd-pair"><div class="dd-card dd-do"><div class="dd-label">Do</div><ul><li>금액·수량·수치는 <code>.num</code>으로 우측 정렬 + <code>tabular-nums</code> — 자릿수가 세로로 맞아 비교가 쉽다.</li><li>헤더는 <code>&lt;th scope&gt;</code>로 지정해 어떤 열·행의 제목인지 스크린리더가 읽게 한다.</li><li>열이 많으면 표를 가로 스크롤 컨테이너에 담아 모바일 잘림을 막는다.</li></ul></div><div class="dd-card dd-dont"><div class="dd-label">Don't</div><ul><li>모든 칸에 배경색을 채우지 말 것 — zebra는 짝수 행에만, 강조는 최소로.</li><li>숫자를 좌측·가운데 정렬하지 말 것 — 자릿수 비교가 어긋난다.</li><li>표로 화면 레이아웃(칸 나누기)을 만들지 말 것 — 표는 데이터 전용이다.</li></ul></div></div>
+<h2 id="콘텐츠-규칙">콘텐츠 규칙</h2>
+<ul><li>헤더 라벨은 <strong>명사</strong>로 짧게("제품", "월 구독료", "인증") — 문장 금지.</li><li>금액은 천단위 쉼표 + 단위, 숫자 뒤 단위는 붙여 쓴다("132,000원", "3종", "5개월").</li><li>빈 셀은 공백 대신 "—"로 "없음"을 명시한다.</li><li>단위는 헤더에 표기("월 구독료(원)")하고 셀에는 숫자만 둔다.</li></ul>
+<h2 id="키보드-인터랙션">키보드 인터랙션</h2>
+<p>해당 없음 — 정적 표는 포커스를 받지 않는다. 셀 안에 링크·버튼이 있으면 그 요소 자체의 키보드 규칙(Link·Button)을 따른다.</p>
+<h2 id="접근성">접근성</h2>
+<ul><li><code>&lt;table&gt;</code> + <code>&lt;thead&gt;</code>/<code>&lt;tbody&gt;</code> 구조, 헤더 셀은 <code>&lt;th scope="col"&gt;</code>·<code>scope="row"&gt;</code>로 지정한다.</li><li>표의 목적은 <code>&lt;caption&gt;</code>으로 제공한다(시각적으로 숨겨도 됨).</li><li>zebra·정렬은 시각 보조일 뿐 의미 전달은 마크업(scope)이 맡는다.</li><li>색 대비: 헤더 흰 글자 on 네이비(<code>--table-header-bg</code>)는 AA 이상. 기준: <code>../guidelines/accessibility.md</code>.</li></ul>
+<h2 id="코드">코드</h2>
+<div class="pi-demo" data-demo>
+<div class="pi-table-wrap">
+  <table class="pi-table">
+    <caption class="pi-table__caption">디자인구독 제품 비교 (예시 데이터)</caption>
+    <thead>
+      <tr>
+        <th scope="col">제품</th>
+        <th scope="col">주 소재</th>
+        <th scope="col" class="num">월 구독료(원)</th>
+        <th scope="col">인증</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">친환경 그래픽 노면표시재</th>
+        <td>바닥(노면)</td>
+        <td class="num">132,000</td>
+        <td>GREENGUARD GOLD</td>
+      </tr>
+      <tr>
+        <th scope="row">직물시트</th>
+        <td>벽면</td>
+        <td class="num">98,000</td>
+        <td>KC</td>
+      </tr>
+      <tr>
+        <th scope="row">홍보판촉물</th>
+        <td>판촉</td>
+        <td class="num">—</td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+<div class="code-block"><div class="code-lang">html</div><pre><code>&lt;div class="pi-table-wrap"&gt;
+  &lt;table class="pi-table"&gt;
+    &lt;caption class="pi-table__caption"&gt;디자인구독 제품 비교 (예시 데이터)&lt;/caption&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th scope="col"&gt;제품&lt;/th&gt;
+        &lt;th scope="col"&gt;주 소재&lt;/th&gt;
+        &lt;th scope="col" class="num"&gt;월 구독료(원)&lt;/th&gt;
+        &lt;th scope="col"&gt;인증&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;th scope="row"&gt;친환경 그래픽 노면표시재&lt;/th&gt;
+        &lt;td&gt;바닥(노면)&lt;/td&gt;
+        &lt;td class="num"&gt;132,000&lt;/td&gt;
+        &lt;td&gt;GREENGUARD GOLD&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;th scope="row"&gt;직물시트&lt;/th&gt;
+        &lt;td&gt;벽면&lt;/td&gt;
+        &lt;td class="num"&gt;98,000&lt;/td&gt;
+        &lt;td&gt;KC&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;th scope="row"&gt;홍보판촉물&lt;/th&gt;
+        &lt;td&gt;판촉&lt;/td&gt;
+        &lt;td class="num"&gt;—&lt;/td&gt;
+        &lt;td&gt;—&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre></div>
+<div class="code-block"><div class="code-lang">css</div><pre><code>.pi-table-wrap { overflow-x: auto; }
+.pi-table {
+  width: 100%;
+  border-collapse: collapse;
+  font: var(--text-body-sm);
+  color: var(--color-text-primary);
+  word-break: keep-all;
+}
+.pi-table__caption {
+  margin-bottom: var(--space-2);
+  font: var(--text-caption);
+  color: var(--color-text-muted);
+  text-align: left;
+}
+.pi-table th,
+.pi-table td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: var(--border-thin) solid var(--table-cell-border);
+  text-align: left;
+}
+.pi-table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-fg);
+  font-weight: var(--font-weight-bold);
+}
+.pi-table tbody tr:nth-child(even) { background: var(--table-row-alt-bg); }
+.pi-table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.pi-table--compact th,
+.pi-table--compact td { padding: var(--space-2) var(--space-3); }</code></pre></div>
+<h2 id="changelog">Changelog</h2>
+<div class="table-wrap"><table><thead><tr><th>날짜</th><th>변경</th></tr></thead><tbody><tr><td>2026-07-15</td><td>문서 계약(10섹션) 적용 — Anatomy 도해·숫자 열 tabular-nums·Compact 변형·콘텐츠 규칙·코드 신설, 기존 규격 승계</td></tr></tbody></table></div></article>
+</main>
+</div>
+<script>window.PIDS_REL="../";</script>
+<script src="../assets/site.js"></script>
+
+</body>
+</html>

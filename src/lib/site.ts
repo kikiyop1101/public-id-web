@@ -19,6 +19,7 @@ export const site = {
   instagram: "https://www.instagram.com/_public.id/",
   nav: [
     { label: "구독 서비스", en: "Subscription", href: "/subscribe" },
+    { label: "디자인시스템", en: "Design System", href: "/design" },
     { label: "사업영역", en: "Work", href: "/work" },
     { label: "회사소개", en: "About", href: "/about" },
     { label: "인증·특허", en: "Credentials", href: "/credentials" },

@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkbox · Radio · Toggle · Select (선택 컨트롤) — PI-DS 퍼블릭아이디 디자인시스템</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){var t=localStorage.getItem("pids-theme");if(t)document.documentElement.setAttribute("data-theme",t);})();</script>
+</head>
+<body>
+<a class="pi-skiplink" href="#main">본문 바로가기</a>
+<header class="site-header">
+  <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  <a class="site-brand" href="../index.html">PI-DS</a>
+  <div class="site-search">
+    <input type="search" id="search" placeholder="검색 (컴포넌트·토큰·규칙)" aria-label="문서 검색" autocomplete="off">
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="theme-toggle" type="button" aria-label="라이트/다크 전환">◐</button>
+</header>
+<div class="site-body">
+<nav class="site-nav" aria-label="문서 목차">
+<div class="nav-group"><div class="nav-group-title">시작</div><ul><li><a href="../index.html">홈 · 원칙</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Foundations</div><ul><li><a href="../foundations/color.html">Color</a></li><li><a href="../foundations/typography.html">Typography</a></li><li><a href="../foundations/spacing.html">Spacing</a></li><li><a href="../foundations/motion.html">Motion</a></li><li><a href="../foundations/layout.html">Layout</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 액션</div><ul><li><a href="../components/button.html">Button</a></li><li><a href="../components/link.html">Link</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 컨테이너</div><ul><li><a href="../components/card.html">Card</a></li><li><a href="../components/callout-alert.html">Callout · Alert</a></li><li><a href="../components/accordion.html">Accordion · Disclosure</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 내비게이션</div><ul><li><a href="../components/tab.html">Tab</a></li><li><a href="../components/breadcrumb.html">Breadcrumb</a></li><li><a href="../components/pagination.html">Pagination</a></li><li><a href="../components/skip-link.html">Skip Link</a></li><li><a href="../components/step-indicator.html">Step Indicator</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 폼</div><ul><li><a href="../components/input.html">Input</a></li><li><a href="../components/select-controls.html" class="active" aria-current="page">Checkbox · Radio · Toggle · Select</a></li><li><a href="../components/file-upload.html">File Upload</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 데이터</div><ul><li><a href="../components/table.html">Table</a></li><li><a href="../components/kpi.html">KPI / Stat</a></li><li><a href="../components/chip-badge.html">Chip · Badge</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 오버레이</div><ul><li><a href="../components/modal.html">Modal</a></li><li><a href="../components/toast.html">Toast</a></li><li><a href="../components/tooltip.html">Tooltip</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 피드백</div><ul><li><a href="../components/spinner.html">Spinner</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Content</div><ul><li><a href="../content/ux-writing.html">UX Writing</a></li></ul></div>
+
+</nav>
+<main class="site-main" id="main">
+<article class="doc"><h1 id="checkbox-radio-toggle-select-선택-컨트롤">Checkbox · Radio · Toggle · Select (선택 컨트롤)</h1>
+<p>텍스트 입력 대신 정해진 값을 고르게 하는 폼 컨트롤 4종. <code>Input</code>(텍스트 필드)과 별개로, 다중 선택·단일 선택·on/off·목록 선택을 담당한다.</p>
+<h2 id="정의">정의</h2>
+<p>정해진 값을 고르게 하는 폼 컨트롤 묶음이다 — 다중 선택 Checkbox, 단일 선택 Radio, 즉시 적용 on/off Toggle, 목록 선택 Select.</p>
+<h2 id="anatomy">Anatomy</h2>
+<svg viewBox="0 0 420 230" width="420" height="230" role="img" aria-label="선택 컨트롤 해부도" style="max-width:100%">
+  <rect x="40" y="22" width="18" height="18" rx="4" fill="var(--checkbox-bg-checked)"/>
+  <path d="M44 31 l3.5 3.5 l6.5 -7" fill="none" stroke="var(--checkbox-fg-check)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="70" y="36" font-size="13" fill="currentColor">자동 발행 동의</text>
+  <rect x="250" y="22" width="18" height="18" rx="4" fill="var(--checkbox-bg-checked)"/>
+  <rect x="254" y="30" width="10" height="2" rx="1" fill="var(--checkbox-fg-check)"/>
+  <text x="280" y="36" font-size="12" fill="currentColor" opacity="0.7">일부 선택</text>
+  <circle cx="49" cy="76" r="9" fill="var(--color-bg-canvas)" stroke="var(--radio-border)" stroke-width="2"/>
+  <circle cx="49" cy="76" r="4" fill="var(--radio-dot)"/>
+  <text x="70" y="81" font-size="13" fill="currentColor">노면표시재</text>
+  <rect x="40" y="118" width="48" height="24" rx="12" fill="var(--toggle-track-on)"/>
+  <circle cx="76" cy="130" r="8" fill="var(--toggle-thumb)"/>
+  <text x="102" y="135" font-size="13" fill="currentColor">자동 발행</text>
+  <rect x="40" y="166" width="210" height="34" rx="8" fill="var(--input-bg)" stroke="var(--input-border)"/>
+  <text x="54" y="188" font-size="13" fill="currentColor">디자인구독 · 베이직</text>
+  <path d="M224 180 l6 6 l6 -6" fill="none" stroke="var(--select-arrow-fg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="300" y="36" font-size="12" fill="currentColor">① Checkbox(3상태)</text>
+  <text x="300" y="81" font-size="12" fill="currentColor">② Radio</text>
+  <text x="300" y="135" font-size="12" fill="currentColor">③ Toggle</text>
+  <text x="300" y="188" font-size="12" fill="currentColor">④ Select</text>
+</svg>
+<div class="table-wrap"><table><thead><tr><th>부위</th><th>토큰</th></tr></thead><tbody><tr><td>① Checkbox</td><td>시각 <code>--checkbox-size</code>(16)·히트영역 <code>--checkbox-target</code>(44)·보더 <code>--checkbox-border</code>·선택 bg <code>--checkbox-bg-checked</code>·체크 <code>--checkbox-fg-check</code>·모서리 <code>--checkbox-radius</code></td></tr><tr><td>② Radio</td><td>시각 <code>--radio-size</code>(16)·히트영역 <code>--radio-target</code>(44)·보더 <code>--radio-border</code>·점 <code>--radio-dot</code></td></tr><tr><td>③ Toggle</td><td>트랙 <code>--toggle-track-width</code>(48)×<code>--toggle-track-height</code>(24)·off <code>--toggle-track-off</code>·on <code>--toggle-track-on</code>·손잡이 <code>--toggle-thumb</code></td></tr><tr><td>④ Select</td><td><code>Input</code> 토큰 재사용(<code>--input-bg</code>·<code>--input-border</code>·<code>--input-radius</code>·<code>--input-pad-x</code>/<code>--input-pad-y</code>) + 화살표 <code>--select-arrow-fg</code></td></tr></tbody></table></div>
+<h2 id="변형">변형</h2>
+<div class="table-wrap"><table><thead><tr><th>컨트롤</th><th>용도</th><th>선택 수</th></tr></thead><tbody><tr><td>Checkbox</td><td>다중 선택·동의 — 3상태(선택/비선택/일부선택 <code>indeterminate</code>)</td><td>0~N</td></tr><tr><td>Radio</td><td>상호배타 단일 선택(옵션 2~7개)</td><td>1</td></tr><tr><td>Toggle</td><td>즉시 적용되는 on/off 설정</td><td>on/off</td></tr><tr><td>Select</td><td>옵션 7~20개 목록 선택(20개 초과는 콤보박스 검토)</td><td>1</td></tr></tbody></table></div>
+<h2 id="상태">상태</h2>
+<div class="table-wrap"><table><thead><tr><th>상태</th><th>Checkbox / Radio</th><th>Toggle</th><th>Select</th></tr></thead><tbody><tr><td>Default</td><td>보더 <code>--checkbox-border</code>/<code>--radio-border</code></td><td>트랙 <code>--toggle-track-off</code></td><td>보더 <code>--input-border</code></td></tr><tr><td>Selected/On</td><td>bg <code>--checkbox-bg-checked</code> / 점 <code>--radio-dot</code></td><td>트랙 <code>--toggle-track-on</code> + 손잡이 이동</td><td>선택값 표시</td></tr><tr><td>Focus</td><td><code>box-shadow: var(--focus-ring)</code></td><td>동일</td><td>border <code>--input-border-focus</code> + <code>--focus-ring</code></td></tr><tr><td>Disabled</td><td><code>opacity: var(--opacity-disabled)</code> + <code>cursor: not-allowed</code> (공통)</td><td>동일</td><td>동일</td></tr><tr><td>Indeterminate</td><td>체크박스 전용 — 가로 막대(<code>--checkbox-fg-check</code>)</td><td>해당 없음</td><td>해당 없음</td></tr></tbody></table></div>
+<h2 id="do-don-t">Do / Don't</h2>
+<div class="dd-pair"><div class="dd-card dd-do"><div class="dd-label">Do</div><ul><li>체크박스·라디오는 시각 박스가 16px여도 클릭 히트영역은 <code>--checkbox-target</code>(44px)을 패딩으로 확보한다.</li><li>전체선택/부분선택 관계는 상위 체크박스의 <code>indeterminate</code>(일부선택) 상태로 표현한다.</li><li>Toggle 라벨은 상태와 무관한 명사형으로 고정한다("자동 발행", "다크 모드").</li><li>라디오·체크박스 그룹은 <code>&lt;fieldset&gt;</code>+<code>&lt;legend&gt;</code>로 묶어 무엇을 고르는지 알린다.</li></ul></div><div class="dd-card dd-dont"><div class="dd-label">Don't</div><ul><li>Toggle 라벨을 "켜짐/꺼짐"처럼 상태 따라 바꾸지 말 것 — 체크박스와 혼동된다.</li><li>상호배타 선택에 체크박스를 쓰지 말 것 — 단일 선택은 Radio·Select.</li><li>옵션이 2~3개인데 Select에 숨기지 말 것 — 라디오로 펼쳐 보여 준다.</li></ul></div></div>
+<h2 id="콘텐츠-규칙">콘텐츠 규칙</h2>
+<ul><li>라벨은 명사구·짧은 서술 한 줄. 체크박스 동의문은 능동형("개인정보 수집에 동의합니다").</li><li>Toggle 라벨은 기능 명사로 고정, 상태어(켜짐/꺼짐) 금지.</li><li>Select의 첫 옵션은 안내 겸 placeholder("선택하세요")로 두되 값이 아니게 한다(<code>value=""</code>).</li><li>Radio·Checkbox 라벨은 컨트롤 오른쪽에 두고 <code>&lt;label&gt;</code>로 감싸 라벨 클릭으로도 선택되게 한다.</li></ul>
+<h2 id="키보드-인터랙션">키보드 인터랙션</h2>
+<div class="table-wrap"><table><thead><tr><th>키</th><th>동작</th></tr></thead><tbody><tr><td><code>Tab</code></td><td>다음 컨트롤(또는 라디오 그룹)으로 이동</td></tr><tr><td><code>Space</code></td><td>Checkbox·Toggle 선택 토글</td></tr><tr><td><code>방향키</code></td><td>Radio 그룹 내 선택 이동 / 열린 Select의 옵션 이동</td></tr><tr><td><code>Enter</code> / <code>Space</code></td><td>Select 열기·닫기</td></tr><tr><td><code>Esc</code></td><td>열린 Select 닫기(포커스는 트리거로 복귀)</td></tr></tbody></table></div>
+<h2 id="접근성">접근성</h2>
+<ul><li>네이티브 요소 기반(<code>&lt;input type="checkbox|radio"&gt;</code>·<code>&lt;select&gt;</code>) — 커스텀 div 대신 시각만 스타일링(키보드·스크린리더 기본 지원).</li><li>라디오·체크박스 그룹은 <code>&lt;fieldset&gt;</code>+<code>&lt;legend&gt;</code>로 그룹화, 각 컨트롤은 <code>&lt;label&gt;</code> 연결.</li><li>Indeterminate는 시각뿐 아니라 JS로 <code>el.indeterminate = true</code>를 설정한다(HTML 속성만으론 안 됨).</li><li>시각 박스가 16px여도 히트영역은 <code>--target-min</code>(44px). 색만으로 선택 여부를 표시하지 말고 체크/점 형태를 병행한다. 기준: <code>../guidelines/accessibility.md</code>.</li></ul>
+<h2 id="코드">코드</h2>
+<div class="pi-demo" data-demo>
+<form class="pi-form-demo">
+  <fieldset class="pi-field">
+    <legend>발행 채널</legend>
+    <label class="pi-checkbox"><input type="checkbox" id="ch-all"><span>전체 선택</span></label>
+    <label class="pi-checkbox"><input type="checkbox" checked><span>네이버 블로그</span></label>
+    <label class="pi-checkbox"><input type="checkbox"><span>인스타그램</span></label>
+  </fieldset>
+  <fieldset class="pi-field">
+    <legend>주력 소재</legend>
+    <label class="pi-radio"><input type="radio" name="mat" checked><span>노면표시재</span></label>
+    <label class="pi-radio"><input type="radio" name="mat"><span>직물시트</span></label>
+  </fieldset>
+  <label class="pi-toggle">
+    <input type="checkbox" role="switch" checked>
+    <span class="pi-toggle__track"></span>
+    <span class="pi-toggle__label">자동 발행</span>
+  </label>
+  <span class="pi-field">
+    <label for="plan">구독 상품</label>
+    <span class="pi-select">
+      <select id="plan">
+        <option value="">선택하세요</option>
+        <option>디자인구독 · 베이직</option>
+        <option>안전시설관리 구독</option>
+      </select>
+    </span>
+  </span>
+</form>
+</div>
+<div class="code-block"><div class="code-lang">html</div><pre><code>&lt;form class="pi-form-demo"&gt;
+  &lt;fieldset class="pi-field"&gt;
+    &lt;legend&gt;발행 채널&lt;/legend&gt;
+    &lt;label class="pi-checkbox"&gt;&lt;input type="checkbox" id="ch-all"&gt;&lt;span&gt;전체 선택&lt;/span&gt;&lt;/label&gt;
+    &lt;label class="pi-checkbox"&gt;&lt;input type="checkbox" checked&gt;&lt;span&gt;네이버 블로그&lt;/span&gt;&lt;/label&gt;
+    &lt;label class="pi-checkbox"&gt;&lt;input type="checkbox"&gt;&lt;span&gt;인스타그램&lt;/span&gt;&lt;/label&gt;
+  &lt;/fieldset&gt;
+  &lt;fieldset class="pi-field"&gt;
+    &lt;legend&gt;주력 소재&lt;/legend&gt;
+    &lt;label class="pi-radio"&gt;&lt;input type="radio" name="mat" checked&gt;&lt;span&gt;노면표시재&lt;/span&gt;&lt;/label&gt;
+    &lt;label class="pi-radio"&gt;&lt;input type="radio" name="mat"&gt;&lt;span&gt;직물시트&lt;/span&gt;&lt;/label&gt;
+  &lt;/fieldset&gt;
+  &lt;label class="pi-toggle"&gt;
+    &lt;input type="checkbox" role="switch" checked&gt;
+    &lt;span class="pi-toggle__track"&gt;&lt;/span&gt;
+    &lt;span class="pi-toggle__label"&gt;자동 발행&lt;/span&gt;
+  &lt;/label&gt;
+  &lt;span class="pi-field"&gt;
+    &lt;label for="plan"&gt;구독 상품&lt;/label&gt;
+    &lt;span class="pi-select"&gt;
+      &lt;select id="plan"&gt;
+        &lt;option value=""&gt;선택하세요&lt;/option&gt;
+        &lt;option&gt;디자인구독 · 베이직&lt;/option&gt;
+        &lt;option&gt;안전시설관리 구독&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+&lt;/form&gt;</code></pre></div>
+<div class="code-block"><div class="code-lang">css</div><pre><code>.pi-form-demo { display: flex; flex-direction: column; gap: var(--space-6); }
+.pi-field { border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+.pi-field legend, .pi-field &gt; label { font: var(--text-label); color: var(--color-text-heading); padding: 0; }
+
+.pi-checkbox, .pi-radio { display: flex; align-items: center; gap: var(--space-3); min-height: var(--checkbox-target); cursor: pointer; word-break: keep-all; }
+.pi-checkbox input { width: var(--checkbox-size); height: var(--checkbox-size); border-radius: var(--checkbox-radius); accent-color: var(--checkbox-bg-checked); }
+.pi-radio input { width: var(--radio-size); height: var(--radio-size); accent-color: var(--radio-dot); }
+.pi-checkbox span, .pi-radio span { font: var(--text-body); color: var(--color-text-primary); }
+.pi-checkbox input:focus-visible, .pi-radio input:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+.pi-toggle { display: inline-flex; align-items: center; gap: var(--space-3); min-height: var(--target-min); cursor: pointer; }
+.pi-toggle input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.pi-toggle__track { position: relative; flex: none; width: var(--toggle-track-width); height: var(--toggle-track-height); border-radius: var(--radius-full); background: var(--toggle-track-off); transition: background var(--duration-base) var(--easing-out); }
+.pi-toggle__track::before { content: ""; position: absolute; top: var(--space-2); left: var(--space-2); width: var(--space-5); height: var(--space-5); border-radius: var(--radius-full); background: var(--toggle-thumb); transition: transform var(--duration-base) var(--easing-out); }
+.pi-toggle input:checked + .pi-toggle__track { background: var(--toggle-track-on); }
+.pi-toggle input:checked + .pi-toggle__track::before { transform: translateX(calc(var(--toggle-track-width) - var(--toggle-track-height))); }
+.pi-toggle input:focus-visible + .pi-toggle__track { outline: none; box-shadow: var(--focus-ring); }
+.pi-toggle__label { font: var(--text-body); color: var(--color-text-primary); }
+
+.pi-select { position: relative; display: inline-flex; align-items: center; }
+.pi-select select { appearance: none; -webkit-appearance: none; padding: var(--input-pad-y) var(--space-9) var(--input-pad-y) var(--input-pad-x); border: var(--border-thin) solid var(--input-border); border-radius: var(--input-radius); background: var(--input-bg); color: var(--input-fg); font: var(--text-body); min-height: var(--target-min); cursor: pointer; word-break: keep-all; }
+.pi-select select:focus-visible { outline: none; border-color: var(--input-border-focus); box-shadow: var(--focus-ring); }
+.pi-select select:disabled { opacity: var(--opacity-disabled); cursor: not-allowed; }
+.pi-select::after { content: ""; position: absolute; right: var(--space-4); top: calc(50% - var(--space-1)); pointer-events: none; width: var(--space-2); height: var(--space-2); border-right: var(--border-medium) solid var(--select-arrow-fg); border-bottom: var(--border-medium) solid var(--select-arrow-fg); transform: rotate(45deg); }
+
+@media (prefers-reduced-motion: reduce) { .pi-toggle__track, .pi-toggle__track::before { transition: none; } }</code></pre></div>
+<div class="code-block"><div class="code-lang">js</div><pre><code>// 전체선택 체크박스의 일부선택(indeterminate) 동기화 (의존성 없음)
+document.querySelectorAll(".pi-form-demo").forEach((form) =&gt; {
+  const all = form.querySelector("#ch-all");
+  if (!all) return;
+  const items = [...form.querySelectorAll(".pi-checkbox input")].filter((el) =&gt; el !== all);
+  const sync = () =&gt; {
+    const on = items.filter((el) =&gt; el.checked).length;
+    all.checked = on === items.length;
+    all.indeterminate = on &gt; 0 &amp;&amp; on &lt; items.length;
+  };
+  all.addEventListener("change", () =&gt; items.forEach((el) =&gt; (el.checked = all.checked)));
+  items.forEach((el) =&gt; el.addEventListener("change", sync));
+  sync();
+});</code></pre></div>
+<h2 id="changelog">Changelog</h2>
+<div class="table-wrap"><table><thead><tr><th>날짜</th><th>변경</th></tr></thead><tbody><tr><td>2026-07-15</td><td>문서 계약(10섹션) 적용 — KRDS 벤치마킹 규격(2026-07-15) 승계, Checkbox 3상태·Radio·Toggle·Select 4종 변형·코드·접근성 신설</td></tr></tbody></table></div></article>
+</main>
+</div>
+<script>window.PIDS_REL="../";</script>
+<script src="../assets/site.js"></script>
+<script>
+// 전체선택 체크박스의 일부선택(indeterminate) 동기화 (의존성 없음)
+document.querySelectorAll(".pi-form-demo").forEach((form) => {
+  const all = form.querySelector("#ch-all");
+  if (!all) return;
+  const items = [...form.querySelectorAll(".pi-checkbox input")].filter((el) => el !== all);
+  const sync = () => {
+    const on = items.filter((el) => el.checked).length;
+    all.checked = on === items.length;
+    all.indeterminate = on > 0 && on < items.length;
+  };
+  all.addEventListener("change", () => items.forEach((el) => (el.checked = all.checked)));
+  items.forEach((el) => el.addEventListener("change", sync));
+  sync();
+});
+</script>
+</body>
+</html>

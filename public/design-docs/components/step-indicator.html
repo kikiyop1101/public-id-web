@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Step Indicator (단계 표시기) — PI-DS 퍼블릭아이디 디자인시스템</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){var t=localStorage.getItem("pids-theme");if(t)document.documentElement.setAttribute("data-theme",t);})();</script>
+</head>
+<body>
+<a class="pi-skiplink" href="#main">본문 바로가기</a>
+<header class="site-header">
+  <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  <a class="site-brand" href="../index.html">PI-DS</a>
+  <div class="site-search">
+    <input type="search" id="search" placeholder="검색 (컴포넌트·토큰·규칙)" aria-label="문서 검색" autocomplete="off">
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="theme-toggle" type="button" aria-label="라이트/다크 전환">◐</button>
+</header>
+<div class="site-body">
+<nav class="site-nav" aria-label="문서 목차">
+<div class="nav-group"><div class="nav-group-title">시작</div><ul><li><a href="../index.html">홈 · 원칙</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Foundations</div><ul><li><a href="../foundations/color.html">Color</a></li><li><a href="../foundations/typography.html">Typography</a></li><li><a href="../foundations/spacing.html">Spacing</a></li><li><a href="../foundations/motion.html">Motion</a></li><li><a href="../foundations/layout.html">Layout</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 액션</div><ul><li><a href="../components/button.html">Button</a></li><li><a href="../components/link.html">Link</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 컨테이너</div><ul><li><a href="../components/card.html">Card</a></li><li><a href="../components/callout-alert.html">Callout · Alert</a></li><li><a href="../components/accordion.html">Accordion · Disclosure</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 내비게이션</div><ul><li><a href="../components/tab.html">Tab</a></li><li><a href="../components/breadcrumb.html">Breadcrumb</a></li><li><a href="../components/pagination.html">Pagination</a></li><li><a href="../components/skip-link.html">Skip Link</a></li><li><a href="../components/step-indicator.html" class="active" aria-current="page">Step Indicator</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 폼</div><ul><li><a href="../components/input.html">Input</a></li><li><a href="../components/select-controls.html">Checkbox · Radio · Toggle · Select</a></li><li><a href="../components/file-upload.html">File Upload</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 데이터</div><ul><li><a href="../components/table.html">Table</a></li><li><a href="../components/kpi.html">KPI / Stat</a></li><li><a href="../components/chip-badge.html">Chip · Badge</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 오버레이</div><ul><li><a href="../components/modal.html">Modal</a></li><li><a href="../components/toast.html">Toast</a></li><li><a href="../components/tooltip.html">Tooltip</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 피드백</div><ul><li><a href="../components/spinner.html">Spinner</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Content</div><ul><li><a href="../content/ux-writing.html">UX Writing</a></li></ul></div>
+
+</nav>
+<main class="site-main" id="main">
+<article class="doc"><h1 id="step-indicator-단계-표시기">Step Indicator (단계 표시기)</h1>
+<p>다단계 절차에서 전체 단계와 현재 위치·완료 여부를 보여 주는 내비게이션 컴포넌트. 견적 요청·온보딩 같은 선형 입력에 쓴다.</p>
+<h2 id="정의">정의</h2>
+<p>여러 단계로 이뤄진 절차에서 전체 단계와 현재 위치·완료 상태를 함께 보여 주는 내비게이션 컴포넌트다.</p>
+<h2 id="anatomy">Anatomy</h2>
+<svg viewBox="0 0 420 140" width="420" height="140" role="img" aria-label="단계 표시기 해부도" style="max-width:100%">
+  <line x1="70" y1="50" x2="145" y2="50" stroke="var(--color-brand-primary)" stroke-width="3"/>
+  <line x1="175" y1="50" x2="250" y2="50" stroke="var(--color-brand-primary)" stroke-width="3"/>
+  <line x1="280" y1="50" x2="355" y2="50" stroke="var(--color-border-default)" stroke-width="3"/>
+  <circle cx="55" cy="50" r="15" fill="var(--color-brand-primary-active)"/>
+  <text x="49" y="55" font-size="14" fill="var(--color-text-on-brand)">✓</text>
+  <circle cx="160" cy="50" r="15" fill="var(--color-brand-primary-active)"/>
+  <text x="154" y="55" font-size="14" fill="var(--color-text-on-brand)">✓</text>
+  <circle cx="265" cy="50" r="15" fill="var(--color-brand-primary)"/>
+  <text x="261" y="55" font-size="13" font-weight="700" fill="var(--color-text-on-brand)">3</text>
+  <circle cx="370" cy="50" r="15" fill="var(--color-bg-canvas)" stroke="var(--color-border-default)"/>
+  <text x="366" y="55" font-size="13" fill="var(--color-text-faint)">4</text>
+  <text x="32" y="86" font-size="11" fill="currentColor">정보 입력</text>
+  <text x="137" y="86" font-size="11" fill="currentColor">제품 선택</text>
+  <text x="242" y="86" font-size="11" fill="currentColor">일정 협의</text>
+  <text x="345" y="86" font-size="11" fill="currentColor">최종 확인</text>
+  <line x1="55" y1="35" x2="55" y2="16" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="18" y="12" font-size="12" fill="currentColor">① 단계 원</text>
+  <line x1="122" y1="50" x2="122" y2="18" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="128" y="14" font-size="12" fill="currentColor">② 연결선</text>
+  <line x1="265" y1="35" x2="265" y2="16" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="226" y="12" font-size="12" fill="currentColor">④ 현재 단계</text>
+  <line x1="160" y1="90" x2="160" y2="112" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="128" y="126" font-size="12" fill="currentColor">③ 단계 라벨</text>
+</svg>
+<div class="table-wrap"><table><thead><tr><th>부위</th><th>토큰</th></tr></thead><tbody><tr><td>① 단계 원</td><td>크기 <code>--step-size</code>(32) · 완료 <code>--step-bg-done</code> · 진행중 <code>--step-bg-active</code>+글자 <code>--step-fg-active</code> · 대기 <code>--step-bg-pending</code>+글자 <code>--step-fg-pending</code></td></tr><tr><td>② 연결선</td><td><code>--step-connector</code>, 완료 구간은 <code>--step-bg-active</code>로 채움</td></tr><tr><td>③ 단계 라벨</td><td><code>--step-label-fg</code> · <code>--text-caption</code></td></tr><tr><td>④ 현재 단계</td><td>진행중 원 + <code>aria-current="step"</code></td></tr></tbody></table></div>
+<h2 id="변형">변형</h2>
+<div class="table-wrap"><table><thead><tr><th>변형</th><th>용도</th></tr></thead><tbody><tr><td>수평(기본)</td><td>3~5단계의 짧은 절차(견적 요청 4단계 등) — 가로 배열</td></tr><tr><td>수직</td><td>단계 설명이 길거나 모바일 폭이 좁을 때 — 세로 배열</td></tr><tr><td>체크형</td><td>완료 단계는 체크(✓), 대기·진행중은 번호로 상태를 구분</td></tr></tbody></table></div>
+<h2 id="상태">상태</h2>
+<div class="table-wrap"><table><thead><tr><th>상태</th><th>원</th><th>라벨</th></tr></thead><tbody><tr><td>대기(pending)</td><td>bg <code>--step-bg-pending</code> / fg <code>--step-fg-pending</code></td><td><code>--step-label-fg</code>(흐리게)</td></tr><tr><td>진행중(active)</td><td>bg <code>--step-bg-active</code> / fg <code>--step-fg-active</code></td><td><code>--step-label-fg</code>(굵게) + <code>aria-current="step"</code></td></tr><tr><td>완료(done)</td><td>bg <code>--step-bg-done</code> / 체크 <code>--step-fg-active</code></td><td><code>--step-label-fg</code></td></tr><tr><td>Focus(이동 가능 단계만)</td><td><code>box-shadow: var(--focus-ring)</code></td><td>—</td></tr></tbody></table></div>
+<h2 id="do-don-t">Do / Don't</h2>
+<div class="dd-pair"><div class="dd-card dd-do"><div class="dd-label">Do</div><ul><li>3~7단계 안에서 쓴다(KRDS 권장) — 견적 요청·온보딩 같은 짧고 선형인 절차에.</li><li>완료·진행중·대기를 색과 형태(체크/번호) 둘 다로 구분한다 — 색만으로 나누지 않는다.</li><li>현재 단계 라벨을 굵기·색으로 강조해 지금 위치를 분명히 한다.</li></ul></div><div class="dd-card dd-dont"><div class="dd-label">Don't</div><ul><li>8단계 이상을 한 줄에 늘어놓지 말 것 — 단계를 묶거나 진행률 바로 대체한다.</li><li>비선형(자유 이동) 절차에 쓰지 말 것 — 순서가 없으면 단계 표시기가 아니라 탭·목차를 쓴다.</li><li>아직 도달하지 않은 대기 단계를 클릭 가능하게 열어 두지 말 것.</li></ul></div></div>
+<h2 id="콘텐츠-규칙">콘텐츠 규칙</h2>
+<ul><li>라벨은 <strong>명사구 1~2어절</strong>("정보 입력"·"일정 협의") — 문장 금지, 각 단계 길이를 맞춘다.</li><li>단계 번호는 자동(1·2·3…), 라벨에 "1단계"처럼 번호를 중복 표기하지 않는다.</li><li>모든 단계 라벨의 품사·어투를 통일한다(전부 명사형 또는 전부 동사형).</li><li>전역 규칙: <code>../guidelines/ux-writing.md</code>.</li></ul>
+<h2 id="키보드-인터랙션">키보드 인터랙션</h2>
+<div class="table-wrap"><table><thead><tr><th>키</th><th>동작</th></tr></thead><tbody><tr><td><code>Tab</code></td><td>이동 가능한(완료) 단계로 포커스 이동</td></tr><tr><td><code>Enter</code></td><td>포커스된 완료 단계로 이동</td></tr></tbody></table></div>
+<p>정적(표시 전용) 단계 표시기는 포커스를 받지 않는다 — 이때 키보드 인터랙션은 해당 없음.</p>
+<h2 id="접근성">접근성</h2>
+<ul><li><code>&lt;ol&gt;</code>(순서 있는 목록)로 마크업 — 단계의 순서를 의미로 전달한다.</li><li>현재 단계에 <code>aria-current="step"</code> — 스크린리더가 위치를 알린다.</li><li>완료/대기 상태를 시각(체크·색)만으로 두지 말고 시각적으로 숨긴 텍스트("완료" 등)로도 전달한다.</li><li>대비: 대기 단계 라벨도 <code>--step-label-fg</code>로 최소 대비를 유지(과하게 흐리지 않게).</li><li>기준: <code>../guidelines/accessibility.md</code>.</li></ul>
+<h2 id="코드">코드</h2>
+<div class="pi-demo" data-demo>
+<ol class="pi-steps" aria-label="견적 요청 단계">
+  <li class="pi-steps__item pi-steps__item--done">
+    <span class="pi-steps__marker" aria-hidden="true">&#10003;</span>
+    <span class="pi-steps__label">정보 입력<span class="pi-steps__sr"> (완료)</span></span>
+  </li>
+  <li class="pi-steps__item pi-steps__item--done">
+    <span class="pi-steps__marker" aria-hidden="true">&#10003;</span>
+    <span class="pi-steps__label">제품 선택<span class="pi-steps__sr"> (완료)</span></span>
+  </li>
+  <li class="pi-steps__item pi-steps__item--active" aria-current="step">
+    <span class="pi-steps__marker">3</span>
+    <span class="pi-steps__label">일정 협의</span>
+  </li>
+  <li class="pi-steps__item">
+    <span class="pi-steps__marker">4</span>
+    <span class="pi-steps__label">최종 확인</span>
+  </li>
+</ol>
+</div>
+<div class="code-block"><div class="code-lang">html</div><pre><code>&lt;ol class="pi-steps" aria-label="견적 요청 단계"&gt;
+  &lt;li class="pi-steps__item pi-steps__item--done"&gt;
+    &lt;span class="pi-steps__marker" aria-hidden="true"&gt;&amp;#10003;&lt;/span&gt;
+    &lt;span class="pi-steps__label"&gt;정보 입력&lt;span class="pi-steps__sr"&gt; (완료)&lt;/span&gt;&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li class="pi-steps__item pi-steps__item--done"&gt;
+    &lt;span class="pi-steps__marker" aria-hidden="true"&gt;&amp;#10003;&lt;/span&gt;
+    &lt;span class="pi-steps__label"&gt;제품 선택&lt;span class="pi-steps__sr"&gt; (완료)&lt;/span&gt;&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li class="pi-steps__item pi-steps__item--active" aria-current="step"&gt;
+    &lt;span class="pi-steps__marker"&gt;3&lt;/span&gt;
+    &lt;span class="pi-steps__label"&gt;일정 협의&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li class="pi-steps__item"&gt;
+    &lt;span class="pi-steps__marker"&gt;4&lt;/span&gt;
+    &lt;span class="pi-steps__label"&gt;최종 확인&lt;/span&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</code></pre></div>
+<div class="code-block"><div class="code-lang">css</div><pre><code>.pi-steps { display: flex; list-style: none; margin: 0; padding: 0; }
+.pi-steps__item {
+  display: flex; flex-direction: column; align-items: center;
+  flex: 1 1 0; position: relative; text-align: center; gap: var(--space-3);
+}
+.pi-steps__item::before {
+  content: ""; position: absolute; top: calc(var(--step-size) / 2); height: var(--border-medium);
+  left: calc(-50% + var(--step-size) / 2); width: calc(100% - var(--step-size)); background: var(--step-connector);
+}
+.pi-steps__item:first-child::before { display: none; }
+.pi-steps__item--done::before,
+.pi-steps__item--active::before { background: var(--step-bg-active); }
+.pi-steps__marker {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: var(--step-size); height: var(--step-size); border-radius: var(--radius-full);
+  background: var(--step-bg-pending); color: var(--step-fg-pending); font: var(--text-label);
+}
+.pi-steps__item--active .pi-steps__marker { background: var(--step-bg-active); color: var(--step-fg-active); font-weight: var(--font-weight-bold); }
+.pi-steps__item--done .pi-steps__marker { background: var(--step-bg-done); color: var(--step-fg-active); }
+.pi-steps__label { font: var(--text-caption); color: var(--step-label-fg); word-break: keep-all; }
+.pi-steps__item--active .pi-steps__label { font-weight: var(--font-weight-bold); }
+.pi-steps__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }</code></pre></div>
+<h2 id="changelog">Changelog</h2>
+<div class="table-wrap"><table><thead><tr><th>날짜</th><th>변경</th></tr></thead><tbody><tr><td>2026-07-15</td><td>문서 계약(10섹션) 적용 — KRDS 벤치마킹 규격(2026-07-15) 승계, Anatomy 도해·변형·상태·콘텐츠 규칙·키보드·실코드 신설</td></tr></tbody></table></div></article>
+</main>
+</div>
+<script>window.PIDS_REL="../";</script>
+<script src="../assets/site.js"></script>
+
+</body>
+</html>

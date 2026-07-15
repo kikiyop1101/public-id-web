@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tab (탭) — PI-DS 퍼블릭아이디 디자인시스템</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){var t=localStorage.getItem("pids-theme");if(t)document.documentElement.setAttribute("data-theme",t);})();</script>
+</head>
+<body>
+<a class="pi-skiplink" href="#main">본문 바로가기</a>
+<header class="site-header">
+  <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  <a class="site-brand" href="../index.html">PI-DS</a>
+  <div class="site-search">
+    <input type="search" id="search" placeholder="검색 (컴포넌트·토큰·규칙)" aria-label="문서 검색" autocomplete="off">
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="theme-toggle" type="button" aria-label="라이트/다크 전환">◐</button>
+</header>
+<div class="site-body">
+<nav class="site-nav" aria-label="문서 목차">
+<div class="nav-group"><div class="nav-group-title">시작</div><ul><li><a href="../index.html">홈 · 원칙</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Foundations</div><ul><li><a href="../foundations/color.html">Color</a></li><li><a href="../foundations/typography.html">Typography</a></li><li><a href="../foundations/spacing.html">Spacing</a></li><li><a href="../foundations/motion.html">Motion</a></li><li><a href="../foundations/layout.html">Layout</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 액션</div><ul><li><a href="../components/button.html">Button</a></li><li><a href="../components/link.html">Link</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 컨테이너</div><ul><li><a href="../components/card.html">Card</a></li><li><a href="../components/callout-alert.html">Callout · Alert</a></li><li><a href="../components/accordion.html">Accordion · Disclosure</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 내비게이션</div><ul><li><a href="../components/tab.html" class="active" aria-current="page">Tab</a></li><li><a href="../components/breadcrumb.html">Breadcrumb</a></li><li><a href="../components/pagination.html">Pagination</a></li><li><a href="../components/skip-link.html">Skip Link</a></li><li><a href="../components/step-indicator.html">Step Indicator</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 폼</div><ul><li><a href="../components/input.html">Input</a></li><li><a href="../components/select-controls.html">Checkbox · Radio · Toggle · Select</a></li><li><a href="../components/file-upload.html">File Upload</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 데이터</div><ul><li><a href="../components/table.html">Table</a></li><li><a href="../components/kpi.html">KPI / Stat</a></li><li><a href="../components/chip-badge.html">Chip · Badge</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 오버레이</div><ul><li><a href="../components/modal.html">Modal</a></li><li><a href="../components/toast.html">Toast</a></li><li><a href="../components/tooltip.html">Tooltip</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 피드백</div><ul><li><a href="../components/spinner.html">Spinner</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Content</div><ul><li><a href="../content/ux-writing.html">UX Writing</a></li></ul></div>
+
+</nav>
+<main class="site-main" id="main">
+<article class="doc"><h1 id="tab-탭">Tab (탭)</h1>
+<p>같은 계층의 콘텐츠 묶음 중 하나를 골라 같은 자리에서 전환한다. 제안서·상세페이지 섹션 전환에 적합하다.</p>
+<h2 id="정의">정의</h2>
+<p>같은 계층의 여러 콘텐츠 묶음 중 하나만 골라 같은 자리에서 전환해 보여 주는 컴포넌트다.</p>
+<h2 id="anatomy">Anatomy</h2>
+<svg viewBox="0 0 420 180" width="420" height="180" role="img" aria-label="탭 해부도" style="max-width:100%">
+  <line x1="40" y1="70" x2="380" y2="70" stroke="var(--tab-border)"/>
+  <text x="60" y="58" font-size="15" fill="var(--tab-fg-active)" font-weight="700" font-family="inherit">규격</text>
+  <rect x="56" y="68" width="44" height="4" rx="2" fill="var(--tab-indicator)"/>
+  <text x="140" y="58" font-size="15" fill="var(--tab-fg)" font-family="inherit">소재</text>
+  <text x="220" y="58" font-size="15" fill="var(--tab-fg)" font-family="inherit">시공사례</text>
+  <text x="60" y="110" font-size="13" fill="currentColor" opacity="0.7">활성 탭의 패널 내용이 이 자리에 표시됩니다.</text>
+  <line x1="120" y1="44" x2="120" y2="24" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="128" y="26" font-size="12" fill="currentColor">① 탭 목록(tablist)</text>
+  <line x1="78" y1="72" x2="78" y2="92" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="86" y="90" font-size="12" fill="currentColor">③ 활성 탭 + 인디케이터</text>
+  <line x1="150" y1="62" x2="150" y2="140" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="158" y="132" font-size="12" fill="currentColor">② 비활성 탭</text>
+  <line x1="300" y1="106" x2="300" y2="150" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="240" y="164" font-size="12" fill="currentColor">④ 탭 패널</text>
+</svg>
+<div class="table-wrap"><table><thead><tr><th>부위</th><th>토큰</th></tr></thead><tbody><tr><td>① 탭 목록</td><td>하단 보더 <code>--tab-border</code> · 탭 사이 간격 <code>--tab-gap</code></td></tr><tr><td>② 비활성 탭</td><td>fg <code>--tab-fg</code> · 패딩 <code>--tab-pad-y</code>/<code>--tab-pad-x</code> · <code>--text-label</code></td></tr><tr><td>③ 활성 탭</td><td>fg <code>--tab-fg-active</code> · 하단 인디케이터 <code>--tab-indicator</code> 두께 <code>--tab-indicator-size</code></td></tr><tr><td>④ 탭 패널</td><td>본문 <code>--text-body</code> · 상단 여백 <code>--space-6</code></td></tr></tbody></table></div>
+<h2 id="변형">변형</h2>
+<div class="table-wrap"><table><thead><tr><th>변형</th><th>용도</th></tr></thead><tbody><tr><td>수평 탭(기본)</td><td>같은 화면의 3~6개 섹션 전환 — 제안서·상세페이지 섹션</td></tr></tbody></table></div>
+<p>size·수직·중첩 변형은 제공하지 않는다 — 콘텐츠가 계층이면 Accordion을 쓴다.</p>
+<h2 id="상태">상태</h2>
+<div class="table-wrap"><table><thead><tr><th>상태</th><th>비활성 탭</th><th>활성 탭</th></tr></thead><tbody><tr><td>Default</td><td>fg <code>--tab-fg</code></td><td>fg <code>--tab-fg-active</code> + 인디케이터 <code>--tab-indicator</code></td></tr><tr><td>Hover</td><td>fg <code>--tab-fg-active</code></td><td>—</td></tr><tr><td>Focus</td><td><code>box-shadow: var(--focus-ring)</code></td><td>동일</td></tr><tr><td>Selected</td><td><code>aria-selected="false"</code></td><td><code>aria-selected="true"</code>(인디케이터 표시)</td></tr><tr><td>Disabled</td><td><code>opacity: var(--opacity-disabled)</code> + <code>cursor: not-allowed</code></td><td>—</td></tr></tbody></table></div>
+<h2 id="do-don-t">Do / Don't</h2>
+<div class="dd-pair"><div class="dd-card dd-do"><div class="dd-label">Do</div><ul><li>탭은 3~6개로 유지한다 — 항목이 많으면 묶거나 사이드 메뉴를 쓴다.</li><li>탭 라벨은 1~2단어 명사로, 순서를 바꿔도 뜻이 통하게 병렬로 짓는다.</li><li>활성 탭은 색 + 인디케이터(밑줄) 둘 다로 구분한다.</li></ul></div><div class="dd-card dd-dont"><div class="dd-label">Don't</div><ul><li>탭 안에 또 탭을 넣지 말 것(중첩 금지) — 계층은 Accordion으로.</li><li>순서·인과가 있는 흐름에 탭을 쓰지 말 것 — 그건 Step Indicator다.</li><li>탭 전환에 페이지 새로고침을 걸지 말 것 — 같은 화면에서 콘텐츠만 바꾼다.</li></ul></div></div>
+<h2 id="콘텐츠-규칙">콘텐츠 규칙</h2>
+<ul><li>탭 라벨은 <strong>1~2단어 명사구</strong>(≤10자) — 문장·물음표 금지.</li><li>라벨은 <strong>병렬 구조</strong>로 통일한다("규격 / 소재 / 시공사례"처럼 같은 결).</li><li>탭 개수는 3~6개 권장, 2개면 탭 대신 세그먼트·토글을 검토한다.</li></ul>
+<h2 id="키보드-인터랙션">키보드 인터랙션</h2>
+<div class="table-wrap"><table><thead><tr><th>키</th><th>동작</th></tr></thead><tbody><tr><td><code>Tab</code></td><td>탭 목록으로 진입 → 다시 <code>Tab</code>이면 활성 패널로 이동(탭 사이 이동은 방향키)</td></tr><tr><td><code>←</code> / <code>→</code></td><td>이전/다음 탭으로 이동하며 즉시 선택(자동 활성화)</td></tr><tr><td><code>Home</code> / <code>End</code></td><td>첫 번째 / 마지막 탭으로 이동</td></tr><tr><td><code>Enter</code> / <code>Space</code></td><td>포커스된 탭 선택(수동 활성화 방식일 때)</td></tr></tbody></table></div>
+<h2 id="접근성">접근성</h2>
+<ul><li><code>role="tablist"</code> 컨테이너 + 각 탭 <code>role="tab"</code>·<code>aria-selected</code>·<code>aria-controls</code>(패널 id) + 패널 <code>role="tabpanel"</code>·<code>aria-labelledby</code>(탭 id).</li><li><strong>로빙 tabindex</strong>: 활성 탭만 <code>tabindex="0"</code>, 나머지는 <code>tabindex="-1"</code> — <code>Tab</code> 한 번에 탭 목록을 지나가고 방향키로 탭을 옮긴다(아래 JS).</li><li>활성 표시는 색만이 아니라 인디케이터(밑줄)로도 — 색맹·저시력에 대비한다.</li><li>포커스 링 제거 금지, 각 탭 히트영역 ≥ <code>--target-min</code>. 기준: <code>../guidelines/accessibility.md</code>.</li></ul>
+<h2 id="코드">코드</h2>
+<div class="pi-demo" data-demo>
+<div class="pi-tabs">
+  <div class="pi-tabs__list" role="tablist" aria-label="안전표지 상세">
+    <button class="pi-tabs__tab" role="tab" id="tab-spec" aria-selected="true" aria-controls="panel-spec" tabindex="0">규격</button>
+    <button class="pi-tabs__tab" role="tab" id="tab-material" aria-selected="false" aria-controls="panel-material" tabindex="-1">소재</button>
+    <button class="pi-tabs__tab" role="tab" id="tab-case" aria-selected="false" aria-controls="panel-case" tabindex="-1">시공사례</button>
+  </div>
+  <div class="pi-tabs__panel" role="tabpanel" id="panel-spec" aria-labelledby="tab-spec">
+    <p>표준 규격 600×600mm, 친환경 그래픽 노면표시재로 제작합니다.</p>
+  </div>
+  <div class="pi-tabs__panel" role="tabpanel" id="panel-material" aria-labelledby="tab-material" hidden>
+    <p>GREENGUARD GOLD(UL 2818) 인증 라텍스 잉크를 사용합니다.</p>
+  </div>
+  <div class="pi-tabs__panel" role="tabpanel" id="panel-case" aria-labelledby="tab-case" hidden>
+    <p>어린이보호구역 노면표시·안전표지 시공사례를 담았습니다.</p>
+  </div>
+</div>
+</div>
+<div class="code-block"><div class="code-lang">html</div><pre><code>&lt;div class="pi-tabs"&gt;
+  &lt;div class="pi-tabs__list" role="tablist" aria-label="안전표지 상세"&gt;
+    &lt;button class="pi-tabs__tab" role="tab" id="tab-spec" aria-selected="true" aria-controls="panel-spec" tabindex="0"&gt;규격&lt;/button&gt;
+    &lt;button class="pi-tabs__tab" role="tab" id="tab-material" aria-selected="false" aria-controls="panel-material" tabindex="-1"&gt;소재&lt;/button&gt;
+    &lt;button class="pi-tabs__tab" role="tab" id="tab-case" aria-selected="false" aria-controls="panel-case" tabindex="-1"&gt;시공사례&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="pi-tabs__panel" role="tabpanel" id="panel-spec" aria-labelledby="tab-spec"&gt;
+    &lt;p&gt;표준 규격 600×600mm, 친환경 그래픽 노면표시재로 제작합니다.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="pi-tabs__panel" role="tabpanel" id="panel-material" aria-labelledby="tab-material" hidden&gt;
+    &lt;p&gt;GREENGUARD GOLD(UL 2818) 인증 라텍스 잉크를 사용합니다.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="pi-tabs__panel" role="tabpanel" id="panel-case" aria-labelledby="tab-case" hidden&gt;
+    &lt;p&gt;어린이보호구역 노면표시·안전표지 시공사례를 담았습니다.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+<div class="code-block"><div class="code-lang">css</div><pre><code>.pi-tabs__list { display: flex; gap: var(--tab-gap); border-bottom: var(--border-thin) solid var(--tab-border); }
+.pi-tabs__tab {
+  padding: var(--tab-pad-y) var(--tab-pad-x);
+  border: none; background: none; cursor: pointer;
+  color: var(--tab-fg);
+  font: var(--text-label);
+  letter-spacing: var(--text-label-letter-spacing);
+  border-bottom: var(--tab-indicator-size) solid transparent; margin-bottom: calc(var(--border-thin) * -1);
+  min-height: var(--target-min);
+  word-break: keep-all;
+  transition: color var(--duration-base) var(--easing-out), border-color var(--duration-base) var(--easing-out);
+}
+.pi-tabs__tab:hover { color: var(--tab-fg-active); }
+.pi-tabs__tab:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: var(--radius-sm); }
+.pi-tabs__tab[aria-selected="true"] { color: var(--tab-fg-active); border-bottom-color: var(--tab-indicator); }
+.pi-tabs__tab:disabled { opacity: var(--opacity-disabled); cursor: not-allowed; }
+.pi-tabs__panel { padding-top: var(--space-6); color: var(--color-text-secondary); font: var(--text-body); word-break: keep-all; }
+.pi-tabs__panel[hidden] { display: none; }
+@media (prefers-reduced-motion: reduce) { .pi-tabs__tab { transition: none; } }</code></pre></div>
+<div class="code-block"><div class="code-lang">js</div><pre><code>document.querySelectorAll(".pi-tabs").forEach((tabs) =&gt; {
+  const tablist = tabs.querySelector('[role="tablist"]');
+  const tabsArr = [...tablist.querySelectorAll('[role="tab"]')];
+  const select = (tab) =&gt; {
+    tabsArr.forEach((t) =&gt; {
+      const on = t === tab;
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+    });
+  };
+  tablist.addEventListener("click", (e) =&gt; {
+    const tab = e.target.closest('[role="tab"]');
+    if (tab) select(tab);
+  });
+  tablist.addEventListener("keydown", (e) =&gt; {
+    const i = tabsArr.indexOf(document.activeElement);
+    const moves = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabsArr.length - 1 };
+    if (i &lt; 0 || !(e.key in moves)) return;
+    e.preventDefault();
+    const n = (moves[e.key] + tabsArr.length) % tabsArr.length;
+    select(tabsArr[n]);
+    tabsArr[n].focus();
+  });
+});</code></pre></div>
+<h2 id="changelog">Changelog</h2>
+<div class="table-wrap"><table><thead><tr><th>날짜</th><th>변경</th></tr></thead><tbody><tr><td>2026-07-15</td><td>문서 계약(10섹션) 적용 — Anatomy 도해·상태 매트릭스·콘텐츠 규칙·방향키/로빙 tabindex 실코드 신설. KRDS 벤치마킹 규격 승계</td></tr></tbody></table></div></article>
+</main>
+</div>
+<script>window.PIDS_REL="../";</script>
+<script src="../assets/site.js"></script>
+<script>
+document.querySelectorAll(".pi-tabs").forEach((tabs) => {
+  const tablist = tabs.querySelector('[role="tablist"]');
+  const tabsArr = [...tablist.querySelectorAll('[role="tab"]')];
+  const select = (tab) => {
+    tabsArr.forEach((t) => {
+      const on = t === tab;
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+    });
+  };
+  tablist.addEventListener("click", (e) => {
+    const tab = e.target.closest('[role="tab"]');
+    if (tab) select(tab);
+  });
+  tablist.addEventListener("keydown", (e) => {
+    const i = tabsArr.indexOf(document.activeElement);
+    const moves = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabsArr.length - 1 };
+    if (i < 0 || !(e.key in moves)) return;
+    e.preventDefault();
+    const n = (moves[e.key] + tabsArr.length) % tabsArr.length;
+    select(tabsArr[n]);
+    tabsArr[n].focus();
+  });
+});
+</script>
+</body>
+</html>

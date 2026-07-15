@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modal (모달) — PI-DS 퍼블릭아이디 디자인시스템</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){var t=localStorage.getItem("pids-theme");if(t)document.documentElement.setAttribute("data-theme",t);})();</script>
+</head>
+<body>
+<a class="pi-skiplink" href="#main">본문 바로가기</a>
+<header class="site-header">
+  <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  <a class="site-brand" href="../index.html">PI-DS</a>
+  <div class="site-search">
+    <input type="search" id="search" placeholder="검색 (컴포넌트·토큰·규칙)" aria-label="문서 검색" autocomplete="off">
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="theme-toggle" type="button" aria-label="라이트/다크 전환">◐</button>
+</header>
+<div class="site-body">
+<nav class="site-nav" aria-label="문서 목차">
+<div class="nav-group"><div class="nav-group-title">시작</div><ul><li><a href="../index.html">홈 · 원칙</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Foundations</div><ul><li><a href="../foundations/color.html">Color</a></li><li><a href="../foundations/typography.html">Typography</a></li><li><a href="../foundations/spacing.html">Spacing</a></li><li><a href="../foundations/motion.html">Motion</a></li><li><a href="../foundations/layout.html">Layout</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 액션</div><ul><li><a href="../components/button.html">Button</a></li><li><a href="../components/link.html">Link</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 컨테이너</div><ul><li><a href="../components/card.html">Card</a></li><li><a href="../components/callout-alert.html">Callout · Alert</a></li><li><a href="../components/accordion.html">Accordion · Disclosure</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 내비게이션</div><ul><li><a href="../components/tab.html">Tab</a></li><li><a href="../components/breadcrumb.html">Breadcrumb</a></li><li><a href="../components/pagination.html">Pagination</a></li><li><a href="../components/skip-link.html">Skip Link</a></li><li><a href="../components/step-indicator.html">Step Indicator</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 폼</div><ul><li><a href="../components/input.html">Input</a></li><li><a href="../components/select-controls.html">Checkbox · Radio · Toggle · Select</a></li><li><a href="../components/file-upload.html">File Upload</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 데이터</div><ul><li><a href="../components/table.html">Table</a></li><li><a href="../components/kpi.html">KPI / Stat</a></li><li><a href="../components/chip-badge.html">Chip · Badge</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 오버레이</div><ul><li><a href="../components/modal.html" class="active" aria-current="page">Modal</a></li><li><a href="../components/toast.html">Toast</a></li><li><a href="../components/tooltip.html">Tooltip</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 피드백</div><ul><li><a href="../components/spinner.html">Spinner</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Content</div><ul><li><a href="../content/ux-writing.html">UX Writing</a></li></ul></div>
+
+</nav>
+<main class="site-main" id="main">
+<article class="doc"><h1 id="modal-모달">Modal (모달)</h1>
+<p>화면 위를 스크림으로 덮고 사용자의 확인·입력을 받는 창. 승인형 워크플로우의 확인창 등에 사용한다.</p>
+<h2 id="정의">정의</h2>
+<p>현재 화면의 흐름을 잠시 멈추고 확인·입력을 받아야 할 때 띄우는 오버레이 컴포넌트다.</p>
+<h2 id="anatomy">Anatomy</h2>
+<svg viewBox="0 0 420 200" width="420" height="200" role="img" aria-label="모달 해부도" style="max-width:100%">
+  <rect x="10" y="10" width="400" height="180" rx="4" fill="currentColor" opacity="0.35"/>
+  <rect x="90" y="40" width="240" height="120" rx="16" fill="var(--color-bg-canvas)" stroke="var(--color-border-default)"/>
+  <text x="114" y="76" font-size="15" font-weight="700" fill="currentColor">발행할까요?</text>
+  <text x="114" y="100" font-size="12" fill="currentColor" opacity="0.7">확인 후 되돌릴 수 없습니다.</text>
+  <rect x="114" y="118" width="72" height="26" rx="6" fill="var(--color-brand-primary)"/>
+  <text x="304" y="62" font-size="14" fill="currentColor">✕</text>
+  <line x1="50" y1="30" x2="50" y2="12" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="56" y="14" font-size="12" fill="currentColor">① 스크림</text>
+  <line x1="210" y1="40" x2="210" y2="24" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="216" y="28" font-size="12" fill="currentColor">② 패널</text>
+  <line x1="308" y1="66" x2="332" y2="86" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="336" y="92" font-size="12" fill="currentColor">③ 닫기</text>
+  <line x1="150" y1="144" x2="150" y2="176" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="156" y="184" font-size="12" fill="currentColor">④ 액션 영역</text>
+</svg>
+<div class="table-wrap"><table><thead><tr><th>부위</th><th>토큰</th></tr></thead><tbody><tr><td>① 스크림</td><td><code>--modal-overlay-bg</code>(ink 60%) · <code>z-index: var(--z-overlay)</code></td></tr><tr><td>② 패널</td><td>bg <code>--modal-bg</code> · 모서리 <code>--modal-radius</code> · 패딩 <code>--modal-pad</code> · 그림자 <code>--modal-shadow</code> · 최대폭 <code>--modal-max-width</code> · <code>z-index: var(--z-modal)</code></td></tr><tr><td>③ 닫기 버튼</td><td>마크업상 패널의 마지막 요소, 히트영역 <code>--target-min</code></td></tr><tr><td>④ 액션 영역</td><td>Button 컴포넌트 재사용(Primary 1개 + Secondary/Ghost)</td></tr></tbody></table></div>
+<h2 id="변형">변형</h2>
+<div class="table-wrap"><table><thead><tr><th>변형</th><th>용도</th></tr></thead><tbody><tr><td>확인(기본)</td><td>짧은 확인·경고 — 제목+1~2문장+액션 2개</td></tr><tr><td>입력</td><td>폼 필드 1~3개를 담는 짧은 입력 — 길어지면 모달이 아니라 별도 페이지</td></tr></tbody></table></div>
+<h2 id="상태">상태</h2>
+<div class="table-wrap"><table><thead><tr><th>상태</th><th>규칙</th></tr></thead><tbody><tr><td>Open</td><td>스크림 위 패널 표시, 배경 스크롤 잠금(<code>body { overflow: hidden }</code>)</td></tr><tr><td>Focus</td><td>열리는 즉시 포커스를 패널 첫 인터랙티브 요소로 이동, 닫히면 트리거로 복귀(포커스 트랩)</td></tr><tr><td>Close</td><td><code>Esc</code>·닫기 버튼·(파괴적 액션이 아니면) 스크림 클릭으로 닫힘</td></tr></tbody></table></div>
+<h2 id="do-don-t">Do / Don't</h2>
+<div class="dd-pair"><div class="dd-card dd-do"><div class="dd-label">Do</div><ul><li>한 화면에 모달은 1개만 — 되돌리기 어려운 액션의 최종 확인에 쓴다.</li><li>제목은 질문형 한 문장으로 결정 내용을 그대로 담는다("발행할까요?").</li></ul></div><div class="dd-card dd-dont"><div class="dd-label">Don't</div><ul><li>모달 위에 모달을 띄우지 말 것 — 두 번째 확인이 필요하면 흐름 자체를 재설계한다.</li><li>긴 콘텐츠(스크롤 2화면 이상)를 모달에 넣지 말 것 — 별도 페이지로.</li></ul></div></div>
+<h2 id="콘텐츠-규칙">콘텐츠 규칙</h2>
+<ul><li>제목 = <strong>결정을 그대로 담은 질문/선언 1문장</strong>(≤20자). "알림" 같은 무정보 제목 금지.</li><li>본문은 결과·되돌림 가능 여부를 1~2문장으로. 액션 라벨은 제목과 호응하는 동사형("발행하기"/"취소") — "예/아니오" 금지.</li><li>파괴적 액션 라벨은 위험을 명시("삭제하기", 색은 danger 토큰).</li></ul>
+<h2 id="키보드-인터랙션">키보드 인터랙션</h2>
+<div class="table-wrap"><table><thead><tr><th>키</th><th>동작</th></tr></thead><tbody><tr><td><code>Esc</code></td><td>모달 닫기(포커스는 트리거로 복귀)</td></tr><tr><td><code>Tab</code> / <code>Shift+Tab</code></td><td>패널 내부에서만 포커스 순환(포커스 트랩)</td></tr><tr><td><code>Enter</code></td><td>포커스된 액션 실행</td></tr></tbody></table></div>
+<h2 id="접근성">접근성</h2>
+<ul><li><code>role="dialog"</code> + <code>aria-modal="true"</code> + <code>aria-labelledby</code>(제목 id 연결). 필요 시 <code>aria-describedby</code>(본문).</li><li><strong>포커스 트랩 필수</strong> — 키보드·스크린리더 초점이 모달 밖으로 나가지 않게(아래 JS). 닫힘 시 트리거로 복귀.</li><li>스크린리더가 배경을 읽지 않도록 배경 콘텐츠에 <code>inert</code>(또는 <code>aria-hidden="true"</code>) 적용.</li><li>닫기 버튼은 <code>aria-label="닫기"</code> + 히트영역 <code>--target-min</code>.</li></ul>
+<h2 id="코드">코드</h2>
+<div class="pi-demo" data-demo>
+<button class="pi-button" type="button" data-modal-open="demo-modal">발행하기</button>
+
+<div class="pi-modal" id="demo-modal" hidden>
+  <div class="pi-modal__scrim" data-modal-close></div>
+  <div class="pi-modal__panel" role="dialog" aria-modal="true" aria-labelledby="demo-modal-title">
+    <h2 class="pi-modal__title" id="demo-modal-title">블로그 글을 발행할까요?</h2>
+    <p class="pi-modal__body">발행 후에는 비공개로만 전환할 수 있습니다.</p>
+    <div class="pi-modal__actions">
+      <button class="pi-button" type="button">발행하기</button>
+      <button class="pi-button pi-button--ghost" type="button" data-modal-close>취소</button>
+    </div>
+    <button class="pi-modal__close" type="button" aria-label="닫기" data-modal-close>&#10005;</button>
+  </div>
+</div>
+</div>
+<div class="code-block"><div class="code-lang">html</div><pre><code>&lt;button class="pi-button" type="button" data-modal-open="demo-modal"&gt;발행하기&lt;/button&gt;
+
+&lt;div class="pi-modal" id="demo-modal" hidden&gt;
+  &lt;div class="pi-modal__scrim" data-modal-close&gt;&lt;/div&gt;
+  &lt;div class="pi-modal__panel" role="dialog" aria-modal="true" aria-labelledby="demo-modal-title"&gt;
+    &lt;h2 class="pi-modal__title" id="demo-modal-title"&gt;블로그 글을 발행할까요?&lt;/h2&gt;
+    &lt;p class="pi-modal__body"&gt;발행 후에는 비공개로만 전환할 수 있습니다.&lt;/p&gt;
+    &lt;div class="pi-modal__actions"&gt;
+      &lt;button class="pi-button" type="button"&gt;발행하기&lt;/button&gt;
+      &lt;button class="pi-button pi-button--ghost" type="button" data-modal-close&gt;취소&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;button class="pi-modal__close" type="button" aria-label="닫기" data-modal-close&gt;&amp;#10005;&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+<div class="code-block"><div class="code-lang">css</div><pre><code>.pi-modal { position: fixed; inset: 0; display: grid; place-items: center; z-index: var(--z-modal); }
+.pi-modal[hidden] { display: none; }
+.pi-modal__scrim { position: absolute; inset: 0; background: var(--modal-overlay-bg); }
+.pi-modal__panel {
+  position: relative;
+  background: var(--modal-bg);
+  border-radius: var(--modal-radius);
+  padding: var(--modal-pad);
+  box-shadow: var(--modal-shadow);
+  width: min(var(--modal-max-width), calc(100% - var(--space-8)));
+  word-break: keep-all;
+}
+.pi-modal__title { font: var(--text-h3); letter-spacing: var(--text-h3-letter-spacing); color: var(--color-text-heading); margin: 0 0 var(--space-3); }
+.pi-modal__body { font: var(--text-body); color: var(--color-text-secondary); margin: 0 0 var(--space-6); }
+.pi-modal__actions { display: flex; gap: var(--space-3); }
+.pi-modal__close {
+  position: absolute; top: var(--space-3); right: var(--space-3);
+  min-width: var(--target-min); min-height: var(--target-min);
+  background: none; border: none; cursor: pointer;
+  color: var(--color-text-muted); font-size: var(--font-size-lg);
+}
+.pi-modal__close:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: var(--radius-sm); }</code></pre></div>
+<div class="code-block"><div class="code-lang">js</div><pre><code>// 포커스 트랩 + 열기/닫기 (의존성 없음)
+document.querySelectorAll("[data-modal-open]").forEach((trigger) =&gt; {
+  const modal = document.getElementById(trigger.dataset.modalOpen);
+  if (!modal) return;
+  const panel = modal.querySelector(".pi-modal__panel");
+  const focusables = () =&gt; panel.querySelectorAll("button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])");
+  const open = () =&gt; { modal.hidden = false; document.body.style.overflow = "hidden"; focusables()[0]?.focus(); };
+  const close = () =&gt; { modal.hidden = true; document.body.style.overflow = ""; trigger.focus(); };
+  trigger.addEventListener("click", open);
+  modal.querySelectorAll("[data-modal-close]").forEach((el) =&gt; el.addEventListener("click", close));
+  modal.addEventListener("keydown", (e) =&gt; {
+    if (e.key === "Escape") return close();
+    if (e.key !== "Tab") return;
+    const f = focusables(); const first = f[0]; const last = f[f.length - 1];
+    if (e.shiftKey &amp;&amp; document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey &amp;&amp; document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+});</code></pre></div>
+<h2 id="changelog">Changelog</h2>
+<div class="table-wrap"><table><thead><tr><th>날짜</th><th>변경</th></tr></thead><tbody><tr><td>2026-07-15</td><td>문서 계약(10섹션) 적용 — Anatomy 도해·콘텐츠 규칙·포커스 트랩 실코드 신설. KRDS 벤치마킹 규격(2026-07-15 추가분) 승계</td></tr></tbody></table></div></article>
+</main>
+</div>
+<script>window.PIDS_REL="../";</script>
+<script src="../assets/site.js"></script>
+<script>
+// 포커스 트랩 + 열기/닫기 (의존성 없음)
+document.querySelectorAll("[data-modal-open]").forEach((trigger) => {
+  const modal = document.getElementById(trigger.dataset.modalOpen);
+  if (!modal) return;
+  const panel = modal.querySelector(".pi-modal__panel");
+  const focusables = () => panel.querySelectorAll("button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])");
+  const open = () => { modal.hidden = false; document.body.style.overflow = "hidden"; focusables()[0]?.focus(); };
+  const close = () => { modal.hidden = true; document.body.style.overflow = ""; trigger.focus(); };
+  trigger.addEventListener("click", open);
+  modal.querySelectorAll("[data-modal-close]").forEach((el) => el.addEventListener("click", close));
+  modal.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") return close();
+    if (e.key !== "Tab") return;
+    const f = focusables(); const first = f[0]; const last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+});
+</script>
+</body>
+</html>

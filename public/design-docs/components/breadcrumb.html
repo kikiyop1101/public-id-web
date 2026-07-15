@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Breadcrumb (브레드크럼) — PI-DS 퍼블릭아이디 디자인시스템</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){var t=localStorage.getItem("pids-theme");if(t)document.documentElement.setAttribute("data-theme",t);})();</script>
+</head>
+<body>
+<a class="pi-skiplink" href="#main">본문 바로가기</a>
+<header class="site-header">
+  <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  <a class="site-brand" href="../index.html">PI-DS</a>
+  <div class="site-search">
+    <input type="search" id="search" placeholder="검색 (컴포넌트·토큰·규칙)" aria-label="문서 검색" autocomplete="off">
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="theme-toggle" type="button" aria-label="라이트/다크 전환">◐</button>
+</header>
+<div class="site-body">
+<nav class="site-nav" aria-label="문서 목차">
+<div class="nav-group"><div class="nav-group-title">시작</div><ul><li><a href="../index.html">홈 · 원칙</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Foundations</div><ul><li><a href="../foundations/color.html">Color</a></li><li><a href="../foundations/typography.html">Typography</a></li><li><a href="../foundations/spacing.html">Spacing</a></li><li><a href="../foundations/motion.html">Motion</a></li><li><a href="../foundations/layout.html">Layout</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 액션</div><ul><li><a href="../components/button.html">Button</a></li><li><a href="../components/link.html">Link</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 컨테이너</div><ul><li><a href="../components/card.html">Card</a></li><li><a href="../components/callout-alert.html">Callout · Alert</a></li><li><a href="../components/accordion.html">Accordion · Disclosure</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 내비게이션</div><ul><li><a href="../components/tab.html">Tab</a></li><li><a href="../components/breadcrumb.html" class="active" aria-current="page">Breadcrumb</a></li><li><a href="../components/pagination.html">Pagination</a></li><li><a href="../components/skip-link.html">Skip Link</a></li><li><a href="../components/step-indicator.html">Step Indicator</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 폼</div><ul><li><a href="../components/input.html">Input</a></li><li><a href="../components/select-controls.html">Checkbox · Radio · Toggle · Select</a></li><li><a href="../components/file-upload.html">File Upload</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 데이터</div><ul><li><a href="../components/table.html">Table</a></li><li><a href="../components/kpi.html">KPI / Stat</a></li><li><a href="../components/chip-badge.html">Chip · Badge</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 오버레이</div><ul><li><a href="../components/modal.html">Modal</a></li><li><a href="../components/toast.html">Toast</a></li><li><a href="../components/tooltip.html">Tooltip</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 피드백</div><ul><li><a href="../components/spinner.html">Spinner</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Content</div><ul><li><a href="../content/ux-writing.html">UX Writing</a></li></ul></div>
+
+</nav>
+<main class="site-main" id="main">
+<article class="doc"><h1 id="breadcrumb-브레드크럼">Breadcrumb (브레드크럼)</h1>
+<p>사이트 계층에서 현재 페이지의 위치와 상위 경로를 보여 주는 내비게이션 컴포넌트. 다단계 페이지 구조가 있는 사이트에 쓴다.</p>
+<h2 id="정의">정의</h2>
+<p>사이트 계층에서 현재 페이지의 위치와 상위 경로를 순서대로 보여 주는 내비게이션 컴포넌트다.</p>
+<h2 id="anatomy">Anatomy</h2>
+<svg viewBox="0 0 420 110" width="420" height="110" role="img" aria-label="브레드크럼 해부도" style="max-width:100%">
+  <text x="20" y="55" font-size="14" fill="var(--breadcrumb-fg)">홈</text>
+  <text x="46" y="55" font-size="14" fill="var(--breadcrumb-separator)">/</text>
+  <text x="60" y="55" font-size="14" fill="var(--breadcrumb-fg)">카탈로그</text>
+  <text x="116" y="55" font-size="14" fill="var(--breadcrumb-separator)">/</text>
+  <text x="130" y="55" font-size="14" fill="var(--breadcrumb-fg)">노면표시</text>
+  <text x="188" y="55" font-size="14" fill="var(--breadcrumb-separator)">/</text>
+  <text x="202" y="55" font-size="14" font-weight="700" fill="var(--breadcrumb-fg-current)">서행 유도 표시</text>
+  <line x1="28" y1="42" x2="28" y2="22" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="34" y="18" font-size="12" fill="currentColor">① 상위 링크</text>
+  <line x1="116" y1="42" x2="116" y2="22" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="122" y="18" font-size="12" fill="currentColor">② 구분자</text>
+  <line x1="240" y1="60" x2="240" y2="84" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="210" y="98" font-size="12" fill="currentColor">③ 현재 위치</text>
+</svg>
+<div class="table-wrap"><table><thead><tr><th>부위</th><th>토큰</th></tr></thead><tbody><tr><td>① 상위 링크</td><td><code>--breadcrumb-fg</code>(muted), 클릭 시 해당 계층으로 이동</td></tr><tr><td>② 구분자</td><td><code>--breadcrumb-separator</code>(faint), 장식이므로 <code>aria-hidden</code></td></tr><tr><td>③ 현재 위치</td><td><code>--breadcrumb-fg-current</code>, <strong>링크 아님</strong> + <code>aria-current="page"</code></td></tr></tbody></table></div>
+<h2 id="변형">변형</h2>
+<div class="table-wrap"><table><thead><tr><th>변형</th><th>용도</th></tr></thead><tbody><tr><td>전체 경로(기본)</td><td>데스크톱 — 홈부터 현재까지 최대 4단계 노출</td></tr><tr><td>축약형</td><td>모바일·좁은 폭 — 처음·끝만 남기고 중간은 말줄임(…)</td></tr></tbody></table></div>
+<h2 id="상태">상태</h2>
+<div class="table-wrap"><table><thead><tr><th>상태</th><th>상위 링크</th><th>현재 위치</th></tr></thead><tbody><tr><td>Default</td><td>fg <code>--breadcrumb-fg</code></td><td>fg <code>--breadcrumb-fg-current</code>(비인터랙티브)</td></tr><tr><td>Hover</td><td>밑줄 표시</td><td>—</td></tr><tr><td>Focus</td><td><code>box-shadow: var(--focus-ring)</code></td><td>해당 없음(링크 아님)</td></tr></tbody></table></div>
+<h2 id="do-don-t">Do / Don't</h2>
+<div class="dd-pair"><div class="dd-card dd-do"><div class="dd-label">Do</div><ul><li>페이지 제목 바로 위에 둔다 — 위치를 먼저 알리고 제목으로 이어지게.</li><li>링크는 최대 4개로 유지하고, 더 깊으면 축약형(…)으로 접는다.</li><li>현재 위치는 링크가 아닌 텍스트로 두고 <code>aria-current="page"</code>를 준다.</li></ul></div><div class="dd-card dd-dont"><div class="dd-label">Don't</div><ul><li>계층이 없는(한 단계뿐인) 페이지에 브레드크럼을 넣지 말 것 — 보여 줄 경로가 없다.</li><li>구분자(/)를 링크로 만들지 말 것 — 장식이므로 스크린리더에서 감춘다.</li><li>현재 페이지를 클릭 가능한 링크로 두지 말 것 — 이동할 곳이 없다.</li></ul></div></div>
+<h2 id="콘텐츠-규칙">콘텐츠 규칙</h2>
+<ul><li>각 단계 라벨은 그 페이지 제목과 같은 명사구로 — 임의로 바꾸지 않는다.</li><li>라벨은 <strong>1~2어절</strong>로 짧게, 길면 축약형에서 말줄임(…)으로 처리한다.</li><li>첫 항목은 보통 "홈" — 사이트 최상위를 가리킨다.</li><li>전역 규칙: <code>../guidelines/ux-writing.md</code>.</li></ul>
+<h2 id="키보드-인터랙션">키보드 인터랙션</h2>
+<div class="table-wrap"><table><thead><tr><th>키</th><th>동작</th></tr></thead><tbody><tr><td><code>Tab</code></td><td>상위 링크로 순차 이동(현재 위치는 링크가 아니라 건너뜀)</td></tr><tr><td><code>Enter</code></td><td>포커스된 링크로 이동</td></tr></tbody></table></div>
+<h2 id="접근성">접근성</h2>
+<ul><li><code>&lt;nav aria-label="브레드크럼"&gt;</code> 안에 <code>&lt;ol&gt;</code>·<code>&lt;li&gt;</code>로 순서를 의미화한다.</li><li>현재 위치 항목에 <code>aria-current="page"</code>, 링크가 아닌 텍스트로 둔다.</li><li>구분자(/)는 CSS로 그리거나 <code>aria-hidden="true"</code>로 스크린리더에서 감춘다.</li><li>링크는 색만으로 구분하지 말고 hover·focus에서 밑줄을 함께(저시력 대비).</li><li>기준: <code>../guidelines/accessibility.md</code>.</li></ul>
+<h2 id="코드">코드</h2>
+<div class="pi-demo" data-demo>
+<nav class="pi-breadcrumb" aria-label="브레드크럼">
+  <ol class="pi-breadcrumb__list">
+    <li class="pi-breadcrumb__item"><a class="pi-breadcrumb__link" href="#">홈</a></li>
+    <li class="pi-breadcrumb__item"><a class="pi-breadcrumb__link" href="#">카탈로그</a></li>
+    <li class="pi-breadcrumb__item"><a class="pi-breadcrumb__link" href="#">노면표시</a></li>
+    <li class="pi-breadcrumb__item"><span class="pi-breadcrumb__current" aria-current="page">서행 유도 표시</span></li>
+  </ol>
+</nav>
+</div>
+<div class="code-block"><div class="code-lang">html</div><pre><code>&lt;nav class="pi-breadcrumb" aria-label="브레드크럼"&gt;
+  &lt;ol class="pi-breadcrumb__list"&gt;
+    &lt;li class="pi-breadcrumb__item"&gt;&lt;a class="pi-breadcrumb__link" href="#"&gt;홈&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="pi-breadcrumb__item"&gt;&lt;a class="pi-breadcrumb__link" href="#"&gt;카탈로그&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="pi-breadcrumb__item"&gt;&lt;a class="pi-breadcrumb__link" href="#"&gt;노면표시&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="pi-breadcrumb__item"&gt;&lt;span class="pi-breadcrumb__current" aria-current="page"&gt;서행 유도 표시&lt;/span&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;</code></pre></div>
+<div class="code-block"><div class="code-lang">css</div><pre><code>.pi-breadcrumb__list {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2);
+  list-style: none; margin: 0; padding: 0;
+  font: var(--text-body-sm);
+}
+.pi-breadcrumb__item { display: inline-flex; align-items: center; gap: var(--space-2); }
+.pi-breadcrumb__item:not(:first-child)::before {
+  content: "/"; color: var(--breadcrumb-separator);
+}
+.pi-breadcrumb__link {
+  color: var(--breadcrumb-fg); text-decoration: none;
+  padding: var(--space-1) 0; word-break: keep-all;
+}
+.pi-breadcrumb__link:hover { text-decoration: underline; }
+.pi-breadcrumb__link:focus-visible {
+  outline: none; box-shadow: var(--focus-ring); border-radius: var(--radius-sm);
+}
+.pi-breadcrumb__current {
+  color: var(--breadcrumb-fg-current); font-weight: var(--font-weight-semibold); word-break: keep-all;
+}</code></pre></div>
+<h2 id="changelog">Changelog</h2>
+<div class="table-wrap"><table><thead><tr><th>날짜</th><th>변경</th></tr></thead><tbody><tr><td>2026-07-15</td><td>문서 계약(10섹션) 적용 — KRDS 벤치마킹 규격(2026-07-15) 승계, Anatomy 도해·변형·상태·콘텐츠 규칙·키보드·실코드 신설</td></tr></tbody></table></div></article>
+</main>
+</div>
+<script>window.PIDS_REL="../";</script>
+<script src="../assets/site.js"></script>
+
+</body>
+</html>

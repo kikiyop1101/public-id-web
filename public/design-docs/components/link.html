@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Link (링크) — PI-DS 퍼블릭아이디 디자인시스템</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){var t=localStorage.getItem("pids-theme");if(t)document.documentElement.setAttribute("data-theme",t);})();</script>
+</head>
+<body>
+<a class="pi-skiplink" href="#main">본문 바로가기</a>
+<header class="site-header">
+  <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  <a class="site-brand" href="../index.html">PI-DS</a>
+  <div class="site-search">
+    <input type="search" id="search" placeholder="검색 (컴포넌트·토큰·규칙)" aria-label="문서 검색" autocomplete="off">
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="theme-toggle" type="button" aria-label="라이트/다크 전환">◐</button>
+</header>
+<div class="site-body">
+<nav class="site-nav" aria-label="문서 목차">
+<div class="nav-group"><div class="nav-group-title">시작</div><ul><li><a href="../index.html">홈 · 원칙</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Foundations</div><ul><li><a href="../foundations/color.html">Color</a></li><li><a href="../foundations/typography.html">Typography</a></li><li><a href="../foundations/spacing.html">Spacing</a></li><li><a href="../foundations/motion.html">Motion</a></li><li><a href="../foundations/layout.html">Layout</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 액션</div><ul><li><a href="../components/button.html">Button</a></li><li><a href="../components/link.html" class="active" aria-current="page">Link</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 컨테이너</div><ul><li><a href="../components/card.html">Card</a></li><li><a href="../components/callout-alert.html">Callout · Alert</a></li><li><a href="../components/accordion.html">Accordion · Disclosure</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 내비게이션</div><ul><li><a href="../components/tab.html">Tab</a></li><li><a href="../components/breadcrumb.html">Breadcrumb</a></li><li><a href="../components/pagination.html">Pagination</a></li><li><a href="../components/skip-link.html">Skip Link</a></li><li><a href="../components/step-indicator.html">Step Indicator</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 폼</div><ul><li><a href="../components/input.html">Input</a></li><li><a href="../components/select-controls.html">Checkbox · Radio · Toggle · Select</a></li><li><a href="../components/file-upload.html">File Upload</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 데이터</div><ul><li><a href="../components/table.html">Table</a></li><li><a href="../components/kpi.html">KPI / Stat</a></li><li><a href="../components/chip-badge.html">Chip · Badge</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 오버레이</div><ul><li><a href="../components/modal.html">Modal</a></li><li><a href="../components/toast.html">Toast</a></li><li><a href="../components/tooltip.html">Tooltip</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 피드백</div><ul><li><a href="../components/spinner.html">Spinner</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Content</div><ul><li><a href="../content/ux-writing.html">UX Writing</a></li></ul></div>
+
+</nav>
+<main class="site-main" id="main">
+<article class="doc"><h1 id="link-링크">Link (링크)</h1>
+<p>다른 페이지·위치로 이동시키는 인라인 텍스트. 색만이 아니라 밑줄을 함께 써 링크임을 알린다.</p>
+<h2 id="정의">정의</h2>
+<p>다른 페이지·위치로 이동시키는 인라인 텍스트 컴포넌트다.</p>
+<h2 id="anatomy">Anatomy</h2>
+<svg viewBox="0 0 420 90" width="420" height="90" role="img" aria-label="링크 해부도" style="max-width:100%">
+  <text x="60" y="50" font-size="15" fill="currentColor">규격은 </text>
+  <text x="118" y="50" font-size="15" font-weight="700" fill="var(--link-color)">제품 카탈로그</text>
+  <line x1="118" y1="57" x2="214" y2="57" stroke="var(--link-color)" stroke-width="2"/>
+  <text x="220" y="50" font-size="15" fill="currentColor">에서 확인.</text>
+  <line x1="160" y1="34" x2="160" y2="20" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="166" y="24" font-size="12" fill="currentColor">① 링크 텍스트</text>
+  <line x1="166" y1="62" x2="166" y2="78" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="172" y="82" font-size="12" fill="currentColor">② 밑줄</text>
+</svg>
+<div class="table-wrap"><table><thead><tr><th>부위</th><th>토큰</th></tr></thead><tbody><tr><td>① 링크 텍스트</td><td>색 <code>--link-color</code>(틸700, 흰 배경 AA) · 굵기 <code>--font-weight-semibold</code>(본문과 구분)</td></tr><tr><td>② 밑줄</td><td><code>--link-underline</code> · 호버·포커스에서 강조(색만으로 구분하지 않음) · 전환 <code>--link-underline-dur</code></td></tr><tr><td>③ 외부 링크 아이콘(선택)</td><td>라인 SVG, <code>stroke="currentColor"</code>, 새 탭 이동 표시</td></tr></tbody></table></div>
+<h2 id="변형">변형</h2>
+<div class="table-wrap"><table><thead><tr><th>변형</th><th>용도</th></tr></thead><tbody><tr><td>인라인(기본)</td><td>문장 안 링크 — 밑줄로 구분</td></tr><tr><td>독립(standalone)</td><td>문단 밖 단독 링크("디자인구독 안내 보기 →")</td></tr><tr><td>외부 링크</td><td>새 탭 이동 — 아이콘 + <code>rel</code> 표기</td></tr></tbody></table></div>
+<h2 id="상태">상태</h2>
+<div class="table-wrap"><table><thead><tr><th>상태</th><th>값</th></tr></thead><tbody><tr><td>Default</td><td>색 <code>--link-color</code> · 밑줄 <code>--link-underline</code></td></tr><tr><td>Hover</td><td>밑줄 색·강조(<code>--link-color</code>) · 전환 <code>--link-underline-dur</code></td></tr><tr><td>Focus</td><td><code>box-shadow: var(--focus-ring)</code> + 밑줄 유지</td></tr><tr><td>Visited</td><td>색 유지(맥락상 필요할 때만 <code>--color-text-muted</code>로 구분)</td></tr></tbody></table></div>
+<h2 id="do-don-t">Do / Don't</h2>
+<div class="dd-pair"><div class="dd-card dd-do"><div class="dd-label">Do</div><ul><li>링크는 색과 밑줄을 함께 쓴다 — 색을 못 봐도 링크임을 안다.</li><li>링크 텍스트는 목적지를 설명한다("제품 카탈로그") — 맥락 없는 "여기" 금지.</li><li>새 탭으로 여는 외부 링크는 아이콘·문구로 미리 알린다.</li></ul></div><div class="dd-card dd-dont"><div class="dd-label">Don't</div><ul><li>이동이 아닌 실행(제출·삭제)에 링크를 쓰지 말 것 — 실행은 Button이다.</li><li>본문 링크의 밑줄을 제거해 색만 남기지 말 것 — 색맹 사용자에게 링크가 사라진다.</li><li>"여기를 클릭"·"more" 같은 맥락 없는 라벨을 쓰지 말 것.</li></ul></div></div>
+<h2 id="콘텐츠-규칙">콘텐츠 규칙</h2>
+<ul><li>링크 텍스트는 <strong>목적지를 설명하는 명사구</strong>("안전표지 카탈로그", "디자인구독 안내").</li><li>문장 안에서는 자연스러운 어절만 감싼다 — 조사("…에서")는 링크 밖에 둔다.</li><li>외부·다운로드 링크는 유형을 함께 표기한다("(PDF)", "새 창").</li><li>URL을 그대로 노출하지 않는다 — 설명 텍스트로 대체한다.</li></ul>
+<h2 id="키보드-인터랙션">키보드 인터랙션</h2>
+<div class="table-wrap"><table><thead><tr><th>키</th><th>동작</th></tr></thead><tbody><tr><td><code>Tab</code> / <code>Shift+Tab</code></td><td>다음/이전 링크로 포커스 이동(포커스 링 표시)</td></tr><tr><td><code>Enter</code></td><td>링크 이동(활성화)</td></tr></tbody></table></div>
+<h2 id="접근성">접근성</h2>
+<ul><li>네이티브 <code>&lt;a href&gt;</code>를 쓴다 — 키보드·스크린리더 기본 지원.</li><li>링크를 색만으로 구분하지 않는다 — 밑줄·호버를 동반한다(WCAG 1.4.1 색 비의존).</li><li>새 탭 링크는 <code>target="_blank"</code> + <code>rel="noopener"</code> + 새 탭 안내 텍스트를 함께 둔다.</li><li>색 대비: <code>--link-color</code>(틸700) on 흰 배경은 AA 이상. 기준: <code>../guidelines/accessibility.md</code>.</li></ul>
+<h2 id="코드">코드</h2>
+<div class="pi-demo" data-demo>
+<p class="pi-prose">
+  친환경 노면표시재의 자세한 규격은
+  <a class="pi-link" href="#">제품 카탈로그</a>에서 확인할 수 있습니다.
+</p>
+<p class="pi-prose">
+  제품은
+  <a class="pi-link pi-link--external" href="https://store.public-id.co.kr" target="_blank" rel="noopener">스토어에서 구매<span class="pi-link__ext" aria-hidden="true">↗</span></a>할 수 있습니다.
+</p>
+<p class="pi-prose">
+  <a class="pi-link pi-link--standalone" href="#">디자인구독 안내 보기 →</a>
+</p>
+</div>
+<div class="code-block"><div class="code-lang">html</div><pre><code>&lt;p class="pi-prose"&gt;
+  친환경 노면표시재의 자세한 규격은
+  &lt;a class="pi-link" href="#"&gt;제품 카탈로그&lt;/a&gt;에서 확인할 수 있습니다.
+&lt;/p&gt;
+&lt;p class="pi-prose"&gt;
+  제품은
+  &lt;a class="pi-link pi-link--external" href="https://store.public-id.co.kr" target="_blank" rel="noopener"&gt;스토어에서 구매&lt;span class="pi-link__ext" aria-hidden="true"&gt;↗&lt;/span&gt;&lt;/a&gt;할 수 있습니다.
+&lt;/p&gt;
+&lt;p class="pi-prose"&gt;
+  &lt;a class="pi-link pi-link--standalone" href="#"&gt;디자인구독 안내 보기 →&lt;/a&gt;
+&lt;/p&gt;</code></pre></div>
+<div class="code-block"><div class="code-lang">css</div><pre><code>.pi-prose { font: var(--text-body); color: var(--color-text-primary); word-break: keep-all; }
+.pi-link {
+  color: var(--link-color);
+  font-weight: var(--font-weight-semibold);
+  text-decoration-line: underline;
+  text-decoration-color: var(--link-underline);
+  text-underline-offset: var(--space-1);
+  border-radius: var(--radius-sm);
+  transition: text-decoration-color var(--link-underline-dur) var(--easing-out);
+}
+.pi-link:hover { text-decoration-color: var(--link-color); }
+.pi-link:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  text-decoration-color: var(--link-color);
+}
+.pi-link__ext { margin-left: var(--space-1); font-size: var(--font-size-sm); }
+.pi-link--standalone { font-weight: var(--font-weight-bold); text-decoration: none; }
+.pi-link--standalone:hover { text-decoration-line: underline; text-decoration-color: var(--link-color); }
+
+@media (prefers-reduced-motion: reduce) {
+  .pi-link { transition: none; }
+}</code></pre></div>
+<h2 id="changelog">Changelog</h2>
+<div class="table-wrap"><table><thead><tr><th>날짜</th><th>변경</th></tr></thead><tbody><tr><td>2026-07-15</td><td>문서 계약(10섹션) 적용 — Anatomy 도해·변형(인라인/독립/외부)·상태 매트릭스·색 비의존 원칙·코드 신설, 기존 규격 승계</td></tr></tbody></table></div></article>
+</main>
+</div>
+<script>window.PIDS_REL="../";</script>
+<script src="../assets/site.js"></script>
+
+</body>
+</html>

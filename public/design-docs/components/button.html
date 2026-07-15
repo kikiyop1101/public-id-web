@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Button (버튼) — PI-DS 퍼블릭아이디 디자인시스템</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){var t=localStorage.getItem("pids-theme");if(t)document.documentElement.setAttribute("data-theme",t);})();</script>
+</head>
+<body>
+<a class="pi-skiplink" href="#main">본문 바로가기</a>
+<header class="site-header">
+  <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  <a class="site-brand" href="../index.html">PI-DS</a>
+  <div class="site-search">
+    <input type="search" id="search" placeholder="검색 (컴포넌트·토큰·규칙)" aria-label="문서 검색" autocomplete="off">
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="theme-toggle" type="button" aria-label="라이트/다크 전환">◐</button>
+</header>
+<div class="site-body">
+<nav class="site-nav" aria-label="문서 목차">
+<div class="nav-group"><div class="nav-group-title">시작</div><ul><li><a href="../index.html">홈 · 원칙</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Foundations</div><ul><li><a href="../foundations/color.html">Color</a></li><li><a href="../foundations/typography.html">Typography</a></li><li><a href="../foundations/spacing.html">Spacing</a></li><li><a href="../foundations/motion.html">Motion</a></li><li><a href="../foundations/layout.html">Layout</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 액션</div><ul><li><a href="../components/button.html" class="active" aria-current="page">Button</a></li><li><a href="../components/link.html">Link</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 컨테이너</div><ul><li><a href="../components/card.html">Card</a></li><li><a href="../components/callout-alert.html">Callout · Alert</a></li><li><a href="../components/accordion.html">Accordion · Disclosure</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 내비게이션</div><ul><li><a href="../components/tab.html">Tab</a></li><li><a href="../components/breadcrumb.html">Breadcrumb</a></li><li><a href="../components/pagination.html">Pagination</a></li><li><a href="../components/skip-link.html">Skip Link</a></li><li><a href="../components/step-indicator.html">Step Indicator</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 폼</div><ul><li><a href="../components/input.html">Input</a></li><li><a href="../components/select-controls.html">Checkbox · Radio · Toggle · Select</a></li><li><a href="../components/file-upload.html">File Upload</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 데이터</div><ul><li><a href="../components/table.html">Table</a></li><li><a href="../components/kpi.html">KPI / Stat</a></li><li><a href="../components/chip-badge.html">Chip · Badge</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 오버레이</div><ul><li><a href="../components/modal.html">Modal</a></li><li><a href="../components/toast.html">Toast</a></li><li><a href="../components/tooltip.html">Tooltip</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 피드백</div><ul><li><a href="../components/spinner.html">Spinner</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Content</div><ul><li><a href="../content/ux-writing.html">UX Writing</a></li></ul></div>
+
+</nav>
+<main class="site-main" id="main">
+<article class="doc"><h1 id="button-버튼">Button (버튼)</h1>
+<p>브랜드 1차 액션 컴포넌트. Primary·Secondary·Ghost 3위계 + 전환 유도 전용 CTA(라임) 변형을 제공한다.</p>
+<h2 id="정의">정의</h2>
+<p>사용자가 누르면 즉시 액션이 실행되는 컴포넌트다.</p>
+<h2 id="anatomy">Anatomy</h2>
+<svg viewBox="0 0 420 150" width="420" height="150" role="img" aria-label="버튼 해부도" style="max-width:100%">
+  <rect x="90" y="45" width="240" height="56" rx="8" fill="var(--color-brand-primary)"/>
+  <circle cx="130" cy="73" r="10" fill="none" stroke="var(--button-primary-fg)" stroke-width="2"/>
+  <text x="152" y="79" fill="var(--button-primary-fg)" font-size="16" font-weight="700" font-family="inherit">견적 요청하기</text>
+  <line x1="90" y1="20" x2="330" y2="20" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="335" y="24" font-size="12" fill="currentColor">① 컨테이너</text>
+  <line x1="130" y1="101" x2="130" y2="128" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="120" y="142" font-size="12" fill="currentColor">③ 아이콘(선택)</text>
+  <line x1="210" y1="101" x2="210" y2="112" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="200" y="126" font-size="12" fill="currentColor">② 라벨</text>
+</svg>
+<div class="table-wrap"><table><thead><tr><th>부위</th><th>토큰</th></tr></thead><tbody><tr><td>① 컨테이너</td><td>패딩 <code>--button-pad-y</code>/<code>--button-pad-x</code> · 모서리 <code>--button-radius</code>(CTA는 <code>--button-cta-radius</code> 풀필)</td></tr><tr><td>② 라벨</td><td><code>--font-family-sans</code> · 크기 <code>--font-size-base</code> · 굵기 <code>--font-weight-bold</code>(대비 확보, 접근성 참조)</td></tr><tr><td>③ 아이콘(선택)</td><td>라인 SVG, 라벨과 간격 <code>--button-gap</code>, <code>stroke="currentColor"</code></td></tr></tbody></table></div>
+<h2 id="변형">변형</h2>
+<div class="table-wrap"><table><thead><tr><th>변형</th><th>용도</th></tr></thead><tbody><tr><td>Primary</td><td>화면의 주 액션(한 화면 1개) — 청록 필 + 흰 라벨</td></tr><tr><td>Secondary</td><td>보조 액션 — 투명 배경 + 청록 보더·라벨</td></tr><tr><td>Ghost</td><td>3차 액션·조밀한 UI — 배경·보더 없음</td></tr><tr><td>CTA (라임)</td><td>전환 유도 지점 전용(히어로·뒷표지) — 라임 필 + 네이비 라벨, 풀 라운드</td></tr></tbody></table></div>
+<h2 id="상태">상태</h2>
+<div class="table-wrap"><table><thead><tr><th>상태</th><th>Primary</th><th>Secondary</th><th>Ghost</th><th>CTA</th></tr></thead><tbody><tr><td>Default</td><td>bg <code>--button-primary-bg</code> / fg <code>--button-primary-fg</code></td><td>border <code>--button-secondary-border</code> / fg <code>--button-secondary-fg</code></td><td>fg <code>--button-ghost-fg</code></td><td>bg <code>--button-cta-bg</code> / fg <code>--button-cta-fg</code></td></tr><tr><td>Hover</td><td>bg <code>--button-primary-bg-hover</code></td><td>bg <code>--button-secondary-bg-hover</code></td><td>bg <code>--button-ghost-bg-hover</code></td><td><code>filter: brightness(0.92)</code></td></tr><tr><td>Active</td><td>bg <code>--button-primary-bg-active</code></td><td>—</td><td>—</td><td>—</td></tr><tr><td>Focus</td><td><code>box-shadow: var(--focus-ring)</code> (4변형 공통)</td><td>동일</td><td>동일</td><td>동일</td></tr><tr><td>Disabled</td><td><code>opacity: var(--button-disabled-opacity)</code> + <code>cursor: not-allowed</code> (4변형 공통)</td><td>동일</td><td>동일</td><td>동일</td></tr></tbody></table></div>
+<h2 id="do-don-t">Do / Don't</h2>
+<div class="dd-pair"><div class="dd-card dd-do"><div class="dd-label">Do</div><ul><li>한 화면에 Primary는 1개만 — 주 액션이 무엇인지 시선이 바로 가게 한다.</li><li>CTA(라임)는 전환 유도 지점(히어로·뒷표지·가격 안내 끝)에만 아껴 쓴다.</li><li>아이콘을 쓰면 라벨과 함께 쓴다(아이콘 단독 버튼은 <code>aria-label</code> 필수 + Tooltip 참조).</li></ul></div><div class="dd-card dd-dont"><div class="dd-label">Don't</div><ul><li>Primary를 여러 개 나란히 두지 말 것 — 위계가 무너진다.</li><li>라벨을 14px 이하로 줄인 채 청록 필을 유지하지 말 것 — 대비 미달(접근성 참조).</li><li>링크로 이동하는 요소를 버튼처럼 꾸미지 말 것 — 이동은 Link, 실행은 Button.</li></ul></div></div>
+<h2 id="콘텐츠-규칙">콘텐츠 규칙</h2>
+<ul><li>라벨은 <strong>동사형</strong>으로 끝낸다: "견적 요청하기", "카탈로그 받기" (명사 단독 "견적" ✗).</li><li>길이는 <strong>2~4어절</strong>, 줄바꿈 없이 한 줄. 말줄임표(…) 금지.</li><li>이중 부정 금지("취소 안 함" ✗ → "유지하기").</li><li>조사 오류·띄어쓰기는 발행 전 점검(전역 규칙: <code>../guidelines/ux-writing.md</code>).</li></ul>
+<h2 id="키보드-인터랙션">키보드 인터랙션</h2>
+<div class="table-wrap"><table><thead><tr><th>키</th><th>동작</th></tr></thead><tbody><tr><td><code>Tab</code></td><td>버튼으로 포커스 이동(포커스 링 표시)</td></tr><tr><td><code>Enter</code> / <code>Space</code></td><td>버튼 실행</td></tr></tbody></table></div>
+<h2 id="접근성">접근성</h2>
+<ul><li>네이티브 <code>&lt;button&gt;</code> 요소를 쓴다(<code>&lt;div role="button"&gt;</code> 지양) — 키보드·스크린리더 기본 지원.</li><li><strong>대비</strong>: 흰 라벨 on 청록(#069CBB) ≈ 3.0:1 → "큰 텍스트" 기준으로만 통과. 그래서 기본 라벨 = <strong>16px·bold(700)</strong>. 라벨을 더 작게 써야 하면 필을 <code>--color-teal-700</code>(흰 라벨 ~4.9:1, AA)으로 바꾼다.</li><li>포커스 링 제거 금지(<code>:focus-visible</code> + <code>--focus-ring</code>), 히트영역 ≥ <code>--target-min</code>(44px — 패딩 기본값으로 충족).</li><li>비활성은 <code>disabled</code> 속성(스타일만 흐리게 하지 말 것). 기준: <code>../guidelines/accessibility.md</code>.</li></ul>
+<h2 id="코드">코드</h2>
+<div class="pi-demo" data-demo>
+<button class="pi-button" type="button">견적 요청하기</button>
+<button class="pi-button pi-button--secondary" type="button">카탈로그 받기</button>
+<button class="pi-button pi-button--ghost" type="button">자세히 보기</button>
+<button class="pi-button pi-button--cta" type="button">디자인구독 시작하기</button>
+<button class="pi-button" type="button" disabled>견적 요청하기</button>
+</div>
+<div class="code-block"><div class="code-lang">html</div><pre><code>&lt;button class="pi-button" type="button"&gt;견적 요청하기&lt;/button&gt;
+&lt;button class="pi-button pi-button--secondary" type="button"&gt;카탈로그 받기&lt;/button&gt;
+&lt;button class="pi-button pi-button--ghost" type="button"&gt;자세히 보기&lt;/button&gt;
+&lt;button class="pi-button pi-button--cta" type="button"&gt;디자인구독 시작하기&lt;/button&gt;
+&lt;button class="pi-button" type="button" disabled&gt;견적 요청하기&lt;/button&gt;</code></pre></div>
+<div class="code-block"><div class="code-lang">css</div><pre><code>.pi-button {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: var(--button-gap);
+  padding: var(--button-pad-y) var(--button-pad-x);
+  border: var(--border-medium) solid transparent;
+  border-radius: var(--button-radius);
+  background: var(--button-primary-bg);
+  color: var(--button-primary-fg);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--font-lh-normal);
+  letter-spacing: var(--font-ls-normal);
+  min-height: var(--target-min);
+  cursor: pointer; word-break: keep-all;
+  transition: background var(--duration-base) var(--easing-out),
+              color var(--duration-base) var(--easing-out),
+              filter var(--duration-base) var(--easing-out);
+}
+.pi-button:hover { background: var(--button-primary-bg-hover); }
+.pi-button:active { background: var(--button-primary-bg-active); }
+.pi-button:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+.pi-button:disabled { opacity: var(--button-disabled-opacity); cursor: not-allowed; }
+
+.pi-button--secondary {
+  background: transparent;
+  border-color: var(--button-secondary-border);
+  color: var(--button-secondary-fg);
+}
+.pi-button--secondary:hover { background: var(--button-secondary-bg-hover); }
+
+.pi-button--ghost { background: transparent; color: var(--button-ghost-fg); }
+.pi-button--ghost:hover { background: var(--button-ghost-bg-hover); }
+
+.pi-button--cta {
+  background: var(--button-cta-bg);
+  color: var(--button-cta-fg);
+  border-radius: var(--button-cta-radius);
+}
+.pi-button--cta:hover { background: var(--button-cta-bg); filter: brightness(0.92); }
+
+@media (prefers-reduced-motion: reduce) {
+  .pi-button { transition: none; }
+}</code></pre></div>
+<h2 id="changelog">Changelog</h2>
+<div class="table-wrap"><table><thead><tr><th>날짜</th><th>변경</th></tr></thead><tbody><tr><td>2026-07-15</td><td>문서 계약(10섹션) 적용 — Anatomy 도해·콘텐츠 규칙·키보드·코드 신설, 기존 규격 승계. 라벨 기본 16px·700로 대비 기준 코드 반영</td></tr></tbody></table></div></article>
+</main>
+</div>
+<script>window.PIDS_REL="../";</script>
+<script src="../assets/site.js"></script>
+
+</body>
+</html>

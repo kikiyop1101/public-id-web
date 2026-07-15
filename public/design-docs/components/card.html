@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Card (카드) — PI-DS 퍼블릭아이디 디자인시스템</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){var t=localStorage.getItem("pids-theme");if(t)document.documentElement.setAttribute("data-theme",t);})();</script>
+</head>
+<body>
+<a class="pi-skiplink" href="#main">본문 바로가기</a>
+<header class="site-header">
+  <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  <a class="site-brand" href="../index.html">PI-DS</a>
+  <div class="site-search">
+    <input type="search" id="search" placeholder="검색 (컴포넌트·토큰·규칙)" aria-label="문서 검색" autocomplete="off">
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="theme-toggle" type="button" aria-label="라이트/다크 전환">◐</button>
+</header>
+<div class="site-body">
+<nav class="site-nav" aria-label="문서 목차">
+<div class="nav-group"><div class="nav-group-title">시작</div><ul><li><a href="../index.html">홈 · 원칙</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Foundations</div><ul><li><a href="../foundations/color.html">Color</a></li><li><a href="../foundations/typography.html">Typography</a></li><li><a href="../foundations/spacing.html">Spacing</a></li><li><a href="../foundations/motion.html">Motion</a></li><li><a href="../foundations/layout.html">Layout</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 액션</div><ul><li><a href="../components/button.html">Button</a></li><li><a href="../components/link.html">Link</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 컨테이너</div><ul><li><a href="../components/card.html" class="active" aria-current="page">Card</a></li><li><a href="../components/callout-alert.html">Callout · Alert</a></li><li><a href="../components/accordion.html">Accordion · Disclosure</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 내비게이션</div><ul><li><a href="../components/tab.html">Tab</a></li><li><a href="../components/breadcrumb.html">Breadcrumb</a></li><li><a href="../components/pagination.html">Pagination</a></li><li><a href="../components/skip-link.html">Skip Link</a></li><li><a href="../components/step-indicator.html">Step Indicator</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 폼</div><ul><li><a href="../components/input.html">Input</a></li><li><a href="../components/select-controls.html">Checkbox · Radio · Toggle · Select</a></li><li><a href="../components/file-upload.html">File Upload</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 데이터</div><ul><li><a href="../components/table.html">Table</a></li><li><a href="../components/kpi.html">KPI / Stat</a></li><li><a href="../components/chip-badge.html">Chip · Badge</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 오버레이</div><ul><li><a href="../components/modal.html">Modal</a></li><li><a href="../components/toast.html">Toast</a></li><li><a href="../components/tooltip.html">Tooltip</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 피드백</div><ul><li><a href="../components/spinner.html">Spinner</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Content</div><ul><li><a href="../content/ux-writing.html">UX Writing</a></li></ul></div>
+
+</nav>
+<main class="site-main" id="main">
+<article class="doc"><h1 id="card-카드">Card (카드)</h1>
+<p>정보를 한 덩어리로 묶는 기본 컨테이너. 기본 / 액센트(상단 틸 보더) / 다크(네이비) 3변형.</p>
+<h2 id="정의">정의</h2>
+<p>관련 정보 한 묶음을 경계·그림자로 구획해 담는 컨테이너 컴포넌트다.</p>
+<h2 id="anatomy">Anatomy</h2>
+<svg viewBox="0 0 420 190" width="420" height="190" role="img" aria-label="카드 해부도" style="max-width:100%">
+  <rect x="70" y="30" width="280" height="130" rx="12" fill="var(--color-bg-canvas)" stroke="var(--color-border-default)"/>
+  <rect x="70" y="30" width="280" height="4" rx="2" fill="var(--color-brand-primary)"/>
+  <text x="94" y="72" font-size="15" font-weight="700" fill="currentColor">카드 제목</text>
+  <text x="94" y="98" font-size="13" fill="currentColor" opacity="0.7">본문 내용이 들어가는 영역</text>
+  <line x1="70" y1="14" x2="350" y2="14" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="355" y="18" font-size="12" fill="currentColor">① 컨테이너</text>
+  <line x1="210" y1="34" x2="210" y2="8" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="216" y="10" font-size="12" fill="currentColor">② 액센트 보더(선택)</text>
+  <line x1="94" y1="104" x2="94" y2="176" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="100" y="182" font-size="12" fill="currentColor">③ 콘텐츠(패딩 안)</text>
+</svg>
+<div class="table-wrap"><table><thead><tr><th>부위</th><th>토큰</th></tr></thead><tbody><tr><td>① 컨테이너</td><td>bg <code>--card-bg</code> · 보더 <code>--card-border</code>(1px) · 모서리 <code>--card-radius</code> · 그림자 <code>--card-shadow</code></td></tr><tr><td>② 액센트 보더(선택)</td><td><code>--card-accent-border</code> 상단 3px — Accent 변형에서만</td></tr><tr><td>③ 콘텐츠</td><td>패딩 <code>--card-pad</code>, 제목 <code>--text-h4</code>, 본문 <code>--text-body</code></td></tr></tbody></table></div>
+<h2 id="변형">변형</h2>
+<div class="table-wrap"><table><thead><tr><th>변형</th><th>용도</th></tr></thead><tbody><tr><td>기본</td><td>일반 정보 그룹(목록·소개·요약)</td></tr><tr><td>Accent</td><td>강조하고 싶은 카드 1~2개(상단 틸 보더) — 남발 금지</td></tr><tr><td>Dark</td><td>네이비 면 위 반전 카드(표지·CTA 구역) — 제목 흰색, 본문 <code>--card-dark-fg</code></td></tr></tbody></table></div>
+<h2 id="상태">상태</h2>
+<div class="table-wrap"><table><thead><tr><th>상태</th><th>값</th></tr></thead><tbody><tr><td>Default</td><td>bg <code>--card-bg</code> · border <code>--card-border</code> · shadow <code>--card-shadow</code></td></tr><tr><td>Hover(링크 카드만)</td><td>shadow <code>--card-shadow-hover</code> + <code>translateY(calc(var(--space-1) * -1))</code></td></tr><tr><td>Focus(링크 카드만)</td><td><code>box-shadow: var(--focus-ring)</code></td></tr></tbody></table></div>
+<h2 id="do-don-t">Do / Don't</h2>
+<div class="dd-pair"><div class="dd-card dd-do"><div class="dd-label">Do</div><ul><li>카드 하나에 메시지 하나 — 제목·본문·(선택)액션의 단순 구조를 유지한다.</li><li>카드 그리드 간격은 <code>--space-5</code>(16px)로 통일한다.</li><li>카드 전체가 클릭 대상이면 <code>&lt;a&gt;</code>로 감싸고 hover·focus 상태를 붙인다.</li></ul></div><div class="dd-card dd-dont"><div class="dd-label">Don't</div><ul><li>카드 안에 카드를 중첩하지 말 것 — 계층이 필요하면 Accordion을 쓴다.</li><li>그림자를 elevation 3~4로 키우지 말 것 — 카드면 0~2 안에서(떠 있는 건 Modal·Toast).</li><li>한 그리드에서 Accent 카드를 절반 이상 쓰지 말 것 — 강조가 사라진다.</li></ul></div></div>
+<h2 id="콘텐츠-규칙">콘텐츠 규칙</h2>
+<ul><li>제목은 <strong>명사구 1줄</strong>(≤12자 권장), 본문은 2~3문장 안에서 끝낸다.</li><li>본문이 길어지면 카드를 나누거나 "자세히 보기" Link로 상세에 위임한다.</li><li>숫자 강조가 목적이면 Card가 아니라 KPI 컴포넌트를 쓴다.</li></ul>
+<h2 id="키보드-인터랙션">키보드 인터랙션</h2>
+<div class="table-wrap"><table><thead><tr><th>키</th><th>동작</th></tr></thead><tbody><tr><td><code>Tab</code></td><td>링크 카드(또는 카드 내부 액션)로 포커스 이동</td></tr><tr><td><code>Enter</code></td><td>링크 카드 열기</td></tr></tbody></table></div>
+<p>정적(비링크) 카드는 해당 없음 — 포커스를 받지 않는다.</p>
+<h2 id="접근성">접근성</h2>
+<ul><li>링크 카드는 카드 전체를 <code>&lt;a&gt;</code>로 — 안에 별도 링크·버튼을 중첩하지 않는다(중첩 인터랙티브 금지).</li><li>제목은 문서 아웃라인에 맞는 헤딩 레벨(<code>h3</code>/<code>h4</code>)로 — 시각 크기는 토큰이 결정한다.</li><li>Dark 변형 본문 <code>--card-dark-fg</code>는 네이비 위 대비 AA 확보값 — 임의로 더 흐리게 하지 말 것.</li></ul>
+<h2 id="코드">코드</h2>
+<div class="pi-demo" data-demo>
+<article class="pi-card">
+  <h3 class="pi-card__title">디자인구독</h3>
+  <p class="pi-card__body">매월 필요한 디자인을 정액으로 받아 보는 구독 서비스입니다.</p>
+</article>
+
+<article class="pi-card pi-card--accent">
+  <h3 class="pi-card__title">안전시설관리 구독</h3>
+  <p class="pi-card__body">노면표시·안전표지를 정기 점검하고 교체까지 관리합니다.</p>
+</article>
+
+<article class="pi-card pi-card--dark">
+  <h3 class="pi-card__title">GREENGUARD GOLD</h3>
+  <p class="pi-card__body">UL 2818 인증 친환경 라텍스 잉크로 제작합니다.</p>
+</article>
+</div>
+<div class="code-block"><div class="code-lang">html</div><pre><code>&lt;article class="pi-card"&gt;
+  &lt;h3 class="pi-card__title"&gt;디자인구독&lt;/h3&gt;
+  &lt;p class="pi-card__body"&gt;매월 필요한 디자인을 정액으로 받아 보는 구독 서비스입니다.&lt;/p&gt;
+&lt;/article&gt;
+
+&lt;article class="pi-card pi-card--accent"&gt;
+  &lt;h3 class="pi-card__title"&gt;안전시설관리 구독&lt;/h3&gt;
+  &lt;p class="pi-card__body"&gt;노면표시·안전표지를 정기 점검하고 교체까지 관리합니다.&lt;/p&gt;
+&lt;/article&gt;
+
+&lt;article class="pi-card pi-card--dark"&gt;
+  &lt;h3 class="pi-card__title"&gt;GREENGUARD GOLD&lt;/h3&gt;
+  &lt;p class="pi-card__body"&gt;UL 2818 인증 친환경 라텍스 잉크로 제작합니다.&lt;/p&gt;
+&lt;/article&gt;</code></pre></div>
+<div class="code-block"><div class="code-lang">css</div><pre><code>.pi-card {
+  background: var(--card-bg);
+  border: var(--border-thin) solid var(--card-border);
+  border-radius: var(--card-radius);
+  padding: var(--card-pad);
+  box-shadow: var(--card-shadow);
+  word-break: keep-all;
+}
+.pi-card__title {
+  font: var(--text-h4);
+  letter-spacing: var(--text-h4-letter-spacing);
+  color: var(--color-text-heading);
+  margin: 0 0 var(--space-3);
+}
+.pi-card__body {
+  font: var(--text-body);
+  letter-spacing: var(--text-body-letter-spacing);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.pi-card--accent { border-top: var(--border-thick) solid var(--card-accent-border); }
+
+.pi-card--dark { background: var(--card-dark-bg); border-color: transparent; }
+.pi-card--dark .pi-card__title { color: var(--color-white); }
+.pi-card--dark .pi-card__body { color: var(--card-dark-fg); }
+
+a.pi-card {
+  display: block; text-decoration: none;
+  transition: box-shadow var(--duration-base) var(--easing-out),
+              transform var(--duration-base) var(--easing-out);
+}
+a.pi-card:hover { box-shadow: var(--card-shadow-hover); transform: translateY(calc(var(--space-1) * -1)); }
+a.pi-card:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+@media (prefers-reduced-motion: reduce) {
+  a.pi-card { transition: none; }
+  a.pi-card:hover { transform: none; }
+}</code></pre></div>
+<h2 id="changelog">Changelog</h2>
+<div class="table-wrap"><table><thead><tr><th>날짜</th><th>변경</th></tr></thead><tbody><tr><td>2026-07-15</td><td>문서 계약(10섹션) 적용 — Anatomy 도해·링크 카드 상태·콘텐츠 규칙·키보드·코드 신설, 기존 규격 승계</td></tr></tbody></table></div></article>
+</main>
+</div>
+<script>window.PIDS_REL="../";</script>
+<script src="../assets/site.js"></script>
+
+</body>
+</html>

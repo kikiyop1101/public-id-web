@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skip Link (건너뛰기 링크) — PI-DS 퍼블릭아이디 디자인시스템</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){var t=localStorage.getItem("pids-theme");if(t)document.documentElement.setAttribute("data-theme",t);})();</script>
+</head>
+<body>
+<a class="pi-skiplink" href="#main">본문 바로가기</a>
+<header class="site-header">
+  <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  <a class="site-brand" href="../index.html">PI-DS</a>
+  <div class="site-search">
+    <input type="search" id="search" placeholder="검색 (컴포넌트·토큰·규칙)" aria-label="문서 검색" autocomplete="off">
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="theme-toggle" type="button" aria-label="라이트/다크 전환">◐</button>
+</header>
+<div class="site-body">
+<nav class="site-nav" aria-label="문서 목차">
+<div class="nav-group"><div class="nav-group-title">시작</div><ul><li><a href="../index.html">홈 · 원칙</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Foundations</div><ul><li><a href="../foundations/color.html">Color</a></li><li><a href="../foundations/typography.html">Typography</a></li><li><a href="../foundations/spacing.html">Spacing</a></li><li><a href="../foundations/motion.html">Motion</a></li><li><a href="../foundations/layout.html">Layout</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 액션</div><ul><li><a href="../components/button.html">Button</a></li><li><a href="../components/link.html">Link</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 컨테이너</div><ul><li><a href="../components/card.html">Card</a></li><li><a href="../components/callout-alert.html">Callout · Alert</a></li><li><a href="../components/accordion.html">Accordion · Disclosure</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 내비게이션</div><ul><li><a href="../components/tab.html">Tab</a></li><li><a href="../components/breadcrumb.html">Breadcrumb</a></li><li><a href="../components/pagination.html">Pagination</a></li><li><a href="../components/skip-link.html" class="active" aria-current="page">Skip Link</a></li><li><a href="../components/step-indicator.html">Step Indicator</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 폼</div><ul><li><a href="../components/input.html">Input</a></li><li><a href="../components/select-controls.html">Checkbox · Radio · Toggle · Select</a></li><li><a href="../components/file-upload.html">File Upload</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 데이터</div><ul><li><a href="../components/table.html">Table</a></li><li><a href="../components/kpi.html">KPI / Stat</a></li><li><a href="../components/chip-badge.html">Chip · Badge</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 오버레이</div><ul><li><a href="../components/modal.html">Modal</a></li><li><a href="../components/toast.html">Toast</a></li><li><a href="../components/tooltip.html">Tooltip</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 피드백</div><ul><li><a href="../components/spinner.html">Spinner</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Content</div><ul><li><a href="../content/ux-writing.html">UX Writing</a></li></ul></div>
+
+</nav>
+<main class="site-main" id="main">
+<article class="doc"><h1 id="skip-link-건너뛰기-링크">Skip Link (건너뛰기 링크)</h1>
+<p>키보드 사용자가 반복되는 헤더·내비게이션을 건너뛰고 본문으로 바로 이동하도록, 평소 숨어 있다가 포커스 시 나타나는 링크. 이 디자인시스템 사이트도 최상단에 하나 둔다.</p>
+<h2 id="정의">정의</h2>
+<p>문서 첫머리에 숨어 있다가 포커스되면 나타나 본문으로 바로 이동시키는 내비게이션 링크 컴포넌트다.</p>
+<h2 id="anatomy">Anatomy</h2>
+<svg viewBox="0 0 420 170" width="420" height="170" role="img" aria-label="건너뛰기 링크 해부도" style="max-width:100%">
+  <rect x="20" y="24" width="380" height="130" rx="8" fill="var(--color-bg-canvas)" stroke="var(--color-border-default)"/>
+  <rect x="20" y="24" width="128" height="30" rx="6" fill="var(--skiplink-bg)"/>
+  <text x="34" y="43" font-size="12" fill="var(--skiplink-fg)">본문 바로가기</text>
+  <rect x="20" y="66" width="380" height="22" fill="currentColor" opacity="0.08"/>
+  <text x="34" y="81" font-size="11" fill="currentColor" opacity="0.6">홈 · 제품 · 구독 · 문의</text>
+  <rect x="34" y="104" width="180" height="9" rx="2" fill="currentColor" opacity="0.28"/>
+  <rect x="34" y="122" width="250" height="9" rx="2" fill="currentColor" opacity="0.16"/>
+  <line x1="84" y1="24" x2="84" y2="10" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="90" y="14" font-size="12" fill="currentColor">② 포커스 시 노출</text>
+  <line x1="148" y1="39" x2="228" y2="39" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="232" y="43" font-size="12" fill="currentColor">① 링크(숨김 → 노출)</text>
+  <line x1="120" y1="108" x2="120" y2="150" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="126" y="150" font-size="12" fill="currentColor">③ 이동 대상 #main</text>
+</svg>
+<div class="table-wrap"><table><thead><tr><th>부위</th><th>토큰</th></tr></thead><tbody><tr><td>① 링크(숨김)</td><td>평소 화면 밖(off-screen), 탭 순서에는 존재 — 문서상 첫 포커스 요소</td></tr><tr><td>② 노출 상태</td><td>bg <code>--skiplink-bg</code>(네이비) · fg <code>--skiplink-fg</code> · 패딩 <code>--skiplink-pad-y</code>/<code>--skiplink-pad-x</code> · 포커스 링 <code>--focus-ring</code> · 겹침 순서 <code>--z-sticky</code></td></tr><tr><td>③ 이동 대상</td><td><code>&lt;main id="main"&gt;</code> 등 본문 컨테이너(<code>href="#main"</code>)</td></tr></tbody></table></div>
+<h2 id="변형">변형</h2>
+<div class="table-wrap"><table><thead><tr><th>변형</th><th>용도</th></tr></thead><tbody><tr><td>본문 바로가기(기본)</td><td>"본문 바로가기" 1개 — 대부분의 페이지에 충분</td></tr><tr><td>다중 건너뛰기</td><td>본문·내비게이션·검색 등 2~3개 — 복잡한 레이아웃에서만(최대 3개)</td></tr></tbody></table></div>
+<h2 id="상태">상태</h2>
+<div class="table-wrap"><table><thead><tr><th>상태</th><th>값</th></tr></thead><tbody><tr><td>Idle(숨김)</td><td>화면 밖 — 시각적으로 안 보이나 DOM·탭 순서에는 존재</td></tr><tr><td>Focus(노출)</td><td>화면 상단에 나타남 — bg <code>--skiplink-bg</code> · fg <code>--skiplink-fg</code> + <code>box-shadow: var(--focus-ring)</code></td></tr><tr><td>Active</td><td>클릭·<code>Enter</code> 시 <code>#main</code>으로 포커스·스크롤 이동</td></tr></tbody></table></div>
+<h2 id="do-don-t">Do / Don't</h2>
+<div class="dd-pair"><div class="dd-card dd-do"><div class="dd-label">Do</div><ul><li>문서에서 가장 먼저 포커스되는 요소로 둔다(여는 <code>&lt;body&gt;</code> 직후, 헤더보다 앞).</li><li>이동 대상(<code>&lt;main id="main"&gt;</code>)에 <code>tabindex="-1"</code>을 주어 실제로 포커스가 옮겨지게 한다.</li><li>평소엔 숨기되 화면 밖으로 밀어 탭 순서에 남긴다.</li></ul></div><div class="dd-card dd-dont"><div class="dd-label">Don't</div><ul><li><code>display:none</code>·<code>visibility:hidden</code>으로 감추지 말 것 — 키보드 포커스를 받지 못한다.</li><li>포커스 시에도 보이지 않게 하지 말 것(포커스 스타일 제거 금지).</li><li>사이드바·유틸 버튼 등 부차 요소를 건너뛰기 대상으로 삼지 말 것.</li></ul></div></div>
+<h2 id="콘텐츠-규칙">콘텐츠 규칙</h2>
+<ul><li>라벨은 목적지를 밝히는 명사구 "본문 바로가기"(KRDS 관용 표현). 다중이면 "내비게이션 바로가기"처럼 대상을 명시한다.</li><li>2~4어절, 한 줄. "여기를 누르세요" 같은 맥락 없는 표현 금지.</li></ul>
+<h2 id="키보드-인터랙션">키보드 인터랙션</h2>
+<div class="table-wrap"><table><thead><tr><th>키</th><th>동작</th></tr></thead><tbody><tr><td><code>Tab</code>(페이지 진입 첫 타)</td><td>숨어 있던 건너뛰기 링크가 화면에 나타나며 포커스</td></tr><tr><td><code>Enter</code></td><td>본문(<code>#main</code>)으로 포커스·스크롤 이동</td></tr><tr><td><code>Tab</code>(한 번 더)</td><td>링크를 지나 다음 요소(헤더)로 이동</td></tr></tbody></table></div>
+<h2 id="접근성">접근성</h2>
+<ul><li>문서상 첫 번째 포커스 가능 요소 — 반복 요소를 건너뛰게 하는 WCAG 2.4.1(Bypass Blocks) 충족 수단.</li><li>off-screen 기법으로 숨기되 탭 순서에 남긴다(<code>display:none</code> 금지).</li><li>이동 대상에 <code>tabindex="-1"</code>을 주어 링크 활성화 시 초점이 본문으로 실제 이동하게 한다.</li><li>웹접근성 인증이 목표인 사이트에는 필수(KRDS 규격). 기준: <code>../guidelines/accessibility.md</code>.</li></ul>
+<h2 id="코드">코드</h2>
+<div class="pi-demo" data-demo>
+<a class="pi-skiplink" href="#main">본문 바로가기</a>
+<header class="pi-skiplink-demo__bar">헤더 · 내비게이션 (Tab으로 건너뛸 수 있음)</header>
+<main id="main" tabindex="-1" class="pi-skiplink-demo__main">
+  <h2>본문 시작</h2>
+  <p>건너뛰기 링크로 반복 요소를 지나 여기까지 바로 이동했습니다.</p>
+</main>
+</div>
+<div class="code-block"><div class="code-lang">html</div><pre><code>&lt;a class="pi-skiplink" href="#main"&gt;본문 바로가기&lt;/a&gt;
+&lt;header class="pi-skiplink-demo__bar"&gt;헤더 · 내비게이션 (Tab으로 건너뛸 수 있음)&lt;/header&gt;
+&lt;main id="main" tabindex="-1" class="pi-skiplink-demo__main"&gt;
+  &lt;h2&gt;본문 시작&lt;/h2&gt;
+  &lt;p&gt;건너뛰기 링크로 반복 요소를 지나 여기까지 바로 이동했습니다.&lt;/p&gt;
+&lt;/main&gt;</code></pre></div>
+<div class="code-block"><div class="code-lang">css</div><pre><code>.pi-skiplink {
+  position: absolute; top: var(--space-2); left: var(--space-2); z-index: var(--z-sticky);
+  transform: translateY(calc(-100% - var(--space-6)));
+  padding: var(--skiplink-pad-y) var(--skiplink-pad-x);
+  border-radius: var(--radius-md);
+  background: var(--skiplink-bg);
+  color: var(--skiplink-fg);
+  font: var(--text-label); letter-spacing: var(--text-label-letter-spacing);
+  text-decoration: none; word-break: keep-all;
+  transition: transform var(--duration-base) var(--easing-out);
+}
+.pi-skiplink:focus { transform: translateY(0); outline: none; box-shadow: var(--focus-ring); }
+
+/* 데모 보조 */
+.pi-skiplink-demo__bar {
+  padding: var(--space-4) var(--space-5); border-radius: var(--radius-sm);
+  background: var(--color-bg-subtle); color: var(--color-text-muted);
+  font: var(--text-body-sm);
+}
+.pi-skiplink-demo__main { padding: var(--space-5) 0 0; }
+.pi-skiplink-demo__main:focus { outline: none; }
+
+@media (prefers-reduced-motion: reduce) { .pi-skiplink { transition: none; } }</code></pre></div>
+<h2 id="changelog">Changelog</h2>
+<div class="table-wrap"><table><thead><tr><th>날짜</th><th>변경</th></tr></thead><tbody><tr><td>2026-07-15</td><td>문서 계약(10섹션) 적용 — KRDS 벤치마킹 규격(2026-07-15) 승계, off-screen→포커스 노출 코드·Anatomy 도해·키보드/접근성 신설</td></tr></tbody></table></div></article>
+</main>
+</div>
+<script>window.PIDS_REL="../";</script>
+<script src="../assets/site.js"></script>
+
+</body>
+</html>

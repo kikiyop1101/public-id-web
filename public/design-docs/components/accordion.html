@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accordion · Disclosure (아코디언·디스클로저) — PI-DS 퍼블릭아이디 디자인시스템</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){var t=localStorage.getItem("pids-theme");if(t)document.documentElement.setAttribute("data-theme",t);})();</script>
+</head>
+<body>
+<a class="pi-skiplink" href="#main">본문 바로가기</a>
+<header class="site-header">
+  <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  <a class="site-brand" href="../index.html">PI-DS</a>
+  <div class="site-search">
+    <input type="search" id="search" placeholder="검색 (컴포넌트·토큰·규칙)" aria-label="문서 검색" autocomplete="off">
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="theme-toggle" type="button" aria-label="라이트/다크 전환">◐</button>
+</header>
+<div class="site-body">
+<nav class="site-nav" aria-label="문서 목차">
+<div class="nav-group"><div class="nav-group-title">시작</div><ul><li><a href="../index.html">홈 · 원칙</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Foundations</div><ul><li><a href="../foundations/color.html">Color</a></li><li><a href="../foundations/typography.html">Typography</a></li><li><a href="../foundations/spacing.html">Spacing</a></li><li><a href="../foundations/motion.html">Motion</a></li><li><a href="../foundations/layout.html">Layout</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 액션</div><ul><li><a href="../components/button.html">Button</a></li><li><a href="../components/link.html">Link</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 컨테이너</div><ul><li><a href="../components/card.html">Card</a></li><li><a href="../components/callout-alert.html">Callout · Alert</a></li><li><a href="../components/accordion.html" class="active" aria-current="page">Accordion · Disclosure</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 내비게이션</div><ul><li><a href="../components/tab.html">Tab</a></li><li><a href="../components/breadcrumb.html">Breadcrumb</a></li><li><a href="../components/pagination.html">Pagination</a></li><li><a href="../components/skip-link.html">Skip Link</a></li><li><a href="../components/step-indicator.html">Step Indicator</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 폼</div><ul><li><a href="../components/input.html">Input</a></li><li><a href="../components/select-controls.html">Checkbox · Radio · Toggle · Select</a></li><li><a href="../components/file-upload.html">File Upload</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 데이터</div><ul><li><a href="../components/table.html">Table</a></li><li><a href="../components/kpi.html">KPI / Stat</a></li><li><a href="../components/chip-badge.html">Chip · Badge</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 오버레이</div><ul><li><a href="../components/modal.html">Modal</a></li><li><a href="../components/toast.html">Toast</a></li><li><a href="../components/tooltip.html">Tooltip</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 피드백</div><ul><li><a href="../components/spinner.html">Spinner</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Content</div><ul><li><a href="../content/ux-writing.html">UX Writing</a></li></ul></div>
+
+</nav>
+<main class="site-main" id="main">
+<article class="doc"><h1 id="accordion-disclosure-아코디언-디스클로저">Accordion · Disclosure (아코디언·디스클로저)</h1>
+<p>헤더를 눌러 그 아래 패널을 펼치거나 접는다. FAQ·상세페이지의 긴 콘텐츠를 압축하는 데 적합하다.</p>
+<h2 id="정의">정의</h2>
+<p>헤더를 눌러 그 아래 패널을 펼치거나 접어 긴 콘텐츠를 압축해 보여 주는 컴포넌트다.</p>
+<h2 id="anatomy">Anatomy</h2>
+<svg viewBox="0 0 420 190" width="420" height="190" role="img" aria-label="아코디언 해부도" style="max-width:100%">
+  <rect x="50" y="35" width="320" height="120" rx="8" fill="none" stroke="var(--accordion-border)"/>
+  <line x1="50" y1="75" x2="370" y2="75" stroke="var(--accordion-border)"/>
+  <text x="72" y="61" font-size="14" fill="var(--accordion-header-fg)" font-weight="700" font-family="inherit">디자인구독은 어떻게 신청하나요?</text>
+  <path d="M336 51l8 8 8-8" fill="none" stroke="var(--accordion-icon-fg)" stroke-width="2"/>
+  <text x="72" y="104" font-size="12" fill="var(--accordion-panel-fg)" font-family="inherit">상담 신청 후 담당자가 요금을 안내합니다.</text>
+  <line x1="130" y1="35" x2="130" y2="16" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="60" y="12" font-size="12" fill="currentColor">① 아코디언 항목</text>
+  <line x1="180" y1="55" x2="180" y2="172" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="140" y="186" font-size="12" fill="currentColor">② 헤더 버튼</text>
+  <line x1="344" y1="55" x2="378" y2="40" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="330" y="34" font-size="12" fill="currentColor">③ 아이콘</text>
+  <line x1="280" y1="100" x2="280" y2="170" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="286" y="176" font-size="12" fill="currentColor">④ 패널</text>
+</svg>
+<div class="table-wrap"><table><thead><tr><th>부위</th><th>토큰</th></tr></thead><tbody><tr><td>① 항목</td><td>보더 <code>--accordion-border</code> · 모서리 <code>--accordion-radius</code></td></tr><tr><td>② 헤더 버튼</td><td>패딩 <code>--accordion-header-pad</code> · fg <code>--accordion-header-fg</code> · <code>--text-label</code></td></tr><tr><td>③ 아이콘</td><td><code>--accordion-icon-fg</code> · 펼침 시 180° 회전</td></tr><tr><td>④ 패널</td><td>fg <code>--accordion-panel-fg</code> · <code>--text-body</code> · 패딩 <code>--accordion-header-pad</code></td></tr></tbody></table></div>
+<h2 id="변형">변형</h2>
+<div class="table-wrap"><table><thead><tr><th>변형</th><th>용도</th></tr></thead><tbody><tr><td>다중 펼침(기본)</td><td>여러 항목을 동시에 펼침 — FAQ 목록</td></tr><tr><td>단일 펼침</td><td>한 번에 하나만 펼쳐 비교에 집중 — 형제 항목은 자동 접힘</td></tr><tr><td>Disclosure</td><td>비중 낮은 보조 토글("자세히 보기") — <code>--accordion-*</code> 재사용 + 글자 축소, 주 탐색에는 쓰지 않음</td></tr></tbody></table></div>
+<h2 id="상태">상태</h2>
+<div class="table-wrap"><table><thead><tr><th>상태</th><th>헤더</th></tr></thead><tbody><tr><td>Default(접힘)</td><td>fg <code>--accordion-header-fg</code> · <code>aria-expanded="false"</code> · 아이콘 기본</td></tr><tr><td>Hover</td><td>bg <code>--color-bg-subtle</code></td></tr><tr><td>Expanded(펼침)</td><td><code>aria-expanded="true"</code> · 아이콘 180° 회전 · 패널 표시</td></tr><tr><td>Focus</td><td><code>box-shadow: var(--focus-ring)</code></td></tr><tr><td>Disabled</td><td><code>opacity: var(--opacity-disabled)</code> + <code>cursor: not-allowed</code></td></tr></tbody></table></div>
+<h2 id="do-don-t">Do / Don't</h2>
+<div class="dd-pair"><div class="dd-card dd-do"><div class="dd-label">Do</div><ul><li>"펼쳐 보면 되는" 보조 정보(FAQ·상세 규격)에 쓴다.</li><li>헤더 라벨만 읽고도 안에 무엇이 있는지 알 수 있게 구체적으로 쓴다.</li><li>아이콘 방향(펼침/접힘)과 <code>aria-expanded</code> 상태를 항상 일치시킨다.</li></ul></div><div class="dd-card dd-dont"><div class="dd-label">Don't</div><ul><li>반드시 봐야 할 핵심 정보를 아코디언 뒤에 숨기지 말 것(KRDS) — 기본 노출한다.</li><li>한 항목에 문단 여럿·중첩 아코디언을 넣지 말 것 — 길면 별도 페이지로.</li><li>Disclosure를 탭·아코디언 같은 주 탐색 자리에 쓰지 말 것 — 보조 토글로만.</li></ul></div></div>
+<h2 id="콘텐츠-규칙">콘텐츠 규칙</h2>
+<ul><li>헤더는 <strong>내용을 요약한 명사구·질문 1줄</strong>(≤20자) — "항목 1" 같은 무정보 라벨 금지.</li><li>패널 본문은 2~5문장 안에서 끝낸다 — 더 길면 문서 섹션으로.</li><li>FAQ는 질문형 헤더("배송은 얼마나 걸리나요?") + 답변 본문 구조로 통일한다.</li></ul>
+<h2 id="키보드-인터랙션">키보드 인터랙션</h2>
+<div class="table-wrap"><table><thead><tr><th>키</th><th>동작</th></tr></thead><tbody><tr><td><code>Tab</code></td><td>다음 아코디언 헤더로 포커스 이동</td></tr><tr><td><code>Enter</code> / <code>Space</code></td><td>포커스된 헤더의 패널 펼침/접힘 토글</td></tr></tbody></table></div>
+<h2 id="접근성">접근성</h2>
+<ul><li>헤더는 네이티브 <code>&lt;button&gt;</code> — <code>aria-expanded</code>(true/false) + <code>aria-controls</code>(패널 id). 패널은 <code>role="region"</code>·<code>aria-labelledby</code>(헤더 id) 권장.</li><li>헤딩 구조 안에서는 헤더 버튼을 <code>&lt;h3&gt;</code> 등으로 감싸 문서 아웃라인을 유지한다.</li><li>상태를 아이콘 회전만으로 두지 말고 <code>aria-expanded</code>로 스크린리더에 전달한다.</li><li>헤더 전체가 클릭 대상 ≥ <code>--target-min</code>. 기준: <code>../guidelines/accessibility.md</code>.</li></ul>
+<h2 id="코드">코드</h2>
+<div class="pi-demo" data-demo>
+<div class="pi-accordion">
+  <div class="pi-accordion__item">
+    <h3 class="pi-accordion__heading">
+      <button class="pi-accordion__header" type="button" aria-expanded="true" aria-controls="acc-sub" id="acc-sub-h">디자인구독은 어떻게 신청하나요?<svg class="pi-accordion__icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+    </h3>
+    <div class="pi-accordion__panel" role="region" id="acc-sub" aria-labelledby="acc-sub-h">
+      <p>홈페이지에서 상담을 신청하면 담당자가 필요한 디자인 범위를 확인해 월 정액 요금을 안내합니다.</p>
+    </div>
+  </div>
+  <div class="pi-accordion__item">
+    <h3 class="pi-accordion__heading">
+      <button class="pi-accordion__header" type="button" aria-expanded="false" aria-controls="acc-safe" id="acc-safe-h">안전시설관리 구독은 무엇을 관리하나요?<svg class="pi-accordion__icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+    </h3>
+    <div class="pi-accordion__panel" role="region" id="acc-safe" aria-labelledby="acc-safe-h" hidden>
+      <p>노면표시·안전표지를 정기 점검하고 마모되면 교체까지 정액으로 관리합니다.</p>
+    </div>
+  </div>
+</div>
+</div>
+<div class="code-block"><div class="code-lang">html</div><pre><code>&lt;div class="pi-accordion"&gt;
+  &lt;div class="pi-accordion__item"&gt;
+    &lt;h3 class="pi-accordion__heading"&gt;
+      &lt;button class="pi-accordion__header" type="button" aria-expanded="true" aria-controls="acc-sub" id="acc-sub-h"&gt;디자인구독은 어떻게 신청하나요?&lt;svg class="pi-accordion__icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"&gt;&lt;path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/&gt;&lt;/svg&gt;&lt;/button&gt;
+    &lt;/h3&gt;
+    &lt;div class="pi-accordion__panel" role="region" id="acc-sub" aria-labelledby="acc-sub-h"&gt;
+      &lt;p&gt;홈페이지에서 상담을 신청하면 담당자가 필요한 디자인 범위를 확인해 월 정액 요금을 안내합니다.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="pi-accordion__item"&gt;
+    &lt;h3 class="pi-accordion__heading"&gt;
+      &lt;button class="pi-accordion__header" type="button" aria-expanded="false" aria-controls="acc-safe" id="acc-safe-h"&gt;안전시설관리 구독은 무엇을 관리하나요?&lt;svg class="pi-accordion__icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"&gt;&lt;path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/&gt;&lt;/svg&gt;&lt;/button&gt;
+    &lt;/h3&gt;
+    &lt;div class="pi-accordion__panel" role="region" id="acc-safe" aria-labelledby="acc-safe-h" hidden&gt;
+      &lt;p&gt;노면표시·안전표지를 정기 점검하고 마모되면 교체까지 정액으로 관리합니다.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+<div class="code-block"><div class="code-lang">css</div><pre><code>.pi-accordion__item { border: var(--border-thin) solid var(--accordion-border); border-radius: var(--accordion-radius); }
+.pi-accordion__item + .pi-accordion__item { margin-top: var(--space-3); }
+.pi-accordion__heading { margin: 0; }
+.pi-accordion__header {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
+  width: 100%;
+  padding: var(--accordion-header-pad);
+  border: none; background: none; cursor: pointer; text-align: left;
+  color: var(--accordion-header-fg);
+  font: var(--text-label);
+  letter-spacing: var(--text-label-letter-spacing);
+  min-height: var(--target-min);
+  word-break: keep-all;
+  transition: background var(--duration-base) var(--easing-out);
+}
+.pi-accordion__header:hover { background: var(--color-bg-subtle); }
+.pi-accordion__header:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: var(--accordion-radius); }
+.pi-accordion__icon { flex: none; color: var(--accordion-icon-fg); transition: transform var(--duration-base) var(--easing-out); }
+.pi-accordion__header[aria-expanded="true"] .pi-accordion__icon { transform: rotate(180deg); }
+.pi-accordion__panel {
+  padding: 0 var(--accordion-header-pad) var(--accordion-header-pad);
+  color: var(--accordion-panel-fg);
+  font: var(--text-body);
+  word-break: keep-all;
+}
+.pi-accordion__panel[hidden] { display: none; }
+.pi-accordion--disclosure .pi-accordion__item { border: none; border-radius: 0; }
+.pi-accordion--disclosure .pi-accordion__header { font: var(--text-body-sm); padding: var(--space-3) 0; }
+@media (prefers-reduced-motion: reduce) { .pi-accordion__header, .pi-accordion__icon { transition: none; } }</code></pre></div>
+<div class="code-block"><div class="code-lang">js</div><pre><code>document.querySelectorAll(".pi-accordion__header").forEach((header) =&gt; {
+  header.addEventListener("click", () =&gt; {
+    const expanded = header.getAttribute("aria-expanded") === "true";
+    header.setAttribute("aria-expanded", expanded ? "false" : "true");
+    document.getElementById(header.getAttribute("aria-controls")).hidden = expanded;
+  });
+});</code></pre></div>
+<h2 id="changelog">Changelog</h2>
+<div class="table-wrap"><table><thead><tr><th>날짜</th><th>변경</th></tr></thead><tbody><tr><td>2026-07-15</td><td>문서 계약(10섹션) 적용 — Anatomy 도해·단일/다중 펼침 변형·Disclosure·콘텐츠 규칙·토글 실코드 신설. KRDS 벤치마킹 규격(핵심 정보 숨김 금지) 승계</td></tr></tbody></table></div></article>
+</main>
+</div>
+<script>window.PIDS_REL="../";</script>
+<script src="../assets/site.js"></script>
+<script>
+document.querySelectorAll(".pi-accordion__header").forEach((header) => {
+  header.addEventListener("click", () => {
+    const expanded = header.getAttribute("aria-expanded") === "true";
+    header.setAttribute("aria-expanded", expanded ? "false" : "true");
+    document.getElementById(header.getAttribute("aria-controls")).hidden = expanded;
+  });
+});
+</script>
+</body>
+</html>

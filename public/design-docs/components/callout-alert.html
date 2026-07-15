@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Callout · Alert (콜아웃·상태 알림) — PI-DS 퍼블릭아이디 디자인시스템</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){var t=localStorage.getItem("pids-theme");if(t)document.documentElement.setAttribute("data-theme",t);})();</script>
+</head>
+<body>
+<a class="pi-skiplink" href="#main">본문 바로가기</a>
+<header class="site-header">
+  <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  <a class="site-brand" href="../index.html">PI-DS</a>
+  <div class="site-search">
+    <input type="search" id="search" placeholder="검색 (컴포넌트·토큰·규칙)" aria-label="문서 검색" autocomplete="off">
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="theme-toggle" type="button" aria-label="라이트/다크 전환">◐</button>
+</header>
+<div class="site-body">
+<nav class="site-nav" aria-label="문서 목차">
+<div class="nav-group"><div class="nav-group-title">시작</div><ul><li><a href="../index.html">홈 · 원칙</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Foundations</div><ul><li><a href="../foundations/color.html">Color</a></li><li><a href="../foundations/typography.html">Typography</a></li><li><a href="../foundations/spacing.html">Spacing</a></li><li><a href="../foundations/motion.html">Motion</a></li><li><a href="../foundations/layout.html">Layout</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 액션</div><ul><li><a href="../components/button.html">Button</a></li><li><a href="../components/link.html">Link</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 컨테이너</div><ul><li><a href="../components/card.html">Card</a></li><li><a href="../components/callout-alert.html" class="active" aria-current="page">Callout · Alert</a></li><li><a href="../components/accordion.html">Accordion · Disclosure</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 내비게이션</div><ul><li><a href="../components/tab.html">Tab</a></li><li><a href="../components/breadcrumb.html">Breadcrumb</a></li><li><a href="../components/pagination.html">Pagination</a></li><li><a href="../components/skip-link.html">Skip Link</a></li><li><a href="../components/step-indicator.html">Step Indicator</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 폼</div><ul><li><a href="../components/input.html">Input</a></li><li><a href="../components/select-controls.html">Checkbox · Radio · Toggle · Select</a></li><li><a href="../components/file-upload.html">File Upload</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 데이터</div><ul><li><a href="../components/table.html">Table</a></li><li><a href="../components/kpi.html">KPI / Stat</a></li><li><a href="../components/chip-badge.html">Chip · Badge</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 오버레이</div><ul><li><a href="../components/modal.html">Modal</a></li><li><a href="../components/toast.html">Toast</a></li><li><a href="../components/tooltip.html">Tooltip</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 피드백</div><ul><li><a href="../components/spinner.html">Spinner</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Content</div><ul><li><a href="../content/ux-writing.html">UX Writing</a></li></ul></div>
+
+</nav>
+<main class="site-main" id="main">
+<article class="doc"><h1 id="callout-alert-콜아웃-상태-알림">Callout · Alert (콜아웃·상태 알림)</h1>
+<p>페이지에 상주하는 보조 설명(Callout)과 의미별 상태 메시지(Alert 4종). 의미는 색과 텍스트로 함께 전달한다.</p>
+<h2 id="정의">정의</h2>
+<p>페이지에 상주하며 보조 설명이나 상태 메시지를 색과 텍스트로 함께 전달하는 컴포넌트다.</p>
+<h2 id="anatomy">Anatomy</h2>
+<svg viewBox="0 0 420 110" width="420" height="110" role="img" aria-label="상태 알림 해부도" style="max-width:100%">
+  <rect x="70" y="34" width="252" height="60" rx="8" fill="var(--color-state-info-bg)"/>
+  <rect x="70" y="34" width="4" height="60" fill="var(--color-state-info-solid)"/>
+  <circle cx="96" cy="64" r="9" fill="none" stroke="var(--color-state-info-fg)" stroke-width="2"/>
+  <text x="93" y="69" font-size="12" font-weight="700" fill="var(--color-state-info-fg)">i</text>
+  <text x="118" y="60" font-size="12" font-weight="700" fill="var(--color-state-info-fg)">인증 안내</text>
+  <text x="118" y="80" font-size="11" fill="var(--color-state-info-fg)">GREENGUARD GOLD · KC 인증</text>
+  <line x1="76" y1="34" x2="76" y2="18" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="44" y="14" font-size="12" fill="currentColor">① 좌측 바</text>
+  <line x1="96" y1="55" x2="96" y2="18" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="104" y="14" font-size="12" fill="currentColor">② 아이콘</text>
+  <line x1="240" y1="34" x2="240" y2="18" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="248" y="14" font-size="12" fill="currentColor">③ 본문</text>
+</svg>
+<div class="table-wrap"><table><thead><tr><th>부위</th><th>토큰</th></tr></thead><tbody><tr><td>① 좌측 바</td><td>의미 색 <code>--color-state-{종류}-solid</code>(4px) — 텍스트와 병행(색맹 대비)</td></tr><tr><td>② 아이콘(선택)</td><td>라인 SVG, <code>stroke</code>=<code>--color-state-{종류}-fg</code>, <code>aria-hidden</code></td></tr><tr><td>③ 본문</td><td>배경 <code>--color-state-{종류}-bg</code> · 글자 <code>--color-state-{종류}-fg</code> · 패딩 <code>--callout-pad</code></td></tr></tbody></table></div>
+<h2 id="변형">변형</h2>
+<div class="table-wrap"><table><thead><tr><th>변형</th><th>용도</th></tr></thead><tbody><tr><td>Callout</td><td>중립 톤 보조 설명·팁(의미 색 없음)</td></tr><tr><td>Alert · info</td><td>안내·인증 사실 전달</td></tr><tr><td>Alert · success</td><td>완료·통과 확인</td></tr><tr><td>Alert · warning</td><td>주의·조건부(동절기 시공 등)</td></tr><tr><td>Alert · danger</td><td>오류·금지 표현 경고</td></tr></tbody></table></div>
+<h2 id="상태">상태</h2>
+<div class="table-wrap"><table><thead><tr><th>종류</th><th>좌측 바(solid)</th><th>배경(bg)</th><th>글자(fg)</th></tr></thead><tbody><tr><td>Callout</td><td><code>--callout-border</code></td><td><code>--callout-bg</code></td><td><code>--color-text-secondary</code></td></tr><tr><td>info</td><td><code>--color-state-info-solid</code></td><td><code>--color-state-info-bg</code></td><td><code>--color-state-info-fg</code></td></tr><tr><td>success</td><td><code>--color-state-success-solid</code></td><td><code>--color-state-success-bg</code></td><td><code>--color-state-success-fg</code></td></tr><tr><td>warning</td><td><code>--color-state-warning-solid</code></td><td><code>--color-state-warning-bg</code></td><td><code>--color-state-warning-fg</code></td></tr><tr><td>danger</td><td><code>--color-state-danger-solid</code></td><td><code>--color-state-danger-bg</code></td><td><code>--color-state-danger-fg</code></td></tr></tbody></table></div>
+<h2 id="do-don-t">Do / Don't</h2>
+<div class="dd-pair"><div class="dd-card dd-do"><div class="dd-label">Do</div><ul><li>색과 텍스트를 <strong>함께</strong> 쓴다 — 색을 못 보는 사용자도 제목·아이콘·문구로 의미를 안다.</li><li>warning·danger에는 무엇을 어떻게 해야 하는지 행동을 함께 안내한다.</li><li>상시 안내는 Callout·Alert, 저장·발행 같은 순간 피드백은 Toast로 구분한다.</li></ul></div><div class="dd-card dd-dont"><div class="dd-label">Don't</div><ul><li>의미를 좌측 바 색만으로 전달하지 말 것 — 색맹 사용자에게 사라진다.</li><li>한 화면에 danger를 여러 개 띄우지 말 것 — 경고가 흔해지면 무시된다.</li><li>긴 여러 문단을 넣지 말 것 — 핵심 1~2문장, 상세는 Link로 위임한다.</li></ul></div></div>
+<h2 id="콘텐츠-규칙">콘텐츠 규칙</h2>
+<ul><li>제목(선택)은 상태를 요약하는 명사구("인증 안내", "시공 주의").</li><li>본문은 1~2문장, danger·warning은 원인 + 행동("… 금지어입니다. 다른 표현으로 바꾸세요").</li><li>인증 사실은 정본대로만 적는다("GREENGUARD GOLD(UL 2818)·KC" — 'KS'·'환경부 인증' 표기 금지).</li><li>아이콘만으로 의미를 대신하지 않는다(아이콘 + 텍스트).</li></ul>
+<h2 id="키보드-인터랙션">키보드 인터랙션</h2>
+<p>해당 없음 — 정적 안내 요소는 포커스를 받지 않는다. 안에 링크·닫기 버튼을 둘 경우에만 그 요소가 각 컴포넌트(Link·Button) 규칙대로 포커스를 받는다.</p>
+<h2 id="접근성">접근성</h2>
+<ul><li>Alert에는 <code>role="status"</code>(정보성) 또는 <code>role="alert"</code>(경고·즉시성)를 준다.</li><li>의미는 색 + 텍스트 + 아이콘 3중으로 전달한다 — 각 <code>-fg</code> on <code>-bg</code> 조합은 AA 확보값.</li><li>장식 아이콘은 <code>aria-hidden="true"</code>(의미는 텍스트가 전달). 기준: <code>../guidelines/accessibility.md</code>.</li></ul>
+<h2 id="코드">코드</h2>
+<div class="pi-demo" data-demo>
+<div class="pi-callout">
+  <span class="pi-callout__bar" aria-hidden="true"></span>
+  <p class="pi-callout__body">디자인구독은 매월 필요한 만큼만 신청할 수 있습니다.</p>
+</div>
+
+<div class="pi-alert pi-alert--info" role="status">
+  <span class="pi-alert__bar" aria-hidden="true"></span>
+  <div class="pi-alert__body">
+    <strong class="pi-alert__title">인증 안내</strong>
+    <p class="pi-alert__text">GREENGUARD GOLD(UL 2818)·KC 인증 친환경 노면표시재입니다.</p>
+  </div>
+</div>
+
+<div class="pi-alert pi-alert--warning" role="status">
+  <span class="pi-alert__bar" aria-hidden="true"></span>
+  <div class="pi-alert__body">
+    <strong class="pi-alert__title">시공 주의</strong>
+    <p class="pi-alert__text">노면 온도가 낮은 동절기에는 시공 일정을 협의해 주세요.</p>
+  </div>
+</div>
+
+<div class="pi-alert pi-alert--danger" role="alert">
+  <span class="pi-alert__bar" aria-hidden="true"></span>
+  <div class="pi-alert__body">
+    <strong class="pi-alert__title">발행 중단</strong>
+    <p class="pi-alert__text">허용되지 않는 표현이 있어 발행을 중단했습니다. 표현을 수정한 뒤 다시 시도하세요.</p>
+  </div>
+</div>
+</div>
+<div class="code-block"><div class="code-lang">html</div><pre><code>&lt;div class="pi-callout"&gt;
+  &lt;span class="pi-callout__bar" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;p class="pi-callout__body"&gt;디자인구독은 매월 필요한 만큼만 신청할 수 있습니다.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="pi-alert pi-alert--info" role="status"&gt;
+  &lt;span class="pi-alert__bar" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;div class="pi-alert__body"&gt;
+    &lt;strong class="pi-alert__title"&gt;인증 안내&lt;/strong&gt;
+    &lt;p class="pi-alert__text"&gt;GREENGUARD GOLD(UL 2818)·KC 인증 친환경 노면표시재입니다.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="pi-alert pi-alert--warning" role="status"&gt;
+  &lt;span class="pi-alert__bar" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;div class="pi-alert__body"&gt;
+    &lt;strong class="pi-alert__title"&gt;시공 주의&lt;/strong&gt;
+    &lt;p class="pi-alert__text"&gt;노면 온도가 낮은 동절기에는 시공 일정을 협의해 주세요.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="pi-alert pi-alert--danger" role="alert"&gt;
+  &lt;span class="pi-alert__bar" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;div class="pi-alert__body"&gt;
+    &lt;strong class="pi-alert__title"&gt;발행 중단&lt;/strong&gt;
+    &lt;p class="pi-alert__text"&gt;허용되지 않는 표현이 있어 발행을 중단했습니다. 표현을 수정한 뒤 다시 시도하세요.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+<div class="code-block"><div class="code-lang">css</div><pre><code>.pi-callout,
+.pi-alert {
+  position: relative;
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--callout-pad);
+  padding-left: var(--space-5);
+  border-radius: var(--callout-radius);
+  word-break: keep-all;
+}
+.pi-callout__bar,
+.pi-alert__bar {
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: var(--space-1);
+  border-radius: var(--callout-radius) 0 0 var(--callout-radius);
+}
+.pi-callout { background: var(--callout-bg); color: var(--color-text-secondary); }
+.pi-callout__bar { background: var(--callout-border); }
+.pi-callout__body { margin: 0; font: var(--text-body-sm); }
+
+.pi-alert__title { display: block; font-size: var(--font-size-sm); font-weight: var(--font-weight-bold); }
+.pi-alert__text { margin: var(--space-1) 0 0; font: var(--text-body-sm); }
+
+.pi-alert--info { background: var(--color-state-info-bg); color: var(--color-state-info-fg); }
+.pi-alert--info .pi-alert__bar { background: var(--color-state-info-solid); }
+.pi-alert--success { background: var(--color-state-success-bg); color: var(--color-state-success-fg); }
+.pi-alert--success .pi-alert__bar { background: var(--color-state-success-solid); }
+.pi-alert--warning { background: var(--color-state-warning-bg); color: var(--color-state-warning-fg); }
+.pi-alert--warning .pi-alert__bar { background: var(--color-state-warning-solid); }
+.pi-alert--danger { background: var(--color-state-danger-bg); color: var(--color-state-danger-fg); }
+.pi-alert--danger .pi-alert__bar { background: var(--color-state-danger-solid); }</code></pre></div>
+<h2 id="changelog">Changelog</h2>
+<div class="table-wrap"><table><thead><tr><th>날짜</th><th>변경</th></tr></thead><tbody><tr><td>2026-07-15</td><td>문서 계약(10섹션) 적용 — Callout·Alert 통합 문서화, Anatomy 도해·상태 토큰 매트릭스·색+텍스트 병행 원칙·코드 신설, 기존 규격 승계</td></tr></tbody></table></div></article>
+</main>
+</div>
+<script>window.PIDS_REL="../";</script>
+<script src="../assets/site.js"></script>
+
+</body>
+</html>

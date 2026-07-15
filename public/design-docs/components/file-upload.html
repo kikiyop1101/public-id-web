@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>File Upload (파일 업로드) — PI-DS 퍼블릭아이디 디자인시스템</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){var t=localStorage.getItem("pids-theme");if(t)document.documentElement.setAttribute("data-theme",t);})();</script>
+</head>
+<body>
+<a class="pi-skiplink" href="#main">본문 바로가기</a>
+<header class="site-header">
+  <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  <a class="site-brand" href="../index.html">PI-DS</a>
+  <div class="site-search">
+    <input type="search" id="search" placeholder="검색 (컴포넌트·토큰·규칙)" aria-label="문서 검색" autocomplete="off">
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="theme-toggle" type="button" aria-label="라이트/다크 전환">◐</button>
+</header>
+<div class="site-body">
+<nav class="site-nav" aria-label="문서 목차">
+<div class="nav-group"><div class="nav-group-title">시작</div><ul><li><a href="../index.html">홈 · 원칙</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Foundations</div><ul><li><a href="../foundations/color.html">Color</a></li><li><a href="../foundations/typography.html">Typography</a></li><li><a href="../foundations/spacing.html">Spacing</a></li><li><a href="../foundations/motion.html">Motion</a></li><li><a href="../foundations/layout.html">Layout</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 액션</div><ul><li><a href="../components/button.html">Button</a></li><li><a href="../components/link.html">Link</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 컨테이너</div><ul><li><a href="../components/card.html">Card</a></li><li><a href="../components/callout-alert.html">Callout · Alert</a></li><li><a href="../components/accordion.html">Accordion · Disclosure</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 내비게이션</div><ul><li><a href="../components/tab.html">Tab</a></li><li><a href="../components/breadcrumb.html">Breadcrumb</a></li><li><a href="../components/pagination.html">Pagination</a></li><li><a href="../components/skip-link.html">Skip Link</a></li><li><a href="../components/step-indicator.html">Step Indicator</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 폼</div><ul><li><a href="../components/input.html">Input</a></li><li><a href="../components/select-controls.html">Checkbox · Radio · Toggle · Select</a></li><li><a href="../components/file-upload.html" class="active" aria-current="page">File Upload</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 데이터</div><ul><li><a href="../components/table.html">Table</a></li><li><a href="../components/kpi.html">KPI / Stat</a></li><li><a href="../components/chip-badge.html">Chip · Badge</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 오버레이</div><ul><li><a href="../components/modal.html">Modal</a></li><li><a href="../components/toast.html">Toast</a></li><li><a href="../components/tooltip.html">Tooltip</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 피드백</div><ul><li><a href="../components/spinner.html">Spinner</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Content</div><ul><li><a href="../content/ux-writing.html">UX Writing</a></li></ul></div>
+
+</nav>
+<main class="site-main" id="main">
+<article class="doc"><h1 id="file-upload-파일-업로드">File Upload (파일 업로드)</h1>
+<p>파일을 드래그앤드롭 또는 "파일 선택" 버튼으로 첨부받는 폼 컴포넌트. 카드뉴스·publicid-bot 등 GUI 도구의 파일 첨부 공통 규격이다.</p>
+<h2 id="정의">정의</h2>
+<p>드롭존과 네이티브 <code>&lt;input type="file"&gt;</code>을 함께 제공해 파일을 첨부받는 폼 컴포넌트다.</p>
+<h2 id="anatomy">Anatomy</h2>
+<svg viewBox="0 0 430 220" width="430" height="220" role="img" aria-label="파일 업로드 해부도" style="max-width:100%">
+  <rect x="70" y="16" width="290" height="94" rx="8" fill="var(--upload-bg)" stroke="var(--upload-border)" stroke-width="2" stroke-dasharray="6 4"/>
+  <path d="M215 30 l16 16 h-9 v14 h-14 v-14 h-9 z" fill="var(--upload-icon-fg)"/>
+  <text x="215" y="80" font-size="12" text-anchor="middle" fill="currentColor" opacity="0.7">파일을 끌어 놓거나</text>
+  <rect x="170" y="88" width="90" height="18" rx="6" fill="var(--color-brand-primary)"/>
+  <text x="215" y="101" font-size="11" font-weight="700" text-anchor="middle" fill="var(--color-white)">파일 선택</text>
+  <rect x="70" y="150" width="290" height="32" rx="6" fill="var(--color-bg-canvas)" stroke="var(--color-border-subtle)"/>
+  <text x="84" y="170" font-size="12" fill="currentColor">카드뉴스-표지.png</text>
+  <text x="300" y="170" font-size="11" fill="currentColor" opacity="0.6">2.4MB</text>
+  <text x="338" y="171" font-size="13" fill="currentColor">✕</text>
+  <line x1="95" y1="16" x2="95" y2="6" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="101" y="10" font-size="12" fill="currentColor">① 드롭존</text>
+  <line x1="228" y1="40" x2="306" y2="28" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="310" y="32" font-size="12" fill="currentColor">② 업로드 아이콘</text>
+  <line x1="262" y1="97" x2="342" y2="120" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="300" y="134" font-size="12" fill="currentColor">③ 파일 선택 버튼</text>
+  <line x1="338" y1="150" x2="360" y2="136" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="286" y="132" font-size="12" fill="currentColor">④ 파일 목록</text>
+</svg>
+<div class="table-wrap"><table><thead><tr><th>부위</th><th>토큰</th></tr></thead><tbody><tr><td>① 드롭존</td><td>보더 <code>--upload-border</code>(점선)·활성 <code>--upload-border-active</code>(브랜드) · bg <code>--upload-bg</code>/<code>--upload-bg-active</code> · 모서리 <code>--upload-radius</code> · 패딩 <code>--upload-pad</code></td></tr><tr><td>② 업로드 아이콘</td><td>라인 SVG, <code>--upload-icon-fg</code>(브랜드), <code>stroke="currentColor"</code></td></tr><tr><td>③ 파일 선택 버튼</td><td>네이티브 <code>&lt;input type="file"&gt;</code>을 시각 스타일링(Button 규격 재사용), 히트영역 <code>--target-min</code></td></tr><tr><td>④ 파일 목록</td><td>파일명·크기·삭제 버튼 한 줄. 텍스트 <code>--text-body-sm</code> · 삭제 히트영역 <code>--target-min</code></td></tr></tbody></table></div>
+<h2 id="변형">변형</h2>
+<div class="table-wrap"><table><thead><tr><th>변형</th><th>용도</th></tr></thead><tbody><tr><td>단일 파일</td><td>파일 1개 첨부(로고·증빙) — 선택 후 교체만</td></tr><tr><td>다중 파일</td><td>여러 파일 누적 첨부(카드뉴스 이미지 세트) — <code>multiple</code></td></tr><tr><td>이미지형</td><td>첨부 즉시 썸네일 미리보기를 목록에 함께 노출</td></tr></tbody></table></div>
+<h2 id="상태">상태</h2>
+<div class="table-wrap"><table><thead><tr><th>상태</th><th>값</th></tr></thead><tbody><tr><td>Default(Idle)</td><td>보더 <code>--upload-border</code> · bg <code>--upload-bg</code></td></tr><tr><td>Dragover</td><td>보더 <code>--upload-border-active</code> · bg <code>--upload-bg-active</code>(파일을 끌어 올렸을 때)</td></tr><tr><td>Focus(버튼)</td><td><code>box-shadow: var(--focus-ring)</code></td></tr><tr><td>Disabled</td><td><code>opacity: var(--opacity-disabled)</code> + <code>cursor: not-allowed</code></td></tr><tr><td>Error(용량·형식 초과)</td><td>도움말 텍스트 <code>--color-state-danger-fg</code></td></tr></tbody></table></div>
+<h2 id="do-don-t">Do / Don't</h2>
+<div class="dd-pair"><div class="dd-card dd-do"><div class="dd-label">Do</div><ul><li>드래그앤드롭과 "파일 선택" 버튼을 항상 함께 제공한다 — 드래그만 있으면 키보드 사용자는 첨부할 수 없다.</li><li>허용 형식·최대 용량을 드롭존 안내 문구에 미리 밝힌다("JPG·PNG, 10MB 이하").</li><li>첨부한 파일은 이름·크기·삭제 버튼을 한 줄 목록으로 보여 준다.</li></ul></div><div class="dd-card dd-dont"><div class="dd-label">Don't</div><ul><li>드래그앤드롭만 지원하지 말 것 — 접근성 위반이며 모바일에서 동작하지 않는다(KRDS 규칙).</li><li>업로드 실패를 색만으로 알리지 말 것 — 사유 텍스트를 함께 보여 준다.</li><li>선택 즉시 자동 전송하지 말 것 — 사용자가 목록을 확인·삭제할 여지를 남긴다.</li></ul></div></div>
+<h2 id="콘텐츠-규칙">콘텐츠 규칙</h2>
+<ul><li>안내 문구는 행동+제약 한 줄: "파일을 끌어 놓거나 선택하세요 (JPG·PNG, 10MB 이하)".</li><li>버튼 라벨은 동사형 "파일 선택"(명사 단독 "파일" ✗).</li><li>오류 메시지는 사유+해결을 한 문장으로: "10MB를 초과했습니다. 파일을 줄여 다시 시도하세요."</li><li>파일 크기 단위는 숫자에 붙여 쓴다(<code>2.4MB</code>·<code>980KB</code>).</li></ul>
+<h2 id="키보드-인터랙션">키보드 인터랙션</h2>
+<div class="table-wrap"><table><thead><tr><th>키</th><th>동작</th></tr></thead><tbody><tr><td><code>Tab</code></td><td>"파일 선택" 버튼(네이티브 input)으로 포커스 이동</td></tr><tr><td><code>Enter</code> / <code>Space</code></td><td>파일 선택 대화상자 열기</td></tr><tr><td><code>Tab</code> → <code>Enter</code></td><td>목록의 삭제(✕) 버튼으로 이동 후 삭제</td></tr></tbody></table></div>
+<h2 id="접근성">접근성</h2>
+<ul><li>파일 선택은 네이티브 <code>&lt;input type="file"&gt;</code>을 시각적으로 스타일링한다(완전 커스텀 구현 지양) — 키보드·스크린리더 기본 지원.</li><li>드롭존은 보조 수단일 뿐 — 모든 첨부는 네이티브 input으로도 가능해야 한다(KRDS 규칙).</li><li>삭제 버튼은 <code>aria-label="삭제"</code>(대상 파일명 포함 권장) + 히트영역 <code>--target-min</code>.</li><li>업로드 진행·완료·오류는 <code>aria-live="polite"</code> 영역으로 알린다. 기준: <code>../guidelines/accessibility.md</code>.</li></ul>
+<h2 id="코드">코드</h2>
+<div class="pi-demo" data-demo>
+<div class="pi-upload" data-upload>
+  <input class="pi-upload__input" id="pi-upload-demo" type="file" multiple accept="image/*">
+  <label class="pi-upload__zone" for="pi-upload-demo">
+    <svg class="pi-upload__icon" viewBox="0 0 24 24" width="34" height="34" fill="none"
+         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 15V4"/><path d="M8 8l4-4 4 4"/><path d="M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/>
+    </svg>
+    <span class="pi-upload__hint">파일을 끌어 놓거나 <b>선택</b>하세요</span>
+    <span class="pi-upload__note">JPG·PNG, 10MB 이하</span>
+  </label>
+  <ul class="pi-upload__list" aria-live="polite"></ul>
+</div>
+</div>
+<div class="code-block"><div class="code-lang">html</div><pre><code>&lt;div class="pi-upload" data-upload&gt;
+  &lt;input class="pi-upload__input" id="pi-upload-demo" type="file" multiple accept="image/*"&gt;
+  &lt;label class="pi-upload__zone" for="pi-upload-demo"&gt;
+    &lt;svg class="pi-upload__icon" viewBox="0 0 24 24" width="34" height="34" fill="none"
+         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;
+      &lt;path d="M12 15V4"/&gt;&lt;path d="M8 8l4-4 4 4"/&gt;&lt;path d="M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/&gt;
+    &lt;/svg&gt;
+    &lt;span class="pi-upload__hint"&gt;파일을 끌어 놓거나 &lt;b&gt;선택&lt;/b&gt;하세요&lt;/span&gt;
+    &lt;span class="pi-upload__note"&gt;JPG·PNG, 10MB 이하&lt;/span&gt;
+  &lt;/label&gt;
+  &lt;ul class="pi-upload__list" aria-live="polite"&gt;&lt;/ul&gt;
+&lt;/div&gt;</code></pre></div>
+<div class="code-block"><div class="code-lang">css</div><pre><code>.pi-upload__input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.pi-upload__zone {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-2);
+  padding: var(--upload-pad);
+  border: var(--border-medium) dashed var(--upload-border);
+  border-radius: var(--upload-radius);
+  background: var(--upload-bg);
+  color: var(--color-text-secondary);
+  text-align: center; cursor: pointer; word-break: keep-all;
+  transition: border-color var(--duration-base) var(--easing-out), background var(--duration-base) var(--easing-out);
+}
+.pi-upload__icon { color: var(--upload-icon-fg); }
+.pi-upload__hint { font: var(--text-body); letter-spacing: var(--text-body-letter-spacing); }
+.pi-upload__note { font: var(--text-caption); color: var(--color-text-muted); }
+.pi-upload__input:focus-visible + .pi-upload__zone { outline: none; box-shadow: var(--focus-ring); }
+.pi-upload.is-dragover .pi-upload__zone { border-color: var(--upload-border-active); background: var(--upload-bg-active); }
+.pi-upload__input:disabled + .pi-upload__zone { opacity: var(--opacity-disabled); cursor: not-allowed; }
+.pi-upload__list { list-style: none; margin: var(--space-4) 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+.pi-upload__file {
+  display: flex; align-items: center; gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-thin) solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  font: var(--text-body-sm);
+}
+.pi-upload__name { flex: 1 1 auto; color: var(--color-text-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pi-upload__size { color: var(--color-text-muted); }
+.pi-upload__remove { min-width: var(--target-min); min-height: var(--target-min); background: none; border: none; cursor: pointer; color: var(--color-text-muted); }
+.pi-upload__remove:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: var(--radius-sm); }
+
+@media (prefers-reduced-motion: reduce) { .pi-upload__zone { transition: none; } }</code></pre></div>
+<div class="code-block"><div class="code-lang">js</div><pre><code>// 드래그 상태 토글 + 파일 목록 렌더 (의존성 없음)
+document.querySelectorAll("[data-upload]").forEach((root) =&gt; {
+  const input = root.querySelector(".pi-upload__input");
+  const zone = root.querySelector(".pi-upload__zone");
+  const list = root.querySelector(".pi-upload__list");
+  const fmt = (n) =&gt; (n &gt; 1e6 ? (n / 1e6).toFixed(1) + "MB" : Math.round(n / 1e3) + "KB");
+  const render = (files) =&gt; {
+    list.replaceChildren();
+    [...files].forEach((f) =&gt; {
+      const li = document.createElement("li");
+      li.className = "pi-upload__file";
+      li.innerHTML = '&lt;span class="pi-upload__name"&gt;&lt;/span&gt;&lt;span class="pi-upload__size"&gt;&lt;/span&gt;'
+        + '&lt;button class="pi-upload__remove" type="button" aria-label="삭제"&gt;&amp;#10005;&lt;/button&gt;';
+      li.querySelector(".pi-upload__name").textContent = f.name;
+      li.querySelector(".pi-upload__size").textContent = fmt(f.size);
+      list.appendChild(li);
+    });
+  };
+  input.addEventListener("change", () =&gt; render(input.files));
+  ["dragenter", "dragover"].forEach((e) =&gt; zone.addEventListener(e, (ev) =&gt; { ev.preventDefault(); root.classList.add("is-dragover"); }));
+  ["dragleave", "drop"].forEach((e) =&gt; zone.addEventListener(e, () =&gt; root.classList.remove("is-dragover")));
+  zone.addEventListener("drop", (ev) =&gt; { ev.preventDefault(); render(ev.dataTransfer.files); });
+  list.addEventListener("click", (ev) =&gt; { const t = ev.target.closest(".pi-upload__remove"); if (t) t.closest(".pi-upload__file").remove(); });
+});</code></pre></div>
+<h2 id="changelog">Changelog</h2>
+<div class="table-wrap"><table><thead><tr><th>날짜</th><th>변경</th></tr></thead><tbody><tr><td>2026-07-15</td><td>문서 계약(10섹션) 적용 — KRDS 벤치마킹 규격(2026-07-15) 승계, Anatomy 도해·드래그앤드롭+네이티브 input 병행 코드·상태·접근성 신설</td></tr></tbody></table></div></article>
+</main>
+</div>
+<script>window.PIDS_REL="../";</script>
+<script src="../assets/site.js"></script>
+<script>
+// 드래그 상태 토글 + 파일 목록 렌더 (의존성 없음)
+document.querySelectorAll("[data-upload]").forEach((root) => {
+  const input = root.querySelector(".pi-upload__input");
+  const zone = root.querySelector(".pi-upload__zone");
+  const list = root.querySelector(".pi-upload__list");
+  const fmt = (n) => (n > 1e6 ? (n / 1e6).toFixed(1) + "MB" : Math.round(n / 1e3) + "KB");
+  const render = (files) => {
+    list.replaceChildren();
+    [...files].forEach((f) => {
+      const li = document.createElement("li");
+      li.className = "pi-upload__file";
+      li.innerHTML = '<span class="pi-upload__name"></span><span class="pi-upload__size"></span>'
+        + '<button class="pi-upload__remove" type="button" aria-label="삭제">&#10005;</button>';
+      li.querySelector(".pi-upload__name").textContent = f.name;
+      li.querySelector(".pi-upload__size").textContent = fmt(f.size);
+      list.appendChild(li);
+    });
+  };
+  input.addEventListener("change", () => render(input.files));
+  ["dragenter", "dragover"].forEach((e) => zone.addEventListener(e, (ev) => { ev.preventDefault(); root.classList.add("is-dragover"); }));
+  ["dragleave", "drop"].forEach((e) => zone.addEventListener(e, () => root.classList.remove("is-dragover")));
+  zone.addEventListener("drop", (ev) => { ev.preventDefault(); render(ev.dataTransfer.files); });
+  list.addEventListener("click", (ev) => { const t = ev.target.closest(".pi-upload__remove"); if (t) t.closest(".pi-upload__file").remove(); });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>홈 — PI-DS 퍼블릭아이디 디자인시스템</title>
+<link rel="stylesheet" href="./assets/tokens.css">
+<link rel="stylesheet" href="./assets/components.css">
+<link rel="stylesheet" href="./assets/site.css">
+<script>(function(){var t=localStorage.getItem("pids-theme");if(t)document.documentElement.setAttribute("data-theme",t);})();</script>
+</head>
+<body>
+<a class="pi-skiplink" href="#main">본문 바로가기</a>
+<header class="site-header">
+  <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  <a class="site-brand" href="./index.html">PI-DS</a>
+  <div class="site-search">
+    <input type="search" id="search" placeholder="검색 (컴포넌트·토큰·규칙)" aria-label="문서 검색" autocomplete="off">
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="theme-toggle" type="button" aria-label="라이트/다크 전환">◐</button>
+</header>
+<div class="site-body">
+<nav class="site-nav" aria-label="문서 목차">
+<div class="nav-group"><div class="nav-group-title">시작</div><ul><li><a href="./index.html" class="active" aria-current="page">홈 · 원칙</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Foundations</div><ul><li><a href="./foundations/color.html">Color</a></li><li><a href="./foundations/typography.html">Typography</a></li><li><a href="./foundations/spacing.html">Spacing</a></li><li><a href="./foundations/motion.html">Motion</a></li><li><a href="./foundations/layout.html">Layout</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 액션</div><ul><li><a href="./components/button.html">Button</a></li><li><a href="./components/link.html">Link</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 컨테이너</div><ul><li><a href="./components/card.html">Card</a></li><li><a href="./components/callout-alert.html">Callout · Alert</a></li><li><a href="./components/accordion.html">Accordion · Disclosure</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 내비게이션</div><ul><li><a href="./components/tab.html">Tab</a></li><li><a href="./components/breadcrumb.html">Breadcrumb</a></li><li><a href="./components/pagination.html">Pagination</a></li><li><a href="./components/skip-link.html">Skip Link</a></li><li><a href="./components/step-indicator.html">Step Indicator</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 폼</div><ul><li><a href="./components/input.html">Input</a></li><li><a href="./components/select-controls.html">Checkbox · Radio · Toggle · Select</a></li><li><a href="./components/file-upload.html">File Upload</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 데이터</div><ul><li><a href="./components/table.html">Table</a></li><li><a href="./components/kpi.html">KPI / Stat</a></li><li><a href="./components/chip-badge.html">Chip · Badge</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 오버레이</div><ul><li><a href="./components/modal.html">Modal</a></li><li><a href="./components/toast.html">Toast</a></li><li><a href="./components/tooltip.html">Tooltip</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 피드백</div><ul><li><a href="./components/spinner.html">Spinner</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Content</div><ul><li><a href="./content/ux-writing.html">UX Writing</a></li></ul></div>
+
+</nav>
+<main class="site-main" id="main">
+<article class="doc">
+<h1>PI-DS — 퍼블릭아이디 디자인시스템</h1>
+<p>친환경 그래픽 노면표시재·안전시설의 퍼블릭아이디가 웹·인쇄·콘텐츠 전 채널에 같은 얼굴을 유지하기 위한 단일 디자인 정본입니다. 토큰(색·타이포·간격·모션) → 컴포넌트 20종 → 레이아웃·콘텐츠 규칙까지, 모든 페이지가 같은 구조(10섹션 계약)로 문서화되어 있습니다.</p>
+<h2>디자인 원칙</h2>
+<div class="home-grid home-grid--wide"><article class="pi-card"><h3 class="pi-card__title">1. 친환경의 신뢰를 시각으로 증명한다</h3><p class="pi-card__body">인증·수치는 정본 표기만 — 근거 있는 친환경을 숫자로 보여 준다.</p></article>
+<article class="pi-card"><h3 class="pi-card__title">2. 안전 정보는 가장 먼저, 가장 쉽게 읽힌다</h3><p class="pi-card__body">가독성·접근성은 취향이 아니라 제품 기능이다.</p></article>
+<article class="pi-card"><h3 class="pi-card__title">3. B2G·B2B·B2C 어디서든 같은 얼굴</h3><p class="pi-card__body">채널이 달라도 색·타이포·로고는 하나의 정본에서 나온다.</p></article>
+<article class="pi-card"><h3 class="pi-card__title">4. 토큰 하나로 전 채널이 움직인다</h3><p class="pi-card__body">값은 토큰 한 곳에서만 바꾸고, 소비처는 참조만 한다.</p></article>
+<article class="pi-card"><h3 class="pi-card__title">5. 모든 사용자를 포용한다</h3><p class="pi-card__body">키보드만으로, 화면을 보지 못해도 쓸 수 있게 설계한다.</p></article></div>
+<h2>둘러보기</h2>
+<div class="home-grid home-grid--wide">
+<a class="pi-card home-card" href="foundations/color.html"><h3 class="pi-card__title">Foundations</h3><p class="pi-card__body">색·타이포·간격·모션·레이아웃 — 시스템의 기초 값.</p></a>
+<a class="pi-card home-card" href="components/button.html"><h3 class="pi-card__title">Components</h3><p class="pi-card__body">20종 — 해부도·상태·Do/Don't·코드까지 한 계약으로.</p></a>
+<a class="pi-card home-card" href="content/ux-writing.html"><h3 class="pi-card__title">Content</h3><p class="pi-card__body">목소리·문구 패턴·컴포넌트 라벨 규칙.</p></a>
+</div>
+<h2>컴포넌트 20종</h2><div class="home-grid"><a class="pi-card home-card" href="components/accordion.html"><h3 class="pi-card__title">Accordion · Disclosure</h3></a>
+<a class="pi-card home-card" href="components/breadcrumb.html"><h3 class="pi-card__title">Breadcrumb</h3></a>
+<a class="pi-card home-card" href="components/button.html"><h3 class="pi-card__title">Button</h3></a>
+<a class="pi-card home-card" href="components/callout-alert.html"><h3 class="pi-card__title">Callout · Alert</h3></a>
+<a class="pi-card home-card" href="components/card.html"><h3 class="pi-card__title">Card</h3></a>
+<a class="pi-card home-card" href="components/chip-badge.html"><h3 class="pi-card__title">Chip · Badge</h3></a>
+<a class="pi-card home-card" href="components/file-upload.html"><h3 class="pi-card__title">File Upload</h3></a>
+<a class="pi-card home-card" href="components/input.html"><h3 class="pi-card__title">Input</h3></a>
+<a class="pi-card home-card" href="components/kpi.html"><h3 class="pi-card__title">KPI / Stat</h3></a>
+<a class="pi-card home-card" href="components/link.html"><h3 class="pi-card__title">Link</h3></a>
+<a class="pi-card home-card" href="components/modal.html"><h3 class="pi-card__title">Modal</h3></a>
+<a class="pi-card home-card" href="components/pagination.html"><h3 class="pi-card__title">Pagination</h3></a>
+<a class="pi-card home-card" href="components/select-controls.html"><h3 class="pi-card__title">Checkbox · Radio · Toggle · Select</h3></a>
+<a class="pi-card home-card" href="components/skip-link.html"><h3 class="pi-card__title">Skip Link</h3></a>
+<a class="pi-card home-card" href="components/spinner.html"><h3 class="pi-card__title">Spinner</h3></a>
+<a class="pi-card home-card" href="components/step-indicator.html"><h3 class="pi-card__title">Step Indicator</h3></a>
+<a class="pi-card home-card" href="components/tab.html"><h3 class="pi-card__title">Tab</h3></a>
+<a class="pi-card home-card" href="components/table.html"><h3 class="pi-card__title">Table</h3></a>
+<a class="pi-card home-card" href="components/toast.html"><h3 class="pi-card__title">Toast</h3></a>
+<a class="pi-card home-card" href="components/tooltip.html"><h3 class="pi-card__title">Tooltip</h3></a></div></article>
+</main>
+</div>
+<script>window.PIDS_REL="./";</script>
+<script src="./assets/site.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Color (색) — PI-DS 퍼블릭아이디 디자인시스템</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/components.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){var t=localStorage.getItem("pids-theme");if(t)document.documentElement.setAttribute("data-theme",t);})();</script>
+</head>
+<body>
+<a class="pi-skiplink" href="#main">본문 바로가기</a>
+<header class="site-header">
+  <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  <a class="site-brand" href="../index.html">PI-DS</a>
+  <div class="site-search">
+    <input type="search" id="search" placeholder="검색 (컴포넌트·토큰·규칙)" aria-label="문서 검색" autocomplete="off">
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="theme-toggle" type="button" aria-label="라이트/다크 전환">◐</button>
+</header>
+<div class="site-body">
+<nav class="site-nav" aria-label="문서 목차">
+<div class="nav-group"><div class="nav-group-title">시작</div><ul><li><a href="../index.html">홈 · 원칙</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Foundations</div><ul><li><a href="../foundations/color.html" class="active" aria-current="page">Color</a></li><li><a href="../foundations/typography.html">Typography</a></li><li><a href="../foundations/spacing.html">Spacing</a></li><li><a href="../foundations/motion.html">Motion</a></li><li><a href="../foundations/layout.html">Layout</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 액션</div><ul><li><a href="../components/button.html">Button</a></li><li><a href="../components/link.html">Link</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 컨테이너</div><ul><li><a href="../components/card.html">Card</a></li><li><a href="../components/callout-alert.html">Callout · Alert</a></li><li><a href="../components/accordion.html">Accordion · Disclosure</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 내비게이션</div><ul><li><a href="../components/tab.html">Tab</a></li><li><a href="../components/breadcrumb.html">Breadcrumb</a></li><li><a href="../components/pagination.html">Pagination</a></li><li><a href="../components/skip-link.html">Skip Link</a></li><li><a href="../components/step-indicator.html">Step Indicator</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 폼</div><ul><li><a href="../components/input.html">Input</a></li><li><a href="../components/select-controls.html">Checkbox · Radio · Toggle · Select</a></li><li><a href="../components/file-upload.html">File Upload</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 데이터</div><ul><li><a href="../components/table.html">Table</a></li><li><a href="../components/kpi.html">KPI / Stat</a></li><li><a href="../components/chip-badge.html">Chip · Badge</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 오버레이</div><ul><li><a href="../components/modal.html">Modal</a></li><li><a href="../components/toast.html">Toast</a></li><li><a href="../components/tooltip.html">Tooltip</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">컴포넌트 — 피드백</div><ul><li><a href="../components/spinner.html">Spinner</a></li></ul></div>
+<div class="nav-group"><div class="nav-group-title">Content</div><ul><li><a href="../content/ux-writing.html">UX Writing</a></li></ul></div>
+
+</nav>
+<main class="site-main" id="main">
+<article class="doc"><h1>Color (색)</h1>
+<p>정본은 브랜드 상수 문서에서 파생된 토큰이다. 원시 램프(Primitive)에서 역할(Semantic)로, 역할에서 컴포넌트로 흐른다 — 화면 코드는 역할·컴포넌트 토큰만 쓴다.</p>
+<blockquote><strong>60-30-10 절제</strong> — 60% 무채(화이트·연그레이, 본문은 딥그레이) · 30% 네이비(표지·표 헤더·다크 면) · 10% 청록·라임·옐로(시선 유도 지점에만).</blockquote>
+<h2>브랜드 역할</h2>
+<div class="table-wrap"><table><thead><tr><th>역할</th><th>토큰</th><th>라이트</th><th>다크</th></tr></thead><tbody>
+<tr><td>메인(청록)</td><td><code>--color-brand-primary</code></td><td><span class="sw-dot" style="background:#069CBB"></span><code>#069CBB</code></td><td><span class="sw-dot" style="background:#38B4CA"></span><code>#38B4CA</code></td></tr>
+<tr><td>액센트(라임)</td><td><code>--color-brand-accent</code></td><td><span class="sw-dot" style="background:#CADA1F"></span><code>#CADA1F</code></td><td><span class="sw-dot" style="background:#CADA1F"></span><code>#CADA1F</code></td></tr>
+<tr><td>시그니처(옐로)</td><td><code>--color-brand-signature</code></td><td><span class="sw-dot" style="background:#FFD200"></span><code>#FFD200</code></td><td><span class="sw-dot" style="background:#FFD200"></span><code>#FFD200</code></td></tr>
+<tr><td>앵커(네이비)</td><td><code>--color-brand-anchor</code></td><td><span class="sw-dot" style="background:#16303D"></span><code>#16303D</code></td><td><span class="sw-dot" style="background:#0F2530"></span><code>#0F2530</code></td></tr>
+</tbody></table></div>
+<h2>텍스트 · 배경 역할</h2>
+<div class="table-wrap"><table><thead><tr><th>역할</th><th>토큰</th><th>라이트</th><th>다크</th></tr></thead><tbody>
+<tr><td>텍스트 heading</td><td><code>--color-text-heading</code></td><td><span class="sw-dot" style="background:#0F172A"></span><code>#0F172A</code></td><td><span class="sw-dot" style="background:#FFFFFF"></span><code>#FFFFFF</code></td></tr>
+<tr><td>텍스트 primary</td><td><code>--color-text-primary</code></td><td><span class="sw-dot" style="background:#1A2227"></span><code>#1A2227</code></td><td><span class="sw-dot" style="background:#EAF1F2"></span><code>#EAF1F2</code></td></tr>
+<tr><td>텍스트 secondary</td><td><code>--color-text-secondary</code></td><td><span class="sw-dot" style="background:#3C4A52"></span><code>#3C4A52</code></td><td><span class="sw-dot" style="background:#B9CCD2"></span><code>#B9CCD2</code></td></tr>
+<tr><td>텍스트 muted</td><td><code>--color-text-muted</code></td><td><span class="sw-dot" style="background:#6B7780"></span><code>#6B7780</code></td><td><span class="sw-dot" style="background:#8FA8B0"></span><code>#8FA8B0</code></td></tr>
+<tr><td>텍스트 link</td><td><code>--color-text-link</code></td><td><span class="sw-dot" style="background:#0B6C7D"></span><code>#0B6C7D</code></td><td><span class="sw-dot" style="background:#7FD2DF"></span><code>#7FD2DF</code></td></tr>
+<tr><td>배경 canvas</td><td><code>--color-bg-canvas</code></td><td><span class="sw-dot" style="background:#FFFFFF"></span><code>#FFFFFF</code></td><td><span class="sw-dot" style="background:#16303D"></span><code>#16303D</code></td></tr>
+<tr><td>배경 subtle</td><td><code>--color-bg-subtle</code></td><td><span class="sw-dot" style="background:#F6F8F8"></span><code>#F6F8F8</code></td><td><span class="sw-dot" style="background:#122631"></span><code>#122631</code></td></tr>
+</tbody></table></div>
+<h2>상태색 (색 + 텍스트/아이콘 병행 — 색만으로 의미 전달 금지)</h2>
+<div class="table-wrap"><table><thead><tr><th>상태</th><th>solid</th><th>bg</th><th>fg</th></tr></thead><tbody>
+<tr><td>info</td><td><span class="sw-dot" style="background:#069CBB"></span><code>--color-state-info-solid</code></td><td><span class="sw-dot" style="background:#E6F6F9"></span><code>--color-state-info-bg</code></td><td><span class="sw-dot" style="background:#0B6C7D"></span><code>--color-state-info-fg</code></td></tr>
+<tr><td>success</td><td><span class="sw-dot" style="background:#2E9E5B"></span><code>--color-state-success-solid</code></td><td><span class="sw-dot" style="background:{color.state.success-bg}"></span><code>--color-state-success-bg</code></td><td><span class="sw-dot" style="background:#1E7A46"></span><code>--color-state-success-fg</code></td></tr>
+<tr><td>warning</td><td><span class="sw-dot" style="background:#E2842F"></span><code>--color-state-warning-solid</code></td><td><span class="sw-dot" style="background:{color.state.warning-bg}"></span><code>--color-state-warning-bg</code></td><td><span class="sw-dot" style="background:#C2641B"></span><code>--color-state-warning-fg</code></td></tr>
+<tr><td>danger</td><td><span class="sw-dot" style="background:#C9403C"></span><code>--color-state-danger-solid</code></td><td><span class="sw-dot" style="background:{color.state.danger-bg}"></span><code>--color-state-danger-bg</code></td><td><span class="sw-dot" style="background:#B5322E"></span><code>--color-state-danger-fg</code></td></tr>
+</tbody></table></div>
+<h2>원시 램프 (직접 쓰지 말 것 — 역할 토큰을 거친다)</h2>
+<h3>teal</h3><div class="sw-row"><div class="sw"><div class="sw-chip" style="background:#E6F6F9"></div><div class="sw-meta">50<br><code>#E6F6F9</code></div></div><div class="sw"><div class="sw-chip" style="background:#DFF3F6"></div><div class="sw-meta">100<br><code>#DFF3F6</code></div></div><div class="sw"><div class="sw-chip" style="background:#B9E6ED"></div><div class="sw-meta">200<br><code>#B9E6ED</code></div></div><div class="sw"><div class="sw-chip" style="background:#7FD2DF"></div><div class="sw-meta">300<br><code>#7FD2DF</code></div></div><div class="sw"><div class="sw-chip" style="background:#38B4CA"></div><div class="sw-meta">400<br><code>#38B4CA</code></div></div><div class="sw"><div class="sw-chip" style="background:#069CBB"></div><div class="sw-meta">500<br><code>#069CBB</code></div></div><div class="sw"><div class="sw-chip" style="background:#0A8296"></div><div class="sw-meta">600<br><code>#0A8296</code></div></div><div class="sw"><div class="sw-chip" style="background:#0B6C7D"></div><div class="sw-meta">700<br><code>#0B6C7D</code></div></div><div class="sw"><div class="sw-chip" style="background:#0D5663"></div><div class="sw-meta">800<br><code>#0D5663</code></div></div><div class="sw"><div class="sw-chip" style="background:#103F49"></div><div class="sw-meta">900<br><code>#103F49</code></div></div></div>
+<h3>navy</h3><div class="sw-row"><div class="sw"><div class="sw-chip" style="background:#EEF3F5"></div><div class="sw-meta">50<br><code>#EEF3F5</code></div></div><div class="sw"><div class="sw-chip" style="background:#D3DEE2"></div><div class="sw-meta">100<br><code>#D3DEE2</code></div></div><div class="sw"><div class="sw-chip" style="background:#9FB3BB"></div><div class="sw-meta">200<br><code>#9FB3BB</code></div></div><div class="sw"><div class="sw-chip" style="background:#6B8893"></div><div class="sw-meta">300<br><code>#6B8893</code></div></div><div class="sw"><div class="sw-chip" style="background:#3D5E6B"></div><div class="sw-meta">400<br><code>#3D5E6B</code></div></div><div class="sw"><div class="sw-chip" style="background:#16303D"></div><div class="sw-meta">500<br><code>#16303D</code></div></div><div class="sw"><div class="sw-chip" style="background:#122631"></div><div class="sw-meta">600<br><code>#122631</code></div></div><div class="sw"><div class="sw-chip" style="background:#0F2530"></div><div class="sw-meta">700<br><code>#0F2530</code></div></div><div class="sw"><div class="sw-chip" style="background:#0B1C24"></div><div class="sw-meta">800<br><code>#0B1C24</code></div></div><div class="sw"><div class="sw-chip" style="background:#071318"></div><div class="sw-meta">900<br><code>#071318</code></div></div></div>
+<h3>lime</h3><div class="sw-row"><div class="sw"><div class="sw-chip" style="background:#F7FBE0"></div><div class="sw-meta">50<br><code>#F7FBE0</code></div></div><div class="sw"><div class="sw-chip" style="background:#EEF6C0"></div><div class="sw-meta">100<br><code>#EEF6C0</code></div></div><div class="sw"><div class="sw-chip" style="background:#E2ED8E"></div><div class="sw-meta">200<br><code>#E2ED8E</code></div></div><div class="sw"><div class="sw-chip" style="background:#D7E34D"></div><div class="sw-meta">300<br><code>#D7E34D</code></div></div><div class="sw"><div class="sw-chip" style="background:#CADA1F"></div><div class="sw-meta">400<br><code>#CADA1F</code></div></div><div class="sw"><div class="sw-chip" style="background:#CADA1F"></div><div class="sw-meta">500<br><code>#CADA1F</code></div></div><div class="sw"><div class="sw-chip" style="background:#A9B81B"></div><div class="sw-meta">600<br><code>#A9B81B</code></div></div><div class="sw"><div class="sw-chip" style="background:#879417"></div><div class="sw-meta">700<br><code>#879417</code></div></div><div class="sw"><div class="sw-chip" style="background:#656F11"></div><div class="sw-meta">800<br><code>#656F11</code></div></div><div class="sw"><div class="sw-chip" style="background:#424A0B"></div><div class="sw-meta">900<br><code>#424A0B</code></div></div></div>
+<h3>yellow</h3><div class="sw-row"><div class="sw"><div class="sw-chip" style="background:#FFF9DB"></div><div class="sw-meta">50<br><code>#FFF9DB</code></div></div><div class="sw"><div class="sw-chip" style="background:#FFF1B0"></div><div class="sw-meta">100<br><code>#FFF1B0</code></div></div><div class="sw"><div class="sw-chip" style="background:#FFE680"></div><div class="sw-meta">200<br><code>#FFE680</code></div></div><div class="sw"><div class="sw-chip" style="background:#FFDD4D"></div><div class="sw-meta">300<br><code>#FFDD4D</code></div></div><div class="sw"><div class="sw-chip" style="background:#FFD623"></div><div class="sw-meta">400<br><code>#FFD623</code></div></div><div class="sw"><div class="sw-chip" style="background:#FFD200"></div><div class="sw-meta">500<br><code>#FFD200</code></div></div><div class="sw"><div class="sw-chip" style="background:#D9B200"></div><div class="sw-meta">600<br><code>#D9B200</code></div></div><div class="sw"><div class="sw-chip" style="background:#A88A00"></div><div class="sw-meta">700<br><code>#A88A00</code></div></div><div class="sw"><div class="sw-chip" style="background:#786200"></div><div class="sw-meta">800<br><code>#786200</code></div></div><div class="sw"><div class="sw-chip" style="background:#4A3D00"></div><div class="sw-meta">900<br><code>#4A3D00</code></div></div></div>
+<h3>gray</h3><div class="sw-row"><div class="sw"><div class="sw-chip" style="background:#F6F8F8"></div><div class="sw-meta">50<br><code>#F6F8F8</code></div></div><div class="sw"><div class="sw-chip" style="background:#EDF1F2"></div><div class="sw-meta">100<br><code>#EDF1F2</code></div></div><div class="sw"><div class="sw-chip" style="background:#E4EAEB"></div><div class="sw-meta">200<br><code>#E4EAEB</code></div></div><div class="sw"><div class="sw-chip" style="background:#CDD5D8"></div><div class="sw-meta">300<br><code>#CDD5D8</code></div></div><div class="sw"><div class="sw-chip" style="background:#9AA7AE"></div><div class="sw-meta">400<br><code>#9AA7AE</code></div></div><div class="sw"><div class="sw-chip" style="background:#6B7780"></div><div class="sw-meta">500<br><code>#6B7780</code></div></div><div class="sw"><div class="sw-chip" style="background:#58595B"></div><div class="sw-meta">600<br><code>#58595B</code></div></div><div class="sw"><div class="sw-chip" style="background:#3C4A52"></div><div class="sw-meta">700<br><code>#3C4A52</code></div></div><div class="sw"><div class="sw-chip" style="background:#283238"></div><div class="sw-meta">800<br><code>#283238</code></div></div><div class="sw"><div class="sw-chip" style="background:#1A2227"></div><div class="sw-meta">900<br><code>#1A2227</code></div></div></div></article>
+</main>
+</div>
+<script>window.PIDS_REL="../";</script>
+<script src="../assets/site.js"></script>
+
+</body>
+</html>
