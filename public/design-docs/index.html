@@ -3,7 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>홈 — PI-DS 퍼블릭아이디 디자인시스템</title>
+<title>홈 — 퍼블릭아이디 디자인시스템</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap">
 <link rel="stylesheet" href="./assets/tokens.css">
 <link rel="stylesheet" href="./assets/components.css">
 <link rel="stylesheet" href="./assets/site.css">
@@ -11,14 +15,20 @@
 </head>
 <body>
 <a class="pi-skiplink" href="#main">본문 바로가기</a>
+<div class="arch-strip" aria-hidden="true"></div>
 <header class="site-header">
   <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
-  <a class="site-brand" href="./index.html">PI-DS</a>
+  <a class="site-brand" href="./index.html" aria-label="퍼블릭아이디 디자인시스템 홈">
+    <img class="logo logo--on-light" src="./assets/logo-teal.png" alt="퍼블릭아이디">
+    <img class="logo logo--on-dark" src="./assets/logo-white.png" alt="퍼블릭아이디">
+    <span class="brand-label">Design System</span>
+  </a>
   <div class="site-search">
     <input type="search" id="search" placeholder="검색 (컴포넌트·토큰·규칙)" aria-label="문서 검색" autocomplete="off">
     <div class="search-results" id="search-results" hidden></div>
   </div>
   <button class="theme-toggle" type="button" aria-label="라이트/다크 전환">◐</button>
+  <a class="home-link" href="https://www.public-id.co.kr">홈페이지</a>
 </header>
 <div class="site-body">
 <nav class="site-nav" aria-label="문서 목차">
@@ -35,9 +45,12 @@
 
 </nav>
 <main class="site-main" id="main">
-<article class="doc">
-<h1>PI-DS — 퍼블릭아이디 디자인시스템</h1>
-<p>친환경 그래픽 노면표시재·안전시설의 퍼블릭아이디가 웹·인쇄·콘텐츠 전 채널에 같은 얼굴을 유지하기 위한 단일 디자인 정본입니다. 토큰(색·타이포·간격·모션) → 컴포넌트 20종 → 레이아웃·콘텐츠 규칙까지, 모든 페이지가 같은 구조(10섹션 계약)로 문서화되어 있습니다.</p>
+<article class="doc doc--home">
+<div class="hero">
+<p class="doc-eyebrow">Public ID Design System</p>
+<h1>디자인이 흔들리지 않는<br>회사의 정본</h1>
+<p class="hero-lead">친환경 그래픽 노면표시재·안전시설의 퍼블릭아이디가 웹·인쇄·콘텐츠 전 채널에 같은 얼굴을 유지하기 위한 단일 디자인 정본입니다. 토큰(색·타이포·간격·모션) → 컴포넌트 20종 → 레이아웃·콘텐츠 규칙까지, 모든 페이지가 같은 구조(10섹션 계약)로 문서화되어 있습니다.</p>
+</div>
 <h2>디자인 원칙</h2>
 <div class="home-grid home-grid--wide"><article class="pi-card"><h3 class="pi-card__title">1. 친환경의 신뢰를 시각으로 증명한다</h3><p class="pi-card__body">인증·수치는 정본 표기만 — 근거 있는 친환경을 숫자로 보여 준다.</p></article>
 <article class="pi-card"><h3 class="pi-card__title">2. 안전 정보는 가장 먼저, 가장 쉽게 읽힌다</h3><p class="pi-card__body">가독성·접근성은 취향이 아니라 제품 기능이다.</p></article>
@@ -72,6 +85,13 @@
 <a class="pi-card home-card" href="components/tooltip.html"><h3 class="pi-card__title">Tooltip</h3></a></div></article>
 </main>
 </div>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <img src="./assets/logo-white.png" alt="퍼블릭아이디" class="footer-logo">
+    <p>주식회사 퍼블릭아이디 — 사회적기업 · 산업디자인전문회사 · NEW Advertising, Good Campaign</p>
+    <p><a href="https://www.public-id.co.kr">public-id.co.kr</a> · <a href="https://store.public-id.co.kr">store.public-id.co.kr</a></p>
+  </div>
+</footer>
 <script>window.PIDS_REL="./";</script>
 <script src="./assets/site.js"></script>
 

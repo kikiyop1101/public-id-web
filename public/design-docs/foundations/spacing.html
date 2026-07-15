@@ -3,7 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Spacing (간격) — PI-DS 퍼블릭아이디 디자인시스템</title>
+<title>Spacing (간격) — 퍼블릭아이디 디자인시스템</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/site.css">
@@ -11,14 +15,20 @@
 </head>
 <body>
 <a class="pi-skiplink" href="#main">본문 바로가기</a>
+<div class="arch-strip" aria-hidden="true"></div>
 <header class="site-header">
   <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
-  <a class="site-brand" href="../index.html">PI-DS</a>
+  <a class="site-brand" href="../index.html" aria-label="퍼블릭아이디 디자인시스템 홈">
+    <img class="logo logo--on-light" src="../assets/logo-teal.png" alt="퍼블릭아이디">
+    <img class="logo logo--on-dark" src="../assets/logo-white.png" alt="퍼블릭아이디">
+    <span class="brand-label">Design System</span>
+  </a>
   <div class="site-search">
     <input type="search" id="search" placeholder="검색 (컴포넌트·토큰·규칙)" aria-label="문서 검색" autocomplete="off">
     <div class="search-results" id="search-results" hidden></div>
   </div>
   <button class="theme-toggle" type="button" aria-label="라이트/다크 전환">◐</button>
+  <a class="home-link" href="https://www.public-id.co.kr">홈페이지</a>
 </header>
 <div class="site-body">
 <nav class="site-nav" aria-label="문서 목차">
@@ -35,7 +45,7 @@
 
 </nav>
 <main class="site-main" id="main">
-<article class="doc"><h1>Spacing (간격)</h1>
+<article class="doc"><p class="doc-eyebrow">Foundations</p><h1>Spacing (간격)</h1>
 <p>간격은 스케일에서 고른다 — 임의 px 금지. 어디에 어떤 단계를 쓰는지는 Layout 가이드의 "간격 적용 규칙"이 정본이다.</p>
 <div class="table-wrap"><table><thead><tr><th>토큰</th><th>값</th><th>실물</th></tr></thead><tbody>
 <tr><td><code>--space-0</code></td><td><code>0</code></td><td><div class="sp-bar" style="width:0"></div></td></tr>
@@ -56,6 +66,13 @@
 </tbody></table></div></article>
 </main>
 </div>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <img src="../assets/logo-white.png" alt="퍼블릭아이디" class="footer-logo">
+    <p>주식회사 퍼블릭아이디 — 사회적기업 · 산업디자인전문회사 · NEW Advertising, Good Campaign</p>
+    <p><a href="https://www.public-id.co.kr">public-id.co.kr</a> · <a href="https://store.public-id.co.kr">store.public-id.co.kr</a></p>
+  </div>
+</footer>
 <script>window.PIDS_REL="../";</script>
 <script src="../assets/site.js"></script>
 

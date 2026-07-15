@@ -22,6 +22,9 @@ body {
 }
 .pi-skiplink:focus-visible { top: 0; outline: none; box-shadow: var(--focus-ring); }
 
+/* ── 상단 아치 띠 (public-id.co.kr 헤더 시그니처) ── */
+.arch-strip { height: var(--space-1); background: var(--gradient-arch); }
+
 /* ── 헤더 ── */
 .site-header {
   position: sticky; top: 0; z-index: var(--z-sticky);
@@ -30,13 +33,34 @@ body {
   background: var(--color-bg-canvas);
   border-bottom: var(--border-thin) solid var(--color-border-default);
 }
-.site-brand {
-  font-family: var(--font-family-display);
-  font-weight: var(--font-weight-extrabold);
-  font-size: var(--font-size-lg);
-  color: var(--color-brand-primary);
-  text-decoration: none; letter-spacing: var(--font-ls-tight);
+.site-brand { display: inline-flex; align-items: center; gap: var(--space-3); text-decoration: none; }
+.site-brand .logo { height: 28px; width: auto; display: block; }
+.site-brand .logo--on-dark { display: none; }
+[data-theme="dark"] .site-brand .logo--on-light { display: none; }
+[data-theme="dark"] .site-brand .logo--on-dark { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .site-brand .logo--on-light { display: none; }
+  :root:not([data-theme="light"]) .site-brand .logo--on-dark { display: block; }
 }
+.brand-label {
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--font-ls-wider); text-transform: uppercase;
+  color: var(--color-text-muted);
+  border-left: var(--border-thin) solid var(--color-border-default);
+  padding-left: var(--space-3);
+}
+.home-link {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: var(--target-min); padding: 0 var(--space-6);
+  border-radius: var(--radius-full);
+  background: var(--color-brand-anchor); color: var(--color-white);
+  font: var(--text-label); text-decoration: none; white-space: nowrap;
+  transition: background var(--duration-base) var(--easing-out), transform var(--duration-base) var(--easing-out);
+}
+.home-link:hover { background: var(--color-brand-primary); transform: translateY(-2px); }
+.home-link:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 .nav-toggle {
   display: none;
   background: none; border: var(--border-thin) solid var(--color-border-default);
@@ -45,7 +69,7 @@ body {
   font-size: var(--font-size-md); cursor: pointer;
 }
 .theme-toggle {
-  margin-left: auto;
+  margin-left: auto; margin-right: var(--space-2);
   background: none; border: var(--border-thin) solid var(--color-border-default);
   border-radius: var(--radius-full); color: var(--color-text-primary);
   min-width: var(--target-min); min-height: var(--target-min);
@@ -99,8 +123,8 @@ body {
 }
 .site-nav ul { list-style: none; margin: 0; padding: 0; }
 .site-nav a {
-  display: block; padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-sm);
+  display: block; padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
   color: var(--color-text-secondary); text-decoration: none;
   font: var(--text-body-sm);
 }
@@ -110,6 +134,32 @@ body {
 
 .site-main { padding: var(--space-8) var(--space-8) var(--space-13); min-width: 0; }
 .doc { max-width: 860px; margin: 0 auto; }
+
+/* ── 아이브로·히어로 (public-id.co.kr PageHero 룩) ── */
+.doc-eyebrow {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--font-ls-wider); text-transform: uppercase;
+  color: var(--color-text-link);
+  margin: 0 0 var(--space-4);
+}
+.hero {
+  position: relative; overflow: hidden;
+  background: var(--color-bg-subtle);
+  border: var(--border-thin) solid var(--color-border-subtle);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-11) var(--space-9);
+  margin-bottom: var(--space-10);
+}
+.hero::after {
+  content: ""; position: absolute; top: -35%; right: -8%;
+  width: 360px; height: 360px; border-radius: var(--radius-full);
+  background: var(--gradient-arch); opacity: 0.12; filter: blur(90px);
+  pointer-events: none;
+}
+.hero .doc-eyebrow { position: relative; }
+.hero h1 { position: relative; margin-bottom: var(--space-5); }
+.hero-lead { position: relative; font: var(--text-body-lg); color: var(--color-text-secondary); max-width: 46em; margin: 0; }
 
 /* ── 문서 타이포 (순화 리디자인 2026-07-15: 면 채움 최소, 색은 포인트에만) ── */
 .doc h1 { font: var(--text-h1); letter-spacing: var(--text-h1-letter-spacing); color: var(--color-text-heading); margin: 0 0 var(--space-4); text-wrap: balance; }
@@ -160,7 +210,7 @@ body {
 /* ── Do/Don't 쌍 카드 (면 채움 대신 상단 액센트만) ── */
 .dd-pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); margin: 0 0 var(--space-6); }
 .dd-card {
-  border-radius: var(--card-radius); padding: var(--space-5);
+  border-radius: var(--radius-xl); padding: var(--space-5);
   border: var(--border-thin) solid var(--color-border-subtle);
   border-top: var(--border-thick) solid;
 }
@@ -174,7 +224,7 @@ body {
 /* ── 라이브 데모 프레임 (체크무늬 제거 — 맑은 면 + 가는 보더) ── */
 .pi-demo {
   border: var(--border-thin) solid var(--color-border-default);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   padding: var(--space-8);
   margin: 0 0 var(--space-4);
   display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center;
@@ -187,7 +237,7 @@ body {
 }
 
 /* ── 코드 블록 (네이비 바 제거 — 라벨은 작은 글자로) ── */
-.code-block { margin: 0 0 var(--space-5); border-radius: var(--radius-md); overflow: hidden; border: var(--border-thin) solid var(--color-border-subtle); background: var(--color-bg-subtle); }
+.code-block { margin: 0 0 var(--space-5); border-radius: var(--radius-lg); overflow: hidden; border: var(--border-thin) solid var(--color-border-subtle); background: var(--color-bg-subtle); }
 .code-lang {
   font: var(--text-eyebrow); letter-spacing: var(--text-eyebrow-letter-spacing);
   text-transform: uppercase; color: var(--color-text-faint);
@@ -209,8 +259,22 @@ body {
 .sw-dot { display: inline-block; width: var(--space-5); height: var(--space-5); border-radius: var(--radius-sm); vertical-align: middle; margin-right: var(--space-2); border: var(--border-thin) solid var(--color-border-subtle); }
 .sp-bar { height: var(--space-4); background: var(--color-brand-primary); border-radius: var(--radius-sm); }
 
+/* ── 푸터 (public-id.co.kr 네이비 푸터 룩) ── */
+.site-footer { background: var(--color-navy-500); color: var(--color-navy-100); }
+.site-footer .footer-inner {
+  max-width: var(--layout-container-max); margin-inline: auto;
+  padding: var(--space-10) var(--space-6);
+  display: flex; flex-direction: column; gap: var(--space-3);
+}
+.site-footer .footer-logo { height: 24px; width: auto; align-self: flex-start; margin-bottom: var(--space-2); }
+.site-footer p { margin: 0; font: var(--text-body-sm); color: var(--color-navy-100); }
+.site-footer a { color: var(--color-teal-300); text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+.site-footer a:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: var(--radius-sm); }
+
 /* ── 반응형 ── */
 @media (max-width: 767px) {
+  .brand-label, .home-link { display: none; }
   .site-body { grid-template-columns: 1fr; }
   .site-nav {
     position: fixed; inset: 69px 30% 0 0; height: auto;

@@ -3,7 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Color (색) — PI-DS 퍼블릭아이디 디자인시스템</title>
+<title>Color (색) — 퍼블릭아이디 디자인시스템</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/site.css">
@@ -11,14 +15,20 @@
 </head>
 <body>
 <a class="pi-skiplink" href="#main">본문 바로가기</a>
+<div class="arch-strip" aria-hidden="true"></div>
 <header class="site-header">
   <button class="nav-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
-  <a class="site-brand" href="../index.html">PI-DS</a>
+  <a class="site-brand" href="../index.html" aria-label="퍼블릭아이디 디자인시스템 홈">
+    <img class="logo logo--on-light" src="../assets/logo-teal.png" alt="퍼블릭아이디">
+    <img class="logo logo--on-dark" src="../assets/logo-white.png" alt="퍼블릭아이디">
+    <span class="brand-label">Design System</span>
+  </a>
   <div class="site-search">
     <input type="search" id="search" placeholder="검색 (컴포넌트·토큰·규칙)" aria-label="문서 검색" autocomplete="off">
     <div class="search-results" id="search-results" hidden></div>
   </div>
   <button class="theme-toggle" type="button" aria-label="라이트/다크 전환">◐</button>
+  <a class="home-link" href="https://www.public-id.co.kr">홈페이지</a>
 </header>
 <div class="site-body">
 <nav class="site-nav" aria-label="문서 목차">
@@ -35,7 +45,7 @@
 
 </nav>
 <main class="site-main" id="main">
-<article class="doc"><h1>Color (색)</h1>
+<article class="doc"><p class="doc-eyebrow">Foundations</p><h1>Color (색)</h1>
 <p>정본은 브랜드 상수 문서에서 파생된 토큰이다. 원시 램프(Primitive)에서 역할(Semantic)로, 역할에서 컴포넌트로 흐른다 — 화면 코드는 역할·컴포넌트 토큰만 쓴다.</p>
 <blockquote><strong>60-30-10 절제</strong> — 60% 무채(화이트·연그레이, 본문은 딥그레이) · 30% 네이비(표지·표 헤더·다크 면) · 10% 청록·라임·옐로(시선 유도 지점에만).</blockquote>
 <h2>브랜드 역할</h2>
@@ -70,6 +80,13 @@
 <h3>gray</h3><div class="sw-row"><div class="sw"><div class="sw-chip" style="background:#F6F8F8"></div><div class="sw-meta">50<br><code>#F6F8F8</code></div></div><div class="sw"><div class="sw-chip" style="background:#EDF1F2"></div><div class="sw-meta">100<br><code>#EDF1F2</code></div></div><div class="sw"><div class="sw-chip" style="background:#E4EAEB"></div><div class="sw-meta">200<br><code>#E4EAEB</code></div></div><div class="sw"><div class="sw-chip" style="background:#CDD5D8"></div><div class="sw-meta">300<br><code>#CDD5D8</code></div></div><div class="sw"><div class="sw-chip" style="background:#9AA7AE"></div><div class="sw-meta">400<br><code>#9AA7AE</code></div></div><div class="sw"><div class="sw-chip" style="background:#6B7780"></div><div class="sw-meta">500<br><code>#6B7780</code></div></div><div class="sw"><div class="sw-chip" style="background:#58595B"></div><div class="sw-meta">600<br><code>#58595B</code></div></div><div class="sw"><div class="sw-chip" style="background:#3C4A52"></div><div class="sw-meta">700<br><code>#3C4A52</code></div></div><div class="sw"><div class="sw-chip" style="background:#283238"></div><div class="sw-meta">800<br><code>#283238</code></div></div><div class="sw"><div class="sw-chip" style="background:#1A2227"></div><div class="sw-meta">900<br><code>#1A2227</code></div></div></div></article>
 </main>
 </div>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <img src="../assets/logo-white.png" alt="퍼블릭아이디" class="footer-logo">
+    <p>주식회사 퍼블릭아이디 — 사회적기업 · 산업디자인전문회사 · NEW Advertising, Good Campaign</p>
+    <p><a href="https://www.public-id.co.kr">public-id.co.kr</a> · <a href="https://store.public-id.co.kr">store.public-id.co.kr</a></p>
+  </div>
+</footer>
 <script>window.PIDS_REL="../";</script>
 <script src="../assets/site.js"></script>
 
