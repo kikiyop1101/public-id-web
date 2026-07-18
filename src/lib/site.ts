@@ -15,7 +15,7 @@ export const site = {
   email: "public-id@naver.com",
   url: "https://www.public-id.co.kr",
   blog: "https://blog.naver.com/public-id",
-  youtube: "https://www.youtube.com/@public-identity",
+  youtube: "https://www.youtube.com/@퍼블릭아이디",
   instagram: "https://www.instagram.com/_public.id/",
   nav: [
     { label: "구독 서비스", en: "Subscription", href: "/subscribe" },
