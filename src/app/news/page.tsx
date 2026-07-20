@@ -95,7 +95,7 @@ export default function NewsPage() {
               </h3>
               <p className="mt-2 text-lg font-bold text-ink">{site.legalName}</p>
               <p className="mt-3 break-keep text-sm leading-relaxed text-ink-soft">
-                2017년 세종에 설립된 인증 사회적기업(제2020-227호)이자 KIDP 5부문
+                2017년 세종에 설립된 인증 사회적기업(제2020-227호)이자 KIDP 종합
                 산업디자인전문회사입니다. 친환경 그래픽 노면표시재 기반 노면표시·안전표지의
                 시공과 정기 시설 관리, 전용 마스코트·웹툰·디자인 시스템 구독을 제공합니다.
               </p>
