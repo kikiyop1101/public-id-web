@@ -46,7 +46,7 @@ export default function Header() {
           onClick={() => setOpen(false)}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.png" alt={site.name} className="h-7 w-auto sm:h-[30px]" />
+          <img src="/logo.png" alt={site.name} width={480} height={142} className="h-7 w-auto sm:h-[30px]" />
         </Link>
 
         <nav className="hidden items-center gap-9 lg:flex">

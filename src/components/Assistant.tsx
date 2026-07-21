@@ -30,11 +30,23 @@ export default function Assistant() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const el = scrollRef.current;
     if (el) el.scrollTop = el.scrollHeight;
   }, [messages, open, loading]);
+
+  // 열릴 때 입력창으로 포커스 이동 + Esc로 닫기
+  useEffect(() => {
+    if (!open) return;
+    inputRef.current?.focus();
+    const onEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onEsc);
+    return () => window.removeEventListener("keydown", onEsc);
+  }, [open]);
 
   async function send() {
     const text = input.trim();
@@ -104,7 +116,11 @@ export default function Assistant() {
         );
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 flex h-[min(560px,80vh)] w-[min(380px,calc(100vw-2.5rem))] flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-2xl">
+    <div
+      role="dialog"
+      aria-label="퍼블릭아이디 도우미"
+      className="fixed bottom-5 right-5 z-50 flex h-[min(560px,80vh)] w-[min(380px,calc(100vw-2.5rem))] flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-2xl"
+    >
       <header className="flex items-center justify-between gap-2 bg-teal-700 px-4 py-3 text-white">
         <div>
           <p className="text-sm font-semibold">퍼블릭아이디 도우미</p>
@@ -117,7 +133,7 @@ export default function Assistant() {
         </button>
       </header>
 
-      <div ref={scrollRef} className="flex-1 space-y-3 overflow-y-auto px-4 py-4">
+      <div ref={scrollRef} role="log" aria-live="polite" aria-label="대화 내용" className="flex-1 space-y-3 overflow-y-auto px-4 py-4">
         {messages.map((m, i) => (
           <div key={i} className={m.role === "user" ? "flex justify-end" : "flex justify-start"}>
             <p
@@ -140,9 +156,11 @@ export default function Assistant() {
       <div className="border-t border-line px-3 py-2.5">
         <div className="flex items-center gap-2">
           <input
+            ref={inputRef}
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={onKey}
+            aria-label="도우미에게 보낼 메시지"
             placeholder="어떤 게 필요하세요?"
             className="min-w-0 flex-1 rounded-full border border-line px-3.5 py-2 text-[13px] text-ink outline-none focus:border-teal-600"
           />
