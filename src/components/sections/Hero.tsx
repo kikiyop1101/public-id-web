@@ -16,7 +16,7 @@ export default function Hero() {
           <h1 className="mt-5 text-4xl font-extrabold leading-[1.13] tracking-tight text-ink sm:text-5xl lg:text-[58px]">
             디자인 팀이 없어도,
             <br />
-            매달 <span className="text-arch">새로운 콘텐츠</span>가
+            매달 <span className="text-teal-700">새로운 콘텐츠</span>가
             <br />
             도착합니다.
           </h1>
