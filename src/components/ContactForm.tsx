@@ -41,6 +41,20 @@ export default function ContactForm() {
     if (status === "sending") return;
 
     setStatus("sending");
+
+    // 실시간 릴레이(사내 영업봇 알림) — 실패해도 폼 UX에 영향 없음(fire-and-forget).
+    if (!botcheck) {
+      void fetch("/api/inquiry-relay", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: f.name,
+          contact: [f.phone, f.email].filter(Boolean).join(" / "),
+          message: f.message,
+        }),
+      }).catch(() => {});
+    }
+
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
