@@ -63,7 +63,6 @@ const productJsonLd = {
     { "@type": "PropertyValue", name: "국제특허", value: "유럽특허 EP 1 677 974 (유럽특허청 등록)" },
     { "@type": "PropertyValue", name: "잉크", value: "친환경 라텍스" },
     { "@type": "PropertyValue", name: "친환경 인증", value: "GREENGUARD GOLD (UL 2818 저휘발성)" },
-    { "@type": "PropertyValue", name: "국가통합인증", value: "KC 인증" },
     { "@type": "PropertyValue", name: "시험성적", value: "미끄럼저항·유해물질 불검출·방염 (KCL·SGS·KTR·KFI)" },
   ],
   offers: {

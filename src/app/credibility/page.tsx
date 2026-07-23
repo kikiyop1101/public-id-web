@@ -204,7 +204,7 @@ export default function CredibilityPage() {
                 특허받은 친환경 기술과 국내외 인증으로 뒷받침되는 신뢰입니다.
               </p>
               <div className="mt-7 flex flex-wrap gap-2.5">
-                {["인증 사회적기업", "KIDP 산업디자인전문회사", "KC 인증", "GREENGUARD GOLD (UL 2818)"].map((b) => (
+                {["인증 사회적기업", "KIDP 산업디자인전문회사", "GREENGUARD GOLD (UL 2818)"].map((b) => (
                   <span key={b} className="rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm font-medium text-white/90">{b}</span>
                 ))}
               </div>

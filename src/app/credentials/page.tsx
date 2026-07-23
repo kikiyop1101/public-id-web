@@ -26,7 +26,6 @@ const groups = [
     items: [
       { t: "GREENGUARD GOLD", d: "UL 2818 저휘발성 친환경 인증" },
       { t: "KCL · SGS · KTR · KFI", d: "미끄럼저항 · 유해물질 불검출 · 방염성능 시험성적" },
-      { t: "KC 인증", d: "국가통합인증" },
     ],
   },
   {
