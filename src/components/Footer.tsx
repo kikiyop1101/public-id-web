@@ -95,7 +95,10 @@ export default function Footer() {
             Tel {site.tel} · Fax {site.fax} · Email {site.email}
           </p>
           <p className="pt-2 text-white/55">
-            © 2026 {site.legalName}. All rights reserved.
+            © 2026 {site.legalName}. All rights reserved. ·{" "}
+            <Link href="/privacy" className="hover:text-white">
+              개인정보처리방침
+            </Link>
           </p>
         </div>
       </div>
