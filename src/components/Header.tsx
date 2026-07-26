@@ -61,7 +61,15 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="hidden lg:flex">
+        <div className="hidden items-center gap-2 lg:flex">
+          <a
+            href="https://store.public-id.co.kr/world"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-10 items-center justify-center rounded-full border border-line px-4 text-sm font-semibold text-ink transition hover:border-teal hover:text-teal-700"
+          >
+            3D 월드
+          </a>
           <Link
             href="/contact"
             className="inline-flex h-10 items-center justify-center rounded-full bg-navy px-5 text-sm font-semibold text-white transition hover:bg-teal"
@@ -124,10 +132,19 @@ export default function Header() {
               </span>
             </Link>
           ))}
+          <a
+            href="https://store.public-id.co.kr/world"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setOpen(false)}
+            className="mt-2 inline-flex h-12 items-center justify-center rounded-full border border-line px-5 font-semibold text-ink"
+          >
+            3D 월드 둘러보기
+          </a>
           <Link
             href="/contact"
             onClick={() => setOpen(false)}
-            className="mt-2 inline-flex h-12 items-center justify-center rounded-full bg-arch px-5 font-semibold text-white"
+            className="inline-flex h-12 items-center justify-center rounded-full bg-arch px-5 font-semibold text-white"
           >
             구독 상담
           </Link>

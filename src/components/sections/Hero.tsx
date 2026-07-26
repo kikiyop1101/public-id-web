@@ -34,6 +34,13 @@ export default function Hero() {
             <Button href="#work" variant="outline" size="lg">
               서비스 둘러보기
             </Button>
+            <Button
+              href="https://store.public-id.co.kr/world"
+              variant="navy"
+              size="lg"
+            >
+              퍼블릭아이디 월드
+            </Button>
           </div>
           <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink-soft">
             <span className="inline-flex items-center gap-2">
