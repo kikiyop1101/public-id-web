@@ -1,5 +1,6 @@
 import Container from "@/components/Container";
 import Button from "@/components/Button";
+import SocialLinks from "@/components/SocialLinks";
 
 export default function Hero() {
   return (
@@ -28,11 +29,15 @@ export default function Hero() {
             <b className="font-semibold text-ink">정기 시설 관리</b>를 한 곳에서.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
-            <Button href="#subscribe" variant="arch" size="lg">
-              구독 시작하기
+            <Button href="https://store.public-id.co.kr" variant="arch" size="lg">
+              PI-STORE
             </Button>
-            <Button href="#work" variant="outline" size="lg">
-              서비스 둘러보기
+            <Button
+              href="https://blog.naver.com/public-id"
+              variant="outline"
+              size="lg"
+            >
+              PI-NaverBlog
             </Button>
             <Button
               href="https://store.public-id.co.kr/world"
@@ -42,7 +47,8 @@ export default function Hero() {
               퍼블릭아이디 월드
             </Button>
           </div>
-          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink-soft">
+          <SocialLinks className="mt-5 flex flex-wrap items-center gap-2" />
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink-soft">
             <span className="inline-flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-teal" />
               KIDP 종합산업디자인전문회사 (시각 · 포장 · 환경)

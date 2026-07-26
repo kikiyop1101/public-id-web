@@ -17,6 +17,8 @@ export const site = {
   blog: "https://blog.naver.com/public-id",
   youtube: "https://www.youtube.com/@퍼블릭아이디",
   instagram: "https://www.instagram.com/_public.id/",
+  tistory: "https://public-id.tistory.com",
+  store: "https://store.public-id.co.kr",
   nav: [
     { label: "구독 서비스", en: "Subscription", href: "/subscribe" },
     { label: "디자인시스템", en: "Design System", href: "/design" },
