@@ -47,7 +47,20 @@ export default function Hero() {
               퍼블릭아이디 월드
             </Button>
           </div>
-          <SocialLinks className="mt-5 flex flex-wrap items-center gap-2" />
+          <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-3">
+            <SocialLinks className="flex items-center gap-2" />
+            <p className="max-w-md text-[13px] leading-relaxed text-ink-soft">
+              댓글로 궁금한 거 물어보시면{" "}
+              <b className="font-semibold text-teal-700">PI-AI</b>가 30분 안에
+              무엇이든 답변해드려요!
+            </p>
+            <a
+              href="/contact"
+              className="link-underline shrink-0 text-[14px] font-semibold text-ink transition-colors hover:text-teal-700"
+            >
+              구독 상담 →
+            </a>
+          </div>
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink-soft">
             <span className="inline-flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-teal" />
