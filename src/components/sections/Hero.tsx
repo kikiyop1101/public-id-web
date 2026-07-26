@@ -50,7 +50,8 @@ export default function Hero() {
           <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-3">
             <SocialLinks className="flex items-center gap-2" />
             <p className="max-w-md text-[13px] leading-relaxed text-ink-soft">
-              댓글로 궁금한 거 물어보시면{" "}
+              <b className="font-semibold text-ink">인스타</b> 댓글로 궁금한 거
+              물어보시면{" "}
               <b className="font-semibold text-teal-700">PI-AI</b>가 30분 안에
               무엇이든 답변해드려요!
             </p>
