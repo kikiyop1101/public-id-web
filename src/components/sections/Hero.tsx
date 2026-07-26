@@ -36,7 +36,7 @@ export default function Hero() {
             </Button>
             <Button
               href="https://store.public-id.co.kr/world"
-              variant="navy"
+              variant="teal"
               size="lg"
             >
               퍼블릭아이디 월드

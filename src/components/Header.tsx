@@ -66,7 +66,7 @@ export default function Header() {
             href="https://store.public-id.co.kr/world"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-10 items-center justify-center rounded-full border border-line px-4 text-sm font-semibold text-ink transition hover:border-teal hover:text-teal-700"
+            className="inline-flex h-10 items-center justify-center rounded-full bg-teal-700 px-4 text-sm font-semibold text-white transition hover:bg-teal"
           >
             3D 월드
           </a>
@@ -137,7 +137,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setOpen(false)}
-            className="mt-2 inline-flex h-12 items-center justify-center rounded-full border border-line px-5 font-semibold text-ink"
+            className="mt-2 inline-flex h-12 items-center justify-center rounded-full bg-teal-700 px-5 font-semibold text-white"
           >
             3D 월드 둘러보기
           </a>

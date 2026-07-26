@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
-type Variant = "arch" | "navy" | "outline" | "light";
+type Variant = "arch" | "navy" | "teal" | "outline" | "light";
 type Size = "sm" | "md" | "lg";
 
 const base =
@@ -17,6 +17,8 @@ const sizes: Record<Size, string> = {
 const variants: Record<Variant, string> = {
   arch: "bg-arch text-white shadow-lg shadow-teal/20 hover:-translate-y-0.5 hover:brightness-105",
   navy: "bg-navy text-white hover:bg-teal hover:-translate-y-0.5",
+  // 보조 CTA — 네이비 반전 밴드가 있는 페이지에서 navy 대신(PI-DS design.md button-teal)
+  teal: "bg-teal-700 text-white hover:bg-teal hover:-translate-y-0.5",
   outline: "border border-line text-ink hover:border-teal hover:text-teal-700",
   light: "bg-white text-navy hover:bg-cloud",
 };
