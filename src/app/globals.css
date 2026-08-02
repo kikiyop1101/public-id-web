@@ -105,12 +105,14 @@ p {
   left: 0;
   bottom: -3px;
   height: 2px;
-  width: 0;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
   background-image: var(--arch);
-  transition: width 0.3s ease;
+  transition: transform 0.3s ease;
 }
 .link-underline:hover::after {
-  width: 100%;
+  transform: scaleX(1);
 }
 
 /* Visible keyboard focus (legible on light, navy, and arch surfaces) */
