@@ -97,7 +97,7 @@ export default function RootLayout({
       "@type": "PostalAddress",
       postalCode: site.zip,
       addressRegion: "세종특별자치시",
-      streetAddress: "한누리대로 2135, A동 401호 (보람동 628-2, 스타힐타워1)",
+      streetAddress: "한누리대로 2135, 에이동 4층 1호 (보람동, 스타힐타워)",
       addressCountry: "KR",
     },
     areaServed: "KR",
