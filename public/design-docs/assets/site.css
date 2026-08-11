@@ -4,12 +4,36 @@
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  background: var(--color-bg-canvas);
+  /* 표면 — 회사 표면 정본(design.md 부록 D). 문서는 오래 읽는 화면이라
+     홈페이지(0.42)보다 훨씬 은은하게 깐다. */
+  background: var(--color-bg-paper);
   color: var(--color-text-primary);
   font: var(--text-body);
   letter-spacing: var(--text-body-letter-spacing);
   word-break: keep-all;
   overflow-wrap: anywhere;
+}
+
+/* ── 타이벡 결 표면 ──────────────────────────────────────────────
+   우리 친환경 판촉물 소재(타이벡)의 실제 구김. 이음매 없이 반복되는 타일.
+   읽는 화면이므로 강도는 홈페이지의 절반 이하로 둔다. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("tyvek-tile.webp");
+  background-size: 320px 296px;
+  background-repeat: repeat;
+  mix-blend-mode: overlay;
+  opacity: 0.26;
+}
+body > * { position: relative; z-index: 1; }
+/* 어두운 테마에서 overlay는 결을 때처럼 탁하게 만든다 → soft-light로 바꾸고 더 낮춘다 */
+[data-theme="dark"] body::before { mix-blend-mode: soft-light; opacity: 0.12; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) body::before { mix-blend-mode: soft-light; opacity: 0.12; }
 }
 
 /* ── 건너뛰기 링크 (PI-DS skip-link 규격 그대로) ── */
