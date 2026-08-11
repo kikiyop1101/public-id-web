@@ -46,93 +46,106 @@
 </nav>
 <main class="site-main" id="main">
 <article class="doc"><p class="doc-eyebrow">Components · 액션</p><h1 id="button-버튼">Button (버튼)</h1>
-<p>브랜드 1차 액션 컴포넌트. Primary·Secondary·Ghost 3위계 + 전환 유도 전용 CTA(라임) 변형을 제공한다.</p>
+<p>브랜드 1차 액션 컴포넌트. <strong>5변형 = arch(주 CTA) · navy · outline · light · teal(보조 CTA)</strong> — 홈페이지 실측 정본(design.md §7, 2026-07-26 대표 승인). 전 변형이 <strong>완전 원형(<code>--button-radius</code> = full)</strong> 이고, 높이는 40/48/56 3단 스케일이다.</p>
 <h2 id="정의">정의</h2>
-<p>사용자가 누르면 즉시 액션이 실행되는 컴포넌트다.</p>
+<p>사용자가 누르면 즉시 액션이 실행되는 컴포넌트다. 사각 버튼은 이 브랜드에 없다 — 필(pill) 형태가 "누르는 것"의 시그니처이며, 인풋(12px 모서리)과 형태로 구분된다.</p>
 <h2 id="anatomy">Anatomy</h2>
 <svg viewBox="0 0 420 150" width="420" height="150" role="img" aria-label="버튼 해부도" style="max-width:100%">
-  <rect x="90" y="45" width="240" height="56" rx="8" fill="var(--color-brand-primary)"/>
-  <circle cx="130" cy="73" r="10" fill="none" stroke="var(--button-primary-fg)" stroke-width="2"/>
-  <text x="152" y="79" fill="var(--button-primary-fg)" font-size="16" font-weight="700" font-family="inherit">견적 요청하기</text>
-  <line x1="90" y1="20" x2="330" y2="20" stroke="currentColor" stroke-dasharray="4 3"/>
-  <text x="335" y="24" font-size="12" fill="currentColor">① 컨테이너</text>
-  <line x1="130" y1="101" x2="130" y2="128" stroke="currentColor" stroke-dasharray="4 3"/>
-  <text x="120" y="142" font-size="12" fill="currentColor">③ 아이콘(선택)</text>
-  <line x1="210" y1="101" x2="210" y2="112" stroke="currentColor" stroke-dasharray="4 3"/>
-  <text x="200" y="126" font-size="12" fill="currentColor">② 라벨</text>
+  <defs><linearGradient id="btn-arch" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#CADA1F"/><stop offset=".42" stop-color="#7CC63F"/><stop offset="1" stop-color="#069CBB"/></linearGradient></defs>
+  <rect x="90" y="49" width="240" height="48" rx="24" fill="url(#btn-arch)"/>
+  <circle cx="130" cy="73" r="10" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <text x="152" y="79" fill="#ffffff" font-size="15" font-weight="600" font-family="inherit">견적 요청하기</text>
+  <line x1="90" y1="24" x2="330" y2="24" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="335" y="28" font-size="12" fill="currentColor">① 컨테이너(필)</text>
+  <line x1="130" y1="97" x2="130" y2="124" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="120" y="138" font-size="12" fill="currentColor">③ 아이콘(선택)</text>
+  <line x1="210" y1="97" x2="210" y2="108" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="200" y="122" font-size="12" fill="currentColor">② 라벨</text>
 </svg>
-<div class="table-wrap"><table><thead><tr><th>부위</th><th>토큰</th></tr></thead><tbody><tr><td>① 컨테이너</td><td>패딩 <code>--button-pad-y</code>/<code>--button-pad-x</code> · 모서리 <code>--button-radius</code>(CTA는 <code>--button-cta-radius</code> 풀필)</td></tr><tr><td>② 라벨</td><td><code>--font-family-sans</code> · 크기 <code>--font-size-base</code> · 굵기 <code>--font-weight-bold</code>(대비 확보, 접근성 참조)</td></tr><tr><td>③ 아이콘(선택)</td><td>라인 SVG, 라벨과 간격 <code>--button-gap</code>, <code>stroke="currentColor"</code></td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>부위</th><th>토큰</th></tr></thead><tbody><tr><td>① 컨테이너</td><td>모서리 <code>--button-radius</code>(full 고정) · 높이 <code>--button-height-sm/md/lg</code>(40/48/56px) · 좌우 <code>--button-pad-x-sm/md/lg</code>(20/24/28px)</td></tr><tr><td>② 라벨</td><td><code>--font-family-sans</code> · 크기 <code>--font-size-base</code>(15px) · 굵기 <code>--font-weight-semibold</code>(600) · 줄바꿈 금지</td></tr><tr><td>③ 아이콘(선택)</td><td>라인 SVG, 라벨과 간격 <code>--button-gap</code>, <code>stroke="currentColor"</code></td></tr></tbody></table></div>
 <h2 id="변형">변형</h2>
-<div class="table-wrap"><table><thead><tr><th>변형</th><th>용도</th></tr></thead><tbody><tr><td>Primary</td><td>화면의 주 액션(한 화면 1개) — 청록 필 + 흰 라벨</td></tr><tr><td>Secondary</td><td>보조 액션 — 투명 배경 + 청록 보더·라벨</td></tr><tr><td>Ghost</td><td>3차 액션·조밀한 UI — 배경·보더 없음</td></tr><tr><td>CTA (라임)</td><td>전환 유도 지점 전용(히어로·뒷표지) — 라임 필 + 네이비 라벨, 풀 라운드</td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>변형</th><th>용도</th></tr></thead><tbody><tr><td><strong>arch</strong></td><td>화면의 주 CTA(<strong>한 화면 1개</strong>) — 아치 그라디언트 필 + 흰 라벨 + 컬러 그림자</td></tr><tr><td><strong>navy</strong></td><td>보조 액션 기본 — 네이비 필 + 흰 라벨, 호버 시 청록으로 전환</td></tr><tr><td><strong>outline</strong></td><td>3차 액션 — 흰 배경 + 헤어라인 보더, 호버 시 청록 보더·라벨</td></tr><tr><td><strong>light</strong></td><td>진한 면(네이비 밴드·아치 밴드) <strong>위 전용</strong> — 흰 필 + 네이비 라벨</td></tr><tr><td><strong>teal</strong></td><td>보조 CTA(외부·별도 목적지) — <code>primary-strong</code>(#0B6C7D) 필. <strong>네이비 반전 밴드가 있는 페이지</strong>에서 navy 대신 쓴다: 버튼과 밴드가 같은 네이비면 버튼이 그 섹션으로 가는 링크처럼 읽힌다(2026-07-26 대표 지적)</td></tr></tbody></table></div>
+<p>라임 단색 CTA는 <strong>웹 금지</strong>(design.md §8 — 라임·노랑은 구조를 칠하지 않는다). 인쇄 뒷표지의 라임 필은 <code>paged.css</code> 관할로 별개.</p>
 <h2 id="상태">상태</h2>
-<div class="table-wrap"><table><thead><tr><th>상태</th><th>Primary</th><th>Secondary</th><th>Ghost</th><th>CTA</th></tr></thead><tbody><tr><td>Default</td><td>bg <code>--button-primary-bg</code> / fg <code>--button-primary-fg</code></td><td>border <code>--button-secondary-border</code> / fg <code>--button-secondary-fg</code></td><td>fg <code>--button-ghost-fg</code></td><td>bg <code>--button-cta-bg</code> / fg <code>--button-cta-fg</code></td></tr><tr><td>Hover</td><td>bg <code>--button-primary-bg-hover</code></td><td>bg <code>--button-secondary-bg-hover</code></td><td>bg <code>--button-ghost-bg-hover</code></td><td><code>filter: brightness(0.92)</code></td></tr><tr><td>Active</td><td>bg <code>--button-primary-bg-active</code></td><td>—</td><td>—</td><td>—</td></tr><tr><td>Focus</td><td><code>box-shadow: var(--focus-ring)</code> (4변형 공통)</td><td>동일</td><td>동일</td><td>동일</td></tr><tr><td>Disabled</td><td><code>opacity: var(--button-disabled-opacity)</code> + <code>cursor: not-allowed</code> (4변형 공통)</td><td>동일</td><td>동일</td><td>동일</td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>상태</th><th>arch</th><th>navy</th><th>outline</th><th>light</th><th>teal</th></tr></thead><tbody><tr><td>Default</td><td>bg <code>--button-arch-bg</code> / fg <code>--button-arch-fg</code> / shadow <code>--button-arch-shadow</code></td><td>bg <code>--button-navy-bg</code> / fg <code>--button-navy-fg</code></td><td>border <code>--button-outline-border</code> / fg <code>--button-outline-fg</code></td><td>bg <code>--button-light-bg</code> / fg <code>--button-light-fg</code></td><td>bg <code>--button-teal-bg</code> / fg <code>--button-teal-fg</code></td></tr><tr><td>Hover</td><td><code>translateY(-2px)</code> + <code>brightness(1.05)</code></td><td>bg <code>--button-navy-bg-hover</code> + <code>translateY(-2px)</code></td><td>border <code>--button-outline-border-hover</code> / fg <code>--button-outline-fg-hover</code></td><td>bg <code>--button-light-bg-hover</code></td><td>bg <code>--button-teal-bg-hover</code> + <code>translateY(-2px)</code></td></tr><tr><td>Focus</td><td><code>box-shadow: var(--focus-ring)</code> (5변형 공통)</td><td>동일</td><td>동일</td><td>동일</td><td>동일</td></tr><tr><td>Disabled</td><td><code>opacity: var(--button-disabled-opacity)</code> + <code>cursor: not-allowed</code> (5변형 공통)</td><td>동일</td><td>동일</td><td>동일</td><td>동일</td></tr></tbody></table></div>
 <h2 id="do-don-t">Do / Don't</h2>
-<div class="dd-pair"><div class="dd-card dd-do"><div class="dd-label">Do</div><ul><li>한 화면에 Primary는 1개만 — 주 액션이 무엇인지 시선이 바로 가게 한다.</li><li>CTA(라임)는 전환 유도 지점(히어로·뒷표지·가격 안내 끝)에만 아껴 쓴다.</li><li>아이콘을 쓰면 라벨과 함께 쓴다(아이콘 단독 버튼은 <code>aria-label</code> 필수 + Tooltip 참조).</li></ul></div><div class="dd-card dd-dont"><div class="dd-label">Don't</div><ul><li>Primary를 여러 개 나란히 두지 말 것 — 위계가 무너진다.</li><li>라벨을 14px 이하로 줄인 채 청록 필을 유지하지 말 것 — 대비 미달(접근성 참조).</li><li>링크로 이동하는 요소를 버튼처럼 꾸미지 말 것 — 이동은 Link, 실행은 Button.</li></ul></div></div>
+<div class="dd-pair"><div class="dd-card dd-do"><div class="dd-label">Do</div><ul><li>한 화면에 arch는 1개만 — 주 액션이 무엇인지 시선이 바로 가게 한다.</li><li>헤더 우측 = navy(주) + outline 또는 teal(보조), 높이 40px(<code>--button-height-sm</code>).</li><li><strong>같은 대상을 히어로와 헤더 양쪽에 둘 때는 두 곳의 강조를 일치</strong>시킨다 — 한쪽만 튀면 어색하다(2026-07-26).</li><li>아이콘을 쓰면 라벨과 함께 쓴다(아이콘 단독 버튼은 <code>aria-label</code> 필수 + Tooltip 참조).</li></ul></div><div class="dd-card dd-dont"><div class="dd-label">Don't</div><ul><li>arch를 여러 개 나란히 두지 말 것 — 위계가 무너진다.</li><li>라임·노랑 단색으로 버튼을 칠하지 말 것(웹) — 제품 지시·아치 내부 전용 색이다.</li><li>모서리를 full 외의 값으로 바꾸지 말 것 — 버튼/인풋 형태 구분이 사라진다.</li><li>링크로 이동하는 요소를 버튼처럼 꾸미지 말 것 — 이동은 Link, 실행은 Button. (단 앵커가 CTA 역할이면 버튼 스타일 허용 — 홈 실측 관례)</li></ul></div></div>
 <h2 id="콘텐츠-규칙">콘텐츠 규칙</h2>
-<ul><li>라벨은 <strong>동사형</strong>으로 끝낸다: "견적 요청하기", "카탈로그 받기" (명사 단독 "견적" ✗).</li><li>길이는 <strong>2~4어절</strong>, 줄바꿈 없이 한 줄. 말줄임표(…) 금지.</li><li>이중 부정 금지("취소 안 함" ✗ → "유지하기").</li><li>조사 오류·띄어쓰기는 발행 전 점검(전역 규칙: <code>../guidelines/ux-writing.md</code>).</li></ul>
+<ul><li>라벨은 <strong>동사형</strong>으로 끝낸다: "견적 요청하기", "카탈로그 받기" (명사 단독 "견적" ✗).</li><li>길이는 <strong>2~4어절</strong>, 줄바꿈 없이 한 줄(<code>white-space: nowrap</code>). 말줄임표(…) 금지.</li><li>이중 부정 금지("취소 안 함" ✗ → "유지하기").</li><li>조사 오류·띄어쓰기는 발행 전 점검(전역 규칙: <code>../guidelines/ux-writing.md</code>).</li></ul>
 <h2 id="키보드-인터랙션">키보드 인터랙션</h2>
 <div class="table-wrap"><table><thead><tr><th>키</th><th>동작</th></tr></thead><tbody><tr><td><code>Tab</code></td><td>버튼으로 포커스 이동(포커스 링 표시)</td></tr><tr><td><code>Enter</code> / <code>Space</code></td><td>버튼 실행</td></tr></tbody></table></div>
 <h2 id="접근성">접근성</h2>
-<ul><li>네이티브 <code>&lt;button&gt;</code> 요소를 쓴다(<code>&lt;div role="button"&gt;</code> 지양) — 키보드·스크린리더 기본 지원.</li><li><strong>대비</strong>: 흰 라벨 on 청록(#069CBB) ≈ 3.0:1 → "큰 텍스트" 기준으로만 통과. 그래서 기본 라벨 = <strong>16px·bold(700)</strong>. 라벨을 더 작게 써야 하면 필을 <code>--color-teal-700</code>(흰 라벨 ~4.9:1, AA)으로 바꾼다.</li><li>포커스 링 제거 금지(<code>:focus-visible</code> + <code>--focus-ring</code>), 히트영역 ≥ <code>--target-min</code>(44px — 패딩 기본값으로 충족).</li><li>비활성은 <code>disabled</code> 속성(스타일만 흐리게 하지 말 것). 기준: <code>../guidelines/accessibility.md</code>.</li></ul>
+<ul><li>네이티브 <code>&lt;button&gt;</code> 요소를 쓴다(<code>&lt;div role="button"&gt;</code> 지양) — 키보드·스크린리더 기본 지원.</li><li><strong>대비</strong>: 흰 라벨 대비는 navy(≈14:1)·teal(#0B6C7D ≈4.9:1, AA) 충분. <strong>arch는 라임 시작부에서 대비가 약하므로</strong> 라벨을 그라디언트의 청록 쪽(중앙~우측)에 걸치게 하고 600 이상 굵기를 유지한다. AA가 필수인 화면(폼 제출 등)은 teal 변형을 쓴다.</li><li>포커스 링 제거 금지(<code>:focus-visible</code> + <code>--focus-ring</code>) — 밝은 면·네이비 면·아치 면 셋 다에서 판독돼야 한다.</li><li>히트영역: 시각 높이 40px(<code>sm</code>)일 때도 패딩·마진으로 <strong>44px(<code>--target-min</code>) 히트영역</strong>을 확보한다(웹 실측 40px — design.md Known Gaps #3, 시각 규격은 유지하되 터치 영역으로 보완).</li><li>비활성은 <code>disabled</code> 속성(스타일만 흐리게 하지 말 것). 기준: <code>../guidelines/accessibility.md</code>.</li><li><code>prefers-reduced-motion: reduce</code>에서 <code>translateY</code> 호버 모션을 끈다.</li></ul>
 <h2 id="코드">코드</h2>
 <div class="pi-demo" data-demo>
-<button class="pi-button" type="button">견적 요청하기</button>
-<button class="pi-button pi-button--secondary" type="button">카탈로그 받기</button>
-<button class="pi-button pi-button--ghost" type="button">자세히 보기</button>
-<button class="pi-button pi-button--cta" type="button">디자인구독 시작하기</button>
-<button class="pi-button" type="button" disabled>견적 요청하기</button>
+<button class="pi-button pi-button--arch" type="button">견적 요청하기</button>
+<button class="pi-button pi-button--navy" type="button">상담 신청하기</button>
+<button class="pi-button pi-button--outline" type="button">카탈로그 받기</button>
+<button class="pi-button pi-button--light" type="button">자세히 보기</button>
+<button class="pi-button pi-button--teal" type="button">퍼블릭아이디 월드 보기</button>
+<button class="pi-button pi-button--arch" type="button" disabled>견적 요청하기</button>
 </div>
-<div class="code-block"><div class="code-lang">html</div><pre><code>&lt;button class="pi-button" type="button"&gt;견적 요청하기&lt;/button&gt;
-&lt;button class="pi-button pi-button--secondary" type="button"&gt;카탈로그 받기&lt;/button&gt;
-&lt;button class="pi-button pi-button--ghost" type="button"&gt;자세히 보기&lt;/button&gt;
-&lt;button class="pi-button pi-button--cta" type="button"&gt;디자인구독 시작하기&lt;/button&gt;
-&lt;button class="pi-button" type="button" disabled&gt;견적 요청하기&lt;/button&gt;</code></pre></div>
+<div class="code-block"><div class="code-lang">html</div><pre><code>&lt;button class="pi-button pi-button--arch" type="button"&gt;견적 요청하기&lt;/button&gt;
+&lt;button class="pi-button pi-button--navy" type="button"&gt;상담 신청하기&lt;/button&gt;
+&lt;button class="pi-button pi-button--outline" type="button"&gt;카탈로그 받기&lt;/button&gt;
+&lt;button class="pi-button pi-button--light" type="button"&gt;자세히 보기&lt;/button&gt;
+&lt;button class="pi-button pi-button--teal" type="button"&gt;퍼블릭아이디 월드 보기&lt;/button&gt;
+&lt;button class="pi-button pi-button--arch" type="button" disabled&gt;견적 요청하기&lt;/button&gt;</code></pre></div>
 <div class="code-block"><div class="code-lang">css</div><pre><code>.pi-button {
   display: inline-flex; align-items: center; justify-content: center;
   gap: var(--button-gap);
-  padding: var(--button-pad-y) var(--button-pad-x);
-  border: var(--border-medium) solid transparent;
+  height: var(--button-height-md);
+  padding: 0 var(--button-pad-x-md);
+  border: 0;
   border-radius: var(--button-radius);
-  background: var(--button-primary-bg);
-  color: var(--button-primary-fg);
   font-family: var(--font-family-sans);
   font-size: var(--font-size-base);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-semibold);
   line-height: var(--font-lh-normal);
   letter-spacing: var(--font-ls-normal);
-  min-height: var(--target-min);
-  cursor: pointer; word-break: keep-all;
+  white-space: nowrap;
+  cursor: pointer;
   transition: background var(--duration-base) var(--easing-out),
               color var(--duration-base) var(--easing-out),
+              border-color var(--duration-base) var(--easing-out),
+              transform var(--duration-base) var(--easing-out),
               filter var(--duration-base) var(--easing-out);
 }
-.pi-button:hover { background: var(--button-primary-bg-hover); }
-.pi-button:active { background: var(--button-primary-bg-active); }
-.pi-button:focus-visible { outline: none; box-shadow: var(--focus-ring); }
-.pi-button:disabled { opacity: var(--button-disabled-opacity); cursor: not-allowed; }
+.pi-button--sm { height: var(--button-height-sm); padding: 0 var(--button-pad-x-sm); font-size: var(--font-size-sm); }
+.pi-button--lg { height: var(--button-height-lg); padding: 0 var(--button-pad-x-lg); }
 
-.pi-button--secondary {
+.pi-button--arch {
+  background: var(--button-arch-bg);
+  color: var(--button-arch-fg);
+  box-shadow: var(--button-arch-shadow);
+}
+.pi-button--arch:hover { transform: translateY(-2px); filter: brightness(1.05); }
+
+.pi-button--navy { background: var(--button-navy-bg); color: var(--button-navy-fg); }
+.pi-button--navy:hover { background: var(--button-navy-bg-hover); transform: translateY(-2px); }
+
+.pi-button--outline {
   background: transparent;
-  border-color: var(--button-secondary-border);
-  color: var(--button-secondary-fg);
+  border: var(--border-thin) solid var(--button-outline-border);
+  color: var(--button-outline-fg);
 }
-.pi-button--secondary:hover { background: var(--button-secondary-bg-hover); }
+.pi-button--outline:hover { border-color: var(--button-outline-border-hover); color: var(--button-outline-fg-hover); }
 
-.pi-button--ghost { background: transparent; color: var(--button-ghost-fg); }
-.pi-button--ghost:hover { background: var(--button-ghost-bg-hover); }
+.pi-button--light { background: var(--button-light-bg); color: var(--button-light-fg); }
+.pi-button--light:hover { background: var(--button-light-bg-hover); }
 
-.pi-button--cta {
-  background: var(--button-cta-bg);
-  color: var(--button-cta-fg);
-  border-radius: var(--button-cta-radius);
-}
-.pi-button--cta:hover { background: var(--button-cta-bg); filter: brightness(0.92); }
+.pi-button--teal { background: var(--button-teal-bg); color: var(--button-teal-fg); }
+.pi-button--teal:hover { background: var(--button-teal-bg-hover); transform: translateY(-2px); }
+
+.pi-button:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+.pi-button:disabled { opacity: var(--button-disabled-opacity); cursor: not-allowed; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .pi-button { transition: none; }
+  .pi-button:hover { transform: none; }
 }</code></pre></div>
 <h2 id="changelog">Changelog</h2>
-<div class="table-wrap"><table><thead><tr><th>날짜</th><th>변경</th></tr></thead><tbody><tr><td>2026-07-15</td><td>문서 계약(10섹션) 적용 — Anatomy 도해·콘텐츠 규칙·키보드·코드 신설, 기존 규격 승계. 라벨 기본 16px·700로 대비 기준 코드 반영</td></tr></tbody></table></div></article>
+<div class="table-wrap"><table><thead><tr><th>날짜</th><th>변경</th></tr></thead><tbody><tr><td>2026-07-26</td><td><strong>design.md 정렬</strong> — 변형을 Primary·Secondary·Ghost·CTA(라임) → <strong>arch·navy·outline·light·teal 5종</strong>으로 교체(홈페이지 실측 + 대표 승인). radius full 고정, 높이 40/48/56 스케일, 라벨 15px/600, 라임 CTA 웹 금지, 히어로↔헤더 강조 일치 규칙</td></tr><tr><td>2026-07-15</td><td>문서 계약(10섹션) 적용 — Anatomy 도해·콘텐츠 규칙·키보드·코드 신설</td></tr></tbody></table></div></article>
 </main>
 </div>
 <footer class="site-footer">

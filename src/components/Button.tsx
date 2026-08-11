@@ -19,6 +19,8 @@ const variants: Record<Variant, string> = {
   navy: "bg-navy text-white hover:bg-teal hover:-translate-y-0.5",
   // 보조 CTA — 네이비 반전 밴드가 있는 페이지에서 navy 대신(PI-DS design.md button-teal)
   teal: "bg-teal-700 text-white hover:bg-teal hover:-translate-y-0.5",
+  // paper 표면 위에서 투명 배경은 버튼으로 읽히지 않는다 → 반투명 흰 배경 + 진한 보더
+  // (배경/보더 실제 값은 globals.css의 a.border-line 규칙이 담당 — 여기선 호버 색만)
   outline: "border border-line text-ink hover:border-teal hover:text-teal-700",
   light: "bg-white text-navy hover:bg-cloud",
 };

@@ -47,9 +47,9 @@
 <main class="site-main" id="main">
 <article class="doc"><p class="doc-eyebrow">Foundations</p><h1 id="layout-레이아웃-그리드">Layout (레이아웃·그리드)</h1>
 <p>화면을 나누는 규격 — 브레이크포인트·컨테이너·12컬럼 그리드·간격 적용 규칙과 정형 레이아웃 3종. 값의 정본은 <code>--layout-*</code> 토큰(2026-07-15 신설).</p>
-<h2 id="브레이크포인트-3단계">브레이크포인트 — 3단계</h2>
-<div class="table-wrap"><table><thead><tr><th>구간</th><th>범위</th><th>대상</th></tr></thead><tbody><tr><td>Mobile</td><td>&lt; 768px</td><td>스마트폰 — 1컬럼, 내비는 드로어</td></tr><tr><td>Tablet</td><td>768 ~ 1199px</td><td>태블릿·좁은 창 — 그리드 축소(12→8칸 감각)</td></tr><tr><td>Desktop</td><td>≥ 1200px</td><td>데스크톱 — 풀 그리드 + 고정 사이드바</td></tr></tbody></table></div>
-<ul><li><code>@media</code>에서는 CSS 변수를 쓸 수 없으므로 <strong>768px·1200px 값 자체가 정본</strong>이다(<code>--layout-bp-tablet</code>·<code>--layout-bp-desktop</code> 토큰과 항상 일치시킨다).</li><li>구간을 늘리고 싶어도 3단계를 유지한다 — 채널이 많은 대신 규칙은 적게.</li></ul>
+<h2 id="브레이크포인트-3단계-홈페이지-실측-2026-07-26-design-md-정렬">브레이크포인트 — 3단계 (홈페이지 실측, 2026-07-26 design.md 정렬)</h2>
+<div class="table-wrap"><table><thead><tr><th>구간</th><th>값</th><th>실측</th><th>무엇이 바뀌나</th></tr></thead><tbody><tr><td><code>bp-sm</code></td><td>640px+</td><td><strong>83회(주 분기점)</strong></td><td>타이포 한 단계 상승, 섹션 여백 80→112px, 좌우 20→32px, 카드 여백 확대</td></tr><tr><td><code>bp-md</code></td><td>768px+</td><td>11회</td><td>푸터 12열 그리드 전개</td></tr><tr><td><code>bp-lg</code></td><td>1024px+</td><td>43회</td><td>헤더 메뉴·버튼 노출(햄버거 해제), 다단 그리드 완성</td></tr></tbody></table></div>
+<ul><li>기본(모바일, &lt;640px)은 1컬럼 스택 + 드로어 내비. <strong>대부분의 반응형 처리는 <code>bp-sm</code> 하나로 끝낸다</strong> — 구간을 늘리지 말 것.</li><li><code>xl</code>·<code>2xl</code>급 분기는 쓰지 않는다 — 1200px 컨테이너에서 성장이 멈춘다.</li><li><code>@media</code>에서는 CSS 변수를 쓸 수 없으므로 <strong>640·768·1024px 값 자체가 정본</strong>이다(<code>--layout-bp-sm</code>·<code>--layout-bp-md</code>·<code>--layout-bp-lg</code> 토큰과 항상 일치시킨다).</li></ul>
 <h2 id="컨테이너-폭">컨테이너·폭</h2>
 <div class="table-wrap"><table><thead><tr><th>용도</th><th>토큰</th><th>값</th></tr></thead><tbody><tr><td>페이지 컨테이너 최대폭</td><td><code>--layout-container-max</code></td><td>1200px</td></tr><tr><td>본문(읽는 글) 최대폭</td><td><code>--layout-content-max</code></td><td>860px</td></tr><tr><td>사이드바 폭</td><td><code>--layout-sidebar-width</code></td><td>240px</td></tr></tbody></table></div>
 <ul><li>읽는 글(문서·블로그)은 컨테이너가 넓어도 <strong>본문은 860px</strong>을 넘기지 않는다(한 줄이 길면 가독성이 급락).</li><li>컨테이너 좌우 패딩: 모바일 <code>--space-5</code>, 데스크톱 <code>--space-8</code>.</li></ul>

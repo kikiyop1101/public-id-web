@@ -66,7 +66,7 @@
   <line x1="335" y1="60" x2="335" y2="34" stroke="currentColor" stroke-dasharray="4 3"/>
   <text x="318" y="28" font-size="12" fill="currentColor">④ 배지</text>
 </svg>
-<div class="table-wrap"><table><thead><tr><th>부위</th><th>토큰</th></tr></thead><tbody><tr><td>① 칩 컨테이너</td><td>bg <code>--chip-bg</code> · 모서리 <code>--chip-radius</code>(풀 라운드) · 패딩 <code>--chip-pad-y</code>/<code>--chip-pad-x</code></td></tr><tr><td>② 라벨</td><td><code>--chip-fg</code> · <code>--text-caption</code></td></tr><tr><td>③ 삭제 아이콘(선택)</td><td>라인 SVG <code>stroke="currentColor"</code>, 히트영역 <code>--target-min</code></td></tr><tr><td>④ 배지</td><td>bg <code>--badge-bg</code> · fg <code>--badge-fg</code> · 모서리 <code>--badge-radius</code> · 숫자·라틴은 <code>--font-family-display</code></td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>부위</th><th>토큰</th></tr></thead><tbody><tr><td>① 칩 컨테이너</td><td>bg <code>--chip-bg</code> · 모서리 <code>--chip-radius</code>(풀 라운드) · 패딩 <code>--chip-pad-y</code>/<code>--chip-pad-x</code></td></tr><tr><td>② 라벨</td><td><code>--chip-fg</code> · <code>--text-caption</code></td></tr><tr><td>③ 삭제 아이콘(선택)</td><td>라인 SVG <code>stroke="currentColor"</code>, 히트영역 <code>--target-min</code></td></tr><tr><td>④ 배지</td><td>bg <code>--badge-bg</code> · fg <code>--badge-fg</code> · 모서리 <code>--badge-radius</code> · 숫자·라틴은 <code>--font-family-num</code></td></tr></tbody></table></div>
 <h2 id="변형">변형</h2>
 <div class="table-wrap"><table><thead><tr><th>컴포넌트</th><th>변형</th><th>용도</th></tr></thead><tbody><tr><td>Chip</td><td>정적</td><td>분류 태그를 표시만 함(포커스 안 받음)</td></tr><tr><td>Chip</td><td>선택형(필터)</td><td>클릭으로 on/off, 선택 시 브랜드 필</td></tr><tr><td>Chip</td><td>삭제형</td><td>× 아이콘으로 적용한 필터를 제거</td></tr><tr><td>Badge</td><td>기본</td><td>중립 상태 라벨(NEW·기본, 틸 톤)</td></tr><tr><td>Badge</td><td>상태</td><td>success·warning·danger 의미색(재고·주문·품절)</td></tr></tbody></table></div>
 <h2 id="상태">상태</h2>
@@ -74,7 +74,7 @@
 <h2 id="do-don-t">Do / Don't</h2>
 <div class="dd-pair"><div class="dd-card dd-do"><div class="dd-label">Do</div><ul><li>Chip은 1~2단어 분류 라벨로만 쓴다 — "노면표시재", "안전표지"처럼 짧게.</li><li>필터로 쓰는 Chip은 선택 상태를 색·모양 둘 다로 드러낸다(브랜드 필 + <code>aria-pressed</code>).</li><li>Badge 상태색은 의미와 일치시킨다(품절=danger, 재고=success).</li></ul></div><div class="dd-card dd-dont"><div class="dd-label">Don't</div><ul><li>Chip·Badge에 문장이나 설명을 넣지 말 것 — 길어지면 Callout·목록으로.</li><li>Badge를 클릭 대상으로 만들지 말 것 — 조작이 필요하면 Chip이나 Button을 쓴다.</li><li>의미 없는 알록달록한 Badge를 남발하지 말 것 — 상태색은 절제한다.</li></ul></div></div>
 <h2 id="콘텐츠-규칙">콘텐츠 규칙</h2>
-<ul><li>Chip·Badge 라벨은 <strong>1~2단어 명사</strong>(체언)로 — 문장·서술어 금지.</li><li>길이 상한: Chip은 8자, Badge는 6자 안. 넘으면 축약하거나 다른 컴포넌트로.</li><li>Badge 숫자는 아라비아 숫자, 두 자리를 넘으면 "99+"로 축약한다.</li><li>인증 배지는 검증된 사실만 — "GREENGUARD GOLD"만 쓰고(KC 표기 보류) 미보유 인증 라벨은 금지.</li></ul>
+<ul><li>Chip·Badge 라벨은 <strong>1~2단어 명사</strong>(체언)로 — 문장·서술어 금지.</li><li>길이 상한: Chip은 8자, Badge는 6자 안. 넘으면 축약하거나 다른 컴포넌트로.</li><li>Badge 숫자는 아라비아 숫자, 두 자리를 넘으면 "99+"로 축약한다.</li><li>인증 배지는 검증된 사실만 — "GREENGUARD GOLD", "KC"만 쓰고 미보유 인증 라벨은 금지.</li></ul>
 <h2 id="키보드-인터랙션">키보드 인터랙션</h2>
 <div class="table-wrap"><table><thead><tr><th>키</th><th>동작</th></tr></thead><tbody><tr><td><code>Tab</code></td><td>선택형·삭제형 Chip으로 포커스 이동(정적 Chip·Badge는 포커스를 받지 않음)</td></tr><tr><td><code>Enter</code> / <code>Space</code></td><td>선택형 Chip 선택 on/off 토글</td></tr><tr><td><code>Backspace</code> / <code>Delete</code></td><td>삭제형 Chip 제거(포커스가 해당 Chip에 있을 때)</td></tr></tbody></table></div>
 <h2 id="접근성">접근성</h2>
@@ -141,7 +141,7 @@ button.pi-chip, .pi-chip--selectable {
   border-radius: var(--badge-radius);
   background: var(--badge-bg);
   color: var(--badge-fg);
-  font-family: var(--font-family-display);
+  font-family: var(--font-family-num);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
   line-height: var(--font-lh-tight);

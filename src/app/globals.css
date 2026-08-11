@@ -22,8 +22,35 @@
   --color-ink: #0F172A;
   --color-ink-soft: #57636b;
 
-  --color-cloud: #f5f8f8;
+  /* cloud — 페이지 바탕이 paper(회백)로 바뀌면서 불투명 #f5f8f8은 푸른기 때문에 떠 보인다.
+     반투명 흰색으로 두면 타이벡 결이 비쳐 같은 종이 위의 면으로 읽힌다. (PI-DS design.md 부록 D-3) */
+  --color-cloud: rgba(255, 255, 255, 0.55);
   --color-line: #e4eaeb;
+  /* paper 표면 위에서 #e4eaeb 헤어라인은 밝기 차 13이라 사라진다 → 기본 보더를 한 단계 올린다 */
+  --color-line-strong: #cdd5d8;
+  --color-line-input: #9aa7ae;
+
+  /* 표면 바탕 (BRAND_CONSTANTS 페이퍼) */
+  --color-paper: #f1f1f0;
+
+  /* 상태색 — PI-DS primitive color.state. UI에서는 의미 전용(design.md §2 상태색) */
+  --color-success: #2e9e5b;
+  --color-success-deep: #1e7a46;
+  --color-success-bg: #e8f6ee;
+  --color-success-line: #b7e2c8;
+  --color-warning: #e2842f;
+  --color-warning-deep: #c2641b;
+  --color-warning-bg: #fcf4ec;
+  --color-warning-line: #f4d7bc;
+  --color-danger: #c9403c;
+  --color-danger-deep: #b5322e;
+  --color-danger-bg: #fbeeee;
+  --color-danger-line: #f0cbca;
+
+  /* 그림자 — 검정이 아니라 네이비 반투명. 종이 위의 그림자는 차갑지 않다 */
+  --shadow-sm: 0 1px 2px rgba(22, 48, 61, 0.07), 0 1px 1px rgba(22, 48, 61, 0.04);
+  --shadow-md: 0 6px 16px -4px rgba(22, 48, 61, 0.12), 0 2px 4px -1px rgba(22, 48, 61, 0.06);
+  --shadow-lg: 0 8px 18px -6px rgba(6, 156, 187, 0.34);
 }
 
 @theme inline {
@@ -41,7 +68,8 @@ html {
 }
 
 body {
-  background: #ffffff;
+  /* 표면 바탕 — 타이벡 결(아래 body::before)과 한 쌍이다. 결은 overlay라 바탕이 흰색이면 보이지 않는다 */
+  background: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-sans);
   letter-spacing: -0.011em;
@@ -51,6 +79,42 @@ body {
      Latin strings (emails/URLs) may break to avoid overflow. */
   word-break: keep-all;
   overflow-wrap: break-word;
+}
+
+/* ── 타이벡 결 표면 (PI-DS design.md 부록 D · 대표 확정 2026-08-11) ──────────
+   질감 원본 = our work 배너(public/work/gen-banner.png)의 청록 단색 면에서 색·조명을
+   걷어내고 구김만 추출한 것. 흉내낸 노이즈가 아니라 우리 판촉물 소재(타이벡)의 실제 결이다.
+   이음매 없이 반복되는 320px 타일(WebP 28KB). 웹은 잘게·은은하게가 사양 — 오래 보는 화면이다. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("/tyvek-tile.webp");
+  background-size: 320px 296px;
+  background-repeat: repeat;
+  mix-blend-mode: overlay;
+  opacity: 0.42;
+}
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* 결 위에서는 헤어라인이 사라진다(밝기 차 13) → 기본 보더를 한 단계 올린다 */
+.border-line {
+  border-color: var(--color-line-strong);
+}
+/* 외곽선 버튼은 투명 배경이면 버튼으로 읽히지 않는다 → 반투명 흰 배경 + 진한 보더 */
+a.border-line,
+button.border-line {
+  border-color: var(--color-line-input);
+  background-color: rgb(255 255 255 / 0.72);
+}
+a.border-line:hover,
+button.border-line:hover {
+  background-color: rgb(255 255 255 / 0.95);
 }
 
 /* Headlines & balanced copy wrap more evenly */
@@ -115,11 +179,18 @@ p {
   transform: scaleX(1);
 }
 
-/* Visible keyboard focus (legible on light, navy, and arch surfaces) */
+/* Visible keyboard focus (legible on light, navy, and arch surfaces)
+   링은 대상의 모양을 따라간다 — 고정 3px을 쓰면 pill 버튼에 사각 링이 걸린다. */
 :focus-visible {
   outline: 2px solid var(--color-teal-700);
-  outline-offset: 2px;
-  border-radius: 3px;
+  outline-offset: 3px;
+  border-radius: inherit;
+}
+/* 진한 면(네이비·아치) 위에서는 청록 링이 판독되지 않는다 → 흰색으로 뒤집는다 */
+.bg-navy :focus-visible,
+.bg-arch :focus-visible,
+.bg-navy-800 :focus-visible {
+  outline-color: #ffffff;
 }
 
 @media (prefers-reduced-motion: reduce) {

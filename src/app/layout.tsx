@@ -154,7 +154,7 @@ export default function RootLayout({
 
   return (
     <html lang="ko" className={`${pretendard.variable} ${poppins.variable}`}>
-      <body className="min-h-dvh bg-white text-ink antialiased">
+      <body className="min-h-dvh bg-paper text-ink antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
