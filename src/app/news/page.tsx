@@ -67,7 +67,7 @@ export default function NewsPage() {
                   <p className="mt-5 font-display text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
                     {n.year} · 보도자료
                   </p>
-                  <h2 className="mt-3 text-2xl font-extrabold leading-snug tracking-tight text-ink sm:text-[28px]">
+                  <h2 className="mt-3 text-2xl font-extrabold leading-[1.25] tracking-tight text-ink sm:text-[28px]">
                     {n.title}
                   </h2>
                   <p className="mt-3 text-base font-medium leading-relaxed text-ink-soft">

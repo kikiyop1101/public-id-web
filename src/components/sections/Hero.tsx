@@ -14,7 +14,7 @@ export default function Hero() {
           <p className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">
             Design Subscription · Safety Care
           </p>
-          <h1 className="mt-5 text-4xl font-extrabold leading-[1.13] tracking-tight text-ink sm:text-5xl lg:text-[58px]">
+          <h1 className="mt-5 text-4xl font-extrabold leading-[1.08] tracking-tight text-ink sm:text-5xl lg:text-[64px]">
             디자인 팀이 없어도,
             <br />
             매달 <span className="text-teal-700">새로운 콘텐츠</span>가
