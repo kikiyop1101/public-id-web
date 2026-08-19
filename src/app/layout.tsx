@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Assistant from "@/components/Assistant";
+import { Analytics } from "@vercel/analytics/next";
 import { site } from "@/lib/site";
 
 const pretendard = localFont({
@@ -174,6 +175,8 @@ export default function RootLayout({
         <main id="main">{children}</main>
         <Footer />
         <Assistant />
+        {/* 방문자 측정 — 어느 경로로 들어와 어디서 이탈하는지 실측(2026-08-20 신설). 쿠키 없음. */}
+        <Analytics />
       </body>
     </html>
   );
