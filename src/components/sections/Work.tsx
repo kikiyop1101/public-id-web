@@ -55,7 +55,7 @@ const productJsonLd = {
   brand: { "@type": "Brand", name: "퍼블릭아이디" },
   manufacturer: { "@type": "Organization", name: "주식회사 퍼블릭아이디" },
   description:
-    "자체 특허(제10-1974029호, 도로 노면 표시용 조성물 및 시공방법)와 국제특허(유럽특허 EP 1 677 974, EPO 등록) 기술 기반의 친환경 그래픽 노면표시재. 친환경 라텍스 잉크로 인쇄하며 GREENGUARD GOLD(UL 2818) 친환경 인증, KC 인증, 미끄럼저항·유해물질 불검출·방염 시험성적(KCL·SGS·KTR·KFI)을 보유. 노란발자국·노란볼라드·어린이보호구역·웨이파인딩 등에 적용.",
+    "자체 특허(제10-1974029호, 도로 노면 표시용 조성물 및 시공방법)와 국제특허(유럽특허 EP 1 677 974, EPO 등록) 기술 기반의 친환경 그래픽 노면표시재. 친환경 라텍스 잉크로 인쇄하며 GREENGUARD GOLD(UL 2818) 친환경 인증, 미끄럼저항·유해물질 불검출·방염 시험성적(KCL·SGS·KTR·KFI)을 보유. 노란발자국·노란볼라드·어린이보호구역·웨이파인딩 등에 적용.",
   category: "도로 노면표시재 / 안전표지",
   material: "친환경 라텍스 잉크",
   additionalProperty: [
