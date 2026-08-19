@@ -46,6 +46,14 @@ export default function Hero() {
             >
               퍼블릭아이디 월드
             </Button>
+            {/* AI 자동화 템플릿 사업선 진입점 (2026-08-20 대표 지시) */}
+            <Button
+              href="https://store.public-id.co.kr/os"
+              variant="outline"
+              size="lg"
+            >
+              우리회사OS
+            </Button>
           </div>
           <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-3">
             <SocialLinks className="flex items-center gap-2" />

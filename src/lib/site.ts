@@ -31,6 +31,7 @@ export const site = {
     { label: "문의", en: "Contact", href: "/contact" },
   ],
   stores: [
+    { label: "우리회사OS (AI 자동화 템플릿)", href: "https://store.public-id.co.kr/os" },
     { label: "네이버 스마트스토어", href: "https://smartstore.naver.com/public-id" },
     {
       label: "쿠팡",
