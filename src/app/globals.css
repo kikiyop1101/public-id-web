@@ -295,3 +295,24 @@ body.world-immersive > footer {
   max-width: 56ch; /* 5번 첫 줄(괄호 묶음)이 40ch에서 중간에 꺾여 확장 */
   word-break: keep-all;
 }
+
+/* ── 홈 히어로 모션(2026-08-25 리서치 반영): 스태거 리빌 + 아치 1회 draw-in.
+   무한 반복 금지·reduced-motion 존중 — 커뮤니티 실측에서 호평받는 조합. ── */
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes arch-draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+.hero-rise { animation: hero-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.arch-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: arch-draw 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+}
+.arch-fade { opacity: 0; animation: hero-rise 0.9s ease 1s forwards; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise, .arch-draw, .arch-fade { animation: none; opacity: 1; stroke-dashoffset: 0; }
+}
