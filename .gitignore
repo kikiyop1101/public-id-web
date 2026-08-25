@@ -45,3 +45,6 @@ next-env.d.ts
 _세션복원-홈페이지.md
 안전관리지도-운영가이드.md
 _검수/
+
+.vercel
+.env*

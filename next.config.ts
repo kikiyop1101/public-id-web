@@ -18,6 +18,12 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  experimental: {
+    serverActions: {
+      // 안전 리포트 제보 사진(클라이언트에서 압축한 JPEG 최대 3장) 업로드 여유 — 스토어 통합(2026-08-25) 이식
+      bodySizeLimit: "8mb",
+    },
+  },
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },
