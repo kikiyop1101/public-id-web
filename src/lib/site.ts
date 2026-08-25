@@ -19,14 +19,42 @@ export const site = {
   instagram: "https://www.instagram.com/_public.id/",
   tistory: "https://public-id.tistory.com",
   store: "https://www.public-id.co.kr/products", // 2026-08-25 스토어 통합 — 구 store 도메인은 301
-  // GNB는 5개(대표 지시 2026-08-25 "메뉴 4~5개") — 나머지는 footerNav·페이지 내 링크로.
+  // GNB는 5개(대표 지시 2026-08-25 "메뉴 4~5개") — 하위 페이지는 드롭다운으로 노출
+  // (대표 지적 2026-08-26 "우리회사OS·안전관리지도·설치영상은 모르면 못 찾는다").
   // 순서 = 회사소개→제품→구독→실적·인증→소식 (대표 지시 2026-08-26).
   nav: [
-    { label: "회사소개", en: "About", href: "/about" },
-    { label: "제품", en: "Products", href: "/products" },
-    { label: "구독 서비스", en: "Subscription", href: "/subscribe" },
-    { label: "실적·인증", en: "Track Record", href: "/credibility" },
-    { label: "소식", en: "News", href: "/news" },
+    {
+      label: "회사소개", en: "About", href: "/about",
+      children: [{ label: "사업영역", href: "/work" }],
+    },
+    {
+      label: "제품", en: "Products", href: "/products",
+      children: [
+        { label: "직물시트 명화", href: "/products/art-fabric" },
+        { label: "현수막 지도", href: "/products/map-banner" },
+        { label: "부착 가이드 · 설치 영상", href: "/guide" },
+        { label: "맞춤 견적", href: "/quote" },
+        { label: "우리회사OS (AI 자동화)", href: "/os" },
+      ],
+    },
+    {
+      label: "구독 서비스", en: "Subscription", href: "/subscribe",
+      children: [
+        { label: "디자인 시스템", href: "/subscribe#design-system" },
+        { label: "안전관리 지도", href: "/safety-map" },
+      ],
+    },
+    {
+      label: "실적·인증", en: "Track Record", href: "/credibility",
+      children: [{ label: "인증·특허", href: "/credentials" }],
+    },
+    {
+      label: "소식", en: "News", href: "/news",
+      children: [
+        { label: "블로그", href: "/blog" },
+        { label: "문의", href: "/contact" },
+      ],
+    },
   ],
   // 푸터 전용 전체 지도 — GNB에서 뺀 페이지도 여기서 전부 닿는다.
   // 순서 = GNB 골격을 따르고 부속 항목은 관련 메뉴 옆에(사업영역→회사소개 뒤, 인증·특허→실적 뒤).
@@ -34,15 +62,19 @@ export const site = {
     { label: "회사소개", href: "/about" },
     { label: "사업영역", href: "/work" },
     { label: "제품", href: "/products" },
+    { label: "부착 가이드", href: "/guide" },
+    { label: "맞춤 견적", href: "/quote" },
     { label: "구독 서비스", href: "/subscribe" },
     { label: "실적", href: "/credibility" },
     { label: "인증·특허", href: "/credentials" },
     { label: "안전관리 지도", href: "/safety-map" },
     { label: "소식", href: "/news" },
+    { label: "블로그", href: "/blog" },
     { label: "문의", href: "/contact" },
   ],
   stores: [
     { label: "우리회사OS (AI 자동화 템플릿)", href: "/os" },
+    { label: "AI 자동화 무료 진단", href: "/scan" },
     { label: "네이버 스마트스토어", href: "https://smartstore.naver.com/public-id" },
     {
       label: "쿠팡",

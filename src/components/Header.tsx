@@ -51,13 +51,28 @@ export default function Header() {
 
         <nav className="hidden items-center gap-9 lg:flex">
           {site.nav.map((n) => (
-            <Link
-              key={n.href}
-              href={n.href}
-              className="link-underline text-[15px] font-medium text-ink-soft transition-colors hover:text-ink"
-            >
-              {n.label}
-            </Link>
+            <div key={n.href} className="group relative">
+              <Link
+                href={n.href}
+                className="link-underline text-[15px] font-medium text-ink-soft transition-colors hover:text-ink"
+              >
+                {n.label}
+              </Link>
+              {/* 드롭다운 — 모르면 못 찾던 하위 페이지 노출(대표 지적 08-26). pt-2가 호버 다리 역할 */}
+              <div className="invisible absolute left-1/2 top-full -translate-x-1/2 pt-2 opacity-0 transition-all duration-150 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                <div className="min-w-[176px] rounded-2xl border border-line bg-white p-2 shadow-lg">
+                  {n.children.map((c) => (
+                    <Link
+                      key={c.href}
+                      href={c.href}
+                      className="block whitespace-nowrap rounded-lg px-3 py-2 text-sm text-ink-soft transition-colors hover:bg-cloud hover:text-ink"
+                    >
+                      {c.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
           ))}
         </nav>
 
@@ -118,19 +133,32 @@ export default function Header() {
             : "invisible pointer-events-none -translate-y-2 opacity-0",
         )}
       >
-        <nav className="flex flex-col gap-1 px-5 py-4">
+        <nav className="flex max-h-[calc(100dvh-68px)] flex-col gap-1 overflow-y-auto overscroll-contain px-5 py-4 pb-8">
           {site.nav.map((n) => (
-            <Link
-              key={n.href}
-              href={n.href}
-              onClick={() => setOpen(false)}
-              className="flex items-center justify-between rounded-xl px-3 py-3 text-base font-medium text-ink hover:bg-cloud"
-            >
-              <span>{n.label}</span>
-              <span className="font-display text-xs uppercase tracking-wider text-ink-soft">
-                {n.en}
-              </span>
-            </Link>
+            <div key={n.href}>
+              <Link
+                href={n.href}
+                onClick={() => setOpen(false)}
+                className="flex items-center justify-between rounded-xl px-3 py-3 text-base font-medium text-ink hover:bg-cloud"
+              >
+                <span>{n.label}</span>
+                <span className="font-display text-xs uppercase tracking-wider text-ink-soft">
+                  {n.en}
+                </span>
+              </Link>
+              <div className="grid grid-cols-2 gap-x-1 pb-1 pl-3">
+                {n.children.map((c) => (
+                  <Link
+                    key={c.href}
+                    href={c.href}
+                    onClick={() => setOpen(false)}
+                    className="break-keep rounded-lg px-3 py-2 text-sm text-ink-soft hover:bg-cloud hover:text-ink"
+                  >
+                    {c.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
           ))}
           <a
             href="/world"
