@@ -101,6 +101,14 @@ body > * {
   position: relative;
   z-index: 1;
 }
+/* 위 무레이어 규칙이 Tailwind 유틸리티(sticky·z-50)를 이기므로 헤더만 예외로 복원 —
+   안 하면 헤더가 스크롤에 고정되지 않고, 모바일 GNB 패널(fixed z-40, 헤더 자식)이
+   main 히어로 밑에 묻힌다 */
+body > header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
 
 /* 결 위에서는 헤어라인이 사라진다(밝기 차 13) → 기본 보더를 한 단계 올린다 */
 .border-line {

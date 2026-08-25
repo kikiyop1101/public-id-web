@@ -34,8 +34,8 @@ export const WORLD_SECTIONS: WorldSection[] = [
     title: '재료부터 다릅니다.',
     body: '친환경 그래픽 자재와 GREENGUARD GOLD(UL) 인증받은 Latex 잉크로 출력합니다.',
     tags: [
-    { label: 'Homepage', href: 'https://www.public-id.co.kr' },
-    { label: 'Storepage', href: '/' },
+    { label: 'Homepage', href: '/' },
+    { label: 'Products', href: '/products' },
   ],
     scroll: 2.1,
   },
