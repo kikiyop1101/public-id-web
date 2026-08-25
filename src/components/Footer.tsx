@@ -14,7 +14,7 @@ export default function Footer() {
               노면표시·안전표지 정기 시설 관리를 제공하는 {site.descriptor}.
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
-              {site.nav.map((n) => (
+              {site.footerNav.map((n) => (
                 <Link
                   key={n.href}
                   href={n.href}
