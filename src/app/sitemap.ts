@@ -3,7 +3,9 @@ import type { MetadataRoute } from "next";
 const base = "https://www.public-id.co.kr";
 const routes = ["", "/subscribe", "/work", "/guide", "/about", "/credentials", "/credibility", "/contact", "/news", "/safety-map",
   // 2026-08-25 스토어 통합으로 편입된 경로
-  "/products", "/quote", "/os", "/scan", "/blog", "/board", "/safety-report", "/world"];
+  "/products", "/quote", "/os", "/scan", "/blog", "/board", "/safety-report", "/world",
+  // 2026-08-25 보관고 상품 라인
+  "/products/art-fabric", "/products/map-banner"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // 빌드(배포) 시각 기준 최종수정일 — AI 검색 신선도 신호(Perplexity·네이버 Cue:).

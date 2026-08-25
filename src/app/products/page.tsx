@@ -33,6 +33,47 @@ export default function ProductsPage() {
         />
       ))}
 
+      {/* 출력 라인업 2종 — 보관고 기반 (2026-08-25 신설) */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-[1200px] px-5 py-20 sm:px-8 sm:py-24">
+          <p className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">
+            Print Lines
+          </p>
+          <h2 className="text-ink mt-3 text-2xl font-extrabold tracking-tight sm:text-3xl">
+            골라서 출력하는 라인업
+          </h2>
+          <p className="text-ink-soft mt-3 max-w-2xl">
+            직물시트·친환경 현수막 소재에 폭 1,200mm로 출력하는 기성 컬렉션 —
+            원하는 작품·지역을 고르면 규격 견적으로 바로 이어집니다.
+          </p>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">
+            <Link
+              href="/products/art-fabric"
+              className="group rounded-2xl border border-line bg-cloud/50 p-6 transition hover:border-teal"
+            >
+              <p className="text-ink text-lg font-bold group-hover:text-teal-700">
+                직물시트 명화 라인 →
+              </p>
+              <p className="text-ink-soft mt-2 text-sm leading-relaxed">
+                반 고흐·모네·클림트와 한국 민화 — 퍼블릭도메인 명화 132점을 벽면
+                갤러리로.
+              </p>
+            </Link>
+            <Link
+              href="/products/map-banner"
+              className="group rounded-2xl border border-line bg-cloud/50 p-6 transition hover:border-teal"
+            >
+              <p className="text-ink text-lg font-bold group-hover:text-teal-700">
+                친환경 현수막 지도 라인 →
+              </p>
+              <p className="text-ink-soft mt-2 text-sm leading-relaxed">
+                2025년판 대한민국 전도부터 우리 동네 시·군 행정지도까지 182종.
+              </p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* 견적·구독으로 잇는 최종 CTA */}
       <section className="bg-cloud">
         <div className="mx-auto max-w-[1200px] px-5 py-20 text-center sm:px-8">

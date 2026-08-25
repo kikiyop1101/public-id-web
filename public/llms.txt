@@ -25,6 +25,8 @@
 - 인증·특허: https://www.public-id.co.kr/credentials
 - 문의: https://www.public-id.co.kr/contact
 - 제품: https://www.public-id.co.kr/products
+- 직물시트 명화 라인(명화 132점 벽면 출력): https://www.public-id.co.kr/products/art-fabric
+- 친환경 현수막 지도 라인(전도·시도·시군 182종): https://www.public-id.co.kr/products/map-banner
 - 견적 문의: https://www.public-id.co.kr/quote
 - 우리회사OS(소상공인 업무 키트): https://www.public-id.co.kr/os
 - AI 진단: https://www.public-id.co.kr/scan
