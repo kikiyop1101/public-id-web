@@ -29,7 +29,7 @@ export default function Hero() {
             <b className="font-semibold text-ink">정기 시설 관리</b>를 한 곳에서.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
-            <Button href="https://store.public-id.co.kr" variant="arch" size="lg">
+            <Button href="/products" variant="arch" size="lg">
               PI-STORE
             </Button>
             <Button
@@ -40,7 +40,7 @@ export default function Hero() {
               PI-NaverBlog
             </Button>
             <Button
-              href="https://store.public-id.co.kr/world"
+              href="/world"
               variant="teal"
               size="lg"
             >
@@ -48,7 +48,7 @@ export default function Hero() {
             </Button>
             {/* AI 자동화 템플릿 사업선 진입점 (2026-08-20 대표 지시) */}
             <Button
-              href="https://store.public-id.co.kr/os"
+              href="/os"
               variant="outline"
               size="lg"
             >

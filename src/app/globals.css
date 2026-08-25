@@ -203,3 +203,95 @@ p {
     transition: none;
   }
 }
+
+/* ── 스토어 통합 이식(2026-08-25): /world 몰입 모드·스크롤월드(sw-*)·공용 베이스 ── */
+/* 월드(/world)는 전체화면 영상 몰입면이다 — 그 위에 결을 얹으면 영상이 탁해진다 */
+body.world-immersive::before {
+  display: none;
+}
+
+/* 외곽선 버튼은 투명 배경이면 버튼으로 읽히지 않는다 → 반투명 흰 배경 + 진한 보더.
+   스토어는 본사이트와 달리 카드도 <a>다(제품·블로그 카드) — :not([class*="bg-"])로
+   배경을 스스로 선언한 요소는 건드리지 않는다. 안 그러면 같은 카드가 div/a에 따라
+   흰색과 반투명으로 갈린다(2026-08-11 실측). */
+a.border-line:not([class*="bg-"]),
+button.border-line:not([class*="bg-"]) {
+  border-color: var(--color-line-input);
+  background-color: rgb(255 255 255 / 0.72);
+}
+
+a.border-line:not([class*="bg-"]):hover,
+button.border-line:not([class*="bg-"]):hover {
+  background-color: rgb(255 255 255 / 0.95);
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+/* 이미지 무단 사용 억제(CCL 고지와 함께) — 드래그로 끌어가기 방지 */
+img, video {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* 좁은 화면 헤더 내비 가로 스크롤용 — 스크롤바는 숨긴다 */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* 스크롤 월드(/world) — 몰입형 전체화면. 사이트 헤더·푸터가 영상 위에 겹쳐
+   자체 내비와 충돌하므로 이 페이지에서만 숨긴다(WorldClient가 body에 클래스 부착). */
+body.world-immersive > header,
+body.world-immersive > footer {
+  display: none;
+}
+
+/* 월드 UI 보정 — 엔진 기본 부품을 우리 브랜드/가독성에 맞게 교체.
+   (엔진 CSS는 @layer sw 안에 있어 여기 무레이어 규칙이 항상 이긴다) */
+/* ① 좌상단: 가짜 그라데이션 마크 → 화이트 로고 이미지 (480×142 비율 유지) */
+.sw-root .sw-brand__mark {
+  width: 122px;
+  height: 36px;
+  border-radius: 0;
+  box-shadow: none;
+  background: url('/logo-white.png') center / contain no-repeat;
+}
+
+.sw-root .sw-brand__name {
+  display: none; /* 로고에 워드마크 포함 — 겹치는 텍스트 제거 */
+}
+
+/* ② 우상단 내비: 흰 알약 위 흰 글씨 → 비활성도 진한 잉크로 */
+.sw-root .sw-nav__item {
+  color: #315560;
+}
+
+.sw-root .sw-nav__item:hover {
+  color: #16303d;
+}
+
+/* ③ 우측 레일 라벨: 흰 바탕+흰 글씨 유령 칩 → 네이비 칩+흰 글씨 */
+.sw-root .sw-route__label {
+  color: #f2f6f7;
+  background: color-mix(in srgb, #16303d 82%, transparent);
+  border-color: color-mix(in srgb, #ffffff 25%, transparent);
+}
+
+/* ④ CTA 기본 버튼: 엔진이 배경=--sw-ink(우리 설정상 흰색)라 흰 글씨가 묻힘 → 브랜드 청록 */
+.sw-root .sw-btn--primary {
+  background: #069cbb;
+  color: #fff;
+}
+
+/* ⑤ 본문 개행(
+) 존중 — 5번 두 줄 문구용 */
+.sw-root .sw-copy__body {
+  white-space: pre-line;
+  max-width: 56ch; /* 5번 첫 줄(괄호 묶음)이 40ch에서 중간에 꺾여 확장 */
+  word-break: keep-all;
+}

@@ -63,7 +63,7 @@ export default function Header() {
 
         <div className="hidden items-center gap-2 lg:flex">
           <a
-            href="https://store.public-id.co.kr/world"
+            href="/world"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex h-10 items-center justify-center rounded-full bg-teal-700 px-4 text-sm font-semibold text-white transition hover:bg-teal"
@@ -133,7 +133,7 @@ export default function Header() {
             </Link>
           ))}
           <a
-            href="https://store.public-id.co.kr/world"
+            href="/world"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setOpen(false)}

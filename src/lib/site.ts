@@ -18,8 +18,9 @@ export const site = {
   youtube: "https://www.youtube.com/@퍼블릭아이디",
   instagram: "https://www.instagram.com/_public.id/",
   tistory: "https://public-id.tistory.com",
-  store: "https://store.public-id.co.kr",
+  store: "https://www.public-id.co.kr/products", // 2026-08-25 스토어 통합 — 구 store 도메인은 301
   nav: [
+    { label: "제품", en: "Products", href: "/products" },
     { label: "구독 서비스", en: "Subscription", href: "/subscribe" },
     { label: "디자인시스템", en: "Design System", href: "/design" },
     { label: "사업영역", en: "Work", href: "/work" },
@@ -31,7 +32,7 @@ export const site = {
     { label: "문의", en: "Contact", href: "/contact" },
   ],
   stores: [
-    { label: "우리회사OS (AI 자동화 템플릿)", href: "https://store.public-id.co.kr/os" },
+    { label: "우리회사OS (AI 자동화 템플릿)", href: "/os" },
     { label: "네이버 스마트스토어", href: "https://smartstore.naver.com/public-id" },
     {
       label: "쿠팡",

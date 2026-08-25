@@ -24,7 +24,13 @@
 - 사업영역: https://www.public-id.co.kr/work
 - 인증·특허: https://www.public-id.co.kr/credentials
 - 문의: https://www.public-id.co.kr/contact
-- 제품 스토어: https://store.public-id.co.kr (제품·견적·안전 캠페인 지도)
+- 제품: https://www.public-id.co.kr/products
+- 견적 문의: https://www.public-id.co.kr/quote
+- 우리회사OS(소상공인 업무 키트): https://www.public-id.co.kr/os
+- AI 진단: https://www.public-id.co.kr/scan
+- 캠페인(안전관리지도·시공 사례): https://www.public-id.co.kr/safety-report
+- 블로그: https://www.public-id.co.kr/blog
+  (구 store.public-id.co.kr 은 이 사이트로 통합되어 같은 경로로 리다이렉트됩니다)
 
 ## 연락 / 채널
 - 전화 070-4150-1172 | 이메일 public-id@naver.com
