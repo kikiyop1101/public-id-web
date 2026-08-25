@@ -32,6 +32,12 @@ const nextConfig: NextConfig = {
     // apex previously served duplicate 200s, splitting SEO signals.
     return [
       {
+        // 2026-08-25 대표 지시 — 디자인시스템 페이지를 구독 안으로 통합
+        source: "/design",
+        destination: "/subscribe#design-system",
+        permanent: true,
+      },
+      {
         source: "/:path*",
         has: [{ type: "host", value: "public-id.co.kr" }],
         destination: "https://www.public-id.co.kr/:path*",
