@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { KITS, KIT_GROUPS, LATPEED_STORE_URL, formatPrice } from '@/lib/os-kits'
 import OsCurator from '@/components/OsCurator'
 import ScanClient from '@/components/ScanClient'
+import BreadcrumbLd from '@/components/BreadcrumbLd'
 
 export const metadata: Metadata = {
   title: '우리회사OS — AI를 직원처럼 쓰는 회사 자동화 키트 21종',
@@ -52,6 +53,7 @@ export default function OsPage() {
 
   return (
     <>
+      <BreadcrumbLd trail={[{ name: '우리회사OS', path: '/os' }]} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

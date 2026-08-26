@@ -7,8 +7,9 @@ import ProductSection from '@/components/ProductSection'
 import PageHero from '@/components/PageHero'
 
 export const metadata: Metadata = {
-  title: '제품 — 친환경 그래픽 노면표시재·노란발자국·직물시트·노란볼라드·홍보판촉물',
-  description: '퍼블릭아이디의 친환경 제품군 5종을 소개합니다.',
+  title: '제품 5종 — 친환경 노면표시재·노란발자국·직물시트·노란볼라드·홍보판촉물',
+  description:
+    '특허받은 부착식 노면표시재(기준가 132,000원/㎡)부터 노란발자국·직물시트(88,000원/㎡)·노란볼라드·홍보판촉물까지 — 현장 사진과 기준가를 그대로 공개하는 퍼블릭아이디 친환경 제품군.',
   alternates: { canonical: '/products' },
 }
 

@@ -4,6 +4,7 @@ import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
 import { credibility as c } from "@/lib/credibility";
+import BreadcrumbLd from "@/components/BreadcrumbLd";
 
 export const metadata: Metadata = {
   title: "숫자로 보는 신뢰",
@@ -87,6 +88,7 @@ function Bars({ rows }: { rows: readonly { label: string; pct: number }[] }) {
 export default function CredibilityPage() {
   return (
     <>
+      <BreadcrumbLd trail={[{ name: "실적·신뢰", path: "/credibility" }]} />
       <PageHero
         eyebrow="Track Record"
         title={

@@ -3,6 +3,7 @@ import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
 import ContactForm from "@/components/ContactForm";
 import { site } from "@/lib/site";
+import BreadcrumbLd from "@/components/BreadcrumbLd";
 
 export const metadata: Metadata = {
   title: "문의",
@@ -21,6 +22,7 @@ const info: [string, string][] = [
 export default function ContactPage() {
   return (
     <>
+      <BreadcrumbLd trail={[{ name: "문의", path: "/contact" }]} />
       <PageHero
         eyebrow="Contact"
         title="문의하기"

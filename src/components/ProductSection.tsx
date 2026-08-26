@@ -63,6 +63,11 @@ export default function ProductSection({
             <p className="text-teal text-sm font-semibold">{product.tagline}</p>
             <h2 className="text-ink mt-2 text-2xl font-bold sm:text-3xl">{product.name}</h2>
             <p className="text-ink-soft mt-4 leading-relaxed">{product.summary}</p>
+            {product.basePrice && (
+              <p className="text-ink mt-3 text-sm font-semibold">
+                {product.basePrice}
+              </p>
+            )}
             <ul className="mt-6 space-y-2">
               {product.points.map((point) =>
                 point.strong ? (

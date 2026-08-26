@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import WorldClient from './WorldClient'
+import BreadcrumbLd from '@/components/BreadcrumbLd'
 
 export const metadata: Metadata = {
   title: '퍼블릭아이디 월드 — 소재부터 관리까지, 스크롤로 날아보기',
@@ -9,5 +10,10 @@ export const metadata: Metadata = {
 }
 
 export default function WorldPage() {
-  return <WorldClient />
+  return (
+    <>
+      <BreadcrumbLd trail={[{ name: '퍼블릭아이디 월드', path: '/world' }]} />
+      <WorldClient />
+    </>
+  )
 }

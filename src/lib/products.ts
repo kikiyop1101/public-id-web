@@ -13,6 +13,8 @@ export type Product = {
   summary: string
   points: ProductPoint[]
   anchor: string
+  /** 공개 기준가 문구(정본=assistant-knowledge.ts) — 있는 제품만 본문·스키마에 노출 */
+  basePrice?: string
 }
 
 export const PRODUCTS: Product[] = [
@@ -20,6 +22,7 @@ export const PRODUCTS: Product[] = [
     id: 'roadmark',
     folder: '친환경그래픽노면표시재',
     name: '친환경 그래픽 노면표시재',
+    basePrice: '기준가 132,000원/㎡ (VAT 포함) — 정확한 견적은 규격·수량에 따라 문의',
     tagline: '바닥에 새기는 안전과 브랜드',
     summary:
       '도로·보도·주차장 바닥에 시공하는 친환경 그래픽 노면표시재. 안전 그래픽과 브랜드 그래픽을 오래 지속되게 구현합니다.',
@@ -34,6 +37,7 @@ export const PRODUCTS: Product[] = [
     id: 'footprint',
     folder: '친환경그래픽노면표시재-노란발자국',
     name: '친환경 그래픽 노면표시재 · 노란발자국',
+    basePrice: '기준가 전면형 600,000원~ · 우측면형 400,000원~ — 규격별 견적 문의',
     tagline: '어린이 교통안전 시그니처',
     summary:
       '횡단보도 앞 대기 지점을 알려주는 노란발자국. 퍼블릭아이디의 시그니처 어린이 교통안전 노면표시재입니다.',
@@ -48,6 +52,7 @@ export const PRODUCTS: Product[] = [
     id: 'fabric',
     folder: '친환경그래픽직물시트',
     name: '친환경 그래픽 직물시트',
+    basePrice: '기준가 88,000원/㎡ (VAT 포함) — 정확한 견적은 규격·수량에 따라 문의',
     tagline: '벽과 기둥, 천장을 캔버스로',
     summary:
       '실내외 벽면(울퉁불퉁한 면·벽돌면 외)과 기둥(신호등·전봇대 등), 천장에 부착하는 친환경 그래픽 직물시트. 공간의 분위기와 브랜드 메시지를 손쉽게 바꿉니다.',

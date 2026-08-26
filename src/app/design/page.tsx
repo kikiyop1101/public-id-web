@@ -4,6 +4,7 @@ import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
 import Button from "@/components/Button";
 import DesignTokenDemo from "@/components/sections/DesignTokenDemo";
+import BreadcrumbLd from "@/components/BreadcrumbLd";
 
 export const metadata: Metadata = {
   title: "디자인시스템",
@@ -62,6 +63,7 @@ const steps = [
 export default function DesignPage() {
   return (
     <>
+      <BreadcrumbLd trail={[{ name: "디자인시스템", path: "/design" }]} />
       <PageHero
         eyebrow="Design System"
         title={

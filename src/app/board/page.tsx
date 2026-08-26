@@ -4,6 +4,7 @@ import { createClient } from '@/lib/supabase/server'
 import { parseBoardListRow } from '@/lib/board'
 import { parseRows } from '@/lib/rows'
 import BoardForm from './BoardForm'
+import BreadcrumbLd from '@/components/BreadcrumbLd'
 
 export const metadata: Metadata = {
   title: '소통 게시판',
@@ -26,6 +27,7 @@ export default async function BoardPage() {
 
   return (
     <div className="mx-auto max-w-3xl px-5 py-16">
+      <BreadcrumbLd trail={[{ name: '소통 게시판', path: '/board' }]} />
       <h1 className="text-ink text-2xl font-bold sm:text-3xl">소통 게시판</h1>
       <p className="text-ink-soft mt-2">누구나 자유롭게 의견을 남겨주세요.</p>
 

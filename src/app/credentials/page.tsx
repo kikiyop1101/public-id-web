@@ -4,6 +4,7 @@ import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
 import { site } from "@/lib/site";
+import BreadcrumbLd from "@/components/BreadcrumbLd";
 
 export const metadata: Metadata = {
   title: "인증·특허",
@@ -49,6 +50,7 @@ const company: [string, string][] = [
 export default function CredentialsPage() {
   return (
     <>
+      <BreadcrumbLd trail={[{ name: "인증·특허", path: "/credentials" }]} />
       <PageHero
         eyebrow="Credentials"
         title={

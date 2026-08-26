@@ -3,6 +3,7 @@ import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
 import Button from "@/components/Button";
+import BreadcrumbLd from "@/components/BreadcrumbLd";
 
 export const metadata: Metadata = {
   title: "노면 그래픽 부착 가이드",
@@ -73,24 +74,18 @@ const faqs = [
   },
 ];
 
-const howToJsonLd = {
+// HowTo 리치결과는 2023-09 폐기(claude-seo 감사 2026-08-26) — 페이지 실제 콘텐츠인 영상을 VideoObject로 마크업
+const videoJsonLd = {
   "@context": "https://schema.org",
-  "@type": "HowTo",
-  name: "친환경 그래픽 노면표시재 부착 방법",
+  "@type": "VideoObject",
+  name: "친환경 그래픽 노면표시재 부착 방법 (전체 과정)",
   description:
-    "인쇄된 점착식 노면 그래픽 시트를 바닥에 부착하는 표준 시공 절차. 바닥 조건과 노면 온도를 확인한 뒤 위치 선정·청소·부착·밀착 4단계로 진행합니다.",
-  totalTime: "PT30M",
-  tool: [
-    { "@type": "HowToTool", name: "고무망치" },
-    { "@type": "HowToTool", name: "빗자루" },
-  ],
-  supply: [{ "@type": "HowToSupply", name: "친환경 그래픽 노면표시재 시트" }],
-  step: steps.map((s, i) => ({
-    "@type": "HowToStep",
-    position: i + 1,
-    name: s.t,
-    text: s.d,
-  })),
+    "인쇄된 점착식 노면 그래픽 시트를 바닥에 부착하는 표준 시공 절차. 바닥 조건·온도 확인부터 위치 선정·청소·부착·밀착 4단계와 동절기 시공까지 3분 40초에 담았습니다.",
+  contentUrl: "https://www.public-id.co.kr/guide/attach-guide.mp4",
+  thumbnailUrl: "https://www.public-id.co.kr/guide/attach-guide-poster.jpg",
+  uploadDate: "2026-08-20",
+  duration: "PT3M40S",
+  publisher: { "@id": "https://www.public-id.co.kr/#organization" },
 };
 
 const faqJsonLd = {
@@ -106,9 +101,10 @@ const faqJsonLd = {
 export default function GuidePage() {
   return (
     <>
+      <BreadcrumbLd trail={[{ name: "설치 가이드", path: "/guide" }]} />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd) }}
       />
       <script
         type="application/ld+json"

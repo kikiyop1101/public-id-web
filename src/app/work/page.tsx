@@ -4,6 +4,7 @@ import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
 import Work from "@/components/sections/Work";
+import BreadcrumbLd from "@/components/BreadcrumbLd";
 
 export const metadata: Metadata = {
   title: "사업영역",
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 export default function WorkPage() {
   return (
     <>
+      <BreadcrumbLd trail={[{ name: "사업영역", path: "/work" }]} />
       <PageHero
         eyebrow="Our Work"
         title={

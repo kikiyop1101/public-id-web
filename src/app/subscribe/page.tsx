@@ -8,6 +8,7 @@ import HowItWorks from "@/components/sections/HowItWorks";
 import DesignTokenDemo from "@/components/sections/DesignTokenDemo";
 import Pricing from "@/components/sections/Pricing";
 import Faq from "@/components/sections/Faq";
+import BreadcrumbLd from "@/components/BreadcrumbLd";
 
 export const metadata: Metadata = {
   title: "구독 서비스",
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
 export default function SubscribePage() {
   return (
     <>
+      <BreadcrumbLd trail={[{ name: "디자인 구독", path: "/subscribe" }]} />
       <PageHero
         eyebrow="Subscription"
         title={

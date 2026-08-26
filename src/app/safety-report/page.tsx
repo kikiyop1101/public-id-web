@@ -7,6 +7,7 @@ import { blurCoord, parseReportRow, REPORT_CATEGORIES } from '@/lib/reports'
 import { parseRows } from '@/lib/rows'
 import { loadShowcaseSites } from '@/lib/showcase'
 import SafetyMapSection from './SafetyMapSection'
+import BreadcrumbLd from '@/components/BreadcrumbLd'
 
 export const metadata: Metadata = {
   title: '우리 학교 앞 안전 리포트',
@@ -67,6 +68,7 @@ export default async function SafetyReportPage() {
 
   return (
     <>
+      <BreadcrumbLd trail={[{ name: '안전 리포트', path: '/safety-report' }]} />
       {/* 히어로 */}
       <section>
         <div className="mx-auto grid max-w-[1200px] items-center gap-10 px-5 py-16 sm:px-8 sm:py-20 md:grid-cols-2">

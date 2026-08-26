@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { PRODUCTS } from '@/lib/products'
 import LeadForm from '@/components/LeadForm'
 import OpenAssistantButton from '@/components/OpenAssistantButton'
+import BreadcrumbLd from '@/components/BreadcrumbLd'
 
 export const metadata: Metadata = {
   title: '맞춤 견적',
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 export default function QuotePage() {
   return (
     <div className="mx-auto max-w-3xl px-5 py-16 sm:px-8">
+      <BreadcrumbLd trail={[{ name: '맞춤 견적', path: '/quote' }]} />
       <p className="font-display text-teal-600 text-sm font-semibold uppercase tracking-[0.18em]">
         Quote
       </p>

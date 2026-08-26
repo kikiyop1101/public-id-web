@@ -44,27 +44,8 @@ async function blogEntries(): Promise<MetadataRoute.Sitemap> {
   }
 }
 
-// 승인된 게시판 글 — 블로그와 대칭(2차 감사: /board GNB 노출 후 개별 글 누락 지적)
-async function boardEntries(): Promise<MetadataRoute.Sitemap> {
-  try {
-    const result = await anonClient()
-      .from("board_posts")
-      .select("id, created_at")
-      .eq("status", "approved")
-      .order("created_at", { ascending: false });
-    if (result.error || !Array.isArray(result.data)) return [];
-    return result.data
-      .filter((r): r is { id: string; created_at: string } =>
-        typeof r?.id === "string" && typeof r?.created_at === "string")
-      .map((r) => ({
-        url: `${base}/board/${r.id}`,
-        lastModified: new Date(r.created_at),
-        priority: 0.4,
-      }));
-  } catch {
-    return [];
-  }
-}
+// 게시판 개별 글은 sitemap에 넣지 않는다 — 무검수 즉시공개 UGC라 noindex 처리했음
+// (2026-08-26 대표 위임 판단: 스팸 색인 리스크 > 색인 이득. 목록 /board만 색인·sitemap 유지)
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // 고정 경로엔 lastModified를 넣지 않는다 — 전 URL 동일한 빌드 시각은
@@ -73,5 +54,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${base}${route}`,
     priority: route === "" ? 1 : 0.8,
   }));
-  return [...staticEntries, ...(await blogEntries()), ...(await boardEntries())];
+  return [...staticEntries, ...(await blogEntries())];
 }

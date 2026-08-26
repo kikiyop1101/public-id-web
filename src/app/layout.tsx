@@ -97,6 +97,8 @@ export default function RootLayout({
       addressCountry: "KR",
     },
     areaServed: "KR",
+    // 공개 기준가 범위(정본=assistant-knowledge.ts) — ㎡ 단가 기준
+    priceRange: "기준가 88,000~132,000원/㎡",
     knowsAbout: [
       "친환경 그래픽 노면표시재",
       "노란발자국",

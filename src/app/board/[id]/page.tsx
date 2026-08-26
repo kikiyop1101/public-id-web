@@ -28,6 +28,8 @@ export async function generateMetadata({
     title: `${post.title} — 소통 게시판`,
     description: post.body.replace(/\s+/g, ' ').trim().slice(0, 150),
     alternates: { canonical: `/board/${post.id}` },
+    // 무검수 즉시공개 UGC라 개별 글은 색인 제외(스팸 색인 방지, 2026-08-26 윤결 판단) — 목록 /board는 색인 유지
+    robots: { index: false, follow: true },
   }
 }
 

@@ -5,6 +5,7 @@ import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
 import { site } from "@/lib/site";
 import { news } from "@/lib/news";
+import BreadcrumbLd from "@/components/BreadcrumbLd";
 
 export const metadata: Metadata = {
   title: "소식",
@@ -36,6 +37,7 @@ const jsonLd = {
 export default function NewsPage() {
   return (
     <>
+      <BreadcrumbLd trail={[{ name: "소식", path: "/news" }]} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

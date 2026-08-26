@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
+import BreadcrumbLd from "@/components/BreadcrumbLd";
 
 export const metadata: Metadata = {
   title: "회사소개",
   alternates: { canonical: "/about" },
   description:
-    "주식회사 퍼블릭아이디는 전용 마스코트·매월 웹툰·디자인 시스템을 구독으로 제공하고, 친환경 그래픽 노면표시재 기반 노면표시·안전표지의 시공과 정기 시설 관리까지 함께하는 KIDP 종합산업디자인전문회사이자 인증 사회적기업입니다.",
+    "2017년 세종에서 시작한 KIDP 종합산업디자인전문회사이자 인증 사회적기업 — 특허받은 부착식 노면표시재와 시험성적(46BPN·GREENGUARD GOLD)으로 공공 안전 디자인을 만들고, 디자인 구독으로 작은 조직의 디자인 파트너가 됩니다.",
 };
 
 const facts = [
@@ -28,6 +29,7 @@ const history = [
 export default function AboutPage() {
   return (
     <>
+      <BreadcrumbLd trail={[{ name: "회사소개", path: "/about" }]} />
       <PageHero
         eyebrow="About"
         title={

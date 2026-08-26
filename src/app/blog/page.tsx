@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getPublishedPosts } from '@/lib/blog'
 import NaverBlogFeed from '@/components/NaverBlogFeed'
+import BreadcrumbLd from '@/components/BreadcrumbLd'
 
 export const metadata: Metadata = {
   title: '기업 블로그',
@@ -17,6 +18,7 @@ export default async function BlogPage() {
 
   return (
     <div className="mx-auto max-w-3xl px-5 py-16">
+      <BreadcrumbLd trail={[{ name: '기업 블로그', path: '/blog' }]} />
       <div className="flex items-start justify-between gap-4">
         <div>
           <h1 className="text-ink text-2xl font-bold sm:text-3xl">기업 블로그</h1>

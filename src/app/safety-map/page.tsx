@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
 import SafetyMapApp from "@/components/safety-map/SafetyMapApp";
+import BreadcrumbLd from "@/components/BreadcrumbLd";
 
 export const metadata: Metadata = {
   title: "안전관리 지도",
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
 export default function SafetyMapPage() {
   return (
     <>
+      <BreadcrumbLd trail={[{ name: "안전관리 지도", path: "/safety-map" }]} />
       <PageHero
         eyebrow="Safety Map"
         title={
