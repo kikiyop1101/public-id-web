@@ -103,7 +103,7 @@ export const site = {
   ],
   stores: [
     { label: "우리회사OS (AI 자동화 템플릿)", href: "/os" },
-    { label: "AI 자동화 무료 진단", href: "/scan" },
+    { label: "AI 자동화 무료 진단", href: "/os#scan" },
     { label: "네이버 스마트스토어", href: "https://smartstore.naver.com/public-id" },
     {
       label: "쿠팡",

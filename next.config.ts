@@ -38,6 +38,13 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        // 2026-08-26 대표 지시 — 무료 진단(/scan)을 우리회사OS 안으로 통합.
+        // 발행물·봇 캐논에 나간 /scan 링크가 있어 삭제가 아니라 301로 물린다.
+        source: "/scan",
+        destination: "/os#scan",
+        permanent: true,
+      },
+      {
         source: "/:path*",
         has: [{ type: "host", value: "public-id.co.kr" }],
         destination: "https://www.public-id.co.kr/:path*",

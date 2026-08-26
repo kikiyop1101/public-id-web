@@ -3,7 +3,8 @@ import type { MetadataRoute } from "next";
 const base = "https://www.public-id.co.kr";
 const routes = ["", "/subscribe", "/work", "/guide", "/about", "/credentials", "/credibility", "/contact", "/news", "/safety-map",
   // 2026-08-25 스토어 통합으로 편입된 경로
-  "/products", "/quote", "/os", "/scan", "/blog", "/board", "/safety-report", "/world",
+  // /scan은 2026-08-26 /os#scan으로 통합(301)
+  "/products", "/quote", "/os", "/blog", "/board", "/safety-report", "/world",
   // 2026-08-25 보관고 상품 라인
   "/products/art-fabric", "/products/map-banner"];
 

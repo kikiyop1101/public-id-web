@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { KITS, KIT_GROUPS, LATPEED_STORE_URL, formatPrice } from '@/lib/os-kits'
 import OsCurator from '@/components/OsCurator'
+import ScanClient from '@/components/ScanClient'
 
 export const metadata: Metadata = {
   title: '우리회사OS — AI를 직원처럼 쓰는 회사 자동화 키트 21종',
@@ -72,12 +72,12 @@ export default function OsPage() {
           내려받아 더블클릭하면 바로 쓰고, 결과물에는 우리 회사 이름이 들어갑니다.
         </p>
         <div className="mt-10 flex flex-wrap items-center gap-3">
-          <Link
-            href="/scan"
+          <a
+            href="#scan"
             className="bg-arch inline-flex h-14 items-center justify-center rounded-full px-7 text-[15px] font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:brightness-105"
           >
             3분 무료 진단부터 하기
-          </Link>
+          </a>
           <a
             href={LATPEED_STORE_URL}
             target="_blank"
@@ -93,6 +93,9 @@ export default function OsPage() {
 
         <OsCurator />
       </section>
+
+      {/* 3분 무료 진단 — 구 /scan 페이지 통합(2026-08-26). 구 주소는 301 → /os#scan */}
+      <ScanClient />
 
       {/* 왜 만들었나 */}
       <section className="border-line border-y bg-cloud">
@@ -223,12 +226,12 @@ export default function OsPage() {
             우선순위 TOP3와 주당 절감 시간을 확인하세요. 로그인도, 정보 입력도 없습니다.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            <Link
-              href="/scan"
+            <a
+              href="#scan"
               className="bg-arch inline-flex h-14 items-center justify-center rounded-full px-7 text-[15px] font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:brightness-105"
             >
               무료 진단 시작하기
-            </Link>
+            </a>
             <a
               href={LATPEED_STORE_URL}
               target="_blank"

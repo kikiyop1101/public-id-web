@@ -25,7 +25,7 @@ export const SEARCH_INDEX: SearchEntry[] = [
   { label: "부착 가이드 · 설치 영상", href: "/guide", group: "제품", desc: "노면표시재 셀프 부착 방법 영상", keywords: "설치 부착 시공 방법 가이드 영상 diy" },
   { label: "맞춤 견적", href: "/quote", group: "제품", desc: "규격·수량 넣고 바로 받는 견적", keywords: "견적 가격 문의 계산 주문" },
   { label: "우리회사OS (AI 자동화)", href: "/os", group: "제품", desc: "소상공인 AI 자동화 키트 — 무료 진단부터", keywords: "os ai 자동화 템플릿 키트 소상공인 진단 챗gpt" },
-  { label: "AI 자동화 무료 진단", href: "/scan", group: "제품", desc: "우리 회사 업무 자동화 여지를 3분 만에", keywords: "진단 무료 스캔 자동화 ai" },
+  { label: "AI 자동화 무료 진단", href: "/os#scan", group: "제품", desc: "우리 회사 업무 자동화 여지를 3분 만에 — 우리회사OS 안", keywords: "진단 무료 스캔 자동화 ai" },
   // 구독
   { label: "구독 서비스", href: "/subscribe", group: "구독 서비스", desc: "디자인 구독 · 안전 시설 관리 구독", keywords: "구독 정기 멤버십 디자인구독" },
   { label: "디자인 시스템 구독", href: "/subscribe#design-system", group: "구독 서비스", desc: "전용 마스코트·매월 웹툰·디자인 시스템", keywords: "마스코트 웹툰 로고 브랜드 디자인시스템 캐릭터" },

@@ -155,7 +155,7 @@ export default function OsCurator() {
           {picks.length > 0 && (
             <p className="text-ink-soft mt-5 text-sm">
               더 꼼꼼히 보고 싶다면{' '}
-              <a href="/scan" className="font-semibold text-teal-700 hover:opacity-75">
+              <a href="#scan" className="font-semibold text-teal-700 hover:opacity-75">
                 3분 무료 진단
               </a>
               으로 업무 5개 영역을 점검해 보세요.
