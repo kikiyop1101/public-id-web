@@ -35,6 +35,7 @@ export const site = {
         { label: "친환경 그래픽 노면표시재", href: "/products#roadmark" },
         { label: "노란발자국", href: "/products#footprint" },
         { label: "친환경 그래픽 직물시트", href: "/products#fabric" },
+        { label: "노란볼라드", href: "/products#bollard" },
         { label: "친환경 홍보판촉물", href: "/products#promo" },
         { label: "명화 컬렉션", href: "/products/art-fabric" },
         { label: "국내외 지도 컬렉션", href: "/products/map-banner" },
@@ -59,6 +60,7 @@ export const site = {
       label: "소식", en: "News", href: "/news",
       children: [
         { label: "블로그", href: "/blog" },
+        { label: "소통 게시판", href: "/board" },
         { label: "문의", href: "/contact" },
       ],
     },
@@ -81,6 +83,7 @@ export const site = {
         { label: "친환경 그래픽 노면표시재", href: "/products#roadmark" },
         { label: "노란발자국", href: "/products#footprint" },
         { label: "친환경 그래픽 직물시트", href: "/products#fabric" },
+        { label: "노란볼라드", href: "/products#bollard" },
         { label: "친환경 홍보판촉물", href: "/products#promo" },
         { label: "명화 컬렉션", href: "/products/art-fabric" },
         { label: "국내외 지도 컬렉션", href: "/products/map-banner" },
@@ -110,6 +113,7 @@ export const site = {
       links: [
         { label: "소식 · 보도자료", href: "/news" },
         { label: "블로그", href: "/blog" },
+        { label: "소통 게시판", href: "/board" },
         { label: "문의", href: "/contact" },
       ],
     },

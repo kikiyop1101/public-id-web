@@ -7,8 +7,8 @@ import ProductSection from '@/components/ProductSection'
 import PageHero from '@/components/PageHero'
 
 export const metadata: Metadata = {
-  title: '제품 — 친환경 그래픽 노면표시재·노란발자국·직물시트·홍보판촉물',
-  description: '퍼블릭아이디의 친환경 제품군 4종을 소개합니다.',
+  title: '제품 — 친환경 그래픽 노면표시재·노란발자국·직물시트·노란볼라드·홍보판촉물',
+  description: '퍼블릭아이디의 친환경 제품군 5종을 소개합니다.',
   alternates: { canonical: '/products' },
 }
 
@@ -84,7 +84,7 @@ export default function ProductsPage() {
           <>
             친환경 소재로 만드는
             <br />
-            네 가지 제품
+            다섯 가지 제품
           </>
         }
         description="특허받은 부착식 노면표시재부터 직물시트·홍보판촉물·출력 라인업까지 — 현장 사진과 기준가를 그대로 보여드립니다. 아래 탭으로 바로 이동하세요."

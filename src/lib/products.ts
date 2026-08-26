@@ -5,7 +5,7 @@ export type ProductPoint = {
 }
 
 export type Product = {
-  id: 'roadmark' | 'footprint' | 'fabric' | 'promo'
+  id: 'roadmark' | 'footprint' | 'fabric' | 'bollard' | 'promo'
   /** public/products/<folder> — 폴더만 추가하면 갤러리가 자동 구성된다 */
   folder: string
   name: string
@@ -56,9 +56,24 @@ export const PRODUCTS: Product[] = [
       { text: '탈부착 용이' },
       { text: '대형 그래픽 대응' },
       { text: '기존 안내판 등 화면 교체 용이 — 감싸서 새것처럼' },
-      { text: '노란볼라드 — GD(굿디자인) 수상작', strong: true },
     ],
     anchor: '/products#fabric',
+  },
+  {
+    // 직물시트의 시그니처 하위 제품 — 노란발자국(노면표시재 짝)과 같은 격 (대표 지시 2026-08-26)
+    id: 'bollard',
+    folder: '친환경그래픽직물시트-노란볼라드',
+    name: '친환경 그래픽 직물시트 · 노란볼라드',
+    tagline: '기존 볼라드에 입히는 안전',
+    summary:
+      '낡은 기존 볼라드에 노란 직물시트를 부착해 어린이보호구역의 시인성을 높이는 노란볼라드. 새로 설치하지 않고 감싸서 새것처럼 바꾸는 안전시설 드레스업입니다.',
+    points: [
+      { text: '기존 볼라드 재활용 — 신규 설치 불필요' },
+      { text: '어린이보호구역·스쿨존 시인성 강화' },
+      { text: '2023 굿디자인(GD) 선정', strong: true },
+      { text: '안전시설관리 구독으로 정기 관리' },
+    ],
+    anchor: '/products#bollard',
   },
   {
     id: 'promo',
