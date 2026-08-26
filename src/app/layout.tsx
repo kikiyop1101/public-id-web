@@ -1,19 +1,14 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import localFont from "next/font/local";
 import "./globals.css";
+// 프리텐다드 공식 다이나믹 서브셋(92분할) — 페이지에 쓰인 유니코드 조각만 로드.
+// 근거: 2026-08-26 PSI 실측에서 단일 2MB 가변 woff2가 모바일 LCP를 14.5s로 만들었음.
+import "./pretendard-dynamic.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Assistant from "@/components/Assistant";
 import { Analytics } from "@vercel/analytics/next";
 import { site } from "@/lib/site";
-
-const pretendard = localFont({
-  src: "./fonts/PretendardVariable.woff2",
-  variable: "--font-pretendard",
-  display: "swap",
-  weight: "100 900",
-});
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -164,7 +159,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="ko" className={`${pretendard.variable} ${poppins.variable}`}>
+    <html lang="ko" className={poppins.variable}>
       <body className="min-h-dvh bg-paper text-ink antialiased">
         <script
           type="application/ld+json"
