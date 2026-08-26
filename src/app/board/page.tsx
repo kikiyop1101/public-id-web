@@ -8,6 +8,7 @@ import BoardForm from './BoardForm'
 export const metadata: Metadata = {
   title: '소통 게시판',
   description: '퍼블릭아이디에 궁금한 점과 의견을 남겨주세요.',
+  alternates: { canonical: '/board' },
 }
 
 // 게시판은 항상 최신 상태로

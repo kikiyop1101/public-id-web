@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: '친환경 현수막 지도 라인 — 전도·시도·시군 행정지도 출력',
   description:
     '국토지리정보원 2025년판 대한민국 전도부터 우리 동네 시·군 행정지도까지 182종을 친환경 타이벡 현수막·직물시트에 폭 1,200mm로 출력합니다. 관공서 상황실·학교·사무실 벽면 지도.',
+  alternates: { canonical: '/products/map-banner' },
 }
 
 type MapItem = (typeof maps)[number]
@@ -52,9 +53,61 @@ function MapCard({ item, compact = false }: { item: MapItem; compact?: boolean }
   )
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: '친환경 현수막 지도 라인',
+  url: 'https://www.public-id.co.kr/products/map-banner',
+  description:
+    '대한민국 전도·시도·시군 행정지도를 친환경 타이벡 현수막·직물시트에 폭 1,200mm로 출력하는 벽면 지도 라인.',
+  about: {
+    '@type': 'Product',
+    name: '친환경 현수막 지도 출력',
+    brand: { '@type': 'Brand', name: '퍼블릭아이디' },
+    offers: {
+      '@type': 'Offer',
+      url: 'https://www.public-id.co.kr/quote',
+      priceCurrency: 'KRW',
+      availability: 'https://schema.org/InStock',
+      seller: { '@id': 'https://www.public-id.co.kr/#organization' },
+    },
+  },
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: maps.length,
+    itemListElement: [...KOREA, ...SIDO].slice(0, 12).map((m, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: m.title,
+    })),
+  },
+}
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: '홈', item: 'https://www.public-id.co.kr' },
+    { '@type': 'ListItem', position: 2, name: '제품', item: 'https://www.public-id.co.kr/products' },
+    { '@type': 'ListItem', position: 3, name: '친환경 현수막 지도 라인', item: 'https://www.public-id.co.kr/products/map-banner' },
+  ],
+}
+
 export default function MapBannerPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, '\\u003c'),
+        }}
+      />
       <PageHero
         eyebrow="Eco Map Banner"
         title={

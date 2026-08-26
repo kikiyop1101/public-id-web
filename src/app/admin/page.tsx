@@ -160,7 +160,7 @@ export default async function AdminPage() {
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={reportPhotoUrls.get(report.id)}
-                    alt=""
+                    alt="제보 사진 썸네일"
                     className="border-line h-20 w-28 shrink-0 rounded-lg border object-cover"
                   />
                 )}
@@ -272,7 +272,7 @@ export default async function AdminPage() {
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={post.cover_image}
-                    alt=""
+                    alt={`${post.title} 대표 이미지`}
                     className="h-14 w-24 shrink-0 rounded-lg border border-line object-cover"
                   />
                 )}

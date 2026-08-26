@@ -1,4 +1,8 @@
+import { preload } from "react-dom";
 import Button from "@/components/Button";
+
+// LCP 후보(아치 창·모바일 반원이 같은 파일) — SVG <image>는 priority 힌트를 못 받아 preload로 보강 (2026-08-26 감사)
+const HERO_IMG = "/products/친환경그래픽노면표시재-노란발자국/참조04.jpg";
 
 // 2026-08-25 홈 리디자인 시안 v4 — 참조: vercel(무채+심볼 하나) + 리서치 반영(last30days 08-25):
 //  · 그레인 그라디언트(인쇄 질감 — 2026 SaaS 히어로 지배 트렌드, 우리 타이벡/인쇄 정체성과 일치)
@@ -6,6 +10,7 @@ import Button from "@/components/Button";
 //  · 스태거 텍스트 리빌(Stripe/Apple식 순차 등장 — 과한 연출 대신 절제)
 // 심볼 = 로고의 다리(아치) 그라디언트. 창작 도형 없음.
 export default function Hero() {
+  preload(HERO_IMG, { as: "image", fetchPriority: "high" });
   return (
     <section className="relative overflow-hidden border-b border-line bg-paper">
       {/* 대형 아치(다리) — 페이지가 열리며 한 번 그려진다 */}
@@ -121,8 +126,9 @@ export default function Hero() {
               <div className="relative aspect-[2/1] w-full overflow-hidden rounded-t-full">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/products/친환경그래픽노면표시재-노란발자국/참조04.jpg"
+                  src={HERO_IMG}
                   alt="횡단보도 앞 보도에 시공된 노란발자국 안심 대기선"
+                  fetchPriority="high"
                   className="absolute inset-0 h-full w-full object-cover"
                 />
               </div>

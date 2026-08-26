@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   title: '우리 학교 앞 안전 리포트',
   description:
     '통학로 위험 지점을 제보하면 퍼블릭아이디가 무료 진단 리포트를 만들어 지자체·학교에 전달합니다.',
+  alternates: { canonical: '/safety-report' },
 }
 
 export const dynamic = 'force-dynamic'
@@ -214,7 +215,7 @@ export default async function SafetyReportPage() {
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
                       src={photoUrl}
-                      alt=""
+                      alt={`${report.kind === 'showcase' ? '개선·시공 사례' : '시민 제보'} 현장 사진${report.public_label ? ` — ${report.public_label}` : ''}`}
                       className="h-44 w-full object-cover"
                       loading="lazy"
                     />

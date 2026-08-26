@@ -29,7 +29,7 @@
 - 친환경 현수막 지도 라인(전도·시도·시군 182종): https://www.public-id.co.kr/products/map-banner
 - 견적 문의: https://www.public-id.co.kr/quote
 - 우리회사OS(소상공인 업무 키트): https://www.public-id.co.kr/os
-- AI 진단: https://www.public-id.co.kr/scan
+- AI 진단(우리회사OS 내): https://www.public-id.co.kr/os#scan
 - 캠페인(안전관리지도·시공 사례): https://www.public-id.co.kr/safety-report
 - 블로그: https://www.public-id.co.kr/blog
   (구 store.public-id.co.kr 은 이 사이트로 통합되어 같은 경로로 리다이렉트됩니다)

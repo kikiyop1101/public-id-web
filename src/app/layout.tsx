@@ -89,7 +89,7 @@ export default function RootLayout({
     image: `${site.url}/og.png`,
     description:
       "전용 마스코트·매월 웹툰·디자인 시스템 구독과 친환경 그래픽 노면표시재 기반 노면표시·안전표지 정기 시설 관리를 제공하는 KIDP 종합산업디자인전문회사이자 인증 사회적기업.",
-    foundingDate: "2017",
+    foundingDate: "2017-08-08",
     founder: { "@type": "Person", name: site.ceo },
     telephone: site.tel,
     faxNumber: site.fax,
@@ -153,6 +153,16 @@ export default function RootLayout({
     ],
   };
 
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${site.url}/#website`,
+    name: site.name,
+    url: site.url,
+    inLanguage: "ko",
+    publisher: { "@id": `${site.url}/#organization` },
+  };
+
   return (
     <html lang="ko" className={`${pretendard.variable} ${poppins.variable}`}>
       <body className="min-h-dvh bg-paper text-ink antialiased">
@@ -160,6 +170,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteJsonLd).replace(/</g, "\\u003c"),
           }}
         />
         <noscript>

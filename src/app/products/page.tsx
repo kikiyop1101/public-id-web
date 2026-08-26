@@ -9,11 +9,74 @@ import PageHero from '@/components/PageHero'
 export const metadata: Metadata = {
   title: '제품 — 친환경 그래픽 노면표시재·노란발자국·직물시트·홍보판촉물',
   description: '퍼블릭아이디의 친환경 제품군 4종을 소개합니다.',
+  alternates: { canonical: '/products' },
+}
+
+// 공개 기준가(VAT 포함, 정본=assistant-knowledge.ts) — 있는 제품만 Offer 기재
+const BASE_PRICES: Partial<Record<string, string>> = {
+  roadmark: '132000',
+  fabric: '88000',
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: '퍼블릭아이디 친환경 제품군',
+  itemListElement: PRODUCTS.map((p, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: {
+      '@type': 'Product',
+      name: p.name,
+      description: p.summary,
+      url: `https://www.public-id.co.kr${p.anchor}`,
+      brand: { '@type': 'Brand', name: '퍼블릭아이디' },
+      ...(BASE_PRICES[p.id]
+        ? {
+            offers: {
+              '@type': 'Offer',
+              url: 'https://www.public-id.co.kr/quote',
+              priceCurrency: 'KRW',
+              price: BASE_PRICES[p.id],
+              priceSpecification: {
+                '@type': 'UnitPriceSpecification',
+                price: BASE_PRICES[p.id],
+                priceCurrency: 'KRW',
+                unitText: '㎡',
+              },
+              availability: 'https://schema.org/InStock',
+              seller: { '@id': 'https://www.public-id.co.kr/#organization' },
+            },
+          }
+        : {}),
+    },
+  })),
+}
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: '홈', item: 'https://www.public-id.co.kr' },
+    { '@type': 'ListItem', position: 2, name: '제품', item: 'https://www.public-id.co.kr/products' },
+  ],
 }
 
 export default function ProductsPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, '\\u003c'),
+        }}
+      />
       {/* 2026-08-26 — 얇은 네이비 띠 → 표준 PageHero(서브페이지 통일). 탭이 바로 아래 목차 역할 */}
       <PageHero
         eyebrow="Products"

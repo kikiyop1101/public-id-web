@@ -43,7 +43,19 @@ export default function ContactPage() {
                   <dt className="w-16 shrink-0 text-sm font-medium text-ink-soft">
                     {k}
                   </dt>
-                  <dd className="whitespace-pre-line text-sm leading-relaxed text-ink">{v}</dd>
+                  <dd className="whitespace-pre-line text-sm leading-relaxed text-ink">
+                    {k === "전화" ? (
+                      <a href={`tel:${v.replace(/[^0-9+]/g, "")}`} className="transition hover:text-teal-700">
+                        {v}
+                      </a>
+                    ) : k === "이메일" ? (
+                      <a href={`mailto:${v}`} className="transition hover:text-teal-700">
+                        {v}
+                      </a>
+                    ) : (
+                      v
+                    )}
+                  </dd>
                 </div>
               ))}
             </dl>

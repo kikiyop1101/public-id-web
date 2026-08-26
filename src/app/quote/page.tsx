@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: '맞춤 견적',
   description:
     '친환경 그래픽 노면표시재·직물시트·홍보판촉물의 규격·수량 맞춤 견적을 신청하세요.',
+  alternates: { canonical: '/quote' },
 }
 
 export default function QuotePage() {

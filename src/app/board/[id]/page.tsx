@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
@@ -7,6 +8,28 @@ import DeleteForm from './DeleteForm'
 import Comments, { type CommentNode } from './Comments'
 
 export const dynamic = 'force-dynamic'
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}): Promise<Metadata> {
+  const { id } = await params
+  const supabase = await createClient()
+  const result = await supabase
+    .from('board_posts')
+    .select('id, nickname, title, body')
+    .eq('id', id)
+    .eq('status', 'approved')
+    .single()
+  const post = parseRow('board_posts', result, parseBoardPostRow)
+  if (!post) return {}
+  return {
+    title: `${post.title} — 소통 게시판`,
+    description: post.body.replace(/\s+/g, ' ').trim().slice(0, 150),
+    alternates: { canonical: `/board/${post.id}` },
+  }
+}
 
 // 평면 rows → 중첩 트리 (대댓글의 대댓글까지 무제한 깊이)
 function buildTree(rows: BoardCommentRow[]): CommentNode[] {

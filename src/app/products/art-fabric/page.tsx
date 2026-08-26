@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: '직물시트 명화 라인 — 반 고흐·모네·민화를 벽면에',
   description:
     '퍼블릭도메인 명화 132점을 친환경 직물시트에 폭 1,200mm로 출력합니다. 반 고흐·모네·르누아르·클림트와 한국 민화 — 광고물 부착방지 시트의 기술로 벽면을 갤러리로.',
+  alternates: { canonical: '/products/art-fabric' },
 }
 
 type Artwork = (typeof artworks)[number]
@@ -46,9 +47,68 @@ function ArtCard({ art, compact = false }: { art: Artwork; compact?: boolean }) 
   )
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: '직물시트 명화 라인',
+  url: 'https://www.public-id.co.kr/products/art-fabric',
+  description:
+    '퍼블릭도메인 명화를 친환경 직물시트에 폭 1,200mm로 출력하는 벽면 아트 라인.',
+  about: {
+    '@type': 'Product',
+    name: '친환경 직물시트 명화 출력',
+    brand: { '@type': 'Brand', name: '퍼블릭아이디' },
+    offers: {
+      '@type': 'Offer',
+      url: 'https://www.public-id.co.kr/quote',
+      priceCurrency: 'KRW',
+      price: '88000',
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        price: '88000',
+        priceCurrency: 'KRW',
+        unitText: '㎡',
+      },
+      availability: 'https://schema.org/InStock',
+      seller: { '@id': 'https://www.public-id.co.kr/#organization' },
+    },
+  },
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: artworks.length,
+    itemListElement: A_GRADE.slice(0, 12).map((a, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: `${a.artist ? a.artist + ' — ' : ''}${a.title}`,
+    })),
+  },
+}
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: '홈', item: 'https://www.public-id.co.kr' },
+    { '@type': 'ListItem', position: 2, name: '제품', item: 'https://www.public-id.co.kr/products' },
+    { '@type': 'ListItem', position: 3, name: '직물시트 명화 라인', item: 'https://www.public-id.co.kr/products/art-fabric' },
+  ],
+}
+
 export default function ArtFabricPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, '\\u003c'),
+        }}
+      />
       <PageHero
         eyebrow="Fabric Art Print"
         title={

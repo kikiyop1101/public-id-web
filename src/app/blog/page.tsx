@@ -7,6 +7,7 @@ import NaverBlogFeed from '@/components/NaverBlogFeed'
 export const metadata: Metadata = {
   title: '기업 블로그',
   description: '퍼블릭아이디의 이야기와 현장 소식.',
+  alternates: { canonical: '/blog' },
 }
 
 export const dynamic = 'force-dynamic'

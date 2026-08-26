@@ -65,10 +65,19 @@ const productJsonLd = {
     { "@type": "PropertyValue", name: "친환경 인증", value: "GREENGUARD GOLD (UL 2818 저휘발성)" },
     { "@type": "PropertyValue", name: "시험성적", value: "미끄럼저항·유해물질 불검출·방염 (KCL·SGS·KTR·KFI)" },
   ],
+  image: "https://www.public-id.co.kr/work/gen-nationwide.png",
   offers: {
     "@type": "Offer",
-    url: "https://smartstore.naver.com/public-id",
+    url: "https://www.public-id.co.kr/quote",
     priceCurrency: "KRW",
+    // 공개 기준가(VAT 포함) — 정확한 견적은 /quote 문의. 정본=assistant-knowledge.ts
+    price: "132000",
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      price: "132000",
+      priceCurrency: "KRW",
+      unitText: "㎡",
+    },
     availability: "https://schema.org/InStock",
     seller: { "@type": "Organization", name: "주식회사 퍼블릭아이디" },
   },
