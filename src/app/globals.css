@@ -109,6 +109,14 @@ body > header {
   top: 0;
   z-index: 50;
 }
+/* 우측 하단 제품·견적 도우미도 같은 이유로 예외 복원 — 안 하면 fixed가 무력화되어
+   문서 흐름 끝(푸터 뒤)에 밀려 "따로 떨어진" 채 렌더된다(대표 지적 2026-08-26) */
+body > .pi-assistant {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 50;
+}
 
 /* 결 위에서는 헤어라인이 사라진다(밝기 차 13) → 기본 보더를 한 단계 올린다 */
 .border-line {

@@ -31,12 +31,8 @@ const nextConfig: NextConfig = {
     // Canonical host = www (metadataBase/sitemap/robots/JSON-LD all use www);
     // apex previously served duplicate 200s, splitting SEO signals.
     return [
-      {
-        // 2026-08-25 대표 지시 — 디자인시스템 페이지를 구독 안으로 통합
-        source: "/design",
-        destination: "/subscribe#design-system",
-        permanent: true,
-      },
+      // 2026-08-26 대표 지시 — /design 전용 페이지 복원("눌러서 다 볼 수 있던 게 없어졌다").
+      // 08-25의 /design→/subscribe#design-system 301은 해제, 구독 안 요약 섹션은 유지.
       {
         // 2026-08-26 대표 지시 — 무료 진단(/scan)을 우리회사OS 안으로 통합.
         // 발행물·봇 캐논에 나간 /scan 링크가 있어 삭제가 아니라 301로 물린다.

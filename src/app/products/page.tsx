@@ -111,8 +111,8 @@ export default function ProductsPage() {
             골라서 출력하는 라인업
           </h2>
           <p className="text-ink-soft mt-3 max-w-2xl">
-            직물시트·친환경 현수막 소재에 폭 1,200mm로 출력하는 기성 컬렉션 —
-            원하는 작품·지역을 고르면 규격 견적으로 바로 이어집니다.
+            원하는 작품·지역을 고르면 친환경 직물시트와 타이벡 현수막, 두 소재
+            모두로 폭 1,200mm 출력해 드립니다 — 규격 견적으로 바로 이어집니다.
           </p>
           <div className="mt-8 grid gap-5 sm:grid-cols-2">
             <Link
@@ -120,11 +120,11 @@ export default function ProductsPage() {
               className="group rounded-2xl border border-line bg-cloud/50 p-6 transition hover:border-teal"
             >
               <p className="text-ink text-lg font-bold group-hover:text-teal-700">
-                직물시트 명화 라인 →
+                명화 컬렉션 →
               </p>
               <p className="text-ink-soft mt-2 text-sm leading-relaxed">
-                반 고흐·모네·클림트와 한국 민화 — 퍼블릭도메인 명화 132점을 벽면
-                갤러리로.
+                반 고흐·모네·클림트와 한국 민화 — 퍼블릭도메인 명화 132점을
+                직물시트·현수막으로 출력해 벽면 갤러리로.
               </p>
             </Link>
             <Link
@@ -132,10 +132,11 @@ export default function ProductsPage() {
               className="group rounded-2xl border border-line bg-cloud/50 p-6 transition hover:border-teal"
             >
               <p className="text-ink text-lg font-bold group-hover:text-teal-700">
-                친환경 현수막 지도 라인 →
+                국내외 지도 컬렉션 →
               </p>
               <p className="text-ink-soft mt-2 text-sm leading-relaxed">
-                2025년판 대한민국 전도부터 우리 동네 시·군 행정지도까지 182종.
+                2025년판 대한민국 전도·시군 행정지도부터 세계지도·대동여지도까지
+                — 직물시트·현수막 어느 쪽으로도.
               </p>
             </Link>
           </div>

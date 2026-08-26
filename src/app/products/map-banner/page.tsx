@@ -6,9 +6,9 @@ import Container from '@/components/Container'
 import maps from '@/data/maps.json'
 
 export const metadata: Metadata = {
-  title: '친환경 현수막 지도 라인 — 전도·시도·시군 행정지도 출력',
+  title: '국내외 지도 컬렉션 — 전도·행정지도·세계지도 출력',
   description:
-    '국토지리정보원 2025년판 대한민국 전도부터 우리 동네 시·군 행정지도까지 182종을 친환경 타이벡 현수막·직물시트에 폭 1,200mm로 출력합니다. 관공서 상황실·학교·사무실 벽면 지도.',
+    '국토지리정보원 2025년판 대한민국 전도부터 우리 동네 시·군 행정지도, 세계지도·대동여지도까지 — 친환경 타이벡 현수막과 직물시트, 두 소재 모두로 폭 1,200mm 출력합니다. 관공서 상황실·학교·사무실 벽면 지도.',
   alternates: { canonical: '/products/map-banner' },
 }
 
@@ -56,13 +56,13 @@ function MapCard({ item, compact = false }: { item: MapItem; compact?: boolean }
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  name: '친환경 현수막 지도 라인',
+  name: '국내외 지도 컬렉션',
   url: 'https://www.public-id.co.kr/products/map-banner',
   description:
-    '대한민국 전도·시도·시군 행정지도를 친환경 타이벡 현수막·직물시트에 폭 1,200mm로 출력하는 벽면 지도 라인.',
+    '대한민국 전도·시도·시군 행정지도와 세계지도를 친환경 타이벡 현수막·직물시트에 폭 1,200mm로 출력하는 벽면 지도 컬렉션.',
   about: {
     '@type': 'Product',
-    name: '친환경 현수막 지도 출력',
+    name: '친환경 지도 출력 (현수막·직물시트)',
     brand: { '@type': 'Brand', name: '퍼블릭아이디' },
     offers: {
       '@type': 'Offer',
@@ -89,7 +89,7 @@ const breadcrumbJsonLd = {
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: '홈', item: 'https://www.public-id.co.kr' },
     { '@type': 'ListItem', position: 2, name: '제품', item: 'https://www.public-id.co.kr/products' },
-    { '@type': 'ListItem', position: 3, name: '친환경 현수막 지도 라인', item: 'https://www.public-id.co.kr/products/map-banner' },
+    { '@type': 'ListItem', position: 3, name: '국내외 지도 컬렉션', item: 'https://www.public-id.co.kr/products/map-banner' },
   ],
 }
 
@@ -112,12 +112,12 @@ export default function MapBannerPage() {
         eyebrow="Eco Map Banner"
         title={
           <>
-            우리 동네까지 담는,
+            우리 동네부터 세계까지,
             <br />
-            친환경 현수막 지도 라인
+            국내외 지도 컬렉션
           </>
         }
-        description="국토지리정보원 2025년 최신판 대한민국 전도부터 시·도 17종, 시·군 152종 행정지도까지 — 친환경 타이벡 현수막과 직물시트에 폭 1,200mm로 출력합니다. 상황실·민원실·학교·사무실 벽면에 못질 없이 부착하는 지도."
+        description="국토지리정보원 2025년 최신판 대한민국 전도부터 시·도 17종, 시·군 152종 행정지도, 세계지도·대동여지도까지 — 친환경 타이벡 현수막과 직물시트, 두 소재 모두로 폭 1,200mm 출력합니다. 상황실·민원실·학교·사무실 벽면에 못질 없이 부착하는 지도."
       />
 
       {/* 스펙 밴드 */}
@@ -127,7 +127,7 @@ export default function MapBannerPage() {
             ['출력 폭', '1,200mm 통일'],
             ['소재', '듀폰 타이벡 현수막 · 직물시트'],
             ['판형', '최신 2025년판 · 벡터 원본 보유'],
-            ['범위', '전도 · 시도 17 · 시군 152'],
+            ['범위', '전도 · 시도 17 · 시군 152 · 세계지도'],
           ].map(([k, v]) => (
             <div key={k}>
               <p className="font-display text-xs font-semibold uppercase tracking-[0.16em] text-teal-700">
@@ -245,7 +245,7 @@ export default function MapBannerPage() {
               href="/products/art-fabric"
               className="inline-flex h-12 items-center justify-center rounded-full border border-white/30 px-6 text-[15px] font-semibold text-white transition hover:bg-white/10"
             >
-              명화 라인 보기
+              명화 컬렉션 보기
             </Link>
           </div>
           <p className="mt-8 text-xs text-white/50">

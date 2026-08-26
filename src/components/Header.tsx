@@ -119,6 +119,13 @@ export default function Header() {
           >
             3D 월드
           </a>
+          {/* 견적 진입 상시 노출 — 대표 지적 2026-08-26 "견적 도우미 찾기가 쉽지 않다" */}
+          <Link
+            href="/quote"
+            className="inline-flex h-10 items-center justify-center rounded-full bg-arch px-5 text-sm font-semibold text-white transition hover:brightness-105"
+          >
+            맞춤 견적
+          </Link>
           <Link
             href="/contact"
             className="inline-flex h-10 items-center justify-center rounded-full bg-navy px-5 text-sm font-semibold text-white transition hover:bg-teal"
@@ -217,9 +224,16 @@ export default function Header() {
             3D 월드 둘러보기
           </a>
           <Link
-            href="/contact"
+            href="/quote"
             onClick={() => setOpen(false)}
             className="inline-flex h-12 items-center justify-center rounded-full bg-arch px-5 font-semibold text-white"
+          >
+            맞춤 견적 받기
+          </Link>
+          <Link
+            href="/contact"
+            onClick={() => setOpen(false)}
+            className="inline-flex h-12 items-center justify-center rounded-full bg-navy px-5 font-semibold text-white"
           >
             구독 상담
           </Link>

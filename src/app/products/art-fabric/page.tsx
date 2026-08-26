@@ -6,9 +6,9 @@ import Container from '@/components/Container'
 import artworks from '@/data/artworks.json'
 
 export const metadata: Metadata = {
-  title: '직물시트 명화 라인 — 반 고흐·모네·민화를 벽면에',
+  title: '명화 컬렉션 — 반 고흐·모네·민화를 직물시트·현수막으로',
   description:
-    '퍼블릭도메인 명화 132점을 친환경 직물시트에 폭 1,200mm로 출력합니다. 반 고흐·모네·르누아르·클림트와 한국 민화 — 광고물 부착방지 시트의 기술로 벽면을 갤러리로.',
+    '퍼블릭도메인 명화 132점을 친환경 직물시트와 타이벡 현수막에 폭 1,200mm로 출력합니다. 반 고흐·모네·르누아르·클림트와 한국 민화 — 게시 위치에 맞는 소재를 골라 벽면을 갤러리로.',
   alternates: { canonical: '/products/art-fabric' },
 }
 
@@ -50,13 +50,13 @@ function ArtCard({ art, compact = false }: { art: Artwork; compact?: boolean }) 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  name: '직물시트 명화 라인',
+  name: '명화 컬렉션',
   url: 'https://www.public-id.co.kr/products/art-fabric',
   description:
-    '퍼블릭도메인 명화를 친환경 직물시트에 폭 1,200mm로 출력하는 벽면 아트 라인.',
+    '퍼블릭도메인 명화를 친환경 직물시트·타이벡 현수막에 폭 1,200mm로 출력하는 벽면 아트 컬렉션.',
   about: {
     '@type': 'Product',
-    name: '친환경 직물시트 명화 출력',
+    name: '친환경 명화 출력 (직물시트·현수막)',
     brand: { '@type': 'Brand', name: '퍼블릭아이디' },
     offers: {
       '@type': 'Offer',
@@ -90,7 +90,7 @@ const breadcrumbJsonLd = {
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: '홈', item: 'https://www.public-id.co.kr' },
     { '@type': 'ListItem', position: 2, name: '제품', item: 'https://www.public-id.co.kr/products' },
-    { '@type': 'ListItem', position: 3, name: '직물시트 명화 라인', item: 'https://www.public-id.co.kr/products/art-fabric' },
+    { '@type': 'ListItem', position: 3, name: '명화 컬렉션', item: 'https://www.public-id.co.kr/products/art-fabric' },
   ],
 }
 
@@ -115,10 +115,10 @@ export default function ArtFabricPage() {
           <>
             벽면을 갤러리로,
             <br />
-            직물시트 명화 라인
+            명화 컬렉션
           </>
         }
-        description="반 고흐·모네·르누아르·클림트, 그리고 한국 민화까지 — 저작권이 소멸된 퍼블릭도메인 원화 132점을 친환경 직물시트에 출력해 벽면에 부착합니다. 사무실·복도·상가·병원, 못질 없이 붙이는 갤러리."
+        description="반 고흐·모네·르누아르·클림트, 그리고 한국 민화까지 — 저작권이 소멸된 퍼블릭도메인 원화 132점을 친환경 직물시트와 타이벡 현수막, 두 소재 모두로 출력합니다. 사무실·복도·상가·병원, 게시 위치에 맞는 소재를 골라 못질 없이 붙이는 갤러리."
       />
 
       {/* 스펙 밴드 */}
@@ -127,7 +127,7 @@ export default function ArtFabricPage() {
           {[
             ['출력 폭', '1,200mm 통일'],
             ['길이', '롤 단위 · 제한 없음'],
-            ['소재', '친환경 직물시트 (라텍스 잉크)'],
+            ['소재', '친환경 직물시트 · 타이벡 현수막'],
             ['원본', '미술관 오픈액세스 고해상도'],
           ].map(([k, v]) => (
             <div key={k}>
@@ -211,7 +211,8 @@ export default function ArtFabricPage() {
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-white/70">
             작품 번호(또는 화가 이름)와 벽면 폭·높이를 알려주시면 규격 견적으로
-            회신드립니다. 시공과 사후 관리까지 함께합니다.
+            회신드립니다. 게시 위치에 맞는 소재(직물시트·현수막) 제안과 시공,
+            사후 관리까지 함께합니다.
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
             <Link
@@ -224,7 +225,7 @@ export default function ArtFabricPage() {
               href="/products/map-banner"
               className="inline-flex h-12 items-center justify-center rounded-full border border-white/30 px-6 text-[15px] font-semibold text-white transition hover:bg-white/10"
             >
-              지도 현수막 라인 보기
+              국내외 지도 컬렉션 보기
             </Link>
           </div>
           <p className="mt-8 text-xs text-white/50">

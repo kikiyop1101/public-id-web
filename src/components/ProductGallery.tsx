@@ -5,6 +5,15 @@ import Image from 'next/image'
 import type { GalleryItem } from '@/lib/product-media'
 
 // 참조 사진·영상 갤러리. 썸네일 그리드 + 클릭 시 라이트박스(←/→/Esc 지원).
+// 접힌 상태에서 첫 줄만 보이게 — 그리드 열 수(3/4/6)가 브레이크포인트마다 달라
+// 인덱스별로 반응형 hidden 클래스를 계산한다 (대표 지시 2026-08-26 "첫줄만 보이고 누르면 펴지게").
+function collapsedClass(i: number) {
+  if (i < 3) return ''
+  if (i === 3) return 'hidden sm:block'
+  if (i < 6) return 'hidden md:block'
+  return 'hidden'
+}
+
 export default function ProductGallery({
   items,
   productName,
@@ -13,6 +22,8 @@ export default function ProductGallery({
   productName: string
 }) {
   const [open, setOpen] = useState<number | null>(null)
+  const [expanded, setExpanded] = useState(false)
+  const collapsible = items.length > 3
   const dialogRef = useRef<HTMLDivElement | null>(null)
   const lastFocusedRef = useRef<HTMLElement | null>(null)
   const isOpen = open !== null
@@ -60,7 +71,9 @@ export default function ProductGallery({
             key={item.src}
             type="button"
             onClick={() => setOpen(i)}
-            className="border-line hover:border-teal group relative aspect-square overflow-hidden rounded-xl border bg-cloud transition"
+            className={`border-line hover:border-teal group relative aspect-square overflow-hidden rounded-xl border bg-cloud transition ${
+              collapsible && !expanded ? collapsedClass(i) : ''
+            }`}
             aria-label={`${productName} 참조 ${i + 1} 크게 보기`}
           >
             {item.kind === 'image' ? (
@@ -90,6 +103,20 @@ export default function ProductGallery({
           </button>
         ))}
       </div>
+
+      {collapsible && (
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          aria-expanded={expanded}
+          className="border-line text-ink-soft hover:border-teal hover:text-teal-700 mt-3 inline-flex h-10 items-center gap-1.5 rounded-full border bg-white px-5 text-sm font-medium transition"
+        >
+          {expanded ? '사례 접기' : `사례 ${items.length}개 모두 보기`}
+          <span aria-hidden className={`transition-transform ${expanded ? 'rotate-180' : ''}`}>
+            ⌄
+          </span>
+        </button>
+      )}
 
       {current && (
         <div

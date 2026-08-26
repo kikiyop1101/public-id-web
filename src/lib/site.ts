@@ -28,10 +28,16 @@ export const site = {
       children: [{ label: "사업영역", href: "/work" }],
     },
     {
+      // 제품 메뉴 = /products 페이지 구성 그대로(제품 4종 → 출력 컬렉션 2종 → 가이드·견적)
+      // — 대표 지적 2026-08-26 "제품이 메뉴와 하단 구성이 맞질 않아".
       label: "제품", en: "Products", href: "/products",
       children: [
-        { label: "직물시트 명화", href: "/products/art-fabric" },
-        { label: "현수막 지도", href: "/products/map-banner" },
+        { label: "친환경 그래픽 노면표시재", href: "/products#roadmark" },
+        { label: "노란발자국", href: "/products#footprint" },
+        { label: "친환경 그래픽 직물시트", href: "/products#fabric" },
+        { label: "친환경 홍보판촉물", href: "/products#promo" },
+        { label: "명화 컬렉션", href: "/products/art-fabric" },
+        { label: "국내외 지도 컬렉션", href: "/products/map-banner" },
         { label: "부착 가이드 · 설치 영상", href: "/guide" },
         { label: "맞춤 견적", href: "/quote" },
         { label: "우리회사OS (AI 자동화)", href: "/os" },
@@ -40,8 +46,9 @@ export const site = {
     {
       label: "구독 서비스", en: "Subscription", href: "/subscribe",
       children: [
-        { label: "디자인 시스템", href: "/subscribe#design-system" },
+        { label: "디자인 시스템", href: "/design" },
         { label: "안전관리 지도", href: "/safety-map" },
+        { label: "안전 리포트 · 제보", href: "/safety-report" },
       ],
     },
     {
@@ -71,18 +78,24 @@ export const site = {
       label: "제품",
       links: [
         { label: "제품 전체", href: "/products" },
-        { label: "직물시트 명화", href: "/products/art-fabric" },
-        { label: "현수막 지도", href: "/products/map-banner" },
+        { label: "친환경 그래픽 노면표시재", href: "/products#roadmark" },
+        { label: "노란발자국", href: "/products#footprint" },
+        { label: "친환경 그래픽 직물시트", href: "/products#fabric" },
+        { label: "친환경 홍보판촉물", href: "/products#promo" },
+        { label: "명화 컬렉션", href: "/products/art-fabric" },
+        { label: "국내외 지도 컬렉션", href: "/products/map-banner" },
         { label: "부착 가이드", href: "/guide" },
         { label: "맞춤 견적", href: "/quote" },
+        { label: "우리회사OS (AI 자동화)", href: "/os" },
       ],
     },
     {
       label: "구독 서비스",
       links: [
         { label: "구독 안내", href: "/subscribe" },
-        { label: "디자인 시스템", href: "/subscribe#design-system" },
+        { label: "디자인 시스템", href: "/design" },
         { label: "안전관리 지도", href: "/safety-map" },
+        { label: "안전 리포트 · 제보", href: "/safety-report" },
       ],
     },
     {

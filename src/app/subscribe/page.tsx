@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
@@ -31,7 +32,7 @@ export default function SubscribePage() {
       />
       <Subscription pricing />
       <HowItWorks />
-      {/* 디자인 시스템 — 구독에 포함되는 정본(2026-08-25 /design 페이지 통합, 대표 지시) */}
+      {/* 디자인 시스템 — 구독에 포함되는 정본 요약. 전체는 /design 전용 페이지(2026-08-26 복원, 대표 지시) */}
       <section id="design-system" className="bg-cloud py-20 sm:py-28">
         <Container>
           <Reveal className="max-w-2xl">
@@ -52,6 +53,14 @@ export default function SubscribePage() {
           </Reveal>
           <div className="mt-12">
             <DesignTokenDemo />
+          </div>
+          <div className="mt-10">
+            <Link
+              href="/design"
+              className="inline-flex h-12 items-center justify-center rounded-full bg-navy px-6 text-[15px] font-semibold text-white transition hover:bg-teal"
+            >
+              디자인시스템 전체 보기 →
+            </Link>
           </div>
         </Container>
       </section>

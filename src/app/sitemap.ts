@@ -3,7 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 import { parseBlogListItem } from "@/lib/blog";
 
 const base = "https://www.public-id.co.kr";
-const routes = ["", "/subscribe", "/work", "/guide", "/about", "/credentials", "/credibility", "/contact", "/news", "/safety-map", "/privacy",
+const routes = ["", "/subscribe", "/design", "/work", "/guide", "/about", "/credentials", "/credibility", "/contact", "/news", "/safety-map", "/privacy",
   // 2026-08-25 스토어 통합으로 편입된 경로
   // /scan은 2026-08-26 /os#scan으로 통합(301)
   "/products", "/quote", "/os", "/blog", "/board", "/safety-report", "/safety-report/new", "/world",

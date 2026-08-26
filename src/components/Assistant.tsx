@@ -37,6 +37,13 @@ export default function Assistant() {
     if (el) el.scrollTop = el.scrollHeight;
   }, [messages, open, loading]);
 
+  // 페이지 본문(견적 페이지 배너 등)에서 도우미를 바로 열 수 있게 — 대표 지적 2026-08-26
+  useEffect(() => {
+    const onOpenEvent = () => setOpen(true);
+    window.addEventListener("pi:open-assistant", onOpenEvent);
+    return () => window.removeEventListener("pi:open-assistant", onOpenEvent);
+  }, []);
+
   // 열릴 때 입력창으로 포커스 이동 + Esc로 닫기
   useEffect(() => {
     if (!open) return;
@@ -91,7 +98,7 @@ export default function Assistant() {
         type="button"
         onClick={() => setOpen(true)}
         aria-label="제품·견적 도우미 열기"
-        className="fixed bottom-5 right-5 z-50 flex items-center gap-2 rounded-full bg-teal-700 px-5 py-3.5 text-sm font-semibold text-white shadow-lg shadow-teal-900/20 transition hover:bg-teal-800"
+        className="pi-assistant fixed bottom-5 right-5 z-50 flex items-center gap-2 rounded-full bg-teal-700 px-5 py-3.5 text-sm font-semibold text-white shadow-lg shadow-teal-900/20 transition hover:bg-teal-800"
       >
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.6-.8L3 21l1.8-5.4A8.5 8.5 0 1 1 21 11.5z" />
@@ -119,7 +126,7 @@ export default function Assistant() {
     <div
       role="dialog"
       aria-label="퍼블릭아이디 도우미"
-      className="fixed bottom-5 right-5 z-50 flex h-[min(560px,80vh)] w-[min(380px,calc(100vw-2.5rem))] flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-2xl"
+      className="pi-assistant fixed bottom-5 right-5 z-50 flex h-[min(560px,80vh)] w-[min(380px,calc(100vw-2.5rem))] flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-2xl"
     >
       <header className="flex items-center justify-between gap-2 bg-teal-700 px-4 py-3 text-white">
         <div>

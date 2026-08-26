@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { PRODUCTS } from '@/lib/products'
 import LeadForm from '@/components/LeadForm'
+import OpenAssistantButton from '@/components/OpenAssistantButton'
 
 export const metadata: Metadata = {
   title: '맞춤 견적',
@@ -23,6 +24,18 @@ export default function QuotePage() {
         설치할 공간·규격·수량을 알려주시면 담당자가 검토해 이메일로 회신드립니다.
         원하는 문구·그래픽을 넣는 맞춤 제작도 가능합니다.
       </p>
+
+      {/* 뭘 골라야 할지 모를 때 — AI 도우미 진입(대표 지적 2026-08-26 "도우미 찾기 어렵다") */}
+      <div className="border-line bg-cloud/60 mt-8 flex flex-wrap items-center justify-between gap-4 rounded-2xl border p-5">
+        <p className="text-ink text-sm leading-relaxed">
+          <span className="font-semibold">어떤 제품·규격이 맞을지 아직 모르시겠다면</span>
+          <br />
+          <span className="text-ink-soft">
+            AI 도우미가 공간에 맞는 제품과 대략 견적을 바로 안내해 드립니다.
+          </span>
+        </p>
+        <OpenAssistantButton />
+      </div>
 
       {/* 공개 기준 단가 — BRAND_CONSTANTS 정본(대표 확정 2026-06-26) */}
       <section className="mt-10 rounded-3xl border border-line bg-cloud/50 p-7">
