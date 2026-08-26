@@ -54,25 +54,29 @@ export default function ShowcaseStrip() {
           <br className="sm:hidden" /> 거리 위에 디자인합니다.
         </h2>
       </Container>
-      {/* 가로 스크롤 스트립 — 화면 밖으로 살짝 잘리게 두어 "더 있다"를 몸으로 알린다 */}
+      {/* 가로 스크롤 스트립 — 화면 밖으로 살짝 잘리게 두어 "더 있다"를 몸으로 알린다.
+          2026-08-26 업그레이드: 카드 확대(460→560px)·캡션에 공간 유형을 라벨로 승격
+          (리서치: 시공업 신뢰는 현장 사진의 크기·현장감이 만든다 — 엣지투엣지에 가깝게). */}
       <div className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-6 sm:px-8 lg:px-[max(2rem,calc((100vw-1200px)/2))]">
         {WORKS.map((wk) => (
           <figure
             key={wk.src}
-            className="group w-[78vw] shrink-0 snap-start overflow-hidden rounded-2xl border border-line bg-cloud shadow-sm sm:w-[460px]"
+            className="group w-[84vw] shrink-0 snap-start overflow-hidden rounded-2xl border border-line bg-cloud shadow-sm sm:w-[560px]"
           >
             <div className="relative aspect-[4/3] w-full overflow-hidden">
               <Image
                 src={wk.src}
                 alt={`${wk.title} — ${wk.place}`}
                 fill
-                sizes="(max-width: 640px) 78vw, 460px"
+                sizes="(max-width: 640px) 84vw, 560px"
                 className="object-cover transition duration-500 group-hover:scale-[1.03]"
               />
             </div>
-            <figcaption className="flex items-baseline justify-between gap-3 px-4 py-3">
-              <span className="font-semibold text-ink">{wk.title}</span>
-              <span className="shrink-0 text-sm text-ink-soft">{wk.place}</span>
+            <figcaption className="flex items-baseline justify-between gap-3 px-5 py-4">
+              <span className="break-keep font-bold text-ink">{wk.title}</span>
+              <span className="shrink-0 rounded-full border border-line bg-white/70 px-3 py-1 text-xs font-semibold text-ink-soft">
+                {wk.place}
+              </span>
             </figcaption>
           </figure>
         ))}

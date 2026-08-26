@@ -81,7 +81,7 @@ export default function Header() {
             href="/world"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-10 items-center justify-center rounded-full bg-teal-700 px-4 text-sm font-semibold text-white transition hover:bg-teal"
+            className="inline-flex h-10 items-center justify-center rounded-full border border-line bg-white/70 px-4 text-sm font-semibold text-teal-700 transition hover:border-teal hover:text-teal"
           >
             3D 월드
           </a>

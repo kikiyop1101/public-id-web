@@ -37,6 +37,21 @@ export default function Hero() {
             <feComposite in="tint" in2="SourceGraphic" operator="in" />
           </filter>
         </defs>
+        {/* 아치 창 — 다리 아래로 실제 거리(노란발자국 시공 현장)가 보인다.
+            레퍼런스 교훈(vestre·arup·toss 08-23 채택): 실사가 첫 화면에 있어야 시공 회사로 읽힌다. */}
+        <clipPath id="pi-arch-window">
+          <path d="M 202 560 A 278 278 0 0 1 758 560 Z" />
+        </clipPath>
+        <image
+          href="/products/친환경그래픽노면표시재-노란발자국/참조04.jpg"
+          x="202"
+          y="282"
+          width="556"
+          height="278"
+          preserveAspectRatio="xMidYMid slice"
+          clipPath="url(#pi-arch-window)"
+          className="arch-fade"
+        />
         {/* 본 아치 — 로고의 다리 */}
         <path
           d="M 150 560 A 330 330 0 0 1 810 560"
@@ -56,14 +71,6 @@ export default function Hero() {
           opacity="0.16"
           pathLength={1}
           className="arch-draw"
-        />
-        {/* 에코 아치 — 본 아치가 그려진 뒤 은은히 */}
-        <path
-          d="M 258 560 A 222 222 0 0 1 702 560"
-          stroke="url(#pi-arch-soft)"
-          strokeWidth="30"
-          strokeLinecap="round"
-          className="arch-fade"
         />
       </svg>
       {/* 바닥 글로우 — 아치가 바닥에 비치는 빛 */}
@@ -99,11 +106,28 @@ export default function Hero() {
             style={{ animationDelay: "0.6s" }}
           >
             <Button href="/contact" variant="arch" size="lg">
-              구독 상담
+              상담·견적 문의
             </Button>
             <Button href="/products" variant="outline" size="lg">
               제품 보기
             </Button>
+          </div>
+          {/* 모바일 — 아치가 안 보이는 폭에서는 아치 창(반원 사진)이 실사를 대신 보여준다 */}
+          <div
+            className="hero-rise mt-10 sm:hidden"
+            style={{ animationDelay: "0.75s" }}
+          >
+            <div className="mx-auto w-full max-w-[340px]">
+              <div className="relative aspect-[2/1] w-full overflow-hidden rounded-t-full">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/products/친환경그래픽노면표시재-노란발자국/참조04.jpg"
+                  alt="횡단보도 앞 보도에 시공된 노란발자국 안심 대기선"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              </div>
+              <div className="h-1 w-full rounded-full bg-arch" aria-hidden />
+            </div>
           </div>
         </div>
       </div>
