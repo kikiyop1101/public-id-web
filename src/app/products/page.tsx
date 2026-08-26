@@ -18,6 +18,13 @@ const BASE_PRICES: Partial<Record<string, string>> = {
   fabric: '88000',
 }
 
+// Product 필수 필드 image — 각 제품 폴더의 첫 갤러리 사진(2차 감사 N-H1)
+function productImage(folder: string): string | null {
+  const media = getProductMedia(folder)
+  const first = media.gallery.find((g) => g.kind === 'image')
+  return first ? `https://www.public-id.co.kr${first.src}` : null
+}
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
@@ -30,6 +37,7 @@ const jsonLd = {
       name: p.name,
       description: p.summary,
       url: `https://www.public-id.co.kr${p.anchor}`,
+      ...(productImage(p.folder) ? { image: productImage(p.folder) } : {}),
       brand: { '@type': 'Brand', name: '퍼블릭아이디' },
       ...(BASE_PRICES[p.id]
         ? {

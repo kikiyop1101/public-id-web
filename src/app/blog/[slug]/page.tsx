@@ -42,7 +42,7 @@ export default async function BlogPostPage({
     headline: post.title,
     datePublished: post.created_at,
     mainEntityOfPage: `https://www.public-id.co.kr/blog/${post.slug}`,
-    ...(post.cover_image ? { image: post.cover_image } : {}),
+    image: post.cover_image ?? 'https://www.public-id.co.kr/og.png',
     author: {
       '@type': 'Organization',
       '@id': 'https://www.public-id.co.kr/#organization',

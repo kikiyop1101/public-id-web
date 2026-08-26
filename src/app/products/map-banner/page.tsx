@@ -68,6 +68,14 @@ const jsonLd = {
       '@type': 'Offer',
       url: 'https://www.public-id.co.kr/quote',
       priceCurrency: 'KRW',
+      // 직물시트 출력 기준가(정본=assistant-knowledge.ts) — 자매 페이지 art-fabric과 동일 기준
+      price: '88000',
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        price: '88000',
+        priceCurrency: 'KRW',
+        unitText: '㎡',
+      },
       availability: 'https://schema.org/InStock',
       seller: { '@id': 'https://www.public-id.co.kr/#organization' },
     },

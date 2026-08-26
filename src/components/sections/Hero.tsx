@@ -97,6 +97,7 @@ export default function Hero() {
       <ArchSvg
         suffix="d"
         className="pointer-events-none absolute -right-[14%] bottom-0 hidden h-[88%] w-auto sm:block lg:-right-[8%]"
+        label="아치(다리) 아래로 보이는 노란발자국 시공 현장 — 횡단보도 앞 보도의 안심 대기선"
       />
       {/* 바닥 글로우 — 아치가 바닥에 비치는 빛 */}
       <div
