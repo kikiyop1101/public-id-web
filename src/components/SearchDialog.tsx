@@ -29,9 +29,15 @@ function SearchPanel({ onClose }: { onClose: () => void }) {
   const results = useMemo(() => {
     const query = q.trim().toLowerCase();
     if (!query) return SEARCH_INDEX;
-    return SEARCH_INDEX.filter((e) =>
-      `${e.label} ${e.desc} ${e.keywords} ${e.group}`.toLowerCase().includes(query),
-    );
+    // "머라고 써도" 잡히게(2026-08-26 대표 질문 후 보강):
+    // ①단어별 AND — "AI 진단"처럼 떨어져 있어도 각 단어가 어디든 있으면 매칭
+    // ②띄어쓰기 무시 — "무료진단"도 "무료 진단"에 매칭
+    const tokens = query.split(/\s+/).filter(Boolean);
+    return SEARCH_INDEX.filter((e) => {
+      const hay = `${e.label} ${e.desc} ${e.keywords} ${e.group}`.toLowerCase();
+      const hayCompact = hay.replace(/\s+/g, "");
+      return tokens.every((t) => hay.includes(t) || hayCompact.includes(t));
+    });
   }, [q]);
 
   const grouped = useMemo(() => {
