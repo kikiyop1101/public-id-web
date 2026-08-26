@@ -9,6 +9,7 @@ const WORKS = [
     src: "/products/친환경그래픽노면표시재-노란발자국/참조28.jpg",
     title: "노란발자국 · 안심 대기선",
     place: "횡단보도 앞 보도",
+    scope: "친환경 노면표시재 부착 시공 — 보행 대기공간 표시",
     w: 1440,
     h: 1080,
   },
@@ -16,6 +17,7 @@ const WORKS = [
     src: "/products/친환경그래픽노면표시재/참조13.jpg",
     title: "생태놀이 노면 그래픽",
     place: "공원 광장",
+    scope: "놀이 그래픽 디자인 + 노면표시재 부착 시공",
     w: 1440,
     h: 1080,
   },
@@ -23,6 +25,7 @@ const WORKS = [
     src: "/products/친환경그래픽직물시트/참조00-0.jpg",
     title: "노란볼라드 드레스업",
     place: "어린이보호구역",
+    scope: "기존 볼라드에 직물시트 부착 — 안전시설관리 구독 항목",
     w: 773,
     h: 580,
   },
@@ -30,6 +33,7 @@ const WORKS = [
     src: "/products/친환경그래픽노면표시재/참조20.jpg",
     title: "바닥 웨이파인딩",
     place: "수목원 · 공공시설",
+    scope: "방향 안내 바닥 사인 디자인 + 부착 시공",
     w: 3840,
     h: 2880,
   },
@@ -37,6 +41,7 @@ const WORKS = [
     src: "/products/친환경홍보판촉물/참조01.jpg",
     title: "타이벡 친환경 판촉물",
     place: "전시 · 캠페인",
+    scope: "친환경 타이벡 소재 홍보물 디자인 · 제작",
     w: 773,
     h: 580,
   },
@@ -72,10 +77,15 @@ export default function ShowcaseStrip() {
                 className="object-cover transition duration-500 group-hover:scale-[1.03]"
               />
             </div>
-            <figcaption className="flex items-baseline justify-between gap-3 px-5 py-4">
-              <span className="break-keep font-bold text-ink">{wk.title}</span>
-              <span className="shrink-0 rounded-full border border-line bg-white/70 px-3 py-1 text-xs font-semibold text-ink-soft">
-                {wk.place}
+            <figcaption className="px-5 py-4">
+              <span className="flex items-baseline justify-between gap-3">
+                <span className="break-keep font-bold text-ink">{wk.title}</span>
+                <span className="shrink-0 rounded-full border border-line bg-white/70 px-3 py-1 text-xs font-semibold text-ink-soft">
+                  {wk.place}
+                </span>
+              </span>
+              <span className="mt-1.5 block break-keep text-sm leading-relaxed text-ink-soft">
+                {wk.scope}
               </span>
             </figcaption>
           </figure>

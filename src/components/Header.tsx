@@ -4,16 +4,38 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/cn";
 import { site } from "@/lib/site";
+import SearchDialog from "@/components/SearchDialog";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // 검색 단축키 — Ctrl/Cmd+K, 그리고 입력 필드 밖에서의 '/'
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      const inField =
+        e.target instanceof HTMLElement &&
+        (e.target.tagName === "INPUT" ||
+          e.target.tagName === "TEXTAREA" ||
+          e.target.isContentEditable);
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setSearchOpen((v) => !v);
+      } else if (e.key === "/" && !inField) {
+        e.preventDefault();
+        setSearchOpen(true);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, []);
 
   useEffect(() => {
@@ -77,6 +99,18 @@ export default function Header() {
         </nav>
 
         <div className="hidden items-center gap-2 lg:flex">
+          <button
+            type="button"
+            onClick={() => setSearchOpen(true)}
+            aria-label="사이트 검색 (Ctrl+K)"
+            title="검색 (Ctrl+K)"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-ink-soft transition hover:bg-cloud hover:text-ink"
+          >
+            <svg aria-hidden viewBox="0 0 20 20" className="h-[18px] w-[18px]" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <circle cx="9" cy="9" r="6" />
+              <path d="m13.5 13.5 3.5 3.5" strokeLinecap="round" />
+            </svg>
+          </button>
           <a
             href="/world"
             target="_blank"
@@ -93,6 +127,18 @@ export default function Header() {
           </Link>
         </div>
 
+        <div className="flex items-center gap-1 lg:hidden">
+        <button
+          type="button"
+          onClick={() => setSearchOpen(true)}
+          aria-label="사이트 검색"
+          className="flex h-10 w-10 items-center justify-center text-ink-soft"
+        >
+          <svg aria-hidden viewBox="0 0 20 20" className="h-[18px] w-[18px]" fill="none" stroke="currentColor" strokeWidth="1.8">
+            <circle cx="9" cy="9" r="6" />
+            <path d="m13.5 13.5 3.5 3.5" strokeLinecap="round" />
+          </svg>
+        </button>
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
@@ -121,6 +167,7 @@ export default function Header() {
             />
           </div>
         </button>
+        </div>
       </div>
 
       {/* Mobile drawer — `invisible` keeps the closed menu out of the tab order */}
@@ -178,6 +225,8 @@ export default function Header() {
           </Link>
         </nav>
       </div>
+
+      <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   );
 }

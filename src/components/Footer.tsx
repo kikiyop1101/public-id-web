@@ -5,6 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-navy text-white/70">
       <div className="mx-auto w-full max-w-[1200px] px-5 py-16 sm:px-8">
+        {/* 전체 페이지 지도 — GNB 5그룹 그대로 (2026-08-26: 칩 나열 → 그룹 컬럼) */}
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-4">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -13,19 +14,32 @@ export default function Footer() {
               {site.tagline}. 전용 마스코트·월별 웹툰·디자인 시스템 구독과
               노면표시·안전표지 정기 시설 관리를 제공하는 {site.descriptor}.
             </p>
-            <div className="mt-6 flex flex-wrap gap-2">
-              {site.footerNav.map((n) => (
-                <Link
-                  key={n.href}
-                  href={n.href}
-                  className="inline-flex min-h-9 items-center rounded-full border border-white/15 px-3.5 py-2 text-xs text-white/80 transition hover:border-teal hover:text-white"
-                >
-                  {n.label}
-                </Link>
-              ))}
-            </div>
           </div>
 
+          <nav
+            aria-label="전체 페이지"
+            className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:col-span-8 lg:grid-cols-5"
+          >
+            {site.footerGroups.map((g) => (
+              <div key={g.label}>
+                <h3 className="font-display text-xs font-semibold uppercase tracking-[0.16em] text-teal">
+                  {g.label}
+                </h3>
+                <ul className="mt-4 space-y-2 text-sm">
+                  {g.links.map((n) => (
+                    <li key={n.href}>
+                      <Link href={n.href} className="transition hover:text-white">
+                        {n.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </nav>
+        </div>
+
+        <div className="mt-12 grid gap-10 border-t border-white/10 pt-10 md:grid-cols-12">
           <div className="text-sm md:col-span-5">
             <h3 className="font-display text-xs font-semibold uppercase tracking-[0.16em] text-teal">
               Contact
@@ -52,7 +66,7 @@ export default function Footer() {
             </dl>
           </div>
 
-          <div className="text-sm md:col-span-3">
+          <div className="text-sm md:col-span-4">
             <h3 className="font-display text-xs font-semibold uppercase tracking-[0.16em] text-teal">
               Online Store
             </h3>

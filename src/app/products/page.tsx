@@ -4,6 +4,7 @@ import { PRODUCTS } from '@/lib/products'
 import { getProductMedia } from '@/lib/product-media'
 import ProductTabs from '@/components/ProductTabs'
 import ProductSection from '@/components/ProductSection'
+import PageHero from '@/components/PageHero'
 
 export const metadata: Metadata = {
   title: '제품 — 친환경 그래픽 노면표시재·노란발자국·직물시트·홍보판촉물',
@@ -13,14 +14,18 @@ export const metadata: Metadata = {
 export default function ProductsPage() {
   return (
     <>
-      <section className="bg-navy text-white">
-        <div className="mx-auto max-w-[1200px] px-5 py-16 text-center sm:px-8">
-          <h1 className="text-3xl font-bold sm:text-4xl">제품군</h1>
-          <p className="mt-3 text-white/70">
-            친환경 소재로 만드는 네 가지 제품. 위 탭을 눌러 바로 이동하세요.
-          </p>
-        </div>
-      </section>
+      {/* 2026-08-26 — 얇은 네이비 띠 → 표준 PageHero(서브페이지 통일). 탭이 바로 아래 목차 역할 */}
+      <PageHero
+        eyebrow="Products"
+        title={
+          <>
+            친환경 소재로 만드는
+            <br />
+            네 가지 제품
+          </>
+        }
+        description="특허받은 부착식 노면표시재부터 직물시트·홍보판촉물·출력 라인업까지 — 현장 사진과 기준가를 그대로 보여드립니다. 아래 탭으로 바로 이동하세요."
+      />
 
       <ProductTabs />
 

@@ -56,21 +56,50 @@ export const site = {
       ],
     },
   ],
-  // 푸터 전용 전체 지도 — GNB에서 뺀 페이지도 여기서 전부 닿는다.
-  // 순서 = GNB 골격을 따르고 부속 항목은 관련 메뉴 옆에(사업영역→회사소개 뒤, 인증·특허→실적 뒤).
-  footerNav: [
-    { label: "회사소개", href: "/about" },
-    { label: "사업영역", href: "/work" },
-    { label: "제품", href: "/products" },
-    { label: "부착 가이드", href: "/guide" },
-    { label: "맞춤 견적", href: "/quote" },
-    { label: "구독 서비스", href: "/subscribe" },
-    { label: "실적", href: "/credibility" },
-    { label: "인증·특허", href: "/credentials" },
-    { label: "안전관리 지도", href: "/safety-map" },
-    { label: "소식", href: "/news" },
-    { label: "블로그", href: "/blog" },
-    { label: "문의", href: "/contact" },
+  // 푸터 전체 지도 — GNB 5그룹 골격 그대로, GNB에서 뺀 페이지도 여기서 전부 닿는다.
+  // (2026-08-26 개편: 납작한 칩 12개 → 그룹 컬럼 — 대표 "페이지는 안 줄이고 눈에 잘 들어오게")
+  footerGroups: [
+    {
+      label: "회사소개",
+      links: [
+        { label: "회사소개", href: "/about" },
+        { label: "사업영역", href: "/work" },
+        { label: "3D 월드", href: "/world" },
+      ],
+    },
+    {
+      label: "제품",
+      links: [
+        { label: "제품 전체", href: "/products" },
+        { label: "직물시트 명화", href: "/products/art-fabric" },
+        { label: "현수막 지도", href: "/products/map-banner" },
+        { label: "부착 가이드", href: "/guide" },
+        { label: "맞춤 견적", href: "/quote" },
+      ],
+    },
+    {
+      label: "구독 서비스",
+      links: [
+        { label: "구독 안내", href: "/subscribe" },
+        { label: "디자인 시스템", href: "/subscribe#design-system" },
+        { label: "안전관리 지도", href: "/safety-map" },
+      ],
+    },
+    {
+      label: "실적·인증",
+      links: [
+        { label: "실적", href: "/credibility" },
+        { label: "인증·특허", href: "/credentials" },
+      ],
+    },
+    {
+      label: "소식",
+      links: [
+        { label: "소식 · 보도자료", href: "/news" },
+        { label: "블로그", href: "/blog" },
+        { label: "문의", href: "/contact" },
+      ],
+    },
   ],
   stores: [
     { label: "우리회사OS (AI 자동화 템플릿)", href: "/os" },
