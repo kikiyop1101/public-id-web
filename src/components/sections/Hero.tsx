@@ -1,8 +1,88 @@
 import { preload } from "react-dom";
 import Button from "@/components/Button";
 
-// LCP 후보(아치 창·모바일 반원이 같은 파일) — SVG <image>는 priority 힌트를 못 받아 preload로 보강 (2026-08-26 감사)
+// LCP 후보(아치 창 사진 — 데스크톱·모바일 공용) — SVG <image>는 priority 힌트를 못 받아 preload로 보강 (2026-08-26 감사)
 const HERO_IMG = "/products/친환경그래픽노면표시재-노란발자국/참조04.jpg";
+
+// 아치(다리) SVG — 데스크톱(우측 대형)과 모바일(본문 아래 인라인) 두 벌로 그린다.
+// 같은 문서에 두 번 들어가므로 그라디언트·클립패스 id는 suffix로 분리(중복 id 금지).
+function ArchSvg({
+  suffix,
+  className,
+  label,
+  viewBox = "0 0 900 560",
+}: {
+  suffix: string;
+  className: string;
+  label?: string;
+  viewBox?: string;
+}) {
+  const id = (name: string) => `${name}-${suffix}`;
+  return (
+    <svg
+      aria-hidden={label ? undefined : true}
+      role={label ? "img" : undefined}
+      aria-label={label}
+      viewBox={viewBox}
+      className={className}
+      fill="none"
+    >
+      <defs>
+        <linearGradient id={id("pi-arch")} x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0%" stopColor="#CADA1F" />
+          <stop offset="42%" stopColor="#7cc63f" />
+          <stop offset="100%" stopColor="#069CBB" />
+        </linearGradient>
+        {/* 인쇄 그레인 — 잉크가 종이에 앉은 질감(밴딩 제거 + 필름 포스터 느낌) */}
+        <filter id={id("pi-grain")}>
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="noise" />
+          <feColorMatrix
+            in="noise"
+            type="matrix"
+            values="0 0 0 0 0.086  0 0 0 0 0.188  0 0 0 0 0.239  0 0 0 0.5 0"
+            result="tint"
+          />
+          <feComposite in="tint" in2="SourceGraphic" operator="in" />
+        </filter>
+        {/* 아치 창 — 다리 아래로 실제 거리(노란발자국 시공 현장)가 보인다.
+            레퍼런스 교훈(vestre·arup·toss 08-23 채택): 실사가 첫 화면에 있어야 시공 회사로 읽힌다. */}
+        <clipPath id={id("pi-arch-window")}>
+          <path d="M 202 560 A 278 278 0 0 1 758 560 Z" />
+        </clipPath>
+      </defs>
+      <image
+        href={HERO_IMG}
+        x="202"
+        y="282"
+        width="556"
+        height="278"
+        preserveAspectRatio="xMidYMid slice"
+        clipPath={`url(#${id("pi-arch-window")})`}
+        className="arch-fade"
+      />
+      {/* 본 아치 — 로고의 다리 */}
+      <path
+        d="M 150 560 A 330 330 0 0 1 810 560"
+        stroke={`url(#${id("pi-arch")})`}
+        strokeWidth="88"
+        strokeLinecap="round"
+        pathLength={1}
+        className="arch-draw"
+      />
+      {/* 그레인 레이어 — 본 아치 위에만 얹힌다 */}
+      <path
+        d="M 150 560 A 330 330 0 0 1 810 560"
+        stroke="#16303D"
+        strokeWidth="88"
+        strokeLinecap="round"
+        filter={`url(#${id("pi-grain")})`}
+        opacity="0.16"
+        pathLength={1}
+        className="arch-draw"
+      />
+    </svg>
+  );
+}
 
 // 2026-08-25 홈 리디자인 시안 v4 — 참조: vercel(무채+심볼 하나) + 리서치 반영(last30days 08-25):
 //  · 그레인 그라디언트(인쇄 질감 — 2026 SaaS 히어로 지배 트렌드, 우리 타이벡/인쇄 정체성과 일치)
@@ -13,71 +93,11 @@ export default function Hero() {
   preload(HERO_IMG, { as: "image", fetchPriority: "high" });
   return (
     <section className="relative overflow-hidden border-b border-line bg-paper">
-      {/* 대형 아치(다리) — 페이지가 열리며 한 번 그려진다 */}
-      <svg
-        aria-hidden
-        viewBox="0 0 900 560"
+      {/* 대형 아치(다리) — 데스크톱: 우측에서 페이지가 열리며 한 번 그려진다 */}
+      <ArchSvg
+        suffix="d"
         className="pointer-events-none absolute -right-[14%] bottom-0 hidden h-[88%] w-auto sm:block lg:-right-[8%]"
-        fill="none"
-      >
-        <defs>
-          <linearGradient id="pi-arch" x1="0" y1="1" x2="1" y2="0">
-            <stop offset="0%" stopColor="#CADA1F" />
-            <stop offset="42%" stopColor="#7cc63f" />
-            <stop offset="100%" stopColor="#069CBB" />
-          </linearGradient>
-          <linearGradient id="pi-arch-soft" x1="0" y1="1" x2="1" y2="0">
-            <stop offset="0%" stopColor="#CADA1F" stopOpacity="0.25" />
-            <stop offset="100%" stopColor="#069CBB" stopOpacity="0.25" />
-          </linearGradient>
-          {/* 인쇄 그레인 — 잉크가 종이에 앉은 질감(밴딩 제거 + 필름 포스터 느낌) */}
-          <filter id="pi-grain">
-            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="noise" />
-            <feColorMatrix
-              in="noise"
-              type="matrix"
-              values="0 0 0 0 0.086  0 0 0 0 0.188  0 0 0 0 0.239  0 0 0 0.5 0"
-              result="tint"
-            />
-            <feComposite in="tint" in2="SourceGraphic" operator="in" />
-          </filter>
-        </defs>
-        {/* 아치 창 — 다리 아래로 실제 거리(노란발자국 시공 현장)가 보인다.
-            레퍼런스 교훈(vestre·arup·toss 08-23 채택): 실사가 첫 화면에 있어야 시공 회사로 읽힌다. */}
-        <clipPath id="pi-arch-window">
-          <path d="M 202 560 A 278 278 0 0 1 758 560 Z" />
-        </clipPath>
-        <image
-          href="/products/친환경그래픽노면표시재-노란발자국/참조04.jpg"
-          x="202"
-          y="282"
-          width="556"
-          height="278"
-          preserveAspectRatio="xMidYMid slice"
-          clipPath="url(#pi-arch-window)"
-          className="arch-fade"
-        />
-        {/* 본 아치 — 로고의 다리 */}
-        <path
-          d="M 150 560 A 330 330 0 0 1 810 560"
-          stroke="url(#pi-arch)"
-          strokeWidth="88"
-          strokeLinecap="round"
-          pathLength={1}
-          className="arch-draw"
-        />
-        {/* 그레인 레이어 — 본 아치 위에만 얹힌다 */}
-        <path
-          d="M 150 560 A 330 330 0 0 1 810 560"
-          stroke="#16303D"
-          strokeWidth="88"
-          strokeLinecap="round"
-          filter="url(#pi-grain)"
-          opacity="0.16"
-          pathLength={1}
-          className="arch-draw"
-        />
-      </svg>
+      />
       {/* 바닥 글로우 — 아치가 바닥에 비치는 빛 */}
       <div
         aria-hidden
@@ -117,23 +137,18 @@ export default function Hero() {
               제품 보기
             </Button>
           </div>
-          {/* 모바일 — 아치가 안 보이는 폭에서는 아치 창(반원 사진)이 실사를 대신 보여준다 */}
+          {/* 모바일 — 같은 아치를 본문 아래에 인라인으로 그린다
+              (종전 반원 사진+띠는 아치로 안 읽힘 — 대표 지적 2026-08-26 "폰에선 아치가 표현이 안 된다") */}
           <div
             className="hero-rise mt-10 sm:hidden"
             style={{ animationDelay: "0.75s" }}
           >
-            <div className="mx-auto w-full max-w-[340px]">
-              <div className="relative aspect-[2/1] w-full overflow-hidden rounded-t-full">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={HERO_IMG}
-                  alt="횡단보도 앞 보도에 시공된 노란발자국 안심 대기선"
-                  fetchPriority="high"
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-              </div>
-              <div className="h-1 w-full rounded-full bg-arch" aria-hidden />
-            </div>
+            <ArchSvg
+              suffix="m"
+              viewBox="100 180 760 380"
+              className="mx-auto h-auto w-full max-w-[400px]"
+              label="아치(다리) 아래로 보이는 노란발자국 시공 현장 — 횡단보도 앞 보도의 안심 대기선"
+            />
           </div>
         </div>
       </div>
