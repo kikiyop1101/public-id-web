@@ -6,6 +6,7 @@ export const LEAD_KINDS = {
   design_sub: '디자인구독',
   safety_sub: '안전시설관리 구독',
   quote: '맞춤 견적',
+  festival: '축제·행사 견적',
 } as const
 
 export type LeadKind = keyof typeof LEAD_KINDS

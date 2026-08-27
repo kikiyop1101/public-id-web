@@ -11,7 +11,9 @@ const routes = ["", "/subscribe", "/design", "/work", "/guide", "/about", "/cred
   // /scan은 2026-08-26 /os#scan으로 통합(301)
   "/products", "/quote", "/os", "/blog", "/board", "/safety-report", "/safety-report/new", "/world",
   // 2026-08-25 보관고 상품 라인
-  "/products/art-fabric", "/products/map-banner"];
+  "/products/art-fabric", "/products/map-banner",
+  // 2026-08-27 축제·행사 콜라보 랜딩(store 루트가 이 페이지를 서빙)
+  "/festival"];
 
 // 쿠키 없는 anon 클라이언트 — RLS가 공개분만 반환.
 function anonClient() {
