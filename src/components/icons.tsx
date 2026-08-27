@@ -138,3 +138,12 @@ export function Banner(p: SVGProps<SVGSVGElement>) {
     </Svg>
   );
 }
+
+export function Browser(p: SVGProps<SVGSVGElement>) {
+  return (
+    <Svg {...p}>
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <path d="M3 9h18M6.5 6.5h.01M9.5 6.5h.01" />
+    </Svg>
+  );
+}

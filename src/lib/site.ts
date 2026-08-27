@@ -47,6 +47,7 @@ export const site = {
     {
       label: "구독 서비스", en: "Subscription", href: "/subscribe",
       children: [
+        { label: "디자인 구독", href: "/subscribe" },
         { label: "디자인 시스템", href: "/design" },
         { label: "안전관리 지도", href: "/safety-map" },
         { label: "안전 리포트 · 제보", href: "/safety-report" },
@@ -95,7 +96,7 @@ export const site = {
     {
       label: "구독 서비스",
       links: [
-        { label: "구독 안내", href: "/subscribe" },
+        { label: "디자인 구독", href: "/subscribe" },
         { label: "디자인 시스템", href: "/design" },
         { label: "안전관리 지도", href: "/safety-map" },
         { label: "안전 리포트 · 제보", href: "/safety-report" },

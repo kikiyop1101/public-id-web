@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "퍼블릭아이디 — 디자인 구독 · 안전 시설 관리",
     short_name: "퍼블릭아이디",
     description:
-      "전용 마스코트·매월 웹툰·디자인 시스템 구독과 노면표시·안전표지 정기 시설 관리.",
+      "전용 마스코트·매월 웹툰·디자인 시스템·홈페이지 제작 구독과 노면표시·안전표지 정기 시설 관리.",
     start_url: "/",
     display: "browser",
     background_color: "#ffffff",

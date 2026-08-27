@@ -28,7 +28,7 @@ export const SEARCH_INDEX: SearchEntry[] = [
   { label: "우리회사OS (AI 자동화)", href: "/os", group: "제품", desc: "소상공인 AI 자동화 키트 — 무료 진단부터", keywords: "os ai 자동화 템플릿 키트 소상공인 진단 챗gpt" },
   { label: "AI 자동화 무료 진단", href: "/os#scan", group: "제품", desc: "우리 회사 업무 자동화 여지를 3분 만에 — 우리회사OS 안", keywords: "진단 무료진단 스캔 자가진단 진단테스트 업무진단 자동화 ai scan 3분" },
   // 구독
-  { label: "구독 서비스", href: "/subscribe", group: "구독 서비스", desc: "디자인 구독 · 안전 시설 관리 구독", keywords: "구독 정기 멤버십 디자인구독" },
+  { label: "구독 서비스", href: "/subscribe", group: "구독 서비스", desc: "디자인 구독(홈페이지 제작 포함) · 안전 시설 관리 구독", keywords: "구독 정기 멤버십 디자인구독 홈페이지 홈페이지제작 AI자동화" },
   { label: "디자인 시스템", href: "/design", group: "구독 서비스", desc: "색 하나 바꾸면 전부 바뀌는 정본 — 체험 데모·문서 전체", keywords: "마스코트 웹툰 로고 브랜드 디자인시스템 캐릭터 토큰 정본" },
   { label: "안전관리 지도", href: "/safety-map", group: "구독 서비스", desc: "시공한 안전시설을 지도에서 한눈에 관리", keywords: "안전지도 시설관리 지도 관리구독 발주처" },
   { label: "안전 리포트 · 제보", href: "/safety-report", group: "구독 서비스", desc: "노란발자국·노란볼라드 등 통학로 위험 지점 제보", keywords: "제보 신고 노란발자국 노란볼라드 통학로 스쿨존 안전리포트 캠페인" },

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: "구독 서비스",
   alternates: { canonical: "/subscribe" },
   description:
-    "전용 마스코트·매월 웹툰·디자인 시스템 구독과 노면표시·안전표지 정기 시설 관리. 소상공인부터 지자체까지 맞춤 구독으로.",
+    "전용 마스코트·매월 웹툰·디자인 시스템에 홈페이지 제작까지 담은 디자인 구독과 노면표시·안전표지 정기 시설 관리. 소상공인부터 지자체까지 맞춤 구독으로.",
 };
 
 export default function SubscribePage() {
@@ -30,7 +30,7 @@ export default function SubscribePage() {
             디자인과 안전
           </>
         }
-        description="디자인 팀이 없어도 매달 새로운 브랜드 콘텐츠를, 노면표시·안전표지는 시공부터 정기 관리까지. 필요한 만큼만 합리적으로 이용하세요."
+        description="디자인 팀이 없어도 매달 새로운 브랜드 콘텐츠를, 홈페이지는 디자인 시스템으로 제작까지, 노면표시·안전표지는 시공부터 정기 관리까지. 필요한 만큼만 합리적으로 이용하세요."
       />
       <Subscription pricing />
       <HowItWorks />
@@ -49,8 +49,9 @@ export default function SubscribePage() {
             <p className="mt-5 break-keep text-lg leading-relaxed text-ink-soft">
               명함, 현수막, 안내판, 홈페이지 — 어디에 있어도 한눈에 같은 회사로
               보이도록. 색·글꼴·간격의 정본(디자인 시스템)을 먼저 만들고, 매달
-              도착하는 모든 콘텐츠를 거기서 꺼내 만듭니다. 아래에서 색을 직접
-              바꿔보세요 — 귀사의 색으로도 이렇게 정리됩니다.
+              도착하는 모든 콘텐츠를 거기서 꺼내 만듭니다. 홈페이지도 이 정본과
+              구독으로 받는 자료로 저희가 직접 제작해 드립니다. 아래에서 색을
+              직접 바꿔보세요 — 귀사의 색으로도 이렇게 정리됩니다.
             </p>
           </Reveal>
           <div className="mt-12">

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
 import Button from "@/components/Button";
-import { Mascot, Webtoon, Palette, Footprint, Shield, Check, Bollard, Sparkle } from "@/components/icons";
+import { Mascot, Webtoon, Palette, Footprint, Shield, Check, Bollard, Sparkle, Browser } from "@/components/icons";
 
 const designFeatures = [
   {
@@ -11,6 +11,12 @@ const designFeatures = [
     title: "디자인 시스템",
     desc: "로고·BI·CI·SNS·현수막까지 일관된 브랜드 키트를 제공합니다.",
     note: "Design System — BrandDNA를 21개 항목에 걸쳐 일관되게 적용하기 위한 규칙",
+  },
+  {
+    icon: Browser,
+    title: "홈페이지 제작",
+    desc: "디자인 시스템과 구독으로 받는 자료(마스코트·로고·템플릿)로 홈페이지까지 만들어 드립니다.",
+    note: "",
   },
   {
     icon: Mascot,
@@ -38,6 +44,7 @@ const designBullets = [
   { label: "디자인 원본 파일 제공", sub: "PDF, JPG, PNG" },
   { label: "상표 등록 가능한 캐릭터" },
   { label: "간단 인쇄물 · Sign물 제작 가이드" },
+  { label: "AI 자동화 키트", sub: "Basic 기본 · Standard 심화" },
 ];
 
 const safetyFeatures = [
@@ -184,7 +191,7 @@ export default function Subscription({
                     <div className="min-w-0">
                       <p className="font-semibold text-ink">디자인 구독 1년 (디자인 시스템 구축 포함)</p>
                       <p className="mt-0.5 text-xs leading-relaxed text-ink-soft">
-                        디자인 시스템 수정 요청 시 반기별 반영
+                        홈페이지 제작 포함 · 디자인 시스템 수정 요청 시 반기별 반영
                       </p>
                     </div>
                     <p className="shrink-0 font-bold text-teal-700">4,000,000원부터</p>

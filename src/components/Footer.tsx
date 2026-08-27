@@ -11,8 +11,8 @@ export default function Footer() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo-white.png" alt={site.name} width={480} height={142} className="h-8 w-auto" />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/70">
-              {site.tagline}. 전용 마스코트·월별 웹툰·디자인 시스템 구독과
-              노면표시·안전표지 정기 시설 관리를 제공하는 {site.descriptor}.
+              {site.tagline}. 전용 마스코트·월별 웹툰·디자인 시스템·홈페이지 제작
+              구독과 노면표시·안전표지 정기 시설 관리를 제공하는 {site.descriptor}.
             </p>
           </div>
 

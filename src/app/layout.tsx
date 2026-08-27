@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | 퍼블릭아이디",
   },
   description:
-    "디자인 팀이 없어도 괜찮습니다. 퍼블릭아이디는 전용 마스코트, 매월 웹툰, 디자인 시스템을 구독으로 제공하고, 노면표시·안전표지의 정기 시설 관리까지 함께하는 KIDP 종합산업디자인전문회사이자 인증 사회적기업입니다.",
+    "디자인 팀이 없어도 괜찮습니다. 퍼블릭아이디는 전용 마스코트, 매월 웹툰, 디자인 시스템, 홈페이지 제작을 구독으로 제공하고, 노면표시·안전표지의 정기 시설 관리까지 함께하는 KIDP 종합산업디자인전문회사이자 인증 사회적기업입니다.",
   keywords: [
     "퍼블릭아이디",
     "디자인 구독",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     siteName: "퍼블릭아이디",
     title: "퍼블릭아이디 | 디자인 구독 · 안전 시설 관리",
     description:
-      "전용 마스코트부터 매월 웹툰, 디자인 시스템까지 — 구독으로 완성하는 우리 브랜드.",
+      "전용 마스코트부터 매월 웹툰, 디자인 시스템, 홈페이지까지 — 구독으로 완성하는 우리 브랜드.",
     images: [
       {
         url: "/og.png",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "퍼블릭아이디 | 디자인 구독 · 안전 시설 관리",
     description:
-      "전용 마스코트부터 매월 웹툰, 디자인 시스템까지 — 구독으로 완성하는 우리 브랜드.",
+      "전용 마스코트부터 매월 웹툰, 디자인 시스템, 홈페이지까지 — 구독으로 완성하는 우리 브랜드.",
     images: [
       {
         url: "/og.png",
@@ -83,7 +83,7 @@ export default function RootLayout({
     logo: `${site.url}/logo.png`,
     image: `${site.url}/og.png`,
     description:
-      "전용 마스코트·매월 웹툰·디자인 시스템 구독과 친환경 그래픽 노면표시재 기반 노면표시·안전표지 정기 시설 관리를 제공하는 KIDP 종합산업디자인전문회사이자 인증 사회적기업.",
+      "전용 마스코트·매월 웹툰·디자인 시스템·홈페이지 제작 구독과 친환경 그래픽 노면표시재 기반 노면표시·안전표지 정기 시설 관리를 제공하는 KIDP 종합산업디자인전문회사이자 인증 사회적기업.",
     foundingDate: "2017-08-08",
     founder: { "@type": "Person", name: site.ceo },
     telephone: site.tel,
@@ -104,6 +104,7 @@ export default function RootLayout({
       "노란발자국",
       "노란볼라드",
       "디자인구독 서비스",
+      "홈페이지 제작",
       "마스코트 제작",
       "웹툰",
       "안전시설관리",
@@ -124,7 +125,7 @@ export default function RootLayout({
           price: "1100000",
           priceCurrency: "KRW",
           description:
-            "전용 마스코트·월 1편 웹툰·기본 로고/컬러 가이드·SNS 프로필 키트 (연)",
+            "홈페이지 제작·전용 마스코트·월 1편 웹툰·기본 로고/컬러 가이드·SNS 프로필 키트·AI 자동화 기본 키트 (연)",
         },
         {
           "@type": "Offer",
@@ -132,7 +133,7 @@ export default function RootLayout({
           price: "4000000",
           priceCurrency: "KRW",
           description:
-            "디자인 시스템·마스코트 변형·월 1편 웹툰·SNS 템플릿·월 1회 디자인 요청·원본 제공 (연)",
+            "디자인 시스템·홈페이지 제작·마스코트 변형·월 1편 웹툰·SNS 템플릿·월 1회 디자인 요청·원본 제공·AI 자동화 심화 키트 (연)",
         },
         {
           "@type": "Offer",

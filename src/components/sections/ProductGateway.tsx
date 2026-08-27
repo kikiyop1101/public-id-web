@@ -10,7 +10,7 @@ const GATES = [
   {
     href: "/subscribe",
     label: "디자인 구독",
-    desc: "전용 마스코트 · 매월 웹툰 · 디자인 시스템 — Basic 연 110만원부터",
+    desc: "홈페이지 제작 · 전용 마스코트 · 매월 웹툰 · 디자인 시스템 — Basic 연 110만원부터",
     img: "/mascot/pui-wave.png",
     imgAlt: "디자인 구독의 얼굴, 마스코트 퍼이",
     imgFit: "contain" as const,
