@@ -18,6 +18,15 @@ const tiers = [
       "SNS 프로필 키트",
       "AI 자동화 기본 키트",
     ],
+    kit: {
+      label: "AI 자동화 기본 키트 — 7종",
+      items: [
+        "①진단 — 뭘 AI에 맡길지 우선순위 리포트",
+        "②업무시트 — 구글시트 한 판으로 세우는 회사 운영",
+        "미니 5종 — 한장소개·안내문·고객문자·가격표·마진계산",
+      ],
+      note: "정가 합산 327,500원 상당 · 구독에 포함(별도 결제 없음)",
+    },
     renew: "월 88,000원",
     highlight: false,
   },
@@ -36,6 +45,17 @@ const tiers = [
       "디자인 원본 파일 제공",
       "AI 자동화 심화 키트",
     ],
+    kit: {
+      label: "AI 자동화 심화 키트 — 11종",
+      items: [
+        "기본 키트 7종 전체 포함",
+        "④AI 직원 5명 — 24시간 일하는 AI 팀, 승인만 대표가",
+        "③콘텐츠 — 인스타·유튜브·스레드 자동 발행",
+        "⑤상세페이지 — 질문표만 채우면 상세페이지가 조립",
+        "⑩사장브리핑 — 출근 전 3분, 오늘의 경보와 할 일",
+      ],
+      note: "정가 합산 약 199만원 상당 · 구독에 포함(별도 결제 없음)",
+    },
     renew: "월 99,000원",
     highlight: true,
   },
@@ -51,6 +71,11 @@ const tiers = [
       "전용 관리 App & 유지보수",
       "노면표시 · 안전 시설 정기 관리",
     ],
+    kit: {
+      label: "AI 자동화 심화 키트 — 11종",
+      items: ["Standard와 동일한 심화 키트 전체", "전담 디자이너가 키트 초기 설정까지 지원"],
+      note: "구독에 포함(별도 결제 없음)",
+    },
     renew: "맞춤 견적",
     highlight: false,
   },
@@ -107,6 +132,22 @@ export default function Pricing() {
                     </li>
                   ))}
                 </ul>
+                {t.kit && (
+                  <details className="mt-6 rounded-xl border border-line bg-white p-4 [&_summary::-webkit-details-marker]:hidden">
+                    <summary className="flex cursor-pointer items-center justify-between gap-2 text-sm font-semibold text-teal-700">
+                      {t.kit.label}
+                      <span aria-hidden className="text-xs text-ink-soft">자세히</span>
+                    </summary>
+                    <ul className="mt-3 space-y-2 border-t border-line pt-3">
+                      {t.kit.items.map((k) => (
+                        <li key={k} className="text-sm leading-relaxed text-ink-soft">
+                          {k}
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="mt-3 text-xs leading-relaxed text-ink-soft">{t.kit.note}</p>
+                  </details>
+                )}
                 <div className="mt-6 rounded-xl border border-line bg-cloud/70 p-4">
                   <div className="flex items-center justify-between gap-2 text-sm">
                     <span className="font-semibold text-ink">1년 이후 월 연장</span>
