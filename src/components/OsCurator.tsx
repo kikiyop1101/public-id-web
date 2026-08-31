@@ -63,7 +63,7 @@ export default function OsCurator() {
         뭐가 필요한지 모르겠다면, 한 줄로 물어보세요
       </h3>
       <p className="text-ink-soft mt-3 max-w-[42em] text-sm leading-relaxed sm:text-base">
-        회사가 하는 일과 요즘 제일 힘든 업무를 적으면, AI가 키트 21종 중 우리 회사에 맞는
+        회사가 하는 일과 요즘 제일 힘든 업무를 적으면, AI가 키트 39종 중 우리 회사에 맞는
         2~3개를 골라 이유와 함께 알려 드립니다.
       </p>
 

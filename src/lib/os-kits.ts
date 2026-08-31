@@ -1,5 +1,5 @@
 // 우리회사OS 시리즈 — 소개 허브(/os)용 정본.
-// 2026-08-21 실측: 래피드 스토어 21종(무료점검 1 + 실행 키트 15 + 미니 5). 이 배열은 유료 키트 20종.
+// 2026-08-31 실측: 래피드 스토어 39종(무료점검 1 + 실행 키트 27 + 업종 패키지 6 + 미니 5). 이 배열은 유료 38종.
 // 상품명·가격 정본 = `Agent\관리본부\PI-OS\배포판\가격안-내부용.md`(전 상품 부가세 포함 표기).
 // 래피드 링크 정본 = `Agent\관리본부\PI-Kits\래피드-상품링크-정본.md`(2026-08-20 실측).
 // ⚠️ 래피드에는 구매자용 검색이 없다 — 반드시 직링크로 보낸다.
@@ -17,7 +17,7 @@ export type Kit = {
   listPrice: number
   url: string
   /** 이 킷이 덜어 주는 일 */
-  group: '시작' | '운영' | '콘텐츠' | '영업·매출' | '숫자·재고' | '미니'
+  group: '시작' | '운영' | '콘텐츠' | '영업·매출' | '숫자·재고' | '패키지' | '미니'
 }
 
 export const KITS: Kit[] = [
@@ -201,6 +201,168 @@ export const KITS: Kit[] = [
     url: 'https://www.latpeed.com/products/ijSDg',
     group: '미니',
   },
+  {
+    no: '⑬',
+    name: '수금독촉',
+    tagline: '미수금 목록 한 장으로 독촉 문안 3단계',
+    price: 99000,
+    listPrice: 149000,
+    url: 'https://www.latpeed.com/products/4pVCd',
+    group: '영업·매출',
+  },
+  {
+    no: '⑭',
+    name: '예약관리',
+    tagline: '확인·리마인드·노쇼 문자 자동 조립',
+    price: 99000,
+    listPrice: 149000,
+    url: 'https://www.latpeed.com/products/-hN_r',
+    group: '운영',
+  },
+  {
+    no: '⑮',
+    name: '지원사업 매칭',
+    tagline: '정부 지원사업 적격 판정 + 신청서 초안',
+    price: 129000,
+    listPrice: 199000,
+    url: 'https://www.latpeed.com/products/hA68h',
+    group: '영업·매출',
+  },
+  {
+    no: '⑯',
+    name: '메일함 정리',
+    tagline: '받은 메일 자동 분류 + 답장 초안',
+    price: 69000,
+    listPrice: 99000,
+    url: 'https://www.latpeed.com/products/hhXoZ',
+    group: '운영',
+  },
+  {
+    no: '⑰',
+    name: 'FAQ응대',
+    tagline: '같은 문의 답변 초안 자동',
+    price: 69000,
+    listPrice: 99000,
+    url: 'https://www.latpeed.com/products/80Dh8',
+    group: '운영',
+  },
+  {
+    no: '⑱',
+    name: '증빙정리',
+    tagline: '부가세 신고 전 증빙 대사, 반나절이 20분으로',
+    price: 99000,
+    listPrice: 149000,
+    url: 'https://www.latpeed.com/products/MmQm4',
+    group: '숫자·재고',
+  },
+  {
+    no: '⑲',
+    name: '채용도우미',
+    tagline: '공고문과 지원서 정리표',
+    price: 99000,
+    listPrice: 149000,
+    url: 'https://www.latpeed.com/products/8zunm',
+    group: '운영',
+  },
+  {
+    no: '⑳',
+    name: '거래명세서',
+    tagline: '납품기록으로 명세서·발행대장·재고차감 한 번에',
+    price: 99000,
+    listPrice: 149000,
+    url: 'https://www.latpeed.com/products/pyhWA',
+    group: '숫자·재고',
+  },
+  {
+    no: '㉒',
+    name: '성적통지문',
+    tagline: '성적표 한 장으로 학생별 통지문·학부모 문구',
+    price: 49000,
+    listPrice: 79000,
+    url: 'https://www.latpeed.com/products/zX33_',
+    group: '운영',
+  },
+  {
+    no: '㉓',
+    name: '재고대장',
+    tagline: '입출고 기록으로 현재고·회전율·장기재고 한 장에',
+    price: 99000,
+    listPrice: 149000,
+    url: 'https://www.latpeed.com/products/YZKyy',
+    group: '숫자·재고',
+  },
+  {
+    no: '㉔',
+    name: '반품사유 집계',
+    tagline: '반품 사유가 Top3 원인과 수정 제안으로',
+    price: 49000,
+    listPrice: 79000,
+    url: 'https://www.latpeed.com/products/syLHN',
+    group: '숫자·재고',
+  },
+  {
+    no: '㉙',
+    name: '재방문 리마인드',
+    tagline: '주기 넘긴 단골 명단과 문자 문구 자동',
+    price: 49000,
+    listPrice: 79000,
+    url: 'https://www.latpeed.com/products/S0bCF',
+    group: '영업·매출',
+  },
+  {
+    no: '팩①',
+    name: '예약업 패키지',
+    tagline: '미용실·학원·병의원·공방 반복 업무 5종 묶음',
+    price: 190000,
+    listPrice: 290000,
+    url: 'https://www.latpeed.com/products/BuSPB',
+    group: '패키지',
+  },
+  {
+    no: '팩②',
+    name: '매장 패키지',
+    tagline: '카페·식당·소매점 종이 일과 숫자 일 5종 묶음',
+    price: 145000,
+    listPrice: 220000,
+    url: 'https://www.latpeed.com/products/hm5d0',
+    group: '패키지',
+  },
+  {
+    no: '팩③',
+    name: '사무 B2B 패키지',
+    tagline: '견적→수금→마감, 거래처 업무 5종 묶음',
+    price: 280000,
+    listPrice: 420000,
+    url: 'https://www.latpeed.com/products/_KkM2',
+    group: '패키지',
+  },
+  {
+    no: '팩④',
+    name: '셀러 라이트 패키지',
+    tagline: '1인 셀러 반복 업무 5종 묶음',
+    price: 260000,
+    listPrice: 390000,
+    url: 'https://www.latpeed.com/products/0EA02',
+    group: '패키지',
+  },
+  {
+    no: '팩⑤',
+    name: '학원·교습소 패키지',
+    tagline: '성적통지·보강예약·학부모 문자·소개서 한 묶음',
+    price: 190000,
+    listPrice: 290000,
+    url: 'https://www.latpeed.com/products/teYWp',
+    group: '패키지',
+  },
+  {
+    no: '팩⑥',
+    name: '도소매·유통 패키지',
+    tagline: '거래명세서부터 월말마감까지 한 규격 한 바퀴',
+    price: 260000,
+    listPrice: 390000,
+    url: 'https://www.latpeed.com/products/MGecn',
+    group: '패키지',
+  },
 ]
 
 export const KIT_GROUPS: { key: Kit['group']; title: string; desc: string }[] = [
@@ -209,10 +371,11 @@ export const KIT_GROUPS: { key: Kit['group']; title: string; desc: string }[] = 
   { key: '콘텐츠', title: '콘텐츠·홍보', desc: '올려야 하는 걸 알지만 미루던 일' },
   { key: '영업·매출', title: '영업·매출', desc: '대응 속도가 곧 매출이 되는 자리' },
   { key: '숫자·재고', title: '숫자·재고', desc: '숫자가 대표를 기다리지 않게' },
+  { key: '패키지', title: '업종 패키지', desc: '내 업종에 필요한 킷만 묶어 한 번에' },
   { key: '미니', title: '미니 5종', desc: '한 장이면 끝나는 일들 — 전 종 9,900원' },
 ]
 
-/** 래피드 퍼블릭아이디 스토어 — 21종 전부가 보이는 목록(2026-08-21 실측) */
+/** 래피드 퍼블릭아이디 스토어 — 39종 전부가 보이는 목록(2026-08-31 실측) */
 export const LATPEED_STORE_URL = 'https://www.latpeed.com/stores/TebXT'
 
 export function formatPrice(n: number): string {

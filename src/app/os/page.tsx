@@ -5,14 +5,14 @@ import ScanClient from '@/components/ScanClient'
 import BreadcrumbLd from '@/components/BreadcrumbLd'
 
 export const metadata: Metadata = {
-  title: '우리회사OS — AI를 직원처럼 쓰는 회사 자동화 키트 21종',
+  title: '우리회사OS — AI를 직원처럼 쓰는 회사 자동화 키트 39종',
   description:
-    '견적서·홍보 글·문의 답변·월말 마감을 AI에 맡기는 실행 키트 20종과 0원 무료 점검. 더블클릭으로 실행하고, 결과물에는 우리 회사 이름이 들어갑니다. 무료 진단으로 우선순위부터 확인하세요.',
+    '견적서·홍보 글·문의 답변·월말 마감을 AI에 맡기는 실행 키트 38종과 0원 무료 점검. 더블클릭으로 실행하고, 결과물에는 우리 회사 이름이 들어갑니다. 무료 진단으로 우선순위부터 확인하세요.',
   alternates: { canonical: '/os' },
   openGraph: {
-    title: '우리회사OS — 회사 자동화 키트 21종',
+    title: '우리회사OS — 회사 자동화 키트 39종',
     description:
-      '뭘 AI에 맡길지 3분 무료 진단부터. 반복 업무를 덜어 주는 실행 키트 20종.',
+      '뭘 AI에 맡길지 3분 무료 진단부터. 반복 업무를 덜어 주는 실행 키트 38종.',
     url: '/os',
   },
 }
@@ -70,7 +70,7 @@ export default function OsPage() {
         <p className="text-ink-soft mt-5 max-w-[42em] text-lg leading-relaxed">
           견적서 한 장에 한 시간, 홍보 글은 늘 다음으로, 월말 정산은 며칠씩 — 사람을 더
           뽑기도, 대행을 맡기기도 애매한 일들입니다. 우리회사OS는 그 반복 업무를 AI에
-          넘기는 <strong className="text-ink font-semibold">실행 키트 20종</strong>입니다.
+          넘기는 <strong className="text-ink font-semibold">실행 키트 38종</strong>입니다.
           내려받아 더블클릭하면 바로 쓰고, 결과물에는 우리 회사 이름이 들어갑니다.
         </p>
         <div className="mt-10 flex flex-wrap items-center gap-3">
@@ -126,7 +126,7 @@ export default function OsPage() {
           지금 있는 키트 {KITS.length}종
         </h2>
         <p className="text-ink-soft mt-5 max-w-[42em]">
-          하나씩 따로 삽니다. 0원 무료 점검까지 더하면 모두 21종이고, 어디부터 손댈지
+          하나씩 따로 삽니다. 0원 무료 점검까지 더하면 모두 39종이고, 어디부터 손댈지
           모르겠다면 ①진단부터 보세요.
         </p>
 
