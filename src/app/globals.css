@@ -187,10 +187,13 @@ p {
 @media (min-width: 1024px) {
   .stack-card {
     position: sticky;
-    top: calc(84px + var(--i, 0) * 14px);
+    top: calc(84px + var(--i, 0) * 16px);
     z-index: calc(1 + var(--i, 0));
     background: var(--color-paper);
     border-bottom-width: 0;
+    /* 위쪽으로만 번지는 네이비 그림자(elevation.sm 계열) — 겹칠 때 "위에 얹힌 종이"로 읽히게.
+       헤어라인만으로는 14px 겹침이 안 보였다(09-03 비평가① 실측) */
+    box-shadow: 0 -10px 24px -14px rgba(22, 48, 61, 0.22);
   }
   .stack-card + .stack-card {
     border-top: 1px solid var(--color-line);

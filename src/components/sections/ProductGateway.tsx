@@ -47,7 +47,7 @@ export default function ProductGateway() {
           디자인이 필요한 순간,
           <br />셋 중 하나에서 시작하세요.
         </h2>
-        {/* 2026-09-03 lg+ 에서 행이 스티키 카드로 쌓인다(.stack-card, design.md §5 스크롤 연동 ②) — 모바일은 일반 리스트 */}
+        {/* 2026-09-03 lg+ 에서 행이 헤더 아래 16px 계단으로 겹쳐 쌓인다(.stack-card, design.md §5 스크롤 연동 ②) — 모바일은 일반 리스트 */}
         <ul className="mt-10 divide-y divide-line border-y border-line">
           {GATES.map((g, i) => (
             <li
