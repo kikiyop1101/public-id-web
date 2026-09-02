@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/Container";
@@ -46,20 +47,25 @@ export default function ProductGateway() {
           디자인이 필요한 순간,
           <br />셋 중 하나에서 시작하세요.
         </h2>
+        {/* 2026-09-03 lg+ 에서 행이 스티키 카드로 쌓인다(.stack-card, design.md §5 스크롤 연동 ②) — 모바일은 일반 리스트 */}
         <ul className="mt-10 divide-y divide-line border-y border-line">
-          {GATES.map((g) => (
-            <li key={g.href}>
+          {GATES.map((g, i) => (
+            <li
+              key={g.href}
+              className="stack-card"
+              style={{ "--i": i } as CSSProperties}
+            >
               <Link
                 href={g.href}
-                className="group flex items-center gap-5 py-6 sm:gap-8 sm:py-7"
+                className="group flex items-center gap-5 py-6 sm:gap-8 sm:py-7 lg:py-9"
               >
-                <span className="relative block h-20 w-28 shrink-0 overflow-hidden rounded-xl border border-line bg-white sm:h-24 sm:w-36">
+                <span className="relative block h-20 w-28 shrink-0 overflow-hidden rounded-xl border border-line bg-white sm:h-24 sm:w-36 lg:h-28 lg:w-44">
                   {g.img ? (
                     <Image
                       src={g.img}
                       alt={g.imgAlt}
                       fill
-                      sizes="144px"
+                      sizes="(min-width: 1024px) 176px, 144px"
                       className={
                         g.imgFit === "contain"
                           ? "bg-teal-100 object-contain p-2 transition duration-500 group-hover:scale-[1.05]"

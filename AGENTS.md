@@ -15,7 +15,7 @@ Next.js 16.2.x. `node_modules/next/dist/docs/`가 없으면(클론/CI 환경) �
 
 환경 함정(Windows PowerShell): npx가 차단되면 npm.cmd 절대경로로 우회 — `& 'C:\Program Files\nodejs\npm.cmd' exec <pkg>` (또는 Bash 툴 사용).
 
-배포 검증: push 후 https://public-id.co.kr 를 실제 브라우저로 렌더해 눈으로 확인한다(curl은 Cloudflare 봇차단으로 403).
+배포 검증: push 후 https://public-id.co.kr 를 실제 브라우저로 렌더해 눈으로 확인한다(curl은 Cloudflare 봇차단으로 403). **데스크톱+모바일 2벌 필수** — `node <시스템>\Agent\_tools\shot.mjs <url> <out> [--mobile]`. 홈의 스크롤 연동 모션(히어로 깊이 레이어·게이트웨이 스티키 스택·스탯 카운트업 = `ScrollDepth`·`.stack-card`·`CountUp`)은 `--scroll` 연속 프레임으로 이동량·겹침·잘림을 본다(정본 = `_design-system\design.md` §5 스크롤 연동, 2026-09-03).
 
 ## 공개 카피 절대규칙 (사이트 카피 수정 시 위반 금지)
 

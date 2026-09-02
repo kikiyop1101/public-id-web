@@ -175,6 +175,28 @@ p {
   transform: none;
 }
 
+/* 스크롤 깊이 레이어 (paired with components/ScrollDepth.tsx) — design.md §5 스크롤 연동 ① (2026-09-03)
+   --sp = 섹션이 화면 위로 흘러간 비율(0→1, ScrollDepth 가 씀), --d = 층별 이동량(배경 +, 전경 −) */
+.depth {
+  transform: translate3d(0, calc(var(--sp, 0) * var(--d, 0px)), 0);
+  will-change: transform;
+}
+
+/* 스티키 카드 스택 (paired with sections/ProductGateway.tsx) — §5 스크롤 연동 ②
+   lg+ 에서만: 행이 헤더 아래에 붙고 다음 행이 14px 어긋나 겹쳐 쌓인다. seam 은 그림자 아닌 헤어라인. */
+@media (min-width: 1024px) {
+  .stack-card {
+    position: sticky;
+    top: calc(84px + var(--i, 0) * 14px);
+    z-index: calc(1 + var(--i, 0));
+    background: var(--color-paper);
+    border-bottom-width: 0;
+  }
+  .stack-card + .stack-card {
+    border-top: 1px solid var(--color-line);
+  }
+}
+
 /* Animated underline link (arch gradient) */
 .link-underline {
   position: relative;
@@ -217,6 +239,10 @@ p {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  .depth {
+    transform: none;
+    will-change: auto;
   }
 }
 
@@ -328,7 +354,13 @@ body.world-immersive > footer {
   stroke-dashoffset: 1;
   animation: arch-draw 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
 }
-.arch-fade { opacity: 0; animation: hero-rise 0.9s ease 1s forwards; }
+/* arch-fade 는 opacity 만 — transform 은 .depth(스크롤 깊이)가 쓴다. hero-rise 를 forwards 로 쓰면
+   키프레임의 transform:none 이 .depth 를 영구히 덮어 히어로 사진·글로우가 움직이지 않는다(2026-09-03 분리) */
+@keyframes arch-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.arch-fade { opacity: 0; animation: arch-fade 0.9s ease 1s forwards; }
 @media (prefers-reduced-motion: reduce) {
   .hero-rise, .arch-draw, .arch-fade { animation: none; opacity: 1; stroke-dashoffset: 0; }
 }

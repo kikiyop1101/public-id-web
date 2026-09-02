@@ -1,5 +1,7 @@
+import type { CSSProperties } from "react";
 import { preload } from "react-dom";
 import Button from "@/components/Button";
+import ScrollDepth from "@/components/ScrollDepth";
 
 // LCP 후보(아치 창 사진 — 데스크톱·모바일 공용) — SVG <image>는 priority 힌트를 못 받아 preload로 보강 (2026-08-26 감사)
 const HERO_IMG = "/products/친환경그래픽노면표시재-노란발자국/참조04.jpg";
@@ -11,11 +13,14 @@ function ArchSvg({
   className,
   label,
   viewBox = "0 0 900 560",
+  depth,
 }: {
   suffix: string;
   className: string;
   label?: string;
   viewBox?: string;
+  /** 스크롤 깊이 이동량(px) — 전경은 음수(빠르게). ScrollDepth 안에서만 뜻이 있다. */
+  depth?: string;
 }) {
   const id = (name: string) => `${name}-${suffix}`;
   return (
@@ -25,6 +30,7 @@ function ArchSvg({
       aria-label={label}
       viewBox={viewBox}
       className={className}
+      style={depth ? ({ "--d": depth } as CSSProperties) : undefined}
       fill="none"
     >
       <defs>
@@ -50,16 +56,20 @@ function ArchSvg({
           <path d="M 202 560 A 278 278 0 0 1 758 560 Z" />
         </clipPath>
       </defs>
-      <image
-        href={HERO_IMG}
-        x="202"
-        y="282"
-        width="556"
-        height="278"
-        preserveAspectRatio="xMidYMid slice"
-        clipPath={`url(#${id("pi-arch-window")})`}
-        className="arch-fade"
-      />
+      {/* 창(클립)은 <g>에 고정하고 사진만 .depth 로 느리게 내려간다 — 창 너머의 깊이(design.md §5 스크롤 연동 ①).
+          사진 rect 는 창(202,282,556×278)보다 사방 48 넓혀 이동 중 빈틈이 없게 한다. */}
+      <g clipPath={`url(#${id("pi-arch-window")})`}>
+        <image
+          href={HERO_IMG}
+          x="154"
+          y="234"
+          width="652"
+          height="374"
+          preserveAspectRatio="xMidYMid slice"
+          className="arch-fade depth"
+          style={{ "--d": "44px" } as CSSProperties}
+        />
+      </g>
       {/* 본 아치 — 로고의 다리 */}
       <path
         d="M 150 560 A 330 330 0 0 1 810 560"
@@ -91,18 +101,22 @@ function ArchSvg({
 // 심볼 = 로고의 다리(아치) 그라디언트. 창작 도형 없음.
 export default function Hero() {
   preload(HERO_IMG, { as: "image", fetchPriority: "high" });
+  // 2026-09-03 스크롤 깊이 레이어(design.md §5 스크롤 연동 ①, ▶FFWtxjvW2ts 대조): 3층 —
+  //  전경 아치(−28px, 빠르게) · 창 너머 사진(+44, 느리게 — ArchSvg 안) · 바닥 글로우(+40px). transform 만, reduced-motion 정지.
   return (
-    <section className="relative overflow-hidden border-b border-line bg-paper">
+    <ScrollDepth className="relative overflow-hidden border-b border-line bg-paper">
       {/* 대형 아치(다리) — 데스크톱: 우측에서 페이지가 열리며 한 번 그려진다 */}
       <ArchSvg
         suffix="d"
-        className="pointer-events-none absolute -right-[14%] bottom-0 hidden h-[88%] w-auto sm:block lg:-right-[8%]"
+        className="depth pointer-events-none absolute -right-[14%] bottom-0 hidden h-[88%] w-auto sm:block lg:-right-[8%]"
         label="아치(다리) 아래로 보이는 노란발자국 시공 현장 — 횡단보도 앞 보도의 안심 대기선"
+        depth="-28px"
       />
       {/* 바닥 글로우 — 아치가 바닥에 비치는 빛 */}
       <div
         aria-hidden
-        className="arch-fade pointer-events-none absolute -bottom-24 right-[6%] h-[280px] w-[420px] rounded-full bg-arch opacity-[0.10] blur-[100px]"
+        className="arch-fade depth pointer-events-none absolute -bottom-24 right-[6%] h-[280px] w-[420px] rounded-full bg-arch opacity-[0.10] blur-[100px]"
+        style={{ "--d": "40px" } as CSSProperties}
       />
       <div className="mx-auto max-w-[1200px] px-5 sm:px-8">
         <div className="flex min-h-[76vh] flex-col justify-center py-24">
@@ -153,6 +167,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-    </section>
+    </ScrollDepth>
   );
 }
