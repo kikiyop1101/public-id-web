@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { KITS, KIT_GROUPS, LATPEED_STORE_URL, formatPrice } from '@/lib/os-kits'
 import OsCurator from '@/components/OsCurator'
+import KitLink from '@/components/KitLink'
 import ScanClient from '@/components/ScanClient'
 import BreadcrumbLd from '@/components/BreadcrumbLd'
 
@@ -80,14 +81,14 @@ export default function OsPage() {
           >
             3분 무료 진단부터 하기
           </a>
-          <a
+          <KitLink
+            kit="store"
+            place="hero"
             href={LATPEED_STORE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
             className="border-line text-ink inline-flex h-14 items-center justify-center rounded-full border px-7 text-[15px] font-semibold transition"
           >
             바로 구매하기
-          </a>
+          </KitLink>
         </div>
         <p className="text-ink-soft mt-4 text-sm">
           전 상품 부가세 포함 표기 · 런칭가는 초기 10명 한정 · 구매는 래피드에서
@@ -142,10 +143,10 @@ export default function OsPage() {
               <ul className="mt-5">
                 {items.map((k) => (
                   <li key={k.no + k.name} className="border-line/70 border-b">
-                    <a
+                    <KitLink
+                      kit={`${k.no}${k.name}`}
+                      place="list"
                       href={k.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       className="flex flex-wrap items-baseline gap-x-3 gap-y-1 py-4 transition hover:opacity-75"
                     >
                       <span className="text-ink text-base font-bold">
@@ -161,7 +162,7 @@ export default function OsPage() {
                           {formatPrice(k.listPrice)}원
                         </span>
                       </span>
-                    </a>
+                    </KitLink>
                   </li>
                 ))}
               </ul>
@@ -234,14 +235,14 @@ export default function OsPage() {
             >
               무료 진단 시작하기
             </a>
-            <a
+            <KitLink
+              kit="store"
+              place="cta"
               href={LATPEED_STORE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
               className="inline-flex h-14 items-center justify-center rounded-full border border-white/25 bg-white/10 px-7 text-[15px] font-semibold text-white transition hover:bg-white/20"
             >
               키트 전체 보기
-            </a>
+            </KitLink>
           </div>
         </div>
       </section>

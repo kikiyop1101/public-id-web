@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { formatPrice } from '@/lib/os-kits'
+import KitLink from '@/components/KitLink'
 
 // 우리회사OS AI 큐레이터 — 회사·고민 한 줄 → 키트 2~3종 추천 (/api/os-curator)
 
@@ -141,14 +142,14 @@ export default function OsCurator() {
                   <span className="text-ink font-semibold">이렇게 씁니다 — </span>
                   {p.scenario}
                 </p>
-                <a
+                <KitLink
+                  kit={`${p.no}${p.name}`}
+                  place="curator"
                   href={p.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="mt-4 inline-flex items-center text-sm font-semibold text-teal-700 transition hover:opacity-75"
                 >
                   키트 자세히 보기 →
-                </a>
+                </KitLink>
               </div>
             ))}
           </div>
