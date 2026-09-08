@@ -16,6 +16,7 @@ import {
   won,
   type EstimateInput,
   type FootprintType,
+  type InstallMode,
   type SignSpecId,
 } from '@/lib/estimate'
 
@@ -180,6 +181,8 @@ export default function EstimateClient() {
   const [input, setInput] = useState<Required<EstimateInput>>(DEFAULT)
   const [budget, setBudget] = useState(5_000_000)
   const [copied, setCopied] = useState(false)
+  // 시공 방식 — 대표 지시 2026-09-08 "시공 요청이 들어오면 시공비가 따로, 작게 말고 잘 보이게".
+  const [install, setInstall] = useState<InstallMode>('pro')
 
   const result = useMemo(() => calc(input), [input])
   const shown = useTween(result.total)
@@ -195,7 +198,7 @@ export default function EstimateClient() {
     timer.current = setTimeout(() => track('estimate_change', { item: lastItem.current }), 1000)
   }
 
-  const summary = summaryText(result)
+  const summary = summaryText(result, install)
   const quoteHref = summary ? `/quote?items=${encodeURIComponent(summary)}` : '/quote'
   const cta = (to: string) => track('estimate_cta', { to, total_band: result.band })
 
@@ -241,6 +244,51 @@ export default function EstimateClient() {
         <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
           {/* 품목 */}
           <div className="space-y-4">
+            {/* 시공 방식 — 시공비는 공개 단가가 없어 합계에 넣지 않고, 대신 크게 "별도"로 보여 준다 */}
+            <section className="rounded-3xl border border-line bg-white p-5 sm:p-6">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div>
+                  <h2 className="text-base font-bold text-ink">시공은 어떻게 하시나요?</h2>
+                  <p className="mt-1 text-sm text-ink-soft">아래 합계는 자재 기준가입니다. 시공을 요청하시면 시공비가 따로 붙습니다.</p>
+                </div>
+                <div role="radiogroup" aria-label="시공 방식" className="inline-flex rounded-full border border-line bg-cloud/60 p-1">
+                  {(
+                    [
+                      ['pro', '시공 요청'],
+                      ['self', '셀프 부착'],
+                    ] as [InstallMode, string][]
+                  ).map(([m, label]) => (
+                    <button
+                      key={m}
+                      type="button"
+                      role="radio"
+                      aria-checked={install === m}
+                      onClick={() => setInstall(m)}
+                      className={cn(
+                        'h-10 rounded-full px-5 text-sm font-semibold transition',
+                        install === m ? 'bg-navy text-white' : 'text-ink-soft hover:text-ink',
+                      )}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              {install === 'pro' ? (
+                <p className="mt-4 rounded-2xl border border-warning-line bg-warning-bg px-4 py-3 text-sm leading-relaxed text-warning-deep">
+                  <span className="block text-base font-bold">시공비 · 출장비 별도</span>
+                  퍼블릭아이디 전문 시공팀이 실측부터 시공까지 진행합니다. 시공비는 면적·현장 조건·지역에 따라 달라 현장 실측 후 산정하며, 아래 자재 합계에는 들어 있지 않습니다.
+                </p>
+              ) : (
+                <p className="mt-4 rounded-2xl border border-success-line bg-success-bg px-4 py-3 text-sm leading-relaxed text-success-deep">
+                  <span className="block text-base font-bold">시공비 없음 — 자재만 받아 직접 붙입니다</span>
+                  이형지를 떼어 붙이는 방식이라 소면적·보도블록 구간은 직접 부착이 가능합니다.{' '}
+                  <Link href="/guide" className="font-semibold underline underline-offset-2">
+                    부착 가이드 영상 보기
+                  </Link>
+                </p>
+              )}
+            </section>
             <ItemCard
               on={input.roadmark.on}
               onToggle={() => patch('roadmark', { on: !input.roadmark.on })}
@@ -451,6 +499,7 @@ export default function EstimateClient() {
               total={shown}
               rawTotal={result.total}
               autoQuote={result.autoQuote}
+              install={install}
               quoteHref={quoteHref}
               onCta={cta}
               onCopy={copy}
@@ -468,9 +517,16 @@ export default function EstimateClient() {
           <div className="mx-auto flex max-w-3xl items-center justify-between gap-3">
             <div className="min-w-0">
               <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-teal-700">
-                기준가 합계 · VAT 포함
+                자재 기준가 · VAT 포함
               </p>
-              <p className="truncate font-display text-xl font-bold text-ink">{won(shown)}</p>
+              <p className="truncate font-display text-xl font-bold text-ink">
+                {won(shown)}
+                {install === 'pro' && (
+                  <span className="ml-2 rounded-full bg-warning-bg px-2 py-0.5 align-middle font-sans text-[11px] font-bold text-warning-deep">
+                    시공비 별도
+                  </span>
+                )}
+              </p>
             </div>
             <Link
               href={quoteHref}
@@ -491,6 +547,7 @@ export default function EstimateClient() {
             total={shown}
             rawTotal={result.total}
             autoQuote={result.autoQuote}
+            install={install}
             quoteHref={quoteHref}
             onCta={cta}
             onCopy={copy}
@@ -507,6 +564,7 @@ function SummaryCard({
   total,
   rawTotal,
   autoQuote,
+  install,
   quoteHref,
   onCta,
   onCopy,
@@ -516,6 +574,7 @@ function SummaryCard({
   total: number
   rawTotal: number
   autoQuote: boolean
+  install: InstallMode
   quoteHref: string
   onCta: (to: string) => void
   onCopy: () => void
@@ -525,7 +584,7 @@ function SummaryCard({
   return (
     <div className="rounded-3xl border border-line bg-white p-6 shadow-sm">
       <p className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-teal-700">Summary</p>
-      <h2 className="mt-2 text-lg font-bold text-ink">기준가 합계</h2>
+      <h2 className="mt-2 text-lg font-bold text-ink">자재 기준가 합계</h2>
 
       {empty ? (
         <p className="mt-4 rounded-2xl bg-cloud/60 p-4 text-sm text-ink-soft">
@@ -553,11 +612,30 @@ function SummaryCard({
       )}
 
       <div className="mt-5 flex items-end justify-between gap-3">
-        <span className="text-sm text-ink-soft">합계 · VAT 포함</span>
+        <span className="text-sm text-ink-soft">자재 합계 · VAT 포함</span>
         <span className="font-display text-3xl font-bold tracking-tight text-ink" aria-live="polite">
           {won(total)}
         </span>
       </div>
+
+      {/* 시공비 — 합계 바로 아래 같은 크기로, 작은 글씨로 흘리지 않는다 */}
+      {install === 'pro' ? (
+        <div className="mt-3 flex items-center justify-between gap-3 rounded-2xl border border-warning-line bg-warning-bg px-4 py-3">
+          <span className="min-w-0">
+            <span className="block text-sm font-bold text-warning-deep">+ 시공비 · 출장비</span>
+            <span className="block text-xs text-warning-deep/80">전문 시공팀 · 현장 실측 후 산정</span>
+          </span>
+          <span className="shrink-0 font-display text-lg font-bold text-warning-deep">별도</span>
+        </div>
+      ) : (
+        <div className="mt-3 flex items-center justify-between gap-3 rounded-2xl border border-success-line bg-success-bg px-4 py-3">
+          <span className="min-w-0">
+            <span className="block text-sm font-bold text-success-deep">셀프 부착 · 시공비 없음</span>
+            <span className="block text-xs text-success-deep/80">자재만 받아 직접 붙입니다</span>
+          </span>
+          <span className="shrink-0 font-display text-lg font-bold text-success-deep">0원</span>
+        </div>
+      )}
 
       {!empty && (
         <p
@@ -568,18 +646,21 @@ function SummaryCard({
               : 'border-warning-line bg-warning-bg text-warning-deep',
           )}
         >
-          {autoQuote ? '자동 견적 대상 — 신청하면 바로 견적서가 나갑니다' : '담당자 검토 견적 — 신청 후 검토해 회신드립니다'}
+          {autoQuote
+            ? install === 'pro'
+              ? '자재는 자동 견적 — 시공비는 담당자가 현장 확인 후 합산해 회신드립니다'
+              : '자동 견적 대상 — 신청하면 바로 견적서가 나갑니다'
+            : '담당자 검토 견적 — 신청 후 검토해 회신드립니다'}
           <span className="mt-1 block text-xs font-normal opacity-80">
             {autoQuote
-              ? `총액 ${won(AUTO_QUOTE_LIMIT)} 미만이고 모든 품목이 공개 단가표 안입니다.`
-              : `총액 ${won(AUTO_QUOTE_LIMIT)} 이상은 규격·물량 조건을 검토합니다.`}
+              ? `자재 총액 ${won(AUTO_QUOTE_LIMIT)} 미만이고 모든 품목이 공개 단가표 안입니다.`
+              : `자재 총액 ${won(AUTO_QUOTE_LIMIT)} 이상은 규격·물량 조건을 검토합니다.`}
           </span>
         </p>
       )}
 
       <p className="mt-4 break-keep text-xs leading-relaxed text-ink-soft">
-        모든 금액은 공개 기준가이며 규격·수량·현장 조건에 따라 달라집니다. 시공·출장비와 디자인비는
-        현장 확인 후 별도로 산정합니다. 노란발자국·아이타존은 기준가 이상(~)입니다.
+        모든 금액은 공개 기준가이며 규격·수량·현장 조건에 따라 달라집니다. 디자인비는 별도이고, 노란발자국·아이타존은 기준가 이상(~)입니다.
       </p>
 
       <div className="mt-5 flex flex-col gap-2">

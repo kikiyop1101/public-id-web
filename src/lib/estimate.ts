@@ -195,7 +195,10 @@ export function won(n: number): string {
 }
 
 /** 견적 신청 폼 message 기본값·복사용 요약(사람이 읽는 텍스트) */
-export function summaryText(r: EstimateResult): string {
+/** 시공 방식 — 셀프 부착(자재만) / 전문 시공 요청(시공·출장비는 현장 실측 후 별도 산정, 공개 단가 없음) */
+export type InstallMode = 'self' | 'pro'
+
+export function summaryText(r: EstimateResult, install: InstallMode = 'self'): string {
   if (r.lines.length === 0) return ''
   const rows = r.lines.map(
     (l) =>
@@ -204,7 +207,10 @@ export function summaryText(r: EstimateResult): string {
   return [
     '[견적 시뮬레이터 구성]',
     ...rows,
-    `기준가 합계(VAT 포함): ${won(r.total)}`,
-    '※ 시공·출장비·디자인비 별도, 정확한 금액은 검토 후 회신',
+    `자재 기준가 합계(VAT 포함): ${won(r.total)}`,
+    install === 'pro'
+      ? '■ 시공 요청: 퍼블릭아이디 전문 시공팀 — 시공비·출장비는 현장 실측 후 별도 산정(위 합계에 미포함)'
+      : '■ 셀프 부착(자재만): 시공비 없음, 부착 가이드 제공',
+    '※ 디자인비 별도, 정확한 금액은 검토 후 회신',
   ].join('\n')
 }
