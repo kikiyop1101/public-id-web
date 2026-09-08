@@ -12,7 +12,15 @@ export const metadata: Metadata = {
   alternates: { canonical: '/quote' },
 }
 
-export default function QuotePage() {
+// ?items= — 견적 시뮬레이터(/estimate)가 넘기는 구성 요약(사람이 읽는 텍스트, 2,000자 컷)
+export default async function QuotePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ items?: string | string[] }>
+}) {
+  const sp = await searchParams
+  const raw = Array.isArray(sp.items) ? sp.items[0] : sp.items
+  const items = raw ? raw.slice(0, 2000) : undefined
   return (
     <div className="mx-auto max-w-3xl px-5 py-16 sm:px-8">
       <BreadcrumbLd trail={[{ name: '맞춤 견적', path: '/quote' }]} />
@@ -26,6 +34,23 @@ export default function QuotePage() {
         설치할 공간·규격·수량을 알려주시면 담당자가 검토해 이메일로 회신드립니다.
         원하는 문구·그래픽을 넣는 맞춤 제작도 가능합니다.
       </p>
+
+      {/* 슬라이더 시뮬레이터 진입 — 2026-09-08 신설(/estimate). 숫자부터 가늠하고 싶은 담당자용 */}
+      <Link
+        href="/estimate"
+        className="border-line mt-8 flex flex-wrap items-center justify-between gap-4 rounded-2xl border bg-white p-5 transition hover:border-teal"
+      >
+        <span className="text-ink text-sm leading-relaxed">
+          <span className="font-semibold">숫자부터 가늠해 보시겠다면</span>
+          <br />
+          <span className="text-ink-soft">
+            규격·수량을 슬라이더로 움직이며 기준가 합계를 바로 보고, 그 구성으로 신청할 수 있습니다.
+          </span>
+        </span>
+        <span className="text-teal-600 inline-flex h-10 shrink-0 items-center rounded-full border border-line px-4 text-sm font-semibold">
+          견적 시뮬레이터 →
+        </span>
+      </Link>
 
       {/* 뭘 골라야 할지 모를 때 — AI 도우미 진입(대표 지적 2026-08-26 "도우미 찾기 어렵다") */}
       <div className="border-line bg-cloud/60 mt-8 flex flex-wrap items-center justify-between gap-4 rounded-2xl border p-5">
@@ -78,6 +103,7 @@ export default function QuotePage() {
             messagePlaceholder={
               '필요한 내용을 적어주세요. 예)\n· 설치 장소: ○○초등학교 정문 앞 보도\n· 규격·수량: 노란발자국 10세트\n· 원하는 문구·그래픽이 있다면 함께 적어주세요.'
             }
+            defaultMessage={items}
             submitLabel="견적 신청하기"
           />
         </div>

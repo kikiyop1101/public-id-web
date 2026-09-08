@@ -25,6 +25,7 @@ export const SEARCH_INDEX: SearchEntry[] = [
   { label: "국내외 지도 컬렉션", href: "/products/map-banner", group: "제품", desc: "전도·행정지도·세계지도 — 직물시트·현수막 두 소재로 출력", keywords: "지도 현수막 직물시트 전도 행정지도 세계지도 대동여지도 대형 출력" },
   { label: "부착 가이드 · 설치 영상", href: "/guide", group: "제품", desc: "노면표시재 셀프 부착 방법 영상", keywords: "설치 부착 시공 방법 가이드 영상 diy" },
   { label: "맞춤 견적", href: "/quote", group: "제품", desc: "규격·수량 넣고 바로 받는 견적", keywords: "견적 가격 문의 계산 주문" },
+  { label: "견적 시뮬레이터", href: "/estimate", group: "제품", desc: "규격·수량 슬라이더로 기준가 합계 즉시 확인 · 예산 역산", keywords: "견적 계산기 시뮬레이터 예산 단가 가격 계산 얼마" },
   { label: "우리회사OS (AI 자동화)", href: "/os", group: "제품", desc: "소상공인 AI 자동화 키트 — 무료 진단부터", keywords: "os ai 자동화 템플릿 키트 소상공인 진단 챗gpt" },
   { label: "AI 자동화 무료 진단", href: "/os#scan", group: "제품", desc: "우리 회사 업무 자동화 여지를 3분 만에 — 우리회사OS 안", keywords: "진단 무료진단 스캔 자가진단 진단테스트 업무진단 자동화 ai scan 3분" },
   // 구독
@@ -32,6 +33,9 @@ export const SEARCH_INDEX: SearchEntry[] = [
   { label: "디자인 시스템", href: "/design", group: "구독 서비스", desc: "색 하나 바꾸면 전부 바뀌는 정본 — 체험 데모·문서 전체", keywords: "마스코트 웹툰 로고 브랜드 디자인시스템 캐릭터 토큰 정본" },
   { label: "안전관리 지도", href: "/safety-map", group: "구독 서비스", desc: "시공한 안전시설을 지도에서 한눈에 관리", keywords: "안전지도 시설관리 지도 관리구독 발주처" },
   { label: "안전 리포트 · 제보", href: "/safety-report", group: "구독 서비스", desc: "노란발자국·노란볼라드 등 통학로 위험 지점 제보", keywords: "제보 신고 노란발자국 노란볼라드 통학로 스쿨존 안전리포트 캠페인" },
+  { label: "숨은 위험 찾기 (게임)", href: "/safety-game", group: "구독 서비스", desc: "스쿨존·아파트·공장 장면에서 60초 안에 위험 8곳 찾기 — 안전 교육용", keywords: "게임 위험찾기 숨은그림 안전교육 스쿨존 통학로 아파트 공장 산업안전 놀이 퀴즈" },
+  { label: "우리 동네 안전 점수", href: "/safety-score", group: "구독 서비스", desc: "통학로 8개 항목 2분 자가진단 — 점수·등급·처방", keywords: "안전점수 진단 자가진단 통학로 스쿨존 점검 체크리스트 어린이보호구역 테스트" },
+  { label: "웹툰 — 우산 도둑", href: "/webtoon", group: "구독 서비스", desc: "퍼블릭아이디 웹툰 1호 10컷 전편", keywords: "웹툰 만화 우산도둑 디자인구독 캐릭터" },
   // 실적·인증
   { label: "실적", href: "/credibility", group: "실적·인증", desc: "전국 시공 실적과 현장 사진", keywords: "실적 레퍼런스 사례 시공사진 포트폴리오" },
   { label: "인증·특허", href: "/credentials", group: "실적·인증", desc: "KIDP·사회적기업·GD 인증과 특허·성적서", keywords: "인증 특허 성적서 kidp gd 사회적기업 증빙" },
@@ -39,6 +43,7 @@ export const SEARCH_INDEX: SearchEntry[] = [
   { label: "소식", href: "/news", group: "소식", desc: "보도자료와 활동 소식 전체", keywords: "뉴스 소식 활동" },
   { label: "보도자료", href: "/press", group: "소식", desc: "언론 배포 보도자료 전문", keywords: "보도자료 언론 프레스 기사 press" },
   { label: "기업 블로그", href: "/blog", group: "소식", desc: "퍼블릭아이디의 이야기와 현장 소식", keywords: "블로그 글 이야기 현장" },
+  { label: "영상관", href: "/videos", group: "소식", desc: "1분 안팎 설명 영상 — 안전점검·노면표시재·디자인 구독", keywords: "영상 유튜브 동영상 쇼츠 설명영상 영상관 스쿨존 노면표시재" },
   { label: "소통 게시판", href: "/board", group: "소식", desc: "누구나 자유롭게 남기는 의견·질문", keywords: "게시판 소통 의견 질문 커뮤니티 자유게시판" },
   { label: "문의하기", href: "/contact", group: "소식", desc: "상담·견적 문의 — 영업일 기준 빠른 회신", keywords: "문의 상담 연락 전화 이메일 컨택" },
   // 스토어(외부)

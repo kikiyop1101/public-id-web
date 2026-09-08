@@ -8,6 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Assistant from "@/components/Assistant";
 import { Analytics } from "@vercel/analytics/next";
+import SiteAnalytics from "@/components/SiteAnalytics";
 import { site } from "@/lib/site";
 
 const poppins = Poppins({
@@ -191,6 +192,8 @@ export default function RootLayout({
         <Assistant />
         {/* 방문자 측정 — 어느 경로로 들어와 어디서 이탈하는지 실측(2026-08-20 신설). 쿠키 없음. */}
         <Analytics />
+        {/* 체류시간 시계(2026-09-08): GA4·Clarity는 env ID가 있을 때만, 참여시간 비콘(30·60·180초)은 항상. */}
+        <SiteAnalytics />
       </body>
     </html>
   );

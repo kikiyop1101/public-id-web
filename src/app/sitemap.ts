@@ -14,7 +14,9 @@ const routes = ["", "/subscribe", "/design", "/work", "/guide", "/about", "/cred
   // 2026-08-25 보관고 상품 라인
   "/products/art-fabric", "/products/map-banner",
   // 2026-08-27 축제·행사 콜라보 랜딩(store 루트가 이 페이지를 서빙)
-  "/festival"];
+  "/festival",
+  // 2026-09-08 체류시간 기획안 — 위험 찾기 게임·안전 점수 진단·견적 시뮬레이터·영상관·웹툰
+  "/safety-game", "/safety-score", "/estimate", "/videos", "/webtoon"];
 
 // 쿠키 없는 anon 클라이언트 — RLS가 공개분만 반환.
 function anonClient() {

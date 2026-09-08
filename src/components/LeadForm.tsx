@@ -51,6 +51,8 @@ type Props = {
   products?: string[]
   /** 요청 내용 textarea 안내문 */
   messagePlaceholder?: string
+  /** 요청 내용 기본값 — 견적 시뮬레이터(/estimate)가 구성 요약을 ?items= 로 넘길 때 채운다 */
+  defaultMessage?: string
   submitLabel?: string
 }
 
@@ -60,6 +62,7 @@ export default function LeadForm({
   kinds,
   products,
   messagePlaceholder = '요청 내용을 입력해 주세요.',
+  defaultMessage,
   submitLabel = '신청하기',
 }: Props) {
   const [state, formAction, pending] = useActionState(createLead, initial)
@@ -175,7 +178,8 @@ export default function LeadForm({
         name="message"
         aria-label="요청 내용"
         placeholder={messagePlaceholder}
-        rows={5}
+        defaultValue={defaultMessage}
+        rows={defaultMessage ? 8 : 5}
         className={`mt-3 w-full ${inputCls}`}
       />
 

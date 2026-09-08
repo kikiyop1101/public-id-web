@@ -2,6 +2,8 @@ import Hero from "@/components/sections/Hero";
 import TrustBar from "@/components/sections/TrustBar";
 import ShowcaseStrip from "@/components/sections/ShowcaseStrip";
 import ProductGateway from "@/components/sections/ProductGateway";
+import PlayStrip from "@/components/sections/PlayStrip";
+import VideoStrip from "@/components/sections/VideoStrip";
 import Story from "@/components/sections/Story";
 import NewsStrip from "@/components/sections/NewsStrip";
 import ContactCTA from "@/components/sections/ContactCTA";
@@ -16,6 +18,9 @@ export default function Home() {
       <TrustBar />
       <ShowcaseStrip />
       <ProductGateway />
+      {/* 2026-09-08 체류시간 기획안 — 만질거리(위험 찾기·안전 점수·견적 시뮬레이터) + 영상관 파사드 */}
+      <PlayStrip />
+      <VideoStrip />
       <Story />
       <NewsStrip />
       <ContactCTA />

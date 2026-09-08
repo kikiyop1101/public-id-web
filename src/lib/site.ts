@@ -41,6 +41,7 @@ export const site = {
         { label: "국내외 지도 컬렉션", href: "/products/map-banner" },
         { label: "부착 가이드 · 설치 영상", href: "/guide" },
         { label: "맞춤 견적", href: "/quote" },
+        { label: "견적 시뮬레이터", href: "/estimate" },
         { label: "우리회사OS (AI 자동화)", href: "/os" },
       ],
     },
@@ -51,6 +52,10 @@ export const site = {
         { label: "디자인 시스템", href: "/design" },
         { label: "안전관리 지도", href: "/safety-map" },
         { label: "안전 리포트 · 제보", href: "/safety-report" },
+        // 2026-09-08 체류시간 기획안 — 만질거리 3종 + 웹툰
+        { label: "숨은 위험 찾기 (게임)", href: "/safety-game" },
+        { label: "우리 동네 안전 점수", href: "/safety-score" },
+        { label: "웹툰", href: "/webtoon" },
       ],
     },
     {
@@ -62,6 +67,7 @@ export const site = {
       children: [
         { label: "보도자료", href: "/press" },
         { label: "블로그", href: "/blog" },
+        { label: "영상관", href: "/videos" },
         { label: "소통 게시판", href: "/board" },
         { label: "문의", href: "/contact" },
       ],
@@ -91,6 +97,7 @@ export const site = {
         { label: "국내외 지도 컬렉션", href: "/products/map-banner" },
         { label: "부착 가이드", href: "/guide" },
         { label: "맞춤 견적", href: "/quote" },
+        { label: "견적 시뮬레이터", href: "/estimate" },
         { label: "우리회사OS (AI 자동화)", href: "/os" },
       ],
     },
@@ -101,6 +108,9 @@ export const site = {
         { label: "디자인 시스템", href: "/design" },
         { label: "안전관리 지도", href: "/safety-map" },
         { label: "안전 리포트 · 제보", href: "/safety-report" },
+        { label: "숨은 위험 찾기 (게임)", href: "/safety-game" },
+        { label: "우리 동네 안전 점수", href: "/safety-score" },
+        { label: "웹툰", href: "/webtoon" },
       ],
     },
     {
@@ -116,6 +126,7 @@ export const site = {
         { label: "소식", href: "/news" },
         { label: "보도자료", href: "/press" },
         { label: "블로그", href: "/blog" },
+        { label: "영상관", href: "/videos" },
         { label: "소통 게시판", href: "/board" },
         { label: "문의", href: "/contact" },
       ],

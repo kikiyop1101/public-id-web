@@ -367,3 +367,10 @@ body.world-immersive > footer {
 @media (prefers-reduced-motion: reduce) {
   .hero-rise, .arch-draw, .arch-fade { animation: none; opacity: 1; stroke-dashoffset: 0; }
 }
+
+/* 견적 시뮬레이터 모바일 하단 바가 있을 때 AI 도우미 버튼을 바 위로 올린다(2026-09-08) */
+@media (max-width: 1023px) {
+  body:has(.pi-estimate-bar) .pi-assistant {
+    bottom: calc(1.25rem + 76px);
+  }
+}
