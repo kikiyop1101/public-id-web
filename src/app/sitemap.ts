@@ -7,7 +7,7 @@ import { news } from "@/lib/news";
 export const dynamic = "force-dynamic";
 
 const base = "https://www.public-id.co.kr";
-const routes = ["", "/subscribe", "/design", "/work", "/guide", "/about", "/credentials", "/credibility", "/contact", "/news", "/safety-map", "/privacy",
+const routes = ["", "/subscribe", "/design", "/work", "/guide", "/about", "/credentials", "/credibility", "/contact", "/news", "/press", "/safety-map", "/privacy",
   // 2026-08-25 스토어 통합으로 편입된 경로
   // /scan은 2026-08-26 /os#scan으로 통합(301)
   "/products", "/quote", "/os", "/blog", "/board", "/safety-report", "/safety-report/new", "/world",

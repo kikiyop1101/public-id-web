@@ -60,6 +60,7 @@ export const site = {
     {
       label: "소식", en: "News", href: "/news",
       children: [
+        { label: "보도자료", href: "/press" },
         { label: "블로그", href: "/blog" },
         { label: "소통 게시판", href: "/board" },
         { label: "문의", href: "/contact" },
@@ -112,7 +113,8 @@ export const site = {
     {
       label: "소식",
       links: [
-        { label: "소식 · 보도자료", href: "/news" },
+        { label: "소식", href: "/news" },
+        { label: "보도자료", href: "/press" },
         { label: "블로그", href: "/blog" },
         { label: "소통 게시판", href: "/board" },
         { label: "문의", href: "/contact" },

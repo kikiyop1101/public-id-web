@@ -12,7 +12,7 @@ Next.js 16.2.x. `node_modules/next/dist/docs/`가 없으면(클론/CI 환경) �
 - build: `npm run build` (⚠️ git push 전 필수 — 빌드 깨진 채 push 금지. master push 시 Vercel 프로덕션 public-id.co.kr 자동 재배포)
 - lint: `npm run lint` (스크립트는 `eslint`)
 - deploy: `git push` (master → Vercel 자동 재배포, `npx vercel --prod` 수동 불필요)
-- 소식(/news) 데이터 = `src/content/news.json`(최신이 맨 앞, 날짜 필드 없음 — 대표 확정 2026-09-08). 볼트 `Agent\콘텐츠본부\보도자료\publisher
+- 소식(/news 전체 · /press 보도자료만, 탭 공용 컴포넌트 NewsListSection) 데이터 = `src/content/news.json`(최신이 맨 앞, 날짜 필드 없음 — 대표 확정 2026-09-08). 볼트 `Agent\콘텐츠본부\보도자료\publisher
 ews_publish.py`가 주 3건(월·수·금) 자동으로 검증→선두 삽입→build→commit→push 한다. 손으로 고칠 땐 slug 유일·플레인 텍스트 문단만 지키면 된다.
 
 환경 함정(Windows PowerShell): npx가 차단되면 npm.cmd 절대경로로 우회 — `& 'C:\Program Files\nodejs\npm.cmd' exec <pkg>` (또는 Bash 툴 사용).

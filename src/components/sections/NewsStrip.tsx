@@ -24,6 +24,9 @@ export default function NewsStrip() {
             <Link href="/news" className="text-teal-700 transition hover:text-teal">
               소식 전체 보기 →
             </Link>
+            <Link href="/press" className="text-teal-700 transition hover:text-teal">
+              보도자료 →
+            </Link>
             <Link href="/blog" className="text-teal-700 transition hover:text-teal">
               블로그 →
             </Link>

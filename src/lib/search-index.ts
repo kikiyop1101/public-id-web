@@ -36,7 +36,8 @@ export const SEARCH_INDEX: SearchEntry[] = [
   { label: "실적", href: "/credibility", group: "실적·인증", desc: "전국 시공 실적과 현장 사진", keywords: "실적 레퍼런스 사례 시공사진 포트폴리오" },
   { label: "인증·특허", href: "/credentials", group: "실적·인증", desc: "KIDP·사회적기업·GD 인증과 특허·성적서", keywords: "인증 특허 성적서 kidp gd 사회적기업 증빙" },
   // 소식
-  { label: "소식 · 보도자료", href: "/news", group: "소식", desc: "보도자료와 활동 소식", keywords: "뉴스 보도자료 소식 언론" },
+  { label: "소식", href: "/news", group: "소식", desc: "보도자료와 활동 소식 전체", keywords: "뉴스 소식 활동" },
+  { label: "보도자료", href: "/press", group: "소식", desc: "언론 배포 보도자료 전문", keywords: "보도자료 언론 프레스 기사 press" },
   { label: "기업 블로그", href: "/blog", group: "소식", desc: "퍼블릭아이디의 이야기와 현장 소식", keywords: "블로그 글 이야기 현장" },
   { label: "소통 게시판", href: "/board", group: "소식", desc: "누구나 자유롭게 남기는 의견·질문", keywords: "게시판 소통 의견 질문 커뮤니티 자유게시판" },
   { label: "문의하기", href: "/contact", group: "소식", desc: "상담·견적 문의 — 영업일 기준 빠른 회신", keywords: "문의 상담 연락 전화 이메일 컨택" },

@@ -36,7 +36,8 @@
 - 견적 문의: https://www.public-id.co.kr/quote
 - 인증·특허: https://www.public-id.co.kr/credentials
 - 시공실적·고객사: https://www.public-id.co.kr/credibility
-- 소식·보도자료: https://www.public-id.co.kr/news
+- 소식: https://www.public-id.co.kr/news
+- 보도자료: https://www.public-id.co.kr/press
 - 시공 가이드(영상): https://www.public-id.co.kr/guide
 - 안전관리 지도(설치 위치·관리 이력): https://www.public-id.co.kr/safety-map
 - 우리 학교 앞 안전 리포트(통학로 위험 지점 시민 제보 캠페인): https://www.public-id.co.kr/safety-report
