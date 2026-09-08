@@ -165,7 +165,7 @@ export default function OsPage() {
                         <span className="text-teal-700">{k.no}</span>
                         {k.name}
                       </span>
-                      <span className="text-ink-soft min-w-0 flex-1 text-sm">
+                      <span className="text-ink-soft order-last basis-full text-sm sm:order-none sm:min-w-0 sm:flex-1 sm:basis-auto">
                         {k.tagline}
                       </span>
                       <span className="text-ink shrink-0 text-sm font-bold">
