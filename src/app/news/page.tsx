@@ -4,7 +4,7 @@ import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
 import { site } from "@/lib/site";
-import { news } from "@/lib/news";
+import { news, newsKind } from "@/lib/news";
 import BreadcrumbLd from "@/components/BreadcrumbLd";
 
 export const metadata: Metadata = {
@@ -14,23 +14,16 @@ export const metadata: Metadata = {
     "퍼블릭아이디의 보도자료와 소식. 친환경 그래픽 노면표시재, 어린이보호구역 노란발자국, 배리어프리 안내표지, 사회적기업 우선구매 등 안전 디자인 활동을 전합니다.",
 };
 
+// 목록 페이지는 ItemList — 개별 NewsArticle 스키마는 /news/[slug]에서 낸다(중복 마크업 방지).
 const jsonLd = {
   "@context": "https://schema.org",
-  "@graph": news.map((n) => ({
-    "@type": "NewsArticle",
-    headline: n.title,
-    description: n.summary,
-    articleBody: n.body.join("\n\n"),
-    datePublished: n.year,
-    inLanguage: "ko-KR",
-    image: `${site.url}/og.png`,
-    mainEntityOfPage: `${site.url}/news`,
-    author: { "@type": "Organization", name: site.legalName },
-    publisher: {
-      "@type": "Organization",
-      name: site.legalName,
-      logo: { "@type": "ImageObject", url: `${site.url}/logo.png` },
-    },
+  "@type": "ItemList",
+  name: "퍼블릭아이디 소식 · 보도자료",
+  itemListElement: news.map((n, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: n.title,
+    url: `${site.url}/news/${n.slug}`,
   })),
 };
 
@@ -58,33 +51,37 @@ export default function NewsPage() {
 
       <section className="py-20 sm:py-28">
         <Container>
-          <div className="mx-auto flex max-w-3xl flex-col gap-10">
+          <div className="mx-auto flex max-w-3xl flex-col gap-6">
             {news.map((n, i) => (
-              <Reveal key={n.slug} delay={i * 80}>
+              <Reveal key={n.slug} delay={Math.min(i, 6) * 60}>
                 <article
                   id={n.slug}
-                  className="scroll-mt-24 rounded-3xl border border-line bg-white p-7 shadow-sm sm:p-10"
+                  className="group scroll-mt-24 rounded-3xl border border-line bg-white p-7 shadow-sm transition hover:border-teal-700/40 sm:p-9"
                 >
                   <div className="h-1.5 w-12 rounded-full bg-arch" />
                   <p className="mt-5 font-display text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
-                    {n.year} · 보도자료
+                    {newsKind(n)}
                   </p>
-                  <h2 className="mt-3 text-2xl font-extrabold leading-[1.25] tracking-tight text-ink sm:text-[28px]">
-                    {n.title}
+                  <h2 className="mt-3 break-keep text-2xl font-extrabold leading-[1.25] tracking-tight text-ink sm:text-[26px]">
+                    <Link
+                      href={`/news/${n.slug}`}
+                      className="transition group-hover:text-teal-700"
+                    >
+                      {n.title}
+                    </Link>
                   </h2>
-                  <p className="mt-3 text-base font-medium leading-relaxed text-ink-soft">
+                  <p className="mt-3 break-keep text-base font-medium leading-relaxed text-ink-soft">
                     {n.subtitle}
                   </p>
-                  <div className="mt-6 space-y-4 border-t border-line pt-6">
-                    {n.body.map((p, pi) => (
-                      <p
-                        key={pi}
-                        className="break-keep text-[15px] leading-[1.75] text-ink"
-                      >
-                        {p}
-                      </p>
-                    ))}
-                  </div>
+                  <p className="mt-4 break-keep text-[15px] leading-[1.75] text-ink">
+                    {n.summary}
+                  </p>
+                  <Link
+                    href={`/news/${n.slug}`}
+                    className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-teal-700 transition hover:text-teal"
+                  >
+                    전문 읽기 →
+                  </Link>
                 </article>
               </Reveal>
             ))}

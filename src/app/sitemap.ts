@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { createClient } from "@supabase/supabase-js";
 import { parseBlogListItem } from "@/lib/blog";
+import { news } from "@/lib/news";
 
 // 발행·승인이 배포 없이 일어나므로 사이트맵도 요청 시점 생성(2차 감사 지적 — 빌드 스냅샷 드리프트 방지)
 export const dynamic = "force-dynamic";
@@ -56,5 +57,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${base}${route}`,
     priority: route === "" ? 1 : 0.8,
   }));
-  return [...staticEntries, ...(await blogEntries())];
+  // 2026-09-08 소식 개별 페이지(/news/[slug]) — 정적 JSON이라 실패 지점 없음. 게시물엔 날짜가 없어 lastModified 생략.
+  const newsEntries: MetadataRoute.Sitemap = news.map((n) => ({
+    url: `${base}/news/${n.slug}`,
+    priority: 0.7,
+  }));
+  return [...staticEntries, ...newsEntries, ...(await blogEntries())];
 }

@@ -1,10 +1,11 @@
 import Link from "next/link";
 import Container from "@/components/Container";
 import { site } from "@/lib/site";
-import { news } from "@/lib/news";
+import { news, newsKind } from "@/lib/news";
 
 // 2026-08-26 신설 — 홈에 최신 소식 노출(리서치 권고: 최신 활동은 "살아있는 회사" 신호이자
 // 네이버 유입 보강). 정적 news 데이터만 사용해 실패 지점이 없다. 슬림 리스트 1개 섹션.
+// 2026-09-08: 날짜 표기 폐지(대표 확정) — 연도 자리에 게시물 종류(보도자료)를 보여 주고 개별 페이지로 링크.
 export default function NewsStrip() {
   const latest = news.slice(0, 3);
   return (
@@ -40,11 +41,11 @@ export default function NewsStrip() {
           {latest.map((n) => (
             <li key={n.slug}>
               <Link
-                href="/news"
+                href={`/news/${n.slug}`}
                 className="group flex flex-col gap-1 py-5 sm:flex-row sm:items-baseline sm:gap-6"
               >
-                <span className="shrink-0 font-display text-sm font-semibold text-ink-soft">
-                  {n.year}
+                <span className="shrink-0 font-display text-sm font-semibold uppercase tracking-[0.12em] text-teal-700">
+                  {newsKind(n)}
                 </span>
                 <span className="min-w-0">
                   <span className="block break-keep font-bold text-ink transition group-hover:text-teal-700">
