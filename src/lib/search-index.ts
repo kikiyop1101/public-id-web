@@ -43,7 +43,7 @@ export const SEARCH_INDEX: SearchEntry[] = [
   { label: "소식", href: "/news", group: "소식", desc: "보도자료와 활동 소식 전체", keywords: "뉴스 소식 활동" },
   { label: "보도자료", href: "/press", group: "소식", desc: "언론 배포 보도자료 전문", keywords: "보도자료 언론 프레스 기사 press" },
   { label: "기업 블로그", href: "/blog", group: "소식", desc: "퍼블릭아이디의 이야기와 현장 소식", keywords: "블로그 글 이야기 현장" },
-  { label: "영상관", href: "/videos", group: "소식", desc: "1분 안팎 설명 영상 — 안전점검·노면표시재·디자인 구독", keywords: "영상 유튜브 동영상 쇼츠 설명영상 영상관 스쿨존 노면표시재" },
+  { label: "영상관", href: "/videos", group: "소식", desc: "제품·구독 시리즈 설명영상 30편(3~7분) + 쇼츠 — 안전점검·노면표시재·디자인 구독", keywords: "영상 유튜브 동영상 쇼츠 롱폼 설명영상 영상관 스쿨존 노면표시재 디자인구독" },
   { label: "소통 게시판", href: "/board", group: "소식", desc: "누구나 자유롭게 남기는 의견·질문", keywords: "게시판 소통 의견 질문 커뮤니티 자유게시판" },
   { label: "문의하기", href: "/contact", group: "소식", desc: "상담·견적 문의 — 영업일 기준 빠른 회신", keywords: "문의 상담 연락 전화 이메일 컨택" },
   // 스토어(외부)

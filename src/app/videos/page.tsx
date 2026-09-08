@@ -8,13 +8,13 @@ import { site } from "@/lib/site";
 import { videos } from "@/lib/videos";
 
 // 영상관 — 2026-09-08 신설(대표: "영상을 걸고 싶은데 무거울까봐").
-// 47편을 한 페이지에 두지만 전부 LiteYouTube 파사드라 초기 무게는 썸네일 lazy 로드뿐이고,
+// 롱폼 30편+쇼츠 48편을 한 페이지에 두지만 전부 LiteYouTube 파사드라 초기 무게는 썸네일 lazy 로드뿐이고,
 // iframe·유튜브 스크립트는 사용자가 누른 카드 하나에서만 뜬다.
 export const metadata: Metadata = {
   title: "영상관",
   alternates: { canonical: "/videos" },
   description:
-    "스쿨존 안전점검부터 노면표시재 소재, 디자인 구독과 홍보판촉물까지 — 퍼블릭아이디가 1분 안팎으로 설명하는 영상 모음.",
+    "노란발자국·노면표시재·직물시트·디자인 구독·우리회사OS — 시리즈별 3~7분 설명영상 30편과 1분 쇼츠. 클릭할 때만 재생기가 뜹니다.",
 };
 
 export default function VideosPage() {
@@ -27,10 +27,10 @@ export default function VideosPage() {
           <>
             보고 나면 이해되는
             <br />
-            1분 영상관
+            3분 설명영상관
           </>
         }
-        description="학교 앞 안전점검, 노면표시재가 페인트가 아닌 이유, 디자인 구독이 남는 계산 — 현장에서 자주 받는 질문을 짧은 영상으로 답합니다."
+        description="제품·구독마다 1편(개요)·2편(가격·사례)·3편(화이트보드 3분 정리) 시리즈 설명영상 30편, 그리고 현장에서 자주 받는 질문에 답하는 1분 쇼츠. 여기서 바로 재생됩니다."
       />
       <section className="bg-white">
         <Container className="py-16 sm:py-20">

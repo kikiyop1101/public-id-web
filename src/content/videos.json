@@ -1,284 +1,585 @@
 [
   {
+    "id": "yK_kWjfd3xo",
+    "title": "바닥에 붙이는 그래픽, 부착 시공 4단계 — 친환경 노면표시재 가이드",
+    "published": "2026-09-22",
+    "category": "안전·시공",
+    "kind": "long",
+    "series": "부착 가이드",
+    "publishAt": "2026-09-22T01:00:00Z"
+  },
+  {
+    "id": "SJnGCZ3CTUY",
+    "title": "벽면을 갤러리로 — 반 고흐·민화·우리 동네 지도를 못질 없이 붙이는 명화·지도 컬렉션",
+    "published": "2026-09-20",
+    "category": "디자인·판촉",
+    "kind": "long",
+    "series": "명화·지도 컬렉션",
+    "publishAt": "2026-09-20T01:00:00Z"
+  },
+  {
+    "id": "UDljPStXHds",
+    "title": "공공기관 129곳이 다시 찾는 이유 — 사회적기업·직접생산·시험성적서, 서류로 보는 퍼블릭아이디",
+    "published": "2026-09-18",
+    "category": "안전·시공",
+    "kind": "long",
+    "series": "숫자로 보는 신뢰",
+    "publishAt": "2026-09-18T01:00:00Z"
+  },
+  {
+    "id": "jzTaHfy8vX0",
+    "title": "우리 학교 앞, 안전한가요? — 사진 1장 제보로 통학로가 바뀌는 무료 안전 리포트",
+    "published": "2026-09-16",
+    "category": "안전·시공",
+    "kind": "long",
+    "series": "안전 리포트",
+    "publishAt": "2026-09-16T01:00:00Z"
+  },
+  {
+    "id": "1It3xMFqJso",
+    "title": "AI를 직원처럼 쓰는 작은 회사 — 우리회사OS 키트 38종, 무엇부터 맡길까",
+    "published": "2026-09-14",
+    "category": "소상공인·우리회사OS",
+    "kind": "long",
+    "series": "우리회사OS",
+    "publishAt": "2026-09-14T01:00:00Z"
+  },
+  {
+    "id": "EX-YYY_WMZw",
+    "title": "축제장 바닥이 가장 큰 광고판 — 붙였다 떼는 행사 브랜딩, 시공부터 철거까지 4분 정리",
+    "published": "2026-09-12",
+    "category": "디자인·판촉",
+    "kind": "long",
+    "series": "축제·행사 공간 브랜딩",
+    "publishAt": "2026-09-12T01:00:00Z"
+  },
+  {
+    "id": "fyGLl-fVqyo",
+    "title": "디자인 구독에 홈페이지 제작과 AI 직원까지 — 개편된 3플랜 구성·요금 4분 정리",
+    "published": "2026-09-10",
+    "category": "디자인·판촉",
+    "kind": "long",
+    "series": "디자인 구독 개편판",
+    "publishAt": "2026-09-10T01:00:00Z"
+  },
+  {
+    "id": "OYCevqZycos",
+    "title": "AI 직원 5명이 뭘 하는지 한 화면에 — PI-OS 관제탑, 어떻게 만들었고 누르면 뭐가 나오나",
+    "published": "2026-09-08",
+    "category": "소상공인·우리회사OS",
+    "kind": "long",
+    "series": "PI-OS 관제탑"
+  },
+  {
+    "id": "R0jFJrwqR9g",
+    "title": "AI 직원 5명이 뭘 하는지 한 화면에 보이는 사령실",
+    "published": "2026-09-08",
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
+  },
+  {
     "id": "NO-KUP4Y9ww",
     "title": "디자인구독료 아깝다는 착각",
     "published": "2026-09-06",
-    "category": "디자인·판촉"
+    "category": "디자인·판촉",
+    "kind": "short"
   },
   {
     "id": "pmsAHbcZD0Q",
     "title": "노면표시 시공 후 관리, 1년 책임진다는 거 아셨어요?",
     "published": "2026-09-05",
-    "category": "안전·시공"
+    "category": "안전·시공",
+    "kind": "short"
   },
   {
     "id": "EP80xp-7oeg",
     "title": "홍보판촉물 제작 견적, 왜 업체마다 다를까요?",
     "published": "2026-09-04",
-    "category": "디자인·판촉"
+    "category": "디자인·판촉",
+    "kind": "short"
   },
   {
     "id": "SSI_jTuHSoc",
     "title": "홍보판촉물 제작, 왜 한 곳에 맡겨야 할까요?",
     "published": "2026-09-03",
-    "category": "디자인·판촉"
+    "category": "디자인·판촉",
+    "kind": "short"
   },
   {
     "id": "Vlyz9Y-7PNs",
     "title": "디자인구독 몰랐다면 손해예요",
     "published": "2026-09-02",
-    "category": "디자인·판촉"
+    "category": "디자인·판촉",
+    "kind": "short"
   },
   {
     "id": "PuWo4bbJAs4",
     "title": "가을철 안전 위험요소 신고기간, 우리 동네는 괜찮을까요?",
     "published": "2026-09-01",
-    "category": "안전·시공"
+    "category": "안전·시공",
+    "kind": "short"
   },
   {
     "id": "vcSDbsAx1Z4",
     "title": "노면표시 야간반사, 9월부터 확인하세요",
     "published": "2026-08-31",
-    "category": "안전·시공"
+    "category": "안전·시공",
+    "kind": "short"
   },
   {
     "id": "ymbQhCAFDHU",
     "title": "스쿨존 심야 40~50km 완화, 우리 동네는 조건 됐을까요?",
     "published": "2026-08-30",
-    "category": "안전·시공"
+    "category": "안전·시공",
+    "kind": "short"
   },
   {
     "id": "Xq6KZu9dy0A",
     "title": "추석 전 공공시설 안전점검, 이 3가지 놓치면 위험해요",
     "published": "2026-08-29",
-    "category": "안전·시공"
+    "category": "안전·시공",
+    "kind": "short"
   },
   {
     "id": "GbrS-M2Nzkk",
     "title": "지원사업 선정 후 다음은 누가 해주나요?",
     "published": "2026-08-28",
-    "category": "소상공인·우리회사OS"
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
   },
   {
     "id": "5abF-U9IYYM",
     "title": "통학로 안전시설 210억, 우리 동네는 언제 좋아질까요?",
     "published": "2026-08-27",
-    "category": "안전·시공"
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "w_9x_pWilVw",
+    "title": "우리도 되나요? 노란발자국 설치·비용 3분 완전정리",
+    "published": "2026-08-27",
+    "category": "안전·시공",
+    "kind": "long",
+    "series": "노란발자국 3편"
   },
   {
     "id": "o2zuMxrHzUY",
     "title": "전국 초등학교 6,300곳 집중점검, 우리 동네는요?",
     "published": "2026-08-26",
-    "category": "안전·시공"
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "PpDqYQbvgBY",
+    "title": "낡은 볼라드, 뽑지 말고 입히세요 — 노란볼라드 드레스업 3분 정리",
+    "published": "2026-08-26",
+    "category": "안전·시공",
+    "kind": "long",
+    "series": "노란볼라드 3편"
   },
   {
     "id": "GBIEOj9bEkA",
     "title": "가을 축제 11만 명, 안전 어떻게 지킬까요",
     "published": "2026-08-25",
-    "category": "디자인·판촉"
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "pjfbyKbm3VM",
+    "title": "안 버려지는 굿즈의 비밀 — 타이벡 친환경 홍보판촉물 3분 정리",
+    "published": "2026-08-25",
+    "category": "디자인·판촉",
+    "kind": "long",
+    "series": "친환경 홍보판촉물 3편"
   },
   {
     "id": "eW9jfSn3Z_k",
     "title": "가게 가을 준비, 뭐부터 해야 할까요?",
     "published": "2026-08-24",
-    "category": "소상공인·우리회사OS"
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
   },
   {
     "id": "2Z5jjkTtvcE",
     "title": "스쿨존 안전대책 강화, 우리 동네는 괜찮을까요?",
     "published": "2026-08-24",
-    "category": "안전·시공"
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "v3FhWQV9zF8",
+    "title": "칠하지 않고 붙인다 — 친환경 그래픽 노면표시재 가격·기술 3분 정리",
+    "published": "2026-08-24",
+    "category": "안전·시공",
+    "kind": "long",
+    "series": "친환경 노면표시재 3편"
+  },
+  {
+    "id": "P3NtheaLbaM",
+    "title": "전단지 안 붙는 벽? 친환경 직물시트 가격·쓰임 3분 정리",
+    "published": "2026-08-23",
+    "category": "디자인·판촉",
+    "kind": "long",
+    "series": "친환경 직물시트 3편"
   },
   {
     "id": "aYnGpd8LFKw",
     "title": "가게 사인물 점검, 이 3가지만 확인하세요",
     "published": "2026-08-22",
-    "category": "디자인·판촉"
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "puHKVzI5bm4",
+    "title": "디자인 팀 없이 디자인 팀 두기 — 디자인 구독 플랜·가격 3분 정리",
+    "published": "2026-08-22",
+    "category": "디자인·판촉",
+    "kind": "long",
+    "series": "디자인 구독 3편"
   },
   {
     "id": "NIhNF4zcvLg",
     "title": "친환경 현수막, 비바람에도 안 찢어지는 이유",
     "published": "2026-08-21",
-    "category": "안전·시공"
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "dxosf8xticY",
+    "title": "노면표시는 왜 지워질까? 안전시설관리 구독 3분 완전정리",
+    "published": "2026-08-21",
+    "category": "안전·시공",
+    "kind": "long",
+    "series": "안전시설관리 구독 3편"
   },
   {
     "id": "v9_Ft_w_Ebk",
     "title": "노인보호구역엔 색이 없었다? 제주 첫 시범사업",
     "published": "2026-08-20",
-    "category": "안전·시공"
+    "category": "안전·시공",
+    "kind": "short"
   },
   {
     "id": "wurOcUT7fpA",
     "title": "비 오는 날 노면표시, 미끄럽지 않을까요?",
     "published": "2026-08-19",
-    "category": "안전·시공"
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "OFpp2MOBzJ4",
+    "title": "우리 회사, 뭘 AI에 맡겨야 할까 — 15문항 무료 진단으로 우선순위 찾기",
+    "published": "2026-08-19",
+    "category": "소상공인·우리회사OS",
+    "kind": "long",
+    "series": "우리회사OS 무료 진단"
   },
   {
     "id": "OP1ZFFBCaCE",
     "title": "열대야 숙면법 3가지, 에어컨 없이도 시원하게",
     "published": "2026-08-17",
-    "category": "생활·계절"
+    "category": "생활·계절",
+    "kind": "short"
   },
   {
     "id": "gPxAFshWLbo",
     "title": "스쿨존 노란발자국 색 바랬다면? 개학 전 확인하세요",
     "published": "2026-08-17",
-    "category": "안전·시공"
+    "category": "안전·시공",
+    "kind": "short"
   },
   {
     "id": "sQ6wdAED6_4",
     "title": "노면표시재, 페인트 아니었어요? 소재의 과학",
     "published": "2026-08-14",
-    "category": "안전·시공"
+    "category": "안전·시공",
+    "kind": "short"
   },
   {
     "id": "INJfqi7eQFQ",
     "title": "광복절 태극기, 언제까지 걸어도 될까요",
     "published": "2026-08-14",
-    "category": "생활·계절"
+    "category": "생활·계절",
+    "kind": "short"
   },
   {
     "id": "XbBiAAS6Qgg",
     "title": "행사장 바닥 유도선, 어떻게 만들까요?",
     "published": "2026-08-14",
-    "category": "안전·시공"
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "KuJI5lzD7NM",
+    "title": "판촉물, 왜 자꾸 버려질까? 안 버려지는 굿즈의 비밀, 타이벡 | 친환경 현수막까지",
+    "published": "2026-08-12",
+    "category": "디자인·판촉",
+    "kind": "long",
+    "series": "친환경 홍보판촉물 2편"
+  },
+  {
+    "id": "pp3x1OeOmSE",
+    "title": "볼라드, 뽑지 말고 입히세요 — 교체 없이 스쿨존을 바꾸는 노란볼라드 드레스업",
+    "published": "2026-08-12",
+    "category": "안전·시공",
+    "kind": "long",
+    "series": "노란볼라드 2편"
+  },
+  {
+    "id": "dpBNgfKIVFQ",
+    "title": "안전표지를 바닥에도, 벽에도 — PI안전표지와 친환경 노면표시재 가격 공개",
+    "published": "2026-08-11",
+    "category": "안전·시공",
+    "kind": "long",
+    "series": "친환경 노면표시재 2편"
   },
   {
     "id": "XnMp0F2vrnk",
     "title": "스쿨존 안전점검, 개학 전에 하셨나요?",
     "published": "2026-08-10",
-    "category": "안전·시공"
+    "category": "안전·시공",
+    "kind": "short"
   },
   {
     "id": "sH2UCvIGJf4",
     "title": "안전점검, 여름에만 하면 될까요?",
     "published": "2026-08-10",
-    "category": "안전·시공"
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "QXn7YbliocI",
+    "title": "직물시트, 얼마면 될까? ㎡당 88,000원의 정체 — 벽·볼라드·1년 관리까지",
+    "published": "2026-08-09",
+    "category": "디자인·판촉",
+    "kind": "long",
+    "series": "친환경 직물시트 2편"
   },
   {
     "id": "CZgXIVuAr5Q",
     "title": "폭염 속 실외작업 안전, 이 3가지 지키세요",
     "published": "2026-08-07",
-    "category": "안전·시공"
+    "category": "안전·시공",
+    "kind": "short"
   },
   {
     "id": "hLI-r7LqNbY",
     "title": "입추인데 왜 이렇게 더울까요?",
     "published": "2026-08-07",
-    "category": "생활·계절"
+    "category": "생활·계절",
+    "kind": "short"
+  },
+  {
+    "id": "xcR8smTynao",
+    "title": "디자인 외주 대신 구독하면 얼마일까요? | 디자인구독 플랜·가격 전부 공개",
+    "published": "2026-08-07",
+    "category": "디자인·판촉",
+    "kind": "long",
+    "series": "디자인 구독 2편"
   },
   {
     "id": "iJCqx-l2mt4",
     "title": "안심귀갓길, 우리 동네도 만들 수 있을까요?",
     "published": "2026-08-05",
-    "category": "안전·시공"
+    "category": "안전·시공",
+    "kind": "short"
   },
   {
     "id": "rS51drgFNLs",
     "title": "안전표지 700종? 학교 앞부터 주차장까지 다 달라요",
     "published": "2026-08-04",
-    "category": "안전·시공"
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "It8YOiGdnBU",
+    "title": "스쿨존 노란발자국, 아파트에도 설치할 수 있나요? | 비용·시공까지 한 번에",
+    "published": "2026-08-04",
+    "category": "안전·시공",
+    "kind": "long",
+    "series": "노란발자국 2편"
   },
   {
     "id": "HuAYmSt5LAg",
     "title": "역대급 42.5도 폭염에도 시공되는 이유",
     "published": "2026-08-03",
-    "category": "안전·시공"
+    "category": "안전·시공",
+    "kind": "short"
   },
   {
     "id": "lcBYR_TCwVM",
     "title": "체감 38도 폭염, 스쿨존 노란색 흐려지면 벌어지는 일",
     "published": "2026-08-01",
-    "category": "안전·시공"
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "XSWCtokngWU",
+    "title": "스쿨존 안전관리, 관공서만 되나요? | 학교·어린이집·병원도 가능합니다",
+    "published": "2026-08-01",
+    "category": "안전·시공",
+    "kind": "long",
+    "series": "안전시설관리 구독 2편"
   },
   {
     "id": "h7ITGRHzW1o",
     "title": "기온차 5도 넘으면 몸이 이렇게 됩니다",
     "published": "2026-07-31",
-    "category": "생활·계절"
+    "category": "생활·계절",
+    "kind": "short"
   },
   {
     "id": "3kshc66-yBw",
     "title": "안전시설 정기점검, 안 하면 생기는 일",
     "published": "2026-07-31",
-    "category": "안전·시공"
+    "category": "안전·시공",
+    "kind": "short"
   },
   {
     "id": "LY_iVkPP3kQ",
     "title": "여름방학 자전거 헬멧 안 챙기면 생기는 일",
     "published": "2026-07-31",
-    "category": "생활·계절"
+    "category": "생활·계절",
+    "kind": "short"
   },
   {
     "id": "63mMLeujUL8",
     "title": "안전시설관리 구독, 관공서만 되는 줄 아셨죠?",
     "published": "2026-07-31",
-    "category": "안전·시공"
+    "category": "안전·시공",
+    "kind": "short"
   },
   {
     "id": "5OMogZ1Ao_8",
     "title": "노면표시재, 이 폭염 버틸까요?",
     "published": "2026-07-27",
-    "category": "안전·시공"
+    "category": "안전·시공",
+    "kind": "short"
   },
   {
     "id": "st1SABH_gz8",
     "title": "가게 앞 1미터, 손님이 돌아서는 이유",
     "published": "2026-07-26",
-    "category": "소상공인·우리회사OS"
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
   },
   {
     "id": "nNaMV6WNm_Q",
     "title": "관공서마다 캐릭터 생기는 진짜 이유",
     "published": "2026-07-20",
-    "category": "디자인·판촉"
+    "category": "디자인·판촉",
+    "kind": "short"
   },
   {
     "id": "KYFcJKOdXbk",
     "title": "브랜드 마스코트, 로고보다 오래 남는 이유",
     "published": "2026-07-17",
-    "category": "디자인·판촉"
+    "category": "디자인·판촉",
+    "kind": "short"
   },
   {
     "id": "yPKHc1PRS64",
     "title": "여름 휴가지 안전선, 왜 필요할까요?",
     "published": "2026-07-17",
-    "category": "안전·시공"
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "EZ4Y1KBW8Sg",
+    "title": "볼라드가 노란색이 되면 생기는 일 — 굿디자인이 인정한 스쿨존 말뚝 (3분)",
+    "published": "2026-07-16",
+    "category": "안전·시공",
+    "kind": "long",
+    "series": "노란볼라드 1편"
+  },
+  {
+    "id": "eiAuOuPbbtI",
+    "title": "어린이보호구역 노란발자국 — 아이가 스스로 한 걸음 물러서는 이유 (4분)",
+    "published": "2026-07-16",
+    "category": "안전·시공",
+    "kind": "long",
+    "series": "노란발자국 1편"
   },
   {
     "id": "I82XgEZhTq8",
     "title": "42년째 숲 가꾸는 기업, 진짜 이유는?",
     "published": "2026-07-15",
-    "category": "생활·계절"
+    "category": "생활·계절",
+    "kind": "short"
   },
   {
     "id": "8AbQbW3x9QA",
     "title": "환율 오르면 물건값도 오른다고요?",
     "published": "2026-07-14",
-    "category": "소상공인·우리회사OS"
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
   },
   {
     "id": "gKQIHxLVS5s",
     "title": "휴가철 공공시설 안전 점검, 놓치기 쉬운 4곳",
     "published": "2026-07-13",
-    "category": "안전·시공"
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "c3-7dSDPXFU",
+    "title": "판촉물 제작, 버려지지 않게 만드는 법 — 친환경홍보 굿즈 (3분)",
+    "published": "2026-07-13",
+    "category": "디자인·판촉",
+    "kind": "long",
+    "series": "친환경 홍보판촉물 1편"
   },
   {
     "id": "UOxjQxX9ogM",
     "title": "여름 자외선, 선크림만으론 부족한 이유",
     "published": "2026-07-12",
-    "category": "생활·계절"
+    "category": "생활·계절",
+    "kind": "short"
   },
   {
     "id": "on2kZ_6z9-Q",
     "title": "복날 대목, 우리 가게도 잡는 법",
     "published": "2026-07-11",
-    "category": "소상공인·우리회사OS"
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
   },
   {
     "id": "0p4Xi6KO5M4",
     "title": "아이 열사병, 폭염 지난 지금이 더 위험해요",
     "published": "2026-07-10",
-    "category": "생활·계절"
+    "category": "생활·계절",
+    "kind": "short"
+  },
+  {
+    "id": "lmObmnLlRbU",
+    "title": "노면표시, 칠하지 말고 인쇄하세요 — 바닥이 캔버스가 되는 방법 (3분)",
+    "published": "2026-07-09",
+    "category": "안전·시공",
+    "kind": "long",
+    "series": "친환경 노면표시재 1편"
+  },
+  {
+    "id": "GJDWf1ek--c",
+    "title": "전단지가 붙지 않는 벽이 있다? — 친환경 직물시트의 비밀 (2분 40초)",
+    "published": "2026-07-06",
+    "category": "디자인·판촉",
+    "kind": "long",
+    "series": "친환경 직물시트 1편"
+  },
+  {
+    "id": "1p7MvAJYZxw",
+    "title": "로고 제작·디자인 외주, 매번 처음부터라면? '디자인 구독'이라는 방법 (7분 정리)",
+    "published": "2026-07-04",
+    "category": "디자인·판촉",
+    "kind": "long",
+    "series": "디자인 구독 1편"
+  },
+  {
+    "id": "gr5EpbS3Z-k",
+    "title": "노면표지 지워지면 누가 관리하나요? — 안전시설관리 구독",
+    "published": "2026-07-01",
+    "category": "안전·시공",
+    "kind": "long",
+    "series": "안전시설관리 구독 1편"
   }
 ]
