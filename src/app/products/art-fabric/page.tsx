@@ -1,16 +1,17 @@
 import type { Metadata } from 'next'
+import { pageMeta } from '@/lib/seo'
 import Image from 'next/image'
 import Link from 'next/link'
 import PageHero from '@/components/PageHero'
 import Container from '@/components/Container'
 import artworks from '@/data/artworks.json'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: '명화 컬렉션 — 반 고흐·모네·민화를 직물시트·현수막으로',
   description:
     '퍼블릭도메인 명화 132점을 친환경 직물시트와 타이벡 현수막에 폭 1,200mm로 출력합니다. 반 고흐·모네·르누아르·클림트와 한국 민화 — 게시 위치에 맞는 소재를 골라 벽면을 갤러리로.',
-  alternates: { canonical: '/products/art-fabric' },
-}
+  path: '/products/art-fabric',
+})
 
 type Artwork = (typeof artworks)[number]
 

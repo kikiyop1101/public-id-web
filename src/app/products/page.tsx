@@ -1,17 +1,48 @@
 import type { Metadata } from 'next'
+import { pageMeta } from '@/lib/seo'
 import Link from 'next/link'
 import { PRODUCTS } from '@/lib/products'
 import { getProductMedia } from '@/lib/product-media'
 import ProductTabs from '@/components/ProductTabs'
 import ProductSection from '@/components/ProductSection'
 import PageHero from '@/components/PageHero'
+import FaqBlock, { type FaqItem } from '@/components/FaqBlock'
 
-export const metadata: Metadata = {
+// 제품 FAQ (2026-09-08 AEO 감사) — 답변엔진이 "가격·설치·차이" 질문에 우리 페이지를 인용하도록.
+// 사실 정본 = src/lib/assistant-knowledge.ts(기준가·시공 조건·인증). 협력·제조 기관은 일반화, 가격은 "기준가".
+const PRODUCT_FAQ: FaqItem[] = [
+  {
+    q: '친환경 그래픽 노면표시재는 페인트 도색과 무엇이 다른가요?',
+    a: '도료를 칠하는 방식이 아니라, 친환경 라텍스 잉크로 인쇄한 알루미늄 박판을 이형지를 떼고 노면에 붙이는 점착식 스티커입니다(특허받은 제품). 시공이 빠르고, 철거 후 바닥에 끈적임이 남지 않으며, 미끄럼저항 46BPN으로 서울시 보도포장 기준(45 이상)을 충족합니다. GREENGUARD GOLD(UL 2818) 친환경 인증 제품입니다.',
+  },
+  {
+    q: '노면표시재 가격은 얼마인가요?',
+    a: '친환경 그래픽 노면표시재는 기준가 132,000원/㎡(VAT 포함), 친환경 그래픽 직물시트는 88,000원/㎡입니다. 노란발자국은 전면형 60만 원~, 우측면형 40만 원~, 아이타존(승하차 안전구역)은 150만 원~부터입니다. 수량·규격·현장 조건에 따라 달라지므로 정확한 금액은 맞춤 견적으로 안내해 드립니다.',
+  },
+  {
+    q: '노란발자국은 어디에 설치하는 표시인가요?',
+    a: '차도가 아니라 인도(보도) 위, 횡단보도 앞 대기 공간에 붙이는 어린이 보행안전 표시입니다. 아이들이 발자국 위에 서서 신호를 기다리도록 유도해 차도 진입을 막습니다. 상표등록(제40-1257164호) 제품이며, 어린이보호구역·통학로·유치원 앞에 주로 설치됩니다.',
+  },
+  {
+    q: '직접 부착할 수 있나요? 시공 조건은 무엇인가요?',
+    a: '기본 4단계(위치 선정 → 부착면 청소 → 이형지를 떼고 부착 → 고무망치로 가장자리부터 두드려 밀착)로 셀프 부착이 가능합니다. 노면이 완전히 마르고 대기·노면 온도가 10℃ 이상이어야 하며, 아스팔트·콘크리트·보도블록에 붙습니다(흙·자갈·탄성포장 불가). 공용도로는 인허가가 필요하고, 혹한기·대면적·차도 시공은 전문 시공팀이 실측부터 진행합니다.',
+  },
+  {
+    q: '시공 후 얼마나 오래 가나요? 관리도 해 주나요?',
+    a: '보행은 압착 직후 가능하고 차량 통행은 24~48시간 후를 권장합니다. 내구성은 현장 조건에 따라 6개월에서 1년 이상이며, 안전시설관리 구독을 이용하면 시공 후 1년 동안 정기 점검·보수까지 책임지고 관리합니다. 설치 위치와 관리 이력은 안전관리 지도에서 확인할 수 있습니다.',
+  },
+  {
+    q: '공공기관·학교도 구매할 수 있나요?',
+    a: '네. 퍼블릭아이디는 인증 사회적기업(제2020-227호)으로 「사회적기업 육성법」 제12조에 따른 공공기관 우선구매 대상이며, 주력 3종(노면표시재·직물시트·홍보판촉물) 모두 직접생산확인을 보유하고 있습니다. 지자체·교육청·공공기관 납품과 시공 실적은 실적 페이지에서 확인하실 수 있습니다.',
+  },
+]
+
+export const metadata: Metadata = pageMeta({
   title: '제품 5종 — 친환경 노면표시재·노란발자국·직물시트·노란볼라드·홍보판촉물',
   description:
     '특허받은 부착식 노면표시재(기준가 132,000원/㎡)부터 노란발자국·직물시트(88,000원/㎡)·노란볼라드·홍보판촉물까지 — 현장 사진과 기준가를 그대로 공개하는 퍼블릭아이디 친환경 제품군.',
-  alternates: { canonical: '/products' },
-}
+  path: '/products',
+})
 
 // 공개 기준가(VAT 포함, 정본=assistant-knowledge.ts) — 있는 제품만 Offer 기재
 const BASE_PRICES: Partial<Record<string, string>> = {
@@ -151,6 +182,13 @@ export default function ProductsPage() {
           </div>
         </div>
       </section>
+
+      <FaqBlock
+        title="제품에 대해 자주 묻는 질문"
+        intro="가격·설치 조건·차이점처럼 문의 전에 가장 많이 확인하시는 내용을 모았습니다."
+        items={PRODUCT_FAQ}
+        className="bg-white border-t border-line"
+      />
 
       {/* 견적·구독으로 잇는 최종 CTA */}
       <section className="bg-cloud">

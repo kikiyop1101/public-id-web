@@ -1,22 +1,19 @@
 import type { Metadata } from 'next'
+import { pageMeta } from '@/lib/seo'
 import { KITS, KIT_GROUPS, LATPEED_STORE_URL, formatPrice } from '@/lib/os-kits'
 import OsCurator from '@/components/OsCurator'
 import KitLink from '@/components/KitLink'
 import ScanClient from '@/components/ScanClient'
 import BreadcrumbLd from '@/components/BreadcrumbLd'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: '우리회사OS — AI를 직원처럼 쓰는 회사 자동화 키트 39종',
   description:
     '견적서·홍보 글·문의 답변·월말 마감을 AI에 맡기는 실행 키트 38종과 0원 무료 점검. 더블클릭으로 실행하고, 결과물에는 우리 회사 이름이 들어갑니다. 무료 진단으로 우선순위부터 확인하세요.',
-  alternates: { canonical: '/os' },
-  openGraph: {
-    title: '우리회사OS — 회사 자동화 키트 39종',
-    description:
-      '뭘 AI에 맡길지 3분 무료 진단부터. 반복 업무를 덜어 주는 실행 키트 38종.',
-    url: '/os',
-  },
-}
+  path: '/os',
+  ogTitle: '우리회사OS — 회사 자동화 키트 39종 | 퍼블릭아이디',
+  ogDescription: '뭘 AI에 맡길지 3분 무료 진단부터. 반복 업무를 덜어 주는 실행 키트 38종.',
+})
 
 const FAQ = [
   {
@@ -57,7 +54,22 @@ export default function OsPage() {
       <BreadcrumbLd trail={[{ name: '우리회사OS', path: '/os' }]} />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
+      />
+      {/* 화면의 FAQ 4문항을 FAQPage로도 낸다(2026-09-08 AEO 감사 — "설치해야 하나요/AI 구독료" 질문 인용용) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: FAQ.map((f) => ({
+              '@type': 'Question',
+              name: f.q,
+              acceptedAnswer: { '@type': 'Answer', text: f.a },
+            })),
+          }).replace(/</g, '\\u003c'),
+        }}
       />
 
       {/* 히어로 */}

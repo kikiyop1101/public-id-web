@@ -1,16 +1,17 @@
 import type { Metadata } from 'next'
+import { pageMeta } from '@/lib/seo'
 import Link from 'next/link'
 import { PRODUCTS } from '@/lib/products'
 import LeadForm from '@/components/LeadForm'
 import OpenAssistantButton from '@/components/OpenAssistantButton'
 import BreadcrumbLd from '@/components/BreadcrumbLd'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: '맞춤 견적',
   description:
     '친환경 그래픽 노면표시재·직물시트·홍보판촉물의 규격·수량 맞춤 견적을 신청하세요.',
-  alternates: { canonical: '/quote' },
-}
+  path: '/quote',
+})
 
 // ?items= — 견적 시뮬레이터(/estimate)가 넘기는 구성 요약(사람이 읽는 텍스트, 2,000자 컷)
 export default async function QuotePage({

@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
 import SafetyMapApp from "@/components/safety-map/SafetyMapApp";
 import BreadcrumbLd from "@/components/BreadcrumbLd";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "안전관리 지도",
-  alternates: { canonical: "/safety-map" },
   description:
     "퍼블릭아이디가 설치·관리하는 노면표시·안전표지의 전국 설치 현황과 관리기간을 지도에서 한눈에 확인하세요.",
-};
+  path: "/safety-map",
+});
 
 export default function SafetyMapPage() {
   return (

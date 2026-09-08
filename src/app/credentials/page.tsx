@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
@@ -6,12 +7,12 @@ import Reveal from "@/components/Reveal";
 import { site } from "@/lib/site";
 import BreadcrumbLd from "@/components/BreadcrumbLd";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "인증·특허",
-  alternates: { canonical: "/credentials" },
   description:
     "특허 제10-1974029호, GREENGUARD GOLD, 노란발자국 상표등록, 인증 사회적기업·우수디자인(GD) 등 — 특허와 인증으로 검증된 퍼블릭아이디.",
-};
+  path: "/credentials",
+});
 
 const groups = [
   {

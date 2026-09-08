@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { pageMeta } from '@/lib/seo'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getPostBySlug } from '@/lib/blog'
@@ -14,17 +15,13 @@ export async function generateMetadata({
   const post = await getPostBySlug(slug)
   if (!post) return {}
   const description = post.body.replace(/\s+/g, ' ').trim().slice(0, 150)
-  return {
+  return pageMeta({
     title: post.title,
     description,
-    alternates: { canonical: `/blog/${post.slug}` },
-    openGraph: {
-      type: 'article',
-      title: post.title,
-      description,
-      ...(post.cover_image ? { images: [{ url: post.cover_image }] } : {}),
-    },
-  }
+    path: `/blog/${post.slug}`,
+    ogType: 'article',
+    ...(post.cover_image ? { images: [{ url: post.cover_image, alt: post.title }] } : {}),
+  })
 }
 
 export default async function BlogPostPage({

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { pageMeta } from '@/lib/seo'
 import Link from 'next/link'
 import Image from 'next/image'
 import { createAdminClient } from '@/lib/supabase/admin'
@@ -9,12 +10,12 @@ import { loadShowcaseSites } from '@/lib/showcase'
 import SafetyMapSection from './SafetyMapSection'
 import BreadcrumbLd from '@/components/BreadcrumbLd'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: '우리 학교 앞 안전 리포트',
   description:
     '통학로 위험 지점을 제보하면 퍼블릭아이디가 무료 진단 리포트를 만들어 지자체·학교에 전달합니다.',
-  alternates: { canonical: '/safety-report' },
-}
+  path: '/safety-report',
+})
 
 export const dynamic = 'force-dynamic'
 

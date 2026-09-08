@@ -1,4 +1,5 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
@@ -6,12 +7,12 @@ import Button from "@/components/Button";
 import DesignTokenDemo from "@/components/sections/DesignTokenDemo";
 import BreadcrumbLd from "@/components/BreadcrumbLd";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "디자인시스템",
-  alternates: { canonical: "/design" },
   description:
     "색 하나를 바꾸면 명함부터 현수막까지 한 번에 바뀝니다. 퍼블릭아이디가 스스로 만들어 쓰는 디자인시스템과, 그 체계를 귀사의 것으로 만들어 드리는 디자인구독.",
-};
+  path: "/design",
+});
 
 const problems = [
   {

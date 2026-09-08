@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
 import ContactForm from "@/components/ContactForm";
 import { site } from "@/lib/site";
 import BreadcrumbLd from "@/components/BreadcrumbLd";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "문의",
-  alternates: { canonical: "/contact" },
   description:
     "구독 상담부터 시공 견적까지. 전화·이메일·문의 폼으로 퍼블릭아이디에 편하게 문의하세요.",
-};
+  path: "/contact",
+});
 
 const info: [string, string][] = [
   ["전화", site.tel],

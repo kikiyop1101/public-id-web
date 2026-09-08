@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "개인정보처리방침",
-  alternates: { canonical: "/privacy" },
   description:
     "주식회사 퍼블릭아이디 개인정보처리방침 — 수집 항목, 이용 목적, 보유 기간, 처리 위탁, 정보주체의 권리.",
-};
+  path: "/privacy",
+});
 
 const sections: { h: string; body: (string | string[])[] }[] = [
   {

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { pageMeta } from '@/lib/seo'
 import Image from 'next/image'
 import Button from '@/components/Button'
 import Container from '@/components/Container'
@@ -11,18 +12,15 @@ import Reveal from '@/components/Reveal'
 // - store.public-id.co.kr 루트가 이 페이지로 rewrite된다(proxy.ts). 정본 주소는 www/festival.
 // - 사진은 전부 자사 갤러리(/products/*)·자사 연출 에셋(/work/*)만 쓴다.
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: '축제·행사 공간 브랜딩 — 퍼블릭아이디 제안',
   description:
     '축제·전시·행사장의 바닥과 벽이 가장 큰 홍보 공간이 됩니다. 붙였다 떼는 친환경 그래픽 노면표시재(기준가 132,000원/㎡)·직물시트(88,000원/㎡)·친환경 타이벡 현수막·홍보판촉물까지 — 디자인부터 부착 시공·철거까지 퍼블릭아이디가 한 번에 진행합니다.',
-  alternates: { canonical: '/festival' },
-  openGraph: {
-    title: '축제·행사 공간 브랜딩 — 퍼블릭아이디 제안',
-    description:
-      '행사장 바닥·벽·배너·굿즈까지 친환경 소재 4종으로. 행사가 끝나면 끈적임 없이 철거됩니다.',
-    images: [{ url: '/products/친환경그래픽노면표시재/참조16.jpg' }],
-  },
-}
+  path: '/festival',
+  ogDescription:
+    '행사장 바닥·벽·배너·굿즈까지 친환경 소재 4종으로. 행사가 끝나면 끈적임 없이 철거됩니다.',
+  images: [{ url: '/products/친환경그래픽노면표시재/참조16.jpg', alt: '축제·행사장 바닥에 부착한 친환경 그래픽 노면표시재' }],
+})
 
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',

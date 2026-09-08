@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { pageMeta } from '@/lib/seo'
 import Link from 'next/link'
 import PageHero from '@/components/PageHero'
 import Container from '@/components/Container'
@@ -7,12 +8,12 @@ import EstimateClient from './EstimateClient'
 
 // 견적 시뮬레이터 — 2026-09-08 신설(홈페이지 체류시간 기획안 후보 4안).
 // 담당자가 예산을 잡을 때 슬라이더로 기준가 합계를 즉시 본다. 단가 정본 = src/lib/estimate.ts.
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: '견적 시뮬레이터',
   description:
     '노면표시재·노란발자국·안전표지·직물시트의 규격과 수량을 슬라이더로 움직이며 공개 기준가 합계를 바로 확인하세요. 예산으로 가능한 물량도 역산해 드립니다.',
-  alternates: { canonical: '/estimate' },
-}
+  path: '/estimate',
+})
 
 export default function EstimatePage() {
   return (

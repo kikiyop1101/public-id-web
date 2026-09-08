@@ -1,12 +1,14 @@
 import type { Metadata } from 'next'
+import { pageMeta } from '@/lib/seo'
 import Link from 'next/link'
 import ReportForm from '@/components/ReportForm'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: '위험 지점 제보 — 우리 학교 앞 안전 리포트',
-  description: '통학로 위험 지점을 사진과 위치로 제보해 주세요.',
-  alternates: { canonical: '/safety-report/new' },
-}
+  description:
+    '통학로 위험 지점을 사진과 위치로 제보해 주세요.',
+  path: '/safety-report/new',
+})
 
 export default function NewReportPage() {
   return (

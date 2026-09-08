@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { pageMeta } from '@/lib/seo'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
 import { parseBoardListRow } from '@/lib/board'
@@ -6,11 +7,12 @@ import { parseRows } from '@/lib/rows'
 import BoardForm from './BoardForm'
 import BreadcrumbLd from '@/components/BreadcrumbLd'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: '소통 게시판',
-  description: '퍼블릭아이디에 궁금한 점과 의견을 남겨주세요.',
-  alternates: { canonical: '/board' },
-}
+  description:
+    '퍼블릭아이디에 궁금한 점과 의견을 남겨주세요.',
+  path: '/board',
+})
 
 // 게시판은 항상 최신 상태로
 export const dynamic = 'force-dynamic'

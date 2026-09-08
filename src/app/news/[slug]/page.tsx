@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Container from "@/components/Container";
@@ -21,16 +22,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const item = getNews(slug);
   if (!item) return {};
-  return {
+  return pageMeta({
     title: item.title,
     description: item.summary,
-    alternates: { canonical: `/news/${item.slug}` },
-    openGraph: {
-      type: "article",
-      title: item.title,
-      description: item.summary,
-    },
-  };
+    path: `/news/${item.slug}`,
+    ogType: "article",
+  });
 }
 
 export default async function NewsDetailPage({

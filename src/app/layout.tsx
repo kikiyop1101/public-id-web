@@ -20,7 +20,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.public-id.co.kr"),
-  alternates: { canonical: "/" },
+  // canonical은 각 페이지가 pageMeta()로 자기 경로를 선언한다(루트에 두면 noindex·admin 페이지까지 "/"를 상속 — 2026-09-08 감사).
   title: {
     default: "퍼블릭아이디 | 디자인 구독 · 안전 시설 관리",
     template: "%s | 퍼블릭아이디",
@@ -55,20 +55,8 @@ export const metadata: Metadata = {
       },
     ],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "퍼블릭아이디 | 디자인 구독 · 안전 시설 관리",
-    description:
-      "전용 마스코트부터 매월 웹툰, 디자인 시스템, 홈페이지까지 — 구독으로 완성하는 우리 브랜드.",
-    images: [
-      {
-        url: "/og.png",
-        width: 1200,
-        height: 630,
-        alt: "퍼블릭아이디 — 디자인 구독 · 안전 시설 관리",
-      },
-    ],
-  },
+  // 카드 종류만 두면 title/description/images는 각 페이지의 openGraph에서 자동 상속된다(Next 메타데이터 후처리).
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({
@@ -146,6 +134,7 @@ export default function RootLayout({
     },
     sameAs: [
       site.blog,
+      site.tistory,
       site.youtube,
       site.instagram,
       ...site.stores.map((s) => s.href),

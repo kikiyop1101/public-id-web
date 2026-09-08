@@ -1,16 +1,17 @@
 import type { Metadata } from 'next'
+import { pageMeta } from '@/lib/seo'
 import Image from 'next/image'
 import Link from 'next/link'
 import PageHero from '@/components/PageHero'
 import Container from '@/components/Container'
 import maps from '@/data/maps.json'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: '국내외 지도 컬렉션 — 전도·행정지도·세계지도 출력',
   description:
     '국토지리정보원 2025년판 대한민국 전도부터 우리 동네 시·군 행정지도, 세계지도·대동여지도까지 — 친환경 타이벡 현수막과 직물시트, 두 소재 모두로 폭 1,200mm 출력합니다. 관공서 상황실·학교·사무실 벽면 지도.',
-  alternates: { canonical: '/products/map-banner' },
-}
+  path: '/products/map-banner',
+})
 
 type MapItem = (typeof maps)[number]
 

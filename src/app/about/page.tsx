@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
 import BreadcrumbLd from "@/components/BreadcrumbLd";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "회사소개",
-  alternates: { canonical: "/about" },
   description:
     "2017년 세종에서 시작한 KIDP 종합산업디자인전문회사이자 인증 사회적기업 — 특허받은 부착식 노면표시재와 시험성적(46BPN·GREENGUARD GOLD)으로 공공 안전 디자인을 만들고, 디자인 구독으로 작은 조직의 디자인 파트너가 됩니다.",
-};
+  path: "/about",
+});
 
 const facts = [
   { k: "전문성", v: "KIDP 종합산업디자인전문회사 (시각 · 포장 · 환경)" },

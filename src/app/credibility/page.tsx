@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
@@ -6,12 +7,12 @@ import Reveal from "@/components/Reveal";
 import { credibility as c } from "@/lib/credibility";
 import BreadcrumbLd from "@/components/BreadcrumbLd";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "숫자로 보는 신뢰",
-  alternates: { canonical: "/credibility" },
   description:
     "2019년부터 7개년 연속, 누적 960여 건의 프로젝트와 278개 거래처 — 공공기관·지자체 63%. 퍼블릭아이디의 검증된 실행 이력.",
-};
+  path: "/credibility",
+});
 
 const stats = [
   { v: `${c.yearsActive}`, u: "개년", k: "연속 운영", s: `${c.period}` },

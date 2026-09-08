@@ -15,6 +15,8 @@ Next.js 16.2.x. `node_modules/next/dist/docs/`가 없으면(클론/CI 환경) �
 - 소식(/news 전체 · /press 보도자료만, 탭 공용 컴포넌트 NewsListSection) 데이터 = `src/content/news.json`(최신이 맨 앞, 날짜 필드 없음 — 대표 확정 2026-09-08). 볼트 `Agent\콘텐츠본부\보도자료\publisher
 ews_publish.py`가 주 3건(월·수·금) 자동으로 검증→선두 삽입→build→commit→push 한다. 손으로 고칠 땐 slug 유일·플레인 텍스트 문단만 지키면 된다.
 
+- **페이지 메타데이터는 `pageMeta()`(`src/lib/seo.ts`) 하나로 쓴다**(2026-09-08 감사). Next는 openGraph를 병합이 아니라 통째 교체하므로 손으로 `openGraph: {…}`를 쓰면 og:image·siteName이 사라지고, 안 쓰면 홈 문구가 상속된다. 새 페이지 = `export const metadata: Metadata = pageMeta({ title, description, path })`. 루트 layout에는 canonical을 두지 않는다. FAQ가 있는 페이지는 `FaqBlock`(FAQPage JSON-LD 동반)으로.
+
 환경 함정(Windows PowerShell): npx가 차단되면 npm.cmd 절대경로로 우회 — `& 'C:\Program Files\nodejs\npm.cmd' exec <pkg>` (또는 Bash 툴 사용).
 
 배포 검증: push 후 https://public-id.co.kr 를 실제 브라우저로 렌더해 눈으로 확인한다(curl은 Cloudflare 봇차단으로 403). **데스크톱+모바일 2벌 필수** — `node <시스템>\Agent\_tools\shot.mjs <url> <out> [--mobile]`. 홈의 스크롤 연동 모션(히어로 깊이 레이어·게이트웨이 스티키 스택·스탯 카운트업 = `ScrollDepth`·`.stack-card`·`CountUp`)은 `--scroll` 연속 프레임으로 이동량·겹침·잘림을 본다(정본 = `_design-system\design.md` §5 스크롤 연동, 2026-09-03).

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
@@ -10,12 +11,12 @@ import Pricing from "@/components/sections/Pricing";
 import Faq from "@/components/sections/Faq";
 import BreadcrumbLd from "@/components/BreadcrumbLd";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "구독 서비스",
-  alternates: { canonical: "/subscribe" },
   description:
     "전용 마스코트·매월 웹툰·디자인 시스템에 홈페이지 제작까지 담은 디자인 구독과 노면표시·안전표지 정기 시설 관리. 소상공인부터 지자체까지 맞춤 구독으로.",
-};
+  path: "/subscribe",
+});
 
 export default function SubscribePage() {
   return (

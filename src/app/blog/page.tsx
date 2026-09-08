@@ -1,15 +1,17 @@
 import { Suspense } from 'react'
 import type { Metadata } from 'next'
+import { pageMeta } from '@/lib/seo'
 import Link from 'next/link'
 import { getPublishedPosts } from '@/lib/blog'
 import NaverBlogFeed from '@/components/NaverBlogFeed'
 import BreadcrumbLd from '@/components/BreadcrumbLd'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: '기업 블로그',
-  description: '퍼블릭아이디의 이야기와 현장 소식.',
-  alternates: { canonical: '/blog' },
-}
+  description:
+    '퍼블릭아이디의 이야기와 현장 소식.',
+  path: '/blog',
+})
 
 export const dynamic = 'force-dynamic'
 

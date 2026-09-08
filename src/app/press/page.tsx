@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/PageHero";
 import NewsListSection from "@/components/NewsListSection";
 import { site } from "@/lib/site";
@@ -8,12 +9,12 @@ import BreadcrumbLd from "@/components/BreadcrumbLd";
 // 보도자료 탭 — 2026-09-08 대표 "소식 탭에 보도자료 탭을 따로". 데이터는 news.json에서 kind=보도자료만.
 const press = news.filter((n) => newsKind(n) === "보도자료");
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "보도자료",
-  alternates: { canonical: "/press" },
   description:
     "㈜퍼블릭아이디 보도자료. 친환경 그래픽 노면표시재·노란발자국·안전시설관리 구독·디자인구독 등 언론 배포 자료를 모았습니다.",
-};
+  path: "/press",
+});
 
 const jsonLd = {
   "@context": "https://schema.org",

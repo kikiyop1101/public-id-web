@@ -1,26 +1,56 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
 import Button from "@/components/Button";
 import BreadcrumbLd from "@/components/BreadcrumbLd";
 import VideoGrid from "./VideoGrid";
 import { site } from "@/lib/site";
-import { videos } from "@/lib/videos";
+import { videos, longforms, isLive } from "@/lib/videos";
+
+// 공개된 롱폼을 VideoObject 목록으로 낸다(2026-09-08 AEO 감사) — 유튜브 밖에서 "퍼블릭아이디 설명영상"이 검색·인용되게.
+// 예약 공개분(publishAt 미래)은 빌드 시각 기준으로 제외(아직 없는 영상을 색인시키지 않기 위해).
+const videoJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "퍼블릭아이디 설명영상",
+  itemListElement: longforms
+    .filter((v) => isLive(v))
+    .map((v, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "VideoObject",
+        name: v.title,
+        description: `${v.series ? `${v.series} 시리즈 — ` : ""}${v.category} 설명영상. 퍼블릭아이디 유튜브 채널.`,
+        thumbnailUrl: `https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`,
+        uploadDate: v.published,
+        embedUrl: `https://www.youtube.com/embed/${v.id}`,
+        contentUrl: `https://www.youtube.com/watch?v=${v.id}`,
+        inLanguage: "ko-KR",
+        publisher: { "@id": `${site.url}/#organization` },
+      },
+    })),
+};
 
 // 영상관 — 2026-09-08 신설(대표: "영상을 걸고 싶은데 무거울까봐").
 // 롱폼 30편+쇼츠 48편을 한 페이지에 두지만 전부 LiteYouTube 파사드라 초기 무게는 썸네일 lazy 로드뿐이고,
 // iframe·유튜브 스크립트는 사용자가 누른 카드 하나에서만 뜬다.
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "영상관",
-  alternates: { canonical: "/videos" },
   description:
     "노란발자국·노면표시재·직물시트·디자인 구독·우리회사OS — 시리즈별 3~7분 설명영상 30편과 1분 쇼츠. 클릭할 때만 재생기가 뜹니다.",
-};
+  path: "/videos",
+});
 
 export default function VideosPage() {
   return (
     <>
       <BreadcrumbLd trail={[{ name: "영상관", path: "/videos" }]} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd).replace(/</g, "\\u003c") }}
+      />
       <PageHero
         eyebrow="Videos"
         title={

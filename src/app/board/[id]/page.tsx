@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { pageMeta } from '@/lib/seo'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
@@ -24,13 +25,14 @@ export async function generateMetadata({
     .single()
   const post = parseRow('board_posts', result, parseBoardPostRow)
   if (!post) return {}
-  return {
+  return pageMeta({
     title: `${post.title} — 소통 게시판`,
     description: post.body.replace(/\s+/g, ' ').trim().slice(0, 150),
-    alternates: { canonical: `/board/${post.id}` },
+    path: `/board/${post.id}`,
+    ogType: 'article',
     // 무검수 즉시공개 UGC라 개별 글은 색인 제외(스팸 색인 방지, 2026-08-26 윤결 판단) — 목록 /board는 색인 유지
     robots: { index: false, follow: true },
-  }
+  })
 }
 
 // 평면 rows → 중첩 트리 (대댓글의 대댓글까지 무제한 깊이)

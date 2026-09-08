@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
@@ -6,12 +7,12 @@ import Reveal from "@/components/Reveal";
 import Work from "@/components/sections/Work";
 import BreadcrumbLd from "@/components/BreadcrumbLd";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "사업영역",
-  alternates: { canonical: "/work" },
   description:
     "노란발자국, 친환경 그래픽 노면표시재, 어린이보호구역·CPTED, 웨이파인딩, 친환경 현수막까지 — 퍼블릭아이디의 공공안전 디자인.",
-};
+  path: "/work",
+});
 
 export default function WorkPage() {
   return (

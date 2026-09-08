@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
 import Button from "@/components/Button";
 import BreadcrumbLd from "@/components/BreadcrumbLd";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "노면 그래픽 부착 가이드",
-  alternates: { canonical: "/guide" },
   description:
     "친환경 그래픽 노면표시재는 칠하지 않고 붙입니다. 붙일 수 있는 바닥 조건, 노면 온도 기준, 위치 선정·청소·부착·밀착 4단계와 동절기 시공까지 영상과 함께 정리한 실무 가이드.",
-};
+  path: "/guide",
+});
 
 const conditions = [
   { k: "가능한 바닥", v: "아스팔트 · 콘크리트 등 단단하고 평활한 노면" },
