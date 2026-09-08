@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { pageMeta } from '@/lib/seo'
-import { KITS, KIT_GROUPS, LATPEED_STORE_URL, formatPrice } from '@/lib/os-kits'
+import { KITS, KIT_GROUPS, LATPEED_STORE_URL, LATPEED_MEMBERSHIP_URL, formatPrice } from '@/lib/os-kits'
 import OsCurator from '@/components/OsCurator'
 import KitLink from '@/components/KitLink'
 import ScanClient from '@/components/ScanClient'
@@ -254,6 +254,28 @@ export default function OsPage() {
               className="inline-flex h-14 items-center justify-center rounded-full border border-white/25 bg-white/10 px-7 text-[15px] font-semibold text-white transition hover:bg-white/20"
             >
               키트 전체 보기
+            </KitLink>
+          </div>
+
+          {/* 무료 멤버십 — 아직 살 킷이 안 보이는 분의 다음 한 걸음 */}
+          <div className="mx-auto mt-12 max-w-[42em] rounded-2xl border border-white/15 bg-white/5 px-6 py-6 text-left sm:px-8">
+            <p className="font-display text-lime text-xs font-semibold uppercase tracking-[0.18em]">
+              Free membership
+            </p>
+            <h3 className="mt-2 text-lg font-bold text-white">
+              아직 살 킷이 안 보이면, 무료 멤버로 먼저 받아 보세요
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-white/75">
+              0원, 결제 정보 없음. 새 킷이 나오면 판매 전에 먼저 알려 드리고, 작은 회사가 실제로
+              자동화한 사례를 한 달에 한 통만 보냅니다. 언제든 그만둘 수 있습니다.
+            </p>
+            <KitLink
+              kit="membership"
+              place="cta"
+              href={LATPEED_MEMBERSHIP_URL}
+              className="mt-4 inline-flex h-11 items-center justify-center rounded-full border border-white/25 bg-white/10 px-5 text-sm font-semibold text-white transition hover:bg-white/20"
+            >
+              무료 멤버 가입하기 (월 1회 레터)
             </KitLink>
           </div>
         </div>

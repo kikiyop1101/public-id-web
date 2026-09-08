@@ -378,6 +378,9 @@ export const KIT_GROUPS: { key: Kit['group']; title: string; desc: string }[] = 
 /** 래피드 퍼블릭아이디 스토어 — 39종 전부가 보이는 목록(2026-08-31 실측) */
 export const LATPEED_STORE_URL = 'https://www.latpeed.com/stores/TebXT'
 
+/** 우리회사OS 무료 멤버(0원·월 1회 레터·신규 킷 선공개) — 2026-08-31 개설, 09-09 대표 결정으로 /os 노출 */
+export const LATPEED_MEMBERSHIP_URL = 'https://www.latpeed.com/memberships/6a621ed13abdc26c1c23f412'
+
 export function formatPrice(n: number): string {
   return n.toLocaleString('ko-KR')
 }
