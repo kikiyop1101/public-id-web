@@ -1,6 +1,13 @@
 import type { Metadata } from 'next'
 import { pageMeta } from '@/lib/seo'
-import { KITS, KIT_GROUPS, LATPEED_STORE_URL, LATPEED_MEMBERSHIP_URL, formatPrice } from '@/lib/os-kits'
+import {
+  KITS,
+  KIT_GROUPS,
+  LATPEED_STORE_URL,
+  LATPEED_MEMBERSHIP_URL,
+  LATPEED_REVIEWERS_URL,
+  formatPrice,
+} from '@/lib/os-kits'
 import OsCurator from '@/components/OsCurator'
 import KitLink from '@/components/KitLink'
 import ScanClient from '@/components/ScanClient'
@@ -32,6 +39,10 @@ const FAQ = [
     q: '어떤 걸 먼저 사야 할지 모르겠습니다.',
     a: '페이지 위의 AI 큐레이터에 회사와 고민을 한 줄 적으면 맞는 키트 2~3개를 골라 드립니다. 더 꼼꼼히 보려면 3분 무료 진단으로 업무 5개 영역을 점검해 보세요.',
   },
+  {
+    q: '후기단은 어떻게 신청하나요?',
+    a: "하단 '후기단 신청하기'에서 0원으로 결제하면 실행 키트 전체 zip을 바로 받습니다. 한 달 뒤 후기 한 줄을 이메일로 보내 주시면 됩니다. 5명 한정입니다.",
+  },
 ]
 
 export default function OsPage() {
@@ -56,7 +67,7 @@ export default function OsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
       />
-      {/* 화면의 FAQ 4문항을 FAQPage로도 낸다(2026-09-08 AEO 감사 — "설치해야 하나요/AI 구독료" 질문 인용용) */}
+      {/* 화면의 FAQ 문항을 FAQPage로도 낸다(같은 배열)(2026-09-08 AEO 감사 — "설치해야 하나요/AI 구독료" 질문 인용용) */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -104,6 +115,12 @@ export default function OsPage() {
         </div>
         <p className="text-ink-soft mt-4 text-sm">
           전 상품 부가세 포함 표기 · 런칭가는 초기 10명 한정 · 구매는 래피드에서
+        </p>
+        {/* 러닝코스트 공개(대표 확정 2026-09-09) — 작은 글씨가 아니라 본문 크기로 읽히게 */}
+        <p className="text-ink mt-6 max-w-[42em] text-base leading-relaxed">
+          키트 값 외에 드는 돈은 하나입니다. 키트 안의 AI는 대표님이 이미 쓰시는 ChatGPT·Claude
+          구독을 그대로 씁니다(월 2~3만 원, 이미 쓰고 계시면 추가 비용 없음). ④AI 직원 5명만
+          작은 서버(월 1~2만 원)가 더 듭니다. 설치 대행과 기술 지원은 포함되지 않습니다.
         </p>
 
         <OsCurator />
@@ -257,8 +274,30 @@ export default function OsPage() {
             </KitLink>
           </div>
 
-          {/* 무료 멤버십 — 아직 살 킷이 안 보이는 분의 다음 한 걸음 */}
+          {/* 첫 후기단 5명 — 실행 키트 전체 0원(대표 확정 2026-09-09) */}
           <div className="mx-auto mt-12 max-w-[42em] rounded-2xl border border-white/15 bg-white/5 px-6 py-6 text-left sm:px-8">
+            <p className="font-display text-lime text-xs font-semibold uppercase tracking-[0.18em]">
+              First reviewers
+            </p>
+            <h3 className="mt-2 text-lg font-bold text-white">
+              첫 후기단 5명 — 실행 키트 전체를 0원에
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-white/75">
+              실행 키트 23종과 미니 5종을 전부 드립니다. 값은 0원이고, 한 달 뒤 후기 한 줄만
+              받습니다. 후기는 회사 이름 없이 이 페이지에 실립니다. 5명이 차면 닫힙니다.
+            </p>
+            <KitLink
+              kit="reviewers"
+              place="cta"
+              href={LATPEED_REVIEWERS_URL}
+              className="mt-4 inline-flex h-11 items-center justify-center rounded-full border border-white/25 bg-white/10 px-5 text-sm font-semibold text-white transition hover:bg-white/20"
+            >
+              후기단 신청하기 (0원·5명)
+            </KitLink>
+          </div>
+
+          {/* 무료 멤버십 — 아직 살 킷이 안 보이는 분의 다음 한 걸음 */}
+          <div className="mx-auto mt-6 max-w-[42em] rounded-2xl border border-white/15 bg-white/5 px-6 py-6 text-left sm:px-8">
             <p className="font-display text-lime text-xs font-semibold uppercase tracking-[0.18em]">
               Free membership
             </p>
