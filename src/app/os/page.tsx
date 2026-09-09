@@ -120,7 +120,7 @@ export default function OsPage() {
         <p className="text-ink mt-6 max-w-[42em] text-base leading-relaxed">
           키트 값 외에 드는 돈은 하나입니다. 키트 안의 AI는 대표님이 이미 쓰시는 ChatGPT·Claude
           구독을 그대로 씁니다(월 2~3만 원, 이미 쓰고 계시면 추가 비용 없음). ④AI 직원 5명만
-          작은 서버(월 1~2만 원)가 더 듭니다. 설치 대행과 기술 지원은 포함되지 않습니다.
+          작은 서버(월 1~2만 원)가 더 듭니다. ④의 설치는 Claude Code·Codex 같은 AI가 합니다(zip을 주고 한 줄). 설치 대행과 기술 지원은 포함되지 않습니다.
         </p>
 
         <OsCurator />
