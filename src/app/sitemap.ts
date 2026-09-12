@@ -59,10 +59,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${base}${route}`,
     priority: route === "" ? 1 : 0.8,
   }));
-  // 2026-09-08 소식 개별 페이지(/news/[slug]) — 정적 JSON이라 실패 지점 없음. 게시물엔 날짜가 없어 lastModified 생략.
+  // 2026-09-08 소식 개별 페이지(/news/[slug]) — 정적 JSON이라 실패 지점 없음.
+  // 2026-09-12 datePublished(기계 메타, 화면 비표시)가 있으면 lastModified로 낸다.
   const newsEntries: MetadataRoute.Sitemap = news.map((n) => ({
     url: `${base}/news/${n.slug}`,
     priority: 0.7,
+    ...(n.datePublished ? { lastModified: new Date(n.datePublished) } : {}),
   }));
   return [...staticEntries, ...newsEntries, ...(await blogEntries())];
 }

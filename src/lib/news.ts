@@ -7,6 +7,8 @@ import data from "@/content/news.json";
 
 export type NewsItem = {
   slug: string;
+  /** 기계 메타(JSON-LD·sitemap)용 ISO 날짜 — 화면엔 표시하지 않는다(대표 09-08·09-12). */
+  datePublished?: string;
   title: string;
   subtitle: string;
   summary: string;

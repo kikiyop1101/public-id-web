@@ -50,6 +50,9 @@ export default async function NewsDetailPage({
     description: item.summary,
     articleBody: item.body.join("\n\n"),
     inLanguage: "ko-KR",
+    ...(item.datePublished
+      ? { datePublished: item.datePublished, dateModified: item.datePublished }
+      : {}),
     image: `${site.url}/og.png`,
     mainEntityOfPage: `${site.url}/news/${item.slug}`,
     author: { "@type": "Organization", name: site.legalName },
