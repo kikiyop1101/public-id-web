@@ -51,7 +51,7 @@ export default async function NewsDetailPage({
     articleBody: item.body.join("\n\n"),
     inLanguage: "ko-KR",
     ...(item.datePublished
-      ? { datePublished: item.datePublished, dateModified: item.datePublished }
+      ? { datePublished: item.datePublished, dateModified: item.dateModified ?? item.datePublished }
       : {}),
     image: `${site.url}/og.png`,
     mainEntityOfPage: `${site.url}/news/${item.slug}`,
