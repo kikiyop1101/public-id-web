@@ -13,6 +13,7 @@ export const dynamic = "force-dynamic";
 const DOCS = {
   a: { file: "/proposals/safety-care.pdf", label: "안전시설관리 구독 제안서" },
   b: { file: "/proposals/design-subscription.pdf", label: "디자인구독 제안서" },
+  e: { file: "/proposals/festival.pdf", label: "축제·행사 공간 브랜딩 제안서" }, // 09-15 아웃리치 행사·축제 세그먼트(문안 E)
 } as const;
 
 export default async function ProposalPage({
@@ -30,7 +31,7 @@ export default async function ProposalPage({
     .from("outreach_events")
     .insert({ token: token.slice(0, 64), kind: "click", ua: (h.get("user-agent") ?? "").slice(0, 300) });
 
-  const doc = d === "b" ? DOCS.b : DOCS.a;
+  const doc = d === "b" ? DOCS.b : d === "e" ? DOCS.e : DOCS.a;
   return (
     <main className="mx-auto max-w-4xl px-4 py-10">
       <p className="text-sm font-semibold tracking-widest text-[#069CBB]">PROPOSAL</p>
