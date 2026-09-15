@@ -253,5 +253,5 @@ export const SERIES = [
 
 /** 래피드 퍼블릭아이디 스토어 — 시리즈 전체 보기.
  *  컬렉션(`/collections/6a79…`)이 아니라 **스토어**를 쓴다 — 컬렉션엔 주력 5종만 있고
- *  스토어 목록에 39종 전부가 있다(2026-08-31 실측). 정본표 = PI-Kits\래피드-상품링크-정본.md */
+ *  스토어 목록에 우리회사OS 전 상품이 있다(2026-08-31 실측, 09-16 무료점검→①진단 통합으로 38종). 정본표 = PI-Kits\래피드-상품링크-정본.md */
 export const LATPEED_COLLECTION_URL = 'https://www.latpeed.com/stores/TebXT'

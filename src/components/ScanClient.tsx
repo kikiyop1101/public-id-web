@@ -97,7 +97,8 @@ export default function ScanClient() {
             <p className="text-ink-soft mt-5 max-w-[42em] text-lg leading-relaxed">
               도구가 없어서가 아니라 <strong className="text-ink font-semibold">순서</strong>가
               없어서 막힙니다. 15문항으로 아래 5개 영역을 점검하면, AI에 맡기면 좋은
-              우선순위 TOP3와 주당 절감 시간이 그 자리에서 나옵니다.
+              우선순위 TOP3와 주당 절감 시간이 그 자리에서 나옵니다. 이어서 0원인 ①진단 킷을
+              받으면 우리 회사 이름이 들어간 실행 순서 리포트까지 만들 수 있습니다.
             </p>
             <ul className="mt-6 flex flex-wrap gap-2">
               {AREAS.map((a, i) => (
@@ -308,11 +309,12 @@ export default function ScanClient() {
                 Next Step
               </p>
               <h3 className="mt-3 text-xl font-extrabold tracking-[-0.025em] text-white sm:text-2xl">
-                이 우선순위, 실행 키트로 이어 가세요
+                이 우선순위, 무료 ①진단 킷으로 이어 가세요
               </h3>
               <p className="mt-4 max-w-[42em] text-sm leading-relaxed text-white/75">
-                무료 진단이 방향을 알려 줬다면, 유료 키트는 실행 순서를 만들어 줍니다. 업무
-                데이터를 넣으면 우리 회사 이름이 박힌 우선순위 리포트가 1시간 안에 나옵니다.
+                3분 웹 진단이 방향을 알려 줬다면, ①진단 킷은 실행 순서를 만들어 줍니다. 값은
+                0원이고, 업무 데이터를 넣으면 우리 회사 이름이 박힌 우선순위 리포트가 1시간 안에
+                나옵니다.
               </p>
 
               <div className="mt-8 rounded-2xl border border-white/15 bg-white/5 p-6 sm:p-8">
@@ -323,18 +325,16 @@ export default function ScanClient() {
                   우리회사OS ①진단 | 뭘 AI에 맡길지, 1시간 만에 우선순위 리포트
                 </h4>
                 <div className="mt-4 flex flex-wrap items-baseline gap-3">
-                  <span className="text-3xl font-extrabold text-white">
-                    49,000<span className="text-lg">원</span>
-                  </span>
-                  <span className="text-base text-white/50 line-through">79,000원</span>
+                  {/* 2026-09-16 ①진단 0원 — 무료점검(Sp-3I)을 흡수한 깔때기 첫 상품 */}
+                  <span className="text-3xl font-extrabold text-white">무료</span>
                   <span className="text-xs text-white/70">
-                    정가 79,000원 · 부가세 포함 · 초기 10명 한정 런칭가
+                    0원 · 누구나 · 래피드에서 0원 결제로 바로 받기
                   </span>
                 </div>
                 <ul className="mt-5 space-y-2.5 text-sm text-white/85">
                   <li>더블클릭으로 실행하는 진단 앱 — 설치 부담 없이 바로 시작</li>
                   <li>결과 리포트에 우리 회사 이름이 들어가는 화이트라벨 구성</li>
-                  <li>무료 진단보다 깊은 문항과 업무별 실행 순서 리포트</li>
+                  <li>3분 웹 진단보다 깊은 문항과 업무별 실행 순서 리포트</li>
                 </ul>
                 <a
                   href={LATPEED_URL}
@@ -342,7 +342,7 @@ export default function ScanClient() {
                   rel="noopener noreferrer"
                   className="bg-arch mt-7 inline-flex h-14 items-center justify-center rounded-full px-7 text-[15px] font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:brightness-105"
                 >
-                  래피드에서 키트 받기
+                  래피드에서 무료로 받기
                 </a>
               </div>
 

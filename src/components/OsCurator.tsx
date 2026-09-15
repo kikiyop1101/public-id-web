@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { formatPrice } from '@/lib/os-kits'
+import { priceLabel } from '@/lib/os-kits'
 import KitLink from '@/components/KitLink'
 
 // 우리회사OS AI 큐레이터 — 회사·고민 한 줄 → 키트 2~3종 추천 (/api/os-curator)
@@ -134,7 +134,7 @@ export default function OsCurator() {
                   </span>
                   <span className="text-ink-soft text-sm">{p.tagline}</span>
                   <span className="text-ink ml-auto shrink-0 text-sm font-bold">
-                    {formatPrice(p.price)}원
+                    {priceLabel(p.price)}
                   </span>
                 </div>
                 <p className="text-ink-soft mt-3 text-sm leading-relaxed">{p.reason}</p>

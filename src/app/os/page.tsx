@@ -7,6 +7,7 @@ import {
   LATPEED_MEMBERSHIP_URL,
   LATPEED_REVIEWERS_URL,
   formatPrice,
+  priceLabel,
 } from '@/lib/os-kits'
 import OsCurator from '@/components/OsCurator'
 import KitLink from '@/components/KitLink'
@@ -14,12 +15,12 @@ import ScanClient from '@/components/ScanClient'
 import BreadcrumbLd from '@/components/BreadcrumbLd'
 
 export const metadata: Metadata = pageMeta({
-  title: '우리회사OS — AI를 직원처럼 쓰는 회사 자동화 키트 39종',
+  title: '우리회사OS — AI를 직원처럼 쓰는 회사 자동화 키트 38종',
   description:
-    '견적서·홍보 글·문의 답변·월말 마감을 AI에 맡기는 실행 키트 38종과 0원 무료 점검. 더블클릭으로 실행하고, 결과물에는 우리 회사 이름이 들어갑니다. 무료 진단으로 우선순위부터 확인하세요.',
+    '견적서·홍보 글·문의 답변·월말 마감을 AI에 맡기는 실행 키트 38종. 3분 웹 진단 뒤 ①진단 킷은 0원으로 받고, 미니 9,900원·실행 킷 49,000원부터 필요한 것만 삽니다. 더블클릭으로 실행하고, 결과물에는 우리 회사 이름이 들어갑니다.',
   path: '/os',
-  ogTitle: '우리회사OS — 회사 자동화 키트 39종 | 퍼블릭아이디',
-  ogDescription: '뭘 AI에 맡길지 3분 무료 진단부터. 반복 업무를 덜어 주는 실행 키트 38종.',
+  ogTitle: '우리회사OS — 회사 자동화 키트 38종 | 퍼블릭아이디',
+  ogDescription: '3분 웹 진단 → 무료 ①진단 킷부터. 반복 업무를 덜어 주는 실행 키트 38종.',
 })
 
 const FAQ = [
@@ -37,7 +38,11 @@ const FAQ = [
   },
   {
     q: '어떤 걸 먼저 사야 할지 모르겠습니다.',
-    a: '페이지 위의 AI 큐레이터에 회사와 고민을 한 줄 적으면 맞는 키트 2~3개를 골라 드립니다. 더 꼼꼼히 보려면 3분 무료 진단으로 업무 5개 영역을 점검해 보세요.',
+    a: '페이지 위의 AI 큐레이터에 회사와 고민을 한 줄 적으면 맞는 키트 2~3개를 골라 드립니다. 더 꼼꼼히 보려면 3분 웹 진단으로 업무 5개 영역을 점검한 뒤, 0원인 ①진단 킷으로 우리 회사 이름이 들어간 우선순위 리포트를 받아 보세요.',
+  },
+  {
+    q: '①진단은 정말 무료인가요?',
+    a: '네, ①진단 킷은 0원입니다. 이 페이지의 3분 웹 진단으로 방향을 먼저 보고, 래피드에서 0원으로 ①진단 킷을 받아 업무 데이터를 넣으면 실행 순서 리포트가 나옵니다. 따로 있던 무료 점검 상품은 ①진단으로 합쳐졌습니다.',
   },
   {
     q: '후기단은 어떻게 신청하나요?',
@@ -46,6 +51,16 @@ const FAQ = [
 ]
 
 export default function OsPage() {
+  // 가격 사다리 문구 — KITS에서 계산해 정본 가격이 바뀌어도 문구가 어긋나지 않게(2026-09-16)
+  const minOf = (pick: (k: (typeof KITS)[number]) => boolean) =>
+    formatPrice(Math.min(...KITS.filter(pick).map((k) => k.price)))
+  const ladder = {
+    mini: minOf((k) => k.group === '미니'),
+    kit: minOf((k) => k.group !== '미니' && k.group !== '패키지' && k.price > 0),
+    pack: minOf((k) => k.group === '패키지'),
+    os: minOf((k) => k.name === 'AI 직원 5명'),
+  }
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
@@ -156,8 +171,10 @@ export default function OsPage() {
           지금 있는 키트 {KITS.length}종
         </h2>
         <p className="text-ink-soft mt-5 max-w-[42em]">
-          하나씩 따로 삽니다. 0원 무료 점검까지 더하면 모두 39종이고, 어디부터 손댈지
-          모르겠다면 ①진단부터 보세요.
+          ①진단은 0원 무료이고, 나머지 {KITS.length - 1}종은 하나씩 따로 삽니다. 가격은 미니{' '}
+          {ladder.mini}원 → 실행 킷 {ladder.kit}원부터 → 업종 패키지 {ladder.pack}원부터 → ④AI
+          직원 5명 {ladder.os}원(런칭가) 순입니다. 어디부터 손댈지 모르겠다면 위의 3분 웹 진단
+          뒤 무료 ①진단 킷부터 받아 보세요.
         </p>
 
         {KIT_GROUPS.map((g) => {
@@ -186,10 +203,13 @@ export default function OsPage() {
                         {k.tagline}
                       </span>
                       <span className="text-ink shrink-0 text-sm font-bold">
-                        {formatPrice(k.price)}원
-                        <span className="text-ink-soft ml-2 text-xs font-normal line-through">
-                          {formatPrice(k.listPrice)}원
-                        </span>
+                        {priceLabel(k.price)}
+                        {/* 0원(①진단)은 정가 취소선 없이 "무료"만 */}
+                        {k.listPrice > 0 && (
+                          <span className="text-ink-soft ml-2 text-xs font-normal line-through">
+                            {formatPrice(k.listPrice)}원
+                          </span>
+                        )}
                       </span>
                     </KitLink>
                   </li>
@@ -255,7 +275,8 @@ export default function OsPage() {
           </h2>
           <p className="mx-auto mt-5 max-w-[38em] text-base leading-relaxed text-white/75">
             15문항 무료 진단으로 우리 회사 업무 5개 영역을 점검하고, AI에 맡기면 좋은
-            우선순위 TOP3와 주당 절감 시간을 확인하세요. 로그인도, 정보 입력도 없습니다.
+            우선순위 TOP3와 주당 절감 시간을 확인하세요. 로그인도, 정보 입력도 없습니다. 이어서
+            받는 ①진단 킷도 0원입니다.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             <a
