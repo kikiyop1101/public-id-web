@@ -380,11 +380,10 @@ export const KIT_GROUPS: { key: Kit['group']; title: string; desc: string }[] = 
 ]
 
 /** 올인원 키트 — 업종 패키지를 뺀 판매 상품 전부를 겹침 없이 한 묶음(대표 확정 2026-09-17).
- *  래피드·크몽 등록은 대표 지시로 보류 — 홈페이지 문의(/quote)로만 판매한다. 정본 = 볼트 PI-Kits\상품-정본.json(PI-Pack-All) */
+ *  런칭가 없음 · 5,500,000원 부가세 포함(09-17 2차 확정 — 제작 중인 상품 1종이 더 들어갈 예정).
+ *  래피드·크몽 등록은 대표 지시로 보류 — 구독 상담(/contact)으로만 판매한다. 정본 = 볼트 PI-Kits\상품-정본.json(PI-Pack-All) */
 export const ALL_IN_ONE = {
-  price: 3400000,
-  listPrice: 5000000,
-  limit: 10,
+  price: 5500000,
 }
 export const ALL_IN_ONE_MEMBERS = KITS.filter((k) => k.group !== '패키지')
 

@@ -42,13 +42,13 @@ export const site = {
         { label: "부착 가이드 · 설치 영상", href: "/guide" },
         { label: "맞춤 견적", href: "/quote" },
         { label: "견적 시뮬레이터", href: "/estimate" },
-        { label: "우리회사OS (AI 자동화)", href: "/os" },
       ],
     },
     {
       label: "구독 서비스", en: "Subscription", href: "/subscribe",
       children: [
         { label: "디자인 구독", href: "/subscribe" },
+        { label: "우리회사OS (AI 자동화)", href: "/os" }, // 2026-09-17 대표 지시 — 제품 메뉴에서 구독 메뉴로 이동
         { label: "디자인 시스템", href: "/design" },
         { label: "안전관리 지도", href: "/safety-map" },
         { label: "안전 리포트 · 제보", href: "/safety-report" },
@@ -98,13 +98,13 @@ export const site = {
         { label: "부착 가이드", href: "/guide" },
         { label: "맞춤 견적", href: "/quote" },
         { label: "견적 시뮬레이터", href: "/estimate" },
-        { label: "우리회사OS (AI 자동화)", href: "/os" },
       ],
     },
     {
       label: "구독 서비스",
       links: [
         { label: "디자인 구독", href: "/subscribe" },
+        { label: "우리회사OS (AI 자동화)", href: "/os" }, // 2026-09-17 대표 지시 — 제품 메뉴에서 구독 메뉴로 이동
         { label: "디자인 시스템", href: "/design" },
         { label: "안전관리 지도", href: "/safety-map" },
         { label: "안전 리포트 · 제보", href: "/safety-report" },

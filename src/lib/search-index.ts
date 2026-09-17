@@ -26,8 +26,8 @@ export const SEARCH_INDEX: SearchEntry[] = [
   { label: "부착 가이드 · 설치 영상", href: "/guide", group: "제품", desc: "노면표시재 셀프 부착 방법 영상", keywords: "설치 부착 시공 방법 가이드 영상 diy" },
   { label: "맞춤 견적", href: "/quote", group: "제품", desc: "규격·수량 넣고 바로 받는 견적", keywords: "견적 가격 문의 계산 주문" },
   { label: "견적 시뮬레이터", href: "/estimate", group: "제품", desc: "규격·수량 슬라이더로 기준가 합계 즉시 확인 · 예산 역산", keywords: "견적 계산기 시뮬레이터 예산 단가 가격 계산 얼마" },
-  { label: "우리회사OS (AI 자동화)", href: "/os", group: "제품", desc: "소상공인 AI 자동화 키트 — 무료 진단부터", keywords: "os ai 자동화 템플릿 키트 소상공인 진단 챗gpt" },
-  { label: "AI 자동화 무료 진단", href: "/os#scan", group: "제품", desc: "우리 회사 업무 자동화 여지를 3분 만에 — 우리회사OS 안", keywords: "진단 무료진단 스캔 자가진단 진단테스트 업무진단 자동화 ai scan 3분" },
+  { label: "우리회사OS (AI 자동화)", href: "/os", group: "구독 서비스", desc: "소상공인 AI 자동화 키트 — 무료 진단부터", keywords: "os ai 자동화 템플릿 키트 소상공인 진단 챗gpt" },
+  { label: "AI 자동화 무료 진단", href: "/os#scan", group: "구독 서비스", desc: "우리 회사 업무 자동화 여지를 3분 만에 — 우리회사OS 안", keywords: "진단 무료진단 스캔 자가진단 진단테스트 업무진단 자동화 ai scan 3분" },
   // 구독
   { label: "구독 서비스", href: "/subscribe", group: "구독 서비스", desc: "디자인 구독(홈페이지 제작 포함) · 안전 시설 관리 구독", keywords: "구독 정기 멤버십 디자인구독 홈페이지 홈페이지제작 AI자동화" },
   { label: "디자인 시스템", href: "/design", group: "구독 서비스", desc: "색 하나 바꾸면 전부 바뀌는 정본 — 체험 데모·문서 전체", keywords: "마스코트 웹툰 로고 브랜드 디자인시스템 캐릭터 토큰 정본" },
