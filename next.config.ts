@@ -25,7 +25,24 @@ const nextConfig: NextConfig = {
     },
   },
   async headers() {
-    return [{ source: "/(.*)", headers: securityHeaders }];
+    return [
+      { source: "/(.*)", headers: securityHeaders },
+      // 2026-09-17 대표 지시 — 사내 업무 웹앱 PI-System을 /Pis로. 검색 차단(메뉴·사이트맵·robots 미기재).
+      { source: "/Pis/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] },
+      { source: "/Pis", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] },
+    ];
+  },
+  async rewrites() {
+    // 경로 매칭은 대소문자 무시라 /pis도 같이 열린다(소문자 리다이렉트를 넣으면 무한 반복 — 09-17 실측).
+    // PI-System 본체는 Vercel 프로젝트 pi-contract-web(정본 Agent/영업본부/PI-계약관리시스템). 여기선 주소만 빌려준다.
+    return {
+      beforeFiles: [
+        { source: "/Pis", destination: "https://pi-contract-web.vercel.app/" },
+        { source: "/Pis/:path*", destination: "https://pi-contract-web.vercel.app/:path*" },
+      ],
+      afterFiles: [],
+      fallback: [],
+    };
   },
   async redirects() {
     // Canonical host = www (metadataBase/sitemap/robots/JSON-LD all use www);
