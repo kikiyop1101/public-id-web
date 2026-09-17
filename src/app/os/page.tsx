@@ -6,6 +6,8 @@ import {
   LATPEED_STORE_URL,
   LATPEED_MEMBERSHIP_URL,
   LATPEED_REVIEWERS_URL,
+  ALL_IN_ONE,
+  ALL_IN_ONE_MEMBERS,
   formatPrice,
   priceLabel,
 } from '@/lib/os-kits'
@@ -54,6 +56,7 @@ export default function OsPage() {
   // 가격 사다리 문구 — KITS에서 계산해 정본 가격이 바뀌어도 문구가 어긋나지 않게(2026-09-16)
   const minOf = (pick: (k: (typeof KITS)[number]) => boolean) =>
     formatPrice(Math.min(...KITS.filter(pick).map((k) => k.price)))
+  const allInOneSum = ALL_IN_ONE_MEMBERS.reduce((s, k) => s + k.listPrice, 0)
   const ladder = {
     mini: minOf((k) => k.group === '미니'),
     kit: minOf((k) => k.group !== '미니' && k.group !== '패키지' && k.price > 0),
@@ -176,6 +179,44 @@ export default function OsPage() {
           직원 5명 {ladder.os}원(런칭가) 순입니다. 어디부터 손댈지 모르겠다면 위의 3분 웹 진단
           뒤 무료 ①진단 킷부터 받아 보세요.
         </p>
+
+        {/* 올인원 키트 — 홈페이지 문의로만 판매(대표 확정 2026-09-17, 래피드·크몽 보류) */}
+        <div id="all-in-one" className="border-teal-700/30 mt-12 scroll-mt-24 rounded-2xl border bg-white p-6 sm:p-8">
+          <p className="font-display text-teal-700 text-xs font-semibold uppercase tracking-[0.18em]">
+            All-in-One Kit
+          </p>
+          <div className="mt-3 flex flex-wrap items-end justify-between gap-6">
+            <div className="min-w-0">
+              <h3 className="text-ink text-xl font-extrabold tracking-[-0.02em] sm:text-2xl">
+                올인원 키트 — {ALL_IN_ONE_MEMBERS.length}종 전부를 한 번에
+              </h3>
+              <p className="text-ink-soft mt-3 max-w-[40em] text-sm leading-relaxed sm:text-base">
+                ①진단부터 ②업무시트·③콘텐츠·④AI 직원 5명·④셀러편, 실행 킷과 미니까지 업종
+                패키지를 뺀 {ALL_IN_ONE_MEMBERS.length}종을 겹치는 것 없이 묶었습니다. 낱개로 사면
+                정가 합 {formatPrice(allInOneSum)}원 상당입니다. 구매는 문의로 받습니다.
+              </p>
+            </div>
+            <div className="shrink-0">
+              <p className="text-teal-700 text-xs font-semibold">
+                런칭가 · 초기 {ALL_IN_ONE.limit}명 한정 · 부가세 포함
+              </p>
+              <p className="text-ink font-display mt-1 text-3xl font-bold tracking-[-0.02em]">
+                {formatPrice(ALL_IN_ONE.price)}원
+                <span className="text-ink-soft ml-2 text-sm font-normal line-through">
+                  {formatPrice(ALL_IN_ONE.listPrice)}원
+                </span>
+              </p>
+              <a
+                href={`/quote?items=${encodeURIComponent(
+                  `우리회사OS 올인원 키트(${ALL_IN_ONE_MEMBERS.length}종) 구매 문의 — 런칭가 ${formatPrice(ALL_IN_ONE.price)}원`,
+                )}`}
+                className="bg-arch mt-4 inline-flex h-12 items-center justify-center rounded-full px-6 text-[15px] font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:brightness-105"
+              >
+                올인원 키트 구매 문의
+              </a>
+            </div>
+          </div>
+        </div>
 
         {KIT_GROUPS.map((g) => {
           const items = KITS.filter((k) => k.group === g.key)

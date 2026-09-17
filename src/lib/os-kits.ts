@@ -379,6 +379,15 @@ export const KIT_GROUPS: { key: Kit['group']; title: string; desc: string }[] = 
   { key: '미니', title: '미니 5종', desc: '한 장이면 끝나는 일들 — 전 종 9,900원' },
 ]
 
+/** 올인원 키트 — 업종 패키지를 뺀 판매 상품 전부를 겹침 없이 한 묶음(대표 확정 2026-09-17).
+ *  래피드·크몽 등록은 대표 지시로 보류 — 홈페이지 문의(/quote)로만 판매한다. 정본 = 볼트 PI-Kits\상품-정본.json(PI-Pack-All) */
+export const ALL_IN_ONE = {
+  price: 3400000,
+  listPrice: 5000000,
+  limit: 10,
+}
+export const ALL_IN_ONE_MEMBERS = KITS.filter((k) => k.group !== '패키지')
+
 /** 래피드 퍼블릭아이디 스토어 — 우리회사OS 전 상품이 보이는 목록(2026-08-31 실측, 09-16 무료점검 통합으로 38종) */
 export const LATPEED_STORE_URL = 'https://www.latpeed.com/stores/TebXT'
 
