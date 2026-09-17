@@ -149,7 +149,6 @@ export default function OsPage() {
   // 가격 사다리 문구 — KITS에서 계산해 정본 가격이 바뀌어도 문구가 어긋나지 않게(2026-09-16)
   const minOf = (pick: (k: (typeof KITS)[number]) => boolean) =>
     formatPrice(Math.min(...KITS.filter(pick).map((k) => k.price)))
-  const allInOneSum = ALL_IN_ONE_MEMBERS.reduce((s, k) => s + k.listPrice, 0)
   const ladder = {
     mini: minOf((k) => k.group === '미니'),
     kit: minOf((k) => k.group !== '미니' && k.group !== '패키지' && k.price > 0),
@@ -442,8 +441,7 @@ export default function OsPage() {
               </h3>
               <p className="text-ink-soft mt-3 max-w-[40em] break-keep text-sm leading-relaxed sm:text-base">
                 ①진단부터 ②업무시트·③콘텐츠·④AI 직원 5명·④셀러편, 실행 킷과 미니까지 업종 패키지를 뺀{' '}
-                {ALL_IN_ONE_MEMBERS.length}종을 겹치는 것 없이 묶었습니다. 낱개로 사면 정가 합{' '}
-                {formatPrice(allInOneSum)}원 상당입니다. 구매는 구독 상담으로 받습니다.
+                {ALL_IN_ONE_MEMBERS.length}종을 겹치는 것 없이 묶었습니다. 구매는 구독 상담으로 받습니다.
               </p>
             </div>
             <div className="shrink-0">
