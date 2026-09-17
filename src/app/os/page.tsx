@@ -89,6 +89,7 @@ const LAYERS = [
     name: '기록',
     en: 'Record',
     kits: '①진단 · ②업무시트',
+    summary: '거래처·견적·일정·재고를 구글시트 한 판에 모으는 바닥층. 위의 모든 킷과 AI 직원이 이 기록을 읽습니다.',
     lead: '회사의 기록을 구글시트 한 판으로 모으는 바닥층입니다. ①진단으로 어떤 일부터 맡길지 순서를 정하고, ②업무시트에 거래처·견적·일정·재고를 모읍니다. 위의 킷과 AI 직원은 모두 이 기록을 읽고 일합니다.',
     points: [
       ['우선순위 리포트', '①진단이 업무별 반복 빈도와 시간을 점수로 매겨 먼저 맡길 일을 알려 줍니다'],
@@ -102,6 +103,7 @@ const LAYERS = [
     name: '실행',
     en: 'Action',
     kits: '실행 킷 22종 · 미니 5종',
+    summary: '견적서·독촉 문안·마감 리포트·브리핑을 고정 규칙으로 조립합니다. 같은 입력이면 언제나 같은 결과, 보내는 것은 사람입니다.',
     lead: '매주 같은 모양으로 돌아오는 일을 킷 하나가 한 가지씩 맡습니다. 더블클릭으로 창을 열고 버튼을 누르면 견적서·독촉 문안·마감 리포트·브리핑이 파일로 나옵니다. 보내는 것은 언제나 사람입니다.',
     points: [
       ['견적·수금·마감', '상담 메모 → 견적서 3안, 미수금 목록 → 독촉 문안 3단계, 장부 → 월간 마감 리포트'],
@@ -118,6 +120,7 @@ const LAYERS = [
     name: '자율',
     en: 'Autonomy',
     kits: '③콘텐츠 · ④AI 직원 5명 · ④셀러편',
+    summary: 'AI 직원이 할 일을 작업보드에 올려 처리하고 텔레그램으로 보고합니다. 대표 승인 없이는 아무것도 밖으로 나가지 않습니다.',
     lead: '킷을 사람이 누르는 단계에서, AI 직원이 할 일을 스스로 올리는 단계로 넘어갑니다. AI 직원이 작업보드에 카드를 올리고 처리하면, 대표는 텔레그램으로 보고받고 승인만 합니다. 승인 없이는 아무것도 밖으로 나가지 않습니다.',
     points: [
       ['AI 직원 5명', '기획·영업·콘텐츠·리서치·검수 역할이 작업보드에서 나눠 일합니다'],
@@ -319,8 +322,39 @@ export default function OsPage() {
       {/* 3층 구조 */}
       <section className="mx-auto max-w-[1200px] px-5 py-20 sm:px-8 sm:py-28">
         <p className={SECTION_EYEBROW}>3-Layer Architecture</p>
-        <h2 className={SECTION_H2}>기록 · 실행 · 자율, 세 층으로 쌓습니다</h2>
-        <div className="mt-16 space-y-24 sm:space-y-28">
+        <h2 className={`${SECTION_H2} max-w-[26ch]`}>
+          기록 · 실행 · 자율 3층 구조로, 끊기지 않는 업무 흐름을 만듭니다
+        </h2>
+
+        {/* 3층 한눈에 — Blender 렌더(Agent\콘텐츠본부\홈페이지-우리회사OS\render_layers.py), 2026-09-17 */}
+        <div className="mt-12 grid items-center gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
+          <Image
+            src="/os/layers-3d.webp"
+            width={998}
+            height={1037}
+            sizes="(min-width: 1024px) 520px, 90vw"
+            alt="우리회사OS 3층 구조 — 아래부터 기록(시트 한 판), 실행(킷), 자율(AI 직원 5명)"
+            className="mx-auto h-auto w-full max-w-[520px]"
+          />
+          <ol className="border-line border-t">
+            {[...LAYERS].reverse().map((l) => (
+              <li key={l.no} className="border-line border-b py-6">
+                <p className="flex flex-wrap items-baseline gap-x-3">
+                  <span className="text-teal-700 font-display text-lg font-semibold">{l.en}</span>
+                  <span className="text-ink text-lg font-bold">{l.name}</span>
+                  <span className="text-ink-soft text-sm">{l.kits}</span>
+                </p>
+                <p className="text-ink-soft mt-2 break-keep text-[15px] leading-relaxed">{l.summary}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+        <p className="text-ink-soft mt-8 max-w-[46em] break-keep text-[15px] leading-relaxed">
+          아래층이 위층의 근거가 됩니다. AI 직원이 올린 일은 킷이 만든 문서로 확인하고, 킷은 기록 한 판의 숫자만
+          씁니다. 기록이 바뀌면 킷과 AI 직원의 결과도 함께 바뀝니다.
+        </p>
+
+        <div className="mt-24 space-y-24 sm:mt-28 sm:space-y-28">
           {LAYERS.map((l) => (
             <div key={l.no}>
               <p className="font-display text-teal-700 text-base font-semibold">{l.no}</p>
