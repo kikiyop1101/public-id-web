@@ -8,6 +8,8 @@ import {
   LATPEED_REVIEWERS_URL,
   ALL_IN_ONE,
   ALL_IN_ONE_MEMBERS,
+  ALL_IN_ONE_LIST_SUM,
+  ALL_IN_ONE_DISCOUNT,
   formatPrice,
   priceLabel,
 } from '@/lib/os-kits'
@@ -483,6 +485,11 @@ export default function OsPage() {
               <p className="text-ink font-display mt-1 text-3xl font-bold tracking-[-0.02em]">
                 {formatPrice(ALL_IN_ONE.price)}원
               </p>
+              {ALL_IN_ONE_DISCOUNT >= 1 && (
+                <p className="text-ink-soft mt-1 text-xs">
+                  낱개 정가 합 {formatPrice(ALL_IN_ONE_LIST_SUM)}원보다 {ALL_IN_ONE_DISCOUNT}% 낮은 값
+                </p>
+              )}
               <a
                 href={`/contact?msg=${encodeURIComponent(
                   `[우리회사OS 올인원 키트 구매 상담] ${ALL_IN_ONE_MEMBERS.length}종 · ${formatPrice(ALL_IN_ONE.price)}원(부가세 포함)`,

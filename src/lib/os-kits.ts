@@ -314,6 +314,15 @@ export const KITS: Kit[] = [
     group: '영업·매출',
   },
   {
+    no: '㉚',
+    name: 'AI 회사맥락',
+    tagline: '회사 규칙·사람별 성향·업무 경험을 AI가 읽는 세 칸으로',
+    price: 99000,
+    listPrice: 149000,
+    url: 'https://www.latpeed.com/products/e9QUl',
+    group: '운영',
+  },
+  {
     no: '팩①',
     name: '예약업 패키지',
     tagline: '미용실·학원·병의원·공방 반복 업무 5종 묶음',
@@ -380,12 +389,15 @@ export const KIT_GROUPS: { key: Kit['group']; title: string; desc: string }[] = 
 ]
 
 /** 올인원 키트 — 업종 패키지를 뺀 판매 상품 전부를 겹침 없이 한 묶음(대표 확정 2026-09-17).
- *  런칭가 없음 · 5,500,000원 부가세 포함(09-17 2차 확정 — 제작 중인 상품 1종이 더 들어갈 예정).
+ *  런칭가 없음 · 5,500,000원 부가세 포함 고정가(09-18 대표: 킷을 계속 채워 할인율을 올린다 — 재검토는 낱개 정가 합 1,000만 원 넘을 때).
  *  래피드·크몽 등록은 대표 지시로 보류 — 구독 상담(/contact)으로만 판매한다. 정본 = 볼트 PI-Kits\상품-정본.json(PI-Pack-All) */
 export const ALL_IN_ONE = {
   price: 5500000,
 }
 export const ALL_IN_ONE_MEMBERS = KITS.filter((k) => k.group !== '패키지')
+/** 올인원 할인율(%, 정수) = 1 − 올인원가 ÷ 구성 킷 낱개 정가 합. 킷이 늘면 자동으로 오른다. 1 미만이면 화면에 할인을 적지 않는다(09-18). */
+export const ALL_IN_ONE_LIST_SUM = ALL_IN_ONE_MEMBERS.reduce((s, k) => s + k.listPrice, 0)
+export const ALL_IN_ONE_DISCOUNT = Math.floor((1 - ALL_IN_ONE.price / ALL_IN_ONE_LIST_SUM) * 100)
 
 /** 래피드 퍼블릭아이디 스토어 — 우리회사OS 전 상품이 보이는 목록(2026-08-31 실측, 09-16 무료점검 통합으로 38종) */
 export const LATPEED_STORE_URL = 'https://www.latpeed.com/stores/TebXT'
