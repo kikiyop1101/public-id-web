@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
-import { preload } from "react-dom";
 import Button from "@/components/Button";
+import PreloadImage from "@/components/PreloadImage";
 import ScrollDepth from "@/components/ScrollDepth";
 
 // LCP 후보(아치 창 사진 — 데스크톱·모바일 공용) — SVG <image>는 priority 힌트를 못 받아 preload로 보강 (2026-08-26 감사)
@@ -100,11 +100,13 @@ function ArchSvg({
 //  · 스태거 텍스트 리빌(Stripe/Apple식 순차 등장 — 과한 연출 대신 절제)
 // 심볼 = 로고의 다리(아치) 그라디언트. 창작 도형 없음.
 export default function Hero() {
-  preload(HERO_IMG, { as: "image", fetchPriority: "high" });
   // 2026-09-03 스크롤 깊이 레이어(design.md §5 스크롤 연동 ①, ▶FFWtxjvW2ts 대조): 3층 —
   //  전경 아치(−28px, 빠르게) · 창 너머 사진(+44, 느리게 — ArchSvg 안) · 바닥 글로우(+40px). transform 만, reduced-motion 정지.
   return (
     <ScrollDepth className="relative overflow-hidden border-b border-line bg-paper">
+      {/* LCP preload — react-dom preload() 대신 클라이언트 <link> 컴포넌트로(2026-09-18). preload()는 RSC 힌트로 실려 홈을
+          프리페치하는 다른 페이지(/os 등)에도 주입돼 "preloaded but not used" 경고를 냈다. 홈 문서 head에만 실린다. */}
+      <PreloadImage href={HERO_IMG} fetchPriority="high" />
       {/* 대형 아치(다리) — 데스크톱: 우측에서 페이지가 열리며 한 번 그려진다 */}
       <ArchSvg
         suffix="d"

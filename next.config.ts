@@ -51,6 +51,14 @@ const nextConfig: NextConfig = {
       // 2026-08-26 대표 지시 — /design 전용 페이지 복원("눌러서 다 볼 수 있던 게 없어졌다").
       // 08-25의 /design→/subscribe#design-system 301은 해제, 구독 안 요약 섹션은 유지.
       {
+        // 2026-09-18 — 구 store 호스트의 /scan은 www로 바로(1단). next.config redirects가 proxy.ts(LEGACY_HOSTS 301)보다
+        // 먼저 돌아 종전엔 store/scan → store/os#scan → www/os 2단이었다. 이 규칙이 아래 일반 /scan 규칙보다 앞서야 한다.
+        source: "/scan",
+        has: [{ type: "host", value: "(www\\.)?store\\.public-id\\.co\\.kr" }],
+        destination: "https://www.public-id.co.kr/os#scan",
+        permanent: true,
+      },
+      {
         // 2026-08-26 대표 지시 — 무료 진단(/scan)을 우리회사OS 안으로 통합.
         // 발행물·봇 캐논에 나간 /scan 링크가 있어 삭제가 아니라 301로 물린다.
         source: "/scan",

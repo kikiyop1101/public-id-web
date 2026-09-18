@@ -5,6 +5,7 @@ import Container from "@/components/Container";
 import Button from "@/components/Button";
 import Reveal from "@/components/Reveal";
 import BreadcrumbLd from "@/components/BreadcrumbLd";
+import PreloadImage from "@/components/PreloadImage";
 
 // 웹툰 뷰어 — 2026-09-08 신설. 1호 「우산 도둑」(자유 창작 단편 10컷, 볼트 콘텐츠본부\웹툰 산출물).
 // 컷은 /public/webtoon/umbrella/NN.webp(900px, 35~78KB) — 첫 컷만 즉시, 나머지는 lazy.
@@ -21,6 +22,9 @@ export default function WebtoonPage() {
   return (
     <>
       <BreadcrumbLd trail={[{ name: "웹툰 — 우산 도둑", path: "/webtoon" }]} />
+      {/* 첫 컷 preload는 클라이언트 <link> 컴포넌트로만(2026-09-18). React가 셸의 non-lazy <img>를 자동 preload 힌트로 만들면
+          GNB 프리페치를 타고 홈·/os 문서에도 실려 "preloaded but not used" 경고가 났다 — 아래 <img>는 <picture>로 감싸 자동 힌트를 끈다. */}
+      <PreloadImage href="/webtoon/umbrella/01.webp" />
       <PageHero
         eyebrow="Webtoon · 1화"
         title={
@@ -36,16 +40,17 @@ export default function WebtoonPage() {
             <ol className="overflow-hidden rounded-3xl border border-line bg-white shadow-sm">
               {CUTS.map((n, i) => (
                 <li key={n} className="border-b border-line last:border-b-0">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={`/webtoon/umbrella/${n}.webp`}
-                    alt={`우산 도둑 ${i + 1}컷`}
-                    width={900}
-                    height={1125}
-                    loading={i === 0 ? "eager" : "lazy"}
-                    decoding="async"
-                    className="block h-auto w-full"
-                  />
+                  <picture>
+                    <img
+                      src={`/webtoon/umbrella/${n}.webp`}
+                      alt={`우산 도둑 ${i + 1}컷`}
+                      width={900}
+                      height={1125}
+                      loading={i === 0 ? "eager" : "lazy"}
+                      decoding="async"
+                      className="block h-auto w-full"
+                    />
+                  </picture>
                 </li>
               ))}
             </ol>
