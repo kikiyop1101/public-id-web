@@ -49,7 +49,7 @@ const FAQ = [
   },
   {
     q: '후기단은 어떻게 신청하나요?',
-    a: "하단 '후기단 신청하기'에서 0원으로 결제하면 실행 키트 전체 zip을 바로 받습니다. 한 달 뒤 후기 한 줄을 이메일로 보내 주시면 됩니다. 5명 한정입니다.",
+    a: "하단 '후기단 신청하기'에서 0원으로 결제하면 실행 키트 8종(견적 3안·수금독촉·리뷰답글 + 미니 5종) zip을 바로 받습니다. 1주 안에 래피드 상품 페이지에 후기 한 줄을 남겨 주시면 됩니다. 5명 한정입니다.",
   },
 ]
 
@@ -585,17 +585,18 @@ export default function OsPage() {
             </a>
           </div>
 
-          {/* 첫 후기단 5명 — 실행 키트 전체 0원(대표 확정 2026-09-09) */}
+          {/* 첫 후기단 5명 — 실행 키트 8종 0원(대표 확정 2026-09-09, 09-18 8종·1주·래피드 후기로 개편) */}
           <div className="mx-auto mt-12 max-w-[42em] rounded-2xl border border-white/15 bg-white/5 px-6 py-6 text-left sm:px-8">
             <p className="font-display text-lime text-xs font-semibold uppercase tracking-[0.18em]">
               First reviewers
             </p>
             <h3 className="mt-2 text-lg font-bold text-white">
-              첫 후기단 5명 — 실행 키트 전체를 0원에
+              첫 후기단 5명 — 실행 키트 8종을 0원에
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-white/75">
-              실행 키트 23종과 미니 5종을 전부 드립니다. 값은 0원이고, 한 달 뒤 후기 한 줄만
-              받습니다. 후기는 회사 이름 없이 이 페이지에 실립니다. 5명이 차면 닫힙니다.
+              가장 많이 쓰이는 견적 3안·수금독촉·리뷰답글과 미니 5종, 정가 476,500원어치를
+              드립니다. 값은 0원이고, 1주 안에 래피드 상품 페이지에 후기 한 줄만 남겨 주시면
+              됩니다. 5명이 차면 닫힙니다.
             </p>
             <KitLink
               kit="reviewers"

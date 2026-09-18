@@ -393,7 +393,7 @@ export const LATPEED_STORE_URL = 'https://www.latpeed.com/stores/TebXT'
 /** 우리회사OS 무료 멤버(0원·월 1회 레터·신규 킷 선공개) — 2026-08-31 개설, 09-09 대표 결정으로 /os 노출 */
 export const LATPEED_MEMBERSHIP_URL = 'https://www.latpeed.com/memberships/6a621ed13abdc26c1c23f412'
 
-/** 첫 후기단 5명(실행 키트 전체 0원·한 달 뒤 후기 한 줄) — 2026-09-09 후기단 상품(0원·5명 한정) 등록 완료(래피드 등록 중이라 임시로 스토어 주소) */
+/** 첫 후기단 5명(실행 키트 8종 0원·1주 안에 래피드 후기 한 줄) — 2026-09-09 개설, 09-18 8종·1주·래피드 후기로 개편 */
 export const LATPEED_REVIEWERS_URL = 'https://www.latpeed.com/products/cOCO5'
 
 export function formatPrice(n: number): string {
