@@ -359,6 +359,15 @@ export const KITS: Kit[] = [
     group: '숫자·재고',
   },
   {
+    no: '㉞',
+    name: 'AI 직원 품질점검',
+    tagline: '챗봇이 틀린 말을 하는지 시험하고 채점',
+    price: 99000,
+    listPrice: 149000,
+    url: 'https://www.latpeed.com/products/vXQgA',
+    group: '운영',
+  },
+  {
     no: '팩①',
     name: '예약업 패키지',
     tagline: '미용실·학원·병의원·공방 반복 업무 5종 묶음',

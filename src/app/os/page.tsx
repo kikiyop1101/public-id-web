@@ -465,6 +465,26 @@ export default function OsPage() {
           순입니다. 전 상품 부가세 포함, 런칭가는 초기 10명 한정입니다.
         </p>
 
+        {/* 구매 전 확인 — 2026-09-19 어사이드 경쟁 후기 분석: 저평점 1위 = "설치 후 오류·지원 범위 모호·환불 불가". 범위를 구매 전에 보이게 */}
+        <div className="mt-8 grid max-w-[56em] gap-4 sm:grid-cols-2">
+          <div className="border-line rounded-2xl border bg-white p-5">
+            <p className="text-ink text-sm font-bold">받는 것</p>
+            <ul className="text-ink-soft mt-2 list-disc space-y-1 break-keep pl-5 text-sm leading-relaxed">
+              <li>킷 파일(zip) — 사내 사용 무제한, 결과물은 귀사 소유</li>
+              <li>더블클릭 실행 창과 설명서, 예시 데이터</li>
+              <li>파이썬이 없으면 킷이 스스로 설치하는 시작 파일</li>
+            </ul>
+          </div>
+          <div className="border-line rounded-2xl border bg-white p-5">
+            <p className="text-ink text-sm font-bold">포함되지 않는 것</p>
+            <ul className="text-ink-soft mt-2 list-disc space-y-1 break-keep pl-5 text-sm leading-relaxed">
+              <li>설치 대행·기술 지원(설치 문의는 문서를 고쳐서 답합니다)</li>
+              <li>AI 구독료, ④AI 직원 5명의 서버 요금</li>
+              <li>단순 변심 환불 — 표시와 다르거나 파일에 하자가 있으면 환불합니다</li>
+            </ul>
+          </div>
+        </div>
+
         {/* 올인원 키트 — 구독 상담으로만 판매(대표 확정 2026-09-17, 래피드·크몽 보류, 런칭가 없음) */}
         <div id="all-in-one" className="border-teal-700/30 mt-12 scroll-mt-24 rounded-2xl border bg-white p-6 sm:p-8">
           <p className="font-display text-teal-700 text-xs font-semibold uppercase tracking-[0.18em]">
