@@ -119,6 +119,13 @@ export default function Header() {
           >
             3D 월드
           </a>
+          {/* 주종목 우리회사OS 상시 노출 — 2026-09-19 어사이드 점검 "상단에서 /os가 안 보인다" */}
+          <Link
+            href="/os"
+            className="inline-flex h-10 items-center justify-center rounded-full border border-teal bg-white/70 px-4 text-sm font-semibold text-teal-700 transition hover:bg-teal hover:text-white"
+          >
+            우리회사OS
+          </Link>
           {/* 견적 진입 상시 노출 — 대표 지적 2026-08-26 "견적 도우미 찾기가 쉽지 않다" */}
           <Link
             href="/quote"
@@ -223,6 +230,13 @@ export default function Header() {
           >
             3D 월드 둘러보기
           </a>
+          <Link
+            href="/os"
+            onClick={() => setOpen(false)}
+            className="inline-flex h-12 items-center justify-center rounded-full border border-teal bg-white px-5 font-semibold text-teal-700"
+          >
+            우리회사OS (AI 자동화 키트)
+          </Link>
           <Link
             href="/quote"
             onClick={() => setOpen(false)}

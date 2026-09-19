@@ -20,12 +20,12 @@ import OsWhyTabs from '@/components/OsWhyTabs'
 import BreadcrumbLd from '@/components/BreadcrumbLd'
 
 export const metadata: Metadata = pageMeta({
-  title: '우리회사OS — AI를 직원처럼 쓰는 회사 자동화 키트 38종',
+  title: `우리회사OS — AI를 직원처럼 쓰는 회사 자동화 키트 ${KITS.length}종`,
   description:
-    '견적서·홍보 글·문의 답변·월말 마감을 AI에 맡기는 실행 키트 38종. 3분 웹 진단 뒤 ①진단 킷은 0원으로 받고, 미니 9,900원·실행 킷 49,000원부터 필요한 것만 삽니다. 더블클릭으로 실행하고, 결과물에는 우리 회사 이름이 들어갑니다.',
+    `견적서·홍보 글·문의 답변·월말 마감을 AI에 맡기는 실행 키트 ${KITS.length}종. 3분 웹 진단 뒤 ①진단 킷은 0원으로 받고, 미니 9,900원·실행 킷 49,000원부터 필요한 것만 삽니다. 더블클릭으로 실행하고, 결과물에는 우리 회사 이름이 들어갑니다.`,
   path: '/os',
-  ogTitle: '우리회사OS — 회사 자동화 키트 38종 | 퍼블릭아이디',
-  ogDescription: '3분 웹 진단 → 무료 ①진단 킷부터. 반복 업무를 덜어 주는 실행 키트 38종.',
+  ogTitle: `우리회사OS — 회사 자동화 키트 ${KITS.length}종 | 퍼블릭아이디`,
+  ogDescription: `3분 웹 진단 → 무료 ①진단 킷부터. 반복 업무를 덜어 주는 실행 키트 ${KITS.length}종.`,
 })
 
 const FAQ = [
