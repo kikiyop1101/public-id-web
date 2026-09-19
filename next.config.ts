@@ -30,6 +30,14 @@ const nextConfig: NextConfig = {
       // 2026-09-17 대표 지시 — 사내 업무 웹앱 PI-System을 /Pis로. 검색 차단(메뉴·사이트맵·robots 미기재).
       { source: "/Pis/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] },
       { source: "/Pis", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] },
+      // 2026-09-20 PI-System 「실무 도구」는 같은 주소(/Pis/tools) iframe — 위 DENY·frame-ancestors 'none'을 이 경로만 같은 사이트 허용으로(뒤 항목이 덮는다)
+      {
+        source: "/Pis/tools/:path*",
+        headers: [
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "Content-Security-Policy", value: "frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'" },
+        ],
+      },
     ];
   },
   async rewrites() {
