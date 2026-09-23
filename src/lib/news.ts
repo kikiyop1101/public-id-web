@@ -16,7 +16,11 @@ export type NewsItem = {
   body: string[];
   /** 게시물 종류 — 없으면 보도자료 */
   kind?: "보도자료" | "소식";
+  /** 자사 실제 시공 사진(09-24 대표 지시 "너무 AI만") — after = 몇 번째 문단 뒤(0부터) */
+  photos?: NewsPhoto[];
 };
+
+export type NewsPhoto = { src: string; w: number; h: number; caption: string; after: number };
 
 export const news: NewsItem[] = data as NewsItem[];
 

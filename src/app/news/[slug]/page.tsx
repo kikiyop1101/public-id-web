@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { Fragment } from "react";
 import { pageMeta } from "@/lib/seo";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Container from "@/components/Container";
@@ -53,7 +55,7 @@ export default async function NewsDetailPage({
     ...(item.datePublished
       ? { datePublished: item.datePublished, dateModified: item.dateModified ?? item.datePublished }
       : {}),
-    image: `${site.url}/og.png`,
+    image: item.photos?.length ? `${site.url}${item.photos[0].src}` : `${site.url}/og.png`,
     mainEntityOfPage: `${site.url}/news/${item.slug}`,
     author: { "@type": "Organization", name: site.legalName },
     publisher: {
@@ -99,20 +101,35 @@ export default async function NewsDetailPage({
             </p>
 
             <div className="mt-8 space-y-5 border-t border-line pt-8">
-              {item.body.map((p, pi) =>
-                p.startsWith("### ") ? (
-                  <h2
-                    key={pi}
-                    className="break-keep pt-2 text-xl font-bold leading-snug text-ink"
-                  >
-                    {p.slice(4)}
-                  </h2>
-                ) : (
-                  <p key={pi} className="break-keep text-[16px] leading-[1.8] text-ink">
-                    {p}
-                  </p>
-                ),
-              )}
+              {item.body.map((p, pi) => (
+                <Fragment key={pi}>
+                  {p.startsWith("### ") ? (
+                    <h2 className="break-keep pt-2 text-xl font-bold leading-snug text-ink">
+                      {p.slice(4)}
+                    </h2>
+                  ) : (
+                    <p className="break-keep text-[16px] leading-[1.8] text-ink">{p}</p>
+                  )}
+                  {item.photos
+                    ?.filter((ph) => ph.after === pi)
+                    .map((ph) => (
+                      <figure key={ph.src} className="py-3">
+                        <Image
+                          src={ph.src}
+                          width={ph.w}
+                          height={ph.h}
+                          alt={ph.caption}
+                          sizes="(max-width: 768px) 100vw, 768px"
+                          className="max-h-[720px] w-full rounded-2xl object-cover"
+                        />
+                        <figcaption className="mt-3 flex items-start gap-2 break-keep text-sm leading-relaxed text-ink-soft">
+                          <span className="mt-[7px] h-2 w-2 shrink-0 rounded-full bg-teal" />
+                          <span>{ph.caption} · 퍼블릭아이디 실제 시공 현장</span>
+                        </figcaption>
+                      </figure>
+                    ))}
+                </Fragment>
+              ))}
             </div>
 
             <div className="mt-12 rounded-3xl border border-line bg-cloud/50 p-7 sm:p-9">
