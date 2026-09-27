@@ -10,7 +10,7 @@ import BreadcrumbLd from "@/components/BreadcrumbLd";
 const press = news.filter((n) => newsKind(n) === "보도자료");
 
 export const metadata: Metadata = pageMeta({
-  title: "보도자료",
+  title: "보도자료 — 노면표시재·노란발자국 소식",
   description:
     "㈜퍼블릭아이디 보도자료. 친환경 그래픽 노면표시재·노란발자국·안전시설관리 구독·디자인구독 등 언론 배포 자료를 모았습니다.",
   path: "/press",

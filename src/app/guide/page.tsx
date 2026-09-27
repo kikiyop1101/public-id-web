@@ -7,9 +7,9 @@ import Button from "@/components/Button";
 import BreadcrumbLd from "@/components/BreadcrumbLd";
 
 export const metadata: Metadata = pageMeta({
-  title: "노면 그래픽 부착 가이드",
+  title: "노면표시재 부착 가이드 — 시공 조건·4단계",
   description:
-    "친환경 그래픽 노면표시재는 칠하지 않고 붙입니다. 붙일 수 있는 바닥 조건, 노면 온도 기준, 위치 선정·청소·부착·밀착 4단계와 동절기 시공까지 영상과 함께 정리한 실무 가이드.",
+    "친환경 그래픽 노면표시재를 붙이는 4단계(위치 선정·청소·부착·밀착)와 바닥 조건·노면 온도 기준, 동절기 시공까지 영상과 함께 정리한 실무 가이드입니다.",
   path: "/guide",
 });
 

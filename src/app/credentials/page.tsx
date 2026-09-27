@@ -8,9 +8,9 @@ import { site } from "@/lib/site";
 import BreadcrumbLd from "@/components/BreadcrumbLd";
 
 export const metadata: Metadata = pageMeta({
-  title: "인증·특허",
+  title: "인증·특허 — GREENGUARD GOLD·사회적기업",
   description:
-    "특허 제10-1974029호, GREENGUARD GOLD, 노란발자국 상표등록, 인증 사회적기업·우수디자인(GD) 등 — 특허와 인증으로 검증된 퍼블릭아이디.",
+    "자체 특허(제10-1974029호)와 국제특허(유럽특허 EP 1 677 974), GREENGUARD GOLD, 노란발자국 상표등록, 인증 사회적기업·우수디자인(GD) 등 퍼블릭아이디의 인증과 특허를 모았습니다.",
   path: "/credentials",
 });
 
