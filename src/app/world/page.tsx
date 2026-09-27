@@ -14,6 +14,8 @@ export default function WorldPage() {
   return (
     <>
       <BreadcrumbLd trail={[{ name: '퍼블릭아이디 월드', path: '/world' }]} />
+      {/* 장면 제목은 스크롤 엔진이 h2로 그린다 — 문서 제목(h1)은 화면 밖에 둔다(검색·스크린리더용) */}
+      <h1 className="sr-only">퍼블릭아이디 월드 — 소재부터 관리까지</h1>
       <WorldClient />
     </>
   )
