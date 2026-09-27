@@ -1,7 +1,7 @@
 ﻿# 스토어 → 본진 Vercel 환경변수 이전 (2026-08-25 홈페이지 통합 P3 준비)
 # 값은 화면에 출력하지 않는다. 대표가 직접 실행: powershell -File scripts\transfer-env.ps1
 $store = "C:\Users\user\Desktop\시스템-외부보관\public-id-store-web"
-$main  = "C:\Users\user\Desktop\시스템-외부보관\public-id-web"
+$main  = "C:\Users\user\Desktop\시스템-외부보관\1-웹앱\public-id-web"
 $keys = @(
   "NEXT_PUBLIC_SUPABASE_URL","NEXT_PUBLIC_SUPABASE_ANON_KEY","SUPABASE_SERVICE_ROLE_KEY",
   "ADMIN_SESSION_TOKEN","ADMIN_PASSWORD","BOARD_HASH_SALT",

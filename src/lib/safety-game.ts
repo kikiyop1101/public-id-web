@@ -1,6 +1,6 @@
 // "숨은 위험 찾기" 장면·핫스팟 정본 (2026-09-08 체류시간 기획안 1순위).
 // 좌표는 이미지 기준 %(x, y = 중심, rx, ry = 타원 반경). 장면 이미지 = public/safety-game/scene-<id>.webp
-// (1920px 데스크톱 · -m 960px 모바일 · -thumb 640px). 원본 PNG = 시스템-외부보관/content-images/safety-game/.
+// (1920px 데스크톱 · -m 960px 모바일 · -thumb 640px). 원본 PNG = 시스템-외부보관/2-자산/content-images/safety-game/.
 // 카피 규칙(AGENTS.md): 노면표시재 = 부착식 알루미늄 스티커, 노란발자국 = 보도 위 횡단 대기 공간 표시, 인증 단정 금지.
 
 export type Hazard = {

@@ -1,5 +1,5 @@
 // 스크롤 월드 — 장면 정본. 카피·색만 여기서 고친다(영상 파일명은 파이프라인이 정한다).
-// 사실 정본 = Agent\퍼블릭아이디기본자료\BRAND_CONSTANTS.md
+// 사실 정본 = Agent\PI정본\BRAND_CONSTANTS.md
 
 export type WorldSection = {
   id: string

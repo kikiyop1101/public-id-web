@@ -1,12 +1,12 @@
 # 보관고(명화·지도) → 상품 라인 카탈로그 생성 (2026-08-25 홈페이지 통합 P2)
-# 원천: 시스템-외부보관\명화-보관\_원장.jsonl · 지도-보관\_원장.jsonl (+ 각 _썸네일\)
+# 원천: 시스템-외부보관\2-자산\명화-보관\_원장.jsonl · 지도-보관\_원장.jsonl (+ 각 _썸네일\)
 # 산출: public/archive/{art,maps}/<id>.<ext> (썸네일 복사) + src/data/{artworks,maps}.json
 # 규칙: NGII 세계지도 4종은 판매 제외(자사용 — NGII 고지), 나머지 전부 카탈로그.
 import json, pathlib, shutil, sys, unicodedata
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-ART_SRC = pathlib.Path(r"C:\Users\user\Desktop\시스템-외부보관\명화-보관")
-MAP_SRC = pathlib.Path(r"C:\Users\user\Desktop\시스템-외부보관\지도-보관")
+ART_SRC = pathlib.Path(r"C:\Users\user\Desktop\시스템-외부보관\2-자산\명화-보관")
+MAP_SRC = pathlib.Path(r"C:\Users\user\Desktop\시스템-외부보관\2-자산\지도-보관")
 ART_OUT = ROOT / "public" / "archive" / "art"
 MAP_OUT = ROOT / "public" / "archive" / "maps"
 DATA = ROOT / "src" / "data"
