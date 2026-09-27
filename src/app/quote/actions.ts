@@ -4,8 +4,12 @@ import { revalidatePath } from 'next/cache'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { validateLead } from '@/lib/leads'
 import { notifyLead } from '@/lib/notify'
+import { site } from '@/lib/site'
 
 export type LeadFormState = { error?: string; ok?: boolean }
+
+const SAVE_FAILED =
+  `접수하지 못했습니다. 잠시 후 다시 신청해 주시거나 ${site.email} 으로 보내 주세요.`
 
 export async function createLead(
   _prev: LeadFormState,
@@ -27,10 +31,13 @@ export async function createLead(
   if (error || !lead) return { error }
 
   // leads 테이블은 RLS 정책이 없어 anon이 접근할 수 없다 — service_role로만 쓴다.
-  const supabase = createAdminClient()
-  const { error: dbError } = await supabase.from('leads').insert(lead)
-  if (dbError) {
-    return { error: '접수 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.' }
+  // 클라이언트 생성(env 누락)까지 try 안에 둔다 — 던지면 폼 대신 오류 화면이 떠서 입력이 사라진다.
+  try {
+    const { error: dbError } = await createAdminClient().from('leads').insert(lead)
+    if (dbError) throw new Error(dbError.message)
+  } catch (err) {
+    console.error('lead save failed:', err)
+    return { error: SAVE_FAILED }
   }
 
   // 실시간 알림(라온→대표 텔레그램) — 실패해도 접수는 이미 완료된 상태.
