@@ -3,6 +3,7 @@ import Link from 'next/link'
 import type { Product } from '@/lib/products'
 import type { ProductMedia } from '@/lib/product-media'
 import ProductGallery from '@/components/ProductGallery'
+import LazyVideo from '@/components/LazyVideo'
 
 // 제품 한 섹션: 구조분석 메인(영상 우선) + 설명 + 참조 갤러리.
 export default function ProductSection({
@@ -25,7 +26,17 @@ export default function ProductSection({
           <div className={reversed ? 'md:order-2' : ''}>
             {/* 구조분석 다이어그램은 잘리면 안 되므로 16:9 + contain */}
             <div className="border-line relative aspect-video w-full overflow-hidden rounded-[28px] border bg-white">
-              {main?.kind === 'video' ? (
+              {main?.kind === 'video' && index > 0 ? (
+                // 둘째 제품부터는 화면 밖 — 가까이 왔을 때만 포스터·영상을 받는다(첫 제품은 모바일 LCP라 즉시 로드)
+                <LazyVideo
+                  sources={[
+                    ...(main.webm ? [{ src: main.webm, type: 'video/webm' }] : []),
+                    ...(main.mp4 ? [{ src: main.mp4, type: 'video/mp4' }] : []),
+                  ]}
+                  poster={main.fallbackImage}
+                  className="h-full w-full object-contain"
+                />
+              ) : main?.kind === 'video' ? (
                 <video
                   autoPlay
                   muted
