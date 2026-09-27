@@ -2,6 +2,7 @@
 
 import { useEffect, useState, type ChangeEvent, type FormEvent } from "react";
 import { site } from "@/lib/site";
+import { track } from "@vercel/analytics";
 import { readUtm } from "@/lib/utm";
 
 // 문의는 Web3Forms를 통해 public-id@naver.com 으로 수신됩니다.
@@ -9,7 +10,7 @@ import { readUtm } from "@/lib/utm";
 const WEB3FORMS_ACCESS_KEY = "3ea63b3e-2e66-41da-a857-3ae8594354b7";
 
 const field =
-  "w-full rounded-xl border border-line bg-white px-4 py-3 text-[15px] text-ink outline-none transition focus:border-teal focus:ring-2 focus:ring-teal/20";
+  "w-full rounded-xl border border-line bg-white px-4 py-3 text-base text-ink sm:text-[15px] outline-none transition focus:border-teal focus:ring-2 focus:ring-teal/20";
 
 type Fields = { name: string; email: string; phone: string; message: string };
 type Status = "idle" | "sending" | "sent" | "error";
@@ -42,41 +43,51 @@ export default function ContactForm() {
     if (status === "sending") return;
 
     setStatus("sending");
+    const utm = readUtm();
 
-    // 실시간 릴레이(사내 영업봇 알림) — 실패해도 폼 UX에 영향 없음(fire-and-forget).
-    if (!botcheck) {
-      void fetch("/api/inquiry-relay", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: f.name,
-          contact: [f.phone, f.email].filter(Boolean).join(" / "),
-          email: f.email, // leads 원장 저장용(2026-09-27)
-          phone: f.phone,
-          utm: readUtm(),
-          message: f.message,
-        }),
-      }).catch(() => {});
-    }
+    // ① 원장(leads) 저장 + 사내 실시간 알림 — 응답의 saved로 원장에 남았는지 확인한다.
+    const relay: Promise<boolean> = botcheck
+      ? Promise.resolve(false)
+      : fetch("/api/inquiry-relay", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: f.name,
+            contact: [f.phone, f.email].filter(Boolean).join(" / "),
+            email: f.email, // leads 원장 저장용(2026-09-27)
+            phone: f.phone,
+            utm,
+            message: f.message,
+          }),
+        })
+          .then((res) => (res.ok ? res.json() : null))
+          .then((data) => data?.saved === true)
+          .catch(() => false);
 
-    try {
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
-          botcheck,
-          subject: `[퍼블릭아이디 문의] ${f.name}`,
-          from_name: f.name,
-          name: f.name,
-          email: f.email,
-          phone: f.phone,
-          message: f.message,
-        }),
-      });
-      const data = await res.json();
-      setStatus(data.success ? "sent" : "error");
-    } catch {
+    // ② 이메일(Web3Forms) — 정본 수신 경로. HTTP 상태와 success를 둘 다 확인한다.
+    const mail: Promise<boolean> = fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_ACCESS_KEY,
+        botcheck,
+        subject: `[퍼블릭아이디 문의] ${f.name}`,
+        from_name: f.name,
+        name: f.name,
+        email: f.email,
+        phone: f.phone,
+        message: f.message,
+      }),
+    })
+      .then(async (res) => res.ok && (await res.json()).success === true)
+      .catch(() => false);
+
+    // 둘 중 하나라도 확인되면 접수 완료 — 둘 다 실패일 때만 오류로 안내한다.
+    const [saved, mailed] = await Promise.all([relay, mail]);
+    if (saved || mailed) {
+      if (!botcheck) track("lead_contact", { path: window.location.pathname, utm: utm || "(none)" });
+      setStatus("sent");
+    } else {
       setStatus("error");
     }
   };
@@ -135,7 +146,7 @@ export default function ContactForm() {
         </label>
         <label className="block">
           <span className="mb-1.5 block text-sm font-medium text-ink">
-            연락처
+            연락처 <span className="font-normal text-ink-soft">(선택)</span>
           </span>
           <input
             name="phone"
@@ -157,6 +168,8 @@ export default function ContactForm() {
           name="email"
           type="email"
           autoComplete="email"
+          autoCapitalize="none"
+          spellCheck={false}
           maxLength={200}
           value={f.email}
           onChange={set("email")}
@@ -190,8 +203,8 @@ export default function ContactForm() {
       </button>
       {status === "error" && (
         <p role="alert" className="mt-3 text-sm text-yellow-700">
-          전송에 실패했습니다. 잠시 후 다시 시도하시거나 {site.email} 으로
-          보내주세요.
+          문의를 보내지 못했습니다. 입력하신 내용은 그대로 있으니 인터넷 연결을
+          확인하고 다시 보내 주세요. 계속 안 되면 {site.email} 으로 보내 주세요.
         </p>
       )}
       <p className="mt-3 text-xs text-ink-soft">

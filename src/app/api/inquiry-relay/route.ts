@@ -26,8 +26,9 @@ function rateLimited(ip: string): boolean {
 const clip = (v: unknown, max: number) =>
   typeof v === "string" ? v.slice(0, max).trim() : "";
 
-// 일반 문의도 leads 원장에 남긴다(2026-09-27) — 메일·텔레그램을 놓치면 복구할 곳이 없었다. 실패해도 폼 UX는 그대로.
-async function saveContactLead(b: Record<string, unknown>) {
+// 일반 문의도 leads 원장에 남긴다(2026-09-27) — 메일·텔레그램을 놓치면 복구할 곳이 없었다.
+// 저장 여부만 돌려준다 — 폼이 "메일은 실패했지만 원장엔 남았다"를 구분해 접수 완료로 안내할 수 있게.
+async function saveContactLead(b: Record<string, unknown>): Promise<boolean> {
   const { lead } = validateLead({
     kind: "contact",
     name: clip(b.name, 50),
@@ -38,12 +39,14 @@ async function saveContactLead(b: Record<string, unknown>) {
     message: clip(b.message, 2000),
     utm: clip(b.utm, 200),
   });
-  if (!lead) return;
+  if (!lead) return false;
   try {
     const { error } = await createAdminClient().from("leads").insert(lead);
     if (error) console.error("contact lead save failed:", error.message);
+    return !error;
   } catch (err) {
     console.error("contact lead save failed:", err);
+    return false;
   }
 }
 
@@ -59,10 +62,10 @@ export async function POST(request: Request) {
   }
   const b = (raw ?? {}) as Record<string, unknown>;
 
-  await saveContactLead(b);
+  const saved = await saveContactLead(b);
 
   const secret = process.env.HERMES_WEBHOOK_SECRET;
-  if (!secret) return Response.json({ ok: false }); // 미설정이면 조용히 통과(사이트 무영향)
+  if (!secret) return Response.json({ ok: false, saved }); // 미설정이면 조용히 통과(사이트 무영향)
 
   const payload = JSON.stringify({
     event: "inquiry",
@@ -92,5 +95,5 @@ export async function POST(request: Request) {
     // 릴레이 실패는 이메일 경로가 있으므로 치명적이지 않다 — 기록만 남긴다.
     console.error("inquiry-relay failed:", err);
   }
-  return Response.json({ ok: true });
+  return Response.json({ ok: true, saved });
 }
