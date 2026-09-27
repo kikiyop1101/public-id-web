@@ -3,6 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 import { parseBlogListItem } from "@/lib/blog";
 import { news } from "@/lib/news";
 import { answers } from "@/lib/answers";
+import { KIT_PAGES } from "@/lib/os-kit-pages";
 
 // 발행·승인이 배포 없이 일어나므로 사이트맵도 요청 시점 생성(2차 감사 지적 — 빌드 스냅샷 드리프트 방지)
 export const dynamic = "force-dynamic";
@@ -75,5 +76,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
     lastModified: new Date(a.dateModified),
   }));
-  return [...staticEntries, ...newsEntries, ...answerEntries, ...(await blogEntries())];
+  // 2026-09-27 우리회사OS 상품별 페이지(/os/[slug]) — 정적 데이터(os-kit-pages.json)라 실패 지점 없음.
+  const kitEntries: MetadataRoute.Sitemap = KIT_PAGES.map((p) => ({
+    url: `${base}/os/${p.slug}`,
+    priority: 0.7,
+  }));
+  return [...staticEntries, ...newsEntries, ...answerEntries, ...kitEntries, ...(await blogEntries())];
 }
