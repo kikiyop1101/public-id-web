@@ -18,6 +18,7 @@ Next.js 16.2.x. `node_modules/next/dist/docs/`가 없으면(클론/CI 환경) �
 - deploy: `git push` (master → Vercel 자동 재배포, `npx vercel --prod` 수동 불필요)
 - 소식(/news 전체 · /press 보도자료만, 탭 공용 컴포넌트 NewsListSection) 데이터 = `src/content/news.json`(최신이 맨 앞, 날짜 필드 없음 — 대표 확정 2026-09-08). 볼트 `Agent\콘텐츠본부\보도자료\publisher\news_publish.py`가 주 3건(월·수·금) 자동으로 검증→선두 삽입→build→commit→push 한다. 손으로 고칠 땐 slug 유일·플레인 텍스트 문단만 지키면 된다.
 
+- IndexNow(빙·네이버·얀덱스 등, 구글 미지원) 자동 제출 = `.github/workflows/indexnow.yml` → `scripts/indexnow.mjs`. Vercel 프로덕션 배포 성공 시 직전 성공 배포 커밋과 diff해 바뀐 공개 URL만 제출한다(`src/app/<경로>` → 그 경로, `news.json` → 바뀐 글·/news·/press·홈, 공용 파일·public 자산처럼 애매한 변경 → sitemap lastmod 최근 7일 URL). 공개 URL 목록은 `sitemap.ts`의 routes를 읽으므로 새 페이지는 거기 넣으면 된다. 키 파일 `public/9706e13d3e584e3e0a8eac7f7ff78fdd.txt`(공개가 원래 설계)는 지우지 말 것. 수동: `node scripts/indexnow.mjs --base <sha> --dry-run`, 큰 개편 땐 `--all`.
 - **페이지 메타데이터는 `pageMeta()`(`src/lib/seo.ts`) 하나로 쓴다**(2026-09-08 감사). Next는 openGraph를 병합이 아니라 통째 교체하므로 손으로 `openGraph: {…}`를 쓰면 og:image·siteName이 사라지고, 안 쓰면 홈 문구가 상속된다. 새 페이지 = `export const metadata: Metadata = pageMeta({ title, description, path })`. 루트 layout에는 canonical을 두지 않는다. FAQ가 있는 페이지는 `FaqBlock`(FAQPage JSON-LD 동반)으로.
 
 환경 함정(Windows PowerShell): npx가 차단되면 npm.cmd 절대경로로 우회 — `& 'C:\Program Files\nodejs\npm.cmd' exec <pkg>` (또는 Bash 툴 사용).
