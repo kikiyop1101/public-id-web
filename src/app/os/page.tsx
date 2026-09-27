@@ -254,7 +254,9 @@ export default function OsPage() {
               src="/os/layer1-sheet.webp"
               width={1600}
               height={1146}
-              priority
+              // Next 16에서 priority는 폐기 예정 — 문서 권장대로 eager+high(head preload 링크를 만들지 않아 프리페치 경고도 없음)
+              loading="eager"
+              fetchPriority="high"
               sizes="(min-width: 1024px) 640px, 100vw"
               alt="우리회사OS ②업무시트 관제탑 — 오늘의 브리핑과 업무 상태흐름(예시 데이터)"
               className="h-auto w-full"
@@ -391,7 +393,12 @@ export default function OsPage() {
                       src={s.src}
                       width={s.w}
                       height={s.h}
-                      sizes="(min-width: 1200px) 1140px, 100vw"
+                      // 2장인 층은 md 이상 2열(한 장 ≈ 560px) — 1140px로 받으면 2배 넘게 과다 전송
+                      sizes={
+                        l.shots.length > 1
+                          ? '(min-width: 1200px) 560px, (min-width: 768px) 50vw, 100vw'
+                          : '(min-width: 1200px) 1140px, 100vw'
+                      }
                       alt={s.alt}
                       className="h-auto w-full"
                     />

@@ -50,6 +50,11 @@ const BASE_PRICES: Partial<Record<string, string>> = {
   fabric: '88000',
 }
 
+// 노란발자국은 ㎡ 단가가 아니라 형태별 "~부터" 기준가(위 FAQ: 우측면형 40만 원~ · 전면형 60만 원~)
+const FROM_PRICES: Partial<Record<string, { lowPrice: string; offerCount: number }>> = {
+  footprint: { lowPrice: '400000', offerCount: 2 },
+}
+
 // Product 필수 필드 image — 각 제품 폴더의 첫 갤러리 사진(2차 감사 N-H1)
 function productImage(folder: string): string | null {
   const media = getProductMedia(folder)
@@ -88,7 +93,19 @@ const jsonLd = {
               seller: { '@id': 'https://www.public-id.co.kr/#organization' },
             },
           }
-        : {}),
+        : FROM_PRICES[p.id]
+          ? {
+              offers: {
+                '@type': 'AggregateOffer',
+                url: 'https://www.public-id.co.kr/quote',
+                priceCurrency: 'KRW',
+                lowPrice: FROM_PRICES[p.id]!.lowPrice,
+                offerCount: FROM_PRICES[p.id]!.offerCount,
+                availability: 'https://schema.org/InStock',
+                seller: { '@id': 'https://www.public-id.co.kr/#organization' },
+              },
+            }
+          : {}),
     },
   })),
 }

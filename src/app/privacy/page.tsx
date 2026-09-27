@@ -3,6 +3,7 @@ import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
 import { site } from "@/lib/site";
+import BreadcrumbLd from "@/components/BreadcrumbLd";
 
 export const metadata: Metadata = pageMeta({
   title: "개인정보처리방침",
@@ -83,6 +84,7 @@ const sections: { h: string; body: (string | string[])[] }[] = [
 export default function PrivacyPage() {
   return (
     <>
+      <BreadcrumbLd trail={[{ name: "개인정보처리방침", path: "/privacy" }]} />
       <PageHero
         eyebrow="Privacy Policy"
         title="개인정보처리방침"

@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
-import MotionVideo from "@/components/MotionVideo";
+import LazyVideo from "@/components/LazyVideo";
 import { cn } from "@/lib/cn";
 
 type WorkItem = {
@@ -133,15 +133,12 @@ export default function Work({
               <article className="group h-full overflow-hidden rounded-2xl border border-line bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-teal/5">
                 <div className="relative aspect-[4/3] overflow-hidden bg-cloud">
                   {w.video ? (
-                    <MotionVideo
+                    // 포스터 원본 PNG(1.9MB)를 그대로 쓰지 않고 이미지 최적화 경로(카드 폭 2배)로, 영상은 화면 가까이에서만(2026-09-27)
+                    <LazyVideo
                       className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                      src={w.video}
-                      poster={w.img}
-                      muted
-                      loop
-                      playsInline
-                      preload="metadata"
-                      aria-hidden="true"
+                      sources={[{ src: w.video, type: "video/mp4" }]}
+                      poster={getImageProps({ src: w.img, alt: "", width: 375, height: 281 }).props.src}
+                      ariaHidden
                     />
                   ) : (
                     <Image

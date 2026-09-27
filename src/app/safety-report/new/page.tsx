@@ -2,17 +2,24 @@ import type { Metadata } from 'next'
 import { pageMeta } from '@/lib/seo'
 import Link from 'next/link'
 import ReportForm from '@/components/ReportForm'
+import BreadcrumbLd from '@/components/BreadcrumbLd'
 
 export const metadata: Metadata = pageMeta({
   title: '위험 지점 제보 — 우리 학교 앞 안전 리포트',
   description:
-    '통학로 위험 지점을 사진과 위치로 제보해 주세요.',
+    '통학로 위험 지점을 사진과 위치로 제보해 주세요. 사진 한 장이면 충분합니다. 검토 후 지도에 공개되고, 제보가 모인 지역은 무료 진단 리포트로 이어집니다.',
   path: '/safety-report/new',
 })
 
 export default function NewReportPage() {
   return (
     <div className="mx-auto max-w-3xl px-5 py-16 sm:px-8">
+      <BreadcrumbLd
+        trail={[
+          { name: '안전 리포트', path: '/safety-report' },
+          { name: '위험 지점 제보', path: '/safety-report/new' },
+        ]}
+      />
       <p className="font-display text-teal-700 text-sm font-semibold uppercase tracking-[0.18em]">
         Safety Report
       </p>
