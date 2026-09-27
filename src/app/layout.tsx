@@ -20,9 +20,13 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.public-id.co.kr"),
-  // 네이버 서치어드바이저 소유확인(2026-09-27 등록) — 지우면 소유확인이 풀린다.
+  // 네이버 서치어드바이저·구글 서치콘솔·빙 웹마스터 소유확인(2026-09-27 등록) — 지우면 소유확인이 풀린다.
   verification: {
-    other: { "naver-site-verification": "e93a5636cc682820e50c1967da1647168f0a569d" },
+    google: "wItzF3lcu_K3C5Z8WHWorb6EiHT-9tXE_cVGj3AXSlM",
+    other: {
+      "naver-site-verification": "e93a5636cc682820e50c1967da1647168f0a569d",
+      "msvalidate.01": "C2666BB0E88EC62C1E4277FEA878DE46",
+    },
   },
   // canonical은 각 페이지가 pageMeta()로 자기 경로를 선언한다(루트에 두면 noindex·admin 페이지까지 "/"를 상속 — 2026-09-08 감사).
   title: {
