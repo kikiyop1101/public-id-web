@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { pageMeta } from '@/lib/seo'
 import {
   KITS,
   KIT_GROUPS,
+  PACK_MEMBERS,
   LATPEED_MEMBERSHIP_URL,
   LATPEED_REVIEWERS_URL,
   ALL_IN_ONE,
@@ -13,6 +15,7 @@ import {
   formatPrice,
   priceLabel,
 } from '@/lib/os-kits'
+import { kitPath } from '@/lib/os-kit-pages'
 import OsCurator from '@/components/OsCurator'
 import KitLink from '@/components/KitLink'
 import ScanClient from '@/components/ScanClient'
@@ -135,15 +138,6 @@ const LAYERS = [
   },
 ]
 
-const PACK_MEMBERS: Record<string, string> = {
-  '팩①': '⑭예약관리 · ⑥리뷰답글 · ⑰FAQ응대 · 미니③고객문자 · 미니②안내문',
-  '팩②': '⑫발주경보 · ⑥리뷰답글 · 미니④가격표 · 미니②안내문 · 미니⑤마진계산',
-  '팩③': '⑧견적3안 · ⑬수금독촉 · ⑨월말마감 · ⑯메일함 정리 · ⑩사장브리핑',
-  '팩④': '⑤상세페이지 · ⑫발주경보 · ⑥리뷰답글 · ⑯메일함 정리 · 미니⑤마진계산',
-  '팩⑤': '㉒성적통지문 · ⑭예약관리 · 미니③고객문자 · 미니①한장소개',
-  '팩⑥': '⑳거래명세서 · ㉓재고대장 · ⑫발주경보 · ⑨월말마감',
-}
-
 const STEPS = [
   ['3분 웹 진단', '이 페이지에서 15문항으로 업무 5개 영역을 점검합니다. 로그인·정보 입력 없이 AI에 맡기면 좋은 일 TOP3가 나옵니다.'],
   ['①진단 킷 (무료)', '내 PC에서 업무 데이터를 넣고 우리 회사 이름이 들어간 우선순위 리포트를 받습니다.'],
@@ -181,7 +175,7 @@ export default function OsPage() {
       position: i + 1,
       name: `우리회사OS ${k.no}${k.name}`,
       description: k.tagline,
-      url: k.url,
+      url: `https://www.public-id.co.kr${kitPath(k)}`,
     })),
   }
 
@@ -428,26 +422,29 @@ export default function OsPage() {
           </p>
           <ul className="border-line mt-10 border-t">
             {packs.map((p) => (
-              <li key={p.no} className="border-line border-b">
+              <li
+                key={p.no}
+                className="border-line grid gap-2 border-b py-5 md:grid-cols-[220px_1fr_auto] md:items-baseline md:gap-8"
+              >
+                {/* 제목 → 상품별 페이지, 가격 → 구매(2026-09-27) */}
+                <Link href={kitPath(p)} className="text-ink text-base font-bold underline-offset-4 transition hover:text-teal-700 hover:underline">
+                  <span className="text-teal-700">{p.no}</span> {p.name}
+                </Link>
+                <span className="text-ink-soft break-keep text-[15px]">
+                  {p.tagline}
+                  <span className="text-ink mt-1 block text-sm">{PACK_MEMBERS[p.no].join(' · ')}</span>
+                </span>
                 <KitLink
                   kit={`${p.no}${p.name}`}
                   place="list"
                   href={p.url}
-                  className="grid gap-2 py-5 transition hover:opacity-75 md:grid-cols-[220px_1fr_auto] md:items-baseline md:gap-8"
+                  className="text-ink text-sm font-bold transition hover:opacity-75"
                 >
-                  <span className="text-ink text-base font-bold">
-                    <span className="text-teal-700">{p.no}</span> {p.name}
+                  {formatPrice(p.price)}원
+                  <span className="text-ink-soft ml-2 text-xs font-normal line-through">
+                    {formatPrice(p.listPrice)}원
                   </span>
-                  <span className="text-ink-soft break-keep text-[15px]">
-                    {p.tagline}
-                    <span className="text-ink mt-1 block text-sm">{PACK_MEMBERS[p.no]}</span>
-                  </span>
-                  <span className="text-ink text-sm font-bold">
-                    {formatPrice(p.price)}원
-                    <span className="text-ink-soft ml-2 text-xs font-normal line-through">
-                      {formatPrice(p.listPrice)}원
-                    </span>
-                  </span>
+                  <span className="text-teal-700 ml-3 text-xs font-semibold underline underline-offset-4">구매</span>
                 </KitLink>
               </li>
             ))}
@@ -583,28 +580,33 @@ export default function OsPage() {
               </h3>
               <ul className="mt-5">
                 {items.map((k) => (
-                  <li key={k.no + k.name} className="border-line/70 border-b">
+                  <li
+                    key={k.no + k.name}
+                    className="border-line/70 flex flex-wrap items-baseline gap-x-3 gap-y-1 border-b py-4"
+                  >
+                    {/* 제목 → 상품별 페이지, 가격 → 구매(2026-09-27) */}
+                    <Link href={kitPath(k)} className="text-ink text-base font-bold underline-offset-4 transition hover:text-teal-700 hover:underline">
+                      <span className="text-teal-700">{k.no}</span>
+                      {k.name}
+                    </Link>
+                    <span className="text-ink-soft order-last basis-full text-sm sm:order-none sm:min-w-0 sm:flex-1 sm:basis-auto">
+                      {k.tagline}
+                    </span>
                     <KitLink
                       kit={`${k.no}${k.name}`}
                       place="list"
                       href={k.url}
-                      className="flex flex-wrap items-baseline gap-x-3 gap-y-1 py-4 transition hover:opacity-75"
+                      className="text-ink shrink-0 text-sm font-bold transition hover:opacity-75"
                     >
-                      <span className="text-ink text-base font-bold">
-                        <span className="text-teal-700">{k.no}</span>
-                        {k.name}
-                      </span>
-                      <span className="text-ink-soft order-last basis-full text-sm sm:order-none sm:min-w-0 sm:flex-1 sm:basis-auto">
-                        {k.tagline}
-                      </span>
-                      <span className="text-ink shrink-0 text-sm font-bold">
-                        {priceLabel(k.price)}
-                        {/* 0원(①진단)은 정가 취소선 없이 "무료"만 */}
-                        {k.listPrice > 0 && (
-                          <span className="text-ink-soft ml-2 text-xs font-normal line-through">
-                            {formatPrice(k.listPrice)}원
-                          </span>
-                        )}
+                      {priceLabel(k.price)}
+                      {/* 0원(①진단)은 정가 취소선 없이 "무료"만 */}
+                      {k.listPrice > 0 && (
+                        <span className="text-ink-soft ml-2 text-xs font-normal line-through">
+                          {formatPrice(k.listPrice)}원
+                        </span>
+                      )}
+                      <span className="text-teal-700 ml-3 text-xs font-semibold underline underline-offset-4">
+                        {k.price === 0 ? '받기' : '구매'}
                       </span>
                     </KitLink>
                   </li>

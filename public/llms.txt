@@ -37,6 +37,51 @@
 - 맞춤 견적: https://www.public-id.co.kr/quote
 - 견적 시뮬레이터(규격·수량 슬라이더로 기준가 합계·예산 역산): https://www.public-id.co.kr/estimate
 - 우리회사OS(AI 자동화 키트 44종·무료 ①진단·FAQ): https://www.public-id.co.kr/os
+  (키트별 상세 페이지 — 하는 일·준비물·사용 흐름·가격·FAQ)
+  - ①진단 — 뭘 AI에 맡길지, 1시간 만에 우선순위 리포트: https://www.public-id.co.kr/os/scan
+  - ②업무시트 — 구글시트 한 판으로 세우는 회사 운영: https://www.public-id.co.kr/os/system
+  - ④AI 직원 5명 — AI가 설치하는 24시간 AI 팀, 승인만 대표가: https://www.public-id.co.kr/os/os
+  - ④셀러편 — 1인 쇼핑몰 전용 AI 직원 프리셋: https://www.public-id.co.kr/os/os-seller
+  - ⑦회의록 — 녹취 붙여넣으면 회의록·할일·후속메일 3종: https://www.public-id.co.kr/os/minutes
+  - ⑭예약관리 — 확인·리마인드·노쇼 문자 자동 조립: https://www.public-id.co.kr/os/booking
+  - ⑯메일함 정리 — 받은 메일 자동 분류 + 답장 초안: https://www.public-id.co.kr/os/mail
+  - ⑰FAQ응대 — 같은 문의 답변 초안 자동: https://www.public-id.co.kr/os/faq
+  - ⑲채용도우미 — 공고문과 지원서 정리표: https://www.public-id.co.kr/os/hire
+  - ㉒성적통지문 — 성적표 한 장으로 학생별 통지문·학부모 문구: https://www.public-id.co.kr/os/grade
+  - ㉚AI 회사맥락 — 회사 규칙·사람별 성향·업무 경험을 AI가 읽는 세 칸으로: https://www.public-id.co.kr/os/context
+  - ㉜알바 근태·주휴수당 — 출퇴근 기록으로 주휴수당·임금명세서: https://www.public-id.co.kr/os/shift
+  - ㉞AI 직원 품질점검 — 챗봇이 틀린 말을 하는지 시험하고 채점: https://www.public-id.co.kr/os/agentcheck
+  - ③콘텐츠 — 인스타·유튜브·스레드 자동 발행: https://www.public-id.co.kr/os/content
+  - ③블로그편 — 검색이 좋아하는 블로그 원고, 구조부터 자동 조립: https://www.public-id.co.kr/os/blog
+  - ③쇼츠편 — 쇼츠 대본·자막(SRT) 자동 생성, 촬영만 하세요: https://www.public-id.co.kr/os/shorts
+  - ⑤상세페이지 — 질문표만 채우면 상세페이지가 조립됩니다: https://www.public-id.co.kr/os/detail
+  - ⑥리뷰답글 — 리뷰 100개, 답글 초안은 1분: https://www.public-id.co.kr/os/review
+  - ⑧견적3안 — 상담 메모가 A/B/C 견적서 3장으로: https://www.public-id.co.kr/os/quote
+  - ⑪리드발굴 — 뉴스 신호로 찾는 B2G·B2B 영업 타겟: https://www.public-id.co.kr/os/lead
+  - ⑬수금독촉 — 미수금 목록 한 장으로 독촉 문안 3단계: https://www.public-id.co.kr/os/collect
+  - ⑮지원사업 매칭 — 정부 지원사업 적격 판정 + 신청서 초안: https://www.public-id.co.kr/os/grant
+  - ㉙재방문 리마인드 — 주기 넘긴 단골 명단과 문자 문구 자동: https://www.public-id.co.kr/os/revisit
+  - ㉝계약서 사전 점검 — 서명 전에 빠진 조항·불리한 조항 점검: https://www.public-id.co.kr/os/contractcheck
+  - ⑨월말마감 — 매출·비용 CSV로 끝내는 월간 마감 리포트: https://www.public-id.co.kr/os/close
+  - ⑩사장브리핑 — 출근 전 3분, 오늘의 경보와 할 일: https://www.public-id.co.kr/os/brief
+  - ⑫발주경보 — 품절 나기 전에 발주 시점을 알려 드립니다: https://www.public-id.co.kr/os/stock
+  - ⑱증빙정리 — 부가세 신고 전 증빙 대사, 반나절이 20분으로: https://www.public-id.co.kr/os/tax
+  - ⑳거래명세서 — 납품기록으로 명세서·발행대장·재고차감 한 번에: https://www.public-id.co.kr/os/statement
+  - ㉓재고대장 — 입출고 기록으로 현재고·회전율·장기재고 한 장에: https://www.public-id.co.kr/os/inventory
+  - ㉔반품사유 집계 — 반품 사유가 Top3 원인과 수정 제안으로: https://www.public-id.co.kr/os/return
+  - ㉛자금 달력 — 급여날·세금날 잔액을 90일 앞서 봅니다: https://www.public-id.co.kr/os/cashflow
+  - ㉕고정지출 점검 — 카드·통장 내역에서 매달 새는 구독료를 한 장에: https://www.public-id.co.kr/os/fixed
+  - 팩①예약업 패키지 — 미용실·학원·병의원·공방 반복 업무 5종 묶음: https://www.public-id.co.kr/os/pack-booking
+  - 팩②매장 패키지 — 카페·식당·소매점 종이 일과 숫자 일 5종 묶음: https://www.public-id.co.kr/os/pack-store
+  - 팩③사무 B2B 패키지 — 견적→수금→마감, 거래처 업무 5종 묶음: https://www.public-id.co.kr/os/pack-b2b
+  - 팩④셀러 라이트 패키지 — 1인 셀러 반복 업무 5종 묶음: https://www.public-id.co.kr/os/pack-seller
+  - 팩⑤학원·교습소 패키지 — 성적통지·보강예약·학부모 문자·소개서 한 묶음: https://www.public-id.co.kr/os/pack-academy
+  - 팩⑥도소매·유통 패키지 — 거래명세서부터 월말마감까지 한 규격 한 바퀴: https://www.public-id.co.kr/os/pack-trade
+  - 미니①한장소개 — 우리 회사 소개, 한 장으로 정리: https://www.public-id.co.kr/os/onepage
+  - 미니②안내문 — 휴무·가격 변경 안내문을 바로 작성: https://www.public-id.co.kr/os/notice
+  - 미니③고객문자 — 예약 확인·리뷰 요청 문자 문구 세트: https://www.public-id.co.kr/os/message
+  - 미니④가격표 — 메뉴판·가격표를 보기 좋게 한 장으로: https://www.public-id.co.kr/os/price
+  - 미니⑤마진계산 — 팔수록 손해인 품목을 숫자로 확인: https://www.public-id.co.kr/os/margin
 - 축제·행사 콜라보(퍼블릭아이디×아스팔트아트): https://www.public-id.co.kr/festival
 - 안전관리 지도(설치 위치·관리 이력): https://www.public-id.co.kr/safety-map
 - 우리 학교 앞 안전 리포트(통학로 위험 지점 시민 제보 캠페인): https://www.public-id.co.kr/safety-report

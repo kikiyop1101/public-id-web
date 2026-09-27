@@ -7,7 +7,7 @@ import type { AnchorHTMLAttributes, ReactNode } from "react";
 // 2차 확장 리서치(08-27)가 짚은 "측정 암전"의 첫 정량 데이터 — 어느 키트 링크에서 몇 명이 넘어가는지 Vercel Analytics 이벤트로 남긴다.
 type Props = AnchorHTMLAttributes<HTMLAnchorElement> & {
   kit: string;
-  place: "list" | "hero" | "cta" | "curator";
+  place: "list" | "hero" | "cta" | "curator" | "detail";
   children: ReactNode;
 };
 
