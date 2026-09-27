@@ -3,6 +3,7 @@ import { pageMeta } from '@/lib/seo'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getPostBySlug } from '@/lib/blog'
+import BreadcrumbLd from '@/components/BreadcrumbLd'
 
 export const dynamic = 'force-dynamic'
 
@@ -50,6 +51,12 @@ export default async function BlogPostPage({
 
   return (
     <article className="mx-auto max-w-3xl px-5 py-16">
+      <BreadcrumbLd
+        trail={[
+          { name: '기업 블로그', path: '/blog' },
+          { name: post.title, path: `/blog/${post.slug}` },
+        ]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
