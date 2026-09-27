@@ -58,6 +58,8 @@ const FAQ = [
 // 페이지 구성(2026-09-17 대표 지시 — hyperez Skein OS 정보 구조를 PI 디자인시스템으로):
 // 히어로 → 정의 → 왜(탭) → 비교 3열 + 핵심 설계 → 3층 구조(기록·실행·자율) → 업종별 구성 → 도입 단계 → 3분 진단 → 키트 목록(올인원) → FAQ → CTA
 const SECTION_EYEBROW = 'font-display text-teal-700 text-sm font-semibold uppercase tracking-[0.18em]'
+const JUMP_CHIP =
+  'border-line text-ink inline-flex h-10 items-center rounded-full border bg-white px-4 text-sm font-semibold whitespace-nowrap transition hover:border-teal-700 hover:text-teal-700'
 const SECTION_H2 = 'text-ink mt-4 break-keep text-3xl font-extrabold leading-[1.2] tracking-[-0.025em] sm:text-4xl'
 
 const COMPARE = [
@@ -161,6 +163,13 @@ export default function OsPage() {
     os: minOf((k) => k.name === 'AI 직원 5명'),
   }
   const packs = KITS.filter((k) => k.group === '패키지')
+  // 업종 패키지는 위 '업종별 구성' 섹션에서 보여 준다 — 목록·바로가기 공용
+  const kitGroups = KIT_GROUPS.filter((g) => g.key !== '패키지')
+    .map((g) => {
+      const items = KITS.filter((k) => k.group === g.key)
+      return { g, items, count: items.length }
+    })
+    .filter((x) => x.count > 0)
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -204,19 +213,18 @@ export default function OsPage() {
         <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
           <div>
             <p className={SECTION_EYEBROW}>Ourcompany OS</p>
+            {/* 첫 화면 5초 — 무엇(자동화 키트)·이득(반복 업무를 AI에)·다음 행동(진단·키트·문의)이 한 화면에 보이게(2026-09-27) */}
             <h1 className="text-ink mt-4 break-keep text-4xl font-extrabold leading-[1.15] tracking-[-0.025em] sm:text-5xl">
-              작은 회사 자동화의
-              <br />
-              마지막 단계
+              견적·수금·마감을 AI에 맡기는 <span className="whitespace-nowrap">회사 자동화 키트</span>
             </h1>
             <p className="text-arch font-display mt-3 text-3xl font-extrabold tracking-[-0.02em] sm:text-4xl">
               우리회사OS
             </p>
             <p className="text-ink-soft mt-6 max-w-[34em] break-keep text-lg leading-relaxed">
-              회사의 실제 기록 위에 AI를 얹어, 견적·수금·마감·콘텐츠 같은 반복 업무를 실제로 덜어 내는
-              작은 회사용 AI 운영체제입니다. 우리가 매일 돌리는 것을 그대로 키트로 냅니다.
+              내려받아 더블클릭하면 견적서·독촉 문안·마감 리포트가 우리 회사 이름으로 나옵니다. 설치
+              프로그램도, 월 이용료도 없습니다.
             </p>
-            <div className="mt-10 flex flex-wrap items-center gap-3">
+            <div className="mt-8 flex flex-wrap items-center gap-3">
               <a
                 href="#scan"
                 className="bg-arch inline-flex h-14 items-center justify-center rounded-full px-7 text-[15px] font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:brightness-105"
@@ -230,6 +238,16 @@ export default function OsPage() {
                 키트 {KITS.length}종 보기
               </a>
             </div>
+            <p className="text-ink-soft mt-5 break-keep text-sm">
+              ①진단 킷은 0원입니다. 도입이 고민되면{' '}
+              <a
+                href={`/contact?msg=${encodeURIComponent('[우리회사OS 도입 문의] ')}`}
+                className="text-teal-700 font-semibold underline underline-offset-4 hover:no-underline"
+              >
+                도입 상담 문의
+              </a>
+              를 남겨 주세요.
+            </p>
           </div>
           <figure className="border-line overflow-hidden rounded-3xl border bg-white shadow-sm">
             <Image
@@ -394,7 +412,7 @@ export default function OsPage() {
       </section>
 
       {/* 업종별 구성 */}
-      <section className="bg-cloud border-line border-y">
+      <section id="industry" className="bg-cloud border-line scroll-mt-24 border-y">
         <div className="mx-auto max-w-[1200px] px-5 py-20 sm:px-8 sm:py-28">
           <p className={SECTION_EYEBROW}>By industry</p>
           <h2 className={SECTION_H2}>업종별로는 이렇게 묶었습니다</h2>
@@ -465,6 +483,33 @@ export default function OsPage() {
           순입니다. 전 상품 부가세 포함, 런칭가는 초기 10명 한정입니다.
         </p>
 
+        {/* 분류 바로가기 — 목록 앞 안내·올인원을 건너뛰고 원하는 분류로 바로(2026-09-27 전환 개선) */}
+        <nav aria-label="키트 분류 바로가기" className="mt-8 flex flex-wrap gap-2">
+          {kitGroups.map(({ g, count }, i) => (
+            <a
+              key={g.key}
+              href={`#kit-group-${i}`}
+              className={JUMP_CHIP}
+            >
+              {g.title}
+              <span className="text-ink-soft ml-1.5 font-normal">{count}</span>
+            </a>
+          ))}
+          <a
+            href="#industry"
+            className={JUMP_CHIP}
+          >
+            업종 패키지
+            <span className="text-ink-soft ml-1.5 font-normal">{packs.length}</span>
+          </a>
+          <a
+            href="#all-in-one"
+            className={JUMP_CHIP}
+          >
+            올인원
+          </a>
+        </nav>
+
         {/* 구매 전 확인 — 2026-09-19 어사이드 경쟁 후기 분석: 저평점 1위 = "설치 후 오류·지원 범위 모호·환불 불가". 범위를 구매 전에 보이게 */}
         <div className="mt-8 grid max-w-[56em] gap-4 sm:grid-cols-2">
           <div className="border-line rounded-2xl border bg-white p-5">
@@ -522,12 +567,9 @@ export default function OsPage() {
           </div>
         </div>
 
-        {/* 업종 패키지는 위 '업종별 구성' 섹션에서 보여 준다 */}
-        {KIT_GROUPS.filter((g) => g.key !== '패키지').map((g) => {
-          const items = KITS.filter((k) => k.group === g.key)
-          if (items.length === 0) return null
+        {kitGroups.map(({ g, items }, i) => {
           return (
-            <div key={g.key} className="mt-12">
+            <div key={g.key} id={`kit-group-${i}`} className="mt-12 scroll-mt-24">
               <h3 className="text-ink text-lg font-bold">
                 {g.title}
                 <span className="text-ink-soft ml-3 text-sm font-normal">{g.desc}</span>
