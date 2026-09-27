@@ -73,14 +73,21 @@ export default function Footer() {
             <ul className="mt-4 space-y-2">
               {site.stores.map((s) => (
                 <li key={s.label}>
-                  <a
-                    href={s.href}
-                    className="transition hover:text-white"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {s.label}
-                  </a>
+                  {/* 사이트 안 주소(/os 등)는 새 창 없이 같은 탭으로 */}
+                  {s.href.startsWith("/") ? (
+                    <Link href={s.href} className="transition hover:text-white">
+                      {s.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={s.href}
+                      className="transition hover:text-white"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {s.label}
+                    </a>
+                  )}
                 </li>
               ))}
               <li>

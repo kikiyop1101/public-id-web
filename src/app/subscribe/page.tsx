@@ -4,6 +4,7 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
+import Button from "@/components/Button";
 import Subscription from "@/components/sections/Subscription";
 import HowItWorks from "@/components/sections/HowItWorks";
 import DesignTokenDemo from "@/components/sections/DesignTokenDemo";
@@ -70,6 +71,19 @@ export default function SubscribePage() {
       </section>
       <Pricing />
       <Faq />
+      {/* 다음 행동 — 구독 상담 + 같은 구독 메뉴의 우리회사OS(2026-09-27 동선 점검) */}
+      <section className="border-t border-line bg-cloud py-20 text-center sm:py-24">
+        <Container>
+          <h2 className="text-2xl font-bold text-ink sm:text-3xl">어떤 구독이 맞을지 함께 정해요</h2>
+          <p className="mx-auto mt-3 max-w-xl text-ink-soft">
+            필요한 업무를 알려주시면 맞는 구독을 안내해 드립니다. AI 업무 자동화가 필요하시면 우리회사OS도 살펴보세요.
+          </p>
+          <div className="mt-7 flex flex-wrap justify-center gap-3">
+            <Button href="/contact">상담 신청</Button>
+            <Button href="/os" variant="navy">우리회사OS 보기</Button>
+          </div>
+        </Container>
+      </section>
     </>
   );
 }

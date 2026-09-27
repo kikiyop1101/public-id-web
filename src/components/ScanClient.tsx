@@ -67,7 +67,7 @@ export default function ScanClient() {
       ...order.slice(0, 3).map((ai, r) => `${r + 1}. ${AREAS[ai].name}`),
       '',
       `예상 절감 시간: 주당 약 ${hours}시간 (추정치)`,
-      '진단: 퍼블릭아이디 우리회사OS · public-id.co.kr/os',
+      '진단: 퍼블릭아이디 우리회사OS · www.public-id.co.kr/os',
     ]
     try {
       await navigator.clipboard.writeText(lines.join('\n'))

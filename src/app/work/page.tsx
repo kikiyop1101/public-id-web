@@ -4,6 +4,7 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
+import Button from "@/components/Button";
 import Work from "@/components/sections/Work";
 import BreadcrumbLd from "@/components/BreadcrumbLd";
 
@@ -49,6 +50,19 @@ export default function WorkPage() {
               부착 가이드 보기 <span aria-hidden>→</span>
             </Link>
           </Reveal>
+        </Container>
+      </section>
+      {/* 다음 행동 — 사업영역을 본 뒤 견적·문의로(2026-09-27 동선 점검) */}
+      <section className="py-20 text-center sm:py-24">
+        <Container>
+          <h2 className="text-2xl font-bold text-ink sm:text-3xl">우리 공간에도 적용할 수 있을까요?</h2>
+          <p className="mx-auto mt-3 max-w-xl text-ink-soft">
+            설치 장소·규격·수량을 알려주시면 맞춤 견적으로 회신드립니다.
+          </p>
+          <div className="mt-7 flex flex-wrap justify-center gap-3">
+            <Button href="/quote">맞춤 견적 받기</Button>
+            <Button href="/contact" variant="navy">문의하기</Button>
+          </div>
         </Container>
       </section>
     </>
