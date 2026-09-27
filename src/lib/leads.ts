@@ -7,6 +7,7 @@ export const LEAD_KINDS = {
   safety_sub: '안전시설관리 구독',
   quote: '맞춤 견적',
   festival: '축제·행사 견적',
+  contact: '일반 문의', // /contact 폼(2026-09-27 — 메일·텔레그램만 가던 것을 원장에도 남긴다)
 } as const
 
 export type LeadKind = keyof typeof LEAD_KINDS

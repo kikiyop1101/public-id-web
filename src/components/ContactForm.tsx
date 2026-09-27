@@ -50,6 +50,8 @@ export default function ContactForm() {
         body: JSON.stringify({
           name: f.name,
           contact: [f.phone, f.email].filter(Boolean).join(" / "),
+          email: f.email, // leads 원장 저장용(2026-09-27)
+          phone: f.phone,
           message: f.message,
         }),
       }).catch(() => {});

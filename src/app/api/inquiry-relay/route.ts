@@ -1,4 +1,6 @@
 import { createHmac } from "node:crypto";
+import { createAdminClient } from "@/lib/supabase/admin";
+import { validateLead } from "@/lib/leads";
 
 // 문의 실시간 릴레이 — 문의폼 제출을 헤르메스 영업봇(라온) 웹훅으로 중계(서버 전용).
 // 이메일(Web3Forms)이 정본 수신 경로이고, 이 릴레이는 실시간 알림용 보조 채널이라
@@ -24,10 +26,27 @@ function rateLimited(ip: string): boolean {
 const clip = (v: unknown, max: number) =>
   typeof v === "string" ? v.slice(0, max).trim() : "";
 
-export async function POST(request: Request) {
-  const secret = process.env.HERMES_WEBHOOK_SECRET;
-  if (!secret) return Response.json({ ok: false }); // 미설정이면 조용히 통과(사이트 무영향)
+// 일반 문의도 leads 원장에 남긴다(2026-09-27) — 메일·텔레그램을 놓치면 복구할 곳이 없었다. 실패해도 폼 UX는 그대로.
+async function saveContactLead(b: Record<string, unknown>) {
+  const { lead } = validateLead({
+    kind: "contact",
+    name: clip(b.name, 50),
+    org: "",
+    email: clip(b.email, 100),
+    phone: clip(b.phone, 30),
+    product: "",
+    message: clip(b.message, 2000),
+  });
+  if (!lead) return;
+  try {
+    const { error } = await createAdminClient().from("leads").insert(lead);
+    if (error) console.error("contact lead save failed:", error.message);
+  } catch (err) {
+    console.error("contact lead save failed:", err);
+  }
+}
 
+export async function POST(request: Request) {
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
   if (rateLimited(ip)) return Response.json({ ok: false }, { status: 429 });
 
@@ -38,6 +57,11 @@ export async function POST(request: Request) {
     return Response.json({ ok: false }, { status: 400 });
   }
   const b = (raw ?? {}) as Record<string, unknown>;
+
+  await saveContactLead(b);
+
+  const secret = process.env.HERMES_WEBHOOK_SECRET;
+  if (!secret) return Response.json({ ok: false }); // 미설정이면 조용히 통과(사이트 무영향)
 
   const payload = JSON.stringify({
     event: "inquiry",
