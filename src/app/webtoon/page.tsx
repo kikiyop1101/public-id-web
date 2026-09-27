@@ -10,7 +10,7 @@ import PreloadImage from "@/components/PreloadImage";
 // 웹툰 뷰어 — 2026-09-08 신설. 1호 「우산 도둑」(자유 창작 단편 10컷, 볼트 콘텐츠본부\웹툰 산출물).
 // 컷은 /public/webtoon/umbrella/NN.webp(900px, 35~78KB) — 첫 컷만 즉시, 나머지는 lazy.
 export const metadata: Metadata = pageMeta({
-  title: "웹툰 — 우산 도둑",
+  title: "웹툰 — 우산 도둑 10컷 전편",
   description:
     "편의점 앞에서 자꾸 사라지는 우산 — 범인을 잡으러 잠복한 고등학생이 발견한 것은. 퍼블릭아이디 웹툰 1호 「우산 도둑」 10컷 전편.",
   path: "/webtoon",

@@ -8,9 +8,9 @@ import SafetyGameClient from "./SafetyGameClient";
 import { SCENES } from "@/lib/safety-game";
 
 export const metadata: Metadata = pageMeta({
-  title: "숨은 위험 찾기 — 학교 앞·아파트·공장 안전 교육 게임",
+  title: "숨은 위험 찾기 — 60초 안전 교육 게임",
   description:
-    "그림 속 안전 위험 8곳을 60초 안에 찾아보세요. 스쿨존 횡단보도·아파트 주차장·공장 마당 3장면. 찾을 때마다 왜 위험한지와 해결 방법을 알려 드리는 무료 안전 교육 콘텐츠입니다.",
+    "그림 속 안전 위험 8곳을 60초 안에 찾는 무료 안전 교육 게임입니다. 스쿨존 횡단보도·아파트 주차장·공장 마당 3장면에서, 찾을 때마다 왜 위험한지와 해결 방법을 알려 드립니다.",
   path: "/safety-game",
   ogTitle: "숨은 위험 찾기 — 60초 안전 교육 게임 | 퍼블릭아이디",
   ogDescription: "스쿨존·아파트·공장 장면에서 위험 8곳을 찾고 해결책까지. 학교·지자체 안전 교육에 링크로 쓰세요.",

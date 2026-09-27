@@ -67,6 +67,7 @@ export default function RootLayout({
     "@type": "LocalBusiness",
     "@id": `${site.url}/#organization`,
     name: site.name,
+    alternateName: site.nameEn,
     legalName: site.legalName,
     url: site.url,
     logo: `${site.url}/logo.png`,
@@ -137,7 +138,8 @@ export default function RootLayout({
       site.tistory,
       site.youtube,
       site.instagram,
-      ...site.stores.map((s) => s.href),
+      // 사이트 안 경로(/os 등)는 sameAs가 아니다 — 외부 채널·스토어만(2026-09-27 llms.txt·푸터 대조)
+      ...site.stores.map((s) => s.href).filter((href) => href.startsWith("http")),
     ],
   };
 
