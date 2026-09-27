@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import type { Product } from '@/lib/products'
 import type { ProductMedia } from '@/lib/product-media'
 import ProductGallery from '@/components/ProductGallery'
@@ -85,6 +86,21 @@ export default function ProductSection({
                 ),
               )}
             </ul>
+            {/* 다음 행동 — GNB가 /products#<id>로 바로 내려주므로 섹션마다 견적·문의로 잇는다(2026-09-27 동선 점검) */}
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Link
+                href={`/quote?items=${encodeURIComponent(`[${product.name}]\n설치 장소·규격·수량: `)}`}
+                className="bg-teal-700 hover:bg-teal inline-flex h-10 items-center justify-center rounded-full px-5 text-sm font-semibold text-white transition"
+              >
+                이 제품 견적 받기
+              </Link>
+              <Link
+                href="/contact"
+                className="border-line text-ink hover:border-teal hover:text-teal-700 inline-flex h-10 items-center justify-center rounded-full border px-5 text-sm font-semibold transition"
+              >
+                문의하기
+              </Link>
+            </div>
           </div>
         </div>
 

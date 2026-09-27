@@ -149,6 +149,21 @@ export default async function NewsDetailPage({
                 </Link>
                 {" "}또는 {site.email} 로 부탁드립니다.
               </p>
+              {/* 다음 행동 — 기사를 읽은 발주 담당자용(2026-09-27 동선 점검) */}
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link
+                  href="/quote"
+                  className="inline-flex h-10 items-center justify-center rounded-full bg-teal-700 px-5 text-sm font-semibold text-white transition hover:bg-teal"
+                >
+                  맞춤 견적 받기
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex h-10 items-center justify-center rounded-full border border-line px-5 text-sm font-semibold text-ink transition hover:border-teal hover:text-teal-700"
+                >
+                  문의하기
+                </Link>
+              </div>
             </div>
 
             <nav className="mt-10 grid gap-3 sm:grid-cols-2">

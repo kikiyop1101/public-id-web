@@ -51,7 +51,7 @@ export default async function ProposalPage({
         </a>
       </div>
       <p className="mt-8 text-xs text-[#8a959b]">
-        주식회사 퍼블릭아이디 · 인증 사회적기업(제2020-227호) · public-id.co.kr
+        주식회사 퍼블릭아이디 · 인증 사회적기업(제2020-227호) · www.public-id.co.kr
       </p>
     </main>
   );

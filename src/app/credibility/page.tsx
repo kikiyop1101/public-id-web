@@ -218,6 +218,9 @@ export default function CredibilityPage() {
                 <Link href="/contact" className="rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white/90 transition hover:bg-white/10">
                   프로젝트 문의
                 </Link>
+                <Link href="/quote" className="rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white/90 transition hover:bg-white/10">
+                  맞춤 견적
+                </Link>
               </div>
               <p className="mt-6 text-xs text-white/50">※ 수치는 2019–2025 실제 실행 이력 기준 집계입니다.</p>
             </div>
