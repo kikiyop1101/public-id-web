@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { createClient } from "@supabase/supabase-js";
 import { parseBlogListItem } from "@/lib/blog";
 import { news } from "@/lib/news";
+import { answers } from "@/lib/answers";
 
 // 발행·승인이 배포 없이 일어나므로 사이트맵도 요청 시점 생성(2차 감사 지적 — 빌드 스냅샷 드리프트 방지)
 export const dynamic = "force-dynamic";
@@ -16,7 +17,9 @@ const routes = ["", "/subscribe", "/design", "/work", "/guide", "/about", "/cred
   // 2026-08-27 축제·행사 콜라보 랜딩(store 루트가 이 페이지를 서빙)
   "/festival",
   // 2026-09-08 체류시간 기획안 — 위험 찾기 게임·안전 점수 진단·견적 시뮬레이터·영상관·웹툰
-  "/safety-game", "/safety-score", "/estimate", "/videos", "/webtoon"];
+  "/safety-game", "/safety-score", "/estimate", "/videos", "/webtoon",
+  // 2026-09-27 AI 답변 인용용 질문 답변 목록(개별 /answers/[slug]는 아래 answerEntries)
+  "/answers"];
 
 // 쿠키 없는 anon 클라이언트 — RLS가 공개분만 반환.
 function anonClient() {
@@ -66,5 +69,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
     ...(n.datePublished ? { lastModified: new Date(n.datePublished) } : {}),
   }));
-  return [...staticEntries, ...newsEntries, ...(await blogEntries())];
+  // 2026-09-27 질문 답변 개별 페이지 — dateModified(기계 메타, 화면 비표시)를 lastModified로.
+  const answerEntries: MetadataRoute.Sitemap = answers.map((a) => ({
+    url: `${base}/answers/${a.slug}`,
+    priority: 0.7,
+    lastModified: new Date(a.dateModified),
+  }));
+  return [...staticEntries, ...newsEntries, ...answerEntries, ...(await blogEntries())];
 }

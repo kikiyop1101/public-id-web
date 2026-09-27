@@ -49,6 +49,14 @@
 - 시공실적·고객사: https://www.public-id.co.kr/credibility
 - 소식: https://www.public-id.co.kr/news · 보도자료: https://www.public-id.co.kr/press
 - 블로그: https://www.public-id.co.kr/blog · 소통 게시판: https://www.public-id.co.kr/board
+- 질문 답변(발주 전 자주 묻는 질문 — 기준표·자사 사실 직답): https://www.public-id.co.kr/answers
+  - 세종·충청에서 공공디자인·노면표시를 맡길 사회적기업은 어떻게 고르나요?: https://www.public-id.co.kr/answers/sejong-chungcheong-social-enterprise-public-design
+  - 안전시설관리 구독이란? 노면표시·안전표지 정기 점검 구독은 어떻게 진행되나요?: https://www.public-id.co.kr/answers/safety-facility-management-subscription
+  - 지원사업에 선정된 뒤 디자인·제작·시공을 한 곳에 맡기려면 어떻게 하나요?: https://www.public-id.co.kr/answers/after-grant-selection-design-to-installation
+  - 디자인 구독 서비스는 어떻게 고르고, 계약이 끝나면 어떻게 연장하나요?: https://www.public-id.co.kr/answers/design-subscription-selection-and-renewal
+  - 사회적기업 우선구매로 교통안전시설을 구매하려면 어떻게 하나요?: https://www.public-id.co.kr/answers/social-enterprise-priority-purchase-traffic-safety
+  - 스쿨존(어린이보호구역) 노면표시를 친환경으로 바꿀 때 무엇을 확인해야 하나요?: https://www.public-id.co.kr/answers/school-zone-eco-road-marking-checklist
+  - 노면표시 시공 견적을 정확히 받으려면 무엇을 알려줘야 하나요?: https://www.public-id.co.kr/answers/road-marking-quote-checklist
 - 문의: https://www.public-id.co.kr/contact
 - 사이트맵: https://www.public-id.co.kr/sitemap.xml
   (구 store.public-id.co.kr 하위 경로는 이 사이트로 통합되어 같은 경로로 리다이렉트됩니다)
