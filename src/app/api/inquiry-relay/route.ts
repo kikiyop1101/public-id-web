@@ -36,6 +36,7 @@ async function saveContactLead(b: Record<string, unknown>) {
     phone: clip(b.phone, 30),
     product: "",
     message: clip(b.message, 2000),
+    utm: clip(b.utm, 200),
   });
   if (!lead) return;
   try {

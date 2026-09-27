@@ -30,7 +30,7 @@ export default async function AdminPage() {
 
   const leadResult = await admin
     .from('leads')
-    .select('id, kind, name, org, email, phone, product, message, status, created_at')
+    .select('id, kind, name, org, email, phone, product, message, utm, status, created_at')
     .order('created_at', { ascending: false })
     .limit(50)
 
@@ -110,6 +110,7 @@ export default async function AdminPage() {
                 {lead.email}
                 {lead.phone ? ` · ${lead.phone}` : ''}
                 {lead.product ? ` · ${lead.product}` : ''}
+                {lead.utm ? ` · 유입 ${lead.utm}` : ''}
               </p>
               {lead.message && (
                 <p className="text-ink-soft mt-2 whitespace-pre-wrap text-sm">{lead.message}</p>

@@ -3,6 +3,7 @@
 import Script from "next/script";
 import { useEffect } from "react";
 import { track } from "@vercel/analytics";
+import { captureUtm } from "@/lib/utm";
 
 // 체류시간 "시계" (2026-09-08 체류시간 기획안 0주차).
 // 1) GA4 — NEXT_PUBLIC_GA_ID(G-XXXX)가 있을 때만 로드. 참여시간·참여율 정본.
@@ -17,6 +18,7 @@ const THRESHOLDS = [30, 60, 180] as const;
 
 function EngagementBeacon() {
   useEffect(() => {
+    captureUtm(); // 유입 꼬리표 첫 방문 기억(2026-09-27) — 문의 접수 때 leads.utm으로
     let visibleSec = 0;
     let lastTick = performance.now();
     const sent = new Set<number>();

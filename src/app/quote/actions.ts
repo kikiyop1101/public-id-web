@@ -22,6 +22,7 @@ export async function createLead(
     phone: String(formData.get('phone') ?? ''),
     product: String(formData.get('product') ?? ''),
     message: String(formData.get('message') ?? ''),
+    utm: String(formData.get('utm') ?? ''),
   })
   if (error || !lead) return { error }
 

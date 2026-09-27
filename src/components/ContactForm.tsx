@@ -2,6 +2,7 @@
 
 import { useEffect, useState, type ChangeEvent, type FormEvent } from "react";
 import { site } from "@/lib/site";
+import { readUtm } from "@/lib/utm";
 
 // 문의는 Web3Forms를 통해 public-id@naver.com 으로 수신됩니다.
 // 공개용 클라이언트 키(노출 안전) — 교체가 필요하면 web3forms.com에서 재발급.
@@ -52,6 +53,7 @@ export default function ContactForm() {
           contact: [f.phone, f.email].filter(Boolean).join(" / "),
           email: f.email, // leads 원장 저장용(2026-09-27)
           phone: f.phone,
+          utm: readUtm(),
           message: f.message,
         }),
       }).catch(() => {});

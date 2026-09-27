@@ -20,6 +20,7 @@ export type LeadInput = {
   phone: string
   product: string
   message: string
+  utm?: string // 유입 꼬리표 "source/medium/campaign"(2026-09-27)
 }
 
 export type LeadRecord = {
@@ -30,6 +31,7 @@ export type LeadRecord = {
   phone: string | null
   product: string | null
   message: string | null
+  utm: string | null
 }
 
 /** 관리자 목록용 행(DB에서 읽은 값). kind는 화면에서 라벨로 풀 때 다시 확인한다. */
@@ -42,6 +44,7 @@ export type LeadRow = {
   phone: string | null
   product: string | null
   message: string | null
+  utm: string | null
   status: string
   created_at: string
 }
@@ -75,6 +78,7 @@ export function parseLeadRow(raw: unknown): LeadRow | null {
     phone: textOrNull(raw, 'phone'),
     product: textOrNull(raw, 'product'),
     message: textOrNull(raw, 'message'),
+    utm: textOrNull(raw, 'utm'),
   }
 }
 
@@ -102,6 +106,7 @@ export function validateLead(input: LeadInput): { error?: string; lead?: LeadRec
       phone: input.phone.trim().slice(0, 30) || null,
       product: input.product.trim().slice(0, 100) || null,
       message: input.message.trim().slice(0, 2000) || null,
+      utm: (input.utm ?? '').trim().slice(0, 200) || null,
     },
   }
 }

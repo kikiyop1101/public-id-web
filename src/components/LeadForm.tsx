@@ -2,6 +2,7 @@
 
 import { useActionState, useEffect, useRef } from 'react'
 import { createLead, type LeadFormState } from '@/app/quote/actions'
+import { readUtm } from '@/lib/utm'
 
 const initial: LeadFormState = {}
 
@@ -69,6 +70,7 @@ export default function LeadForm({
   // 제출 "순간"의 폼 값 — 서버 액션 성공 후에는 React가 폼을 비워버리므로 여기서 잡아둔다.
   const lastSubmit = useRef<FormData | null>(null)
   const notifiedState = useRef<LeadFormState | null>(null)
+  const utmInput = useRef<HTMLInputElement | null>(null)
 
   // 접수 성공(state 갱신) 1회당 이메일 알림 1발.
   useEffect(() => {
@@ -83,10 +85,13 @@ export default function LeadForm({
     <form
       action={formAction}
       onSubmit={(event) => {
+        // 유입 꼬리표(2026-09-27) — 제출 순간 값을 숨김 필드에 넣어 서버 액션(leads.utm)으로
+        if (utmInput.current) utmInput.current.value = readUtm()
         lastSubmit.current = new FormData(event.currentTarget)
       }}
       className="rounded-2xl border border-line bg-white p-6 shadow-sm"
     >
+      <input ref={utmInput} type="hidden" name="utm" defaultValue="" />
       {/* 허니팟(사람에겐 숨김) */}
       <input
         type="text"
