@@ -22,7 +22,7 @@ const stats: { num: number | string; from?: number; unit: string; desc: string }
   {
     num: "특허",
     unit: "보유",
-    desc: "자체 특허 · 국제 특허의 노면표시재",
+    desc: "특허받은 부착식 노면표시재",
   },
   {
     num: 3,
