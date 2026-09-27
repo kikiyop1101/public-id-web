@@ -61,7 +61,7 @@ export default function CredentialsPage() {
             검증된 전문성
           </>
         }
-        description="자체 특허 기술과 국내외 친환경·품질 인증으로, 공공기관·지자체가 안심하고 함께합니다."
+        description="자체 특허 기술과 친환경 인증·공인 시험성적으로, 공공기관·지자체가 안심하고 함께합니다."
       />
 
       <section className="py-20 sm:py-28">
