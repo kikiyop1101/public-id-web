@@ -23,7 +23,7 @@ const works: WorkItem[] = [
   {
     img: "/work/gen-roadmark.png",
     title: "친환경 그래픽 노면표시재",
-    desc: "공공·산업 공간의 노면 그래픽. 특허받은 부착식 표시재 · GREENGUARD GOLD.",
+    desc: "공공·산업 공간의 노면 그래픽. 자재 특허 · 설치·시공 특허 · GREENGUARD GOLD.",
     tag: "특허",
   },
   {
@@ -55,11 +55,12 @@ const productJsonLd = {
   brand: { "@type": "Brand", name: "퍼블릭아이디" },
   manufacturer: { "@type": "Organization", name: "주식회사 퍼블릭아이디" },
   description:
-    "특허받은 기술로 만든 친환경 그래픽 노면표시재. 인쇄된 알루미늄 박판을 노면에 붙이는 점착식 표시재로, 페인트 도색이 아닙니다. 친환경 라텍스 잉크로 인쇄하며 GREENGUARD GOLD(UL 2818) 친환경 인증, 미끄럼저항·유해물질 불검출·방염 시험성적(KCL·SGS·KTR·KFI)을 보유. 노란발자국·노란볼라드·어린이보호구역·웨이파인딩 등에 적용.",
+    "자체 특허(제10-1974029호, 도로 노면 표시용 조성물 및 시공방법)와 국제특허(유럽특허 EP 1 677 974, EPO 등록) 기술 기반의 친환경 그래픽 노면표시재. 친환경 라텍스 잉크로 인쇄하며 GREENGUARD GOLD(UL 2818) 친환경 인증, 미끄럼저항·유해물질 불검출·방염 시험성적(KCL·SGS·KTR·KFI)을 보유. 노란발자국·노란볼라드·어린이보호구역·웨이파인딩 등에 적용.",
   category: "도로 노면표시재 / 안전표지",
   material: "친환경 라텍스 잉크",
   additionalProperty: [
-    { "@type": "PropertyValue", name: "특허", value: "특허받은 제품" },
+    { "@type": "PropertyValue", name: "특허", value: "제10-1974029호 (도로 노면 표시용 조성물 및 시공방법, 2019)" },
+    { "@type": "PropertyValue", name: "국제특허", value: "유럽특허 EP 1 677 974 (유럽특허청 등록)" },
     { "@type": "PropertyValue", name: "잉크", value: "친환경 라텍스" },
     { "@type": "PropertyValue", name: "친환경 인증", value: "GREENGUARD GOLD (UL 2818 저휘발성)" },
     { "@type": "PropertyValue", name: "시험성적", value: "미끄럼저항·유해물질 불검출·방염 (KCL·SGS·KTR·KFI)" },

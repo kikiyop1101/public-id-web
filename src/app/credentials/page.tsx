@@ -10,7 +10,7 @@ import BreadcrumbLd from "@/components/BreadcrumbLd";
 export const metadata: Metadata = pageMeta({
   title: "인증·특허",
   description:
-    "특허받은 노면표시재, GREENGUARD GOLD, 노란발자국 상표등록, 인증 사회적기업·우수디자인(GD) 등 — 특허와 인증으로 검증된 퍼블릭아이디.",
+    "특허 제10-1974029호, GREENGUARD GOLD, 노란발자국 상표등록, 인증 사회적기업·우수디자인(GD) 등 — 특허와 인증으로 검증된 퍼블릭아이디.",
   path: "/credentials",
 });
 
@@ -18,8 +18,9 @@ const groups = [
   {
     label: "특허 · 지식재산",
     items: [
-      { t: "특허받은 노면표시재", d: "인쇄된 알루미늄 박판을 붙이는 친환경 그래픽 노면표시재" },
+      { t: "특허 제10-1974029호", d: "도로 노면 표시용 조성물 및 시공방법 (2019)" },
       { t: "노란발자국 상표등록", d: "제40-1257164호" },
+      { t: "국제특허 보유", d: "유럽특허 EP 1 677 974 · 유럽특허청(EPO) 등록" },
     ],
   },
   {
@@ -60,7 +61,7 @@ export default function CredentialsPage() {
             검증된 전문성
           </>
         }
-        description="특허받은 기술과 친환경 인증·공인 시험성적으로, 공공기관·지자체가 안심하고 함께합니다."
+        description="자체 특허 기술과 친환경 인증·공인 시험성적으로, 공공기관·지자체가 안심하고 함께합니다."
       />
 
       <section className="py-20 sm:py-28">
