@@ -8,7 +8,7 @@ import BoardForm from './BoardForm'
 import BreadcrumbLd from '@/components/BreadcrumbLd'
 
 export const metadata: Metadata = pageMeta({
-  title: '소통 게시판',
+  title: '소통 게시판 — 질문과 의견 남기기',
   description:
     '퍼블릭아이디에 궁금한 점과 의견을 남겨주세요.',
   path: '/board',

@@ -8,9 +8,9 @@ import { credibility as c } from "@/lib/credibility";
 import BreadcrumbLd from "@/components/BreadcrumbLd";
 
 export const metadata: Metadata = pageMeta({
-  title: "숫자로 보는 신뢰",
+  title: "시공실적·고객사 — 숫자로 보는 신뢰",
   description:
-    "2019년부터 7개년 연속, 누적 960여 건의 프로젝트와 278개 거래처 — 공공기관·지자체 63%. 퍼블릭아이디의 검증된 실행 이력.",
+    "누적 960여 건의 프로젝트와 278개 거래처, 그중 공공기관·지자체가 63%입니다. 2019년부터 7개년 연속 이어 온 퍼블릭아이디의 시공실적과 고객사를 확인하세요.",
   path: "/credibility",
 });
 

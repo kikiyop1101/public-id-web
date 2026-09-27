@@ -7,7 +7,7 @@ import NaverBlogFeed from '@/components/NaverBlogFeed'
 import BreadcrumbLd from '@/components/BreadcrumbLd'
 
 export const metadata: Metadata = pageMeta({
-  title: '기업 블로그',
+  title: '기업 블로그 — 현장 소식과 이야기',
   description:
     '퍼블릭아이디의 이야기와 현장 소식.',
   path: '/blog',

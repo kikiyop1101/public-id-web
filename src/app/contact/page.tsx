@@ -7,9 +7,9 @@ import { site } from "@/lib/site";
 import BreadcrumbLd from "@/components/BreadcrumbLd";
 
 export const metadata: Metadata = pageMeta({
-  title: "문의",
+  title: "문의 — 구독 상담·시공 견적",
   description:
-    "구독 상담부터 시공 견적까지. 전화·이메일·문의 폼으로 퍼블릭아이디에 편하게 문의하세요.",
+    "구독 상담부터 시공 견적까지 전화(070-4150-1172)·이메일·문의 폼으로 퍼블릭아이디에 편하게 문의하세요.",
   path: "/contact",
 });
 

@@ -9,9 +9,9 @@ import Work from "@/components/sections/Work";
 import BreadcrumbLd from "@/components/BreadcrumbLd";
 
 export const metadata: Metadata = pageMeta({
-  title: "사업영역",
+  title: "사업영역 — 공공안전 디자인·노면표시",
   description:
-    "노란발자국, 친환경 그래픽 노면표시재, 어린이보호구역·CPTED, 웨이파인딩, 친환경 현수막까지 — 퍼블릭아이디의 공공안전 디자인.",
+    "퍼블릭아이디의 공공안전 디자인 사업영역입니다. 노란발자국, 친환경 그래픽 노면표시재, 어린이보호구역·CPTED, 웨이파인딩, 친환경 현수막까지 디자인부터 시공까지 맡습니다.",
   path: "/work",
 });
 
