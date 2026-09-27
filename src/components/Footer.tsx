@@ -5,7 +5,8 @@ export default function Footer() {
   return (
     <footer className="bg-navy text-white/70">
       <div className="mx-auto w-full max-w-[1200px] px-5 py-16 sm:px-8">
-        {/* 전체 페이지 지도 — GNB 5그룹 그대로 (2026-08-26: 칩 나열 → 그룹 컬럼) */}
+        {/* 전체 페이지 지도 — GNB 5그룹 그대로 (2026-08-26: 칩 나열 → 그룹 컬럼)
+            터치 화면(lg 미만)에선 링크 높이 44px — 16px 줄이 8px 간격으로 붙어 오탭이 났다(2026-09-27 접근성 점검) */}
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-4">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -22,13 +23,13 @@ export default function Footer() {
           >
             {site.footerGroups.map((g) => (
               <div key={g.label}>
-                <h3 className="font-display text-xs font-semibold uppercase tracking-[0.16em] text-teal">
+                <h3 className="font-display text-xs font-semibold uppercase tracking-[0.16em] text-teal-100">
                   {g.label}
                 </h3>
-                <ul className="mt-4 space-y-2 text-sm">
+                <ul className="mt-2 text-sm lg:mt-4 lg:space-y-2">
                   {g.links.map((n) => (
                     <li key={n.href}>
-                      <Link href={n.href} className="transition hover:text-white">
+                      <Link href={n.href} className="flex min-h-11 items-center transition hover:text-white lg:inline lg:min-h-0">
                         {n.label}
                       </Link>
                     </li>
@@ -41,7 +42,7 @@ export default function Footer() {
 
         <div className="mt-12 grid gap-10 border-t border-white/10 pt-10 md:grid-cols-12">
           <div className="text-sm md:col-span-5">
-            <h3 className="font-display text-xs font-semibold uppercase tracking-[0.16em] text-teal">
+            <h3 className="font-display text-xs font-semibold uppercase tracking-[0.16em] text-teal-100">
               Contact
             </h3>
             <dl className="mt-4 space-y-2">
@@ -67,21 +68,21 @@ export default function Footer() {
           </div>
 
           <div className="text-sm md:col-span-4">
-            <h3 className="font-display text-xs font-semibold uppercase tracking-[0.16em] text-teal">
+            <h3 className="font-display text-xs font-semibold uppercase tracking-[0.16em] text-teal-100">
               Online Store
             </h3>
-            <ul className="mt-4 space-y-2">
+            <ul className="mt-2 lg:mt-4 lg:space-y-2">
               {site.stores.map((s) => (
                 <li key={s.label}>
                   {/* 사이트 안 주소(/os 등)는 새 창 없이 같은 탭으로 */}
                   {s.href.startsWith("/") ? (
-                    <Link href={s.href} className="transition hover:text-white">
+                    <Link href={s.href} className="flex min-h-11 items-center transition hover:text-white lg:inline lg:min-h-0">
                       {s.label}
                     </Link>
                   ) : (
                     <a
                       href={s.href}
-                      className="transition hover:text-white"
+                      className="flex min-h-11 items-center transition hover:text-white lg:inline lg:min-h-0"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -93,7 +94,7 @@ export default function Footer() {
               <li>
                 <a
                   href={site.blog}
-                  className="transition hover:text-white"
+                  className="flex min-h-11 items-center transition hover:text-white lg:inline lg:min-h-0"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

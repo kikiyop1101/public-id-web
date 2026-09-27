@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
+import MotionVideo from "@/components/MotionVideo";
 import { cn } from "@/lib/cn";
 
 type WorkItem = {
@@ -132,11 +133,10 @@ export default function Work({
               <article className="group h-full overflow-hidden rounded-2xl border border-line bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-teal/5">
                 <div className="relative aspect-[4/3] overflow-hidden bg-cloud">
                   {w.video ? (
-                    <video
+                    <MotionVideo
                       className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
                       src={w.video}
                       poster={w.img}
-                      autoPlay
                       muted
                       loop
                       playsInline

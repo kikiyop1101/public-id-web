@@ -39,7 +39,7 @@
   --color-success-bg: #e8f6ee;
   --color-success-line: #b7e2c8;
   --color-warning: #e2842f;
-  --color-warning-deep: #c2641b;
+  --color-warning-deep: #a4520f; /* 2026-09-27 대비 3.76→5.09:1(warning-bg 위 본문) */
   --color-warning-bg: #fcf4ec;
   --color-warning-line: #f4d7bc;
   --color-danger: #c9403c;
@@ -233,6 +233,10 @@ p {
 .bg-navy-800 :focus-visible {
   outline-color: #ffffff;
 }
+/* 영상은 보통 overflow-hidden 둥근 프레임 안에 있어 바깥 링이 잘린다 → 안쪽으로 그린다(2026-09-27 /guide 실측) */
+video:focus-visible {
+  outline-offset: -4px;
+}
 
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -320,6 +324,12 @@ body.world-immersive > footer {
   color: #16303d;
 }
 
+/* 활성 항목: 위 규칙이 엔진의 흰 글씨를 덮어 청록 알약 위 잉크(2.5:1)가 됐다 → 네이비 알약+흰 글씨(2026-09-27 접근성 점검) */
+.sw-root .sw-nav__item.is-active {
+  color: #fff;
+  background: #16303d;
+}
+
 /* ③ 우측 레일 라벨: 흰 바탕+흰 글씨 유령 칩 → 네이비 칩+흰 글씨 */
 .sw-root .sw-route__label {
   color: #f2f6f7;
@@ -329,8 +339,13 @@ body.world-immersive > footer {
 
 /* ④ CTA 기본 버튼: 엔진이 배경=--sw-ink(우리 설정상 흰색)라 흰 글씨가 묻힘 → 브랜드 청록 */
 .sw-root .sw-btn--primary {
-  background: #069cbb;
+  background: #0b6c7d; /* 2026-09-27 #069cbb는 흰 글씨 대비 3.2:1 → teal-700(6.1:1) */
   color: #fff;
+}
+
+/* ④-2 태그 칩 글씨: 엔진은 강조색 70%+검정이라 노랑·라임 칩에서 2.8~3.9:1 → 45%로 낮춰 4.5:1 이상 */
+.sw-root .sw-copy__tags li {
+  color: color-mix(in srgb, var(--sw-accent) 45%, #000);
 }
 
 /* ⑤ 본문 개행(

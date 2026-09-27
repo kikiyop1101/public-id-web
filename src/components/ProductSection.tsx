@@ -3,6 +3,7 @@ import Link from 'next/link'
 import type { Product } from '@/lib/products'
 import type { ProductMedia } from '@/lib/product-media'
 import ProductGallery from '@/components/ProductGallery'
+import MotionVideo from '@/components/MotionVideo'
 
 // 제품 한 섹션: 구조분석 메인(영상 우선) + 설명 + 참조 갤러리.
 export default function ProductSection({
@@ -26,8 +27,7 @@ export default function ProductSection({
             {/* 구조분석 다이어그램은 잘리면 안 되므로 16:9 + contain */}
             <div className="border-line relative aspect-video w-full overflow-hidden rounded-[28px] border bg-white">
               {main?.kind === 'video' ? (
-                <video
-                  autoPlay
+                <MotionVideo
                   muted
                   loop
                   playsInline
@@ -37,7 +37,7 @@ export default function ProductSection({
                 >
                   {main.webm && <source src={main.webm} type="video/webm" />}
                   {main.mp4 && <source src={main.mp4} type="video/mp4" />}
-                </video>
+                </MotionVideo>
               ) : main?.kind === 'image' ? (
                 <Image
                   src={main.src}
@@ -61,7 +61,7 @@ export default function ProductSection({
 
           {/* 설명 */}
           <div className={reversed ? 'md:order-1' : ''}>
-            <p className="text-teal text-sm font-semibold">{product.tagline}</p>
+            <p className="text-teal-700 text-sm font-semibold">{product.tagline}</p>
             <h2 className="text-ink mt-2 text-2xl font-bold sm:text-3xl">{product.name}</h2>
             <p className="text-ink-soft mt-4 leading-relaxed">{product.summary}</p>
             {product.basePrice && (

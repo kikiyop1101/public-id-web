@@ -79,8 +79,9 @@ export default function OsCurator() {
           value={about}
           onChange={(e) => setAbout(e.target.value.slice(0, 300))}
           rows={2}
+          aria-label="회사가 하는 일과 요즘 제일 힘든 업무"
           placeholder="예) 간판 제작 업체예요. 블로그를 해야 하는 건 아는데 글 쓸 시간이 없어요."
-          className="border-line text-ink placeholder:text-ink-soft/60 w-full resize-none rounded-xl border bg-white px-4 py-3 text-[15px] leading-relaxed outline-none transition focus:border-teal-700"
+          className="border-line text-ink placeholder:text-ink-soft/60 w-full resize-none rounded-xl border bg-white px-4 py-3 text-[15px] leading-relaxed outline-none transition focus:border-teal-700 focus:ring-2 focus:ring-teal/20"
         />
         <div className="mt-3 flex flex-wrap items-center gap-3">
           <button

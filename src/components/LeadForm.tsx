@@ -258,7 +258,7 @@ export default function LeadForm({
       <button
         type="submit"
         disabled={pending}
-        className="bg-teal hover:bg-teal-600 mt-4 inline-flex h-12 items-center justify-center rounded-full px-6 text-[15px] font-semibold text-white transition-colors disabled:opacity-50"
+        className="bg-teal-700 hover:bg-teal-600 mt-4 inline-flex h-12 items-center justify-center rounded-full px-6 text-[15px] font-semibold text-white transition-colors disabled:opacity-50"
       >
         {pending ? '접수 중…' : submitLabel}
       </button>

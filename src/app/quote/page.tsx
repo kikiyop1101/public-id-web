@@ -25,7 +25,7 @@ export default async function QuotePage({
   return (
     <div className="mx-auto max-w-3xl px-5 py-16 sm:px-8">
       <BreadcrumbLd trail={[{ name: '맞춤 견적', path: '/quote' }]} />
-      <p className="font-display text-teal-600 text-sm font-semibold uppercase tracking-[0.18em]">
+      <p className="font-display text-teal-700 text-sm font-semibold uppercase tracking-[0.18em]">
         Quote
       </p>
       <h1 className="text-ink mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
@@ -48,7 +48,7 @@ export default async function QuotePage({
             규격·수량을 슬라이더로 움직이며 기준가 합계를 바로 보고, 그 구성으로 신청할 수 있습니다.
           </span>
         </span>
-        <span className="text-teal-600 inline-flex h-10 shrink-0 items-center rounded-full border border-line px-4 text-sm font-semibold">
+        <span className="text-teal-700 inline-flex h-10 shrink-0 items-center rounded-full border border-line px-4 text-sm font-semibold">
           견적 시뮬레이터 →
         </span>
       </Link>
@@ -92,7 +92,7 @@ export default async function QuotePage({
         <h2 className="text-ink text-2xl font-bold">견적 신청</h2>
         <p className="text-ink-soft mt-2 text-sm">
           정기 관리까지 원하시면{' '}
-          <Link href="/subscribe" className="text-teal-600 font-medium hover:underline">
+          <Link href="/subscribe" className="text-teal-700 font-medium hover:underline">
             구독 신청
           </Link>
           을 함께 살펴보세요.

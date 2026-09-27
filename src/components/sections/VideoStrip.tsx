@@ -22,15 +22,15 @@ export default function VideoStrip() {
               제품·구독 시리즈별 설명영상 30편과 쇼츠 40여 편. 여기서 바로 재생됩니다.
             </p>
           </div>
-          <div className="flex flex-wrap gap-x-5 gap-y-1 text-sm font-semibold">
-            <Link href="/videos" className="text-teal-700 transition hover:text-teal">
+          <div className="flex flex-wrap gap-x-5 text-sm font-semibold">
+            <Link href="/videos" className="inline-flex min-h-11 items-center text-teal-700 transition hover:text-teal">
               영상관 전체 보기 →
             </Link>
             <a
               href={site.youtube}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-teal-700 transition hover:text-teal"
+              className="inline-flex min-h-11 items-center text-teal-700 transition hover:text-teal"
             >
               유튜브 채널 ↗
             </a>

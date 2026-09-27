@@ -69,7 +69,7 @@ export default function BoardForm() {
       <button
         type="submit"
         disabled={pending}
-        className="bg-teal hover:bg-teal-600 mt-4 rounded-full px-5 py-2 text-sm font-semibold text-white transition-colors disabled:opacity-50"
+        className="bg-teal-700 hover:bg-teal-600 mt-4 rounded-full px-5 py-2 text-sm font-semibold text-white transition-colors disabled:opacity-50"
       >
         {pending ? '등록 중…' : '등록'}
       </button>
