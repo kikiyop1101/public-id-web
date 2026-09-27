@@ -20,21 +20,21 @@ export default function NewsStrip() {
               현장에서 온 최신 소식
             </h2>
           </div>
-          <div className="flex flex-wrap gap-x-5 gap-y-1 text-sm font-semibold">
-            <Link href="/news" className="text-teal-700 transition hover:text-teal">
+          <div className="flex flex-wrap gap-x-5 text-sm font-semibold">
+            <Link href="/news" className="inline-flex min-h-11 items-center text-teal-700 transition hover:text-teal">
               소식 전체 보기 →
             </Link>
-            <Link href="/press" className="text-teal-700 transition hover:text-teal">
+            <Link href="/press" className="inline-flex min-h-11 items-center text-teal-700 transition hover:text-teal">
               보도자료 →
             </Link>
-            <Link href="/blog" className="text-teal-700 transition hover:text-teal">
+            <Link href="/blog" className="inline-flex min-h-11 items-center text-teal-700 transition hover:text-teal">
               블로그 →
             </Link>
             <a
               href={site.blog}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-teal-700 transition hover:text-teal"
+              className="inline-flex min-h-11 items-center text-teal-700 transition hover:text-teal"
             >
               네이버 블로그 ↗
             </a>

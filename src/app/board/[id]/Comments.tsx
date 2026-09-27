@@ -60,7 +60,7 @@ function CommentForm({
         <button
           type="submit"
           disabled={pending}
-          className="bg-teal hover:bg-teal-600 rounded-full px-4 py-2 text-sm font-semibold text-white transition-colors disabled:opacity-50"
+          className="bg-teal-700 hover:bg-teal-600 rounded-full px-4 py-2 text-sm font-semibold text-white transition-colors disabled:opacity-50"
         >
           {pending ? '등록 중…' : '등록'}
         </button>

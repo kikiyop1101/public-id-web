@@ -623,7 +623,7 @@ function SummaryCard({
         <div className="mt-3 flex items-center justify-between gap-3 rounded-2xl border border-warning-line bg-warning-bg px-4 py-3">
           <span className="min-w-0">
             <span className="block text-sm font-bold text-warning-deep">+ 시공비 · 출장비</span>
-            <span className="block text-xs text-warning-deep/80">전문 시공팀 · 현장 실측 후 산정</span>
+            <span className="block text-xs text-warning-deep">전문 시공팀 · 현장 실측 후 산정</span>
           </span>
           <span className="shrink-0 font-display text-lg font-bold text-warning-deep">별도</span>
         </div>

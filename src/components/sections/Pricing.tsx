@@ -134,7 +134,7 @@ export default function Pricing() {
                 </ul>
                 {t.kit && (
                   <details className="mt-6 rounded-xl border border-line bg-white p-4 [&_summary::-webkit-details-marker]:hidden">
-                    <summary className="flex cursor-pointer items-center justify-between gap-2 text-sm font-semibold text-teal-700">
+                    <summary className="-my-3 flex cursor-pointer items-center justify-between gap-2 py-3 text-sm font-semibold text-teal-700">
                       {t.kit.label}
                       <span aria-hidden className="text-xs text-ink-soft">자세히</span>
                     </summary>

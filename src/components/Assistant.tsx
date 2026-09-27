@@ -31,6 +31,8 @@ export default function Assistant() {
   const [loading, setLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const launcherRef = useRef<HTMLButtonElement>(null);
+  const wasOpenRef = useRef(false);
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -44,9 +46,15 @@ export default function Assistant() {
     return () => window.removeEventListener("pi:open-assistant", onOpenEvent);
   }, []);
 
-  // 열릴 때 입력창으로 포커스 이동 + Esc로 닫기
+  // 열릴 때 입력창으로 포커스 이동 + Esc로 닫기.
+  // 닫히면 포커스를 여는 버튼으로 돌려준다 — 패널이 사라지며 포커스가 body로 빠지면 키보드 사용자가 길을 잃는다.
   useEffect(() => {
-    if (!open) return;
+    if (!open) {
+      if (wasOpenRef.current) launcherRef.current?.focus();
+      wasOpenRef.current = false;
+      return;
+    }
+    wasOpenRef.current = true;
     inputRef.current?.focus();
     const onEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
@@ -95,6 +103,7 @@ export default function Assistant() {
   if (!open) {
     return (
       <button
+        ref={launcherRef}
         type="button"
         onClick={() => setOpen(true)}
         aria-label="제품·견적 도우미 열기"
@@ -134,7 +143,7 @@ export default function Assistant() {
           <p className="text-sm font-semibold">퍼블릭아이디 도우미</p>
           <p className="text-[11px] text-white/70">제품 추천 · 대략 견적 안내</p>
         </div>
-        <button type="button" onClick={() => setOpen(false)} aria-label="닫기" className="rounded-md p-1 transition hover:bg-white/15">
+        <button type="button" onClick={() => setOpen(false)} aria-label="도우미 닫기" className="-mr-2 inline-flex h-11 w-11 items-center justify-center rounded-full transition hover:bg-white/15">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
             <path d="M18 6 6 18M6 6l12 12" />
           </svg>
@@ -170,7 +179,7 @@ export default function Assistant() {
             onKeyDown={onKey}
             aria-label="도우미에게 보낼 메시지"
             placeholder="어떤 게 필요하세요?"
-            className="min-w-0 flex-1 rounded-full border border-line px-3.5 py-2 text-[13px] text-ink outline-none focus:border-teal-600"
+            className="min-w-0 flex-1 rounded-full border border-line px-3.5 py-2 text-[13px] text-ink outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal/20"
           />
           <button
             type="button"

@@ -20,7 +20,7 @@ export default function NewReportPage() {
           { name: '위험 지점 제보', path: '/safety-report/new' },
         ]}
       />
-      <p className="font-display text-teal-600 text-sm font-semibold uppercase tracking-[0.18em]">
+      <p className="font-display text-teal-700 text-sm font-semibold uppercase tracking-[0.18em]">
         Safety Report
       </p>
       <h1 className="text-ink mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
@@ -37,7 +37,7 @@ export default function NewReportPage() {
 
       <p className="text-ink-soft mt-6 text-sm">
         캠페인이 궁금하시면{' '}
-        <Link href="/safety-report" className="text-teal-600 font-medium hover:underline">
+        <Link href="/safety-report" className="text-teal-700 font-medium hover:underline">
           우리 학교 앞 안전 리포트
         </Link>
         를 살펴보세요.

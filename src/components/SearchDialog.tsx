@@ -66,13 +66,15 @@ function SearchPanel({ onClose }: { onClose: () => void }) {
     [onClose, router],
   );
 
-  // 마운트 시 포커스 + 바디 스크롤 잠금
+  // 마운트 시 포커스 + 바디 스크롤 잠금. 닫히면 열기 전 요소(검색 버튼)로 포커스를 돌려준다.
   useEffect(() => {
+    const prev = document.activeElement as HTMLElement | null;
     const raf = requestAnimationFrame(() => inputRef.current?.focus());
     document.body.style.overflow = "hidden";
     return () => {
       cancelAnimationFrame(raf);
       document.body.style.overflow = "";
+      prev?.focus?.();
     };
   }, []);
 
@@ -132,7 +134,8 @@ function SearchPanel({ onClose }: { onClose: () => void }) {
           <button
             type="button"
             onClick={onClose}
-            className="shrink-0 rounded-md px-1.5 py-0.5 font-display text-[11px] font-semibold uppercase tracking-wider text-ink-soft transition hover:text-ink"
+            aria-label="검색 닫기"
+            className="inline-flex h-11 shrink-0 items-center rounded-md px-2 font-display text-[11px] font-semibold uppercase tracking-wider text-ink-soft transition hover:text-ink"
           >
             esc
           </button>

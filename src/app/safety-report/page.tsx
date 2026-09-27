@@ -74,7 +74,7 @@ export default async function SafetyReportPage() {
       <section>
         <div className="mx-auto grid max-w-[1200px] items-center gap-10 px-5 py-16 sm:px-8 sm:py-20 md:grid-cols-2">
           <div>
-            <p className="font-display text-teal-600 text-sm font-semibold uppercase tracking-[0.18em]">
+            <p className="font-display text-teal-700 text-sm font-semibold uppercase tracking-[0.18em]">
               Safety Report Campaign
             </p>
             <h1 className="text-ink mt-4 text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-5xl lg:text-[56px]">
@@ -96,7 +96,7 @@ export default async function SafetyReportPage() {
               </Link>
               <a
                 href="#stories"
-                className="border-line text-ink hover:border-teal hover:text-teal-600 inline-flex h-12 items-center justify-center rounded-full border bg-white px-6 text-[15px] font-semibold transition-colors"
+                className="border-line text-ink hover:border-teal hover:text-teal-700 inline-flex h-12 items-center justify-center rounded-full border bg-white px-6 text-[15px] font-semibold transition-colors"
               >
                 개선 사례 보기
               </a>
@@ -119,7 +119,7 @@ export default async function SafetyReportPage() {
       {/* 지도 */}
       <section className="bg-cloud">
         <div className="mx-auto max-w-[1200px] px-5 py-20 sm:px-8">
-          <p className="font-display text-teal-600 text-sm font-semibold uppercase tracking-[0.18em]">
+          <p className="font-display text-teal-700 text-sm font-semibold uppercase tracking-[0.18em]">
             Map
           </p>
           <h2 className="text-ink mt-4 text-2xl font-bold sm:text-3xl">전국 제보·개선 지도</h2>
@@ -149,7 +149,7 @@ export default async function SafetyReportPage() {
       {/* 진행 방식 — 순서가 곧 정보라 번호를 쓴다 */}
       <section>
         <div className="mx-auto max-w-[1200px] px-5 py-20 sm:px-8">
-          <p className="font-display text-teal-600 text-sm font-semibold uppercase tracking-[0.18em]">
+          <p className="font-display text-teal-700 text-sm font-semibold uppercase tracking-[0.18em]">
             How it works
           </p>
           <h2 className="text-ink mt-4 text-2xl font-bold sm:text-3xl">
@@ -199,7 +199,7 @@ export default async function SafetyReportPage() {
       {/* 사례 */}
       <section id="stories" className="bg-cloud">
         <div className="mx-auto max-w-[1200px] px-5 py-20 sm:px-8">
-          <p className="font-display text-teal-600 text-sm font-semibold uppercase tracking-[0.18em]">
+          <p className="font-display text-teal-700 text-sm font-semibold uppercase tracking-[0.18em]">
             Stories
           </p>
           <h2 className="text-ink mt-4 text-2xl font-bold sm:text-3xl">제보와 개선 이야기</h2>
@@ -224,7 +224,7 @@ export default async function SafetyReportPage() {
                     />
                   )}
                   <div className="p-5">
-                    <p className="text-teal-600 text-xs font-semibold">
+                    <p className="text-teal-700 text-xs font-semibold">
                       {report.kind === 'showcase' ? '개선·시공 사례' : '시민 제보'}
                       {report.public_label ? ` · ${report.public_label}` : ''}
                     </p>

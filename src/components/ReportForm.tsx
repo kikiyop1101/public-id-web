@@ -100,9 +100,9 @@ export default function ReportForm() {
 
       <fieldset>
         <legend className="text-ink text-sm font-semibold">어떤 위험인가요?</legend>
-        <div className="mt-2 flex flex-wrap gap-x-4 gap-y-2">
+        <div className="mt-1 flex flex-wrap gap-x-4">
           {Object.entries(REPORT_CATEGORIES).map(([value, label], index) => (
-            <label key={value} className="text-ink flex items-center gap-2 text-sm">
+            <label key={value} className="text-ink flex min-h-11 items-center gap-2 text-sm">
               <input
                 type="radio"
                 name="category"
@@ -126,10 +126,10 @@ export default function ReportForm() {
           multiple
           onChange={onPhotoChange}
           aria-label="현장 사진 업로드"
-          className="text-ink-soft mt-2 block w-full text-sm file:mr-3 file:rounded-full file:border-0 file:bg-teal file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white"
+          className="text-ink-soft mt-2 block w-full text-sm file:mr-3 file:rounded-full file:border-0 file:bg-teal-700 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white"
         />
         {photos.length > 0 && (
-          <p className="text-teal-600 mt-1 text-xs">사진 {photos.length}장 준비됨 (위치 정보는 자동 제거됩니다)</p>
+          <p className="text-teal-700 mt-1 text-xs">사진 {photos.length}장 준비됨 (위치 정보는 자동 제거됩니다)</p>
         )}
       </div>
 
@@ -140,7 +140,7 @@ export default function ReportForm() {
         <div className="border-line mt-2 overflow-hidden rounded-xl border">
           <SafetyMap markers={[]} onPick={(lat, lng) => setPin({ lat, lng })} className="h-72 w-full" />
         </div>
-        {pin && <p className="text-teal-600 mt-1 text-xs">핀 위치가 저장됐습니다.</p>}
+        {pin && <p className="text-teal-700 mt-1 text-xs">핀 위치가 저장됐습니다.</p>}
         <input
           name="addr"
           aria-label="위치 설명"
@@ -188,7 +188,7 @@ export default function ReportForm() {
         </p>
       )}
       {state.ok && (
-        <p role="status" className="text-teal mt-2 text-sm font-medium">
+        <p role="status" className="text-teal-700 mt-2 text-sm font-medium">
           제보가 접수됐습니다. 검토 후 지도에 공개됩니다 — 함께해 주셔서 감사합니다!
         </p>
       )}
@@ -196,7 +196,7 @@ export default function ReportForm() {
       <button
         type="submit"
         disabled={pending}
-        className="bg-teal hover:bg-teal-600 mt-4 inline-flex h-12 items-center justify-center rounded-full px-6 text-[15px] font-semibold text-white transition-colors disabled:opacity-50"
+        className="bg-teal-700 hover:bg-teal-600 mt-4 inline-flex h-12 items-center justify-center rounded-full px-6 text-[15px] font-semibold text-white transition-colors disabled:opacity-50"
       >
         {pending ? '접수 중…' : '위험 지점 제보하기'}
       </button>

@@ -238,7 +238,8 @@ export default function SafetyMapApp({ token }: { token?: string }) {
         <select
           value={typeF}
           onChange={(e) => setTypeF(e.target.value)}
-          className="rounded-lg border border-line bg-white px-3 py-2 text-sm text-ink outline-none focus:border-teal"
+          aria-label="시설 종류"
+          className="rounded-lg border border-line bg-white px-3 py-2 text-sm text-ink outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
         >
           <option value="all">전체 종류</option>
           {types.map((t) => (
@@ -251,7 +252,8 @@ export default function SafetyMapApp({ token }: { token?: string }) {
           <select
             value={clientF}
             onChange={(e) => setClientF(e.target.value)}
-            className="rounded-lg border border-line bg-white px-3 py-2 text-sm text-ink outline-none focus:border-teal"
+            aria-label="발주처"
+            className="rounded-lg border border-line bg-white px-3 py-2 text-sm text-ink outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
           >
             <option value="all">전체 발주처</option>
             {clients.map((c) => (
@@ -264,7 +266,8 @@ export default function SafetyMapApp({ token }: { token?: string }) {
         <select
           value={statusF}
           onChange={(e) => setStatusF(e.target.value as StatusFilter)}
-          className="rounded-lg border border-line bg-white px-3 py-2 text-sm text-ink outline-none focus:border-teal"
+          aria-label="관리 상태"
+          className="rounded-lg border border-line bg-white px-3 py-2 text-sm text-ink outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
         >
           <option value="all">전체 상태</option>
           <option value="planned">설치 예정</option>
@@ -277,7 +280,8 @@ export default function SafetyMapApp({ token }: { token?: string }) {
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder="명칭·주소·발주처 검색"
-          className="min-w-[160px] flex-1 rounded-lg border border-line bg-white px-3 py-2 text-sm text-ink outline-none focus:border-teal"
+          aria-label="시설 검색(명칭·주소·발주처)"
+          className="min-w-[160px] flex-1 rounded-lg border border-line bg-white px-3 py-2 text-sm text-ink outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
         />
       </div>
 

@@ -78,7 +78,7 @@ export default function NewsListSection({
                   </p>
                   <Link
                     href={`/news/${n.slug}`}
-                    className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-teal-700 transition hover:text-teal"
+                    className="-mb-3 mt-2 inline-flex items-center gap-1 py-3 text-sm font-semibold text-teal-700 transition hover:text-teal"
                   >
                     전문 읽기 →
                   </Link>

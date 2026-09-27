@@ -26,9 +26,10 @@ export default function ProductSection({
           <div className={reversed ? 'md:order-2' : ''}>
             {/* 구조분석 다이어그램은 잘리면 안 되므로 16:9 + contain */}
             <div className="border-line relative aspect-video w-full overflow-hidden rounded-[28px] border bg-white">
-              {main?.kind === 'video' && index > 0 ? (
+              {main?.kind === 'video' ? (
                 // 둘째 제품부터는 화면 밖 — 가까이 왔을 때만 포스터·영상을 받는다(첫 제품은 모바일 LCP라 즉시 로드)
                 <LazyVideo
+                  eager={index === 0}
                   sources={[
                     ...(main.webm ? [{ src: main.webm, type: 'video/webm' }] : []),
                     ...(main.mp4 ? [{ src: main.mp4, type: 'video/mp4' }] : []),
@@ -36,19 +37,6 @@ export default function ProductSection({
                   poster={main.fallbackImage}
                   className="h-full w-full object-contain"
                 />
-              ) : main?.kind === 'video' ? (
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  poster={main.fallbackImage}
-                  className="h-full w-full object-contain"
-                >
-                  {main.webm && <source src={main.webm} type="video/webm" />}
-                  {main.mp4 && <source src={main.mp4} type="video/mp4" />}
-                </video>
               ) : main?.kind === 'image' ? (
                 <Image
                   src={main.src}
@@ -72,7 +60,7 @@ export default function ProductSection({
 
           {/* 설명 */}
           <div className={reversed ? 'md:order-1' : ''}>
-            <p className="text-teal text-sm font-semibold">{product.tagline}</p>
+            <p className="text-teal-700 text-sm font-semibold">{product.tagline}</p>
             <h2 className="text-ink mt-2 text-2xl font-bold sm:text-3xl">{product.name}</h2>
             <p className="text-ink-soft mt-4 leading-relaxed">{product.summary}</p>
             {product.basePrice && (

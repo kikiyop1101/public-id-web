@@ -48,11 +48,11 @@ export default function ContactPage() {
                   </dt>
                   <dd className="whitespace-pre-line text-sm leading-relaxed text-ink">
                     {k === "전화" ? (
-                      <a href={`tel:${v.replace(/[^0-9+]/g, "")}`} className="transition hover:text-teal-700">
+                      <a href={`tel:${v.replace(/[^0-9+]/g, "")}`} className="-my-3 inline-block py-3 transition hover:text-teal-700">
                         {v}
                       </a>
                     ) : k === "이메일" ? (
-                      <a href={`mailto:${v}`} className="transition hover:text-teal-700">
+                      <a href={`mailto:${v}`} className="-my-3 inline-block py-3 transition hover:text-teal-700">
                         {v}
                       </a>
                     ) : (
@@ -66,14 +66,14 @@ export default function ContactPage() {
             <h3 className="mt-10 font-display text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
               Online Store
             </h3>
-            <ul className="mt-5 space-y-2.5 text-sm">
+            <ul className="mt-3 text-sm">
               {site.stores.map((s) => (
                 <li key={s.label}>
                   <a
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-ink transition hover:text-teal-700"
+                    className="inline-flex min-h-11 items-center text-ink transition hover:text-teal-700"
                   >
                     {s.label}
                   </a>
@@ -84,7 +84,7 @@ export default function ContactPage() {
                   href={site.blog}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-ink transition hover:text-teal-700"
+                  className="inline-flex min-h-11 items-center text-ink transition hover:text-teal-700"
                 >
                   네이버 블로그
                 </a>

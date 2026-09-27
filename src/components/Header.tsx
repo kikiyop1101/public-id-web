@@ -64,7 +64,7 @@ export default function Header() {
         <Link
           href="/"
           aria-label={site.name}
-          className="flex shrink-0 items-center"
+          className="flex min-h-11 shrink-0 items-center"
           onClick={() => setOpen(false)}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -146,7 +146,7 @@ export default function Header() {
           type="button"
           onClick={() => setSearchOpen(true)}
           aria-label="사이트 검색"
-          className="flex h-10 w-10 items-center justify-center text-ink-soft"
+          className="flex h-11 w-11 items-center justify-center text-ink-soft"
         >
           <svg aria-hidden viewBox="0 0 20 20" className="h-[18px] w-[18px]" fill="none" stroke="currentColor" strokeWidth="1.8">
             <circle cx="9" cy="9" r="6" />
@@ -158,7 +158,7 @@ export default function Header() {
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "메뉴 닫기" : "메뉴 열기"}
           aria-expanded={open}
-          className="relative z-50 flex h-10 w-10 items-center justify-center lg:hidden"
+          className="relative z-50 flex h-11 w-11 items-center justify-center lg:hidden"
         >
           <div className="flex flex-col gap-[5px]">
             <span
@@ -213,7 +213,7 @@ export default function Header() {
                     key={c.href}
                     href={c.href}
                     onClick={() => setOpen(false)}
-                    className="break-keep rounded-lg px-3 py-2 text-sm text-ink-soft hover:bg-cloud hover:text-ink"
+                    className="flex min-h-11 items-center break-keep rounded-lg px-3 py-2 text-sm text-ink-soft hover:bg-cloud hover:text-ink"
                   >
                     {c.label}
                   </Link>
