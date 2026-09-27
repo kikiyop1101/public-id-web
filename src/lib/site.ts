@@ -128,6 +128,7 @@ export const site = {
         { label: "블로그", href: "/blog" },
         { label: "영상관", href: "/videos" },
         { label: "소통 게시판", href: "/board" },
+        { label: "질문 답변", href: "/answers" },
         { label: "문의", href: "/contact" },
       ],
     },
