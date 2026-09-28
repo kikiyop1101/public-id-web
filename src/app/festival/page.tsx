@@ -195,6 +195,7 @@ export default function FestivalPage() {
                   width={3840}
                   height={1867}
                   priority
+                  sizes="(min-width: 1024px) 560px, 100vw"
                   className="h-full w-full object-cover"
                 />
               </div>
@@ -271,6 +272,7 @@ export default function FestivalPage() {
                     alt={p.alt}
                     width={p.w}
                     height={p.h}
+                    sizes="(min-width: 1024px) 560px, 100vw"
                     className="h-full w-full object-cover"
                   />
                 </div>
@@ -320,6 +322,7 @@ export default function FestivalPage() {
                       alt={`${scene.title} — ${scene.desc}`}
                       width={800}
                       height={600}
+                      sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
                       className="h-full w-full object-cover"
                     />
                   </div>
@@ -374,6 +377,7 @@ export default function FestivalPage() {
                   alt="보도 바닥에 노란발자국 그래픽을 부착 시공하는 현장"
                   width={773}
                   height={435}
+                  sizes="(min-width: 1024px) 560px, 100vw"
                   className="h-full w-full object-cover"
                 />
               </div>

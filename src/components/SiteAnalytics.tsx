@@ -55,17 +55,19 @@ export default function SiteAnalytics() {
     <>
       {GA_ID && (
         <>
+          {/* lazyOnload(2026-09-28): afterInteractive는 head에 preload를 실어 176KB 태그가 첫 화면 CSS·히어로와 대역폭을 다퉜다
+              (모바일 Lighthouse 51점·LCP 8.9s 실측). load 이후 idle에 받아도 페이지뷰·참여시간 집계는 같다. */}
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-            strategy="afterInteractive"
+            strategy="lazyOnload"
           />
-          <Script id="ga4-init" strategy="afterInteractive">
+          <Script id="ga4-init" strategy="lazyOnload">
             {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}',{anonymize_ip:true});`}
           </Script>
         </>
       )}
       {CLARITY_ID && (
-        <Script id="ms-clarity" strategy="afterInteractive">
+        <Script id="ms-clarity" strategy="lazyOnload">
           {`(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","${CLARITY_ID}");`}
         </Script>
       )}

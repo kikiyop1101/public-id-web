@@ -1,10 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/cn";
 import { site } from "@/lib/site";
-import SearchDialog from "@/components/SearchDialog";
+
+// 열기 전엔 null만 그리는 컴포넌트(검색 색인 8KB 포함)라 모든 페이지 첫 번들에서 뺀다(2026-09-28)
+const SearchDialog = dynamic(() => import("@/components/SearchDialog"), { ssr: false });
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);

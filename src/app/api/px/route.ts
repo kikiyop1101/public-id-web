@@ -8,9 +8,13 @@ const GIF = Buffer.from("R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA
 export async function GET(req: Request) {
   const t = new URL(req.url).searchParams.get("t");
   if (t) {
-    await createAdminClient()
-      .from("outreach_events")
-      .insert({ token: t.slice(0, 64), kind: "open", ua: (req.headers.get("user-agent") ?? "").slice(0, 300) });
+    try {
+      await createAdminClient()
+        .from("outreach_events")
+        .insert({ token: t.slice(0, 64), kind: "open", ua: (req.headers.get("user-agent") ?? "").slice(0, 300) });
+    } catch {
+      // 기록 실패해도 픽셀은 항상 돌려준다(참고치)
+    }
   }
   return new Response(GIF, {
     headers: { "Content-Type": "image/gif", "Cache-Control": "no-store, max-age=0" },

@@ -21,6 +21,9 @@ export async function createBoardPost(
   if (!nickname || !password || !title || !body) {
     return { error: '모든 항목을 입력해 주세요.' }
   }
+  if (nickname.length > 30 || title.length > 120 || body.length > 5000) {
+    return { error: '닉네임 30자, 제목 120자, 내용 5,000자 이내로 적어 주세요.' }
+  }
   if (password.length < 4) {
     return { error: '비밀번호는 4자 이상이어야 합니다.' }
   }

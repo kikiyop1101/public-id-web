@@ -47,6 +47,7 @@ export function proxy(req: NextRequest) {
 }
 
 export const config = {
-  // 301 판정은 전 경로에서 필요(정적 자산 제외)
-  matcher: ['/((?!_next/static|_next/image).*)'],
+  // 301·/admin 판정은 페이지 경로에만 필요. 확장자 있는 정적 파일(폰트·사진·영상·아이콘)은 제외(2026-09-28) —
+  // 종전엔 Pretendard 서브셋 92개·제품 사진마다 엣지 미들웨어가 돌았다. 구 호스트의 robots.txt·sitemap.xml은 그대로 200(내용이 www 주소).
+  matcher: ['/((?!_next/static|_next/image|.*\\.[a-zA-Z0-9]+$).*)'],
 }

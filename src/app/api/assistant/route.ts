@@ -91,7 +91,15 @@ export async function POST(request: Request) {
     );
   }
 
-  const data = (await res.json()) as { content?: { type: string; text?: string }[] };
+  let data: { content?: { type: string; text?: string }[] };
+  try {
+    data = (await res.json()) as typeof data;
+  } catch {
+    return Response.json(
+      { error: "답변을 가져오지 못했어요. 070-4150-1172 로 문의해 주세요." },
+      { status: 502 },
+    );
+  }
   const reply = data.content?.find((b) => b.type === "text")?.text?.trim();
   if (!reply) {
     return Response.json({ error: "답변이 비어 있어요. 문의로 도와드릴게요." }, { status: 502 });

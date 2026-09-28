@@ -108,9 +108,11 @@ export async function POST(request: Request) {
     return Response.json({ error: '추천을 가져오지 못했어요. 잠시 후 다시 시도해 주세요.' }, { status: 502 })
   }
 
-  const data = (await res.json()) as {
-    content?: { type: string; text?: string }[]
-    stop_reason?: string
+  let data: { content?: { type: string; text?: string }[]; stop_reason?: string }
+  try {
+    data = (await res.json()) as typeof data
+  } catch {
+    return Response.json({ error: '추천을 가져오지 못했어요. 잠시 후 다시 시도해 주세요.' }, { status: 502 })
   }
   const raw = data.content?.find((b) => b.type === 'text')?.text?.trim()
   if (!raw) {

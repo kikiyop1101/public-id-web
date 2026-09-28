@@ -43,6 +43,7 @@ export default function ProductSection({
                   alt={`${product.name} 구조분석`}
                   width={800}
                   height={450}
+                  sizes="(min-width: 768px) 50vw, 100vw"
                   unoptimized={main.src.toLowerCase().endsWith('.gif')}
                   className="h-full w-full object-contain"
                 />

@@ -50,6 +50,9 @@ export async function createBoardComment(
   if (!nickname || !body) {
     return { error: '닉네임과 내용을 입력해 주세요.' }
   }
+  if (nickname.length > 30 || body.length > 2000) {
+    return { error: '닉네임 30자, 내용 2,000자 이내로 적어 주세요.' }
+  }
 
   const supabase = await createClient()
   const { error } = await supabase.from('board_comments').insert({
