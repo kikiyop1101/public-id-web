@@ -25,6 +25,14 @@ export function proxy(req: NextRequest) {
     return NextResponse.redirect(`https://www.public-id.co.kr${pathname}${search}`, 301)
   }
 
+  // 2026-09-28 대표 지시 — PI-System 주소는 소문자 /pis. /Pis 같은 대문자 변형은 소문자로 308.
+  // next.config redirects는 대소문자 무시 매칭이라 무한 반복(09-17 실측) — 여기서만 대소문자를 구분해 판정한다.
+  if (/^\/pis(\/|$)/i.test(pathname) && !pathname.startsWith('/pis')) {
+    const url = req.nextUrl.clone()
+    url.pathname = '/pis' + pathname.slice(4)
+    return NextResponse.redirect(url, 308)
+  }
+
   // /admin/* 보호. 로그인 페이지는 예외. 쿠키 토큰이 서버 토큰과 일치해야 통과.
   if (pathname.startsWith('/admin') && !pathname.startsWith('/admin/login')) {
     const token = req.cookies.get('pg_admin')?.value
