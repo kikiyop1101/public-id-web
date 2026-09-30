@@ -21,6 +21,8 @@ Next.js 16.3.x(정확한 버전은 package.json의 next). `node_modules/next/dis
 - IndexNow(빙·네이버·얀덱스 등, 구글 미지원) 자동 제출 = `.github/workflows/indexnow.yml` → `scripts/indexnow.mjs`. Vercel 프로덕션 배포 성공 시 직전 성공 배포 커밋과 diff해 바뀐 공개 URL만 제출한다(`src/app/<경로>` → 그 경로, `news.json` → 바뀐 글·/news·/press·홈, 공용 파일·public 자산처럼 애매한 변경 → sitemap lastmod 최근 7일 URL). 공개 URL 목록은 `sitemap.ts`의 routes를 읽으므로 새 페이지는 거기 넣으면 된다. 키 파일 `public/9706e13d3e584e3e0a8eac7f7ff78fdd.txt`(공개가 원래 설계)는 지우지 말 것. 수동: `node scripts/indexnow.mjs --base <sha> --dry-run`, 큰 개편 땐 `--all`.
 - **페이지 메타데이터는 `pageMeta()`(`src/lib/seo.ts`) 하나로 쓴다**(2026-09-08 감사). Next는 openGraph를 병합이 아니라 통째 교체하므로 손으로 `openGraph: {…}`를 쓰면 og:image·siteName이 사라지고, 안 쓰면 홈 문구가 상속된다. 새 페이지 = `export const metadata: Metadata = pageMeta({ title, description, path })`. 루트 layout에는 canonical을 두지 않는다. FAQ가 있는 페이지는 `FaqBlock`(FAQPage JSON-LD 동반)으로.
 
+- **개인정보처리방침(`src/app/privacy/page.tsx`)은 실제 데이터 흐름과 같이 고친다.** 양식·알림·분석·AI 처리에 외부 서비스를 새로 붙이거나 떼면 5번(위탁)과 6번(국외 이전 — 사업자명·소재 국가·문의처·항목·목적)을 같은 커밋에서 고치고 시행일을 바꾼다. 사업자 정보는 그 사업자의 공식 방침에서 확인한다(2026-09-30 실측: 문의 중계 `inquiry-relay` → 회사 봇 서버·OpenAI 처리와 GA4·Clarity 실사용이 방침에 빠져 있었다).
+
 환경 함정(Windows PowerShell): npx가 차단되면 npm.cmd 절대경로로 우회 — `& 'C:\Program Files\nodejs\npm.cmd' exec <pkg>` (또는 Bash 툴 사용).
 
 배포 검증: push 후 https://public-id.co.kr 를 실제 브라우저로 렌더해 눈으로 확인한다(curl은 Cloudflare 봇차단으로 403). **데스크톱+모바일 2벌 필수** — `node <시스템>\Agent\관리본부\_tools\shot.mjs <url> <out> [--mobile]`. 홈의 스크롤 연동 모션(히어로 깊이 레이어·게이트웨이 스티키 스택·스탯 카운트업 = `ScrollDepth`·`.stack-card`·`CountUp`)은 `--scroll` 연속 프레임으로 이동량·겹침·잘림을 본다(정본 = `_design-system\design.md` §5 스크롤 연동, 2026-09-03).
