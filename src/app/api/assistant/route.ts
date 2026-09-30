@@ -1,4 +1,5 @@
 import { ASSISTANT_SYSTEM } from "@/lib/assistant-knowledge";
+import { clientIp, dailyCapExceeded, rateLimited } from "@/lib/rate-limit";
 
 // 고객용 AI 도우미 — Claude Haiku 호출(서버). 키는 ANTHROPIC_API_KEY(서버 env).
 // 비용 가드레일: Haiku + 시스템 프롬프트 캐싱 + max_tokens 상한 + 대화 길이 제한.
@@ -8,20 +9,10 @@ type Msg = { role: "user" | "assistant"; content: string };
 const MAX_TURNS = 12; // 한 대화에 허용하는 메시지 수
 const MAX_CHARS = 1500; // 메시지당 글자 상한
 
-// 간단 in-memory rate limit — 인스턴스 단위 best-effort(서버리스에선 인스턴스마다 별도).
+// 간단 in-memory rate limit — 인스턴스 단위 best-effort(서버리스에선 인스턴스마다 별도). 공용 = src/lib/rate-limit.ts
 // 더 강한 제한이 필요하면 Vercel KV / Upstash Redis 등 공유 스토어로 교체.
 const RATE_MAX = 15; // IP당 분당 요청 수
-const rateHits = new Map<string, { n: number; reset: number }>();
-function rateLimited(ip: string): boolean {
-  const now = Date.now();
-  const cur = rateHits.get(ip);
-  if (!cur || now > cur.reset) {
-    rateHits.set(ip, { n: 1, reset: now + 60_000 });
-    return false;
-  }
-  cur.n += 1;
-  return cur.n > RATE_MAX;
-}
+const DAILY_MAX = 500; // 인스턴스당 하루 상한(과금 보호) — IP 제한·본문 검증을 통과해 실제로 Claude 를 부르는 요청만 센다
 
 export async function POST(request: Request) {
   const apiKey = process.env.ANTHROPIC_API_KEY;
@@ -29,13 +20,13 @@ export async function POST(request: Request) {
     return Response.json({ error: "도우미가 아직 설정되지 않았어요." }, { status: 503 });
   }
 
-  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
-  if (rateLimited(ip)) {
-    return Response.json(
+  const tooMany = () =>
+    Response.json(
       { error: "요청이 많아요. 잠시 후 다시 시도하시거나 070-4150-1172 로 연락 주세요." },
       { status: 429 },
     );
-  }
+
+  if (rateLimited(`assistant:${clientIp(request.headers)}`, RATE_MAX, 60_000)) return tooMany();
 
   let body: unknown;
   try {
@@ -61,6 +52,9 @@ export async function POST(request: Request) {
   if (messages[messages.length - 1].role !== "user") {
     return Response.json({ error: "잘못된 요청이에요." }, { status: 400 });
   }
+
+  // IP 를 바꿔 가며 부르는 것까지 막는 하루 총량 상한(os-curator 와 같은 구조).
+  if (dailyCapExceeded("assistant", DAILY_MAX)) return tooMany();
 
   let res: Response;
   try {

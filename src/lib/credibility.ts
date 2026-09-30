@@ -29,5 +29,3 @@ export const credibility = {
     { label: "비영리·기타", pct: 12.1 },
   ],
 } as const;
-
-export type Credibility = typeof credibility;

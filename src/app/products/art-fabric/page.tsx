@@ -41,7 +41,7 @@ function ArtCard({ art, compact = false }: { art: Artwork; compact?: boolean }) 
           {art.year ? ` · ${art.year}` : ''}
         </p>
         {!compact && (
-          <p className="mt-1 text-xs text-ink-soft/70">{art.institution}</p>
+          <p className="mt-1 text-xs text-ink-soft">{art.institution}</p>
         )}
       </figcaption>
     </figure>

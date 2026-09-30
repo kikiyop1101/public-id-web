@@ -27,9 +27,12 @@ export default async function ProposalPage({
   const { d } = await searchParams;
   const h = await headers();
   // 기록 실패가 열람을 막지 않도록 결과는 확인만 하지 않는다(supabase-js는 throw하지 않음)
-  await createAdminClient()
-    .from("outreach_events")
-    .insert({ token: token.slice(0, 64), kind: "click", ua: (h.get("user-agent") ?? "").slice(0, 300) });
+  // 발송 토큰 형식(16진수 8~16자, 시험 발송은 test- 접두)일 때만 기록 — 형식이 달라도 제안서 화면은 그대로 보여준다.
+  if (/^(test-)?[0-9a-f]{8,16}$/.test(token)) {
+    await createAdminClient()
+      .from("outreach_events")
+      .insert({ token: token.slice(0, 64), kind: "click", ua: (h.get("user-agent") ?? "").slice(0, 300) });
+  }
 
   const doc = d === "b" ? DOCS.b : d === "e" ? DOCS.e : DOCS.a;
   return (

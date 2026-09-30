@@ -7,7 +7,16 @@ import Container from "@/components/Container";
 // 2026-08-26 업그레이드 — 리스트가 비어 보인다(대표 08-26 "정리 안 된 느낌"):
 // 행마다 실물 썸네일을 붙이고, 아래에 공통 진행 단계를 한 줄로 깔아
 // "다음에 무슨 일이 일어나는지"(B2G 리서치 권고)를 보여준다.
+// 2026-09-30 순서 = 우리회사OS → 디자인 구독 → 제품·시공(09-17 재편: 주종목 우리회사OS). 킷 개수는 늘어나므로 문구에 박지 않는다.
 const GATES = [
+  {
+    href: "/os",
+    label: "우리회사OS",
+    desc: "기업 맞춤형 AI-OS — 업무 자동화 키트, 무료 진단으로 시작",
+    img: null,
+    imgAlt: "",
+    imgFit: "cover" as const,
+  },
   {
     href: "/subscribe",
     label: "디자인 구독",
@@ -24,14 +33,6 @@ const GATES = [
     imgAlt: "등굣길 횡단보도 앞 노란발자국 위에 서 있는 아이들",
     imgFit: "cover" as const,
   },
-  {
-    href: "/os",
-    label: "우리회사OS",
-    desc: "소상공인을 위한 AI 자동화 템플릿 — 무료 진단으로 시작",
-    img: null,
-    imgAlt: "",
-    imgFit: "cover" as const,
-  },
 ];
 
 const STEPS = ["상담·진단", "디자인", "제작·시공", "관리·리포트"];
@@ -44,7 +45,7 @@ export default function ProductGateway() {
           What We Offer
         </p>
         <h2 className="mt-3 max-w-3xl break-keep text-3xl font-extrabold leading-[1.2] tracking-tight text-ink sm:text-4xl">
-          디자인이 필요한 순간,
+          필요한 것부터,
           <br />셋 중 하나에서 시작하세요.
         </h2>
         {/* 2026-09-03 lg+ 에서 행이 헤더 아래 16px 계단으로 겹쳐 쌓인다(.stack-card, design.md §5 스크롤 연동 ②) — 모바일은 일반 리스트 */}

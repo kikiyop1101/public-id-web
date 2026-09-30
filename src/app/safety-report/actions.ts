@@ -1,7 +1,9 @@
 'use server'
 
 import { revalidatePath } from 'next/cache'
+import { headers } from 'next/headers'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { clientIp, rateLimited } from '@/lib/rate-limit'
 import { REPORT_CATEGORIES, validateReport } from '@/lib/reports'
 
 export type ReportFormState = { error?: string; ok?: boolean }
@@ -36,6 +38,18 @@ export async function createReport(
   }
   if (files.some((file) => file.size > MAX_PHOTO_BYTES)) {
     return { error: '사진 용량이 너무 큽니다. 다시 시도해 주세요.' }
+  }
+  // 내용 검사 — 폼이 JPEG 로 다시 만들어 보내므로 첫 3바이트(FF D8 FF)가 아니면 사진이 아닌 파일이다.
+  for (const file of files) {
+    const head = new Uint8Array(await file.slice(0, 3).arrayBuffer())
+    if (head[0] !== 0xff || head[1] !== 0xd8 || head[2] !== 0xff) {
+      return { error: '사진 형식을 확인하지 못했습니다. JPG 사진으로 다시 올려 주세요.' }
+    }
+  }
+
+  // 속도 제한 — IP당 10분 3회(저장·업로드·알림까지 가는 제보만 센다). 허니팟만으로는 스크립트 반복을 못 막는다.
+  if (rateLimited(`report:${clientIp(await headers())}`, 3, 600_000)) {
+    return { error: '제보가 연달아 접수되어 잠시 막았습니다. 10분 뒤 다시 시도해 주세요.' }
   }
 
   const supabase = createAdminClient()

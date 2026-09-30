@@ -83,7 +83,7 @@ export default function VideoGrid({ videos }: { videos: Video[] }) {
       </ul>
       {tab === "롱폼 설명영상" && (
         <p className="mt-8 text-xs leading-relaxed text-ink-soft">
-          시리즈마다 1편(개요)·2편(가격·사례)·3편(화이트보드 3분 정리)으로 이어집니다. 예약 공개 영상은 공개 시각에 자동으로 나타납니다.
+          시리즈마다 1편(개요)·2편(가격·사례)·3편(화이트보드 3분 정리)·도트 게임판(2분)으로 이어집니다. 예약 공개 영상은 공개 시각에 자동으로 나타납니다.
         </p>
       )}
     </div>

@@ -9,7 +9,7 @@ import BreadcrumbLd from '@/components/BreadcrumbLd'
 export const metadata: Metadata = pageMeta({
   title: '기업 블로그 — 현장 소식과 이야기',
   description:
-    '퍼블릭아이디의 이야기와 현장 소식.',
+    '퍼블릭아이디 기업 블로그입니다. 친환경 그래픽 노면표시재·노란발자국 시공 현장, 디자인 구독과 우리회사OS 이야기를 전합니다.',
   path: '/blog',
 })
 

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { KITS, priceLabel } from '@/lib/os-kits'
 import KitLink from '@/components/KitLink'
 
@@ -12,6 +13,7 @@ type Pick = {
   tagline: string
   price: number
   url: string
+  path: string
   reason: string
   scenario: string
 }
@@ -64,7 +66,7 @@ export default function OsCurator() {
         뭐가 필요한지 모르겠다면, 한 줄로 물어보세요
       </h3>
       <p className="text-ink-soft mt-3 max-w-[42em] text-sm leading-relaxed sm:text-base">
-        회사가 하는 일과 요즘 제일 힘든 업무를 적으면, AI가 실행 키트 {KITS.length}종 중 우리 회사에 맞는
+        회사가 하는 일과 요즘 제일 힘든 업무를 적으면, AI가 키트 {KITS.length}종 중 우리 회사에 맞는
         2~3개를 골라 이유와 함께 알려 드립니다.
       </p>
 
@@ -143,14 +145,23 @@ export default function OsCurator() {
                   <span className="text-ink font-semibold">이렇게 씁니다 — </span>
                   {p.scenario}
                 </p>
-                <KitLink
-                  kit={`${p.no}${p.name}`}
-                  place="curator"
-                  href={p.url}
-                  className="mt-4 inline-flex items-center text-sm font-semibold text-teal-700 transition hover:opacity-75"
-                >
-                  키트 자세히 보기 →
-                </KitLink>
+                {/* 자세히 보기 → 상품별 페이지(내부), 구매 → 래피드(외부·계측). /os 목록과 같은 규칙(2026-09-27) */}
+                <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2">
+                  <Link
+                    href={p.path || '/os'}
+                    className="inline-flex items-center text-sm font-semibold text-teal-700 transition hover:opacity-75"
+                  >
+                    키트 자세히 보기 →
+                  </Link>
+                  <KitLink
+                    kit={`${p.no}${p.name}`}
+                    place="curator"
+                    href={p.url}
+                    className="text-ink-soft inline-flex items-center text-sm font-semibold underline underline-offset-4 transition hover:text-teal-700"
+                  >
+                    {p.price === 0 ? '무료로 받기' : '구매'}
+                  </KitLink>
+                </div>
               </div>
             ))}
           </div>

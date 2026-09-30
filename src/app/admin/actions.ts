@@ -1,18 +1,27 @@
 'use server'
 
-import { cookies } from 'next/headers'
+import { cookies, headers } from 'next/headers'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { ADMIN_COOKIE, checkPassword, isAuthed } from '@/lib/auth'
+import { clientIp, rateLimited } from '@/lib/rate-limit'
 import { validateReport } from '@/lib/reports'
 import { isRaw, textArray } from '@/lib/rows'
 
 export type AuthState = { error?: string }
 
 export async function signIn(_prev: AuthState, formData: FormData): Promise<AuthState> {
+  // 시도 제한 — IP당 10분 5회(인스턴스 단위 best-effort). 실패하면 0.5초 늦게 답한다.
+  const ip = clientIp(await headers())
+  if (rateLimited(`admin-login:${ip}`, 5, 600_000)) {
+    return { error: '시도가 많습니다. 잠시 후 다시 시도해 주세요.' }
+  }
   const pw = String(formData.get('password') ?? '')
-  if (!checkPassword(pw)) return { error: '비밀번호가 올바르지 않습니다.' }
+  if (!checkPassword(pw)) {
+    await new Promise((resolve) => setTimeout(resolve, 500))
+    return { error: '비밀번호가 올바르지 않습니다.' }
+  }
 
   const store = await cookies()
   store.set(ADMIN_COOKIE, process.env.ADMIN_SESSION_TOKEN ?? '', {
@@ -51,6 +60,7 @@ export async function deleteBlogPost(id: string): Promise<void> {
   await admin.from('blog_posts').delete().eq('id', id)
   revalidatePath('/admin')
   revalidatePath('/blog')
+  revalidatePath('/sitemap.xml') // 사이트맵은 1시간 ISR — 글이 바뀌면 바로 다시 만든다
 }
 
 // 리드(구독·견적 신청) 관리 — 연락 완료 표시와 삭제만 지원한다.
@@ -195,5 +205,6 @@ export async function createBlogPost(_prev: BlogState, formData: FormData): Prom
 
   revalidatePath('/admin')
   revalidatePath('/blog')
+  revalidatePath('/sitemap.xml')
   return { ok: true }
 }

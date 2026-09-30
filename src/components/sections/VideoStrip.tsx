@@ -2,7 +2,7 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import LiteYouTube from "@/components/LiteYouTube";
 import { site } from "@/lib/site";
-import { homeVideos } from "@/lib/videos";
+import { homeVideos, LONG_COUNT_LABEL, SHORT_COUNT_LABEL } from "@/lib/videos";
 
 // 2026-09-08 신설 — 홈에 롱폼 설명영상 3편(파사드). 클릭 전엔 썸네일뿐이라 홈 무게는 거의 늘지 않는다.
 // 롱폼(3~7분)을 앞세우는 이유: 한 편 재생이 그대로 체류 몇 분이다(체류시간 기획안 2안).
@@ -19,7 +19,7 @@ export default function VideoStrip() {
               3분이면 이해되는 퍼블릭아이디
             </h2>
             <p className="mt-3 max-w-xl break-keep text-[15px] leading-relaxed text-ink-soft">
-              제품·구독 시리즈별 설명영상 30편과 쇼츠 40여 편. 여기서 바로 재생됩니다.
+              제품·구독 시리즈별 설명영상 {LONG_COUNT_LABEL}과 쇼츠 {SHORT_COUNT_LABEL}. 여기서 바로 재생됩니다.
             </p>
           </div>
           <div className="flex flex-wrap gap-x-5 text-sm font-semibold">

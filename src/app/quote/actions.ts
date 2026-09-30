@@ -1,15 +1,17 @@
 'use server'
 
 import { revalidatePath } from 'next/cache'
+import { headers } from 'next/headers'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { validateLead } from '@/lib/leads'
+import { clientIp, rateLimited } from '@/lib/rate-limit'
 import { notifyLead } from '@/lib/notify'
 import { site } from '@/lib/site'
 
 export type LeadFormState = { error?: string; ok?: boolean }
 
 const SAVE_FAILED =
-  `접수하지 못했습니다. 잠시 후 다시 신청해 주시거나 ${site.email} 으로 보내 주세요.`
+  `접수하지 못했습니다. 잠시 후 다시 신청해 주시거나 ${site.email}으로 보내 주세요.`
 
 export async function createLead(
   _prev: LeadFormState,
@@ -29,6 +31,11 @@ export async function createLead(
     utm: String(formData.get('utm') ?? ''),
   })
   if (error || !lead) return { error }
+
+  // 속도 제한 — IP당 10분 5회(저장·알림까지 가는 신청만 센다). 허니팟만으로는 스크립트 반복을 못 막는다.
+  if (rateLimited(`lead:${clientIp(await headers())}`, 5, 600_000)) {
+    return { error: `신청이 연달아 접수되어 잠시 막았습니다. 10분 뒤 다시 시도하시거나 ${site.email}으로 보내 주세요.` }
+  }
 
   // leads 테이블은 RLS 정책이 없어 anon이 접근할 수 없다 — service_role로만 쓴다.
   // 클라이언트 생성(env 누락)까지 try 안에 둔다 — 던지면 폼 대신 오류 화면이 떠서 입력이 사라진다.

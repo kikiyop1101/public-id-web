@@ -90,6 +90,14 @@ const COMPARE = [
   },
 ]
 
+// 실행층(Layer 02) 개수는 KITS에서 센다 — 킷이 늘어도 문구가 낡지 않게(하드코딩 '22종'이 31종까지 어긋났던 자리).
+// 기록층(①진단·②업무시트)·자율층(③콘텐츠·④AI 직원 5명·④셀러편)·업종 패키지·미니를 뺀 나머지가 실행 킷이다.
+const LAYER_OTHER_NAMES = ['업무시트', 'AI 직원 5명', '셀러편', '콘텐츠']
+const EXEC_COUNT = KITS.filter(
+  (k) => !['시작', '패키지', '미니'].includes(k.group) && !LAYER_OTHER_NAMES.includes(k.name),
+).length
+const MINI_COUNT = KITS.filter((k) => k.group === '미니').length
+
 const LAYERS = [
   {
     no: 'Layer 01',
@@ -109,7 +117,7 @@ const LAYERS = [
     no: 'Layer 02',
     name: '실행',
     en: 'Action',
-    kits: '실행 킷 22종 · 미니 5종',
+    kits: `실행 킷 ${EXEC_COUNT}종 · 미니 ${MINI_COUNT}종`,
     summary: '견적서·독촉 문안·마감 리포트·브리핑을 고정 규칙으로 조립합니다. 같은 입력이면 언제나 같은 결과, 보내는 것은 사람입니다.',
     lead: '매주 같은 모양으로 돌아오는 일을 킷 하나가 한 가지씩 맡습니다. 더블클릭으로 창을 열고 버튼을 누르면 견적서·독촉 문안·마감 리포트·브리핑이 파일로 나옵니다. 보내는 것은 언제나 사람입니다.',
     points: [

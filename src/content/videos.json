@@ -1,5 +1,13 @@
 [
   {
+    "id": "i7a0ceU6Vk8",
+    "title": "사장 혼자 밤 10시까지 남는 회사, AI 직원 5명이면 달라질까",
+    "published": "2026-09-23",
+    "category": "소상공인·우리회사OS",
+    "kind": "long",
+    "series": "우리회사OS 밤 열 시의 책상"
+  },
+  {
     "id": "yK_kWjfd3xo",
     "title": "바닥에 붙이는 그래픽, 부착 시공 4단계 — 친환경 노면표시재 가이드",
     "published": "2026-09-22",
@@ -16,6 +24,104 @@
     "kind": "long",
     "series": "명화·지도 컬렉션",
     "publishAt": "2026-09-20T01:00:00Z"
+  },
+  {
+    "id": "KNx-E59Z5L0",
+    "title": "AI를 직원처럼 쓰는 회사, 우리회사OS 2분 도트 게임판",
+    "published": "2026-10-10",
+    "category": "소상공인·우리회사OS",
+    "kind": "long",
+    "series": "우리회사OS(도트 게임판)",
+    "publishAt": "2026-10-10T01:00:00Z"
+  },
+  {
+    "id": "sfxjbsFi180",
+    "title": "우리 학교 앞 위험한 곳, 사진 한 장으로 제보! 안전리포트 2분 도트 게임판",
+    "published": "2026-10-09",
+    "category": "안전·시공",
+    "kind": "long",
+    "series": "안전 리포트(도트 게임판)",
+    "publishAt": "2026-10-09T01:00:00Z"
+  },
+  {
+    "id": "wMwnNRUl734",
+    "title": "AI에 뭘 먼저 맡길까? 우리회사OS 3분 무료진단 2분 도트 게임판",
+    "published": "2026-10-08",
+    "category": "소상공인·우리회사OS",
+    "kind": "long",
+    "series": "우리회사OS 무료 진단(도트 게임판)",
+    "publishAt": "2026-10-08T01:00:00Z"
+  },
+  {
+    "id": "HKVnAH_EO_k",
+    "title": "바닥 그래픽 시트 붙이는 법 4단계+겨울 요령, 2분 도트 게임판",
+    "published": "2026-10-07",
+    "category": "안전·시공",
+    "kind": "long",
+    "series": "부착 가이드(도트 게임판)",
+    "publishAt": "2026-10-07T01:00:00Z"
+  },
+  {
+    "id": "C2oa6XeWoTk",
+    "title": "회색 말뚝에 노란 옷을 입히면? 노란볼라드 2분 도트 게임판",
+    "published": "2026-10-06",
+    "category": "안전·시공",
+    "kind": "long",
+    "series": "노란볼라드(도트 게임판)",
+    "publishAt": "2026-10-06T01:00:00Z"
+  },
+  {
+    "id": "11mdeCCRXSA",
+    "title": "행사 끝나면 버려지는 판촉물? 타이벡 친환경 굿즈 2분 도트 게임판",
+    "published": "2026-10-05",
+    "category": "디자인·판촉",
+    "kind": "long",
+    "series": "친환경 홍보판촉물(도트 게임판)",
+    "publishAt": "2026-10-05T01:00:00Z"
+  },
+  {
+    "id": "1eTFKPEsdg8",
+    "title": "칠하지 않고 붙이는 도로 그래픽? 친환경 노면표시재 2분 도트 게임판",
+    "published": "2026-10-04",
+    "category": "안전·시공",
+    "kind": "long",
+    "series": "친환경 노면표시재(도트 게임판)",
+    "publishAt": "2026-10-04T01:00:00Z"
+  },
+  {
+    "id": "2bxZfYosMI4",
+    "title": "전단지 붙는 벽, 덧칠 말고 이렇게! 친환경 직물시트 2분 도트 게임판",
+    "published": "2026-10-03",
+    "category": "디자인·판촉",
+    "kind": "long",
+    "series": "친환경 직물시트(도트 게임판)",
+    "publishAt": "2026-10-03T01:00:00Z"
+  },
+  {
+    "id": "kbBFeL0AZ8k",
+    "title": "직원 없이 디자인 팀 두는 법? 디자인구독 2분 도트 게임판",
+    "published": "2026-10-02",
+    "category": "디자인·판촉",
+    "kind": "long",
+    "series": "디자인 구독(도트 게임판)",
+    "publishAt": "2026-10-02T01:00:00Z"
+  },
+  {
+    "id": "2rsPQFSGcNs",
+    "title": "노면 표시 지워지면 누가 관리하죠? 안전시설관리 구독 2분 도트 게임판",
+    "published": "2026-10-01",
+    "category": "안전·시공",
+    "kind": "long",
+    "series": "안전시설관리 구독(도트 게임판)",
+    "publishAt": "2026-10-01T01:00:00Z"
+  },
+  {
+    "id": "rJCq5bhUAg0",
+    "title": "횡단보도 앞 한 걸음 뒤, 노란발자국 2분 도트 게임판",
+    "published": "2026-09-30",
+    "category": "안전·시공",
+    "kind": "long",
+    "series": "노란발자국(도트 게임판)"
   },
   {
     "id": "UDljPStXHds",
@@ -37,7 +143,7 @@
   },
   {
     "id": "1It3xMFqJso",
-    "title": "AI를 직원처럼 쓰는 작은 회사 — 우리회사OS 키트 38종, 무엇부터 맡길까",
+    "title": "AI를 직원처럼 쓰는 작은 회사 — 우리회사OS, 무엇부터 맡길까",
     "published": "2026-09-14",
     "category": "소상공인·우리회사OS",
     "kind": "long",
@@ -71,103 +177,12 @@
     "series": "PI-OS 관제탑"
   },
   {
-    "id": "R0jFJrwqR9g",
-    "title": "AI 직원 5명이 뭘 하는지 한 화면에 보이는 사령실",
-    "published": "2026-09-08",
-    "category": "소상공인·우리회사OS",
-    "kind": "short"
-  },
-  {
-    "id": "NO-KUP4Y9ww",
-    "title": "디자인구독료 아깝다는 착각",
-    "published": "2026-09-06",
-    "category": "디자인·판촉",
-    "kind": "short"
-  },
-  {
-    "id": "pmsAHbcZD0Q",
-    "title": "노면표시 시공 후 관리, 1년 책임진다는 거 아셨어요?",
-    "published": "2026-09-05",
-    "category": "안전·시공",
-    "kind": "short"
-  },
-  {
-    "id": "EP80xp-7oeg",
-    "title": "홍보판촉물 제작 견적, 왜 업체마다 다를까요?",
-    "published": "2026-09-04",
-    "category": "디자인·판촉",
-    "kind": "short"
-  },
-  {
-    "id": "SSI_jTuHSoc",
-    "title": "홍보판촉물 제작, 왜 한 곳에 맡겨야 할까요?",
-    "published": "2026-09-03",
-    "category": "디자인·판촉",
-    "kind": "short"
-  },
-  {
-    "id": "Vlyz9Y-7PNs",
-    "title": "디자인구독 몰랐다면 손해예요",
-    "published": "2026-09-02",
-    "category": "디자인·판촉",
-    "kind": "short"
-  },
-  {
-    "id": "PuWo4bbJAs4",
-    "title": "가을철 안전 위험요소 신고기간, 우리 동네는 괜찮을까요?",
-    "published": "2026-09-01",
-    "category": "안전·시공",
-    "kind": "short"
-  },
-  {
-    "id": "vcSDbsAx1Z4",
-    "title": "노면표시 야간반사, 9월부터 확인하세요",
-    "published": "2026-08-31",
-    "category": "안전·시공",
-    "kind": "short"
-  },
-  {
-    "id": "ymbQhCAFDHU",
-    "title": "스쿨존 심야 40~50km 완화, 우리 동네는 조건 됐을까요?",
-    "published": "2026-08-30",
-    "category": "안전·시공",
-    "kind": "short"
-  },
-  {
-    "id": "Xq6KZu9dy0A",
-    "title": "추석 전 공공시설 안전점검, 이 3가지 놓치면 위험해요",
-    "published": "2026-08-29",
-    "category": "안전·시공",
-    "kind": "short"
-  },
-  {
-    "id": "GbrS-M2Nzkk",
-    "title": "지원사업 선정 후 다음은 누가 해주나요?",
-    "published": "2026-08-28",
-    "category": "소상공인·우리회사OS",
-    "kind": "short"
-  },
-  {
-    "id": "5abF-U9IYYM",
-    "title": "통학로 안전시설 210억, 우리 동네는 언제 좋아질까요?",
-    "published": "2026-08-27",
-    "category": "안전·시공",
-    "kind": "short"
-  },
-  {
     "id": "w_9x_pWilVw",
     "title": "우리도 되나요? 노란발자국 설치·비용 3분 완전정리",
     "published": "2026-08-27",
     "category": "안전·시공",
     "kind": "long",
     "series": "노란발자국 3편"
-  },
-  {
-    "id": "o2zuMxrHzUY",
-    "title": "전국 초등학교 6,300곳 집중점검, 우리 동네는요?",
-    "published": "2026-08-26",
-    "category": "안전·시공",
-    "kind": "short"
   },
   {
     "id": "PpDqYQbvgBY",
@@ -178,33 +193,12 @@
     "series": "노란볼라드 3편"
   },
   {
-    "id": "GBIEOj9bEkA",
-    "title": "가을 축제 11만 명, 안전 어떻게 지킬까요",
-    "published": "2026-08-25",
-    "category": "디자인·판촉",
-    "kind": "short"
-  },
-  {
     "id": "pjfbyKbm3VM",
     "title": "안 버려지는 굿즈의 비밀 — 타이벡 친환경 홍보판촉물 3분 정리",
     "published": "2026-08-25",
     "category": "디자인·판촉",
     "kind": "long",
     "series": "친환경 홍보판촉물 3편"
-  },
-  {
-    "id": "eW9jfSn3Z_k",
-    "title": "가게 가을 준비, 뭐부터 해야 할까요?",
-    "published": "2026-08-24",
-    "category": "소상공인·우리회사OS",
-    "kind": "short"
-  },
-  {
-    "id": "2Z5jjkTtvcE",
-    "title": "스쿨존 안전대책 강화, 우리 동네는 괜찮을까요?",
-    "published": "2026-08-24",
-    "category": "안전·시공",
-    "kind": "short"
   },
   {
     "id": "v3FhWQV9zF8",
@@ -223,26 +217,12 @@
     "series": "친환경 직물시트 3편"
   },
   {
-    "id": "aYnGpd8LFKw",
-    "title": "가게 사인물 점검, 이 3가지만 확인하세요",
-    "published": "2026-08-22",
-    "category": "디자인·판촉",
-    "kind": "short"
-  },
-  {
     "id": "puHKVzI5bm4",
     "title": "디자인 팀 없이 디자인 팀 두기 — 디자인 구독 플랜·가격 3분 정리",
     "published": "2026-08-22",
     "category": "디자인·판촉",
     "kind": "long",
     "series": "디자인 구독 3편"
-  },
-  {
-    "id": "NIhNF4zcvLg",
-    "title": "친환경 현수막, 비바람에도 안 찢어지는 이유",
-    "published": "2026-08-21",
-    "category": "안전·시공",
-    "kind": "short"
   },
   {
     "id": "dxosf8xticY",
@@ -253,61 +233,12 @@
     "series": "안전시설관리 구독 3편"
   },
   {
-    "id": "v9_Ft_w_Ebk",
-    "title": "노인보호구역엔 색이 없었다? 제주 첫 시범사업",
-    "published": "2026-08-20",
-    "category": "안전·시공",
-    "kind": "short"
-  },
-  {
-    "id": "wurOcUT7fpA",
-    "title": "비 오는 날 노면표시, 미끄럽지 않을까요?",
-    "published": "2026-08-19",
-    "category": "안전·시공",
-    "kind": "short"
-  },
-  {
     "id": "OFpp2MOBzJ4",
     "title": "우리 회사, 뭘 AI에 맡겨야 할까 — 15문항 무료 진단으로 우선순위 찾기",
     "published": "2026-08-19",
     "category": "소상공인·우리회사OS",
     "kind": "long",
     "series": "우리회사OS 무료 진단"
-  },
-  {
-    "id": "OP1ZFFBCaCE",
-    "title": "열대야 숙면법 3가지, 에어컨 없이도 시원하게",
-    "published": "2026-08-17",
-    "category": "생활·계절",
-    "kind": "short"
-  },
-  {
-    "id": "gPxAFshWLbo",
-    "title": "스쿨존 노란발자국 색 바랬다면? 개학 전 확인하세요",
-    "published": "2026-08-17",
-    "category": "안전·시공",
-    "kind": "short"
-  },
-  {
-    "id": "sQ6wdAED6_4",
-    "title": "노면표시재, 페인트 아니었어요? 소재의 과학",
-    "published": "2026-08-14",
-    "category": "안전·시공",
-    "kind": "short"
-  },
-  {
-    "id": "INJfqi7eQFQ",
-    "title": "광복절 태극기, 언제까지 걸어도 될까요",
-    "published": "2026-08-14",
-    "category": "생활·계절",
-    "kind": "short"
-  },
-  {
-    "id": "XbBiAAS6Qgg",
-    "title": "행사장 바닥 유도선, 어떻게 만들까요?",
-    "published": "2026-08-14",
-    "category": "안전·시공",
-    "kind": "short"
   },
   {
     "id": "KuJI5lzD7NM",
@@ -334,40 +265,12 @@
     "series": "친환경 노면표시재 2편"
   },
   {
-    "id": "XnMp0F2vrnk",
-    "title": "스쿨존 안전점검, 개학 전에 하셨나요?",
-    "published": "2026-08-10",
-    "category": "안전·시공",
-    "kind": "short"
-  },
-  {
-    "id": "sH2UCvIGJf4",
-    "title": "안전점검, 여름에만 하면 될까요?",
-    "published": "2026-08-10",
-    "category": "안전·시공",
-    "kind": "short"
-  },
-  {
     "id": "QXn7YbliocI",
     "title": "직물시트, 얼마면 될까? ㎡당 88,000원의 정체 — 벽·볼라드·1년 관리까지",
     "published": "2026-08-09",
     "category": "디자인·판촉",
     "kind": "long",
     "series": "친환경 직물시트 2편"
-  },
-  {
-    "id": "CZgXIVuAr5Q",
-    "title": "폭염 속 실외작업 안전, 이 3가지 지키세요",
-    "published": "2026-08-07",
-    "category": "안전·시공",
-    "kind": "short"
-  },
-  {
-    "id": "hLI-r7LqNbY",
-    "title": "입추인데 왜 이렇게 더울까요?",
-    "published": "2026-08-07",
-    "category": "생활·계절",
-    "kind": "short"
   },
   {
     "id": "xcR8smTynao",
@@ -378,20 +281,6 @@
     "series": "디자인 구독 2편"
   },
   {
-    "id": "iJCqx-l2mt4",
-    "title": "안심귀갓길, 우리 동네도 만들 수 있을까요?",
-    "published": "2026-08-05",
-    "category": "안전·시공",
-    "kind": "short"
-  },
-  {
-    "id": "rS51drgFNLs",
-    "title": "안전표지 700종? 학교 앞부터 주차장까지 다 달라요",
-    "published": "2026-08-04",
-    "category": "안전·시공",
-    "kind": "short"
-  },
-  {
     "id": "It8YOiGdnBU",
     "title": "스쿨존 노란발자국, 아파트에도 설치할 수 있나요? | 비용·시공까지 한 번에",
     "published": "2026-08-04",
@@ -400,89 +289,12 @@
     "series": "노란발자국 2편"
   },
   {
-    "id": "HuAYmSt5LAg",
-    "title": "역대급 42.5도 폭염에도 시공되는 이유",
-    "published": "2026-08-03",
-    "category": "안전·시공",
-    "kind": "short"
-  },
-  {
-    "id": "lcBYR_TCwVM",
-    "title": "체감 38도 폭염, 스쿨존 노란색 흐려지면 벌어지는 일",
-    "published": "2026-08-01",
-    "category": "안전·시공",
-    "kind": "short"
-  },
-  {
     "id": "XSWCtokngWU",
     "title": "스쿨존 안전관리, 관공서만 되나요? | 학교·어린이집·병원도 가능합니다",
     "published": "2026-08-01",
     "category": "안전·시공",
     "kind": "long",
     "series": "안전시설관리 구독 2편"
-  },
-  {
-    "id": "h7ITGRHzW1o",
-    "title": "기온차 5도 넘으면 몸이 이렇게 됩니다",
-    "published": "2026-07-31",
-    "category": "생활·계절",
-    "kind": "short"
-  },
-  {
-    "id": "3kshc66-yBw",
-    "title": "안전시설 정기점검, 안 하면 생기는 일",
-    "published": "2026-07-31",
-    "category": "안전·시공",
-    "kind": "short"
-  },
-  {
-    "id": "LY_iVkPP3kQ",
-    "title": "여름방학 자전거 헬멧 안 챙기면 생기는 일",
-    "published": "2026-07-31",
-    "category": "생활·계절",
-    "kind": "short"
-  },
-  {
-    "id": "63mMLeujUL8",
-    "title": "안전시설관리 구독, 관공서만 되는 줄 아셨죠?",
-    "published": "2026-07-31",
-    "category": "안전·시공",
-    "kind": "short"
-  },
-  {
-    "id": "5OMogZ1Ao_8",
-    "title": "노면표시재, 이 폭염 버틸까요?",
-    "published": "2026-07-27",
-    "category": "안전·시공",
-    "kind": "short"
-  },
-  {
-    "id": "st1SABH_gz8",
-    "title": "가게 앞 1미터, 손님이 돌아서는 이유",
-    "published": "2026-07-26",
-    "category": "소상공인·우리회사OS",
-    "kind": "short"
-  },
-  {
-    "id": "nNaMV6WNm_Q",
-    "title": "관공서마다 캐릭터 생기는 진짜 이유",
-    "published": "2026-07-20",
-    "category": "디자인·판촉",
-    "kind": "short"
-  },
-  {
-    "id": "KYFcJKOdXbk",
-    "title": "브랜드 마스코트, 로고보다 오래 남는 이유",
-    "published": "2026-07-17",
-    "category": "디자인·판촉",
-    "kind": "short"
-  },
-  {
-    "id": "yPKHc1PRS64",
-    "title": "여름 휴가지 안전선, 왜 필요할까요?",
-    "published": "2026-07-17",
-    "category": "안전·시공",
-    "kind": "short"
   },
   {
     "id": "EZ4Y1KBW8Sg",
@@ -501,54 +313,12 @@
     "series": "노란발자국 1편"
   },
   {
-    "id": "I82XgEZhTq8",
-    "title": "42년째 숲 가꾸는 기업, 진짜 이유는?",
-    "published": "2026-07-15",
-    "category": "생활·계절",
-    "kind": "short"
-  },
-  {
-    "id": "8AbQbW3x9QA",
-    "title": "환율 오르면 물건값도 오른다고요?",
-    "published": "2026-07-14",
-    "category": "소상공인·우리회사OS",
-    "kind": "short"
-  },
-  {
-    "id": "gKQIHxLVS5s",
-    "title": "휴가철 공공시설 안전 점검, 놓치기 쉬운 4곳",
-    "published": "2026-07-13",
-    "category": "안전·시공",
-    "kind": "short"
-  },
-  {
     "id": "c3-7dSDPXFU",
     "title": "판촉물 제작, 버려지지 않게 만드는 법 — 친환경홍보 굿즈 (3분)",
     "published": "2026-07-13",
     "category": "디자인·판촉",
     "kind": "long",
     "series": "친환경 홍보판촉물 1편"
-  },
-  {
-    "id": "UOxjQxX9ogM",
-    "title": "여름 자외선, 선크림만으론 부족한 이유",
-    "published": "2026-07-12",
-    "category": "생활·계절",
-    "kind": "short"
-  },
-  {
-    "id": "on2kZ_6z9-Q",
-    "title": "복날 대목, 우리 가게도 잡는 법",
-    "published": "2026-07-11",
-    "category": "소상공인·우리회사OS",
-    "kind": "short"
-  },
-  {
-    "id": "0p4Xi6KO5M4",
-    "title": "아이 열사병, 폭염 지난 지금이 더 위험해요",
-    "published": "2026-07-10",
-    "category": "생활·계절",
-    "kind": "short"
   },
   {
     "id": "lmObmnLlRbU",
@@ -581,5 +351,929 @@
     "category": "안전·시공",
     "kind": "long",
     "series": "안전시설관리 구독 1편"
+  },
+  {
+    "id": "d5HykXuSc_o",
+    "title": "세종 자전거길이 346km? 퍼이가 타 본 가을 코스",
+    "published": "2026-09-30",
+    "category": "생활·계절",
+    "kind": "short"
+  },
+  {
+    "id": "0o7cluVkKvs",
+    "title": "배달앱에 매출의 26%가 나간대요, 새는 돈부터 확인해 보세요",
+    "published": "2026-09-30",
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
+  },
+  {
+    "id": "tNVHl7mrGeM",
+    "title": "어르신 다니는 길에도 보호구역이 있어요",
+    "published": "2026-09-30",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "-kLUpJTSREw",
+    "title": "손님이 AI에게 먼저 물어보는 시대, 우리 가게는 준비됐나요",
+    "published": "2026-09-29",
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
+  },
+  {
+    "id": "1KM4tdK9Iic",
+    "title": "노란볼라드, 새로 세우지 않고 옷만 입혀요",
+    "published": "2026-09-29",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "sCxg47YVCi4",
+    "title": "세종 신도심엔 왜 전봇대가 안 보일까? 땅속 22km의 비밀",
+    "published": "2026-09-29",
+    "category": "생활·계절",
+    "kind": "short"
+  },
+  {
+    "id": "bYk7N1IM7iU",
+    "title": "노란우산 연 한도가 1,800만원으로 풀렸대요, 언제 얼마 넣을지 정하셨나요",
+    "published": "2026-09-28",
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
+  },
+  {
+    "id": "bAZyTrP4IHU",
+    "title": "노란발자국, 발끝은 어느 쪽을 볼까요?",
+    "published": "2026-09-28",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "EKJZsR0uN_M",
+    "title": "세종 인구 1년 새 1,246명 줄었다, 그런데 이 동네는 늘었다",
+    "published": "2026-09-28",
+    "category": "생활·계절",
+    "kind": "short"
+  },
+  {
+    "id": "An0kEBmmOyI",
+    "title": "개천절이 토요일인데 5일 월요일도 쉬는 날이래요, 연휴 문의 답은 정해 두셨나요",
+    "published": "2026-09-27",
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
+  },
+  {
+    "id": "At10uyzB1ss",
+    "title": "스쿨존 사고, 1년 새 76% 늘었어요",
+    "published": "2026-09-27",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "aXc9VRItxl0",
+    "title": "정부세종청사는 왜 구불구불 이어져 있을까? 3.6km 옥상정원",
+    "published": "2026-09-27",
+    "category": "생활·계절",
+    "kind": "short"
+  },
+  {
+    "id": "pFpxrnoLh-U",
+    "title": "지원 대상을 가릴 때 원가와 판관비까지 본다는데, 우리 가게 숫자는 정리돼 있나요",
+    "published": "2026-09-26",
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
+  },
+  {
+    "id": "dBfK86PV1Lg",
+    "title": "GD 마크는 어떻게 붙을까요? 올해 224건이 선정됐어요",
+    "published": "2026-09-26",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "DT6gxEISQvg",
+    "title": "세종을 위에서 보면 왜 반지 모양일까? 가운데 비운 도시",
+    "published": "2026-09-26",
+    "category": "생활·계절",
+    "kind": "short"
+  },
+  {
+    "id": "M6t2jGqzO1k",
+    "title": "정부 AI 도우미가 지원사업을 찾아 준다는데, 신청서는 누가 쓰나요",
+    "published": "2026-09-25",
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
+  },
+  {
+    "id": "uV-PL5Y_88A",
+    "title": "안전표지는 왜 네 가지 색일까요",
+    "published": "2026-09-25",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "m9hQRifSTLw",
+    "title": "추석 연휴 마지막 주말, 세종 갈 만한 곳 3곳",
+    "published": "2026-09-25",
+    "category": "생활·계절",
+    "kind": "short"
+  },
+  {
+    "id": "kXSMe8vpor8",
+    "title": "임금체불 징역 5년, 알바 쓰는 우리 가게는 괜찮을까요",
+    "published": "2026-09-24",
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
+  },
+  {
+    "id": "_mp5caUi7ZY",
+    "title": "학교 앞 울타리도 디자인이 필요할까요",
+    "published": "2026-09-24",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "3mA2WoLxQbs",
+    "title": "세종 신도심엔 왜 쓰레기차가 잘 안 보일까? 땅속 관로",
+    "published": "2026-09-24",
+    "category": "생활·계절",
+    "kind": "short"
+  },
+  {
+    "id": "qmR2Lbi4Goo",
+    "title": "카드수수료 내려간다는데, 우리 가게도 진짜 남을까요",
+    "published": "2026-09-23",
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
+  },
+  {
+    "id": "wdyLk0A2Z1Q",
+    "title": "스쿨존은 밤에도 시속 30km여야 할까요",
+    "published": "2026-09-23",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "_KGg9Ig6TKo",
+    "title": "세종 아파트 마을 이름, 무슨 뜻일까? 새뜸·한뜰·나릿재",
+    "published": "2026-09-23",
+    "category": "생활·계절",
+    "kind": "short"
+  },
+  {
+    "id": "S05BFMgsOTk",
+    "title": "추석 연휴 휴무 안내, 언제 알리세요",
+    "published": "2026-09-22",
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
+  },
+  {
+    "id": "yfR-4WuXLms",
+    "title": "회색 볼라드를 노랗게 덧씌우면 생기는 일",
+    "published": "2026-09-22",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "DSKsFORCWE4",
+    "title": "배달앱 원산지 표시, 10월 22일부터 달라집니다",
+    "published": "2026-09-21",
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
+  },
+  {
+    "id": "6tmRgxL88gc",
+    "title": "횡단보도 앞 아이는 어디에 서 있나요",
+    "published": "2026-09-21",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "e0vJ5ApwthY",
+    "title": "10월 부가세 고지서, 얼마 나올지 알고 계신가요",
+    "published": "2026-09-20",
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
+  },
+  {
+    "id": "jmY7RYsx7eg",
+    "title": "횡단보도가 사람을 기다려 줬더니",
+    "published": "2026-09-20",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "GTfJANsxsCY",
+    "title": "추석 앞두고 나갈 돈, 날짜별로 알고 계신가요",
+    "published": "2026-09-19",
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
+  },
+  {
+    "id": "E19fihIAqLI",
+    "title": "안전보건표지 아무 재료로나 만들면 안 됩니다",
+    "published": "2026-09-19",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "GZI0pU319MY",
+    "title": "우리 동네 글씨가 세계 디자인상 후보에 올랐어요",
+    "published": "2026-09-19",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "9SlN7Txfe80",
+    "title": "매출 늘었는데 세금은 왜 더 무서워질까요",
+    "published": "2026-09-18",
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
+  },
+  {
+    "id": "I20UpCcqTuU",
+    "title": "회전하는 가드레일, 정말 사고를 줄일까요",
+    "published": "2026-09-17",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "RSnMHh8z2oY",
+    "title": "가전을 숨기니 집이 넓어 보인다고요",
+    "published": "2026-09-17",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "BVgYElBL2No",
+    "title": "3교대 인수인계, 화이트보드에 먼저 적는 5가지",
+    "published": "2026-09-17",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "p05gG4fIjpM",
+    "title": "학교 앞 스쿨존, 잠시 멈춤 어린이 먼저",
+    "published": "2026-09-16",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "wFv3vGFW9UY",
+    "title": "공공디자인에도 나라가 주는 상이 있다는 거, 알고 계셨나요",
+    "published": "2026-09-16",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "pxuzZu4LVvg",
+    "title": "물류센터 하차장, 문 열기 전 3분 브리핑",
+    "published": "2026-09-16",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "bKAN9zNi5Rk",
+    "title": "노면표시재 시장, 2035년까지 매년 5~7%씩 커지는 이유",
+    "published": "2026-09-15",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "Za995KbS0Do",
+    "title": "공공디자인도 법으로 정한 계획이 있다는 거, 알고 계셨나요",
+    "published": "2026-09-15",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "SkGhaYcMe3k",
+    "title": "출근길에 매일 보는 금지표지, 정확한 뜻 아세요?",
+    "published": "2026-09-15",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "RltVRB-QHg4",
+    "title": "전국 스쿨존 93곳에서 위험요인 508건이 나왔다는데 우리 동네는 몇 건일까요",
+    "published": "2026-09-14",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "rahNinGGVaA",
+    "title": "동물이 다 먹으면 화분이 된다는 물건, 알고 계셨나요",
+    "published": "2026-09-14",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "Ph-iq0_u45s",
+    "title": "첫 출근 날 건물 한 바퀴, 알아두면 좋은 안내표지 5곳",
+    "published": "2026-09-14",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "Res26TT6sfI",
+    "title": "학교 앞 캠페인은 매년 열리는데 바닥은 누가 챙기나요",
+    "published": "2026-09-13",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "1QdGy04uXDE",
+    "title": "서울에 이런 상이 처음 생겼다는 거 알고 계셨나요",
+    "published": "2026-09-13",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "skMb_KYcvqI",
+    "title": "주말 특근, 사물함 문 열기 전에 챙기는 개인보호구 5종",
+    "published": "2026-09-13",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "zq7B9t2J2_M",
+    "title": "챗GPT에게 물어보면 우리 가게가 나올까요",
+    "published": "2026-09-12",
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
+  },
+  {
+    "id": "SuBd0AZqc_Q",
+    "title": "설계도랑 현장이 다르다는 거 알고 계셨나요",
+    "published": "2026-09-12",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "8c8y9SAE9e8",
+    "title": "현장 출근 첫날, 정문 게시판에서 배우는 경고표지 5종",
+    "published": "2026-09-12",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "HrV4cW-7UHY",
+    "title": "어린이 보행사고, 절반이 이 시간에 났습니다",
+    "published": "2026-09-11",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "rzJ8LpMPMCU",
+    "title": "대학생 프로젝트가 진짜 전시가 된다고요",
+    "published": "2026-09-11",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "SQGKxQAryog",
+    "title": "장마철마다 관리소장님이 다시 붙이는 표지",
+    "published": "2026-09-11",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "9fcA3OJdBDw",
+    "title": "공공디자인 문제, 직접 걸어야 보인다고요",
+    "published": "2026-09-10",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "WInj6b3PuLM",
+    "title": "공사장 가림막에 상금 500만원이 걸렸다고요",
+    "published": "2026-09-10",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "TJ4_A74nq44",
+    "title": "문 닫기 전 마지막으로 도는 다섯 곳",
+    "published": "2026-09-10",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "hyuyF4aoAHE",
+    "title": "안전시설 예산, 세웠는데 왜 또 못 썼을까요",
+    "published": "2026-09-09",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "tMte4mgWslo",
+    "title": "서울역에 생긴 111미터짜리 화면, 뭐하는 곳인지 아세요",
+    "published": "2026-09-09",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "KFj_TQXzQ2g",
+    "title": "정문 게시판 앞에서 3초 멈춰 서는 이유",
+    "published": "2026-09-09",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "R0jFJrwqR9g",
+    "title": "AI 직원 5명이 뭘 하는지 한 화면에 보이는 사령실",
+    "published": "2026-09-08",
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
+  },
+  {
+    "id": "c8lLz9wcQ6Y",
+    "title": "낡은 동네 체육시설에 2,558억원이 들어간다고요",
+    "published": "2026-09-08",
+    "category": "생활·계절",
+    "kind": "short"
+  },
+  {
+    "id": "7ivuVNSGCNE",
+    "title": "선정릉 둘레길, 왜 향기가 나기 시작했을까요",
+    "published": "2026-09-08",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "hxkxHOfVvQ0",
+    "title": "초행 집 방문 기사님이 3초 만에 확인하는 경고표지 5종",
+    "published": "2026-09-08",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "s1llQB_BoKQ",
+    "title": "스쿨존 주정차는 전면 금지됐는데, 안심 승하차구역은 왜 33%뿐일까요",
+    "published": "2026-09-07",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "YLxIaNJeBPc",
+    "title": "장애가 있어도 없어도, 같이 노는 놀이터라고요",
+    "published": "2026-09-07",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "zZK2xEFn9z0",
+    "title": "실내 공용시설 매너금지표지 5종",
+    "published": "2026-09-07",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "NO-KUP4Y9ww",
+    "title": "디자인구독료 아깝다는 착각",
+    "published": "2026-09-06",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "Qeqt76E_r6o",
+    "title": "스쿨존 안전, 이제 잡는 것보다 막는 것이라고요",
+    "published": "2026-09-06",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "gmFDdlfZ0e0",
+    "title": "이 서가, 원래는 버려질 공간이었다고요",
+    "published": "2026-09-06",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "TRJeAbiH-ZM",
+    "title": "휠체어 손님이 오신다면, 먼저 확인해야 할 안내표지 5종",
+    "published": "2026-09-06",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "pmsAHbcZD0Q",
+    "title": "노면표시 시공 후 관리, 1년 책임진다는 거 아셨어요?",
+    "published": "2026-09-05",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "drdh2rNcINc",
+    "title": "비만 오면 안 보이던 차선, 이제 법으로 막는다고요?",
+    "published": "2026-09-05",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "kpisuW_6neY",
+    "title": "이 엘리베이터, 상까지 받았습니다",
+    "published": "2026-09-05",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "_LFqF91C9C8",
+    "title": "순회점검 때 관리자가 꼭 확인하는 지시표지 5종",
+    "published": "2026-09-05",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "EP80xp-7oeg",
+    "title": "홍보판촉물 제작 견적, 왜 업체마다 다를까요?",
+    "published": "2026-09-04",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "fGJGfffIGks",
+    "title": "일본이 뽑은 올해의 디자인 기준은 무엇일까요",
+    "published": "2026-09-04",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "hsadNFY00vw",
+    "title": "경고문 대신 조명을 켰더니, 안전이 달라졌다고요",
+    "published": "2026-09-04",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "Y5uQ4mtO2k4",
+    "title": "이 경고판들, 뜻 알고 지나치시나요? 공사장 앞 경고표지 5종",
+    "published": "2026-09-04",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "SSI_jTuHSoc",
+    "title": "홍보판촉물 제작, 왜 한 곳에 맡겨야 할까요?",
+    "published": "2026-09-03",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "KW-wJ7zfaK0",
+    "title": "서울이 세계적 디자인 허브가 됐다고요?",
+    "published": "2026-09-03",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "B8RjdmdEiqk",
+    "title": "지하철 바닥의 청록색 띠, 왜 그어졌을까요",
+    "published": "2026-09-03",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "ysoelLOg-w8",
+    "title": "이 빨간 태그, 왜 걸려 있을까요? 현장 금지표지 5종",
+    "published": "2026-09-03",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "Vlyz9Y-7PNs",
+    "title": "디자인구독 몰랐다면 손해예요",
+    "published": "2026-09-02",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "wQmU07Nt9UQ",
+    "title": "한 구역에서만 부상자가 85명이라면",
+    "published": "2026-09-02",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "d1L0clsUS4E",
+    "title": "새 날개 모양 캐노피 하나로, 아이를 지킨다면",
+    "published": "2026-09-02",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "L023NoLcuo4",
+    "title": "이 건물, 이런 데도 있었어? 놓치기 쉬운 편의시설 안내표지 5종",
+    "published": "2026-09-02",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "PuWo4bbJAs4",
+    "title": "가을철 안전 위험요소 신고기간, 우리 동네는 괜찮을까요?",
+    "published": "2026-09-01",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "q5Q4AsK7_TA",
+    "title": "하루아침에 트래픽이 80% 사라진다면",
+    "published": "2026-09-01",
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
+  },
+  {
+    "id": "_xSfKr372a8",
+    "title": "장애인도 외국인도 안 헤맨다, DDP가 웨이파인딩으로 상 받은 이유",
+    "published": "2026-09-01",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "ap0wGIM3JkI",
+    "title": "게이트 통과 전 마지막으로 확인하는 보호구 지시표지 5종",
+    "published": "2026-09-01",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "vcSDbsAx1Z4",
+    "title": "노면표시 야간반사, 9월부터 확인하세요",
+    "published": "2026-08-31",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "AFguXH-JyDs",
+    "title": "자전거도로 안전점검, 시장이 직접 나섰다고요",
+    "published": "2026-08-31",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "AYsihct6IYY",
+    "title": "행정이 아니라 이웃이 해결했다, 용산구가 대통령상을 받은 이유",
+    "published": "2026-08-31",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "OZpF0DIMgOM",
+    "title": "다치기 전에 먼저 봐야 하는 현장 경고표지 5종",
+    "published": "2026-08-31",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "ymbQhCAFDHU",
+    "title": "스쿨존 심야 40~50km 완화, 우리 동네는 조건 됐을까요?",
+    "published": "2026-08-30",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "XFVPUpZAK4o",
+    "title": "개학하고 나니 스쿨존 사고가 27% 늘었다고요",
+    "published": "2026-08-30",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "cPhO5y47FNw",
+    "title": "공공디자인 공모전 주제가 사람과 동물의 공존이라고요",
+    "published": "2026-08-30",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "mbWA7jU0Zv4",
+    "title": "매일 지나치는데 뜻은 몰랐던 금지표지 5종",
+    "published": "2026-08-30",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "Xq6KZu9dy0A",
+    "title": "추석 전 공공시설 안전점검, 이 3가지 놓치면 위험해요",
+    "published": "2026-08-29",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "WsWgRw9wZK0",
+    "title": "카드 디자인 1위, 나만의 커스텀이라고요",
+    "published": "2026-08-29",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "UrnasjssUso",
+    "title": "도서관 캐릭터 4마리가 대상을 받았다고요",
+    "published": "2026-08-29",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "LGWNT69kIio",
+    "title": "소방안전점검 앞두고 확인하는 안내표지 5종",
+    "published": "2026-08-29",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "GbrS-M2Nzkk",
+    "title": "지원사업 선정 후 다음은 누가 해주나요?",
+    "published": "2026-08-28",
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
+  },
+  {
+    "id": "vFzWCVmPhC0",
+    "title": "스쿨존, 밤엔 시속 50km까지 풀어준다고요",
+    "published": "2026-08-28",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "10Kph3toLWg",
+    "title": "한 달 만에 500명이 몰렸다는 이 도서관 어린이실",
+    "published": "2026-08-28",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "RHOGC7gxspw",
+    "title": "위험구역 들어가기 전, 지켜야 할 지시표지 5종",
+    "published": "2026-08-28",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "5abF-U9IYYM",
+    "title": "통학로 안전시설 210억, 우리 동네는 언제 좋아질까요?",
+    "published": "2026-08-27",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "iRU0BsXGlAA",
+    "title": "ESG, 대기업만 하는 숙제인가요",
+    "published": "2026-08-27",
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
+  },
+  {
+    "id": "yWwXwn4-HZQ",
+    "title": "로비부터 지하주차장까지, 건물 안 경고표지 5종",
+    "published": "2026-08-27",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "o2zuMxrHzUY",
+    "title": "전국 초등학교 6,300곳 집중점검, 우리 동네는요?",
+    "published": "2026-08-26",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "vzY14SY42WY",
+    "title": "하굣길, 등굣길보다 위험하다고요",
+    "published": "2026-08-26",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "GBIEOj9bEkA",
+    "title": "가을 축제 11만 명, 안전 어떻게 지킬까요",
+    "published": "2026-08-25",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "BjfEodvQqwY",
+    "title": "공공기관 9곳이 뭉쳤다는데, 사회적기업엔 무슨 기회일까요",
+    "published": "2026-08-25",
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
+  },
+  {
+    "id": "SC9AWduCE8Y",
+    "title": "처음 가는 건물, 급할 때일수록 안내표지가 안 보이면 진짜 당황스럽죠",
+    "published": "2026-08-25",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "eW9jfSn3Z_k",
+    "title": "가게 가을 준비, 뭐부터 해야 할까요?",
+    "published": "2026-08-24",
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
+  },
+  {
+    "id": "2Z5jjkTtvcE",
+    "title": "스쿨존 안전대책 강화, 우리 동네는 괜찮을까요?",
+    "published": "2026-08-24",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "FYluC_nUcAM",
+    "title": "기본을 지키면, 현장 기본 지시표지 5종",
+    "published": "2026-08-24",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "vsBvN5xJ_uw",
+    "title": "용인시가 공공디자인 기준을 통째로 바꿨다는데",
+    "published": "2026-08-23",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "Ybh7GkRJNZw",
+    "title": "차량통행부터 가스누출까지, 건설현장 경고표지 5종",
+    "published": "2026-08-23",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "aYnGpd8LFKw",
+    "title": "가게 사인물 점검, 이 3가지만 확인하세요",
+    "published": "2026-08-22",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "JJXeR6gPASA",
+    "title": "2026년 부엌은 이 색으로 바뀐다고요",
+    "published": "2026-08-22",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "-hp6p4tU7tM",
+    "title": "아파트 단지 민원 1위는 무단주차, 관리사무소가 붙이는 생활금지표지 5종",
+    "published": "2026-08-22",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "NIhNF4zcvLg",
+    "title": "친환경 현수막, 비바람에도 안 찢어지는 이유",
+    "published": "2026-08-21",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "83TESaxgLzQ",
+    "title": "SEO는 잘하는데 챗GPT는 왜 우리 회사를 모를까요",
+    "published": "2026-08-21",
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
+  },
+  {
+    "id": "aEQ9zoCQlNw",
+    "title": "사람이 떠난 산골 마을이 문체부 장관상을 받았다고요",
+    "published": "2026-08-21",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "rRv33pETW9I",
+    "title": "현장 출근 전 챙기는 보호구 착용지시 5종, 안전모부터 방진마스크까지",
+    "published": "2026-08-21",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "v9_Ft_w_Ebk",
+    "title": "노인보호구역엔 색이 없었다? 제주 첫 시범사업",
+    "published": "2026-08-20",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "71df1Ff7r8E",
+    "title": "세계 디자인 거장들이 부산에 모인다는데, 좋은 디자인 기준이 뭘까요",
+    "published": "2026-08-20",
+    "category": "디자인·판촉",
+    "kind": "short"
+  },
+  {
+    "id": "GGq65tDdZo4",
+    "title": "불이 났을 때, 3초 안에 찾아야 하는 안내표지 5종",
+    "published": "2026-08-20",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
+    "id": "wurOcUT7fpA",
+    "title": "비 오는 날 노면표시, 미끄럽지 않을까요?",
+    "published": "2026-08-19",
+    "category": "안전·시공",
+    "kind": "short"
   }
 ]

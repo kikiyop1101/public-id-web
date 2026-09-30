@@ -33,6 +33,7 @@ def build_art():
     for line in (ART_SRC / "_원장.jsonl").read_text(encoding="utf-8").splitlines():
         if not line.strip(): continue
         r = json.loads(line)
+        if r.get("grade") == "제외": continue  # 눈검수 탈락작은 판매 목록에서 뺀다(썸네일 유무와 무관)
         stem = nfc(pathlib.Path(r["file"]).stem)
         t = thumbs.get(stem)
         if not t:

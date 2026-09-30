@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     template: "%s | 퍼블릭아이디",
   },
   description:
-    "디자인 팀이 없어도 괜찮습니다. 퍼블릭아이디는 전용 마스코트, 매월 웹툰, 디자인 시스템, 홈페이지 제작을 구독으로 제공하고, 노면표시·안전표지의 정기 시설 관리까지 함께하는 KIDP 종합산업디자인전문회사이자 인증 사회적기업입니다.",
+    "디자인 팀이 없어도 괜찮습니다. 퍼블릭아이디는 우리회사OS(기업 맞춤형 AI 업무 자동화)를 만들고, 전용 마스코트, 매월 웹툰, 디자인 시스템, 홈페이지 제작을 구독으로 제공하며, 노면표시·안전표지의 정기 시설 관리까지 함께하는 KIDP 종합산업디자인전문회사이자 인증 사회적기업입니다.",
   keywords: [
     "퍼블릭아이디",
     "디자인 구독",
@@ -81,7 +81,7 @@ export default function RootLayout({
     logo: `${site.url}/logo.png`,
     image: `${site.url}/og.png`,
     description:
-      "전용 마스코트·매월 웹툰·디자인 시스템·홈페이지 제작 구독과 친환경 그래픽 노면표시재 기반 노면표시·안전표지 정기 시설 관리를 제공하는 KIDP 종합산업디자인전문회사이자 인증 사회적기업.",
+      "우리회사OS(기업 맞춤형 AI 업무 자동화 키트), 전용 마스코트·매월 웹툰·디자인 시스템·홈페이지 제작 구독, 친환경 그래픽 노면표시재 기반 노면표시·안전표지 정기 시설 관리를 제공하는 KIDP 종합산업디자인전문회사이자 인증 사회적기업.",
     foundingDate: "2017-08-08",
     founder: { "@type": "Person", name: site.ceo },
     telephone: site.tel,
@@ -98,6 +98,8 @@ export default function RootLayout({
     // 공개 기준가 범위(정본=assistant-knowledge.ts) — ㎡ 단가 기준
     priceRange: "기준가 88,000~132,000원/㎡",
     knowsAbout: [
+      "우리회사OS",
+      "AI 업무 자동화 키트",
       "친환경 그래픽 노면표시재",
       "노란발자국",
       "노란볼라드",
@@ -146,6 +148,7 @@ export default function RootLayout({
       site.tistory,
       site.youtube,
       site.instagram,
+      site.kakao,
       // 사이트 안 경로(/os 등)는 sameAs가 아니다 — 외부 채널·스토어만(2026-09-27 llms.txt·푸터 대조)
       ...site.stores.map((s) => s.href).filter((href) => href.startsWith("http")),
     ],

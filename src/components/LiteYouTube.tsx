@@ -69,18 +69,20 @@ export default function LiteYouTube({ id, title, place, vertical, className }: P
         decoding="async"
         className={cn(
           "absolute inset-0 h-full w-full object-cover transition duration-500 motion-reduce:transition-none",
-          vertical ? "scale-[1.02]" : "scale-[1.35] group-hover:scale-[1.38]",
+          // 가로형: hqdefault(4:3)의 위아래 검은 띠는 object-cover가 정확히 잘라낸다. 더 키우면 썸네일 제목 좌우가 잘린다(1.01 = 서브픽셀 검정 줄 방지).
+          vertical ? "scale-[1.02]" : "scale-[1.01] group-hover:scale-[1.04]",
         )}
       />
       <span
         aria-hidden
         className="absolute inset-0 bg-gradient-to-t from-navy/60 via-navy/0 to-navy/0"
       />
+      {/* 재생 버튼은 오른쪽 아래 — 가운데 두면 썸네일 속 제목 글자를 가린다(2026-09-30 확인) */}
       <span
         aria-hidden
-        className="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-teal-700 shadow-lg transition duration-300 group-hover:scale-110 group-hover:bg-white motion-reduce:transition-none"
+        className="absolute bottom-3 right-3 flex h-11 w-11 items-center justify-center rounded-full bg-white/95 text-teal-700 shadow-lg transition duration-300 group-hover:scale-110 group-hover:bg-white motion-reduce:transition-none"
       >
-        <svg viewBox="0 0 24 24" className="ml-1 h-6 w-6" fill="currentColor">
+        <svg viewBox="0 0 24 24" className="ml-0.5 h-5 w-5" fill="currentColor">
           <path d="M8 5v14l11-7z" />
         </svg>
       </span>

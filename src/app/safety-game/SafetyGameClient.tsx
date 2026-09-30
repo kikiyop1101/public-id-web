@@ -301,7 +301,7 @@ export default function SafetyGameClient({ initialScene }: { initialScene?: stri
               </div>
               <div className="p-5">
                 <p className="font-display text-xs font-semibold uppercase tracking-[0.16em] text-teal-700">{s.eyebrow}</p>
-                <h3 className="mt-2 text-lg font-bold text-ink">{s.name}</h3>
+                <h2 className="mt-2 text-lg font-bold text-ink">{s.name}</h2>
                 <p className="mt-2 break-keep text-sm leading-relaxed text-ink-soft">{s.intro}</p>
                 <p className="mt-3 text-xs text-ink-soft">추천: {s.audience}</p>
               </div>

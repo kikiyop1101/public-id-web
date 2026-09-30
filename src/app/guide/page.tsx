@@ -59,7 +59,7 @@ const faqs = [
   },
   {
     q: "미끄럽지 않나요?",
-    a: "표면 미끄럼저항은 46BPN으로 서울시 기준(45 이상)을 넘습니다. 보행 구간과 차량 통행 구간 모두에 적용하고 있습니다.",
+    a: "표면 미끄럼저항은 46BPN(KCL 2018)으로 서울시 보도포장 기준 평지(40)·완경사(45) 구간을 충족합니다. 보행 구간과 차량 통행 구간 모두에 적용하고 있습니다.",
   },
   {
     q: "얼마나 오래 유지되나요?",
@@ -105,11 +105,11 @@ export default function GuidePage() {
       <BreadcrumbLd trail={[{ name: "설치 가이드", path: "/guide" }]} />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd).replace(/</g, "\\u003c") }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c") }}
       />
 
       <PageHero

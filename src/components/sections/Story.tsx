@@ -34,17 +34,19 @@ export default function Story() {
             {pillars.map((p, i) => {
               const Icon = p.icon;
               return (
-                <Reveal key={p.title} delay={i * 80}>
-                  <li className="h-full rounded-2xl border border-white/10 bg-white/[0.04] p-5">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-arch text-white">
-                      <Icon className="h-5 w-5" />
-                    </span>
-                    <p className="mt-4 font-bold">{p.title}</p>
-                    <p className="mt-1.5 text-sm leading-relaxed text-white/60">
-                      {p.desc}
-                    </p>
-                  </li>
-                </Reveal>
+                <li key={p.title} className="h-full">
+                  <Reveal delay={i * 80} className="h-full">
+                    <div className="h-full rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+                      <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-arch text-white">
+                        <Icon className="h-5 w-5" />
+                      </span>
+                      <p className="mt-4 font-bold">{p.title}</p>
+                      <p className="mt-1.5 text-sm leading-relaxed text-white/60">
+                        {p.desc}
+                      </p>
+                    </div>
+                  </Reveal>
+                </li>
               );
             })}
           </ul>

@@ -110,7 +110,7 @@ export default function CredibilityPage() {
               <Reveal key={s.k} delay={i * 60}>
                 <div className="h-full rounded-2xl border border-line bg-white p-6 shadow-sm">
                   <div className="font-display text-3xl font-bold leading-none text-navy sm:text-4xl">
-                    {s.v}<span className="ml-0.5 text-base font-semibold text-teal-500">{s.u}</span>
+                    {s.v}<span className="ml-0.5 text-base font-semibold text-teal-700">{s.u}</span>
                   </div>
                   <div className="mt-3 text-sm font-semibold text-ink">{s.k}</div>
                   <div className="mt-0.5 text-xs text-ink-soft">{s.s}</div>
@@ -164,7 +164,7 @@ export default function CredibilityPage() {
                 <div className="mt-6"><Bars rows={c.segmentMix} /></div>
                 <div className="mt-auto pt-6">
                   <div className="rounded-2xl bg-cloud/60 p-5">
-                    <div className="font-display text-3xl font-bold text-navy">63<span className="text-lg text-teal-500">%</span></div>
+                    <div className="font-display text-3xl font-bold text-navy">63<span className="text-lg text-teal-700">%</span></div>
                     <p className="mt-1 text-sm text-ink-soft">공공 부문(B2G) 비중 — 까다로운 공공 조달 기준을 통과한 실행 이력.</p>
                   </div>
                 </div>

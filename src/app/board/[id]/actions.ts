@@ -1,10 +1,12 @@
 'use server'
 
 import { revalidatePath } from 'next/cache'
+import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { createClient } from '@/lib/supabase/server'
 import { verifyOwner } from '@/lib/hash'
+import { clientIp, rateLimited } from '@/lib/rate-limit'
 
 export type DeleteState = { error?: string }
 
@@ -52,6 +54,11 @@ export async function createBoardComment(
   }
   if (nickname.length > 30 || body.length > 2000) {
     return { error: '닉네임 30자, 내용 2,000자 이내로 적어 주세요.' }
+  }
+
+  // 속도 제한 — IP당 분당 3회(실제로 등록되는 답글만 센다).
+  if (rateLimited(`board-comment:${clientIp(await headers())}`, 3, 60_000)) {
+    return { error: '답글이 연달아 등록되어 잠시 막았습니다. 1분 뒤 다시 시도해 주세요.' }
   }
 
   const supabase = await createClient()

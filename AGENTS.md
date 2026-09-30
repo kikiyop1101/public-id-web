@@ -8,7 +8,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 <!-- END:nextjs-agent-rules -->
 
-Next.js 16.2.x. `node_modules/next/dist/docs/`가 없으면(클론/CI 환경) 공식 nextjs.org 문서를 참조하거나 document-specialist에 위임한다.
+Next.js 16.3.x(정확한 버전은 package.json의 next). `node_modules/next/dist/docs/`가 없으면(클론/CI 환경) 공식 nextjs.org 문서를 참조하거나 document-specialist에 위임한다.
 
 ## Commands
 

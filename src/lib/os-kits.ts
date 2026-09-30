@@ -1,5 +1,5 @@
 // 우리회사OS 시리즈 — 소개 허브(/os)용 정본.
-// 2026-09-16 기준: 래피드 스토어 38종(무료 ①진단 1 + 유료 실행 키트 26 + 업종 패키지 6 + 미니 5). 이 배열이 38종 전부다.
+// 우리회사OS 래피드 스토어 전 상품 — 이 배열(KITS)이 전부다(종수 = KITS.length, 숫자를 주석에 박지 않는다). 올인원은 별도 상수 ALL_IN_ONE.
 //   별도 상품이던 "0원 무료점검"(래피드 Sp-3I)은 ①진단(0원)으로 통합돼 없다.
 // 가격 정본 = `Agent\관리본부\PI-Kits\상품-정본.json`(정가·런칭가, 전 상품 부가세 포함 표기) · 근거 `PI-OS\배포판\가격안-내부용.md`.
 // 2026-09-16 가격 복귀(대표 확정): 09-09 "실행 킷 29,000 단일가·패키지 99,000" 개편을 되돌려 이전 사다리로 —
@@ -9,7 +9,7 @@
 // ⚠️ 래피드에는 구매자용 검색이 없다 — 반드시 직링크로 보낸다.
 
 export type Kit = {
-  /** 시리즈 번호 표기 (①~㉙ · 미니①~⑤ · 팩①~⑥) */
+  /** 시리즈 번호 표기 (원문자 ①~ · 미니①~ · 팩①~) */
   no: string
   /** 짧은 이름 — 목록 제목 */
   name: string
@@ -480,9 +480,6 @@ export const ALL_IN_ONE_MEMBERS = KITS.filter((k) => k.group !== '패키지')
 /** 올인원 할인율(%, 정수) = 1 − 올인원가 ÷ 구성 킷 낱개 정가 합. 킷이 늘면 자동으로 오른다. 1 미만이면 화면에 할인을 적지 않는다(09-18). */
 export const ALL_IN_ONE_LIST_SUM = ALL_IN_ONE_MEMBERS.reduce((s, k) => s + k.listPrice, 0)
 export const ALL_IN_ONE_DISCOUNT = Math.floor((1 - ALL_IN_ONE.price / ALL_IN_ONE_LIST_SUM) * 100)
-
-/** 래피드 퍼블릭아이디 스토어 — 우리회사OS 전 상품이 보이는 목록(2026-08-31 실측, 09-16 무료점검 통합으로 38종) */
-export const LATPEED_STORE_URL = 'https://www.latpeed.com/stores/TebXT'
 
 /** 우리회사OS 무료 멤버(0원·월 1회 레터·신규 킷 선공개) — 2026-08-31 개설, 09-09 대표 결정으로 /os 노출 */
 export const LATPEED_MEMBERSHIP_URL = 'https://www.latpeed.com/memberships/6a621ed13abdc26c1c23f412'

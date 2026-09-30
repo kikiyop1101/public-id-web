@@ -10,7 +10,7 @@ import BreadcrumbLd from '@/components/BreadcrumbLd'
 export const metadata: Metadata = pageMeta({
   title: '소통 게시판 — 질문과 의견 남기기',
   description:
-    '퍼블릭아이디에 궁금한 점과 의견을 남겨주세요.',
+    '퍼블릭아이디 제품·시공·디자인 구독·우리회사OS에 궁금한 점과 의견을 남기는 공개 게시판입니다. 다른 분들의 질문과 댓글도 볼 수 있습니다.',
   path: '/board',
 })
 

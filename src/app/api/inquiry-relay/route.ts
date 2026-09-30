@@ -1,6 +1,7 @@
 import { createHmac } from "node:crypto";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { validateLead } from "@/lib/leads";
+import { clientIp, rateLimited } from "@/lib/rate-limit";
 
 // 문의 실시간 릴레이 — 문의폼 제출을 헤르메스 영업봇(라온) 웹훅으로 중계(서버 전용).
 // 이메일(Web3Forms)이 정본 수신 경로이고, 이 릴레이는 실시간 알림용 보조 채널이라
@@ -9,19 +10,8 @@ import { validateLead } from "@/lib/leads";
 const WEBHOOK_URL =
   process.env.HERMES_WEBHOOK_URL ?? "https://kanban.public-id.co.kr/webhooks/inquiry";
 
-// IP당 분당 제한 — assistant와 동일한 인스턴스 단위 best-effort 패턴.
+// IP당 분당 제한 — assistant와 동일한 인스턴스 단위 best-effort 패턴(공용 = src/lib/rate-limit.ts).
 const RATE_MAX = 5;
-const rateHits = new Map<string, { n: number; reset: number }>();
-function rateLimited(ip: string): boolean {
-  const now = Date.now();
-  const cur = rateHits.get(ip);
-  if (!cur || now > cur.reset) {
-    rateHits.set(ip, { n: 1, reset: now + 60_000 });
-    return false;
-  }
-  cur.n += 1;
-  return cur.n > RATE_MAX;
-}
 
 const clip = (v: unknown, max: number) =>
   typeof v === "string" ? v.slice(0, max).trim() : "";
@@ -51,8 +41,9 @@ async function saveContactLead(b: Record<string, unknown>): Promise<boolean> {
 }
 
 export async function POST(request: Request) {
-  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
-  if (rateLimited(ip)) return Response.json({ ok: false }, { status: 429 });
+  if (rateLimited(`inquiry-relay:${clientIp(request.headers)}`, RATE_MAX, 60_000)) {
+    return Response.json({ ok: false }, { status: 429 });
+  }
 
   let raw: unknown;
   try {

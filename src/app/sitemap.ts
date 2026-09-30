@@ -5,8 +5,10 @@ import { news } from "@/lib/news";
 import { answers } from "@/lib/answers";
 import { KIT_PAGES } from "@/lib/os-kit-pages";
 
-// 발행·승인이 배포 없이 일어나므로 사이트맵도 요청 시점 생성(2차 감사 지적 — 빌드 스냅샷 드리프트 방지)
-export const dynamic = "force-dynamic";
+// 발행·승인이 배포 없이 일어나므로 빌드 스냅샷에 고정하지 않는다 — 배포 없는 발행분은 최대 1시간 지연 반영(ISR).
+// 관리자 글 등록·삭제는 admin/actions.ts 가 revalidatePath('/sitemap.xml')로 바로 갱신한다.
+// (2026-09-30 종전 force-dynamic 은 크롤러 요청마다 함수 실행·Supabase 조회를 만들었다)
+export const revalidate = 3600;
 
 const base = "https://www.public-id.co.kr";
 const routes = ["", "/subscribe", "/design", "/work", "/guide", "/about", "/credentials", "/credibility", "/contact", "/news", "/press", "/safety-map", "/privacy",

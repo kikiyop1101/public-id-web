@@ -108,7 +108,7 @@ export default function ProductSection({
         {gallery.length > 0 && (
           <div className="mt-10">
             <h3 className="text-ink-soft mb-3 text-sm font-semibold">
-              시공·제작 사례 <span className="text-teal">({gallery.length})</span>
+              시공·제작 사례 <span className="text-teal-700">({gallery.length})</span>
             </h3>
             <ProductGallery items={gallery} productName={product.name} />
           </div>

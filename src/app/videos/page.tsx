@@ -6,7 +6,7 @@ import Button from "@/components/Button";
 import BreadcrumbLd from "@/components/BreadcrumbLd";
 import VideoGrid from "./VideoGrid";
 import { site } from "@/lib/site";
-import { videos, longforms, isLive } from "@/lib/videos";
+import { videos, longforms, isLive, LONG_COUNT_LABEL } from "@/lib/videos";
 
 // 공개된 롱폼을 VideoObject 목록으로 낸다(2026-09-08 AEO 감사) — 유튜브 밖에서 "퍼블릭아이디 설명영상"이 검색·인용되게.
 // 예약 공개분(publishAt 미래)은 빌드 시각 기준으로 제외(아직 없는 영상을 색인시키지 않기 위해).
@@ -34,12 +34,12 @@ const videoJsonLd = {
 };
 
 // 영상관 — 2026-09-08 신설(대표: "영상을 걸고 싶은데 무거울까봐").
-// 롱폼 30편+쇼츠 48편을 한 페이지에 두지만 전부 LiteYouTube 파사드라 초기 무게는 썸네일 lazy 로드뿐이고,
-// iframe·유튜브 스크립트는 사용자가 누른 카드 하나에서만 뜬다.
+// 롱폼과 쇼츠 전부를 한 페이지에 두지만 전부 LiteYouTube 파사드라 초기 무게는 썸네일 lazy 로드뿐이고,
+// iframe·유튜브 스크립트는 사용자가 누른 카드 하나에서만 뜬다. 편수 문구는 데이터에서 센다(LONG_COUNT_LABEL).
 export const metadata: Metadata = pageMeta({
   title: "영상관 — 제품·시공·구독 설명영상",
   description:
-    "노란발자국·노면표시재·직물시트·디자인 구독·우리회사OS를 시리즈별 3~7분 설명영상 30편과 1분 쇼츠로 소개합니다. 클릭할 때만 재생기가 뜹니다.",
+    `노란발자국·노면표시재·직물시트·디자인 구독·우리회사OS를 시리즈별 2~7분 설명영상 ${LONG_COUNT_LABEL}과 1분 쇼츠로 소개합니다. 클릭할 때만 재생기가 뜹니다.`,
   path: "/videos",
 });
 
@@ -60,7 +60,7 @@ export default function VideosPage() {
             3분 설명영상관
           </>
         }
-        description="제품·구독마다 1편(개요)·2편(가격·사례)·3편(화이트보드 3분 정리) 시리즈 설명영상 30편, 그리고 현장에서 자주 받는 질문에 답하는 1분 쇼츠. 여기서 바로 재생됩니다."
+        description={`제품·구독마다 1편(개요)·2편(가격·사례)·3편(화이트보드 3분 정리)·도트 게임판(2분)으로 이어지는 시리즈 설명영상 ${LONG_COUNT_LABEL}, 그리고 현장에서 자주 받는 질문에 답하는 1분 쇼츠. 여기서 바로 재생됩니다.`}
       />
       <section className="bg-white">
         <Container className="py-16 sm:py-20">

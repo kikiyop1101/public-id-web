@@ -1,4 +1,6 @@
 import { KITS } from '@/lib/os-kits'
+import { kitPath } from '@/lib/os-kit-pages'
+import { clientIp, dailyCapExceeded, rateLimited } from '@/lib/rate-limit'
 
 // 우리회사OS AI 큐레이터 — 방문자가 회사·고민을 한 줄로 쓰면 키트 2~3종을 추천.
 // 비용 가드레일: Haiku + max_tokens + rate limit. 프롬프트가 약 2.7K 토큰이라 Haiku 4.5 캐시 최소(4,096 토큰)에
@@ -7,25 +9,9 @@ import { KITS } from '@/lib/os-kits'
 const MAX_CHARS = 300
 const MIN_CHARS = 5
 
-// in-memory rate limit — 인스턴스 단위 best-effort(서버리스에선 인스턴스마다 별도).
+// in-memory rate limit — 인스턴스 단위 best-effort(서버리스에선 인스턴스마다 별도). 공용 = src/lib/rate-limit.ts
 const RATE_MAX = 3 // IP당 분당 요청 수
-const DAILY_MAX = 300 // 인스턴스당 하루 상한(과금 보호)
-const rateHits = new Map<string, { n: number; reset: number }>()
-let daily = { n: 0, reset: 0 }
-
-function rateLimited(ip: string): boolean {
-  const now = Date.now()
-  if (now > daily.reset) daily = { n: 0, reset: now + 86_400_000 }
-  daily.n += 1
-  if (daily.n > DAILY_MAX) return true
-  const cur = rateHits.get(ip)
-  if (!cur || now > cur.reset) {
-    rateHits.set(ip, { n: 1, reset: now + 60_000 })
-    return false
-  }
-  cur.n += 1
-  return cur.n > RATE_MAX
-}
+const DAILY_MAX = 300 // 인스턴스당 하루 상한(과금 보호) — IP 제한·본문 검증을 통과해 실제로 Claude 를 부르는 요청만 센다
 
 const CATALOG = KITS.map(
   (k) => `- ${k.no}${k.name} (분류: ${k.group}) — ${k.tagline}`,
@@ -61,13 +47,10 @@ export async function POST(request: Request) {
     return Response.json({ error: '큐레이터가 아직 설정되지 않았어요.' }, { status: 503 })
   }
 
-  const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown'
-  if (rateLimited(ip)) {
-    return Response.json(
-      { error: '요청이 많아요. 잠시 후 다시 시도해 주세요.' },
-      { status: 429 },
-    )
-  }
+  const tooMany = () =>
+    Response.json({ error: '요청이 많아요. 잠시 후 다시 시도해 주세요.' }, { status: 429 })
+
+  if (rateLimited(`os-curator:${clientIp(request.headers)}`, RATE_MAX, 60_000)) return tooMany()
 
   let body: unknown
   try {
@@ -83,6 +66,9 @@ export async function POST(request: Request) {
       { status: 400 },
     )
   }
+
+  // 하루 상한은 여기서만 올린다 — 종전엔 429·400 으로 막힌 요청도 세서 한 IP 가 하루치를 바닥낼 수 있었다.
+  if (dailyCapExceeded('os-curator', DAILY_MAX)) return tooMany()
 
   let res: Response
   try {
@@ -132,7 +118,7 @@ export async function POST(request: Request) {
   }
 
   const intro = typeof parsed.intro === 'string' ? parsed.intro : ''
-  const picks: (Pick & { no: string; tagline: string; price: number; url: string })[] = []
+  const picks: (Pick & { no: string; tagline: string; price: number; url: string; path: string })[] = []
   if (Array.isArray(parsed.picks)) {
     for (const p of parsed.picks as Pick[]) {
       const kit = KITS.find((k) => k.name === p?.name)
@@ -143,6 +129,7 @@ export async function POST(request: Request) {
         tagline: kit.tagline,
         price: kit.price,
         url: kit.url,
+        path: kitPath(kit), // 상품별 페이지(/os/<slug>) — '자세히 보기'는 내부, 래피드는 '구매'만
         reason: p.reason,
         scenario: p.scenario,
       })

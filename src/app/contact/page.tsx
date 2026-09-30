@@ -37,9 +37,9 @@ export default function ContactPage() {
           </div>
 
           <div className="lg:col-span-5">
-            <h3 className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
+            <h2 className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
               Contact Info
-            </h3>
+            </h2>
             <dl className="mt-5 space-y-1">
               {info.map(([k, v]) => (
                 <div key={k} className="flex gap-4 border-b border-line py-4">
@@ -63,9 +63,9 @@ export default function ContactPage() {
               ))}
             </dl>
 
-            <h3 className="mt-10 font-display text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
+            <h2 className="mt-10 font-display text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
               Online Store
-            </h3>
+            </h2>
             <ul className="mt-3 text-sm">
               {site.stores.map((s) => (
                 <li key={s.label}>

@@ -10,6 +10,7 @@ import Story from "@/components/sections/Story";
 import NewsStrip from "@/components/sections/NewsStrip";
 import ContactCTA from "@/components/sections/ContactCTA";
 import FaqBlock, { type FaqItem } from "@/components/FaqBlock";
+import { KITS } from "@/lib/os-kits";
 
 // 2026-08-25 리디자인 확정판 — 섹션 다이어트 9→5(대표 지시 "4~5개"):
 // ①히어로(아치+신뢰 바) ②작품 스트립 ③3갈래 게이트웨이 ④가치+퍼이 밴드 ⑤상담 CTA.
@@ -17,7 +18,7 @@ import FaqBlock, { type FaqItem } from "@/components/FaqBlock";
 export const metadata: Metadata = pageMeta({
   title: { absolute: "퍼블릭아이디 | 디자인 구독 · 안전 시설 관리" },
   description:
-    "퍼블릭아이디는 마스코트·웹툰·홈페이지를 만드는 디자인 구독과 친환경 노면표시재 안전시설 시공·관리를 하는 인증 사회적기업입니다. 디자인 팀이 없어도 KIDP 종합산업디자인전문회사가 브랜드와 현장을 함께 맡습니다.",
+    "퍼블릭아이디는 우리회사OS(기업 맞춤형 AI 업무 자동화), 마스코트·웹툰·홈페이지를 만드는 디자인 구독, 친환경 노면표시재 안전시설 시공·관리를 하는 인증 사회적기업입니다. 디자인 팀이 없어도 KIDP 종합산업디자인전문회사가 브랜드와 현장을 함께 맡습니다.",
   path: "/",
   ogDescription: "전용 마스코트부터 매월 웹툰, 디자인 시스템, 홈페이지까지 — 구독으로 완성하는 우리 브랜드.",
 });
@@ -26,7 +27,12 @@ export const metadata: Metadata = pageMeta({
 const HOME_FAQ: FaqItem[] = [
   {
     q: "퍼블릭아이디는 어떤 회사인가요?",
-    a: "디자인 구독과 친환경 그래픽 노면표시재 기반 안전시설의 디자인·제작·시공·정기 관리를 한 회사에서 하는 KIDP 종합산업디자인전문회사이자 인증 사회적기업(제2020-227호)입니다. 2017년 세종특별자치시에서 설립했고, 전국에 시공합니다.",
+    a: "소상공인용 AI 업무 자동화 키트 우리회사OS와 디자인 구독, 친환경 그래픽 노면표시재 기반 안전시설의 디자인·제작·시공·정기 관리를 한 회사에서 하는 KIDP 종합산업디자인전문회사이자 인증 사회적기업(제2020-227호)입니다. 2017년 세종특별자치시에서 설립했고, 전국에 시공합니다.",
+  },
+  {
+    // 종수는 KITS.length — 킷이 늘어도 낡지 않게. 가격 정본 = os-kits.ts(llms.txt 17행과 같은 값).
+    q: "우리회사OS는 무엇인가요?",
+    a: `견적서·홍보 글·문의 답변·월말 마감 같은 반복 업무를 AI에 맡기는 소상공인용 실행 키트 ${KITS.length}종입니다. ①진단 킷은 0원(무료)이고, 미니 키트는 9,900원, 실행 킷은 49,000원부터입니다(부가세 포함). 설치 없이 내려받아 더블클릭으로 쓰고, 결과물에는 구매한 회사 이름이 들어갑니다. 어떤 키트가 맞는지는 우리회사OS 페이지의 3분 무료 진단과 AI 큐레이터로 확인하실 수 있습니다.`,
   },
   {
     q: "디자인 구독 가격은 얼마인가요?",

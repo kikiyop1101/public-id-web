@@ -1,8 +1,10 @@
 'use server'
 
 import { revalidatePath } from 'next/cache'
+import { headers } from 'next/headers'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { hashPassword } from '@/lib/hash'
+import { clientIp, rateLimited } from '@/lib/rate-limit'
 
 export type BoardFormState = { error?: string; ok?: boolean }
 
@@ -26,6 +28,11 @@ export async function createBoardPost(
   }
   if (password.length < 4) {
     return { error: '비밀번호는 4자 이상이어야 합니다.' }
+  }
+
+  // 속도 제한 — IP당 분당 3회(실제로 등록되는 글만 센다). 허니팟만으로는 스크립트 반복을 못 막는다.
+  if (rateLimited(`board-post:${clientIp(await headers())}`, 3, 60_000)) {
+    return { error: '글이 연달아 등록되어 잠시 막았습니다. 1분 뒤 다시 시도해 주세요.' }
   }
 
   // 작성 즉시 공개. DB에 구버전 트리거(강제 pending)가 남아 있어도 공개되도록

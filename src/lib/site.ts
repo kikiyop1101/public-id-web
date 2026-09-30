@@ -3,7 +3,7 @@ export const site = {
   nameEn: "PUBLIC ID",
   legalName: "주식회사 퍼블릭아이디",
   tagline: "윤리적 가치를 담은 사회적기업",
-  descriptor: "KIDP 종합산업디자인전문회사 (시각 · 포장 · 환경)",
+  descriptor: "KIDP 종합산업디자인전문회사 (시각 · 제품 · 환경)",
   ceo: "조용민",
   bizRegNo: "413-81-06849",
   mailOrderNo: "2017-세종-0127",
@@ -18,7 +18,7 @@ export const site = {
   youtube: "https://www.youtube.com/@퍼블릭아이디",
   instagram: "https://www.instagram.com/_public.id/",
   tistory: "https://public-id.tistory.com",
-  store: "https://www.public-id.co.kr/products", // 2026-08-25 스토어 통합 — 구 store 도메인은 301
+  kakao: "https://pf.kakao.com/_jxoGrX", // 카카오톡 채널 '퍼블릭아이디'(2026-09-12 개설, 09-30 공개 설정)
   // GNB는 5개(대표 지시 2026-08-25 "메뉴 4~5개") — 하위 페이지는 드롭다운으로 노출
   // (대표 지적 2026-08-26 "우리회사OS·안전관리지도·설치영상은 모르면 못 찾는다").
   // 순서 = 회사소개→제품→구독→실적·인증→소식 (대표 지시 2026-08-26).
@@ -134,7 +134,7 @@ export const site = {
     },
   ],
   stores: [
-    { label: "우리회사OS (AI 자동화 템플릿)", href: "/os" },
+    { label: "우리회사OS (AI 업무 자동화 키트)", href: "/os" },
     { label: "AI 자동화 무료 진단", href: "/os#scan" },
     { label: "네이버 스마트스토어", href: "https://smartstore.naver.com/public-id" },
     {
@@ -144,5 +144,3 @@ export const site = {
     { label: "e-store 36.5 (가치장터)", href: "https://www.sepp.or.kr/store365" },
   ],
 } as const;
-
-export type NavItem = (typeof site.nav)[number];

@@ -16,7 +16,7 @@ export const SEARCH_INDEX: SearchEntry[] = [
   { label: "3D 월드", href: "/world", group: "회사소개", desc: "스크롤로 둘러보는 퍼블릭아이디 월드", keywords: "월드 3d 소개 영상 인터랙티브" },
   // 제품
   { label: "제품 전체", href: "/products", group: "제품", desc: "친환경 제품군 5종 — 사진과 기준가", keywords: "제품 카탈로그 가격 기준가" },
-  { label: "친환경 그래픽 노면표시재", href: "/products#roadmark", group: "제품", desc: "부착식 알루미늄 스티커 — 특허받은 제품, 46BPN", keywords: "노면표시 바닥 스티커 횡단보도 특허 미끄럼 도로 시공" },
+  { label: "친환경 그래픽 노면표시재", href: "/products#roadmark", group: "제품", desc: "부착식 알루미늄 스티커 — 특허받은 제품, 46BPN(KCL 2018)", keywords: "노면표시 바닥 스티커 횡단보도 특허 미끄럼 도로 시공" },
   { label: "노란발자국", href: "/products#footprint", group: "제품", desc: "횡단보도 앞 보도의 안심 대기선", keywords: "노란발자국 스쿨존 어린이보호구역 대기선 등굣길" },
   { label: "친환경 그래픽 직물시트", href: "/products#fabric", group: "제품", desc: "벽면·기둥·천장을 덮는 친환경 직물시트", keywords: "직물시트 벽면 래핑 기둥 안내판" },
   { label: "노란볼라드", href: "/products#bollard", group: "제품", desc: "기존 볼라드 직물시트 드레스업 — 2023 굿디자인 선정", keywords: "노란볼라드 볼라드 드레스업 어린이보호구역 스쿨존 gd 굿디자인" },
@@ -43,7 +43,7 @@ export const SEARCH_INDEX: SearchEntry[] = [
   { label: "소식", href: "/news", group: "소식", desc: "보도자료와 활동 소식 전체", keywords: "뉴스 소식 활동" },
   { label: "보도자료", href: "/press", group: "소식", desc: "언론 배포 보도자료 전문", keywords: "보도자료 언론 프레스 기사 press" },
   { label: "기업 블로그", href: "/blog", group: "소식", desc: "퍼블릭아이디의 이야기와 현장 소식", keywords: "블로그 글 이야기 현장" },
-  { label: "영상관", href: "/videos", group: "소식", desc: "제품·구독 시리즈 설명영상 30편(3~7분) + 쇼츠 — 안전점검·노면표시재·디자인 구독", keywords: "영상 유튜브 동영상 쇼츠 롱폼 설명영상 영상관 스쿨존 노면표시재 디자인구독" },
+  { label: "영상관", href: "/videos", group: "소식", desc: "제품·구독 시리즈 설명영상(2~7분) + 1분 쇼츠 — 안전점검·노면표시재·디자인 구독·우리회사OS", keywords: "영상 유튜브 동영상 쇼츠 롱폼 설명영상 영상관 스쿨존 노면표시재 디자인구독" },
   { label: "소통 게시판", href: "/board", group: "소식", desc: "누구나 자유롭게 남기는 의견·질문", keywords: "게시판 소통 의견 질문 커뮤니티 자유게시판" },
   { label: "문의하기", href: "/contact", group: "소식", desc: "상담·견적 문의 — 영업일 기준 빠른 회신", keywords: "문의 상담 연락 전화 이메일 컨택" },
   // 스토어(외부)

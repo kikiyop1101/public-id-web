@@ -17,7 +17,7 @@ const stats: { num: number | string; from?: number; unit: string; desc: string }
     num: 46,
     from: 0,
     unit: "BPN",
-    desc: "미끄럼저항 — 서울시 보도 기준(45+) 충족",
+    desc: "미끄럼저항(KCL 2018) — 서울시 평지·완경사 기준 충족",
   },
   {
     num: "특허",

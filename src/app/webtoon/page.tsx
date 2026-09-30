@@ -6,6 +6,7 @@ import Button from "@/components/Button";
 import Reveal from "@/components/Reveal";
 import BreadcrumbLd from "@/components/BreadcrumbLd";
 import PreloadImage from "@/components/PreloadImage";
+import { site } from "@/lib/site";
 
 // 웹툰 뷰어 — 2026-09-08 신설. 1호 「우산 도둑」(자유 창작 단편 10컷, 볼트 콘텐츠본부\웹툰 산출물).
 // 컷은 /public/webtoon/umbrella/NN.webp(900px, 35~78KB) — 첫 컷만 즉시, 나머지는 lazy.
@@ -55,7 +56,16 @@ export default function WebtoonPage() {
               ))}
             </ol>
             <p className="mt-4 text-center text-xs text-ink-soft">
-              1화 끝 · 다음 화는 소식 탭과 인스타그램(pui&amp;friends)에서 이어집니다.
+              1화 끝 · 퍼블릭아이디 새 소식은 인스타그램{" "}
+              <a
+                href={site.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-teal-700 underline-offset-4 hover:underline"
+              >
+                @_public.id
+              </a>
+              에서 전합니다.
             </p>
           </div>
         </Container>

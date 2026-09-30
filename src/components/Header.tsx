@@ -43,12 +43,16 @@ export default function Header() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    // 메뉴가 열린 동안 우측 하단 도우미 버튼을 숨긴다(globals.css body[data-menu="open"]) — 메뉴 줄을 덮지 않게
+    if (open) document.body.dataset.menu = "open";
+    else delete document.body.dataset.menu;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
     };
     if (open) window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = "";
+      delete document.body.dataset.menu;
       window.removeEventListener("keydown", onKey);
     };
   }, [open]);
@@ -74,7 +78,7 @@ export default function Header() {
           <img src="/logo.png" alt={site.name} width={480} height={142} fetchPriority="high" className="h-7 w-auto sm:h-[30px]" />
         </Link>
 
-        <nav className="hidden items-center gap-9 lg:flex">
+        <nav aria-label="주 메뉴" className="hidden items-center gap-9 lg:flex">
           {site.nav.map((n) => (
             <div key={n.href} className="group relative">
               <Link
@@ -197,7 +201,7 @@ export default function Header() {
             : "invisible pointer-events-none -translate-y-2 opacity-0",
         )}
       >
-        <nav className="flex max-h-[calc(100dvh-68px)] flex-col gap-1 overflow-y-auto overscroll-contain px-5 py-4 pb-8">
+        <nav aria-label="모바일 메뉴" className="flex max-h-[calc(100dvh-68px)] flex-col gap-1 overflow-y-auto overscroll-contain px-5 py-4 pb-8">
           {site.nav.map((n) => (
             <div key={n.href}>
               <Link

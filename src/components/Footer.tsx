@@ -4,7 +4,8 @@ import { site } from "@/lib/site";
 export default function Footer() {
   return (
     <footer className="bg-navy text-white/70">
-      <div className="mx-auto w-full max-w-[1200px] px-5 py-16 sm:px-8">
+      {/* 모바일 하단 여백을 넓혀 떠 있는 도우미 버튼이 맨 아래 링크를 가리지 않게 한다 */}
+      <div className="mx-auto w-full max-w-[1200px] px-5 pt-16 pb-24 sm:px-8 sm:pb-16">
         {/* 전체 페이지 지도 — GNB 5그룹 그대로 (2026-08-26: 칩 나열 → 그룹 컬럼)
             터치 화면(lg 미만)에선 링크 높이 44px — 16px 줄이 8px 간격으로 붙어 오탭이 났다(2026-09-27 접근성 점검) */}
         <div className="grid gap-10 md:grid-cols-12">
@@ -99,6 +100,16 @@ export default function Footer() {
                   rel="noopener noreferrer"
                 >
                   네이버 블로그
+                </a>
+              </li>
+              <li>
+                <a
+                  href={site.kakao}
+                  className="flex min-h-11 items-center transition hover:text-white lg:inline lg:min-h-0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  카카오톡 채널
                 </a>
               </li>
             </ul>
