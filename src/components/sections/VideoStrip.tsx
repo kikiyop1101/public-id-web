@@ -42,7 +42,7 @@ export default function VideoStrip() {
               <LiteYouTube id={v.id} title={v.title} place="home" />
               <p className="mt-3 break-keep text-[15px] font-bold leading-snug text-ink">{v.title}</p>
               <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-teal-700">
-                설명영상 · {v.series}
+                설명영상 · {v.series ?? v.category}
               </p>
             </li>
           ))}

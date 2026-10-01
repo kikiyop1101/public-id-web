@@ -76,7 +76,7 @@ export default function VideoGrid({ videos }: { videos: Video[] }) {
             <LiteYouTube id={v.id} title={v.title} place="videos" />
             <p className="mt-3 break-keep text-[15px] font-bold leading-snug text-ink">{v.title}</p>
             <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-teal-700">
-              {v.kind === "long" ? `설명영상 · ${v.series}` : `쇼츠 · ${v.category}`}
+              {v.kind === "long" ? `설명영상 · ${v.series ?? v.category}` : `쇼츠 · ${v.category}`}
             </p>
           </li>
         ))}
