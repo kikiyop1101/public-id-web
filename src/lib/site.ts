@@ -52,6 +52,7 @@ export const site = {
         { label: "디자인 시스템", href: "/design" },
         { label: "안전관리 지도", href: "/safety-map" },
         { label: "안전 리포트 · 제보", href: "/safety-report" },
+        { label: "노란발자국 캠페인 (게임)", href: "/campaign-game" }, // 2026-10-03 대표 지시 — 안전 리포트와 숨은 위험 찾기 사이
         // 2026-09-08 체류시간 기획안 — 만질거리 3종 + 웹툰
         { label: "숨은 위험 찾기 (게임)", href: "/safety-game" },
         { label: "우리 동네 안전 점수", href: "/safety-score" },
@@ -108,6 +109,7 @@ export const site = {
         { label: "디자인 시스템", href: "/design" },
         { label: "안전관리 지도", href: "/safety-map" },
         { label: "안전 리포트 · 제보", href: "/safety-report" },
+        { label: "노란발자국 캠페인 (게임)", href: "/campaign-game" },
         { label: "숨은 위험 찾기 (게임)", href: "/safety-game" },
         { label: "우리 동네 안전 점수", href: "/safety-score" },
         { label: "웹툰", href: "/webtoon" },

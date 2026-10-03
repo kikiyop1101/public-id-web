@@ -9,7 +9,7 @@ import FaqBlock, { type FaqItem } from "@/components/FaqBlock";
 export const metadata: Metadata = pageMeta({
   title: "회사소개 — 세종의 산업디자인 사회적기업",
   description:
-    "2017년 세종에서 설립한 KIDP 종합산업디자인전문회사이자 인증 사회적기업입니다. 특허받은 부착식 노면표시재(KCL 2018 시험 미끄럼저항 46BPN·GREENGUARD GOLD 인증 잉크)로 공공 안전 디자인을 만들고, 디자인 구독으로 작은 조직의 디자인 파트너가 됩니다.",
+    "2017년 세종에서 설립한 KIDP 종합산업디자인전문회사이자 인증 사회적기업입니다. 특허받은 부착식 노면표시재(FITI 2016 시험 미끄럼저항 72BPN·독일 MPI R10·GREENGUARD GOLD 인증 잉크)로 공공 안전 디자인을 만들고, 디자인 구독으로 작은 조직의 디자인 파트너가 됩니다.",
   path: "/about",
 });
 

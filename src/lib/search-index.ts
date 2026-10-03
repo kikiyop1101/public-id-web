@@ -16,7 +16,7 @@ export const SEARCH_INDEX: SearchEntry[] = [
   { label: "3D 월드", href: "/world", group: "회사소개", desc: "스크롤로 둘러보는 퍼블릭아이디 월드", keywords: "월드 3d 소개 영상 인터랙티브" },
   // 제품
   { label: "제품 전체", href: "/products", group: "제품", desc: "친환경 제품군 5종 — 사진과 기준가", keywords: "제품 카탈로그 가격 기준가" },
-  { label: "친환경 그래픽 노면표시재", href: "/products#roadmark", group: "제품", desc: "부착식 알루미늄 스티커 — 특허받은 제품, 46BPN(KCL 2018)", keywords: "노면표시 바닥 스티커 횡단보도 특허 미끄럼 도로 시공" },
+  { label: "친환경 그래픽 노면표시재", href: "/products#roadmark", group: "제품", desc: "부착식 알루미늄 스티커 — 특허받은 제품, 72BPN(FITI 2016)·R10(독일 MPI)", keywords: "노면표시 바닥 스티커 횡단보도 특허 미끄럼 도로 시공" },
   { label: "노란발자국", href: "/products#footprint", group: "제품", desc: "횡단보도 앞 보도의 안심 대기선", keywords: "노란발자국 스쿨존 어린이보호구역 대기선 등굣길" },
   { label: "친환경 그래픽 직물시트", href: "/products#fabric", group: "제품", desc: "벽면·기둥·천장을 덮는 친환경 직물시트", keywords: "직물시트 벽면 래핑 기둥 안내판" },
   { label: "노란볼라드", href: "/products#bollard", group: "제품", desc: "기존 볼라드 직물시트 드레스업 — 2023 굿디자인 선정", keywords: "노란볼라드 볼라드 드레스업 어린이보호구역 스쿨존 gd 굿디자인" },
@@ -33,6 +33,7 @@ export const SEARCH_INDEX: SearchEntry[] = [
   { label: "디자인 시스템", href: "/design", group: "구독 서비스", desc: "색 하나 바꾸면 전부 바뀌는 정본 — 체험 데모·문서 전체", keywords: "마스코트 웹툰 로고 브랜드 디자인시스템 캐릭터 토큰 정본" },
   { label: "안전관리 지도", href: "/safety-map", group: "구독 서비스", desc: "시공한 안전시설을 지도에서 한눈에 관리", keywords: "안전지도 시설관리 지도 관리구독 발주처" },
   { label: "안전 리포트 · 제보", href: "/safety-report", group: "구독 서비스", desc: "노란발자국·노란볼라드 등 통학로 위험 지점 제보", keywords: "제보 신고 노란발자국 노란볼라드 통학로 스쿨존 안전리포트 캠페인" },
+  { label: "노란발자국 캠페인 (게임)", href: "/campaign-game", group: "구독 서비스", desc: "횡단보도 앞 인도에 노란발자국을 붙이고 가로등·볼라드를 직물시트로 꾸미는 3D 캠페인 체험", keywords: "게임 캠페인 노란발자국 노란볼라드 직물시트 고무망치 봉사 학교 기업 통학로 스쿨존 3D" },
   { label: "숨은 위험 찾기 (게임)", href: "/safety-game", group: "구독 서비스", desc: "스쿨존·아파트·공장 장면에서 60초 안에 위험 8곳 찾기 — 안전 교육용", keywords: "게임 위험찾기 숨은그림 안전교육 스쿨존 통학로 아파트 공장 산업안전 놀이 퀴즈" },
   { label: "우리 동네 안전 점수", href: "/safety-score", group: "구독 서비스", desc: "통학로 8개 항목 2분 자가진단 — 점수·등급·처방", keywords: "안전점수 진단 자가진단 통학로 스쿨존 점검 체크리스트 어린이보호구역 테스트" },
   { label: "웹툰 — 우산 도둑", href: "/webtoon", group: "구독 서비스", desc: "퍼블릭아이디 웹툰 1호 10컷 전편", keywords: "웹툰 만화 우산도둑 디자인구독 캐릭터" },
