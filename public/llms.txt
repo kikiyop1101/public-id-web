@@ -89,6 +89,7 @@
 - 안전관리 지도(설치 위치·관리 이력): https://www.public-id.co.kr/safety-map
 - 우리 학교 앞 안전 리포트(통학로 위험 지점 시민 제보 캠페인): https://www.public-id.co.kr/safety-report
 - 숨은 위험 찾기(스쿨존·아파트·공장 장면 60초 안전 교육 게임, 무료): https://www.public-id.co.kr/safety-game
+- 노란발자국 캠페인 게임(횡단보도 앞 인도에 노란발자국을 붙이고 가로등·볼라드를 직물시트로 꾸미는 3D 캠페인 체험, 무료): https://www.public-id.co.kr/campaign-game
 - 우리 동네 안전 점수(통학로 8개 항목 2분 자가진단): https://www.public-id.co.kr/safety-score
 - 웹툰(퍼블릭아이디 웹툰 전편): https://www.public-id.co.kr/webtoon
 - 영상관(시리즈별 2~7분 설명영상 + 1분 쇼츠): https://www.public-id.co.kr/videos

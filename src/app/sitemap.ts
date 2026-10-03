@@ -22,7 +22,9 @@ const routes = ["", "/subscribe", "/design", "/work", "/guide", "/about", "/cred
   // 2026-09-08 체류시간 기획안 — 위험 찾기 게임·안전 점수 진단·견적 시뮬레이터·영상관·웹툰
   "/safety-game", "/safety-score", "/estimate", "/videos", "/webtoon",
   // 2026-09-27 AI 답변 인용용 질문 답변 목록(개별 /answers/[slug]는 아래 answerEntries)
-  "/answers"];
+  "/answers",
+  // 2026-10-03 노란발자국 캠페인 게임
+  "/campaign-game"];
 
 // 쿠키 없는 anon 클라이언트 — RLS가 공개분만 반환.
 function anonClient() {

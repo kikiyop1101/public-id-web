@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>노란발자국 캠페인 — 퍼블릭아이디</title>
+<meta name="description" content="횡단보도 앞 인도에 노란발자국을 붙이고, 가로등과 볼라드를 직물시트로 꾸미는 퍼블릭아이디 캠페인을 직접 해 보는 미니게임입니다.">
+<link rel="icon" href="assets/logo.png">
+<link rel="canonical" href="https://www.public-id.co.kr/campaign-game">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --teal:#069CBB; --teal-strong:#0b6c7d; --teal-soft:#dff3f6; --lime:#CADA1F; --yellow:#FFD200;
+  --navy:#16303D; --navy-800:#122631; --ink:#0F172A; --ink-soft:#57636b; --hairline:#e4eaeb;
+  --canvas:#ffffff; --canvas-soft:#f5f8f8;
+  --arch:linear-gradient(95deg,#CADA1F 0%,#7cc63f 42%,#069CBB 100%);
+  --r:14px; --shadow:0 6px 24px rgba(15,23,42,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:#dff3f6;color:var(--ink);
+  font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  word-break:keep-all;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
+#app{position:fixed;inset:0}
+#scene{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;outline:none;cursor:pointer}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+.hidden{display:none!important}
+
+/* 좌상단 패널 */
+.panel{background:rgba(255,255,255,.94);border:1px solid var(--hairline);border-radius:var(--r);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.panel::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--arch)}
+#hudTL{position:absolute;left:16px;top:16px;width:248px;padding:16px 16px 14px}
+#hudTL .logo{height:18px;display:block;margin-bottom:10px}
+#hudTL h1{font-size:19px;font-weight:800;letter-spacing:-.02em;line-height:1.25}
+#hudTL .sub{font-size:12.5px;color:var(--ink-soft);margin-top:4px;line-height:1.45}
+#steps{list-style:none;margin-top:12px;display:grid;gap:5px}
+#steps li{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-soft)}
+#steps li i{flex:0 0 18px;height:18px;border-radius:50%;border:1.5px solid #cdd5d8;display:grid;place-items:center;font-style:normal;font-size:10.5px;font-weight:700;color:#9aa7ae}
+#steps li.now{color:var(--ink);font-weight:700}
+#steps li.now i{border-color:var(--teal);color:var(--teal-strong)}
+#steps li.done{color:var(--ink-soft)}
+#steps li.done i{background:var(--teal);border-color:var(--teal);color:#fff}
+#people{margin-top:12px;padding-top:10px;border-top:1px solid var(--hairline);font-size:13px;color:var(--ink-soft);display:flex;align-items:center;gap:6px}
+#people b{color:var(--teal-strong);font-size:15px}
+#team{font-size:12px;color:var(--teal-strong);font-weight:700;margin-top:6px}
+
+/* 전광판 */
+#board{position:absolute;left:50%;top:16px;transform:translateX(-50%);background:var(--navy);color:#fff;border-radius:var(--r);
+  padding:10px 18px 12px;box-shadow:0 8px 28px rgba(18,38,49,.28);min-width:430px;text-align:center}
+#board::after{content:"";position:absolute;inset:5px;border-radius:10px;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1.2px);background-size:5px 5px}
+#board .bt{font-size:12.5px;font-weight:700;letter-spacing:.02em;color:rgba(255,255,255,.72)}
+#board .row{display:flex;justify-content:center;gap:18px;margin-top:6px}
+#board .c{display:flex;flex-direction:column;align-items:center;gap:1px}
+#board .c b{font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.1;letter-spacing:-.02em}
+#board .c b small{font-size:13px;font-weight:600;color:rgba(255,255,255,.55);margin-left:1px}
+#board .c span{font-size:11.5px;color:rgba(255,255,255,.72)}
+#board .c.prod b{color:var(--yellow);text-shadow:0 0 12px rgba(255,210,0,.45)}
+#board .c.bump b{animation:bump .5s ease}
+@keyframes bump{30%{transform:scale(1.25)}}
+
+/* 우상단 버튼 */
+#hudTR{position:absolute;right:16px;top:16px;display:flex;gap:8px}
+.tbtn{height:38px;padding:0 14px;border-radius:10px;background:rgba(255,255,255,.94);border:1px solid var(--hairline);box-shadow:var(--shadow);font-size:13.5px;font-weight:600}
+.tbtn:hover{border-color:var(--teal)}
+.tbtn:focus-visible,.btn:focus-visible,#actionBtn:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+
+/* 말풍선·이름표 */
+#labels{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.bubble{position:absolute;transform:translate(-50%,-100%);background:#fff;border:1px solid var(--hairline);border-radius:14px;
+  padding:9px 13px;font-size:14px;line-height:1.5;width:max-content;max-width:270px;box-shadow:var(--shadow);transition:opacity .25s}
+.bubble::after{content:"";position:absolute;left:50%;bottom:-7px;width:12px;height:12px;background:#fff;border-right:1px solid var(--hairline);border-bottom:1px solid var(--hairline);transform:translateX(-50%) rotate(45deg)}
+.bubble .who{display:block;font-size:11.5px;font-weight:700;color:var(--teal-strong);margin-bottom:1px}
+.tag{position:absolute;transform:translate(-50%,-100%);background:rgba(22,48,61,.86);color:#fff;font-size:11.5px;font-weight:600;
+  padding:3px 8px;border-radius:999px;white-space:nowrap;transition:opacity .3s}
+.tag.me{background:var(--teal-strong)}
+
+/* 액션 버튼 */
+#actionWrap{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none}
+#actionBtn{pointer-events:auto;min-width:230px;white-space:nowrap;height:56px;padding:0 24px;border-radius:999px;background:var(--navy);color:#fff;font-size:16.5px;font-weight:700;
+  box-shadow:0 10px 26px rgba(18,38,49,.3);display:flex;align-items:center;justify-content:center;gap:10px;touch-action:none}
+#actionBtn .bar{width:54px;height:6px;border-radius:9px;background:rgba(255,255,255,.2);overflow:hidden}
+#actionBtn .bar i{display:block;height:100%;width:0;background:var(--arch);transition:width .15s}
+#actionBtn:active{transform:scale(.97)}
+#actionBtn.idle{background:rgba(22,48,61,.55)}
+#hint{font-size:13.5px;color:var(--ink);background:rgba(255,255,255,.92);border:1px solid var(--hairline);padding:6px 12px;border-radius:999px;box-shadow:var(--shadow)}
+
+/* 캠페인 노트(사실 카드) */
+#toasts{position:absolute;left:16px;bottom:22px;width:300px;display:flex;flex-direction:column;gap:8px;pointer-events:none}
+.toast{background:#fff;border:1px solid var(--hairline);border-radius:var(--r);box-shadow:var(--shadow);padding:12px 14px 12px 14px;position:relative;overflow:hidden;
+  animation:tin .45s cubic-bezier(.2,.8,.2,1)}
+.toast::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--arch)}
+.toast .k{font-size:11px;font-weight:700;color:var(--teal-strong);letter-spacing:.02em}
+.toast h4{font-size:14.5px;font-weight:800;margin-top:2px;line-height:1.4}
+.toast p{font-size:12.5px;color:var(--ink-soft);margin-top:3px;line-height:1.55}
+.toast.out{animation:tout .4s forwards}
+@keyframes tin{from{opacity:0;transform:translateY(12px)}}
+@keyframes tout{to{opacity:0;transform:translateX(-20px)}}
+
+/* 모달 */
+.modal{position:absolute;inset:0;display:grid;place-items:center;background:rgba(18,38,49,.42);padding:16px;z-index:5}
+.card{background:#fff;border-radius:18px;box-shadow:0 20px 60px rgba(15,23,42,.25);width:min(640px,100%);max-height:calc(100% - 8px);overflow:auto;position:relative;padding:30px 30px 26px}
+.card::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--arch)}
+.eyebrow{font-size:12.5px;font-weight:700;color:var(--teal-strong);letter-spacing:.04em}
+.card h2{font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.3;margin-top:6px}
+.card .lead{font-size:15px;color:var(--ink-soft);line-height:1.65;margin-top:10px}
+.who-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px}
+.who-btn{border:1.5px solid var(--hairline);border-radius:14px;padding:12px 8px 10px;background:var(--canvas-soft);display:flex;flex-direction:column;align-items:center;gap:6px;transition:border-color .15s,transform .15s}
+.who-btn canvas{width:76px;height:86px}
+.who-btn b{font-size:14.5px}
+.who-btn span{font-size:11.5px;color:var(--ink-soft)}
+.who-btn:hover{transform:translateY(-2px)}
+.who-btn.on{border-color:var(--teal);background:var(--teal-soft)}
+.btn-row{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.btn{height:52px;padding:0 24px;border-radius:999px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+.btn.primary{background:var(--arch);color:#0F172A}
+.btn.dark{background:var(--navy);color:#fff}
+.btn.line{border:1.5px solid var(--hairline);background:#fff;color:var(--ink)}
+.howto{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.howto div{background:var(--canvas-soft);border:1px solid var(--hairline);border-radius:12px;padding:10px 12px;font-size:12.5px;color:var(--ink-soft);line-height:1.5}
+.howto b{display:block;color:var(--ink);font-size:13.5px;margin-bottom:2px}
+.cast{margin-top:16px;font-size:12.5px;color:var(--ink-soft);line-height:1.6}
+
+/* 마지막 화면 */
+#final .card{width:min(860px,100%);padding:30px}
+.shot{margin-top:18px;border-radius:14px;overflow:hidden;border:1px solid var(--hairline);background:var(--canvas-soft)}
+.shot img{display:block;width:100%;height:auto}
+.sum{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:16px}
+.sum div{background:var(--canvas-soft);border:1px solid var(--hairline);border-radius:12px;padding:10px;text-align:center}
+.sum b{display:block;font-size:22px;font-weight:800;font-variant-numeric:tabular-nums}
+.sum b.y{color:#b89400}
+.sum span{font-size:12px;color:var(--ink-soft)}
+.sec-t{font-size:16px;font-weight:800;margin-top:26px}
+.notes{margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.notes div{border:1px solid var(--hairline);border-radius:12px;padding:10px 12px}
+.notes h5{font-size:13.5px;font-weight:700}
+.notes p{font-size:12.5px;color:var(--ink-soft);line-height:1.55;margin-top:2px}
+.photos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.photos figure{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/3;background:var(--canvas-soft)}
+.photos img{width:100%;height:100%;object-fit:cover;display:block}
+.photos figcaption{position:absolute;left:8px;bottom:8px;font-size:11px;font-weight:700;background:rgba(255,255,255,.92);padding:3px 8px;border-radius:999px}
+.co{margin-top:18px;font-size:13px;color:var(--ink-soft);line-height:1.65;padding:14px 16px;background:var(--canvas-soft);border-radius:12px}
+.co b{color:var(--ink)}
+
+#flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;transition:opacity .5s}
+#loading{position:absolute;inset:0;display:grid;place-items:center;background:#dff3f6;font-weight:700;color:var(--teal-strong);z-index:9}
+
+@media (max-width:760px){
+  #hudTL{left:10px;top:10px;width:auto;max-width:150px;padding:12px 12px 10px}
+  #hudTL .logo{height:13px;margin-bottom:6px}
+  #hudTL h1{font-size:15px}
+  #hudTL .sub,#steps,#team{display:none}
+  #people{margin-top:6px;padding-top:6px;font-size:12px}
+  #board{top:96px;min-width:0;width:calc(100% - 20px);padding:7px 10px 8px}
+  #board .bt{font-size:11px}
+  #board .row{gap:6px;justify-content:space-around}
+  #board .c b{font-size:19px}
+  #board .c span{font-size:10.5px}
+  #hudTR{right:10px;top:10px;gap:5px}
+  .tbtn{height:34px;padding:0 9px;font-size:12px}
+  #actionWrap{bottom:calc(14px + env(safe-area-inset-bottom))}
+  #actionBtn{min-width:0;max-width:calc(100vw - 32px);height:54px;font-size:15px;padding:0 20px}
+  #hint{font-size:12.5px;max-width:calc(100vw - 32px);text-align:center}
+  #toasts{left:10px;right:10px;width:auto;bottom:auto;top:172px}
+  .toast{padding:10px 12px}
+  .toast p{display:none}
+  .bubble{font-size:13px;max-width:210px}
+  .card{padding:24px 18px 20px}
+  .card h2{font-size:21px}
+  .who-grid{grid-template-columns:repeat(2,1fr)}
+  .howto{grid-template-columns:1fr}
+  .sum{grid-template-columns:repeat(3,1fr)}
+  .notes,.photos{grid-template-columns:1fr}
+  .btn{flex:1 1 100%}
+}
+@media (max-height:760px){
+  .card{padding:20px 18px 16px}
+  .card h2{font-size:19px}
+  .card .lead{font-size:13.5px;margin-top:6px;line-height:1.55}
+  .who-grid{gap:8px;margin-top:10px}
+  .who-btn{padding:6px 6px 8px;gap:3px}
+  .who-btn canvas{width:50px;height:57px}
+  .who-btn span{display:none}
+  .btn-row{margin-top:12px}
+  .btn{height:46px}
+  #intro .sec-t{margin-top:12px!important}
+  .cast{margin-top:10px}
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="loading">준비하는 중…</div>
+
+  <header id="hudTL" class="panel">
+    <img class="logo" src="assets/logo.png" alt="퍼블릭아이디">
+    <h1>노란발자국 캠페인</h1>
+    <p class="sub">횡단보도 앞 인도에 아이가 기다릴 자리를 함께 만들어요.</p>
+    <p id="team"></p>
+    <ol id="steps">
+      <li data-s="0"><i>1</i>바닥 쓸기</li>
+      <li data-s="1"><i>2</i>노란발자국·정지선 붙이기</li>
+      <li data-s="2"><i>3</i>가로등 직물시트</li>
+      <li data-s="3"><i>4</i>노란볼라드 꾸미기</li>
+      <li data-s="4"><i>5</i>안전하게 건너기</li>
+      <li data-s="5"><i>6</i>다 함께 기념사진</li>
+    </ol>
+    <div id="people">함께하는 사람 <b id="peopleN">1</b>명</div>
+  </header>
+
+  <section id="board" aria-live="polite">
+    <div class="bt">오늘 함께 지킨 통학로</div>
+    <div class="row">
+      <div class="c prod" id="cFoot"><b>0<small>/7</small></b><span>노란발자국</span></div>
+      <div class="c prod" id="cBand"><b>0<small>/4</small></b><span>노란정지선</span></div>
+      <div class="c" id="cLamp"><b>0<small>/1</small></b><span>가로등 직물시트</span></div>
+      <div class="c prod" id="cBol"><b>0<small>/3</small></b><span>노란볼라드</span></div>
+    </div>
+  </section>
+
+  <nav id="hudTR">
+    <button class="tbtn" id="btnHelp">조작법</button>
+    <button class="tbtn" id="btnSound">소리 끄기</button>
+    <button class="tbtn" id="btnReset">처음부터</button>
+  </nav>
+
+  <div id="labels"></div>
+  <div id="toasts"></div>
+
+  <div id="actionWrap">
+    <p id="hint"></p>
+    <button id="actionBtn" class="idle"><span id="actVerb">눌러서 움직이기</span><span class="bar"><i id="actBar"></i></span></button>
+  </div>
+
+  <div id="intro" class="modal">
+    <div class="card">
+      <p class="eyebrow">퍼블릭아이디 · 노란발자국 캠페인</p>
+      <h2>횡단보도 앞, 아이가 기다릴 자리를<br>우리가 함께 만들어요</h2>
+      <p class="lead">바닥을 쓸고, 이형지를 떼고, 고무망치로 탁탁 두드려 노란발자국을 붙여요. 가로등 기둥과 검정 볼라드는 친환경그래픽직물시트로 감싸요. 일을 할수록 함께하는 사람이 늘어나요.</p>
+      <p class="sec-t" style="margin-top:20px">누구로 참여할까요?</p>
+      <div class="who-grid" id="whoGrid"></div>
+      <div class="btn-row">
+        <button class="btn primary" id="btnStart">캠페인 시작하기</button>
+      </div>
+      <p class="cast">함께하는 이: 조용민 대표, 퍼이와 친구들(복실·몽실·호담·미리·파카·나비·라온·여울·토리)</p>
+    </div>
+  </div>
+
+  <div id="help" class="modal hidden">
+    <div class="card">
+      <p class="eyebrow">조작법</p>
+      <h2>누르면 걸어가고, 누르고 있으면 계속 일해요</h2>
+      <div class="howto">
+        <div><b>움직이기</b>바닥을 누르면 그곳으로 걸어가요. PC는 WASD·방향키도 돼요.</div>
+        <div><b>일하기</b>반짝이는 곳을 누르면 가서 일해요. 꾹 누르고 있으면 계속해요.</div>
+        <div><b>키보드</b>스페이스나 E로 가장 가까운 일을 해요.</div>
+      </div>
+      <div class="btn-row"><button class="btn dark" id="btnHelpClose">계속하기</button></div>
+    </div>
+  </div>
+
+  <div id="final" class="modal hidden">
+    <div class="card">
+      <p class="eyebrow">캠페인 완료</p>
+      <h2 id="finalTitle">함께해 주셔서 고마워요!</h2>
+      <p class="lead" id="finalLead"></p>
+      <div class="shot"><img id="shotImg" alt="캠페인 기념사진"></div>
+      <div class="btn-row" style="margin-top:12px">
+        <a class="btn dark" id="btnSave" download="노란발자국-캠페인-기념사진.png">기념사진 저장</a>
+        <button class="btn line" id="btnAgain">다시 하기</button>
+      </div>
+      <div class="sum" id="sum"></div>
+      <p class="sec-t">오늘 알게 된 것</p>
+      <div class="notes" id="notes"></div>
+      <p class="sec-t">실제 캠페인 현장</p>
+      <div class="photos">
+        <figure><img src="assets/photo-1.jpg" alt="봉사자들이 인도에 노란발자국을 고무망치로 두드려 붙이는 모습" loading="lazy"><figcaption>실제 시공 현장</figcaption></figure>
+        <figure><img src="assets/photo-2.jpg" alt="횡단보도 앞 인도에 노란발자국을 붙이는 현장 팀" loading="lazy"><figcaption>실제 시공 현장</figcaption></figure>
+        <figure><img src="assets/photo-3.jpg" alt="노란볼라드가 선 학교 앞 횡단보도를 건너는 아이들" loading="lazy"><figcaption>실제 시공 현장</figcaption></figure>
+      </div>
+      <p class="co"><b>㈜퍼블릭아이디</b>는 사회적기업(인증 제2020-227호)이자 산업디자인전문회사입니다. 학교·기관·기업과 함께 사람들과 바닥에 둘러앉아 노란발자국을 두드려 붙이는 캠페인을 해 왔습니다. 시공 뒤 1년 동안은 안전시설관리 구독으로 정기 점검·보수를 받을 수 있습니다.</p>
+      <div class="btn-row">
+        <a class="btn primary" href="https://www.public-id.co.kr/contact" target="_top">우리 학교·회사도 캠페인 문의하기</a>
+        <a class="btn line" href="https://www.public-id.co.kr/subscribe" target="_top">안전시설관리 구독 보기</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="flash"></div>
+</div>
+<script src="three.min.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

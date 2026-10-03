@@ -47,6 +47,14 @@ const nextConfig: NextConfig = {
           { key: "Content-Security-Policy", value: "frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'" },
         ],
       },
+      // 2026-10-03 노란발자국 캠페인 게임(/campaign-game)이 같은 사이트의 /games/* 정적 게임을 iframe 으로 넣는다 — /proposals 와 같은 방식.
+      {
+        source: "/games/:path*",
+        headers: [
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "Content-Security-Policy", value: "frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'" },
+        ],
+      },
       // 2026-09-30 public 정적 자산 캐시 — 종전엔 전부 max-age=0(재방문마다 재검증).
       // 폰트는 파일이 바뀌지 않아 immutable, 이미지·영상은 파일명에 해시가 없어 1일(+7일 swr)만.
       // ⚠️ 경로가 아니라 확장자로만 거른다 — /os·/news·/products 같은 경로 패턴은 페이지(HTML)까지 캐시한다. PDF(/proposals)는 제외.
