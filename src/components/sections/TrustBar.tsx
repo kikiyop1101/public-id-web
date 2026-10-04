@@ -14,10 +14,10 @@ const stats: { num: number | string; from?: number; unit: string; desc: string }
     desc: "세종에서 전국으로, 공공 디자인 한 길",
   },
   {
-    num: 46,
+    num: 72,
     from: 0,
     unit: "BPN",
-    desc: "미끄럼저항(KCL 2018) — 서울시 평지·완경사 기준 충족",
+    desc: "미끄럼저항(FITI 2016) · 독일 MPI R10",
   },
   {
     num: "특허",
