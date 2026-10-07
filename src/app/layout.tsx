@@ -143,6 +143,13 @@ export default function RootLayout({
         },
       ],
     },
+    // 회사가 운영하는 별도 서비스 — 같은 회사가 아니라 회사의 브랜드라 sameAs가 아니다
+    brand: {
+      "@type": "Brand",
+      name: "보임 (BOIM)",
+      url: site.boim,
+      description: "AI 에이전트가 한국 업체를 찾을 때 처음 만나는 업체 정보 사이트(전 업종 업체·공공 조달 실적 업체·공공기관 입찰 공고, MCP 연결)",
+    },
     sameAs: [
       site.blog,
       site.tistory,

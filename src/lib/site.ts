@@ -19,6 +19,7 @@ export const site = {
   instagram: "https://www.instagram.com/_public.id/",
   tistory: "https://public-id.tistory.com",
   kakao: "https://pf.kakao.com/_jxoGrX", // 카카오톡 채널 '퍼블릭아이디'(2026-09-12 개설, 09-30 공개 설정)
+  boim: "https://boim.io", // 보임 — 퍼블릭아이디가 운영하는 AI 에이전트용 업체 찾기(2026-10-07 대표 "1,2 해" — 외부 언급)
   // GNB는 5개(대표 지시 2026-08-25 "메뉴 4~5개") — 하위 페이지는 드롭다운으로 노출
   // (대표 지적 2026-08-26 "우리회사OS·안전관리지도·설치영상은 모르면 못 찾는다").
   // 순서 = 회사소개→제품→구독→실적·인증→소식 (대표 지시 2026-08-26).

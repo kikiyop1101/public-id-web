@@ -114,6 +114,24 @@ export default function Footer() {
               </li>
             </ul>
           </div>
+
+          <div className="text-sm md:col-span-3">
+            <h3 className="font-display text-xs font-semibold uppercase tracking-[0.16em] text-teal-100">
+              Family Site
+            </h3>
+            <ul className="mt-2 lg:mt-4 lg:space-y-2">
+              <li>
+                <a
+                  href={site.boim}
+                  className="flex min-h-11 items-center transition hover:text-white lg:inline lg:min-h-0"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  보임 (AI 에이전트용 업체 찾기)
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <div className="mt-12 space-y-1 border-t border-white/10 pt-8 text-xs text-white/70">
