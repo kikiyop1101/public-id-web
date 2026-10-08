@@ -28,6 +28,8 @@ export function pageMeta(opts: {
   ogType?: "website" | "article";
   images?: OgImage[];
   robots?: Metadata["robots"];
+  /** AI 에이전트용 마크다운 판이 있는 페이지(src/lib/agent-md.ts) — <link rel="alternate" type="text/markdown">를 단다 */
+  markdown?: boolean;
 }): Metadata {
   const plainTitle = typeof opts.title === "string" ? opts.title : opts.title.absolute;
   const ogTitle =
@@ -35,7 +37,10 @@ export function pageMeta(opts: {
   return {
     title: opts.title,
     description: opts.description,
-    alternates: { canonical: opts.path },
+    alternates: {
+      canonical: opts.path,
+      ...(opts.markdown ? { types: { "text/markdown": opts.path === "/" ? "/md" : `/md${opts.path}` } } : {}),
+    },
     openGraph: {
       type: opts.ogType ?? "website",
       locale: "ko_KR",

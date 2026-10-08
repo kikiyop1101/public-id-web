@@ -4,6 +4,7 @@ import Hero from "@/components/sections/Hero";
 import TrustBar from "@/components/sections/TrustBar";
 import ShowcaseStrip from "@/components/sections/ShowcaseStrip";
 import ProductGateway from "@/components/sections/ProductGateway";
+import ProofSection from "@/components/sections/ProofSection";
 import PlayStrip from "@/components/sections/PlayStrip";
 import VideoStrip from "@/components/sections/VideoStrip";
 import Story from "@/components/sections/Story";
@@ -20,6 +21,7 @@ export const metadata: Metadata = pageMeta({
   description:
     "퍼블릭아이디는 우리회사OS(기업 맞춤형 AI 업무 자동화), 마스코트·웹툰·홈페이지를 만드는 디자인 구독, 친환경 노면표시재 안전시설 시공·관리를 하는 인증 사회적기업입니다. 디자인 팀이 없어도 KIDP 종합산업디자인전문회사가 브랜드와 현장을 함께 맡습니다.",
   path: "/",
+  markdown: true,
   ogDescription: "전용 마스코트부터 매월 웹툰, 디자인 시스템, 홈페이지까지 — 구독으로 완성하는 우리 브랜드.",
 });
 
@@ -59,6 +61,8 @@ export default function Home() {
       <TrustBar />
       <ShowcaseStrip />
       <ProductGateway />
+      {/* 2026-10-08 엑사 구조 대조 — 근거(미끄럼저항·시험·실적·인증) 탭. 고객사 이름 줄은 TrustBar */}
+      <ProofSection />
       {/* 2026-09-08 체류시간 기획안 — 만질거리(위험 찾기·안전 점수·견적 시뮬레이터) + 영상관 파사드 */}
       <PlayStrip />
       <VideoStrip />

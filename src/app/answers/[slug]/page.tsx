@@ -29,6 +29,7 @@ export async function generateMetadata({
     title: item.question,
     description: item.description,
     path: `/answers/${item.slug}`,
+    markdown: true,
     ogType: "article",
   });
 }

@@ -27,6 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: p.title,
     description: p.lead,
     path: `/os/${p.slug}`,
+    markdown: true,
     images: [{ url: p.image, width: 1000, height: 1000, alt: `우리회사OS ${p.label}` }],
   })
 }

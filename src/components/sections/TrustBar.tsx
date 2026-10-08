@@ -1,74 +1,55 @@
 import Link from "next/link";
 import Container from "@/components/Container";
 import CountUp from "@/components/CountUp";
+import { credibility as c } from "@/lib/credibility";
 
-// 2026-08-26 업그레이드 — 텍스트 나열 → "숫자+근거" 스탯 밴드(리서치: B2B 신뢰는
-// 인증명 나열이 아니라 정량 증거. Stripe 스탯 블록 패턴). 값은 전부 공개 확정 사실만
-// (assistant-knowledge.ts 절대 규칙 — 회사 규모 수치는 비공개라 쓰지 않는다).
-// 2026-09-03 숫자는 뷰포트 진입 시 1회 카운트업(design.md §5 스크롤 연동 ③) — SSR·reduced-motion 은 최종값.
-const stats: { num: number | string; from?: number; unit: string; desc: string }[] = [
-  {
-    num: 2017,
-    from: 2000,
-    unit: "년부터",
-    desc: "세종에서 전국으로, 공공 디자인 한 길",
-  },
-  {
-    num: 72,
-    from: 0,
-    unit: "BPN",
-    desc: "미끄럼저항(FITI 2016) · 독일 MPI R10",
-  },
-  {
-    num: "특허",
-    unit: "보유",
-    desc: "자체 특허 · 국제 특허의 노면표시재",
-  },
-  {
-    num: 3,
-    from: 0,
-    unit: "개 인증",
-    desc: "KIDP 산업디자인전문회사 · 사회적기업 · GD",
-  },
+// 2026-08-26 숫자+근거 스탯 밴드 → 2026-10-08 고객사 이름 줄(엑사 홈 "50만 개발자 + 고객 로고 7곳" 구조의 우리 판).
+// 숫자 근거(미끄럼저항·인증·특허)는 바로 아래 ProofSection 탭으로 옮겼다.
+// 이름은 실적 페이지(/credibility)에 이미 실명 공개된 고객사만(대표 확정 2026-08-26). 숫자는 credibility.ts(매출장 실거래 기준, 금액 없음).
+const CLIENTS = [
+  "세종특별자치시",
+  "서울특별시",
+  "경기도청",
+  "경기남부경찰청",
+  "국립세종수목원",
+  "유니세프 한국위원회",
+  "세이브더칠드런",
+  "스타벅스",
+  "현대자동차",
+  "유한양행",
+  "에버랜드",
 ];
+
+const B2G = Math.round(c.segmentMix[0].pct);
 
 export default function TrustBar() {
   return (
     <section className="border-y border-line bg-cloud/60">
       <Container className="py-10 sm:py-12">
         <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-          <p className="text-sm font-medium text-ink-soft">
-            관공서 · 공공기관 · 기업 · 소상공인이 신뢰하는 디자인 파트너
+          <p className="break-keep text-base font-medium text-ink-soft sm:text-lg">
+            2019년부터{" "}
+            <strong className="font-display font-bold text-navy">
+              <CountUp to={c.totalClients} from={0} />곳
+            </strong>
+            과{" "}
+            <strong className="font-display font-bold text-navy">
+              <CountUp to={c.totalProjects} from={0} />건
+            </strong>
+            을 함께했습니다 · 그중 {B2G}%가 공공기관·지자체
           </p>
-          <Link
-            href="/credibility"
-            className="text-sm font-semibold text-teal-700 transition hover:text-teal"
-          >
-            실적·인증 전체 보기 →
+          <Link href="/credibility" className="text-sm font-semibold text-teal-700 transition hover:text-teal">
+            고객사·실적 전체 보기 →
           </Link>
         </div>
-        <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-7 lg:grid-cols-4">
-          {stats.map((s) => (
-            <div key={s.desc}>
-              <dt className="sr-only">{s.desc}</dt>
-              <dd>
-                <p className="font-display text-3xl font-bold tracking-tight text-navy sm:text-4xl">
-                  {typeof s.num === "number" ? (
-                    <CountUp to={s.num} from={s.from} />
-                  ) : (
-                    s.num
-                  )}
-                  <span className="text-base font-semibold text-teal-700">
-                    {s.unit}
-                  </span>
-                </p>
-                <p className="mt-1.5 break-keep text-sm leading-relaxed text-ink-soft">
-                  {s.desc}
-                </p>
-              </dd>
-            </div>
+        <ul aria-label="함께한 고객사" className="mt-6 flex flex-wrap items-center gap-x-7 gap-y-3 sm:gap-x-9">
+          {CLIENTS.map((name) => (
+            <li key={name} className="break-keep text-[15px] font-bold tracking-tight text-ink-soft sm:text-lg">
+              {name}
+            </li>
           ))}
-        </dl>
+          <li className="text-sm text-ink-soft">등 {c.totalClients}곳</li>
+        </ul>
       </Container>
     </section>
   );

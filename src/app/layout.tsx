@@ -10,6 +10,7 @@ import Assistant from "@/components/Assistant";
 import { Analytics } from "@vercel/analytics/next";
 import SiteAnalytics from "@/components/SiteAnalytics";
 import { site } from "@/lib/site";
+import Script from "next/script";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -169,6 +170,12 @@ export default function RootLayout({
     url: site.url,
     inLanguage: "ko",
     publisher: { "@id": `${site.url}/#organization` },
+    // 검색 주소(2026-10-08) — 검색엔진·AI 에이전트가 사이트 안을 바로 찾게
+    potentialAction: {
+      "@type": "SearchAction",
+      target: { "@type": "EntryPoint", urlTemplate: `${site.url}/search?q={search_term_string}` },
+      "query-input": "required name=search_term_string",
+    },
   };
 
   return (
@@ -195,6 +202,12 @@ export default function RootLayout({
         >
           본문 바로가기
         </a>
+        {/* AI 에이전트 안내(2026-10-08, 엑사 홈 DOM 맨 앞 안내 블록의 우리 판) — 사람 화면·화면낭독기에는 나오지 않는다 */}
+        <div className="sr-only" aria-hidden="true">
+          AI 에이전트 안내: 퍼블릭아이디 회사 요약은 {site.url}/llms.txt, 전체 문서는 {site.url}/llms-full.txt 에 있습니다.
+          이 페이지를 마크다운으로 읽으려면 같은 주소에 Accept: text/markdown 헤더를 보내거나 주소 끝에 .md를 붙이세요(홈은 /index.md).
+          사이트 검색은 {site.url}/search?q=검색어, 견적·상담은 {site.url}/contact · {site.tel} 입니다.
+        </div>
         <Header />
         <main id="main">{children}</main>
         <Footer />
@@ -203,6 +216,8 @@ export default function RootLayout({
         <Analytics />
         {/* 체류시간 시계(2026-09-08): GA4·Clarity는 env ID가 있을 때만, 참여시간 비콘(30·60·180초)은 항상. */}
         <SiteAnalytics />
+        {/* WebMCP(2026-10-08) — 이 페이지를 연 브라우저 에이전트가 사이트 검색·마크다운 읽기를 도구로 쓴다. 지원 안 하는 브라우저에선 아무 일도 안 한다 */}
+        <Script src="/webmcp.js" strategy="lazyOnload" />
       </body>
     </html>
   );

@@ -2,6 +2,9 @@ import type { CSSProperties } from "react";
 import Button from "@/components/Button";
 import PreloadImage from "@/components/PreloadImage";
 import ScrollDepth from "@/components/ScrollDepth";
+import Link from "next/link";
+import HeroAsk from "@/components/HeroAsk";
+import { news } from "@/lib/news";
 
 // LCP 후보(아치 창 사진 — 데스크톱·모바일 공용) — SVG <image>는 priority 힌트를 못 받아 preload로 보강 (2026-08-26 감사)
 const HERO_IMG = "/products/친환경그래픽노면표시재-노란발자국/참조04.jpg";
@@ -100,6 +103,7 @@ function ArchSvg({
 //  · 스태거 텍스트 리빌(Stripe/Apple식 순차 등장 — 과한 연출 대신 절제)
 // 심볼 = 로고의 다리(아치) 그라디언트. 창작 도형 없음.
 export default function Hero() {
+  const latest = news[0];
   // 2026-09-03 스크롤 깊이 레이어(design.md §5 스크롤 연동 ①, ▶FFWtxjvW2ts 대조): 3층 —
   //  전경 아치(−28px, 빠르게) · 창 너머 사진(+44, 느리게 — ArchSvg 안) · 바닥 글로우(+40px). transform 만, reduced-motion 정지.
   return (
@@ -107,10 +111,11 @@ export default function Hero() {
       {/* LCP preload — react-dom preload() 대신 클라이언트 <link> 컴포넌트로(2026-09-18). preload()는 RSC 힌트로 실려 홈을
           프리페치하는 다른 페이지(/os 등)에도 주입돼 "preloaded but not used" 경고를 냈다. 홈 문서 head에만 실린다. */}
       <PreloadImage href={HERO_IMG} fetchPriority="high" />
-      {/* 대형 아치(다리) — 데스크톱: 우측에서 페이지가 열리며 한 번 그려진다 */}
+      {/* 대형 아치(다리) — 데스크톱: 우측에서 페이지가 열리며 한 번 그려진다.
+          max-h 600px = 질문창이 들어와 히어로가 길어져도 종전 크기를 넘지 않게(넘으면 왼쪽 질문창·칩을 덮는다, 2026-10-08 실측) */}
       <ArchSvg
         suffix="d"
-        className="depth pointer-events-none absolute -right-[14%] bottom-0 hidden h-[88%] w-auto sm:block lg:-right-[8%]"
+        className="depth pointer-events-none absolute -right-[14%] bottom-0 hidden h-[88%] max-h-[600px] w-auto sm:block lg:-right-[8%]"
         label="아치(다리) 아래로 보이는 노란발자국 시공 현장 — 횡단보도 앞 보도의 안심 대기선"
         depth="-28px"
       />
@@ -121,7 +126,23 @@ export default function Hero() {
         style={{ "--d": "40px" } as CSSProperties}
       />
       <div className="mx-auto max-w-[1200px] px-5 sm:px-8">
-        <div className="flex min-h-[76vh] flex-col justify-center py-24">
+        <div className="flex min-h-[76vh] flex-col justify-center py-20 sm:py-24">
+          {/* 새 소식 한 줄(2026-10-08, 엑사 홈 맨 위 안내 띠의 우리 판) — news.json 맨 앞 글이 주 3회 자동으로 바뀐다 */}
+          {latest && (
+            <Link
+              href={`/news/${latest.slug}`}
+              className="hero-rise group mb-7 inline-flex max-w-full items-center gap-2.5 self-start rounded-full border border-line bg-white/80 py-1 pl-1 pr-3.5 text-sm text-ink-soft shadow-sm transition hover:border-teal"
+              style={{ animationDelay: "0s" }}
+            >
+              <span className="shrink-0 rounded-full bg-navy px-2.5 py-0.5 font-display text-[11px] font-semibold uppercase tracking-[0.12em] text-white">
+                New
+              </span>
+              <span className="truncate group-hover:text-ink">{latest.title}</span>
+              <span aria-hidden className="shrink-0 text-teal-700 transition group-hover:translate-x-0.5">
+                →
+              </span>
+            </Link>
+          )}
           <p
             className="hero-rise font-display text-sm font-semibold uppercase tracking-[0.18em] text-teal-700"
             style={{ animationDelay: "0.05s" }}
@@ -140,8 +161,9 @@ export default function Hero() {
             className="hero-rise mt-6 max-w-xl break-keep text-lg leading-relaxed text-ink-soft"
             style={{ animationDelay: "0.45s" }}
           >
-            친환경 노면표시·안전표지의 시공과 관리, 그리고 매달 도착하는 디자인
-            구독까지 — 공공과 작은 회사의 디자인 파트너, 퍼블릭아이디.
+            기업 맞춤 AI 업무 자동화 우리회사OS, 매달 도착하는 디자인 구독,
+            친환경 <span className="whitespace-nowrap">노면표시·안전표지의</span> 시공과
+            관리까지 — 공공과 작은 회사의 디자인 파트너, 퍼블릭아이디.
           </p>
           <div
             className="hero-rise mt-9 flex flex-wrap items-center gap-3"
@@ -154,11 +176,15 @@ export default function Hero() {
               제품 보기
             </Button>
           </div>
+          {/* 첫 화면에서 바로 써 보는 질문창(2026-10-08, 엑사 히어로 데모의 우리 판) */}
+          <div className="hero-rise mt-8" style={{ animationDelay: "0.7s" }}>
+            <HeroAsk />
+          </div>
           {/* 모바일 — 같은 아치를 본문 아래에 인라인으로 그린다
               (종전 반원 사진+띠는 아치로 안 읽힘 — 대표 지적 2026-08-26 "폰에선 아치가 표현이 안 된다") */}
           <div
             className="hero-rise mt-10 sm:hidden"
-            style={{ animationDelay: "0.75s" }}
+            style={{ animationDelay: "0.85s" }}
           >
             <ArchSvg
               suffix="m"

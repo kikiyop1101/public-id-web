@@ -40,8 +40,17 @@ export default function Assistant() {
   }, [messages, open, loading]);
 
   // 페이지 본문(견적 페이지 배너 등)에서 도우미를 바로 열 수 있게 — 대표 지적 2026-08-26
+  // 2026-10-08 홈 질문창: detail.q가 있으면 열면서 그 질문을 바로 보낸다(sendRef = 매 렌더의 최신 send).
+  const sendRef = useRef<(preset?: string) => void>(() => {});
   useEffect(() => {
-    const onOpenEvent = () => setOpen(true);
+    sendRef.current = send;
+  });
+  useEffect(() => {
+    const onOpenEvent = (e: Event) => {
+      setOpen(true);
+      const q = (e as CustomEvent<{ q?: string } | null>).detail?.q?.trim();
+      if (q) sendRef.current(q);
+    };
     window.addEventListener("pi:open-assistant", onOpenEvent);
     return () => window.removeEventListener("pi:open-assistant", onOpenEvent);
   }, []);
@@ -63,12 +72,12 @@ export default function Assistant() {
     return () => window.removeEventListener("keydown", onEsc);
   }, [open]);
 
-  async function send() {
-    const text = input.trim();
+  async function send(preset?: string) {
+    const text = (preset ?? input).trim();
     if (!text || loading) return;
     const next: Msg[] = [...messages, { role: "user", content: text }];
     setMessages(next);
-    setInput("");
+    if (preset === undefined) setInput("");
     setLoading(true);
     try {
       let convo = next.filter((_, i) => i > 0); // 인사말 제외
@@ -183,7 +192,7 @@ export default function Assistant() {
           />
           <button
             type="button"
-            onClick={send}
+            onClick={() => send()}
             disabled={loading || !input.trim()}
             aria-label="보내기"
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-teal-700 text-white transition hover:bg-teal-800 disabled:opacity-40"

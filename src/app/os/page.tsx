@@ -27,6 +27,7 @@ export const metadata: Metadata = pageMeta({
   description:
     `견적서·홍보 글·문의 답변·월말 마감을 AI에 맡기는 소상공인용 실행 키트 ${KITS.length}종. ①진단 킷은 0원, 미니 9,900원·실행 킷 49,000원부터 필요한 것만 삽니다. 더블클릭으로 실행하고, 결과물에는 우리 회사 이름이 들어갑니다.`,
   path: '/os',
+  markdown: true,
   ogTitle: `우리회사OS — 회사 자동화 키트 ${KITS.length}종 | 퍼블릭아이디`,
   ogDescription: `3분 웹 진단 → 무료 ①진단 킷부터. 반복 업무를 덜어 주는 실행 키트 ${KITS.length}종.`,
 })

@@ -42,6 +42,7 @@ export const metadata: Metadata = pageMeta({
   description:
     '특허받은 부착식 노면표시재(기준가 132,000원/㎡)·노란발자국·직물시트(88,000원/㎡)·노란볼라드·홍보판촉물. 현장 사진과 기준가를 그대로 공개하는 퍼블릭아이디 친환경 제품군입니다.',
   path: '/products',
+  markdown: true,
 })
 
 // 공개 기준가(VAT 포함, 정본=assistant-knowledge.ts) — 있는 제품만 Offer 기재

@@ -29,6 +29,7 @@ export async function generateMetadata({
     description: item.summary,
     path: `/news/${item.slug}`,
     ogType: "article",
+    markdown: true,
   });
 }
 
