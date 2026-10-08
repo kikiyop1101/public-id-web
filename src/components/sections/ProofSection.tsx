@@ -1,7 +1,4 @@
-"use client";
-
 import Link from "next/link";
-import { useState } from "react";
 import Container from "@/components/Container";
 import { credibility as c } from "@/lib/credibility";
 
@@ -9,15 +6,14 @@ import { credibility as c } from "@/lib/credibility";
 // 경쟁사 비교는 하지 않는다 — 우리 수치를 공인 기준·시험기관과 나란히 놓고, 탭마다 근거 페이지로 잇는다.
 // 수치 정본: BRAND_CONSTANTS(72 BPN FITI 2016·R10 MPI·야간반사 KCL 2016 — 기관·연도 병기) · assistant-knowledge.ts
 // (서울시 보도포장 기준 평지 40·완경사 45 "충족"만 말한다, 급경사 50은 말하지 않는다) · credibility.ts(매출장 실거래, 금액 없음).
-// 탭 내용은 전부 HTML에 그려 두고 hidden으로만 가린다 — 검색·AI가 숨은 탭까지 읽는다.
+// 탭 내용은 전부 HTML에 그려 두고 CSS로만 가린다 — 검색·AI가 숨은 탭까지 읽는다.
+// 탭 전환은 자바스크립트 없이 라디오 + :has()로 한다(첫 배포의 클라이언트 탭이 휴대폰 TBT를 약 110ms 늘려 10-08 같은 날 교체).
 const TABS = [
   { id: "slip", label: "미끄럼저항" },
   { id: "eco", label: "친환경·안전 시험" },
   { id: "track", label: "공공 실적" },
   { id: "cert", label: "인증·특허" },
 ] as const;
-
-type TabId = (typeof TABS)[number]["id"];
 
 const SLIP = [
   { name: "퍼블릭아이디 노면표시재", value: 72, note: "FITI 2016 시험", ours: true },
@@ -71,9 +67,10 @@ function Rows({ rows }: { rows: { k: string; v: string }[] }) {
   );
 }
 
-export default function ProofSection() {
-  const [tab, setTab] = useState<TabId>("slip");
+/** 라디오 id — 패널은 그룹 안에서 이 라디오가 체크됐을 때만 보인다 */
+const rid = (id: string) => `proof-r-${id}`;
 
+export default function ProofSection() {
   return (
     <section className="bg-white">
       <Container className="py-20 sm:py-28">
@@ -84,31 +81,23 @@ export default function ProofSection() {
           보여 드립니다.
         </h2>
 
-        <div className="mt-10 grid gap-5 lg:grid-cols-[240px_1fr] lg:gap-8">
-          <div role="tablist" aria-label="근거 종류" className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1 lg:mx-0 lg:flex-col lg:overflow-visible lg:px-0">
-            {TABS.map((t) => (
-              <button
+        <div className="group/proof mt-10 grid gap-5 lg:grid-cols-[240px_1fr] lg:gap-8">
+          <div role="radiogroup" aria-label="근거 종류" className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1 lg:mx-0 lg:flex-col lg:overflow-visible lg:px-0">
+            {TABS.map((t, i) => (
+              <label
                 key={t.id}
-                type="button"
-                role="tab"
-                id={`proof-tab-${t.id}`}
-                aria-selected={tab === t.id}
-                aria-controls={`proof-panel-${t.id}`}
-                onClick={() => setTab(t.id)}
-                className={
-                  tab === t.id
-                    ? "shrink-0 rounded-full bg-navy px-5 py-2.5 text-left text-sm font-semibold text-white lg:rounded-2xl lg:py-3.5 lg:text-base"
-                    : "shrink-0 rounded-full border border-line-strong bg-white/70 px-5 py-2.5 text-left text-sm font-medium text-ink-soft transition hover:border-teal hover:text-ink lg:rounded-2xl lg:py-3.5 lg:text-base"
-                }
+                htmlFor={rid(t.id)}
+                className="shrink-0 cursor-pointer rounded-full border border-line-strong bg-white/70 px-5 py-2.5 text-left text-sm font-medium text-ink-soft transition hover:border-teal hover:text-ink has-[:checked]:border-navy has-[:checked]:bg-navy has-[:checked]:font-semibold has-[:checked]:text-white has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-teal-700 lg:rounded-2xl lg:py-3.5 lg:text-base"
               >
+                <input type="radio" name="proof-tab" id={rid(t.id)} defaultChecked={i === 0} className="sr-only" />
                 {t.label}
-              </button>
+              </label>
             ))}
           </div>
 
           <div className="rounded-3xl border border-line bg-paper/50 p-6 sm:p-9">
             {/* 미끄럼저항 — 우리 수치 vs 공인 기준 */}
-            <div role="tabpanel" id="proof-panel-slip" aria-labelledby="proof-tab-slip" hidden={tab !== "slip"}>
+            <div id="proof-panel-slip" className="hidden group-has-[#proof-r-slip:checked]/proof:block">
               <h3 className="break-keep text-xl font-bold text-ink sm:text-2xl">비 오는 날 보도에서도 미끄럽지 않게</h3>
               <p className="mt-2 break-keep text-[15px] text-ink-soft">
                 미끄럼저항(BPN)은 높을수록 덜 미끄럽습니다. 서울시 보도포장 기준의 평지·완경사 구간을 충족합니다.
@@ -137,7 +126,7 @@ export default function ProofSection() {
             </div>
 
             {/* 친환경·안전 시험 */}
-            <div role="tabpanel" id="proof-panel-eco" aria-labelledby="proof-tab-eco" hidden={tab !== "eco"}>
+            <div id="proof-panel-eco" className="hidden group-has-[#proof-r-eco:checked]/proof:block">
               <h3 className="break-keep text-xl font-bold text-ink sm:text-2xl">아이들이 밟고 서는 곳이라, 소재부터 시험합니다</h3>
               <p className="mt-2 break-keep text-[15px] text-ink-soft">
                 국내외 공인기관 시험성적서 30여 종을 갖고 있고, 수치는 기관·연도와 함께 밝힙니다.
@@ -149,7 +138,7 @@ export default function ProofSection() {
             </div>
 
             {/* 공공 실적 — 누적 프로젝트 막대 + 고객 구성 */}
-            <div role="tabpanel" id="proof-panel-track" aria-labelledby="proof-tab-track" hidden={tab !== "track"}>
+            <div id="proof-panel-track" className="hidden group-has-[#proof-r-track:checked]/proof:block">
               <h3 className="break-keep text-xl font-bold text-ink sm:text-2xl">
                 {c.yearsActive}년 동안 {c.totalProjects.toLocaleString()}건, 끊기지 않고 이어 왔습니다
               </h3>
@@ -185,7 +174,7 @@ export default function ProofSection() {
             </div>
 
             {/* 인증·특허 */}
-            <div role="tabpanel" id="proof-panel-cert" aria-labelledby="proof-tab-cert" hidden={tab !== "cert"}>
+            <div id="proof-panel-cert" className="hidden group-has-[#proof-r-cert:checked]/proof:block">
               <h3 className="break-keep text-xl font-bold text-ink sm:text-2xl">공공기관이 안심하고 맡길 수 있는 자격</h3>
               <p className="mt-2 break-keep text-[15px] text-ink-soft">
                 추정가격 2천만 원 이하는 1인 견적 수의계약으로 진행할 수 있고, 구매는 기관의 우선구매 실적에 반영됩니다.
