@@ -1,7 +1,7 @@
 import { ASSISTANT_SYSTEM } from "@/lib/assistant-knowledge";
 import { clientIp, dailyCapExceeded, rateLimited } from "@/lib/rate-limit";
 
-// 고객용 AI 도우미 — Claude Haiku 호출(서버). 키는 ANTHROPIC_API_KEY(서버 env).
+// 고객용 AI 도우미 — Claude Haiku 5.5 호출(서버). 키는 ANTHROPIC_API_KEY(서버 env).
 // 비용 가드레일: Haiku + 시스템 프롬프트 캐싱 + max_tokens 상한 + 대화 길이 제한.
 
 type Msg = { role: "user" | "assistant"; content: string };
@@ -66,8 +66,9 @@ export async function POST(request: Request) {
         "anthropic-version": "2023-06-01",
       },
       body: JSON.stringify({
-        model: "claude-haiku-4-5",
-        max_tokens: 600,
+        model: "claude-haiku-5-5",
+        max_tokens: 900, // Haiku 5.5 는 생각(thinking)이 max_tokens 를 먹는다 — 낮추면 답이 중간에 잘린다
+        output_config: { effort: "low" },
         system: [
           { type: "text", text: ASSISTANT_SYSTEM, cache_control: { type: "ephemeral" } },
         ],

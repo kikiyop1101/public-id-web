@@ -3,8 +3,8 @@ import { kitPath } from '@/lib/os-kit-pages'
 import { clientIp, dailyCapExceeded, rateLimited } from '@/lib/rate-limit'
 
 // 우리회사OS AI 큐레이터 — 방문자가 회사·고민을 한 줄로 쓰면 키트 2~3종을 추천.
-// 비용 가드레일: Haiku + max_tokens + rate limit. 프롬프트가 약 2.7K 토큰이라 Haiku 4.5 캐시 최소(4,096 토큰)에
-// 못 미쳐 아래 cache_control 은 실제로는 캐시를 만들지 않는다(늘려서 살리면 캐시 절감보다 입력 비용이 커 권하지 않음).
+// 비용 가드레일: Haiku 5.5 + max_tokens + rate limit + 시스템 프롬프트 캐싱(Haiku 5.5 는 약 3.5K 토큰 프롬프트도 캐시됨 — 실측).
+// 생각(thinking)은 끈다 — 켜 두면 max_tokens 를 먹어 JSON 이 잘린다.
 
 const MAX_CHARS = 300
 const MIN_CHARS = 5
@@ -80,8 +80,9 @@ export async function POST(request: Request) {
         'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
-        model: 'claude-haiku-4-5',
+        model: 'claude-haiku-5-5',
         max_tokens: 1200,
+        thinking: { type: 'disabled' },
         system: [{ type: 'text', text: SYSTEM, cache_control: { type: 'ephemeral' } }],
         messages: [{ role: 'user', content: about.trim().slice(0, MAX_CHARS) }],
       }),
