@@ -71,7 +71,7 @@ export default function ContactForm() {
       body: JSON.stringify({
         access_key: WEB3FORMS_ACCESS_KEY,
         botcheck,
-        subject: `[퍼블릭아이디 문의] ${f.name}`,
+        subject: `[홈페이지 문의 · 회신 필요] ${f.name}`,
         from_name: f.name,
         name: f.name,
         email: f.email,

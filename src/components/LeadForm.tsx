@@ -39,8 +39,9 @@ function sendEmailNotice(data: FormData, kinds: { value: string; label: string }
     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
     body: JSON.stringify({
       access_key: WEB3FORMS_KEY,
-      subject: `[스토어 ${kindLabel} 신청] ${get('name')}${org ? ` · ${org}` : ''}`,
-      from_name: '퍼블릭아이디 스토어',
+      // 제목·보낸이는 '손님 문의'로 바로 보이게(10-10 대표 — '[스토어 …]'·'퍼블릭아이디 스토어'는 자동 알림처럼 보여 묻혔다)
+      subject: `[홈페이지 ${kindLabel} 신청 · 회신 필요] ${get('name')}${org ? ` · ${org}` : ''}`,
+      from_name: get('name') || '홈페이지 신청',
       name: get('name'),
       email: get('email'),
       phone: get('phone'),
