@@ -127,7 +127,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener"
                 >
-                  보임 (AI 에이전트용 업체 찾기)
+                  보임(BOIM) · AI 에이전트용 업체 찾기
                 </a>
               </li>
             </ul>
