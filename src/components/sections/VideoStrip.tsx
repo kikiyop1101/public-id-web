@@ -4,8 +4,8 @@ import LiteYouTube from "@/components/LiteYouTube";
 import { site } from "@/lib/site";
 import { homeVideos, LONG_COUNT_LABEL, SHORT_COUNT_LABEL } from "@/lib/videos";
 
-// 2026-09-08 신설 — 홈에 롱폼 설명영상 3편(파사드). 클릭 전엔 썸네일뿐이라 홈 무게는 거의 늘지 않는다.
-// 롱폼(3~7분)을 앞세우는 이유: 한 편 재생이 그대로 체류 몇 분이다(체류시간 기획안 2안).
+// 2026-09-08 신설 — 홈에 영상 3편(파사드). 클릭 전엔 썸네일뿐이라 홈 무게는 거의 늘지 않는다.
+// 첫 칸 롱폼(3~7분, 한 편 재생이 그대로 체류 몇 분 — 체류시간 기획안 2안) + 최신 쇼츠 2칸(2026-10-17, 매일 바뀌게).
 export default function VideoStrip() {
   return (
     <section className="bg-white">
@@ -42,7 +42,7 @@ export default function VideoStrip() {
               <LiteYouTube id={v.id} title={v.title} place="home" />
               <p className="mt-3 break-keep text-[15px] font-bold leading-snug text-ink">{v.title}</p>
               <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-teal-700">
-                설명영상 · {v.series ?? v.category}
+                {v.kind === "long" ? `설명영상 · ${v.series ?? v.category}` : `쇼츠 · ${v.category}`}
               </p>
             </li>
           ))}

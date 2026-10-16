@@ -5,7 +5,7 @@ import raw from "@/content/videos.json";
 //   + `롱폼-설명영상\dot-longform\_upload-ledger.json`(도트 게임판 4편, 2026-09-30 추가). 편수는 문구에 박지 않고 아래 상수로 센다.
 // 쇼츠(kind "short") = 볼트 `관리본부\tools\slot-runner\발행-원장.md`·`sejong-daily\발행-원장.md`의 공개(public) 쇼츠 최근 60일분
 //   (2026-09-30 갱신 — 유튜브 oEmbed 200, 곧 공개이면서 퍼가기 허용인 영상만. 퍼가기가 꺼진 영상은 이 페이지 재생기에서 재생되지 않는다).
-// 배열 순서가 곧 노출 순서다: 롱폼 앞 3편 = 홈 스트립. 도트 게임판은 넷째 자리부터 둔다(홈이 도트판으로만 채워지지 않게).
+// 배열 순서가 곧 노출 순서다: 롱폼 앞 1편 = 홈 스트립 첫 칸(나머지 두 칸은 최신 쇼츠). 도트 게임판은 넷째 자리부터 둔다(홈이 도트판으로만 채워지지 않게).
 // publishAt(UTC ISO)이 있는 롱폼은 유튜브 예약 공개분 — 그 시각 전엔 영상관에서 자동으로 숨긴다(재배포 불필요).
 export type VideoCategory = "안전·시공" | "디자인·판촉" | "소상공인·우리회사OS" | "생활·계절";
 export type Video = {
@@ -29,8 +29,12 @@ export function isLive(v: Video, now: number = Date.now()): boolean {
 export const longforms = videos.filter((v) => v.kind === "long");
 export const shorts = videos.filter((v) => v.kind === "short");
 
-// 홈 노출 = 지금 공개된 롱폼 앞 3편(체류 효과가 가장 큰 3~7분짜리). 정적 빌드 시각 기준.
-export const homeVideos = longforms.filter((v) => isLive(v)).slice(0, 3);
+// 홈 노출 = 지금 공개된 롱폼 앞 1편 + 최신 쇼츠 2편(2026-10-17 대표 "3칸 중 2칸을 최신 쇼츠로" — 롱폼만이면 몇 주씩 같은 화면). 정적 빌드 시각 기준.
+const byNewest = (a: Video, b: Video) => b.published.localeCompare(a.published);
+export const homeVideos = [
+  ...longforms.filter((v) => isLive(v)).slice(0, 1),
+  ...shorts.filter((v) => isLive(v)).sort(byNewest).slice(0, 2),
+];
 
 /** 문구용 편수 — 빌드 시각에 공개된 영상 수를 10 단위로 내려 "30여 편" 식으로 쓴다(예약 공개분이 풀려도 문구가 틀리지 않게). */
 function roughCount(n: number): string {
