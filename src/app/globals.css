@@ -132,16 +132,6 @@ body[data-menu="open"] > .pi-assistant {
 .border-line {
   border-color: var(--color-line-strong);
 }
-/* 외곽선 버튼은 투명 배경이면 버튼으로 읽히지 않는다 → 반투명 흰 배경 + 진한 보더 */
-a.border-line,
-button.border-line {
-  border-color: var(--color-line-input);
-  background-color: rgb(255 255 255 / 0.72);
-}
-a.border-line:hover,
-button.border-line:hover {
-  background-color: rgb(255 255 255 / 0.95);
-}
 
 /* Headlines & balanced copy wrap more evenly */
 h1,
