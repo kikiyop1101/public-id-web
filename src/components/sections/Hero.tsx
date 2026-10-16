@@ -176,15 +176,12 @@ export default function Hero() {
               제품 보기
             </Button>
           </div>
-          {/* 첫 화면에서 바로 써 보는 질문창(2026-10-08, 엑사 히어로 데모의 우리 판) */}
-          <div className="hero-rise mt-8" style={{ animationDelay: "0.7s" }}>
-            <HeroAsk />
-          </div>
           {/* 모바일 — 같은 아치를 본문 아래에 인라인으로 그린다
-              (종전 반원 사진+띠는 아치로 안 읽힘 — 대표 지적 2026-08-26 "폰에선 아치가 표현이 안 된다") */}
+              (종전 반원 사진+띠는 아치로 안 읽힘 — 대표 지적 2026-08-26 "폰에선 아치가 표현이 안 된다").
+              2026-10-16 질문창보다 위로 — 질문창 뒤에 있으면 폰 첫 화면에 시공 사진이 0장이었다(taste-skill 실측) */}
           <div
             className="hero-rise mt-10 sm:hidden"
-            style={{ animationDelay: "0.85s" }}
+            style={{ animationDelay: "0.7s" }}
           >
             <ArchSvg
               suffix="m"
@@ -192,6 +189,10 @@ export default function Hero() {
               className="mx-auto h-auto w-full max-w-[400px]"
               label="아치(다리) 아래로 보이는 노란발자국 시공 현장 — 횡단보도 앞 보도의 안심 대기선"
             />
+          </div>
+          {/* 첫 화면에서 바로 써 보는 질문창(2026-10-08, 엑사 히어로 데모의 우리 판) */}
+          <div className="hero-rise mt-8" style={{ animationDelay: "0.85s" }}>
+            <HeroAsk />
           </div>
         </div>
       </div>
