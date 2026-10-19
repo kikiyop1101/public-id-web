@@ -1,5 +1,73 @@
 [
   {
+    "id": "61cuaXd4z3E",
+    "title": "횡단보도 음주운전 사고 뒤, 광고인이 붙잡은 질문｜퍼블릭아이디 이야기",
+    "published": "2026-10-21",
+    "category": "안전·시공",
+    "kind": "long",
+    "publishAt": "2026-10-20T16:00:00Z"
+  },
+  {
+    "id": "vf6o2gbKF5Q",
+    "title": "세종에서 노란발자국 붙여 온 회사가 AI를 내놓은 이유｜세종 왜?",
+    "published": "2026-10-20",
+    "category": "생활·계절",
+    "kind": "long",
+    "publishAt": "2026-10-20T10:00:00Z"
+  },
+  {
+    "id": "Hj4p2IFrQIc",
+    "title": "세종 사회적기업 대표는 왜 바닥에 안전표지를 붙였을까｜퍼블릭아이디 이야기",
+    "published": "2026-10-20",
+    "category": "생활·계절",
+    "kind": "short",
+    "publishAt": "2026-10-20T04:00:00Z"
+  },
+  {
+    "id": "5azHgBUtSDA",
+    "title": "클로드 코드 반년, 광고인 대표의 회사는 어떻게 바뀌었나｜퍼블릭아이디 이야기",
+    "published": "2026-10-20",
+    "category": "소상공인·우리회사OS",
+    "kind": "long",
+    "publishAt": "2026-10-19T22:00:00Z"
+  },
+  {
+    "id": "N3pjUEVdE88",
+    "title": "코로나 2년, 현장이 멈춘 회사가 놓지 않은 것｜퍼블릭아이디 이야기",
+    "published": "2026-10-20",
+    "category": "안전·시공",
+    "kind": "long",
+    "publishAt": "2026-10-19T16:00:00Z"
+  },
+  {
+    "id": "pjG-UmjYMtE",
+    "title": "사장님 혼자 하는 회사, AI 직원 5명이 있다면?",
+    "published": "2026-10-19",
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
+  },
+  {
+    "id": "SNaTJcmjjUc",
+    "title": "세종 고복저수지, 시청에서 15km 밖 자연공원의 지금｜지도로 본 세종",
+    "published": "2026-10-19",
+    "category": "생활·계절",
+    "kind": "short"
+  },
+  {
+    "id": "_vhq3t8NJO8",
+    "title": "알바 주휴수당, 매달 손으로 따지고 계신가요?",
+    "published": "2026-10-19",
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
+  },
+  {
+    "id": "e8Pu7yuJC38",
+    "title": "건조한 가을, 불씨 자리 표지는 어디에 붙일까",
+    "published": "2026-10-19",
+    "category": "안전·시공",
+    "kind": "short"
+  },
+  {
     "id": "3d228hJcB6I",
     "title": "세종은 왜 시도 중 가장 젊을까? 65세 이상 12.3%｜세종 왜?",
     "published": "2026-10-18",
@@ -1862,13 +1930,6 @@
     "id": "GGq65tDdZo4",
     "title": "불이 났을 때, 3초 안에 찾아야 하는 안내표지 5종",
     "published": "2026-08-20",
-    "category": "안전·시공",
-    "kind": "short"
-  },
-  {
-    "id": "wurOcUT7fpA",
-    "title": "비 오는 날 노면표시, 미끄럽지 않을까요?",
-    "published": "2026-08-19",
     "category": "안전·시공",
     "kind": "short"
   }
