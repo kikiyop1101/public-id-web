@@ -29,7 +29,7 @@ Next.js 16.3.x(정확한 버전은 package.json의 next). `node_modules/next/dis
 
 배포 검증: push 후 https://public-id.co.kr 를 실제 브라우저로 렌더해 눈으로 확인한다(curl은 Cloudflare 봇차단으로 403). **데스크톱+모바일 2벌 필수** — `node <시스템>\Agent\관리본부\_tools\shot.mjs <url> <out> [--mobile]`. 홈의 스크롤 연동 모션(히어로 깊이 레이어·게이트웨이 스티키 스택·스탯 카운트업 = `ScrollDepth`·`.stack-card`·`CountUp`)은 `--scroll` 연속 프레임으로 이동량·겹침·잘림을 본다(정본 = `_design-system\design.md` §5 스크롤 연동, 2026-09-03).
 
-클라우드 세션(볼트 없이 이 저장소만 클론된 환경): 시각 규칙 = `docs/design-canon.md`(볼트 `Agent\PI정본\_design-system\design.md` 사본, 화면을 바꾸기 전에 읽는다). `shot.mjs`가 없으니 Playwright로 데스크톱 1440px·모바일 390px 2벌을 캡처해 확인한다. master에 직접 push하지 말고 브랜치+PR로 낸다(master = 프로덕션 자동 배포).
+클라우드 세션(볼트 없이 이 저장소만 클론된 환경): 시각 규칙 = `docs/design-canon.md`(볼트 `Agent\PI정본\_design-system\design.md` 사본, 화면을 바꾸기 전에 읽는다). `shot.mjs`가 없으니 Playwright로 데스크톱 1440px·모바일 390px 2벌을 캡처해 확인한다. master에 직접 push하지 말고 브랜치+PR로 낸다(master = 프로덕션 자동 배포). PR 본문 맨 위에 **의도 5줄**(문제 — 요청자 말 그대로 · 성공한 모습 — 눈·숫자로 확인되는 한 문장 · 닿는 곳 · 지킬 것/안 할 것 · 가정), 그 아래 검증(빌드·데스크톱/모바일 캡처 경로)을 '성공한 모습'에 대어 적는다(2026-10-24, 앤트로픽 intent.md·코드 리뷰 방식 — 검토는 그 의도 대비 빠진 것만).
 
 ## 공개 카피 절대규칙 (사이트 카피 수정 시 위반 금지)
 
