@@ -155,6 +155,19 @@ const STEPS = [
   ['AI 직원으로 자율 운영', '반복 업무가 자리 잡으면 ③콘텐츠·④AI 직원 5명으로 넘어가, 대표는 승인만 합니다.'],
 ]
 
+// 입체도 번호 설명 — 그림(/embed/ai-anatomy.html) 안 이름표와 같은 문구(빌드 정본 = 볼트 html-작업\2026-10-25-입체도-src\build.mjs LABELS)
+const ANATOMY_KEYS: [string, string][] = [
+  ['들어오는 신호', '메일·입찰·톡톡·댓글·뉴스'],
+  ['지식 서랍', '회사 사실·대표 판단 정본'],
+  ['AI 지휘실', '직원 6명이 나누고 짓고 검수'],
+  ['영업·입찰·견적', '영업 메일·입찰·견적 자동'],
+  ['콘텐츠', '영상·카드·블로그 매일 발행'],
+  ['고객 응대', '메일·톡톡·댓글 자동 답변'],
+  ['대표 — 승인만', '돈·계약만 사람에게 갑니다'],
+  ['결과로 재기', '성과가 다음 일로 되돌아감'],
+  ['안전망', '밤새 감시, 아침에 수리'],
+]
+
 export default function OsPage() {
   // 가격 사다리 문구 — KITS에서 계산해 정본 가격이 바뀌어도 문구가 어긋나지 않게(2026-09-16)
   const minOf = (pick: (k: (typeof KITS)[number]) => boolean) =>
@@ -292,6 +305,45 @@ export default function OsPage() {
             지원은 포함되지 않습니다.
           </p>
           <OsCurator />
+        </div>
+      </section>
+
+      {/* 실제 운영 구조 — 우리 회사가 매일 쓰는 AI 운영을 기계 한 대로(2026-10-25 대표 "홈페이지에 걸고 푸쉬까지").
+          그림은 같은 사이트 정적 페이지 iframe(next.config /embed 같은 사이트 허용), 번호 설명은 여기 HTML로 둬 검색·AI가 읽게 한다. */}
+      <section className="border-line border-b">
+        <div className="mx-auto max-w-[1200px] px-5 py-20 sm:px-8 sm:py-28">
+          <p className={SECTION_EYEBROW}>How we run</p>
+          <h2 className={`${SECTION_H2} max-w-[24ch]`}>우리 회사부터 이렇게 돌아갑니다</h2>
+          <p className="text-ink-soft mt-6 max-w-[44em] break-keep text-lg leading-relaxed">
+            신호가 들어오면 AI 지휘실이 일을 세 줄로 나눠 만들고, 돈·계약 건만 대표가 승인합니다.
+            퍼블릭아이디가 매일 쓰는 AI 운영 구조를 작은 기계 한 대로 그렸습니다.
+          </p>
+          <figure className="border-line mt-10 overflow-hidden rounded-3xl border bg-white shadow-sm">
+            <iframe
+              src="/embed/ai-anatomy.html"
+              title="퍼블릭아이디 AI 운영 구조 입체도 — 신호가 지휘실을 거쳐 영업·콘텐츠·고객 응대로 나뉘고, 돈·계약만 대표 승인"
+              loading="lazy"
+              className="block aspect-[1000/600] w-full max-sm:aspect-[700/500]"
+            />
+          </figure>
+          <ol className="mt-8 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
+            {ANATOMY_KEYS.map(([t, s], i) => (
+              <li key={t} className="flex items-baseline gap-3 break-keep">
+                <span
+                  className={`${i === 2 || i === 6 ? 'bg-teal' : 'bg-navy'} inline-flex size-6 flex-none translate-y-1 items-center justify-center rounded-full text-xs font-extrabold text-white`}
+                >
+                  {i + 1}
+                </span>
+                <span>
+                  <b className="text-ink">{t}</b> <span className="text-ink-soft">— {s}</span>
+                </span>
+              </li>
+            ))}
+          </ol>
+          <p className="text-ink-soft mt-6 break-keep text-sm">
+            하루 178번 AI가 스스로 일하고, 자동 작업 152개가 시간표대로 돕니다(2026년 10월 25일 기준). 그림의
+            움직임은 하루 일의 흐름을 보여 주는 예시입니다.
+          </p>
         </div>
       </section>
 

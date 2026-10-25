@@ -47,6 +47,15 @@ const nextConfig: NextConfig = {
           { key: "Content-Security-Policy", value: "frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'" },
         ],
       },
+      // 2026-10-25 /os 「우리 회사부터 이렇게 돌아갑니다」가 같은 사이트의 /embed/ai-anatomy.html(움직이는 입체도)을 iframe 으로 넣는다 — /games 와 같은 방식.
+      {
+        source: "/embed/:path*",
+        headers: [
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "Content-Security-Policy", value: "frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'" },
+          { key: "X-Robots-Tag", value: "noindex" },
+        ],
+      },
       // 2026-10-03 노란발자국 캠페인 게임(/campaign-game)이 같은 사이트의 /games/* 정적 게임을 iframe 으로 넣는다 — /proposals 와 같은 방식.
       {
         source: "/games/:path*",
