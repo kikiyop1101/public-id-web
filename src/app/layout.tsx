@@ -149,7 +149,7 @@ export default function RootLayout({
       "@type": "Brand",
       name: "보임 (BOIM)",
       url: site.boim,
-      description: "AI 에이전트가 한국 업체를 찾을 때 처음 만나는 업체 정보 사이트(전 업종 업체·공공 조달 실적 업체·공공기관 입찰 공고, MCP 연결)",
+      description: "AI 에이전트와 봇이 날마다 들르는 한국 업체 정보 통로(전 업종 업체·공공 조달 실적 업체·공공기관 입찰 공고·전통시장, MCP 연결)",
     },
     sameAs: [
       site.blog,
