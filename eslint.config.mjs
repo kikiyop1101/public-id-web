@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // 2026-11-04 — public/games 의 외부 라이브러리 압축본(three.min.js)이 린트 오류 25건으로 lint를 실패시켰다.
+    "public/**/*.min.js",
   ]),
 ]);
 

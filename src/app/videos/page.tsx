@@ -24,7 +24,7 @@ const videoJsonLd = {
         name: v.title,
         description: `${v.series ? `${v.series} 시리즈 — ` : ""}${v.category} 설명영상. 퍼블릭아이디 유튜브 채널.`,
         thumbnailUrl: `https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`,
-        uploadDate: v.published,
+        uploadDate: `${v.published}T00:00:00+09:00`, // 구글: 날짜만 쓰면 "시간대 없음" 경고(2026-11-04 점검)
         embedUrl: `https://www.youtube.com/embed/${v.id}`,
         contentUrl: `https://www.youtube.com/watch?v=${v.id}`,
         inLanguage: "ko-KR",

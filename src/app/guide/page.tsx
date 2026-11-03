@@ -84,7 +84,7 @@ const videoJsonLd = {
     "인쇄된 점착식 노면 그래픽 시트를 바닥에 부착하는 표준 시공 절차. 바닥 조건·온도 확인부터 위치 선정·청소·부착·밀착 4단계와 동절기 시공까지 3분 40초에 담았습니다.",
   contentUrl: "https://www.public-id.co.kr/guide/attach-guide.mp4",
   thumbnailUrl: "https://www.public-id.co.kr/guide/attach-guide-poster.jpg",
-  uploadDate: "2026-08-20",
+  uploadDate: "2026-08-20T00:00:00+09:00",
   duration: "PT3M40S",
   publisher: { "@id": "https://www.public-id.co.kr/#organization" },
 };

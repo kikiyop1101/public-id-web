@@ -87,8 +87,9 @@ export default function ProofSection() {
               <label
                 key={t.id}
                 htmlFor={rid(t.id)}
-                className="shrink-0 cursor-pointer rounded-full border border-line-strong bg-white/70 px-5 py-2.5 text-left text-sm font-medium text-ink-soft transition hover:border-teal hover:text-ink has-[:checked]:border-navy has-[:checked]:bg-navy has-[:checked]:font-semibold has-[:checked]:text-white has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-teal-700 lg:rounded-2xl lg:py-3.5 lg:text-base"
+                className="relative shrink-0 cursor-pointer rounded-full border border-line-strong bg-white/70 px-5 py-2.5 text-left text-sm font-medium text-ink-soft transition hover:border-teal hover:text-ink has-[:checked]:border-navy has-[:checked]:bg-navy has-[:checked]:font-semibold has-[:checked]:text-white has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-teal-700 lg:rounded-2xl lg:py-3.5 lg:text-base"
               >
+                {/* label의 relative = 이 sr-only(absolute) 라디오가 가로 스크롤 줄 밖으로 새지 않게(2026-11-04 휴대폰 홈 2px 가로 밀림) */}
                 <input type="radio" name="proof-tab" id={rid(t.id)} defaultChecked={i === 0} className="sr-only" />
                 {t.label}
               </label>
