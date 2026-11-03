@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
   // canonical은 각 페이지가 pageMeta()로 자기 경로를 선언한다(루트에 두면 noindex·admin 페이지까지 "/"를 상속 — 2026-09-08 감사).
   title: {
-    default: "퍼블릭아이디 | 디자인 구독 · 안전 시설 관리",
+    default: "퍼블릭아이디 | 우리회사OS · 디자인 구독 · 안전시설 관리",
     template: "%s | 퍼블릭아이디",
   },
   description:
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ko_KR",
     siteName: "퍼블릭아이디",
-    title: "퍼블릭아이디 | 디자인 구독 · 안전 시설 관리",
+    title: "퍼블릭아이디 | 우리회사OS · 디자인 구독 · 안전시설 관리",
     description:
       "전용 마스코트부터 매월 웹툰, 디자인 시스템, 홈페이지까지 — 구독으로 완성하는 우리 브랜드.",
     images: [
