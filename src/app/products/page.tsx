@@ -71,7 +71,9 @@ const jsonLd = {
     '@type': 'ListItem',
     position: i + 1,
     item: {
-      '@type': 'Product',
+      // 공개 기준가가 없는 품목(노란볼라드·홍보판촉물 — 맞춤 견적)은 Service로 낸다.
+      // Product는 offers·review·aggregateRating 중 하나가 필수라 값 없는 Product는 검색엔진에서 오류 항목이 된다(2026-11-04 task H5).
+      '@type': BASE_PRICES[p.id] || FROM_PRICES[p.id] ? 'Product' : 'Service',
       name: p.name,
       description: p.summary,
       url: `https://www.public-id.co.kr${p.anchor}`,

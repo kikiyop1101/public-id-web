@@ -11,6 +11,8 @@ export type AnswerItem = {
   description: string;
   /** 기계 메타 전용 ISO 날짜 */
   dateModified: string;
+  /** 처음 낸 날(선택). 없으면 JSON-LD datePublished에 dateModified를 쓴다. */
+  datePublished?: string;
   /** 첫 문단 직답(2~3문장) */
   answer: string;
   table: { title: string; columns: string[]; rows: string[][] };

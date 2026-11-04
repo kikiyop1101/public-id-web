@@ -248,6 +248,11 @@ p {
 .bg-navy-800 :focus-visible {
   outline-color: #ffffff;
 }
+/* 지도(Leaflet) 출처 링크 — 기본 #0078a8은 주변 글자와 2.55:1이라 색만으로 링크가 구분되지 않는다(2026-11-04 axe link-in-text-block) → 정본 링크색+밑줄 */
+.leaflet-container .leaflet-control-attribution a {
+  color: var(--color-teal-700);
+  text-decoration: underline;
+}
 /* 영상은 보통 overflow-hidden 둥근 프레임 안에 있어 바깥 링이 잘린다 → 안쪽으로 그린다(2026-09-27 /guide 실측) */
 video:focus-visible {
   outline-offset: -4px;

@@ -98,7 +98,7 @@ function CommentItem({
           <button
             type="button"
             onClick={() => setReplying((v) => !v)}
-            className="text-teal text-xs font-medium hover:underline"
+            className="text-teal-700 text-xs font-medium hover:underline"
           >
             답글
           </button>
@@ -140,7 +140,7 @@ export default function Comments({
   return (
     <section className="border-line mt-10 border-t pt-6">
       <h2 className="text-ink text-lg font-bold">
-        답글 <span className="text-teal">({count(comments)})</span>
+        답글 <span className="text-teal-700">({count(comments)})</span>
       </h2>
 
       {comments.length > 0 && (

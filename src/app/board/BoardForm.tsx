@@ -64,7 +64,7 @@ export default function BoardForm() {
       />
 
       {state.error && <p role="alert" className="mt-2 text-sm text-red-600">{state.error}</p>}
-      {state.ok && <p role="status" className="text-teal mt-2 text-sm">등록됐습니다.</p>}
+      {state.ok && <p role="status" className="text-teal-700 mt-2 text-sm">등록됐습니다.</p>}
 
       <button
         type="submit"

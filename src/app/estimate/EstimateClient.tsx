@@ -519,10 +519,11 @@ export default function EstimateClient() {
               <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-teal-700">
                 자재 기준가 · VAT 포함
               </p>
-              <p className="truncate font-display text-xl font-bold text-ink">
-                {won(shown)}
+              {/* 390px 폭에서 칩이 '시공비/별도'로 쪼개지던 문제(11-04 화면 점검) — 금액·칩을 각각 한 덩어리로 묶고, 모자라면 칩 전체가 다음 줄로 */}
+              <p className="flex flex-wrap items-center gap-x-2 gap-y-0.5 font-display text-xl font-bold text-ink">
+                <span className="whitespace-nowrap">{won(shown)}</span>
                 {install === 'pro' && (
-                  <span className="ml-2 rounded-full bg-warning-bg px-2 py-0.5 align-middle font-sans text-[11px] font-bold text-warning-deep">
+                  <span className="whitespace-nowrap rounded-full bg-warning-bg px-2 py-0.5 font-sans text-[11px] font-bold text-warning-deep">
                     시공비 별도
                   </span>
                 )}
@@ -651,7 +652,7 @@ function SummaryCard({
               ? '자재는 자동 견적 — 시공비는 담당자가 현장 확인 후 합산해 회신드립니다'
               : '자동 견적 대상 — 신청하면 바로 견적서가 나갑니다'
             : '담당자 검토 견적 — 신청 후 검토해 회신드립니다'}
-          <span className="mt-1 block text-xs font-normal opacity-80">
+          <span className="mt-1 block text-xs font-normal">
             {autoQuote
               ? `자재 총액 ${won(AUTO_QUOTE_LIMIT)} 미만이고 모든 품목이 공개 단가표 안입니다.`
               : `자재 총액 ${won(AUTO_QUOTE_LIMIT)} 이상은 규격·물량 조건을 검토합니다.`}

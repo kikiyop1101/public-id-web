@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
 import { site } from "@/lib/site";
 
@@ -18,6 +18,12 @@ export default function Header() {
   // 그 안의 <Link> 20여 개가 매 페이지 첫 로드에 전부 프리페치됐다(휴대폰 RSC 요청 ~45건·JS 청크 ~15개).
   // 데스크톱 nav(display:none → 관측 안 됨)가 같은 링크를 HTML에 그대로 두므로 크롤러가 보는 링크는 같다.
   const [menuMounted, setMenuMounted] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const menuBtnRef = useRef<HTMLButtonElement>(null);
+  const searchOpenRef = useRef(false);
+  useEffect(() => {
+    searchOpenRef.current = searchOpen;
+  }, [searchOpen]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -51,8 +57,30 @@ export default function Header() {
     // 메뉴가 열린 동안 우측 하단 도우미 버튼을 숨긴다(globals.css body[data-menu="open"]) — 메뉴 줄을 덮지 않게
     if (open) document.body.dataset.menu = "open";
     else delete document.body.dataset.menu;
+    // 열린 메뉴는 화면 전체를 덮는다 — Tab이 뒤 본문(가려진 곳)으로 새면 포커스가 안 보인다(WCAG 2.4.11).
+    // 헤더(로고·검색·닫기·메뉴 항목) 안에서만 돌게 묶고, Esc로 닫으면 햄버거로 포커스를 돌려준다(2026-11-04 키보드 점검)
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (searchOpenRef.current) return; // 검색창이 위에 떠 있으면 Esc·Tab은 검색창 몫
+      if (e.key === "Escape") {
+        setOpen(false);
+        menuBtnRef.current?.focus();
+        return;
+      }
+      if (e.key !== "Tab" || !headerRef.current) return;
+      const items = [
+        ...headerRef.current.querySelectorAll<HTMLElement>("a[href], button:not([disabled]), input"),
+      ].filter((el) => el.offsetParent !== null); // 화면에 보이는 것만(데스크톱 전용 버튼 제외)
+      if (items.length === 0) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      const inside = headerRef.current.contains(document.activeElement);
+      if (e.shiftKey && (document.activeElement === first || !inside)) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (document.activeElement === last || !inside)) {
+        e.preventDefault();
+        first.focus();
+      }
     };
     if (open) window.addEventListener("keydown", onKey);
     return () => {
@@ -64,6 +92,7 @@ export default function Header() {
 
   return (
     <header
+      ref={headerRef}
       className={cn(
         "sticky top-0 z-50 transition-all duration-300",
         scrolled
@@ -166,6 +195,7 @@ export default function Header() {
           </svg>
         </button>
         <button
+          ref={menuBtnRef}
           type="button"
           onClick={() => {
             setMenuMounted(true);

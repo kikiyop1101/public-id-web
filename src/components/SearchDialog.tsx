@@ -128,7 +128,7 @@ function SearchPanel({ onClose }: { onClose: () => void }) {
               setActive(0);
             }}
             placeholder="페이지 · 제품 · 서비스 검색  (예: 노란발자국, 견적, 인증)"
-            className="h-12 w-full bg-transparent text-[15px] text-ink outline-none placeholder:text-ink-soft/60"
+            className="h-12 w-full bg-transparent text-[15px] text-ink outline-none placeholder:text-ink-soft"
             aria-label="검색어"
           />
           <button

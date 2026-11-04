@@ -27,7 +27,7 @@ export default function SafetyMapPage() {
         }
         description="노란발자국·노란볼라드·안전표지 등 퍼블릭아이디가 시공하고 관리하는 전국 안전시설을 발주처·설치일·관리기간 기준으로 보여드립니다."
       />
-      <section className="pb-24">
+      <section className="pb-24 pt-10 sm:pt-14">
         <Container>
           <SafetyMapApp />
         </Container>

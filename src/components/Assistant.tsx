@@ -95,7 +95,7 @@ export default function Assistant() {
     } catch {
       setMessages((m) => [
         ...m,
-        { role: "assistant", content: "연결이 불안정해요. 070-4150-1172 로 문의해 주세요." },
+        { role: "assistant", content: "연결이 불안정해요. 070-4150-1172로 문의해 주세요." },
       ]);
     } finally {
       setLoading(false);
@@ -208,7 +208,7 @@ export default function Assistant() {
             {inquiryMsgs.length ? "이 대화로 문의하기" : "문의하기"}
           </Link>
           {" · ☎ "}
-          <a href="tel:070-4150-1172" className="text-teal-700">070-4150-1172</a>
+          <a href="tel:070-4150-1172" className="whitespace-nowrap text-teal-700">070-4150-1172</a>
         </p>
       </div>
     </div>

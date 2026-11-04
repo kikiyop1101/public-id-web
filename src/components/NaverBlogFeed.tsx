@@ -28,7 +28,7 @@ export default async function NaverBlogFeed() {
               className="flex items-center justify-between gap-4 py-3 transition-colors hover:bg-black/[0.02]"
             >
               <span className="text-ink min-w-0 flex-1 truncate text-sm">{item.title}</span>
-              <span className="text-teal shrink-0 text-xs">네이버 ↗</span>
+              <span className="text-teal-700 shrink-0 text-xs">네이버 ↗</span>
             </a>
           </li>
         ))}

@@ -46,6 +46,13 @@ export default function CampaignGamePage() {
       />
       <section className="bg-paper">
         <Container className="py-10 sm:py-14">
+          {/* 게임 건너뛰기(2026-11-04 접근성) — 키보드 사용자가 게임판 안에서 길을 잃지 않게 다음 구획으로 바로 */}
+          <a
+            href="#after-game"
+            className="sr-only focus:not-sr-only focus:mb-4 focus:inline-flex focus:rounded-full focus:bg-navy focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+          >
+            게임 건너뛰기
+          </a>
           <a
             href={GAME}
             className="mb-4 flex h-12 items-center justify-center rounded-full bg-navy text-base font-bold text-white sm:hidden"
@@ -68,7 +75,7 @@ export default function CampaignGamePage() {
           </p>
         </Container>
       </section>
-      <section className="border-t border-line bg-white">
+      <section id="after-game" className="border-t border-line bg-white">
         <Container className="py-16 sm:py-20">
           <div className="grid gap-8 md:grid-cols-3">
             <div>

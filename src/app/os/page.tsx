@@ -331,7 +331,7 @@ export default function OsPage() {
             {ANATOMY_KEYS.map(([t, s], i) => (
               <li key={t} className="flex items-baseline gap-3 break-keep">
                 <span
-                  className={`${i === 2 || i === 6 ? 'bg-teal' : 'bg-navy'} inline-flex size-6 flex-none translate-y-1 items-center justify-center rounded-full text-xs font-extrabold text-white`}
+                  className={`${i === 2 || i === 6 ? 'bg-teal-700' : 'bg-navy'} inline-flex size-6 flex-none translate-y-1 items-center justify-center rounded-full text-xs font-extrabold text-white`}
                 >
                   {i + 1}
                 </span>

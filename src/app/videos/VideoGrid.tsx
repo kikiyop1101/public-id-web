@@ -66,7 +66,7 @@ export default function VideoGrid({ videos, builtAt }: { videos: Video[]; builtA
               )}
             >
               {t}
-              <span className={cn("font-display text-xs", active ? "text-white/70" : "text-ink-soft/70")}>{n}</span>
+              <span className={cn("font-display text-xs", active ? "text-white/80" : "text-ink-soft")}>{n}</span>
             </button>
           );
         })}

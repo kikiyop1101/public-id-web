@@ -52,7 +52,7 @@ function GrowthChart() {
       {[0, 250, 500, 750, 1000].map((g) => (
         <g key={g}>
           <line x1={L} y1={y(g)} x2={W - R} y2={y(g)} stroke="#e4eaeb" strokeWidth="1" />
-          <text x={L - 8} y={y(g) + 4} textAnchor="end" fontSize="11" fill="#9aa3a8" fontFamily="var(--font-display)">{g}</text>
+          <text x={L - 8} y={y(g) + 4} textAnchor="end" fontSize="11" fill="#57636b" fontFamily="var(--font-display)">{g}</text>
         </g>
       ))}
       <path d={area} fill="url(#cg)" />
@@ -78,7 +78,7 @@ function Bars({ rows }: { rows: readonly { label: string; pct: number }[] }) {
             <span className="font-display text-sm font-semibold text-teal-700">{r.pct}%</span>
           </div>
           <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-cloud">
-            <div className="h-full rounded-full bg-teal-500" style={{ width: `${r.pct}%` }} />
+            <div className="h-full rounded-full bg-teal" style={{ width: `${r.pct}%` }} />
           </div>
         </div>
       ))}
@@ -132,7 +132,7 @@ export default function CredibilityPage() {
                   <p className="mt-1 text-sm text-ink-soft">연도별 누적 프로젝트와 거래처 수의 성장 추이입니다.</p>
                 </div>
                 <div className="flex gap-4 text-xs text-ink-soft">
-                  <span className="flex items-center gap-1.5"><span className="inline-block h-2.5 w-2.5 rounded-full bg-teal-500" />누적 프로젝트</span>
+                  <span className="flex items-center gap-1.5"><span className="inline-block h-2.5 w-2.5 rounded-full bg-teal" />누적 프로젝트</span>
                   <span className="flex items-center gap-1.5"><span className="inline-block h-0.5 w-4 bg-navy" />누적 거래처</span>
                 </div>
               </div>
@@ -212,7 +212,8 @@ export default function CredibilityPage() {
                 ))}
               </div>
               <div className="mt-9 flex flex-wrap gap-3">
-                <Link href="/credentials" className="rounded-full bg-teal-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-teal-600">
+                {/* 네이비 밴드 위 주 버튼 = button-light(정본). 종전 Tailwind 기본 teal-500 + 흰 글자는 2.42:1(2026-11-04 axe) */}
+                <Link href="/credentials" className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-navy transition hover:bg-cloud">
                   인증·특허 자세히
                 </Link>
                 <Link href="/contact" className="rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white/90 transition hover:bg-white/10">

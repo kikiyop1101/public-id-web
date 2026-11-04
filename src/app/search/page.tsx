@@ -85,7 +85,7 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
                 <div className="mt-6 flex flex-wrap items-center gap-3">
                   <OpenAssistantButton />
                   <span className="text-sm text-ink-soft">
-                    또는 전화 <a href={`tel:${site.tel}`} className="font-semibold text-ink">{site.tel}</a>
+                    또는 전화 <a href={`tel:${site.tel}`} className="whitespace-nowrap font-semibold text-ink">{site.tel}</a>
                   </span>
                 </div>
               </div>
