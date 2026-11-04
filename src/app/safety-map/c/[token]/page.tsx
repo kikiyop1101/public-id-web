@@ -28,7 +28,7 @@ export default async function ClientSafetyMapPage({
         }
         description="귀 기관에 설치된 퍼블릭아이디 안전시설의 위치와 관리기간을 한눈에 확인하실 수 있습니다."
       />
-      <section className="pb-24">
+      <section className="pb-24 pt-10 sm:pt-14">
         <Container>
           <SafetyMapApp token={token} />
         </Container>

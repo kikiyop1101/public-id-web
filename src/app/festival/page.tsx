@@ -431,7 +431,7 @@ export default function FestivalPage() {
             <p className="mt-5 text-lg leading-relaxed text-ink-soft">
               행사명·기간·장소·필요 면적(㎡)을 적어주시면 확인 후 빠르게 회신드립니다.
               전화 상담은{' '}
-              <a href="tel:070-4150-1172" className="font-semibold text-teal-700">
+              <a href="tel:070-4150-1172" className="whitespace-nowrap font-semibold text-teal-700">
                 070-4150-1172
               </a>
               로 연락주세요.

@@ -154,7 +154,7 @@ export default function ArtFabricPage() {
             메트로폴리탄미술관·워싱턴 내셔널갤러리 오픈액세스 원본 중 해상도와
             인지도를 기준으로 고른 대표작입니다.
           </p>
-          <div className="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+          <div className="mt-10 grid grid-cols-2 items-start gap-5 sm:grid-cols-3 lg:grid-cols-4">
             {A_GRADE.map((a) => (
               <ArtCard key={a.id} art={a} />
             ))}
@@ -175,7 +175,7 @@ export default function ArtFabricPage() {
             국립중앙박물관 소장 민화 원본 — 관공서·전통 공간·한식 상가에 어울리는
             우리 그림입니다. 공공누리 제1유형 출처 표기와 함께 제작합니다.
           </p>
-          <div className="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+          <div className="mt-10 grid grid-cols-2 items-start gap-5 sm:grid-cols-3 lg:grid-cols-4">
             {MINHWA.map((a) => (
               <ArtCard key={a.id} art={a} />
             ))}
@@ -196,7 +196,7 @@ export default function ArtFabricPage() {
             시슬레·피사로·세잔·터너 — 풍경·정물·인상주의 중심의 확장 컬렉션입니다.
             공간 분위기를 알려주시면 어울리는 그림을 함께 골라 드립니다.
           </p>
-          <div className="mt-10 grid grid-cols-3 gap-4 sm:grid-cols-4 lg:grid-cols-6">
+          <div className="mt-10 grid grid-cols-2 items-start gap-4 sm:grid-cols-4 lg:grid-cols-6">
             {COLLECTION.map((a) => (
               <ArtCard key={a.id} art={a} compact />
             ))}
