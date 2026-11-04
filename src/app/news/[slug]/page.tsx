@@ -58,10 +58,12 @@ export default async function NewsDetailPage({
       : {}),
     image: item.photos?.length ? `${site.url}${item.photos[0].src}` : `${site.url}/og.png`,
     mainEntityOfPage: `${site.url}/news/${item.slug}`,
-    author: { "@type": "Organization", name: site.legalName },
+    author: { "@type": "Organization", "@id": `${site.url}/#organization`, name: site.legalName, url: site.url },
     publisher: {
       "@type": "Organization",
+      "@id": `${site.url}/#organization`,
       name: site.legalName,
+      url: site.url,
       logo: { "@type": "ImageObject", url: `${site.url}/logo.png` },
     },
   };

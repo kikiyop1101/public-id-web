@@ -16,6 +16,39 @@ export const DEFAULT_OG_IMAGE: OgImage = {
   alt: "퍼블릭아이디 — 디자인 구독 · 안전 시설 관리",
 };
 
+// 검색 결과에 잘리지 않는 길이(2026-11-04 task H5 — scripts/seo-audit.mjs가 같은 기준으로 검사한다).
+// 소식·킷처럼 데이터에서 자동으로 만드는 쪽은 글이 길어질 수 있어 여기서 한 번에 맞춘다. 화면의 h1·본문은 그대로다.
+export const TITLE_MAX = 60;
+export const DESC_MAX = 160;
+const TITLE_SUFFIX = ` | ${site.name}`;
+const len = (s: string) => [...s].length;
+
+/** 제목 — "제목 | 퍼블릭아이디"가 60자를 넘으면 ① 회사명 꼬리 없이 제목만 ② 그래도 넘으면 "…"·" — " 앞 앞절 + 꼬리 ③ 낱말 경계에서 자른다 */
+export function fitTitle(title: string): Metadata["title"] {
+  if (len(title) + len(TITLE_SUFFIX) <= TITLE_MAX) return title;
+  if (len(title) <= TITLE_MAX) return { absolute: title };
+  const lead = title.split(/…| — |: /)[0].trim();
+  if (lead && lead !== title && len(lead) + len(TITLE_SUFFIX) <= TITLE_MAX) return lead;
+  return { absolute: clip(title, TITLE_MAX) };
+}
+
+/** 설명 — 160자를 넘으면 그 안에서 끝나는 마지막 문장까지(문장이 너무 짧게 남으면 낱말 경계에서 "…") */
+export function fitDescription(desc: string): string {
+  const s = desc.replace(/\s+/g, " ").trim();
+  if (len(s) <= DESC_MAX) return s;
+  const head = [...s].slice(0, DESC_MAX).join("");
+  const ends = [...head.matchAll(/[.!?。](?=\s|$)/g)].map((m) => (m.index ?? 0) + 1);
+  const cut = ends.length ? ends[ends.length - 1] : 0;
+  if (cut >= DESC_MAX * 0.5) return head.slice(0, cut).trim();
+  return clip(s, DESC_MAX);
+}
+
+function clip(s: string, max: number): string {
+  const head = [...s].slice(0, max - 1).join("");
+  const sp = head.lastIndexOf(" ");
+  return (sp > max * 0.6 ? head.slice(0, sp) : head).replace(/[\s,·—-]+$/, "") + "…";
+}
+
 export function pageMeta(opts: {
   /** 문자열이면 layout 템플릿("%s | 퍼블릭아이디")이 붙는다. 홈처럼 그대로 쓰려면 { absolute }. */
   title: string | { absolute: string };
@@ -34,9 +67,10 @@ export function pageMeta(opts: {
   const plainTitle = typeof opts.title === "string" ? opts.title : opts.title.absolute;
   const ogTitle =
     opts.ogTitle ?? (plainTitle.includes(site.name) ? plainTitle : `${plainTitle} | ${site.name}`);
+  const description = fitDescription(opts.description);
   return {
-    title: opts.title,
-    description: opts.description,
+    title: typeof opts.title === "string" ? fitTitle(opts.title) : opts.title,
+    description,
     alternates: {
       canonical: opts.path,
       ...(opts.markdown ? { types: { "text/markdown": opts.path === "/" ? "/md" : `/md${opts.path}` } } : {}),
@@ -47,7 +81,7 @@ export function pageMeta(opts: {
       siteName: site.name,
       url: opts.path,
       title: ogTitle,
-      description: opts.ogDescription ?? opts.description,
+      description: fitDescription(opts.ogDescription ?? opts.description),
       images: opts.images ?? [DEFAULT_OG_IMAGE],
     },
     ...(opts.robots ? { robots: opts.robots } : {}),
