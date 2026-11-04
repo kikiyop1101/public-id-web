@@ -34,7 +34,7 @@ export default function ProductSection({
                     ...(main.webm ? [{ src: main.webm, type: 'video/webm' }] : []),
                     ...(main.mp4 ? [{ src: main.mp4, type: 'video/mp4' }] : []),
                   ]}
-                  poster={main.fallbackImage}
+                  poster={main.poster ?? main.fallbackImage}
                   className="h-full w-full object-contain"
                 />
               ) : main?.kind === 'image' ? (

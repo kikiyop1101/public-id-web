@@ -27,7 +27,7 @@ export default function FaqBlock({
     })),
   };
   return (
-    <section className={`${className} py-20 sm:py-28`}>
+    <section className={`${className} cv-defer py-20 sm:py-28`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}

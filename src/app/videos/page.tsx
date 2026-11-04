@@ -43,6 +43,9 @@ export const metadata: Metadata = pageMeta({
   path: "/videos",
 });
 
+// 정적 페이지가 만들어진 시각 — 영상 목록의 첫 렌더 기준(VideoGrid 주석)
+const BUILT_AT = Date.now();
+
 export default function VideosPage() {
   return (
     <>
@@ -64,7 +67,7 @@ export default function VideosPage() {
       />
       <section className="bg-white">
         <Container className="py-16 sm:py-20">
-          <VideoGrid videos={videos} />
+          <VideoGrid videos={videos} builtAt={BUILT_AT} />
         </Container>
       </section>
       <section className="border-t border-line bg-cloud/50">

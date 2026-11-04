@@ -7,7 +7,7 @@ import { site } from "@/lib/site";
 // 참조: vestre(노랑 면 + 검정 글자를 시그니처로 쓰는 같은 논리).
 export default function ContactCTA() {
   return (
-    <section className="relative overflow-hidden bg-arch">
+    <section className="cv-defer relative overflow-hidden bg-arch">
       <Container className="flex flex-col items-center gap-6 py-16 text-center sm:py-20">
         <h2 className="max-w-2xl break-keep text-3xl font-extrabold tracking-tight text-navy sm:text-4xl">
           안전한 거리도, 우리 브랜드도

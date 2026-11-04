@@ -68,6 +68,12 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
 };
 
+// 첫 방문 로드 동안만 화면 밖 블록(.cv-defer)의 배치를 미룬다 — 정본 설명은 globals.css「화면 밖 블록의 배치·그리기 미루기」(2026-11-04 성능 H3).
+// 해시 주소·새로고침·뒤로/앞으로로 연 페이지엔 켜지 않고, 링크 클릭·해시가 붙은 이동(router.push 포함)·popstate·hashchange에서 끈다.
+// 링크 클릭에서 끄는 까닭: 스크롤바를 끌어 건너뛴 블록은 추정 높이로 남아, 그 상태로 떠난 쪽에 뒤로 오면 복원 위치가 어긋났다(/news 실측 ~200px).
+// 끌 때 화면 1/3 지점의 요소가 제자리에 있도록 스크롤을 직접 보정한다(크롬 스크롤 앵커링은 content-visibility 해제를 보정하지 않았다).
+const CV_BOOT = `(function(){try{var n=performance.getEntriesByType("navigation")[0];if(location.hash||(n&&n.type!=="navigate"))return;var d=document.documentElement;d.setAttribute("data-cv-boot","");var h=history,P=h.pushState,R=h.replaceState;function off(){var el=document.elementFromPoint(innerWidth/2,innerHeight/3),y0=el&&el!==d&&el!==document.body?el.getBoundingClientRect().top:null;d.removeAttribute("data-cv-boot");if(y0!==null){var dy=el.getBoundingClientRect().top-y0;if(dy)scrollTo({top:scrollY+dy,behavior:"instant"})}removeEventListener("popstate",off);removeEventListener("hashchange",off);document.removeEventListener("click",c,true);if(h.pushState===p)h.pushState=P;if(h.replaceState===r)h.replaceState=R}function c(e){var a=e.target&&e.target.closest&&e.target.closest("a[href]");if(a)off()}function w(f){return function(s,t,u){if(u!=null&&String(u).indexOf("#")>-1)off();return f.apply(this,arguments)}}var p=w(P),r=w(R);h.pushState=p;h.replaceState=r;addEventListener("popstate",off);addEventListener("hashchange",off);document.addEventListener("click",c,true)}catch(e){}})();`;
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -179,7 +185,11 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="ko" className={poppins.variable}>
+    // suppressHydrationWarning: 머리 스크립트가 하이드레이션 전에 data-cv-boot를 붙인다(아래 CV_BOOT)
+    <html lang="ko" className={poppins.variable} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: CV_BOOT }} />
+      </head>
       <body className="min-h-dvh bg-paper text-ink antialiased">
         <script
           type="application/ld+json"

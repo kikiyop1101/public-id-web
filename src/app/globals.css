@@ -162,6 +162,22 @@ p {
   border-image: var(--arch) 1;
 }
 
+/* 화면 밖 블록의 배치·그리기 미루기 (2026-11-04 성능 H3)
+   프리텐다드 다이나믹 서브셋은 조각(~25KB)이 하나 올 때마다 페이지 전체를 다시 배치한다(휴대폰 첫 로드 20회 안팎 —
+   /news 실측 레이아웃 1.9초, Lighthouse 모바일 TBT 1.6초). 화면 밖 블록은 그 배치를 건너뛰게 한다.
+   가까워지면 평소대로 그려져 모양은 같고, 찾기(Ctrl+F)·화면낭독기도 그대로 닿는다. --cv = 처음 그려지기 전 자리 높이 추정.
+   · .cv-auto  = 늘 적용. 아래에 이동 목표가 없는 맨 끝 블록(푸터)만.
+   · .cv-defer = 첫 방문 로드 동안만 적용(html[data-cv-boot], layout.tsx 머리 스크립트). 본문 블록에 늘 걸면 추정 높이 때문에
+     앵커 이동(/os#kits 실측 3,000px 어긋남)·뒤로 가기 스크롤 복원(/news 실측 ~200px)이 틀어져서, 해시 주소·새로고침·뒤로/앞으로로
+     연 페이지에는 처음부터 안 걸고, 링크 클릭·해시가 붙은 이동·popstate가 오면 그 자리에서 끈다(한 번 끄면 그 페이지에선 다시 안 켠다).
+   ⚠️ paint 격리가 따라오므로 sticky·fixed 자식(라이트박스 등)이나 블록 밖으로 튀어나오는 장식이 있는 블록엔 쓰지 않는다. */
+.cv-auto,
+[data-cv-boot] .cv-defer {
+  content-visibility: auto;
+  contain-intrinsic-block-size: auto var(--cv, 800px);
+  overflow-clip-margin: 8px; /* paint 격리가 키보드 포커스 테두리(ring-offset)를 자르지 않게 — /videos 카드(PR #16 검토) */
+}
+
 /* Scroll reveal (paired with components/Reveal.tsx) */
 .reveal {
   opacity: 0;

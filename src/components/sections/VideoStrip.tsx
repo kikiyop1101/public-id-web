@@ -8,7 +8,7 @@ import { homeVideos, LONG_COUNT_LABEL, SHORT_COUNT_LABEL } from "@/lib/videos";
 // 첫 칸 롱폼(3~7분, 한 편 재생이 그대로 체류 몇 분 — 체류시간 기획안 2안) + 최신 쇼츠 2칸(2026-10-17, 매일 바뀌게).
 export default function VideoStrip() {
   return (
-    <section className="bg-white">
+    <section className="cv-defer bg-white">
       <Container className="py-20 sm:py-28">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>

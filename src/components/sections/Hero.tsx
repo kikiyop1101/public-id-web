@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { getImageProps } from "next/image";
 import Button from "@/components/Button";
 import PreloadImage from "@/components/PreloadImage";
 import ScrollDepth from "@/components/ScrollDepth";
@@ -7,7 +8,10 @@ import HeroAsk from "@/components/HeroAsk";
 import { news } from "@/lib/news";
 
 // LCP 후보(아치 창 사진 — 데스크톱·모바일 공용) — SVG <image>는 priority 힌트를 못 받아 preload로 보강 (2026-08-26 감사)
-const HERO_IMG = "/products/친환경그래픽노면표시재-노란발자국/참조04.jpg";
+// 2026-11-04 성능(H3): 원본 JPEG(773px·124KB) 대신 Next 이미지 최적화 WebP(원본 해상도 그대로·85KB)로 —
+// SVG <image>는 srcset이 없어 한 장만 고른다(w=828 = 원본 폭 773 이상 → 축소 없음). 데스크톱·모바일 아치가 같은 주소라 한 번만 받는다.
+const HERO_SRC = "/products/친환경그래픽노면표시재-노란발자국/참조04.jpg";
+const HERO_IMG = getImageProps({ src: HERO_SRC, alt: "", width: 414, height: 233 }).props.src;
 
 // 아치(다리) SVG — 데스크톱(우측 대형)과 모바일(본문 아래 인라인) 두 벌로 그린다.
 // 같은 문서에 두 번 들어가므로 그라디언트·클립패스 id는 suffix로 분리(중복 id 금지).
