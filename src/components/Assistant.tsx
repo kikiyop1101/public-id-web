@@ -95,7 +95,7 @@ export default function Assistant() {
     } catch {
       setMessages((m) => [
         ...m,
-        { role: "assistant", content: "연결이 불안정해요. 070-4150-1172 로 문의해 주세요." },
+        { role: "assistant", content: "연결이 불안정해요. 070-4150-1172로 문의해 주세요." },
       ]);
     } finally {
       setLoading(false);
