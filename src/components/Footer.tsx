@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 
 export default function Footer() {
   return (
-    <footer className="bg-navy text-white/70">
+    <footer className="cv-auto bg-navy text-white/70 [--cv:2600px] md:[--cv:1000px]">
       {/* 모바일 하단 여백을 넓혀 떠 있는 도우미 버튼이 맨 아래 링크를 가리지 않게 한다 */}
       <div className="mx-auto w-full max-w-[1200px] px-5 pt-16 pb-24 sm:px-8 sm:pb-16">
         {/* 전체 페이지 지도 — GNB 5그룹 그대로 (2026-08-26: 칩 나열 → 그룹 컬럼)

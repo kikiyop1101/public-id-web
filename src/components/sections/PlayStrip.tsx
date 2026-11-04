@@ -33,7 +33,7 @@ const items = [
 
 export default function PlayStrip() {
   return (
-    <section className="bg-paper">
+    <section className="cv-defer bg-paper">
       <Container className="py-20 sm:py-28">
         <Reveal>
           <p className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Try it</p>

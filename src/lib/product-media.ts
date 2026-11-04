@@ -7,7 +7,7 @@ import path from 'node:path'
 // 서버(빌드 타임) 전용 — 클라이언트 컴포넌트에서 import 금지.
 
 export type MainMedia =
-  | { kind: 'video'; webm?: string; mp4?: string; fallbackImage?: string }
+  | { kind: 'video'; webm?: string; mp4?: string; fallbackImage?: string; poster?: string }
   | { kind: 'image'; src: string }
   | null
 
@@ -40,6 +40,12 @@ export function getProductMedia(folder: string): ProductMedia {
   const mainGif = nonRef.find(
     (f) => f.startsWith('구조분석') && f.toLowerCase().endsWith('.gif'),
   )
+  // 영상 포스터 = 구조분석 gif의 마지막 장면을 뽑은 정지 WebP('구조분석*-poster.webp', 2026-11-04 성능 H3).
+  // 움직이는 gif(~430KB)를 포스터로 걸면 영상(~190KB)보다 무거워 /products 휴대폰 LCP가 8초였다.
+  // gif를 바꾸면 이 파일도 같이 다시 뽑는다(없으면 종전대로 gif가 포스터).
+  const mainPoster = nonRef.find(
+    (f) => f.startsWith('구조분석') && f.toLowerCase().endsWith('-poster.webp'),
+  )
 
   const refs = files
     .filter((f) => f.startsWith('참조'))
@@ -59,6 +65,7 @@ export function getProductMedia(folder: string): ProductMedia {
       webm: mainWebm ? publicUrl(folder, mainWebm) : undefined,
       mp4: mainMp4 ? publicUrl(folder, mainMp4) : undefined,
       fallbackImage: mainGif ? publicUrl(folder, mainGif) : undefined,
+      poster: mainPoster ? publicUrl(folder, mainPoster) : undefined,
     }
   } else if (mainGif) {
     main = { kind: 'image', src: publicUrl(folder, mainGif) }

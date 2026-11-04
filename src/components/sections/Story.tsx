@@ -14,7 +14,7 @@ const pillars = [
 
 export default function Story() {
   return (
-    <section id="about" className="bg-navy py-20 text-white sm:py-28">
+    <section id="about" className="cv-defer bg-navy py-20 text-white sm:py-28">
       <Container className="grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
         <Reveal className="lg:col-span-7">
           <p className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-teal-100">

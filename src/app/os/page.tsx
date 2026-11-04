@@ -20,6 +20,7 @@ import OsCurator from '@/components/OsCurator'
 import KitLink from '@/components/KitLink'
 import ScanClient from '@/components/ScanClient'
 import OsWhyTabs from '@/components/OsWhyTabs'
+import LazyIframe from '@/components/LazyIframe'
 import BreadcrumbLd from '@/components/BreadcrumbLd'
 
 export const metadata: Metadata = pageMeta({
@@ -282,7 +283,7 @@ export default function OsPage() {
       </section>
 
       {/* 정의 */}
-      <section className="bg-cloud border-line border-y">
+      <section className="cv-defer bg-cloud border-line border-y">
         <div className="mx-auto max-w-[1200px] px-5 py-20 sm:px-8 sm:py-28">
           <p className={SECTION_EYEBROW}>What it is</p>
           <h2 className={`${SECTION_H2} max-w-[22ch]`}>
@@ -310,7 +311,7 @@ export default function OsPage() {
 
       {/* 실제 운영 구조 — 우리 회사가 매일 쓰는 AI 운영을 기계 한 대로(2026-10-25 대표 "홈페이지에 걸고 푸쉬까지").
           그림은 같은 사이트 정적 페이지 iframe(next.config /embed 같은 사이트 허용), 번호 설명은 여기 HTML로 둬 검색·AI가 읽게 한다. */}
-      <section className="border-line border-b">
+      <section className="cv-defer border-line border-b">
         <div className="mx-auto max-w-[1200px] px-5 py-20 sm:px-8 sm:py-28">
           <p className={SECTION_EYEBROW}>How we run</p>
           <h2 className={`${SECTION_H2} max-w-[24ch]`}>우리 회사부터 이렇게 돌아갑니다</h2>
@@ -319,10 +320,10 @@ export default function OsPage() {
             퍼블릭아이디가 매일 쓰는 AI 운영 구조를 작은 기계 한 대로 그렸습니다.
           </p>
           <figure className="border-line mt-10 overflow-hidden rounded-3xl border bg-white shadow-sm">
-            <iframe
+            {/* 화면 400px 앞에서 붙인다(LazyIframe 주석 — 기본 lazy는 휴대폰 첫 로드에 입체도를 실었다, 2026-11-04) */}
+            <LazyIframe
               src="/embed/ai-anatomy.html"
               title="퍼블릭아이디 AI 운영 구조 입체도 — 신호가 지휘실을 거쳐 영업·콘텐츠·고객 응대로 나뉘고, 돈·계약만 대표 승인"
-              loading="lazy"
               className="block aspect-[1000/600] w-full max-sm:aspect-[700/500]"
             />
           </figure>
@@ -348,14 +349,14 @@ export default function OsPage() {
       </section>
 
       {/* 왜 — 탭 */}
-      <section className="mx-auto max-w-[1200px] px-5 py-20 sm:px-8 sm:py-28">
+      <section className="cv-defer mx-auto max-w-[1200px] px-5 py-20 sm:px-8 sm:py-28">
         <p className={SECTION_EYEBROW}>Why</p>
         <h2 className={SECTION_H2}>우리회사OS로 이루려는 것은 분명합니다</h2>
         <OsWhyTabs />
       </section>
 
       {/* 비교 3열 + 핵심 설계 */}
-      <section className="bg-cloud border-line border-y">
+      <section className="cv-defer bg-cloud border-line border-y">
         <div className="mx-auto max-w-[1200px] px-5 py-20 sm:px-8 sm:py-28">
           <p className={SECTION_EYEBROW}>Beyond chat</p>
           <h2 className={`${SECTION_H2} max-w-[24ch]`}>
@@ -397,7 +398,7 @@ export default function OsPage() {
       </section>
 
       {/* 3층 구조 */}
-      <section className="mx-auto max-w-[1200px] px-5 py-20 sm:px-8 sm:py-28">
+      <section className="cv-defer mx-auto max-w-[1200px] px-5 py-20 sm:px-8 sm:py-28">
         <p className={SECTION_EYEBROW}>3-Layer Architecture</p>
         <h2 className={`${SECTION_H2} max-w-[26ch]`}>
           기록 · 실행 · 자율 3층 구조로, 끊기지 않는 업무 흐름을 만듭니다
@@ -474,7 +475,7 @@ export default function OsPage() {
       </section>
 
       {/* 업종별 구성 */}
-      <section id="industry" className="bg-cloud border-line scroll-mt-24 border-y">
+      <section id="industry" className="cv-defer bg-cloud border-line scroll-mt-24 border-y">
         <div className="mx-auto max-w-[1200px] px-5 py-20 sm:px-8 sm:py-28">
           <p className={SECTION_EYEBROW}>By industry</p>
           <h2 className={SECTION_H2}>업종별로는 이렇게 묶었습니다</h2>
@@ -514,7 +515,7 @@ export default function OsPage() {
       </section>
 
       {/* 도입 단계 */}
-      <section className="mx-auto max-w-[1200px] px-5 py-20 sm:px-8 sm:py-28">
+      <section className="cv-defer mx-auto max-w-[1200px] px-5 py-20 sm:px-8 sm:py-28">
         <p className={SECTION_EYEBROW}>How to start</p>
         <h2 className={SECTION_H2}>우리회사OS 도입 단계</h2>
         <ol className="mt-12 max-w-[52em]">
@@ -539,7 +540,7 @@ export default function OsPage() {
       <ScanClient />
 
       {/* 키트 목록 */}
-      <section id="kits" className="mx-auto max-w-[1200px] scroll-mt-24 px-5 py-20 sm:px-8 sm:py-28">
+      <section id="kits" className="cv-defer mx-auto max-w-[1200px] scroll-mt-24 px-5 py-20 sm:px-8 sm:py-28">
         <p className={SECTION_EYEBROW}>Kits</p>
         <h2 className={SECTION_H2}>지금 있는 키트 {KITS.length}종</h2>
         <p className="text-ink-soft mt-5 max-w-[42em] break-keep text-lg leading-relaxed">
@@ -679,7 +680,7 @@ export default function OsPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-cloud border-line border-y">
+      <section className="cv-defer bg-cloud border-line border-y">
         <div className="mx-auto max-w-[1200px] px-5 py-20 sm:px-8 sm:py-28">
         <p className="font-display text-teal-700 text-sm font-semibold uppercase tracking-[0.18em]">
           FAQ
@@ -699,7 +700,7 @@ export default function OsPage() {
       </section>
 
       {/* 최종 CTA */}
-      <section className="bg-navy">
+      <section className="cv-defer bg-navy">
         <div className="mx-auto max-w-[1200px] px-5 py-16 text-center sm:px-8 sm:py-20">
           <h2 className="text-2xl font-extrabold tracking-[-0.025em] text-white sm:text-3xl">
             어디부터 바꿀지, 3분이면 답이 나옵니다

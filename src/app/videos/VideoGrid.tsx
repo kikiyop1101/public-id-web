@@ -15,10 +15,12 @@ function matches(v: Video, t: Tab): boolean {
 }
 
 // 탭 상태는 URL 해시(#쇼츠 전체)에 남겨 공유·뒤로가기가 통하게 한다. 기본 탭 = 롱폼(체류 효과 최대).
-export default function VideoGrid({ videos }: { videos: Video[] }) {
+export default function VideoGrid({ videos, builtAt }: { videos: Video[]; builtAt: number }) {
   const [tab, setTab] = useState<Tab>("롱폼 설명영상");
   // 예약 공개 롱폼은 브라우저 시각 기준으로 자동 노출(서버 빌드 시각에 묶이지 않게 클라이언트에서 판정).
-  const [now, setNow] = useState(0);
+  // 첫 렌더 = 빌드 시각(2026-11-04 성능 H3). 종전엔 0이라 HTML에서 예약분(이미 공개된 것까지)을 모두 숨겼다가
+  // 하이드레이션 뒤 한꺼번에 끼워 넣어 목록이 밀렸다(휴대폰 CLS 0.138). 빌드 때 공개된 영상은 지금도 공개 상태다.
+  const [now, setNow] = useState(builtAt);
 
   useEffect(() => {
     const sync = () => {
@@ -39,8 +41,8 @@ export default function VideoGrid({ videos }: { videos: Video[] }) {
     history.replaceState(null, "", t === "롱폼 설명영상" ? location.pathname : `#${t}`);
   };
 
-  // now=0(첫 렌더)일 땐 예약분을 숨긴다 — 공개 전 영상은 유튜브가 재생을 막아 회색 화면만 뜬다.
-  const live = videos.filter((v) => isLive(v, now || 0));
+  // 공개 전 영상은 숨긴다 — 유튜브가 재생을 막아 회색 화면만 뜬다.
+  const live = videos.filter((v) => isLive(v, now));
   const list = live.filter((v) => matches(v, tab));
 
   return (
@@ -72,7 +74,7 @@ export default function VideoGrid({ videos }: { videos: Video[] }) {
 
       <ul className="mt-8 grid gap-x-6 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
         {list.map((v) => (
-          <li key={v.id}>
+          <li key={v.id} className="cv-defer [--cv:300px]">
             <LiteYouTube id={v.id} title={v.title} place="videos" />
             <p className="mt-3 break-keep text-[15px] font-bold leading-snug text-ink">{v.title}</p>
             <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-teal-700">

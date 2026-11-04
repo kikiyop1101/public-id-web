@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/cn";
@@ -13,6 +14,10 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  // 모바일 메뉴 링크는 처음 열 때 그린다(2026-11-04 성능 H3). 닫힌 서랍은 invisible(=화면 안 영역)이라
+  // 그 안의 <Link> 20여 개가 매 페이지 첫 로드에 전부 프리페치됐다(휴대폰 RSC 요청 ~45건·JS 청크 ~15개).
+  // 데스크톱 nav(display:none → 관측 안 됨)가 같은 링크를 HTML에 그대로 두므로 크롤러가 보는 링크는 같다.
+  const [menuMounted, setMenuMounted] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -74,8 +79,8 @@ export default function Header() {
           className="flex min-h-11 shrink-0 items-center"
           onClick={() => setOpen(false)}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.png" alt={site.name} width={480} height={142} fetchPriority="high" className="h-7 w-auto sm:h-[30px]" />
+          {/* 2026-11-04 성능(H3): 원본 PNG(480px·27KB) → 최적화 WebP(표시 폭 ~102px에 맞춘 srcset, 휴대폰 ~10KB). 모든 페이지 공통 */}
+          <Image src="/logo.png" alt={site.name} width={480} height={142} sizes="102px" loading="eager" fetchPriority="high" className="h-7 w-auto sm:h-[30px]" />
         </Link>
 
         <nav aria-label="주 메뉴" className="hidden items-center gap-9 lg:flex">
@@ -162,7 +167,10 @@ export default function Header() {
         </button>
         <button
           type="button"
-          onClick={() => setOpen((v) => !v)}
+          onClick={() => {
+            setMenuMounted(true);
+            setOpen((v) => !v);
+          }}
           aria-label={open ? "메뉴 닫기" : "메뉴 열기"}
           aria-expanded={open}
           className="relative z-50 flex h-11 w-11 items-center justify-center lg:hidden"
@@ -201,6 +209,7 @@ export default function Header() {
             : "invisible pointer-events-none -translate-y-2 opacity-0",
         )}
       >
+        {menuMounted && (
         <nav aria-label="모바일 메뉴" className="flex max-h-[calc(100dvh-68px)] flex-col gap-1 overflow-y-auto overscroll-contain px-5 py-4 pb-8">
           {site.nav.map((n) => (
             <div key={n.href}>
@@ -259,6 +268,7 @@ export default function Header() {
             구독 상담
           </Link>
         </nav>
+        )}
       </div>
 
       <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />

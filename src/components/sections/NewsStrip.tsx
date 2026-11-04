@@ -9,7 +9,7 @@ import { news, newsKind } from "@/lib/news";
 export default function NewsStrip() {
   const latest = news.slice(0, 3);
   return (
-    <section className="bg-white">
+    <section className="cv-defer bg-white">
       <Container className="py-20 sm:py-28">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>

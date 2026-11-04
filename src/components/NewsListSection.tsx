@@ -56,7 +56,7 @@ export default function NewsListSection({
               <Reveal key={n.slug} delay={Math.min(i, 6) * 60}>
                 <article
                   id={n.slug}
-                  className="group scroll-mt-24 rounded-3xl border border-line bg-white p-7 shadow-sm transition hover:border-teal-700/40 sm:p-9"
+                  className="cv-defer group scroll-mt-24 rounded-3xl [--cv:420px] border border-line bg-white p-7 shadow-sm transition hover:border-teal-700/40 sm:p-9"
                 >
                   <div className="h-1.5 w-12 rounded-full bg-arch" />
                   <p className="mt-5 font-display text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
