@@ -20,7 +20,7 @@ const GATES = [
   {
     href: "/subscribe",
     label: "디자인 구독",
-    desc: "홈페이지 제작 · 전용 마스코트 · 매월 웹툰 · 디자인 시스템 — Basic 연 110만원부터",
+    desc: "홈페이지 제작 · 전용 마스코트 · 매월 웹툰 · 디자인 시스템 — Basic 연 110만\u00a0원부터",
     img: "/mascot/pui-wave.png",
     imgAlt: "디자인 구독의 얼굴, 마스코트 퍼이",
     imgFit: "contain" as const,
@@ -81,7 +81,7 @@ export default function ProductGateway() {
                     </span>
                   )}
                 </span>
-                {/* 2026-10-16 설명을 제목 바로 아래로 — 오른쪽 끝 정렬은 가운데가 비고 "Basic 연/110만원부터"가 쪼개졌다(taste-skill 실측) */}
+                {/* 2026-10-16 설명을 제목 바로 아래로 — 오른쪽 끝 정렬은 가운데가 비고 "Basic 연/110만 원부터"가 쪼개졌다(taste-skill 실측) */}
                 <span className="flex min-w-0 flex-1 flex-col gap-1.5 sm:gap-2">
                   <span className="text-xl font-extrabold tracking-tight text-ink transition group-hover:text-teal-700 sm:text-3xl">
                     {g.label}
