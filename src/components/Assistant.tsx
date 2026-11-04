@@ -208,7 +208,7 @@ export default function Assistant() {
             {inquiryMsgs.length ? "이 대화로 문의하기" : "문의하기"}
           </Link>
           {" · ☎ "}
-          <a href="tel:070-4150-1172" className="text-teal-700">070-4150-1172</a>
+          <a href="tel:070-4150-1172" className="whitespace-nowrap text-teal-700">070-4150-1172</a>
         </p>
       </div>
     </div>

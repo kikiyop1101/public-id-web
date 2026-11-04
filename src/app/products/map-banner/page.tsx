@@ -162,7 +162,7 @@ export default function MapBannerPage() {
             원본으로 보유해 어떤 크기로도 선명하게 출력합니다. 한글판·영문판 모두
             가능합니다.
           </p>
-          <div className="mt-10 grid grid-cols-2 gap-5 lg:grid-cols-3">
+          <div className="mt-10 grid grid-cols-2 items-start gap-5 lg:grid-cols-3">
             {KOREA.map((m) => (
               <MapCard key={m.id} item={m} />
             ))}
@@ -183,7 +183,7 @@ export default function MapBannerPage() {
             관할 구역 전체가 한눈에 — 시·군 경계와 지명을 담은 광역 행정지도입니다.
             지자체 상황실·의회·교육청 벽면에 바로 걸 수 있습니다.
           </p>
-          <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+          <div className="mt-10 grid grid-cols-2 items-start gap-4 sm:grid-cols-3 lg:grid-cols-4">
             {SIDO.map((m) => (
               <MapCard key={m.id} item={m} compact />
             ))}
@@ -204,7 +204,7 @@ export default function MapBannerPage() {
             우리 동네 읍·면·동 경계까지 담은 기초자치단체 지도 — 전국 어느 시·군이든
             찾으시는 지역이 있습니다.
           </p>
-          <div className="mt-10 grid grid-cols-3 gap-4 sm:grid-cols-4 lg:grid-cols-6">
+          <div className="mt-10 grid grid-cols-2 items-start gap-4 sm:grid-cols-4 lg:grid-cols-6">
             {SIGUN.map((m) => (
               <MapCard key={m.id} item={m} compact />
             ))}
@@ -225,7 +225,7 @@ export default function MapBannerPage() {
             음영기복 세계지도(한글 국가명 자체 제작)와 1864년 목판본 대동여지도 —
             교실·복도·라운지의 큰 벽을 채우는 그림 같은 지도입니다.
           </p>
-          <div className="mt-10 grid grid-cols-2 gap-5 lg:grid-cols-3">
+          <div className="mt-10 grid grid-cols-2 items-start gap-5 lg:grid-cols-3">
             {[...WORLD, ...OLD].map((m) => (
               <MapCard key={m.id} item={m} />
             ))}
