@@ -175,6 +175,7 @@ p {
 [data-cv-boot] .cv-defer {
   content-visibility: auto;
   contain-intrinsic-block-size: auto var(--cv, 800px);
+  overflow-clip-margin: 8px; /* paint 격리가 키보드 포커스 테두리(ring-offset)를 자르지 않게 — /videos 카드(PR #16 검토) */
 }
 
 /* Scroll reveal (paired with components/Reveal.tsx) */
