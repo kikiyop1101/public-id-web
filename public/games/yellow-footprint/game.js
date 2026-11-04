@@ -24,6 +24,7 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 const canvas = renderer.domElement;
 canvas.id = 'scene';
 canvas.tabIndex = 0;
+canvas.setAttribute('role', 'application'); // aria-label이 읽히려면 역할이 필요하다(2026-11-04 접근성)
 canvas.setAttribute('aria-label', '캠페인 장면 — 누르면 그곳으로 걸어가고, 반짝이는 곳을 누르면 일해요');
 $('#app').prepend(canvas);
 

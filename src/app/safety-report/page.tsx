@@ -158,7 +158,7 @@ export default async function SafetyReportPage() {
           </h2>
           <ol className="mt-8 max-w-2xl space-y-5">
             <li className="flex gap-4">
-              <span className="bg-teal inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white">
+              <span className="bg-teal-700 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white">
                 1
               </span>
               <div>
@@ -170,7 +170,7 @@ export default async function SafetyReportPage() {
               </div>
             </li>
             <li className="flex gap-4">
-              <span className="bg-teal inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white">
+              <span className="bg-teal-700 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white">
                 2
               </span>
               <div>
@@ -182,7 +182,7 @@ export default async function SafetyReportPage() {
               </div>
             </li>
             <li className="flex gap-4">
-              <span className="bg-teal inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white">
+              <span className="bg-teal-700 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white">
                 3
               </span>
               <div>

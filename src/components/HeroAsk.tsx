@@ -115,7 +115,7 @@ export default function HeroAsk() {
             onChange={(e) => setQ(e.target.value)}
             aria-controls={hits.length ? listId : undefined}
             placeholder={mode === "find" ? "무엇을 찾으세요? 예: 스쿨존 노면표시" : "무엇이든 물어보세요. 예: 노란발자국 얼마예요?"}
-            className="h-11 min-w-0 flex-1 bg-transparent text-base text-ink outline-none placeholder:text-ink-soft/70"
+            className="h-11 min-w-0 flex-1 bg-transparent text-base text-ink outline-none placeholder:text-ink-soft"
           />
           <button
             type="submit"
