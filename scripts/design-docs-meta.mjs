@@ -72,9 +72,9 @@ for (const file of walk(DIR)) {
     continue;
   }
   const next = html
-    .replace(/<meta name="description"[^>]*>\n?/g, "")
-    .replace(/<link rel="canonical"[^>]*>\n?/g, "")
-    .replace(/(<\/title>\n?)/, `$1${tags}`);
+    .replace(/<meta name="description"[^>]*>\r?\n?/g, "")
+    .replace(/<link rel="canonical"[^>]*>\r?\n?/g, "")
+    .replace(/(<\/title>\r?\n?)/, `$1${tags}`);
   if (next !== html) {
     fs.writeFileSync(file, next);
     changed++;

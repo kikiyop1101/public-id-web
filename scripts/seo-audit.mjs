@@ -14,7 +14,7 @@
 //  5. llms-full.txt·/md — 마크다운 판 목록이 현재 쪽(우리회사OS 킷·소식·질문 답변)과 일치하는지, public/llms.txt 링크가 살아 있는지
 //
 // 외부 제출(IndexNow·서치콘솔)은 하지 않는다. 네트워크는 로컬 서버에만 붙는다.
-import { spawn } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -61,15 +61,17 @@ async function startServer() {
     shell: process.platform === "win32",
   });
   child.stderr.on("data", () => {});
+  // 윈도는 shell로 띄운 next가 child.kill()로 안 꺼진다(중간 셸만 꺼짐) → 프로세스 트리째
+  const stop = () => (process.platform === "win32" ? spawnSync("taskkill", ["/pid", String(child.pid), "/T", "/F"]) : child.kill());
   const base = `http://localhost:${port}`;
   for (let i = 0; i < 120; i++) {
     try {
       const r = await fetch(`${base}/robots.txt`);
-      if (r.ok) return { base, stop: () => child.kill() };
+      if (r.ok) return { base, stop };
     } catch {}
     await new Promise((r) => setTimeout(r, 500));
   }
-  child.kill();
+  stop();
   throw new Error("next start가 60초 안에 뜨지 않았습니다 — 먼저 npm run build");
 }
 
@@ -426,7 +428,7 @@ async function main() {
       if (!full.includes(`원문 ${SITE}${p}\n`) && !full.includes(`원문 ${SITE}${p} `))
         problems.push({ kind: "llms-full-missing", page: p, detail: "llms-full.txt에 이 쪽 문서 없음" });
     }
-    const llmsTxt = fs.readFileSync(path.join(ROOT, "public/llms.txt"), "utf8");
+    const llmsTxt = fs.readFileSync(path.join(ROOT, "public/llms.txt"), "utf8").replace(/\r\n/g, "\n");  // 윈도 체크아웃은 CRLF
     const llmsLinks = [...new Set([...llmsTxt.matchAll(/https:\/\/www\.public-id\.co\.kr(\/[^\s)`,]*)?/g)].map((m) => m[1] || "/"))];
     for (const raw of llmsLinks) {
       const p = raw.replace(/[.。]$/, "");
