@@ -87,8 +87,9 @@ export default function DesignTokenDemo() {
               <div className="h-2 w-8 rounded-full bg-line" />
               <div className="h-2 w-8 rounded-full bg-line" />
             </div>
+            {/* 큰 글자(20px 굵게, 3:1 기준)로 — 청록 #069CBB·웜 오렌지 위 흰 16px은 AA 미달(2026-11-04 axe 3.24:1) */}
             <div
-              className="rounded-xl p-5 font-bold text-white"
+              className="rounded-xl p-5 text-xl font-bold text-white"
               style={{ background: "var(--d-primary)" }}
             >
               귀사의 홈페이지

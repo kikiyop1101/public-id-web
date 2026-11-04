@@ -126,7 +126,7 @@ export default async function BlogPostPage({
           __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
         }}
       />
-      <Link href="/blog" className="text-teal text-sm hover:underline">
+      <Link href="/blog" className="text-teal-700 text-sm hover:underline">
         ← 블로그로
       </Link>
 

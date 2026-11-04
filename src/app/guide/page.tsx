@@ -204,14 +204,17 @@ export default function GuidePage() {
           </Reveal>
           <ol className="mt-12 space-y-px">
             {steps.map((s, i) => (
-              <Reveal key={s.n} delay={i * 70}>
-                <li className="grid gap-3 border-t border-line py-8 sm:grid-cols-[88px_1fr] sm:gap-10">
-                  <span className="font-display text-2xl font-bold text-teal-700">{s.n}</span>
-                  <div>
-                    <h3 className="text-xl font-bold text-ink">{s.t}</h3>
-                    <p className="mt-3 max-w-3xl leading-relaxed text-ink-soft">{s.d}</p>
-                  </div>
-                </li>
+              <Reveal
+                key={s.n}
+                as="li"
+                delay={i * 70}
+                className="grid gap-3 border-t border-line py-8 sm:grid-cols-[88px_1fr] sm:gap-10"
+              >
+                <span className="font-display text-2xl font-bold text-teal-700">{s.n}</span>
+                <div>
+                  <h3 className="text-xl font-bold text-ink">{s.t}</h3>
+                  <p className="mt-3 max-w-3xl leading-relaxed text-ink-soft">{s.d}</p>
+                </div>
               </Reveal>
             ))}
           </ol>
@@ -258,11 +261,13 @@ export default function GuidePage() {
           </Reveal>
           <dl className="mt-12 divide-y divide-line border-y border-line">
             {faqs.map((f, i) => (
-              <Reveal key={f.q} delay={i * 60}>
-                <div className="grid gap-3 py-7 sm:grid-cols-[minmax(0,340px)_1fr] sm:gap-10">
-                  <dt className="text-lg font-bold leading-snug text-ink">{f.q}</dt>
-                  <dd className="max-w-3xl leading-relaxed text-ink-soft">{f.a}</dd>
-                </div>
+              <Reveal
+                key={f.q}
+                delay={i * 60}
+                className="grid gap-3 py-7 sm:grid-cols-[minmax(0,340px)_1fr] sm:gap-10"
+              >
+                <dt className="text-lg font-bold leading-snug text-ink">{f.q}</dt>
+                <dd className="max-w-3xl leading-relaxed text-ink-soft">{f.a}</dd>
               </Reveal>
             ))}
           </dl>

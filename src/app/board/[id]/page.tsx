@@ -81,7 +81,7 @@ export default async function BoardPostPage({
 
   return (
     <article className="mx-auto max-w-3xl px-5 py-16">
-      <Link href="/board" className="text-teal text-sm hover:underline">
+      <Link href="/board" className="text-teal-700 text-sm hover:underline">
         ← 게시판으로
       </Link>
 
