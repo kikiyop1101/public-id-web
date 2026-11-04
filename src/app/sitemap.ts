@@ -4,6 +4,8 @@ import { parseBlogListItem } from "@/lib/blog";
 import { news } from "@/lib/news";
 import { answers } from "@/lib/answers";
 import { KIT_PAGES } from "@/lib/os-kit-pages";
+// 디자인시스템 문서(정적 HTML, /design에서 링크) — 문서 묶음의 검색 색인 목록이 곧 쪽 목록이다(빌드 때 번들, 런타임 파일 읽기 없음).
+import designDocsIndex from "../../public/design-docs/assets/search-index.json";
 
 // 발행·승인이 배포 없이 일어나므로 빌드 스냅샷에 고정하지 않는다 — 배포 없는 발행분은 최대 1시간 지연 반영(ISR).
 // 관리자 글 등록·삭제는 admin/actions.ts 가 revalidatePath('/sitemap.xml')로 바로 갱신한다.
@@ -85,5 +87,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${base}/os/${p.slug}`,
     priority: 0.7,
   }));
-  return [...staticEntries, ...newsEntries, ...answerEntries, ...kitEntries, ...(await blogEntries())];
+  // 2026-11-04 디자인시스템 문서(public/design-docs) — 홈 + 색인 목록의 쪽들. 메타는 scripts/design-docs-meta.mjs가 넣는다.
+  const designDocEntries: MetadataRoute.Sitemap = ["index.html", ...(designDocsIndex as { url: string }[]).map((d) => d.url)].map((u) => ({
+    url: `${base}/design-docs/${u}`,
+    priority: 0.4,
+  }));
+  return [...staticEntries, ...newsEntries, ...answerEntries, ...kitEntries, ...designDocEntries, ...(await blogEntries())];
 }

@@ -46,20 +46,23 @@ export default async function AnswerDetailPage({
   const others = answers.filter((a) => a.slug !== item.slug);
   const [primary, ...secondary] = item.actions;
 
-  // 날짜는 화면에 내지 않고 dateModified만 기계용으로 낸다.
+  // 날짜는 화면에 내지 않고 기계용으로만 낸다. datePublished는 Article 필수 칸이라 따로 적힌 날이 없으면 dateModified를 쓴다(2026-11-04).
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: item.question,
     description: item.description,
     inLanguage: "ko-KR",
+    datePublished: item.datePublished ?? item.dateModified,
     dateModified: item.dateModified,
     image: `${site.url}/og.png`,
     mainEntityOfPage: `${site.url}/answers/${item.slug}`,
-    author: { "@type": "Organization", name: site.legalName, url: site.url },
+    author: { "@type": "Organization", "@id": `${site.url}/#organization`, name: site.legalName, url: site.url },
     publisher: {
       "@type": "Organization",
+      "@id": `${site.url}/#organization`,
       name: site.legalName,
+      url: site.url,
       logo: { "@type": "ImageObject", url: `${site.url}/logo.png` },
     },
   };
