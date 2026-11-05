@@ -6,8 +6,11 @@
 import raw from '@/content/os-kit-pages.json'
 import { KITS, PACK_MEMBERS, type Kit } from '@/lib/os-kits'
 
-type Raw = { slug: string; code: string; url: string; image: string; headline: string }
+type Raw = { slug: string; code: string; url: string; image: string; headline: string; faq?: Faq[] }
 export type Faq = { q: string; a: string }
+// 손으로 쓴 FAQ 뒤에 원재료의 faq(토리 고객 언어 사전 → 윤결 답, export_site_kit_pages.py --apply)를 붙인다 — 같은 질문은 한 번만(11-05)
+const withExtra = (faq: Faq[], extra: Faq[] = []): Faq[] =>
+  extra.reduce((all, e) => (all.some((f) => f.q === e.q) ? all : [...all, e]), faq)
 type Copy = {
   /** <title> — 검색어 중심, 30자 안팎 */
   title: string
@@ -1186,12 +1189,12 @@ function build(r: Raw): KitPage {
       features: [],
       needs: [],
       steps: [],
-      faq: [],
+      faq: r.faq ?? [], // 아래 패키지 조립에서 구성 킷 FAQ 뒤에 붙인다
     }
   }
   const c = COPY[r.slug]
   if (!c) throw new Error(`os-kit-pages: ${r.slug} 카피 없음`)
-  return { ...base, h1: c.h1 ?? clean(r.headline), ...c }
+  return { ...base, h1: c.h1 ?? clean(r.headline), ...c, faq: withExtra(c.faq, r.faq) }
 }
 
 export const KIT_PAGES: KitPage[] = (raw as Raw[]).map(build)
@@ -1210,14 +1213,17 @@ for (const p of KIT_PAGES) {
   const names = members.map((m) => m.label).join('·')
   p.members = members
   p.lead = `${names} ${members.length}종을 한 번에 받는 업종 패키지입니다. 킷마다 한 가지 일을 맡고, 더블클릭으로 창을 열어 버튼을 누르면 결과물이 우리 회사 이름으로 나옵니다.`
-  p.faq = [
-    { q: `${p.kit.name}에는 어떤 킷이 들어 있나요?`, a: `${names} ${members.length}종이 들어 있습니다. 킷마다 한 가지 일을 맡습니다.` },
-    INSTALL,
-    {
-      q: 'AI 구독료가 따로 드나요?',
-      a: '키트 안에서 쓰는 AI는 대표님이 쓰시는 구독(ChatGPT·Claude 등)을 그대로 씁니다. 키트 값에 AI 구독료는 포함되지 않습니다.',
-    },
-  ]
+  p.faq = withExtra(
+    [
+      { q: `${p.kit.name}에는 어떤 킷이 들어 있나요?`, a: `${names} ${members.length}종이 들어 있습니다. 킷마다 한 가지 일을 맡습니다.` },
+      INSTALL,
+      {
+        q: 'AI 구독료가 따로 드나요?',
+        a: '키트 안에서 쓰는 AI는 대표님이 쓰시는 구독(ChatGPT·Claude 등)을 그대로 씁니다. 키트 값에 AI 구독료는 포함되지 않습니다.',
+      },
+    ],
+    p.faq,
+  )
 }
 
 if (KIT_PAGES.length !== KITS.length) throw new Error('os-kit-pages: KITS와 개수가 다름')
