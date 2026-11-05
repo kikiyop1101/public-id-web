@@ -16,7 +16,7 @@ Next.js 16.4.x(정확한 버전은 package.json의 next). `node_modules/next/dis
 - build: `npm run build` (⚠️ git push 전 필수 — 빌드 깨진 채 push 금지. master push 시 Vercel 프로덕션 public-id.co.kr 자동 재배포)
 - lint: `npm run lint` (스크립트는 `eslint`)
 - deploy: `git push` (master → Vercel 자동 재배포, `npx vercel --prod` 수동 불필요)
-- 소식(/news 전체 · /press 보도자료만, 탭 공용 컴포넌트 NewsListSection) 데이터 = `src/content/news.json`(최신이 맨 앞, 날짜 필드 없음 — 대표 확정 2026-09-08). 볼트 `Agent\콘텐츠본부\보도자료\publisher\news_publish.py`가 주 3건(월·수·금) 자동으로 검증→선두 삽입→build→commit→push 한다. 손으로 고칠 땐 slug 유일·플레인 텍스트 문단만 지키면 된다.
+- 소식(/news 전체 · /press 보도자료만, 탭 공용 컴포넌트 NewsListSection) 데이터 = `src/content/news.json`(최신이 맨 앞, 화면에 날짜를 내지 않음 — 대표 확정 2026-09-08. 기계용 `datePublished`만 있다 — 사이트맵 lastmod·JSON-LD용, 화면 비표시, 2026-09-12). 볼트 `Agent\콘텐츠본부\보도자료\publisher\news_publish.py`가 주 3건(월·수·금) 자동으로 검증→선두 삽입→build→commit→push 한다. 손으로 고칠 땐 slug 유일·플레인 텍스트 문단만 지키면 된다.
 
 - IndexNow(빙·네이버·얀덱스 등, 구글 미지원) 자동 제출 = `.github/workflows/indexnow.yml` → `scripts/indexnow.mjs`. Vercel 프로덕션 배포 성공 시 직전 성공 배포 커밋과 diff해 바뀐 공개 URL만 제출한다(`src/app/<경로>` → 그 경로, `news.json` → 바뀐 글·/news·/press·홈, 공용 파일·public 자산처럼 애매한 변경 → sitemap lastmod 최근 7일 URL). 공개 URL 목록은 `sitemap.ts`의 routes를 읽으므로 새 페이지는 거기 넣으면 된다. 키 파일 `public/9706e13d3e584e3e0a8eac7f7ff78fdd.txt`(공개가 원래 설계)는 지우지 말 것. 수동: `node scripts/indexnow.mjs --base <sha> --dry-run`, 큰 개편 땐 `--all`.
 - **SEO·AEO 구조 점검(2026-11-04)**: 빌드 뒤 `node scripts/seo-audit.mjs` — 빌드 결과를 임시 포트로 띄워 깨진 내부 링크·#앵커, 사이트맵↔색인 대상 쪽, JSON-LD 문법·필수 칸·빈 값, 제목 ≤60자·설명 ≤160자, `/md`·`llms-full.txt`·`public/llms.txt`가 현재 쪽과 맞는지 본다(문제 있으면 종료 코드 1). 사이트맵에 일부러 안 넣는 쪽은 스크립트의 `SITEMAP_EXCLUDED`에 이유와 함께 적는다. 제목·설명 길이는 `pageMeta()`가 자동으로 맞춘다(`fitTitle`·`fitDescription`). 디자인시스템 정적 문서(`public/design-docs`)를 다시 내보내면 `node scripts/design-docs-meta.mjs`로 설명·canonical을 다시 넣는다(사이트맵은 그 묶음의 `search-index.json`에서 자동).
@@ -47,7 +47,8 @@ Next.js 16.4.x(정확한 버전은 package.json의 next). `node_modules/next/dis
 
 ## 변경 금지 (의도적 설계)
 
-- `src/lib/clientLinks.ts`의 SALT·ADMIN_KEY 평문 상수는 현 공개 쇼케이스 설계상 의도적 수용 — 데이터 비공개 전환 전까지 env var로 옮기거나 토큰 스킴을 바꾸지 말 것(발주처 전용 링크 /safety-map/c/<token>·/api/facility-links 깨짐).
+- `src/lib/clientLinks.ts`의 SALT·ADMIN_KEY 평문 상수는 현 공개 쇼케이스 설계상 의도적 수용 — 데이터 비공개 전환 전까지 env var로 옮기거나 토큰 스킴을 바꾸지 말 것(발주처 전용 링크 /safety-map/c/<token>·관리자 목록 /safety-map/links?key= 깨짐 — 옛 /api/facility-links는 2026-06-14에 없앰).
 - `next.config.ts`의 부분 CSP(form-action/frame-ancestors만)는 SSG nonce 한계로 의도적 — default-src/script-src 임의 추가 금지.
 - apex→www 308 redirect·보안헤더 5종은 의도적 유지.
+- `vercel.json` `regions: ["syd1"]` = 함수를 DB(Supabase, 호주 시드니) 옆에서 돌린다(2026-11-05 운영 실측 TTFB 중앙값 /safety-report·/board·/blog: iad1 1.49·0.99·0.99초 → icn1 0.78·0.56·0.57초 → syd1 0.45·0.30·0.34초). 지역을 바꾸면 개인정보처리방침 6번 Vercel 서버 처리 지역도 같은 커밋에서 고친다.
 - `.env*`·`.omc/`·`_세션복원-홈페이지.md`·`안전관리지도-운영가이드.md`·`.vercel`은 gitignore 유지(절대 커밋·추적 금지).

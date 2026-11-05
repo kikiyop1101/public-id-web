@@ -108,6 +108,7 @@ export default async function BlogPostPage({
       '@type': 'Organization',
       '@id': 'https://www.public-id.co.kr/#organization',
       name: '퍼블릭아이디',
+      url: 'https://www.public-id.co.kr',
     },
     publisher: { '@id': 'https://www.public-id.co.kr/#organization' },
   }

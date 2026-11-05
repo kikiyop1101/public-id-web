@@ -74,7 +74,7 @@ const sections: { h: string; body: (string | string[])[] }[] = [
     body: [
       "위 5번의 위탁 업체는 국외 사업자이므로, 「개인정보 보호법」 제28조의8에 따라 이전 내용을 다음과 같이 알립니다. 개인정보는 이용자가 양식을 제출하거나 사이트를 이용하는 시점에 암호화된 통신(HTTPS)으로 전송됩니다.",
       [
-        "Vercel Inc.(미국, 문의 privacy@vercel.com): 접속 기록, 양식에 입력한 내용 — 웹사이트 호스팅과 서버 처리",
+        "Vercel Inc.(미국 사업자, 서버 처리는 호주 시드니 지역, 문의 privacy@vercel.com): 접속 기록, 양식에 입력한 내용 — 웹사이트 호스팅과 서버 처리",
         "Supabase Inc.(호주 시드니 소재 클라우드 서버, 문의 privacy@supabase.com): 문의·신청 내용, 제보 내용과 사진, 게시판 글 — 저장·보관",
         "Anthropic PBC(미국, 문의 privacy@anthropic.com): AI 도우미·키트 추천에 입력한 내용 — 답변 생성",
         "Google LLC(미국, 문의 googlekrsupport@google.com): 쿠키, 방문한 페이지와 머문 시간 등 이용 행태 정보(IP 주소는 일부를 가려 처리) — 방문 통계 분석",
@@ -183,9 +183,9 @@ export default function PrivacyPage() {
                   </div>
                 </dl>
                 <p className="mt-4 text-sm leading-relaxed text-ink-soft">
-                  본 방침은 2026년 9월 30일부터 시행됩니다(이전 방침 시행일:
-                  2026년 7월 24일). 내용이 변경되는 경우 본 페이지를 통해
-                  고지합니다.
+                  본 방침은 2026년 11월 5일부터 시행됩니다(이전 방침 시행일:
+                  2026년 9월 30일, 2026년 7월 24일). 내용이 변경되는 경우 본
+                  페이지를 통해 고지합니다.
                 </p>
               </div>
             </div>

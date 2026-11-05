@@ -119,6 +119,12 @@ const nextConfig: NextConfig = {
         destination: "/os#scan",
         permanent: true,
       },
+      // 2026-11-05 옛 Wix 사이트(~2026-06) 주소 — 카톡 공유·빙·네이버·애플봇이 아직 요청한다(11-04~05 Vercel 404 기록).
+      // 옛 쪽 내용 기록이 없어(웨이백 보관 0) blank-N은 홈으로, '복제-노란발자국'은 노란발자국 제품 칸으로, Wix 사이트맵은 새 사이트맵으로.
+      { source: "/blank-:n(\\d+)", destination: "/", statusCode: 301 },
+      // '/복제-노란발자국' — 요청 주소는 퍼센트 인코딩으로 와서 한글 그대로 적으면 안 맞는다(11-05 next start 실측 404).
+      { source: "/%EB%B3%B5%EC%A0%9C-%EB%85%B8%EB%9E%80%EB%B0%9C%EC%9E%90%EA%B5%AD", destination: "/products#footprint", statusCode: 301 },
+      { source: "/:wix(pages|dynamic-pages)-sitemap.xml", destination: "/sitemap.xml", statusCode: 301 },
       {
         source: "/:path*",
         has: [{ type: "host", value: "public-id.co.kr" }],
