@@ -75,7 +75,7 @@ export default function ProductGateway() {
                     />
                   ) : (
                     <span className="flex h-full w-full items-center justify-center bg-navy">
-                      <span className="bg-arch bg-clip-text font-display text-2xl font-bold tracking-tight text-transparent sm:text-3xl">
+                      <span className="font-display text-2xl font-bold tracking-tight text-teal-100 sm:text-3xl">
                         OS
                       </span>
                     </span>

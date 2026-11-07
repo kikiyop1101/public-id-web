@@ -14,7 +14,7 @@ export default function ContactCTA() {
           <br />
           상담 한 번이면 시작됩니다
         </h2>
-        <p className="max-w-2xl break-keep text-navy/80">
+        <p className="max-w-2xl break-keep text-navy">
           상담은 무료입니다. 문의를 남겨주시면 영업일 기준 빠르게 답변드립니다 —
           전국 어디든 시공합니다.
         </p>

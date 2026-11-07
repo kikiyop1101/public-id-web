@@ -80,7 +80,7 @@ export default function LiteYouTube({ id, title, place, vertical, className }: P
       {/* 재생 버튼은 오른쪽 아래 — 가운데 두면 썸네일 속 제목 글자를 가린다(2026-09-30 확인) */}
       <span
         aria-hidden
-        className="absolute bottom-3 right-3 flex h-11 w-11 items-center justify-center rounded-full bg-white/95 text-teal-700 shadow-lg transition duration-300 group-hover:scale-110 group-hover:bg-white motion-reduce:transition-none"
+        className="absolute bottom-3 right-3 flex h-11 w-11 items-center justify-center rounded-full bg-white/95 text-teal-700 shadow-[0_6px_14px_-4px_rgba(0,0,0,0.35)] transition duration-300 group-hover:scale-110 group-hover:bg-white motion-reduce:transition-none"
       >
         <svg viewBox="0 0 24 24" className="ml-0.5 h-5 w-5" fill="currentColor">
           <path d="M8 5v14l11-7z" />
