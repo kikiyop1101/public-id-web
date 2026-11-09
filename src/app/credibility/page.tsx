@@ -204,7 +204,7 @@ export default function CredibilityPage() {
             <div className="rounded-3xl border border-line bg-navy px-8 py-10 text-white sm:px-12 sm:py-14">
               <h3 className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-teal-300">Verified</h3>
               <p className="mt-3 max-w-2xl text-2xl font-bold leading-snug">
-                특허받은 친환경 기술과 국내외 인증으로 뒷받침되는 신뢰입니다.
+                관련 특허받은 친환경 기술과 국내외 인증으로 뒷받침되는 신뢰입니다.
               </p>
               <div className="mt-7 flex flex-wrap gap-2.5">
                 {["인증 사회적기업", "KIDP 산업디자인전문회사", "GREENGUARD GOLD (UL 2818)"].map((b) => (
