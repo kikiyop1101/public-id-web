@@ -125,11 +125,11 @@ export default function OsCurator() {
             <a href="#scan" className="font-semibold text-teal-700 hover:opacity-75">
               3분 무료 진단
             </a>
-            {' · '}
+            {' · '}
             <a href="#kits" className="font-semibold text-teal-700 hover:opacity-75">
               키트 전체 보기
             </a>
-            {' · '}
+            {' · '}
             <Link href="/contact" className="font-semibold text-teal-700 hover:opacity-75">
               문의하기
             </Link>

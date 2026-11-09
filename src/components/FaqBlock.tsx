@@ -4,8 +4,8 @@ import Container from "@/components/Container";
 
 export type FaqItem = { q: string; a: string };
 
-// 답 문자열 속 전화번호는 줄바꿈 때 쪼개지지 않게 묶는다(JSON-LD 쪽 문자열은 그대로 둔다).
-const PHONE = /(\(?\d{2,4}-\d{3,4}-\d{4}\)?)/g;
+// 답 문자열 속 전화번호·이메일은 줄바꿈 때 쪼개지지 않게 묶는다(JSON-LD 쪽 문자열은 그대로 둔다).
+const PHONE = /(\(?\d{2,4}-\d{3,4}-\d{4}\)?|[\w.+-]+@[\w-]+(?:\.[\w-]+)+)/g;
 function renderAnswer(a: string) {
   return a.split(PHONE).map((part, i) =>
     i % 2 === 1 ? (
