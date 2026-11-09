@@ -92,6 +92,7 @@ export async function POST(request: Request) {
   }
 
   if (!res.ok) {
+    console.error('[os-curator] Anthropic 응답 실패:', res.status, await res.text().then((t) => t.slice(0, 200)).catch(() => ''))
     return Response.json({ error: '추천을 가져오지 못했어요. 잠시 후 다시 시도해 주세요.' }, { status: 502 })
   }
 

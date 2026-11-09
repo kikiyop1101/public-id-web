@@ -80,6 +80,7 @@ export async function POST(request: Request) {
   }
 
   if (!res.ok) {
+    console.error("[assistant] Anthropic 응답 실패:", res.status, await res.text().then((t) => t.slice(0, 200)).catch(() => ""));
     return Response.json(
       { error: "답변을 가져오지 못했어요. 070-4150-1172 로 문의해 주세요." },
       { status: 502 },

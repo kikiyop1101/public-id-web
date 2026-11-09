@@ -117,7 +117,25 @@ export default function OsCurator() {
         </div>
       )}
 
-      {error && <p className="mt-5 text-sm text-red-600">{error}</p>}
+      {error && (
+        <div className="mt-5">
+          <p className="text-sm text-red-600">{error}</p>
+          <p className="text-ink-soft mt-2 text-sm leading-relaxed">
+            지금 추천이 잘 안 나올 수 있어요. 아래에서 바로 골라 보셔도 됩니다.{' '}
+            <a href="#scan" className="font-semibold text-teal-700 hover:opacity-75">
+              3분 무료 진단
+            </a>
+            {' · '}
+            <a href="#kits" className="font-semibold text-teal-700 hover:opacity-75">
+              키트 전체 보기
+            </a>
+            {' · '}
+            <Link href="/contact" className="font-semibold text-teal-700 hover:opacity-75">
+              문의하기
+            </Link>
+          </p>
+        </div>
+      )}
 
       {picks && (
         <div className="mt-8">
