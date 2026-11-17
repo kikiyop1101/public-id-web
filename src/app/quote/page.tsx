@@ -94,7 +94,7 @@ export default async function QuotePage({
         </Container>
       </section>
 
-      <section id="apply" className="scroll-mt-24 border-t border-line bg-white py-20 sm:py-28">
+      <section className="border-t border-line bg-white py-20 sm:py-28">
         <Container className="grid gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <p className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">
@@ -130,10 +130,14 @@ export default async function QuotePage({
               를 이용해 주세요.
             </p>
           </div>
-          <div className="lg:col-span-7">
-            {/* key — 시뮬레이터가 같은 쪽에서 ?items= 만 바꿔 넘기므로, 구성이 바뀌면 신청서를 새로 그려 요청 내용을 채운다 */}
+          {/* #apply = 신청서 칸. 휴대폰에서는 왼쪽 글(제목·도우미 안내)이 먼저 쌓이므로 섹션이 아니라 여기로 내려온다 */}
+          <div id="apply" className="scroll-mt-24 lg:col-span-7">
+            {items && (
+              <p className="mb-4 break-keep rounded-xl bg-teal-100 px-4 py-3 text-sm font-medium text-teal-700">
+                계산기에서 고른 구성을 아래 &lsquo;요청 내용&rsquo;에 넣어 두었습니다. 성함과 이메일만 적으면 신청됩니다.
+              </p>
+            )}
             <LeadForm
-              key={items ?? 'blank'}
               kinds={[{ value: 'quote', label: '맞춤 견적' }]}
               products={[...PRODUCTS.map((product) => product.name), '기타·잘 모르겠어요']}
               messagePlaceholder={

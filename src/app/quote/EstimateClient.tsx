@@ -222,7 +222,7 @@ export default function EstimateClient() {
   useEffect(() => {
     const el = rootRef.current
     if (!el) return
-    const io = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting))
+    const io = new IntersectionObserver((entries) => setInView(entries[entries.length - 1].isIntersecting))
     io.observe(el)
     return () => io.disconnect()
   }, [])

@@ -235,7 +235,10 @@ export default function LeadForm({
 
       <label className="mt-4 block">
         <span className={labelCls}>요청 내용 {messageRequired ? null : optional}</span>
+        {/* key — 견적 시뮬레이터가 같은 쪽에서 구성을 다시 넘기면(?items= 변경) 이 칸만 새 기본값으로 다시 그린다.
+            폼 전체에 key 를 걸면 이미 적은 이름·연락처까지 지워진다(2026-11-17 배포 전 검토) */}
         <textarea
+          key={defaultMessage ?? ''}
           name="message"
           placeholder={messagePlaceholder}
           defaultValue={defaultMessage}

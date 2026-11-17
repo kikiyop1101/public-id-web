@@ -32,7 +32,7 @@ const history = [
 ];
 
 // 사업영역(#work) — 2026-11-17 옛 /work 쪽을 회사소개 안으로 합쳤다(대표 "페이지가 너무 많은 느낌", /work → /about#work 301).
-// 그림은 AI 연출 컷(/work/gen-*) 대신 자사 실제 시공·캠페인 사진으로 — "우리가 했다"를 말하는 자리(루트 규약). 문구는 옛 쪽 그대로.
+// 그림은 AI 연출 컷(/work/gen-*) 대신 자사 실제 시공·캠페인 사진으로 — "우리가 했다"를 말하는 자리(루트 규약). 문구는 옛 쪽 그대로(특허 줄만 '보유'로).
 const works = [
   {
     img: "/products/친환경그래픽노면표시재/참조14.jpg",
@@ -45,8 +45,9 @@ const works = [
     img: "/products/친환경그래픽노면표시재/참조23.jpg",
     alt: "경사로와 계단을 따라 부착한 파랑·빨강 동선 표시",
     title: "친환경 그래픽 노면표시재",
-    desc: "공공·산업 공간의 노면 그래픽. 자체 특허(제10-1974029호, 조성물·시공방법) · 국제특허 · GREENGUARD GOLD 인증 잉크.",
-    tag: "특허",
+    // 특허는 '보유'로만 쓴다(대표 2026-11-09 — 제품에 '적용'이라고 쓰지 않는다)
+    desc: "공공·산업 공간의 노면 그래픽. 자체 특허(제10-1974029호)와 국제특허(유럽특허 EP 1 677 974) 보유 · GREENGUARD GOLD 인증 잉크로 인쇄.",
+    tag: "특허 보유",
   },
   {
     img: "/products/친환경그래픽직물시트/참조16.jpg",
@@ -147,8 +148,6 @@ export default function AboutPage() {
                 src="/products/친환경그래픽노면표시재-노란발자국/참조01.jpg"
                 alt="등굣길 횡단보도 앞 노란발자국 위에 서 있는 아이들"
                 fill
-                loading="eager"
-                fetchPriority="high"
                 sizes="(min-width:1024px) 568px, 100vw"
                 className="object-cover"
               />
