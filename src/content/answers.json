@@ -37,7 +37,7 @@
     "actions": [
       { "label": "문의하기", "href": "/contact" },
       { "label": "시공 실적 보기", "href": "/credibility" },
-      { "label": "인증·특허 보기", "href": "/credentials" }
+      { "label": "인증·특허 보기", "href": "/credibility#credentials" }
     ]
   },
   {
@@ -123,7 +123,7 @@
     ],
     "actions": [
       { "label": "맞춤 견적 받기", "href": "/quote" },
-      { "label": "견적 시뮬레이터", "href": "/estimate" },
+      { "label": "견적 시뮬레이터", "href": "/quote#simulator" },
       { "label": "문의하기", "href": "/contact" }
     ]
   },
@@ -210,7 +210,7 @@
     "actions": [
       { "label": "맞춤 견적 받기", "href": "/quote" },
       { "label": "제품 보기", "href": "/products" },
-      { "label": "인증·특허 보기", "href": "/credentials" }
+      { "label": "인증·특허 보기", "href": "/credibility#credentials" }
     ]
   },
   {
@@ -293,7 +293,7 @@
     ],
     "actions": [
       { "label": "맞춤 견적 신청", "href": "/quote" },
-      { "label": "견적 시뮬레이터", "href": "/estimate" },
+      { "label": "견적 시뮬레이터", "href": "/quote#simulator" },
       { "label": "문의하기", "href": "/contact" }
     ]
   }

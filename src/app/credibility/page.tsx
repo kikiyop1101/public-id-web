@@ -5,12 +5,13 @@ import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
 import { credibility as c } from "@/lib/credibility";
+import { site } from "@/lib/site";
 import BreadcrumbLd from "@/components/BreadcrumbLd";
 
 export const metadata: Metadata = pageMeta({
-  title: "시공실적·고객사 — 숫자로 보는 신뢰",
+  title: "실적·인증 — 시공실적·고객사와 특허·인증",
   description:
-    "누적 960여 건의 프로젝트와 278개 거래처, 그중 공공기관·지자체가 63%입니다. 2019년부터 7개년 연속 이어 온 퍼블릭아이디의 시공실적과 고객사를 확인하세요.",
+    "누적 960여 건의 프로젝트와 278개 거래처, 그중 공공기관·지자체가 63%입니다. 자체 특허(제10-1974029호)·국제특허(EP 1 677 974), GREENGUARD GOLD, 인증 사회적기업까지 실적과 인증을 한곳에서 확인하세요.",
   path: "/credibility",
 });
 
@@ -26,6 +27,42 @@ const clients = [
   { label: "관공서·지자체", names: "세종특별자치시 · 서울특별시 · 서초구청 · 경기도청 · 경기남부경찰청 · 국립세종수목원 등 다수" },
   { label: "NGO 단체", names: "유니세프 한국위원회 · 세이브더칠드런 등 다수" },
   { label: "기업", names: "스타벅스 · 현대자동차 · 유한양행 · 에버랜드 등 다수" },
+];
+
+// 인증·특허(#credentials) — 2026-11-17 옛 /credentials 쪽을 실적 안으로 합쳤다(대표 "페이지가 너무 많은 느낌", /credentials → /credibility#credentials 301).
+// 실적을 본 사람이 곧바로 "그 근거"를 확인한다. 사실 정본 = BRAND_CONSTANTS(문구는 옛 쪽 그대로).
+const credentialGroups = [
+  {
+    label: "특허 · 지식재산",
+    items: [
+      { t: "특허 제10-1974029호", d: "도로 노면 표시용 조성물 및 시공방법 (2019)" },
+      { t: "노란발자국 상표등록", d: "제40-1257164호" },
+      { t: "국제특허 보유", d: "유럽특허 EP 1 677 974 · 유럽특허청(EPO) 등록" },
+    ],
+  },
+  {
+    label: "친환경 · 품질 인증",
+    items: [
+      { t: "GREENGUARD GOLD", d: "UL 2818 — 인쇄에 쓰는 친환경 라텍스 잉크 인증" },
+      { t: "KCL · SGS · KTR · KFI", d: "미끄럼저항 · 유해물질 불검출 · 방염성능 시험성적" },
+    ],
+  },
+  {
+    label: "기업 인증 · 수상",
+    items: [
+      { t: "인증 사회적기업", d: "고용노동부 인증 (2020)" },
+      { t: "가치장터 · e-스토어36.5 입점", d: "사회적기업 우선구매 판로 (공공기관·일반 구매)" },
+      { t: "KIDP 종합산업디자인전문회사", d: "한국디자인진흥원 (시각 · 제품 · 환경)" },
+      { t: "우수디자인(GD) · 우수특허대상", d: "디자인 · 특허 수상" },
+    ],
+  },
+];
+
+const company: [string, string][] = [
+  ["대표", site.ceo],
+  ["사업자등록번호", site.bizRegNo],
+  ["통신판매업 신고", site.mailOrderNo],
+  ["소재지", `(${site.zip}) ${site.address}`],
 ];
 
 // ── 성장 곡선 SVG(빌드 시 서버 렌더 · 클라이언트 JS 0) ──
@@ -89,7 +126,7 @@ function Bars({ rows }: { rows: readonly { label: string; pct: number }[] }) {
 export default function CredibilityPage() {
   return (
     <>
-      <BreadcrumbLd trail={[{ name: "실적·신뢰", path: "/credibility" }]} />
+      <BreadcrumbLd trail={[{ name: "실적·인증", path: "/credibility" }]} />
       <PageHero
         eyebrow="Track Record"
         title={
@@ -175,7 +212,7 @@ export default function CredibilityPage() {
       </section>
 
       {/* 함께한 곳 */}
-      <section className="pb-16 sm:pb-20">
+      <section className="pb-20 sm:pb-28">
         <Container>
           <Reveal>
             <div className="rounded-3xl border border-line bg-white p-7 shadow-sm sm:p-9">
@@ -197,8 +234,67 @@ export default function CredibilityPage() {
         </Container>
       </section>
 
-      {/* 인증 · CTA */}
-      <section className="pb-24">
+      {/* 인증·특허 — 옛 /credentials. 흰 카드가 이어지던 흐름을 끊고 줄 목록 3단으로(카드 테두리 없음) */}
+      <section id="credentials" className="scroll-mt-24 border-y border-line bg-cloud/50 py-20 sm:py-28">
+        <Container>
+          <Reveal className="max-w-2xl">
+            <p className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">
+              Credentials
+            </p>
+            <h2 className="mt-4 text-3xl font-extrabold leading-[1.2] tracking-tight text-ink sm:text-4xl">
+              특허와 인증으로
+              <br />
+              검증된 전문성
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-ink-soft">
+              자체 특허 기술과 친환경 인증·공인 시험성적으로, 공공기관·지자체가 안심하고 함께합니다.
+            </p>
+          </Reveal>
+          <div className="mt-12 grid gap-x-10 gap-y-12 md:grid-cols-3">
+            {credentialGroups.map((g, gi) => (
+              <Reveal key={g.label} delay={gi * 80}>
+                <div className="h-1.5 w-12 rounded-full bg-arch" />
+                <h3 className="mt-4 text-lg font-bold text-ink">{g.label}</h3>
+                <ul className="mt-5 divide-y divide-line border-y border-line">
+                  {g.items.map((it) => (
+                    <li key={it.t} className="py-4">
+                      <p className="font-semibold leading-snug text-ink">{it.t}</p>
+                      <p className="mt-1 text-sm leading-relaxed text-ink-soft">{it.d}</p>
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal className="mt-14">
+            <div className="rounded-3xl border border-line bg-white p-8 sm:p-10">
+              <h3 className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
+                Company
+              </h3>
+              <p className="mt-2 text-2xl font-bold text-ink">{site.legalName}</p>
+              <dl className="mt-6 grid gap-x-8 gap-y-1 sm:grid-cols-2">
+                {company.map(([k, v]) => (
+                  <div key={k} className="flex gap-4 border-b border-line py-3">
+                    <dt className="w-28 shrink-0 text-sm font-medium text-ink-soft">{k}</dt>
+                    <dd className="whitespace-pre-line text-sm leading-relaxed text-ink">{v}</dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="mt-6 text-sm text-ink-soft">
+                특허·인증서 사본 및 시공 실적 자료는{" "}
+                <Link href="/contact" className="font-semibold text-teal-700">
+                  문의
+                </Link>{" "}
+                주시면 제공해 드립니다.
+              </p>
+            </div>
+          </Reveal>
+        </Container>
+      </section>
+
+      {/* 맺음 · CTA */}
+      <section className="py-20 sm:py-24">
         <Container>
           <Reveal>
             <div className="rounded-3xl border border-line bg-navy px-8 py-10 text-white sm:px-12 sm:py-14">
@@ -213,10 +309,7 @@ export default function CredibilityPage() {
               </div>
               <div className="mt-9 flex flex-wrap gap-3">
                 {/* 네이비 밴드 위 주 버튼 = button-light(정본). 종전 Tailwind 기본 teal-500 + 흰 글자는 2.42:1(2026-11-04 axe) */}
-                <Link href="/credentials" className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-navy transition hover:bg-cloud">
-                  인증·특허 자세히
-                </Link>
-                <Link href="/contact" className="rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white/90 transition hover:bg-white/10">
+                <Link href="/contact" className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-navy transition hover:bg-cloud">
                   프로젝트 문의
                 </Link>
                 <Link href="/quote" className="rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white/90 transition hover:bg-white/10">

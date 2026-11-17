@@ -28,7 +28,6 @@ const DESC_MAX = 160;
 const SITEMAP_EXCLUDED = [
   [/^\/admin(\/|$)/, "관리자 화면 — robots.txt Disallow·noindex"],
   [/^\/search$/, "사이트 검색 결과 — noindex(검색 결과 쪽 색인 금지)"],
-  [/^\/board\/[^/]+$/, "게시판 개별 글 — 무검수 UGC라 noindex(2026-08-26 대표 위임 판단)"],
   [/^\/p\/[^/]+$/, "아웃리치 제안서 열람(토큰 주소) — noindex·비공개"],
   [/^\/safety-map\/c\/[^/]+$/, "발주처 전용 링크(토큰 주소) — noindex·비공개"],
   [/^\/safety-map\/links$/, "발주처 링크 관리 화면 — noindex"],
@@ -37,7 +36,6 @@ const SITEMAP_EXCLUDED = [
 // 동적 경로 중 빌드 때 목록을 알 수 없는 것 — 사이트맵은 런타임에 DB에서 채운다(검사 대상 아님).
 const RUNTIME_ONLY = [
   [/^\/blog\/\[slug\]$/, "자체 블로그 글 — Supabase 게시분을 sitemap.ts가 런타임에 추가"],
-  [/^\/board\/\[id\]$/, "게시판 글 — noindex"],
   [/^\/p\/\[token\]$/, "제안서 열람 — noindex"],
   [/^\/safety-map\/c\/\[token\]$/, "발주처 전용 링크 — noindex"],
 ];

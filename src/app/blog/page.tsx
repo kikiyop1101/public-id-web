@@ -4,6 +4,7 @@ import { pageMeta } from '@/lib/seo'
 import Link from 'next/link'
 import { getPublishedPosts } from '@/lib/blog'
 import NaverBlogFeed from '@/components/NaverBlogFeed'
+import PageHero from '@/components/PageHero'
 import BreadcrumbLd from '@/components/BreadcrumbLd'
 
 export const metadata: Metadata = pageMeta({
@@ -19,23 +20,16 @@ export default async function BlogPage() {
   const posts = await getPublishedPosts()
 
   return (
-    <div className="mx-auto max-w-3xl px-5 py-16">
+    <>
       <BreadcrumbLd trail={[{ name: '기업 블로그', path: '/blog' }]} />
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <h1 className="text-ink text-2xl font-bold sm:text-3xl">기업 블로그</h1>
-          <p className="text-ink-soft mt-2">퍼블릭아이디의 이야기와 현장 소식을 전합니다.</p>
-        </div>
-        {/* 관리자 전용 — 로그인 안 된 상태면 로그인 페이지로 이동 */}
-        <Link
-          href="/admin"
-          className="text-ink-soft hover:border-teal hover:text-teal shrink-0 rounded-full border border-line px-4 py-2 text-sm font-medium transition"
-        >
-          글쓰기
-        </Link>
-      </div>
-
-      <ul className="mt-8 grid gap-4">
+      {/* 2026-11-17 다른 쪽과 같은 머리로. 공개 화면에 있던 '글쓰기'(관리자 화면 진입) 버튼은 뺐다 — 글은 /admin 에서 쓴다 */}
+      <PageHero
+        eyebrow="Blog"
+        title="기업 블로그"
+        description="퍼블릭아이디의 이야기와 현장 소식을 전합니다."
+      />
+      <div className="mx-auto max-w-3xl px-5 py-14 sm:py-20">
+      <ul className="grid gap-4">
         {posts.length === 0 && (
           <li className="text-ink-soft py-8 text-center text-sm">
             아직 등록된 글이 없습니다.
@@ -56,6 +50,7 @@ export default async function BlogPage() {
       <Suspense fallback={null}>
         <NaverBlogFeed />
       </Suspense>
-    </div>
+      </div>
+    </>
   )
 }

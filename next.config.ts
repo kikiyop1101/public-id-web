@@ -125,6 +125,17 @@ const nextConfig: NextConfig = {
       // '/복제-노란발자국' — 요청 주소는 퍼센트 인코딩으로 와서 한글 그대로 적으면 안 맞는다(11-05 next start 실측 404).
       { source: "/%EB%B3%B5%EC%A0%9C-%EB%85%B8%EB%9E%80%EB%B0%9C%EC%9E%90%EA%B5%AD", destination: "/products#footprint", statusCode: 301 },
       { source: "/:wix(pages|dynamic-pages)-sitemap.xml", destination: "/sitemap.xml", statusCode: 301 },
+      // 2026-11-17 페이지 다이어트(대표 "페이지가 너무 많은 느낌 — 필요 없는 부분은 삭제해도") — 합치거나 없앤 6쪽의 옛 주소.
+      // 발행물·검색 색인·AI 답변에 나간 링크가 있어 지우지 않고 301로 잇는다. 목적지를 www 절대 주소로 적어 apex·옛 store 호스트도 한 번에 간다.
+      //  · /work(사업영역) → 회사소개 안 #work · /credentials(인증·특허) → 실적 안 #credentials
+      //  · /press(보도자료 — 소식 43건이 전부 보도자료라 /news 와 같은 목록이었다) → /news
+      //  · /estimate(견적 시뮬레이터) → 맞춤 견적 안 #simulator
+      //  · /board(소통 게시판 — 4개월 동안 손님 글 0건·유흥 광고 스팸 1건, 무검수 즉시 공개) → 문의
+      { source: "/work", destination: "https://www.public-id.co.kr/about#work", statusCode: 301 },
+      { source: "/credentials", destination: "https://www.public-id.co.kr/credibility#credentials", statusCode: 301 },
+      { source: "/press", destination: "https://www.public-id.co.kr/news", statusCode: 301 },
+      { source: "/estimate", destination: "https://www.public-id.co.kr/quote#simulator", statusCode: 301 },
+      { source: "/board/:path*", destination: "https://www.public-id.co.kr/contact", statusCode: 301 },
       {
         source: "/:path*",
         has: [{ type: "host", value: "public-id.co.kr" }],

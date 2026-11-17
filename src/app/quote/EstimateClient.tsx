@@ -20,7 +20,7 @@ import {
   type SignSpecId,
 } from '@/lib/estimate'
 
-// 견적 시뮬레이터 — 담당자가 예산을 잡을 때 슬라이더로 기준가 합계를 즉시 보는 화면.
+// 견적 시뮬레이터(/quote#simulator) — 담당자가 예산을 잡을 때 슬라이더로 기준가 합계를 즉시 보는 화면.
 // 계산은 전부 src/lib/estimate.ts(순수 함수). 여기서는 상태·표시·계측만 한다.
 
 type Mode = 'build' | 'budget'
@@ -199,7 +199,8 @@ export default function EstimateClient() {
   }
 
   const summary = summaryText(result, install)
-  const quoteHref = summary ? `/quote?items=${encodeURIComponent(summary)}` : '/quote'
+  // 2026-11-17 시뮬레이터가 견적 쪽(/quote) 안으로 들어왔다 — 같은 쪽 아래 신청서(#apply)로 구성 요약을 넘긴다.
+  const quoteHref = summary ? `/quote?items=${encodeURIComponent(summary)}#apply` : '/quote#apply'
   const cta = (to: string) => track('estimate_cta', { to, total_band: result.band })
 
   const copy = async () => {
@@ -214,8 +215,20 @@ export default function EstimateClient() {
 
   const plan = useMemo(() => budgetPlan(budget), [budget])
 
+  // 2026-11-17 시뮬레이터가 맞춤 견적 쪽 안으로 들어오면서, 휴대폰 하단 고정 바가 아래 신청서·FAQ·푸터 위에도 계속 떠 있게 됐다.
+  // 시뮬레이터가 화면에 걸쳐 있는 동안에만 띄운다(신청서로 내려가면 사라진다). 처음 값 true = JS 전에도 종전과 같은 모양.
+  const rootRef = useRef<HTMLDivElement>(null)
+  const [inView, setInView] = useState(true)
+  useEffect(() => {
+    const el = rootRef.current
+    if (!el) return
+    const io = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting))
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+
   return (
-    <div className="pb-28 lg:pb-0">
+    <div ref={rootRef}>
       {/* 모드 탭 */}
       <div role="tablist" aria-label="계산 방식" className="inline-flex rounded-full border border-line bg-white p-1">
         {(
@@ -511,8 +524,8 @@ export default function EstimateClient() {
         <BudgetView budget={budget} setBudget={setBudget} plan={plan} onCta={cta} />
       )}
 
-      {/* 모바일 하단 고정 바 */}
-      {mode === 'build' && (
+      {/* 모바일 하단 고정 바 — 시뮬레이터가 화면에 보일 때만 */}
+      {mode === 'build' && inView && (
         <div className="pi-estimate-bar fixed inset-x-0 bottom-0 z-40 border-t border-line bg-white/95 px-5 py-3 shadow-[0_-6px_16px_-8px_rgba(22,48,61,0.18)] backdrop-blur lg:hidden">
           <div className="mx-auto flex max-w-3xl items-center justify-between gap-3">
             <div className="min-w-0">
@@ -788,7 +801,7 @@ function BudgetView({
         </p>
         <div className="mt-5 flex flex-col gap-2">
           <Link
-            href={`/quote?items=${encodeURIComponent(`[예산 문의]\n예산: ${won(budget)}\n설치 장소·품목: `)}`}
+            href={`/quote?items=${encodeURIComponent(`[예산 문의]\n예산: ${won(budget)}\n설치 장소·품목: `)}#apply`}
             onClick={() => onCta('/quote#budget')}
             className="inline-flex h-12 items-center justify-center rounded-full bg-arch px-6 text-[15px] font-semibold text-white transition hover:brightness-105"
           >

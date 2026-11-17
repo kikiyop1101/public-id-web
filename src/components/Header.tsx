@@ -152,14 +152,8 @@ export default function Header() {
               <path d="m13.5 13.5 3.5 3.5" strokeLinecap="round" />
             </svg>
           </button>
-          <a
-            href="/world"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex h-10 items-center justify-center rounded-full border border-line bg-white/70 px-4 text-sm font-semibold text-teal-700 transition hover:border-teal hover:text-teal"
-          >
-            3D 월드
-          </a>
+          {/* 2026-11-17 버튼 4개 → 2개(design.md §7 nav-bar "주 액션 navy + 보조 1개"). 첫 화면에서 누를 것이 9개(헤더 4·히어로 2·질문창·칩·도우미)라
+              어느 것도 주 행동으로 읽히지 않았다. 3D 월드 = 회사소개 메뉴, 견적 = 제품 메뉴 끝·히어로 칩·도우미, 상담·견적 문의 = 이 버튼 하나. */}
           {/* 주종목 우리회사OS 상시 노출 — 2026-09-19 어사이드 점검 "상단에서 /os가 안 보인다" */}
           <Link
             href="/os"
@@ -167,18 +161,11 @@ export default function Header() {
           >
             우리회사OS
           </Link>
-          {/* 견적 진입 상시 노출 — 대표 지적 2026-08-26 "견적 도우미 찾기가 쉽지 않다" */}
-          <Link
-            href="/quote"
-            className="inline-flex h-10 items-center justify-center rounded-full bg-arch px-5 text-sm font-semibold text-white transition hover:brightness-105"
-          >
-            맞춤 견적
-          </Link>
           <Link
             href="/contact"
             className="inline-flex h-10 items-center justify-center rounded-full bg-navy px-5 text-sm font-semibold text-white transition hover:bg-teal"
           >
-            구독 상담
+            상담·견적
           </Link>
         </div>
 
@@ -267,35 +254,19 @@ export default function Header() {
               </div>
             </div>
           ))}
-          <a
-            href="/world"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setOpen(false)}
-            className="mt-2 inline-flex h-12 items-center justify-center rounded-full bg-teal-700 px-5 font-semibold text-white"
-          >
-            3D 월드 둘러보기
-          </a>
           <Link
             href="/os"
             onClick={() => setOpen(false)}
-            className="inline-flex h-12 items-center justify-center rounded-full border border-teal bg-white px-5 font-semibold text-teal-700"
+            className="mt-2 inline-flex h-12 items-center justify-center rounded-full border border-teal bg-white px-5 font-semibold text-teal-700"
           >
             우리회사OS (AI 자동화 키트)
-          </Link>
-          <Link
-            href="/quote"
-            onClick={() => setOpen(false)}
-            className="inline-flex h-12 items-center justify-center rounded-full bg-arch px-5 font-semibold text-white"
-          >
-            맞춤 견적 받기
           </Link>
           <Link
             href="/contact"
             onClick={() => setOpen(false)}
             className="inline-flex h-12 items-center justify-center rounded-full bg-navy px-5 font-semibold text-white"
           >
-            구독 상담
+            상담·견적 문의
           </Link>
         </nav>
         )}

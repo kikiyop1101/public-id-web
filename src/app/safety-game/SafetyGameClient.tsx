@@ -550,7 +550,7 @@ export default function SafetyGameClient({ initialScene }: { initialScene?: stri
                   우리 학교·동네 점검 요청
                 </Link>
                 <Link
-                  href="/estimate"
+                  href="/quote#simulator"
                   onClick={() => cta("estimate")}
                   className="inline-flex h-12 items-center justify-center rounded-full bg-navy px-5 text-[15px] font-semibold text-white transition hover:bg-teal"
                 >

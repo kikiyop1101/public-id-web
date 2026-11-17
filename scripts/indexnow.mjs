@@ -49,10 +49,10 @@ function readNews(rev) {
   }
 }
 
-// news.json 변경 → 추가·수정된 글의 /news/<slug> + 목록(/news·/press) + 홈(NewsStrip)
+// news.json 변경 → 추가·수정된 글의 /news/<slug> + 목록(/news) + 홈(NewsStrip). /press 는 2026-11-17 /news 로 합쳤다(301)
 function newsChanges(from, to) {
   const before = new Map(readNews(from).map((n) => [n.slug, JSON.stringify(n)]));
-  const paths = new Set(["/", "/news", "/press"]);
+  const paths = new Set(["/", "/news"]);
   for (const n of readNews(to)) {
     if (before.get(n.slug) !== JSON.stringify(n)) paths.add(`/news/${n.slug}`);
   }

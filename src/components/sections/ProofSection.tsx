@@ -72,7 +72,7 @@ const rid = (id: string) => `proof-r-${id}`;
 
 export default function ProofSection() {
   return (
-    <section className="bg-white">
+    <section className="bg-paper">
       <Container className="py-20 sm:py-28">
         <p className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">Evidence</p>
         <h2 className="mt-3 max-w-3xl break-keep text-3xl font-extrabold leading-[1.2] tracking-tight text-ink sm:text-4xl">
@@ -96,7 +96,7 @@ export default function ProofSection() {
             ))}
           </div>
 
-          <div className="rounded-3xl border border-line bg-paper/50 p-6 sm:p-9">
+          <div className="rounded-3xl border border-line bg-white p-6 sm:p-9">
             {/* 미끄럼저항 — 우리 수치 vs 공인 기준 */}
             <div id="proof-panel-slip" className="hidden group-has-[#proof-r-slip:checked]/proof:block">
               <h3 className="break-keep text-xl font-bold text-ink sm:text-2xl">비 오는 날 보도에서도 미끄럽지 않게</h3>
@@ -123,7 +123,7 @@ export default function ProofSection() {
                 ))}
               </ul>
               <p className="mt-6 break-keep text-sm text-ink-soft">독일 MPI 시험에서 R10 등급(DIN 51130)도 받았습니다.</p>
-              <Source href="/credentials">시험성적서·인증 보기</Source>
+              <Source href="/credibility#credentials">시험성적서·인증 보기</Source>
             </div>
 
             {/* 친환경·안전 시험 */}
@@ -135,7 +135,7 @@ export default function ProofSection() {
               <div className="mt-6">
                 <Rows rows={ECO} />
               </div>
-              <Source href="/credentials">시험성적서·인증 보기</Source>
+              <Source href="/credibility#credentials">시험성적서·인증 보기</Source>
             </div>
 
             {/* 공공 실적 — 누적 프로젝트 막대 + 고객 구성 */}
@@ -183,7 +183,7 @@ export default function ProofSection() {
               <div className="mt-6">
                 <Rows rows={CERT} />
               </div>
-              <Source href="/credentials">인증·특허 보기</Source>
+              <Source href="/credibility#credentials">인증·특허 보기</Source>
             </div>
           </div>
         </div>

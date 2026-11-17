@@ -45,15 +45,6 @@ async function requireAdmin() {
   if (!(await isAuthed())) redirect('/admin/login')
 }
 
-// 게시판은 즉시 공개 체제 — 관리자는 문제 글을 사후 삭제한다.
-export async function deletePostAdmin(id: string): Promise<void> {
-  await requireAdmin()
-  const admin = createAdminClient()
-  await admin.from('board_posts').delete().eq('id', id)
-  revalidatePath('/admin')
-  revalidatePath('/board')
-}
-
 export async function deleteBlogPost(id: string): Promise<void> {
   await requireAdmin()
   const admin = createAdminClient()

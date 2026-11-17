@@ -66,7 +66,7 @@ type Props = {
   products?: string[]
   /** 요청 내용 textarea 안내문 */
   messagePlaceholder?: string
-  /** 요청 내용 기본값 — 견적 시뮬레이터(/estimate)가 구성 요약을 ?items= 로 넘길 때 채운다 */
+  /** 요청 내용 기본값 — 견적 시뮬레이터(/quote#simulator)가 구성 요약을 ?items= 로 넘길 때 채운다 */
   defaultMessage?: string
   submitLabel?: string
 }

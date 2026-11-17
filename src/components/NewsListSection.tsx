@@ -4,48 +4,13 @@ import Reveal from "@/components/Reveal";
 import { site } from "@/lib/site";
 import { newsKind, type NewsItem } from "@/lib/news";
 
-// 소식(/news)·보도자료(/press) 공용 목록 — 2026-09-08 대표 "소식 탭에 보도자료 탭을 따로".
-// 탭 = 전체 소식 / 보도자료. 게시물엔 날짜가 없다(대표 확정 09-08), 순서 = 최신순.
-const TABS = [
-  { key: "all", label: "전체 소식", href: "/news" },
-  { key: "press", label: "보도자료", href: "/press" },
-] as const;
-
-export default function NewsListSection({
-  items,
-  active,
-}: {
-  items: NewsItem[];
-  active: (typeof TABS)[number]["key"];
-}) {
+// 소식(/news) 목록. 2026-11-17 '전체 소식 / 보도자료' 탭을 없앴다 — 게시물 43건이 전부 보도자료라 두 탭이 같은 목록이었다
+// (/press → /news 301). 종류가 다른 글이 생기면 newsKind 라벨(카드 맨 위)이 구분한다. 게시물엔 날짜가 없다(대표 확정 09-08), 순서 = 최신순.
+export default function NewsListSection({ items }: { items: NewsItem[] }) {
   return (
     <section className="py-14 sm:py-20">
       <Container>
         <div className="mx-auto max-w-3xl">
-          <nav
-            aria-label="소식 분류"
-            className="mb-8 flex gap-2 border-b border-line"
-          >
-            {TABS.map((t) => {
-              const on = t.key === active;
-              return (
-                <Link
-                  key={t.key}
-                  href={t.href}
-                  aria-current={on ? "page" : undefined}
-                  className={
-                    "-mb-px border-b-2 px-4 py-3 text-sm font-semibold transition " +
-                    (on
-                      ? "border-teal-700 text-teal-700"
-                      : "border-transparent text-ink-soft hover:text-ink")
-                  }
-                >
-                  {t.label}
-                </Link>
-              );
-            })}
-          </nav>
-
           <div className="flex flex-col gap-6">
             {items.length === 0 ? (
               <p className="rounded-3xl border border-line bg-white p-8 text-sm text-ink-soft">

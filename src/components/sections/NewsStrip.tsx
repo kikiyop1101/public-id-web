@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Container from "@/components/Container";
-import { site } from "@/lib/site";
 import { news, newsKind } from "@/lib/news";
 
 // 2026-08-26 신설 — 홈에 최신 소식 노출(리서치 권고: 최신 활동은 "살아있는 회사" 신호이자
@@ -24,20 +23,9 @@ export default function NewsStrip() {
             <Link href="/news" className="inline-flex min-h-11 items-center text-teal-700 transition hover:text-teal">
               소식 전체 보기 →
             </Link>
-            <Link href="/press" className="inline-flex min-h-11 items-center text-teal-700 transition hover:text-teal">
-              보도자료 →
-            </Link>
             <Link href="/blog" className="inline-flex min-h-11 items-center text-teal-700 transition hover:text-teal">
               블로그 →
             </Link>
-            <a
-              href={site.blog}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-11 items-center text-teal-700 transition hover:text-teal"
-            >
-              네이버 블로그 ↗
-            </a>
           </div>
         </div>
         <ul className="mt-8 divide-y divide-line border-y border-line">

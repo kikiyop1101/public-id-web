@@ -1,4 +1,4 @@
-// 견적 시뮬레이터(/estimate) 계산 정본 — 순수 함수만. UI는 EstimateClient.tsx.
+// 견적 시뮬레이터(/quote#simulator) 계산 정본 — 순수 함수만. UI는 EstimateClient.tsx.
 // 단가는 공개 "기준가"(VAT 포함) 그대로이며 출처는 assistant-knowledge.ts·products.ts 한 곳이다.
 // 시공·출장비·디자인비는 현장 견적이라 여기서 계산하지 않는다(결과 화면에 반드시 명시).
 // 자동 견적 규칙(대표 확정): 1장 총액 1,000만 원 미만 + 전 항목이 단가표 안 → 자동 발행 대상.

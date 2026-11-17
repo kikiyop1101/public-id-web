@@ -13,16 +13,18 @@ import designDocsIndex from "../../public/design-docs/assets/search-index.json";
 export const revalidate = 3600;
 
 const base = "https://www.public-id.co.kr";
-const routes = ["", "/subscribe", "/design", "/work", "/guide", "/about", "/credentials", "/credibility", "/contact", "/news", "/press", "/safety-map", "/privacy",
+// 2026-11-17 다이어트 — /work(→/about#work)·/credentials(→/credibility#credentials)·/press(→/news)·/estimate(→/quote#simulator)·/board(→/contact)는
+// 합치거나 없애 301로 잇는다(next.config.ts). 사이트맵에는 살아 있는 쪽만.
+const routes = ["", "/subscribe", "/design", "/guide", "/about", "/credibility", "/contact", "/news", "/safety-map", "/privacy",
   // 2026-08-25 스토어 통합으로 편입된 경로
   // /scan은 2026-08-26 /os#scan으로 통합(301)
-  "/products", "/quote", "/os", "/blog", "/board", "/safety-report", "/safety-report/new", "/world",
+  "/products", "/quote", "/os", "/blog", "/safety-report", "/safety-report/new", "/world",
   // 2026-08-25 보관고 상품 라인
   "/products/art-fabric", "/products/map-banner",
   // 2026-08-27 축제·행사 콜라보 랜딩(store 루트가 이 페이지를 서빙)
   "/festival",
-  // 2026-09-08 체류시간 기획안 — 위험 찾기 게임·안전 점수 진단·견적 시뮬레이터·영상관·웹툰
-  "/safety-game", "/safety-score", "/estimate", "/videos", "/webtoon",
+  // 2026-09-08 체류시간 기획안 — 위험 찾기 게임·안전 점수 진단·영상관·웹툰
+  "/safety-game", "/safety-score", "/videos", "/webtoon",
   // 2026-09-27 AI 답변 인용용 질문 답변 목록(개별 /answers/[slug]는 아래 answerEntries)
   "/answers",
   // 2026-10-03 노란발자국 캠페인 게임
@@ -58,9 +60,6 @@ async function blogEntries(): Promise<MetadataRoute.Sitemap> {
     return [];
   }
 }
-
-// 게시판 개별 글은 sitemap에 넣지 않는다 — 무검수 즉시공개 UGC라 noindex 처리했음
-// (2026-08-26 대표 위임 판단: 스팸 색인 리스크 > 색인 이득. 목록 /board만 색인·sitemap 유지)
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // 고정 경로엔 lastModified를 넣지 않는다 — 전 URL 동일한 빌드 시각은

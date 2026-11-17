@@ -4,14 +4,12 @@ import { createAdminClient } from '@/lib/supabase/admin'
 import { isAuthed } from '@/lib/auth'
 import { LEAD_KINDS, parseLeadRow, type LeadKind } from '@/lib/leads'
 import { parseBlogAdminRow } from '@/lib/blog'
-import { parseBoardAdminRow } from '@/lib/board'
 import { parseReportAdminRow, REPORT_CATEGORIES } from '@/lib/reports'
 import { parseRows } from '@/lib/rows'
 import {
   approveReport,
   deleteBlogPost,
   deleteLead,
-  deletePostAdmin,
   deleteReport,
   rejectReport,
   signOut,
@@ -53,14 +51,6 @@ export default async function AdminPage() {
       if (signed?.signedUrl) reportPhotoUrls.set(report.id, signed.signedUrl)
     }
   }
-  const postResult = await admin
-    .from('board_posts')
-    .select('id, nickname, title, body, created_at')
-    .order('created_at', { ascending: false })
-    .limit(30)
-
-  const posts = parseRows('board_posts', postResult, parseBoardAdminRow)
-
   const blogResult = await admin
     .from('blog_posts')
     .select('id, title, slug, cover_image, published, created_at')
@@ -217,36 +207,6 @@ export default async function AdminPage() {
                   </form>
                 )}
                 <form action={deleteReport.bind(null, report.id)}>
-                  <button className="rounded-full border border-red-300 px-4 py-1.5 text-sm font-medium text-red-600 transition-colors hover:bg-red-50">
-                    삭제
-                  </button>
-                </form>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {/* 게시글 관리 (즉시 공개 체제 — 문제 글은 여기서 삭제) */}
-      <section className="mt-12">
-        <h2 className="text-ink text-lg font-bold">
-          최근 게시글 <span className="text-teal">({posts.length})</span>
-        </h2>
-        <ul className="mt-4 space-y-4">
-          {posts.length === 0 && (
-            <li className="text-ink-soft py-6 text-center text-sm">게시글이 없습니다.</li>
-          )}
-          {posts.map((post) => (
-            <li key={post.id} className="rounded-2xl border border-line bg-white p-5 shadow-sm">
-              <div className="flex items-center justify-between gap-4">
-                <span className="text-ink font-medium">{post.title}</span>
-                <span className="text-ink-soft shrink-0 text-xs">
-                  {post.nickname} · {new Date(post.created_at).toLocaleDateString('ko-KR')}
-                </span>
-              </div>
-              <p className="text-ink-soft mt-2 whitespace-pre-wrap text-sm">{post.body}</p>
-              <div className="mt-3">
-                <form action={deletePostAdmin.bind(null, post.id)}>
                   <button className="rounded-full border border-red-300 px-4 py-1.5 text-sm font-medium text-red-600 transition-colors hover:bg-red-50">
                     삭제
                   </button>

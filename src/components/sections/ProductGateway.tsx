@@ -13,9 +13,10 @@ const GATES = [
     href: "/os",
     label: "우리회사OS",
     desc: "기업 맞춤형 AI-OS — 업무 자동화 키트, 무료 진단으로 시작",
-    img: null,
-    imgAlt: "",
-    imgFit: "cover" as const,
+    // 2026-11-17 네이비 바탕에 'OS' 글자뿐이던 칸 → 실제 화면(주종목이 셋 중 가장 빈약해 보였다)
+    img: "/os/layer1-sheet.webp",
+    imgAlt: "우리회사OS 업무시트 관제탑 화면(예시 데이터)",
+    imgFit: "top" as const,
   },
   {
     href: "/subscribe",
@@ -39,7 +40,7 @@ const STEPS = ["상담·진단", "디자인", "제작·시공", "관리·리포�
 
 export default function ProductGateway() {
   return (
-    <section className="border-t border-line bg-paper">
+    <section className="bg-paper">
       <Container className="py-20 sm:py-28">
         <p className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">
           What We Offer
@@ -61,25 +62,19 @@ export default function ProductGateway() {
                 className="group flex items-center gap-5 py-6 sm:gap-8 sm:py-7 lg:py-9"
               >
                 <span className="relative block h-20 w-28 shrink-0 overflow-hidden rounded-xl border border-line bg-white sm:h-24 sm:w-36 lg:h-28 lg:w-44">
-                  {g.img ? (
-                    <Image
-                      src={g.img}
-                      alt={g.imgAlt}
-                      fill
-                      sizes="(min-width: 1024px) 176px, 144px"
-                      className={
-                        g.imgFit === "contain"
-                          ? "bg-teal-100 object-contain p-2 transition duration-500 group-hover:scale-[1.05]"
+                  <Image
+                    src={g.img}
+                    alt={g.imgAlt}
+                    fill
+                    sizes="(min-width: 1024px) 176px, 144px"
+                    className={
+                      g.imgFit === "contain"
+                        ? "bg-teal-100 object-contain p-2 transition duration-500 group-hover:scale-[1.05]"
+                        : g.imgFit === "top"
+                          ? "object-cover object-left-top transition duration-500 group-hover:scale-[1.05]"
                           : "object-cover transition duration-500 group-hover:scale-[1.05]"
-                      }
-                    />
-                  ) : (
-                    <span className="flex h-full w-full items-center justify-center bg-navy">
-                      <span className="font-display text-2xl font-bold tracking-tight text-teal-100 sm:text-3xl">
-                        OS
-                      </span>
-                    </span>
-                  )}
+                    }
+                  />
                 </span>
                 {/* 2026-10-16 설명을 제목 바로 아래로 — 오른쪽 끝 정렬은 가운데가 비고 "Basic 연/110만 원부터"가 쪼개졌다(taste-skill 실측) */}
                 <span className="flex min-w-0 flex-1 flex-col gap-1.5 sm:gap-2">

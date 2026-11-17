@@ -38,7 +38,7 @@ function mdProducts(): string {
     return lines.join("\n");
   }).join("\n\n");
   return `${head("퍼블릭아이디 제품", "/products")}
-가격은 모두 기준가(VAT 포함)이며 정확한 견적은 규격·수량·현장 조건에 따라 문의로 안내합니다. 견적 시뮬레이터 ${url("/estimate")} · 맞춤 견적 ${url("/quote")} · 전화 ${site.tel}
+가격은 모두 기준가(VAT 포함)이며 정확한 견적은 규격·수량·현장 조건에 따라 문의로 안내합니다. 견적 시뮬레이터 ${url("/quote#simulator")} · 맞춤 견적 ${url("/quote")} · 전화 ${site.tel}
 
 ${body}
 `;

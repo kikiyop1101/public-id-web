@@ -1,7 +1,7 @@
 // 공용 in-memory 속도 제한 — 인스턴스 단위 best-effort(서버리스에선 인스턴스마다 별도 카운터).
 // 더 강한 제한이 필요하면 Vercel KV / Upstash Redis 같은 공유 스토어나 WAF 로 바꾼다.
 // 2026-09-30 route 3곳(assistant·os-curator·inquiry-relay)에 복붙돼 있던 함수를 한 곳으로 모으고,
-// 허니팟뿐이던 서버 액션(견적·제보·게시판·관리자 로그인)에도 같은 함수를 쓴다.
+// 허니팟뿐이던 서버 액션(견적·제보·관리자 로그인)에도 같은 함수를 쓴다.
 
 type Hit = { n: number; reset: number }
 

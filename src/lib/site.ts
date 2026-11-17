@@ -20,16 +20,21 @@ export const site = {
   tistory: "https://public-id.tistory.com",
   kakao: "https://pf.kakao.com/_jxoGrX", // 카카오톡 채널 '퍼블릭아이디'(2026-09-12 개설, 09-30 공개 설정)
   boim: "https://boim.io", // 보임 — 퍼블릭아이디가 운영하는 AI 에이전트용 업체 찾기(2026-10-07 대표 "1,2 해" — 외부 언급)
-  // GNB는 5개(대표 지시 2026-08-25 "메뉴 4~5개") — 하위 페이지는 드롭다운으로 노출
-  // (대표 지적 2026-08-26 "우리회사OS·안전관리지도·설치영상은 모르면 못 찾는다").
-  // 순서 = 회사소개→제품→구독→실적·인증→소식 (대표 지시 2026-08-26).
+  // GNB는 5개(대표 지시 2026-08-25 "메뉴 4~5개"), 순서 = 회사소개→제품→구독 서비스→실적·인증→소식(대표 지시 2026-08-26).
+  // 2026-11-17 다이어트(대표 "페이지가 너무 많은 느낌 — 필요 없는 부분은 삭제해도"): 하위 27줄 → 19줄.
+  //  · 합친 쪽은 그 쪽 안의 자리(#)로 잇는다 — 사업영역 = /about#work, 인증·특허 = /credibility#credentials,
+  //    견적 시뮬레이터 = /quote#simulator, 보도자료 = /news. 옛 주소는 next.config.ts 301.
+  //  · 게임·진단·웹툰·제보는 헤더에서 내리고 푸터 '체험·참여' 묶음과 홈 PlayStrip에서 닿는다(방문 기록상 헤더가 아니라 홈·영상 댓글에서 들어온다).
   nav: [
     {
       label: "회사소개", en: "About", href: "/about",
-      children: [{ label: "사업영역", href: "/work" }],
+      children: [
+        { label: "사업영역", href: "/about#work" },
+        { label: "3D 월드", href: "/world" },
+      ],
     },
     {
-      // 제품 메뉴 = /products 페이지 구성 그대로(제품 4종 → 출력 컬렉션 2종 → 가이드·견적)
+      // 제품 메뉴 = /products 페이지 구성 그대로(제품 5종 → 출력 컬렉션 2종 → 가이드 → 견적)
       // — 대표 지적 2026-08-26 "제품이 메뉴와 하단 구성이 맞질 않아".
       label: "제품", en: "Products", href: "/products",
       children: [
@@ -41,8 +46,7 @@ export const site = {
         { label: "명화 컬렉션", href: "/products/art-fabric" },
         { label: "국내외 지도 컬렉션", href: "/products/map-banner" },
         { label: "부착 가이드 · 설치 영상", href: "/guide" },
-        { label: "맞춤 견적", href: "/quote" },
-        { label: "견적 시뮬레이터", href: "/estimate" },
+        { label: "맞춤 견적 · 시뮬레이터", href: "/quote" },
       ],
     },
     {
@@ -52,37 +56,30 @@ export const site = {
         { label: "디자인 구독", href: "/subscribe" },
         { label: "디자인 시스템", href: "/design" },
         { label: "안전관리 지도", href: "/safety-map" },
-        { label: "안전 리포트 · 제보", href: "/safety-report" },
-        { label: "노란발자국 캠페인 (게임)", href: "/campaign-game" }, // 2026-10-03 대표 지시 — 안전 리포트와 숨은 위험 찾기 사이
-        // 2026-09-08 체류시간 기획안 — 만질거리 3종 + 웹툰
-        { label: "숨은 위험 찾기 (게임)", href: "/safety-game" },
-        { label: "우리 동네 안전 점수", href: "/safety-score" },
-        { label: "웹툰", href: "/webtoon" },
       ],
     },
     {
       label: "실적·인증", en: "Track Record", href: "/credibility",
-      children: [{ label: "인증·특허", href: "/credentials" }],
+      children: [{ label: "인증·특허", href: "/credibility#credentials" }],
     },
     {
       label: "소식", en: "News", href: "/news",
       children: [
-        { label: "보도자료", href: "/press" },
+        { label: "보도자료", href: "/news" },
         { label: "블로그", href: "/blog" },
         { label: "영상관", href: "/videos" },
-        { label: "소통 게시판", href: "/board" },
-        { label: "문의", href: "/contact" },
       ],
     },
   ],
-  // 푸터 전체 지도 — GNB 5그룹 골격 그대로, GNB에서 뺀 페이지도 여기서 전부 닿는다.
-  // (2026-08-26 개편: 납작한 칩 12개 → 그룹 컬럼 — 대표 "페이지는 안 줄이고 눈에 잘 들어오게")
+  // 푸터 전체 지도 — 헤더에 없는 쪽도 여기서 전부 닿는다(검색 = src/lib/search-index.ts).
   footerGroups: [
     {
       label: "회사소개",
       links: [
         { label: "회사소개", href: "/about" },
-        { label: "사업영역", href: "/work" },
+        { label: "사업영역", href: "/about#work" },
+        { label: "실적", href: "/credibility" },
+        { label: "인증·특허", href: "/credibility#credentials" },
         { label: "3D 월드", href: "/world" },
       ],
     },
@@ -98,47 +95,42 @@ export const site = {
         { label: "명화 컬렉션", href: "/products/art-fabric" },
         { label: "국내외 지도 컬렉션", href: "/products/map-banner" },
         { label: "부착 가이드", href: "/guide" },
-        { label: "맞춤 견적", href: "/quote" },
-        { label: "견적 시뮬레이터", href: "/estimate" },
+        { label: "맞춤 견적 · 시뮬레이터", href: "/quote" },
       ],
     },
     {
       label: "구독 서비스",
       links: [
-        { label: "우리회사OS (AI 자동화)", href: "/os" }, // 2026-09-17 대표 지시 — 제품 메뉴에서 구독 메뉴로 이동 · 09-19 주종목이라 맨 위로
+        { label: "우리회사OS (AI 자동화)", href: "/os" },
+        { label: "AI 자동화 무료 진단", href: "/os#scan" },
         { label: "디자인 구독", href: "/subscribe" },
         { label: "디자인 시스템", href: "/design" },
         { label: "안전관리 지도", href: "/safety-map" },
-        { label: "안전 리포트 · 제보", href: "/safety-report" },
-        { label: "노란발자국 캠페인 (게임)", href: "/campaign-game" },
-        { label: "숨은 위험 찾기 (게임)", href: "/safety-game" },
-        { label: "우리 동네 안전 점수", href: "/safety-score" },
-        { label: "웹툰", href: "/webtoon" },
       ],
     },
     {
-      label: "실적·인증",
+      label: "체험·참여",
       links: [
-        { label: "실적", href: "/credibility" },
-        { label: "인증·특허", href: "/credentials" },
+        { label: "숨은 위험 찾기 (게임)", href: "/safety-game" },
+        { label: "노란발자국 캠페인 (게임)", href: "/campaign-game" },
+        { label: "우리 동네 안전 점수", href: "/safety-score" },
+        { label: "웹툰", href: "/webtoon" },
+        { label: "안전 리포트 · 제보", href: "/safety-report" },
       ],
     },
     {
       label: "소식",
       links: [
-        { label: "소식", href: "/news" },
-        { label: "보도자료", href: "/press" },
+        { label: "소식 · 보도자료", href: "/news" },
         { label: "블로그", href: "/blog" },
         { label: "영상관", href: "/videos" },
-        { label: "소통 게시판", href: "/board" },
         { label: "질문 답변", href: "/answers" },
         { label: "문의", href: "/contact" },
       ],
     },
   ],
+  // 바깥 판매 채널만(2026-11-17 — 사이트 안 주소 /os·/os#scan 은 푸터 '구독 서비스' 묶음으로 옮겼다)
   stores: [
-    { label: "우리회사OS (AI 업무 자동화 키트)", href: "/os" },
-    { label: "AI 자동화 무료 진단", href: "/os#scan" },
     { label: "네이버 스마트스토어", href: "https://smartstore.naver.com/public-id" },
     {
       label: "쿠팡",

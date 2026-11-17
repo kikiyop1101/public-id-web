@@ -6,15 +6,15 @@ export default function Footer() {
     <footer className="cv-auto bg-navy text-white/70 [--cv:2600px] md:[--cv:1000px]">
       {/* 모바일 하단 여백을 넓혀 떠 있는 도우미 버튼이 맨 아래 링크를 가리지 않게 한다 */}
       <div className="mx-auto w-full max-w-[1200px] px-5 pt-16 pb-24 sm:px-8 sm:pb-16">
-        {/* 전체 페이지 지도 — GNB 5그룹 그대로 (2026-08-26: 칩 나열 → 그룹 컬럼)
+        {/* 전체 페이지 지도 — 5묶음(2026-08-26: 칩 나열 → 그룹 컬럼 · 2026-11-17: 헤더에서 내린 게임·진단·제보는 '체험·참여' 묶음)
             터치 화면(lg 미만)에선 링크 높이 44px — 16px 줄이 8px 간격으로 붙어 오탭이 났다(2026-09-27 접근성 점검) */}
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-4">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo-white.png" alt={site.name} width={480} height={142} loading="lazy" decoding="async" className="h-8 w-auto" />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/70">
-              {site.tagline}. 전용 마스코트·월별 웹툰·디자인 시스템·홈페이지 제작
-              구독과 노면표시·안전표지 정기 시설 관리를 제공하는 {site.descriptor}.
+              {site.tagline}. 기업 맞춤 AI 업무 자동화 우리회사OS, 디자인 구독,
+              친환경 노면표시·안전표지의 시공과 정기 관리를 하는 {site.descriptor}.
             </p>
           </div>
 

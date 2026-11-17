@@ -6,7 +6,6 @@ import ShowcaseStrip from "@/components/sections/ShowcaseStrip";
 import ProductGateway from "@/components/sections/ProductGateway";
 import ProofSection from "@/components/sections/ProofSection";
 import PlayStrip from "@/components/sections/PlayStrip";
-import VideoStrip from "@/components/sections/VideoStrip";
 import Story from "@/components/sections/Story";
 import NewsStrip from "@/components/sections/NewsStrip";
 import ContactCTA from "@/components/sections/ContactCTA";
@@ -16,6 +15,9 @@ import { KITS } from "@/lib/os-kits";
 // 2026-08-25 리디자인 확정판 — 섹션 다이어트 9→5(대표 지시 "4~5개"):
 // ①히어로(아치+신뢰 바) ②작품 스트립 ③3갈래 게이트웨이 ④가치+퍼이 밴드 ⑤상담 CTA.
 // 2026-08-26 +소식(대표 "다음 단계 다 해줘" — 최신 활동 노출·네이버 유입 보강).
+// 2026-11-17 다이어트·순서(대표 "페이지가 너무 많은 느낌"): 섹션 11 → 10.
+//  · 순서 = 무엇을 하는 회사인가(세 갈래) → 실제로 한 일(사진) → 근거(수치). 종전엔 사진이 먼저 나와 주종목 우리회사OS가 세 번째 화면에야 보였다.
+//  · 체험(PlayStrip)과 영상(VideoStrip)을 한 섹션으로 합쳤다.
 export const metadata: Metadata = pageMeta({
   title: { absolute: "퍼블릭아이디 | 우리회사OS · 디자인 구독 · 안전시설 관리" },
   description:
@@ -50,7 +52,7 @@ const HOME_FAQ: FaqItem[] = [
   },
   {
     q: "견적은 어떻게 받나요?",
-    a: "견적 시뮬레이터에서 기준가 합계를 바로 확인하고 그대로 견적을 신청하실 수 있습니다. 금액은 수량·규격·현장 조건에 따라 달라지므로, 정확한 견적은 맞춤 견적 페이지나 전화(070-4150-1172)·이메일(public-id@naver.com)로 문의해 주세요.",
+    a: "맞춤 견적 페이지의 시뮬레이터에서 기준가 합계를 바로 확인하고 그대로 견적을 신청하실 수 있습니다. 금액은 수량·규격·현장 조건에 따라 달라지므로, 정확한 견적은 견적 신청이나 전화(070-4150-1172)·이메일(public-id@naver.com)로 문의해 주세요.",
   },
 ];
 
@@ -59,13 +61,12 @@ export default function Home() {
     <>
       <Hero />
       <TrustBar />
-      <ShowcaseStrip />
       <ProductGateway />
+      <ShowcaseStrip />
       {/* 2026-10-08 엑사 구조 대조 — 근거(미끄럼저항·시험·실적·인증) 탭. 고객사 이름 줄은 TrustBar */}
       <ProofSection />
-      {/* 2026-09-08 체류시간 기획안 — 만질거리(위험 찾기·안전 점수·견적 시뮬레이터) + 영상관 파사드 */}
+      {/* 2026-09-08 체류시간 기획안 — 만질거리(위험 찾기·캠페인 게임·안전 점수) + 영상 3칸(2026-11-17 한 섹션) */}
       <PlayStrip />
-      <VideoStrip />
       <Story />
       <NewsStrip />
       <FaqBlock title="자주 묻는 질문" intro="퍼블릭아이디에 처음 문의하실 때 가장 많이 확인하시는 내용입니다." items={HOME_FAQ} />

@@ -42,12 +42,12 @@ export default function NewsPage() {
           <>
             퍼블릭아이디
             <br />
-            소식
+            소식 · 보도자료
           </>
         }
         description="안전이 되는 디자인을 현장에서 만들어 온 이야기. 보도자료와 활동 소식을 전합니다."
       />
-      <NewsListSection items={news} active="all" />
+      <NewsListSection items={news} />
     </>
   );
 }
