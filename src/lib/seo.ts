@@ -13,7 +13,7 @@ export const DEFAULT_OG_IMAGE: OgImage = {
   url: "/og.png",
   width: 1200,
   height: 630,
-  alt: "퍼블릭아이디 — 디자인 구독 · 안전 시설 관리",
+  alt: "퍼블릭아이디 — 우리회사OS · 디자인 구독 · 안전시설 관리",
 };
 
 // 검색 결과에 잘리지 않는 길이(2026-11-04 task H5 — scripts/seo-audit.mjs가 같은 기준으로 검사한다).
