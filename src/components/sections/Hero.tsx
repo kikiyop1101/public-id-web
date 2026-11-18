@@ -5,7 +5,11 @@ import PreloadImage from "@/components/PreloadImage";
 import ScrollDepth from "@/components/ScrollDepth";
 import Link from "next/link";
 import HeroAsk from "@/components/HeroAsk";
+import ArchVideo from "@/components/ArchVideo";
 import { news } from "@/lib/news";
+
+// 아치 창 안에서 도는 실제 시공 현장 영상(2026-11-19) — 첫 화면이 다 뜬 뒤에 받아 사진 위에 겹친다(ArchVideo). 사진이 여전히 LCP.
+const HERO_VIDEO = "/hero/arch.mp4";
 
 // LCP 후보(아치 창 사진 — 데스크톱·모바일 공용) — SVG <image>는 priority 힌트를 못 받아 preload로 보강 (2026-08-26 감사)
 // 2026-11-04 성능(H3): 원본 JPEG(773px·124KB) 대신 Next 이미지 최적화 WebP(원본 해상도 그대로·85KB)로 —
@@ -20,14 +24,11 @@ function ArchSvg({
   className,
   label,
   viewBox = "0 0 900 560",
-  depth,
 }: {
   suffix: string;
   className: string;
   label?: string;
   viewBox?: string;
-  /** 스크롤 깊이 이동량(px) — 전경은 음수(빠르게). ScrollDepth 안에서만 뜻이 있다. */
-  depth?: string;
 }) {
   const id = (name: string) => `${name}-${suffix}`;
   return (
@@ -37,7 +38,6 @@ function ArchSvg({
       aria-label={label}
       viewBox={viewBox}
       className={className}
-      style={depth ? ({ "--d": depth } as CSSProperties) : undefined}
       fill="none"
     >
       <defs>
@@ -117,12 +117,20 @@ export default function Hero() {
       <PreloadImage href={HERO_IMG} fetchPriority="high" />
       {/* 대형 아치(다리) — 데스크톱: 우측에서 페이지가 열리며 한 번 그려진다.
           max-h 600px = 질문창이 들어와 히어로가 길어져도 종전 크기를 넘지 않게(넘으면 왼쪽 질문창·칩을 덮는다, 2026-10-08 실측) */}
-      <ArchSvg
-        suffix="d"
-        className="depth pointer-events-none absolute -right-[14%] bottom-0 hidden h-[88%] max-h-[600px] w-auto sm:block lg:-right-[8%]"
-        label="아치(다리) 아래로 보이는 노란발자국 시공 현장 — 횡단보도 앞 보도의 안심 대기선"
-        depth="-28px"
-      />
+      <div
+        className="depth pointer-events-none absolute -right-[14%] bottom-0 hidden aspect-[900/560] h-[88%] max-h-[600px] sm:block lg:-right-[8%]"
+        style={{ "--d": "-28px" } as CSSProperties}
+      >
+        <ArchSvg
+          suffix="d"
+          className="h-full w-full"
+          label="아치(다리) 아래로 보이는 실제 시공 현장 — 횡단보도 앞 노란발자국, 노면표시재를 두드려 붙이는 모습과 완성된 바닥 그래픽"
+        />
+        {/* 아치 창(viewBox 900×560 안의 202,282 · 556×278 반원)에 맞춘 영상 칸 — 사진 위에 겹친다 */}
+        <div className="absolute left-[22.444%] top-[50.357%] h-[49.643%] w-[61.778%] overflow-hidden rounded-t-full">
+          <ArchVideo src={HERO_VIDEO} className="h-full w-full object-cover" />
+        </div>
+      </div>
       {/* 바닥 글로우 — 아치가 바닥에 비치는 빛 */}
       <div
         aria-hidden
@@ -187,12 +195,18 @@ export default function Hero() {
             className="hero-rise mt-10 sm:hidden"
             style={{ animationDelay: "0.7s" }}
           >
-            <ArchSvg
-              suffix="m"
-              viewBox="100 180 760 380"
-              className="mx-auto h-auto w-full max-w-[400px]"
-              label="아치(다리) 아래로 보이는 노란발자국 시공 현장 — 횡단보도 앞 보도의 안심 대기선"
-            />
+            <div className="relative mx-auto aspect-[2/1] w-full max-w-[400px]">
+              <ArchSvg
+                suffix="m"
+                viewBox="100 180 760 380"
+                className="h-full w-full"
+                label="아치(다리) 아래로 보이는 실제 시공 현장 — 횡단보도 앞 노란발자국, 노면표시재를 두드려 붙이는 모습과 완성된 바닥 그래픽"
+              />
+              {/* 모바일 viewBox(100,180 · 760×380) 기준 창 자리 */}
+              <div className="absolute left-[13.421%] top-[26.842%] h-[73.158%] w-[73.158%] overflow-hidden rounded-t-full">
+                <ArchVideo src={HERO_VIDEO} className="h-full w-full object-cover" />
+              </div>
+            </div>
           </div>
           {/* 첫 화면에서 바로 써 보는 질문창(2026-10-08, 엑사 히어로 데모의 우리 판) */}
           <div className="hero-rise mt-8" style={{ animationDelay: "0.85s" }}>
