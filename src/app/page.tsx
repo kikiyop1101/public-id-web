@@ -3,6 +3,7 @@ import { pageMeta } from "@/lib/seo";
 import Hero from "@/components/sections/Hero";
 import TrustBar from "@/components/sections/TrustBar";
 import ShowcaseStrip from "@/components/sections/ShowcaseStrip";
+import DesignRefStrip from "@/components/sections/DesignRefStrip";
 import ProductGateway from "@/components/sections/ProductGateway";
 import ProofSection from "@/components/sections/ProofSection";
 import PlayStrip from "@/components/sections/PlayStrip";
@@ -63,6 +64,8 @@ export default function Home() {
       <TrustBar />
       <ProductGateway />
       <ShowcaseStrip />
+      {/* 2026-11-19 디자인 시안 레퍼런스 최근 4건(시안 사이트에서 읽어 옴) — 작품 줄과 같은 흰 면에 이어 붙는다 */}
+      <DesignRefStrip />
       {/* 2026-10-08 엑사 구조 대조 — 근거(미끄럼저항·시험·실적·인증) 탭. 고객사 이름 줄은 TrustBar */}
       <ProofSection />
       {/* 2026-09-08 체류시간 기획안 — 만질거리(위험 찾기·캠페인 게임·안전 점수) + 영상 3칸(2026-11-17 한 섹션) */}
