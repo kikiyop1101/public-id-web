@@ -130,6 +130,16 @@ export default function Footer() {
                   보임(BOIM) · AI 에이전트용 업체 찾기
                 </a>
               </li>
+              <li>
+                <a
+                  href={site.designShare}
+                  className="flex min-h-11 items-center transition hover:text-white lg:inline lg:min-h-0"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  디자인 시안 · 레퍼런스
+                </a>
+              </li>
             </ul>
           </div>
         </div>

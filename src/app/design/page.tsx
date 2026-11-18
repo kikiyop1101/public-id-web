@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { pageMeta } from "@/lib/seo";
+import { site } from "@/lib/site";
 import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
@@ -165,9 +166,12 @@ export default function DesignPage() {
                 </li>
               ))}
             </ul>
-            <div className="mt-10">
+            <div className="mt-10 flex flex-wrap gap-4">
               <Button href="/design-docs/index.html" variant="outline" external>
                 디자인시스템 문서 전체 보기
+              </Button>
+              <Button href={site.designShare} variant="outline" external>
+                디자인 시안 레퍼런스 보기
               </Button>
             </div>
           </Reveal>
