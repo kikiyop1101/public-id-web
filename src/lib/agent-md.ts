@@ -131,11 +131,13 @@ ${actions}
 
 /** 검색 결과 — /search?q= 를 마크다운으로(동적) */
 export function mdSearch(q: string): string {
+  // 제목에 반영하는 검색어는 줄바꿈·마크다운 기호를 빼 가짜 공지·링크 삽입을 막는다(보안 스캔 F2)
+  const shown = q.replace(/[\r\n#>*_`\[\]()<|~]/g, " ").replace(/\s+/g, " ").trim();
   const hits = searchSite(q, 12);
   const list = hits.length
     ? hits.map((h) => `- [${h.label}](${h.external ? h.href : url(h.href)}) — ${h.group} · ${h.desc}`).join("\n")
     : `- 맞는 페이지가 없습니다. 회사 요약 ${site.url}/llms.txt 또는 문의 ${url("/contact")} · 전화 ${site.tel}`;
-  return `${head(`퍼블릭아이디 사이트 검색: ${q || "(빈 검색어)"}`, `/search?q=${encodeURIComponent(q)}`)}
+  return `${head(`퍼블릭아이디 사이트 검색: ${shown || "(빈 검색어)"}`, `/search?q=${encodeURIComponent(q)}`)}
 ${list}
 `;
 }

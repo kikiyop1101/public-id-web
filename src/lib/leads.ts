@@ -82,7 +82,15 @@ export function parseLeadRow(raw: unknown): LeadRow | null {
   }
 }
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+/** 이메일 형식 검사 — 정규식 백트래킹(ReDoS) 없이 선형 시간으로, 254자(RFC 상한)까지만 본다. */
+function isEmail(v: string): boolean {
+  if (v.length > 254 || /[\s]/.test(v)) return false
+  const at = v.indexOf('@')
+  if (at < 1 || at !== v.lastIndexOf('@')) return false
+  const domain = v.slice(at + 1)
+  const dot = domain.lastIndexOf('.')
+  return dot > 0 && dot < domain.length - 1
+}
 
 /** 입력을 검증해 저장 가능한 레코드로 만든다. 실패하면 error만 돌려준다. */
 export function validateLead(input: LeadInput): { error?: string; lead?: LeadRecord } {
@@ -92,7 +100,7 @@ export function validateLead(input: LeadInput): { error?: string; lead?: LeadRec
 
   if (!(kind in LEAD_KINDS)) return { error: '신청 종류를 선택해 주세요.' }
   if (!name) return { error: '성함(담당자명)을 입력해 주세요.' }
-  if (!email || !EMAIL_RE.test(email)) return { error: '회신받을 이메일 주소를 확인해 주세요.' }
+  if (!email || !isEmail(email)) return { error: '회신받을 이메일 주소를 확인해 주세요.' }
   if (kind === 'quote' && !input.message.trim()) {
     return { error: '필요한 규격·수량 등 요청 내용을 입력해 주세요.' }
   }
