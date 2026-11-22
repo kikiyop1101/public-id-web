@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>Chip · Badge (칩·배지) — 퍼블릭아이디 디자인시스템</title>
+<meta name="description" content="항목을 분류·필터하는 조작형 태그(Chip)와 상태·속성을 짧게 알리는 라벨(Badge)을 한 문서로 묶는다. 둘 다 정보를 최소 단위로 압축한다.">
+<link rel="canonical" href="https://www.public-id.co.kr/design-docs/components/chip-badge.html">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" integrity="sha384-y9k2lBaj/ETgBd4674Kql3098euvZU5fWlBcBBrlROBI6c2KDmjWhd508Rfsx9R/" crossorigin="anonymous">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -75,7 +77,7 @@
 <h2 id="do-don-t">Do / Don't</h2>
 <div class="dd-pair"><div class="dd-card dd-do"><div class="dd-label">Do</div><ul><li>Chip은 1~2단어 분류 라벨로만 쓴다 — "노면표시재", "안전표지"처럼 짧게.</li><li>필터로 쓰는 Chip은 선택 상태를 색·모양 둘 다로 드러낸다(브랜드 필 + <code>aria-pressed</code>).</li><li>Badge 상태색은 의미와 일치시킨다(품절=danger, 재고=success).</li></ul></div><div class="dd-card dd-dont"><div class="dd-label">Don't</div><ul><li>Chip·Badge에 문장이나 설명을 넣지 말 것 — 길어지면 Callout·목록으로.</li><li>Badge를 클릭 대상으로 만들지 말 것 — 조작이 필요하면 Chip이나 Button을 쓴다.</li><li>의미 없는 알록달록한 Badge를 남발하지 말 것 — 상태색은 절제한다.</li></ul></div></div>
 <h2 id="콘텐츠-규칙">콘텐츠 규칙</h2>
-<ul><li>Chip·Badge 라벨은 <strong>1~2단어 명사</strong>(체언)로 — 문장·서술어 금지.</li><li>길이 상한: Chip은 8자, Badge는 6자 안. 넘으면 축약하거나 다른 컴포넌트로.</li><li>Badge 숫자는 아라비아 숫자, 두 자리를 넘으면 "99+"로 축약한다.</li><li>인증 배지는 검증된 사실만 — "GREENGUARD GOLD"만 쓰고 미보유 인증 라벨은 금지.</li></ul>
+<ul><li>Chip·Badge 라벨은 <strong>1~2단어 명사</strong>(체언)로 — 문장·서술어 금지.</li><li>길이 상한: Chip은 8자, Badge는 6자 안. 넘으면 축약하거나 다른 컴포넌트로.</li><li>Badge 숫자는 아라비아 숫자, 두 자리를 넘으면 "99+"로 축약한다.</li><li>인증 배지는 검증된 사실만 — "GREENGUARD GOLD"만 쓰고 미보유 인증 라벨은 금지. 이 인증은 HP Latex 잉크의 것이라 제품 자체 인증처럼 단독으로 붙이지 않고 'HP Latex 잉크'와 함께 쓴다(BRAND_CONSTANTS 인증 표).</li></ul>
 <h2 id="키보드-인터랙션">키보드 인터랙션</h2>
 <div class="table-wrap"><table><thead><tr><th>키</th><th>동작</th></tr></thead><tbody><tr><td><code>Tab</code></td><td>선택형·삭제형 Chip으로 포커스 이동(정적 Chip·Badge는 포커스를 받지 않음)</td></tr><tr><td><code>Enter</code> / <code>Space</code></td><td>선택형 Chip 선택 on/off 토글</td></tr><tr><td><code>Backspace</code> / <code>Delete</code></td><td>삭제형 Chip 제거(포커스가 해당 Chip에 있을 때)</td></tr></tbody></table></div>
 <h2 id="접근성">접근성</h2>
