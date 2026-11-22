@@ -3,17 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
 <title>UX Writing (콘텐츠 작성) — 퍼블릭아이디 디자인시스템</title>
 <meta name="description" content="퍼블릭아이디 산출물의 글 — 목소리(voice)·상황별 문구 패턴·컴포넌트 라벨 규칙. 형태(폰트·줄바꿈·띄어쓰기)는 korean-typography.md, 내용(무엇을 어떻게 말하나)은 이 문서가 정본이다. 각 컴포넌트 전용 규칙은 해당 컴포넌트 문서의 &quot;콘텐츠 규칙&quot; 섹션에 있다.">
 <link rel="canonical" href="https://www.public-id.co.kr/design-docs/content/ux-writing.html">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" integrity="sha384-V1aeodcjJTo8c7lEQKPTnsMG6Yk8y6O/1kzqU/BCXw78Yw1W8XYFJGgjYa3oInYZ" crossorigin="anonymous">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/site.css">
-<script>(function(){var t=localStorage.getItem("pids-theme");if(t)document.documentElement.setAttribute("data-theme",t);})();</script>
+<script>(function(){var t=localStorage.getItem("pids-theme");if(t){document.documentElement.setAttribute("data-theme",t);var m=document.querySelector('meta[name="color-scheme"]');if(m)m.content=t;}})();</script>
 </head>
 <body>
 <a class="pi-skiplink" href="#main">본문 바로가기</a>
@@ -62,9 +63,9 @@
 <h3 id="알림-완료-문구">알림·완료 문구</h3>
 <ul><li>완료는 <strong>결과 + 다음 행동</strong>: "카드뉴스 6장을 저장했습니다. 발행 대기 목록에서 확인하세요."</li><li>진행 중은 <strong>무엇을 하는지</strong>: "발행 중…" ("잠시만 기다려 주세요" 단독 금지 — 뭘 기다리는지 없음).</li><li>알림 남발 금지 — 사용자가 요청한 일의 결과만 알린다.</li></ul>
 <h2 id="컴포넌트-라벨-공통-규칙">컴포넌트 라벨 공통 규칙</h2>
-<div class="table-wrap"><table><thead><tr><th>컴포넌트</th><th>규칙</th><th>예</th></tr></thead><tbody><tr><td>Button</td><td>동사형 2~4어절, 말줄임 금지</td><td>"견적 요청하기"</td></tr><tr><td>Input 라벨</td><td>명사형, placeholder는 예시값(라벨 대체 금지)</td><td>라벨 "연락처" / placeholder "010-0000-0000"</td></tr><tr><td>Toggle</td><td>명사형 고정(상태 따라 안 바뀜)</td><td>"자동 발행" ("켜짐/꺼짐" ✗)</td></tr><tr><td>Chip·Badge</td><td>1~2단어</td><td>"NEW", "특허받은"</td></tr><tr><td>Modal 제목</td><td>결정을 담은 질문 1문장</td><td>"발행할까요?"</td></tr><tr><td>Tab</td><td>명사 1~3어절, 같은 품사로 통일</td><td>"제품 소개 / 시공 사례 / 견적"</td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>컴포넌트</th><th>규칙</th><th>예</th></tr></thead><tbody><tr><td>Button</td><td>동사형 2~4어절, 말줄임 금지</td><td>"견적 요청하기"</td></tr><tr><td>Input 라벨</td><td>명사형, placeholder는 예시값(라벨 대체 금지)</td><td>라벨 "연락처" / placeholder "010-0000-0000"</td></tr><tr><td>Toggle</td><td>명사형 고정(상태 따라 안 바뀜)</td><td>"자동 발행" ("켜짐/꺼짐" ✗)</td></tr><tr><td>Chip·Badge</td><td>1~2단어</td><td>"NEW", "친환경 인증"</td></tr><tr><td>Modal 제목</td><td>결정을 담은 질문 1문장</td><td>"발행할까요?"</td></tr><tr><td>Tab</td><td>명사 1~3어절, 같은 품사로 통일</td><td>"제품 소개 / 시공 사례 / 견적"</td></tr></tbody></table></div>
 <h2 id="표기-정본-정의는-여기-말고-정본에서">표기 정본 (정의는 여기 말고 정본에서)</h2>
-<ul><li>회사 사실·인증·금지 표현·연락처 표기의 정본은 <strong>브랜드 상수 문서</strong>(BRAND_CONSTANTS)다 — 이 문서는 규칙을 중복 정의하지 않는다. 자주 걸리는 것만 요지: 인증은 <strong>GREENGUARD GOLD(UL 2818)</strong>만 표기('KC'·'KS'·'환경부 인증' 금지), 잉크는 <strong>친환경 라텍스</strong>('UV' 금지), 마스코트 이름은 <strong>퍼이</strong>.</li><li>홈페이지 주소는 <code>www.public-id.co.kr</code> <strong>하나로</strong> 쓴다(옛 <code>store.public-id.co.kr</code>는 이 사이트로 통합됐다).</li><li>이모지: 인쇄 납품물은 최소화(1~2개), 온라인 콘텐츠는 제한 없음(남발만 지양).</li></ul>
+<ul><li>회사 사실·인증·금지 표현·연락처 표기의 정본은 <strong>브랜드 상수 문서</strong>(BRAND_CONSTANTS)다 — 이 문서는 규칙을 중복 정의하지 않는다. 자주 걸리는 것만 요지: 인증은 <strong>GREENGUARD GOLD(UL 2818)</strong>만 표기('KS'·'KC'·'환경부 인증' 금지), 잉크는 <strong>친환경 라텍스</strong>('UV' 금지), 마스코트 이름은 <strong>퍼이</strong>.</li><li>홈페이지 주소는 <code>www.public-id.co.kr</code> <strong>하나만</strong> 쓴다(2026-08-25 홈페이지 통합 — 구 store 주소·병기 규칙 폐지).</li><li>이모지: 인쇄 납품물은 최소화(1~2개), 온라인 콘텐츠는 제한 없음(남발만 지양).</li></ul>
 <h2 id="띄어쓰기-줄바꿈-형태-규칙은-korean-typography가-정본">띄어쓰기·줄바꿈 (형태 규칙은 korean-typography가 정본)</h2>
 <ul><li>조사는 붙이고 의존명사는 띄운다: "할 수 있다", "떠난 지 1년". 숫자+단위는 붙인다: "5개월", "132,000원".</li><li>문장이 마침표로 끝나면 줄을 바꾼다(칸이 부족하면 이어 쓴다). 자세한 규칙과 발행 전 체크리스트는 <code>korean-typography.md</code>.</li></ul></article>
 </main>

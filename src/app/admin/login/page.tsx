@@ -20,6 +20,7 @@ export default function AdminLoginPage() {
           placeholder="관리자 비밀번호"
           required
           autoFocus
+          autoComplete="current-password"
           className="w-full rounded-lg border border-black/10 px-3 py-2 text-sm"
         />
         {state.error && <p className="mt-2 text-sm text-red-600">{state.error}</p>}

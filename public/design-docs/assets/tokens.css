@@ -4,6 +4,7 @@
    색 정본: ../BRAND_CONSTANTS.md (verify-tokens.mjs가 일치 검사)
    ============================================================ */
 :root {
+  color-scheme: light dark;
   /* — Tier1 Primitive — */
   --color-white: #FFFFFF;
   --color-black: #000000;
@@ -136,9 +137,10 @@
   --font-size-2xl: 28px;
   --font-size-3xl: 36px;
   --font-size-4xl: 48px;
-  --font-lh-tight: 1.15;
+  --font-size-display: 64px;
+  --font-lh-tight: 1.08;
   --font-lh-snug: 1.2;
-  --font-lh-heading: 1.375;
+  --font-lh-heading: 1.25;
   --font-lh-title: 1.4;
   --font-lh-normal: 1.5;
   --font-lh-relaxed: 1.625;
@@ -216,10 +218,10 @@
   --color-state-info-border: var(--color-teal-200);
   --text-display-family: var(--font-family-sans);
   --text-display-weight: var(--font-weight-extrabold);
-  --text-display-size: var(--font-size-4xl);
+  --text-display-size: var(--font-size-display);
   --text-display-line-height: var(--font-lh-tight);
   --text-display-letter-spacing: var(--font-ls-tight);
-  --text-display: var(--font-weight-extrabold) var(--font-size-4xl)/var(--font-lh-tight) var(--font-family-sans);
+  --text-display: var(--font-weight-extrabold) var(--font-size-display)/var(--font-lh-tight) var(--font-family-sans);
   --text-h1-family: var(--font-family-sans);
   --text-h1-weight: var(--font-weight-extrabold);
   --text-h1-size: var(--font-size-3xl);
@@ -440,7 +442,12 @@
   --select-arrow-fg: var(--color-text-muted);
 }
 
+[data-theme="light"] {
+  color-scheme: light;
+}
+
 [data-theme="dark"], .theme-dark {
+  color-scheme: dark;
   /* — Semantic overrides (dark) — */
   --color-bg-canvas: var(--color-navy-500);
   --color-bg-subtle: var(--color-navy-600);

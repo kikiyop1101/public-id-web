@@ -3,17 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
 <title>Link (링크) — 퍼블릭아이디 디자인시스템</title>
 <meta name="description" content="다른 페이지·위치로 이동시키는 인라인 텍스트. 색만이 아니라 밑줄을 함께 써 링크임을 알린다.">
 <link rel="canonical" href="https://www.public-id.co.kr/design-docs/components/link.html">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" integrity="sha384-V1aeodcjJTo8c7lEQKPTnsMG6Yk8y6O/1kzqU/BCXw78Yw1W8XYFJGgjYa3oInYZ" crossorigin="anonymous">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/components.css">
 <link rel="stylesheet" href="../assets/site.css">
-<script>(function(){var t=localStorage.getItem("pids-theme");if(t)document.documentElement.setAttribute("data-theme",t);})();</script>
+<script>(function(){var t=localStorage.getItem("pids-theme");if(t){document.documentElement.setAttribute("data-theme",t);var m=document.querySelector('meta[name="color-scheme"]');if(m)m.content=t;}})();</script>
 </head>
 <body>
 <a class="pi-skiplink" href="#main">본문 바로가기</a>
@@ -83,7 +84,7 @@
 </p>
 <p class="pi-prose">
   제품은
-  <a class="pi-link pi-link--external" href="https://store.public-id.co.kr" target="_blank" rel="noopener">스토어에서 구매<span class="pi-link__ext" aria-hidden="true">↗</span></a>할 수 있습니다.
+  <a class="pi-link pi-link--external" href="https://www.public-id.co.kr/products" target="_blank" rel="noopener">제품 페이지에서 구매<span class="pi-link__ext" aria-hidden="true">↗</span></a>할 수 있습니다.
 </p>
 <p class="pi-prose">
   <a class="pi-link pi-link--standalone" href="#">디자인구독 안내 보기 →</a>
@@ -95,7 +96,7 @@
 &lt;/p&gt;
 &lt;p class="pi-prose"&gt;
   제품은
-  &lt;a class="pi-link pi-link--external" href="https://store.public-id.co.kr" target="_blank" rel="noopener"&gt;스토어에서 구매&lt;span class="pi-link__ext" aria-hidden="true"&gt;↗&lt;/span&gt;&lt;/a&gt;할 수 있습니다.
+  &lt;a class="pi-link pi-link--external" href="https://www.public-id.co.kr/products" target="_blank" rel="noopener"&gt;제품 페이지에서 구매&lt;span class="pi-link__ext" aria-hidden="true"&gt;↗&lt;/span&gt;&lt;/a&gt;할 수 있습니다.
 &lt;/p&gt;
 &lt;p class="pi-prose"&gt;
   &lt;a class="pi-link pi-link--standalone" href="#"&gt;디자인구독 안내 보기 →&lt;/a&gt;

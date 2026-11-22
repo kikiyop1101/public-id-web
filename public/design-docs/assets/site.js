@@ -11,6 +11,8 @@
       var os = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
       var next = (cur || os) === "dark" ? "light" : "dark";
       root.setAttribute("data-theme", next);
+      var meta = document.querySelector('meta[name="color-scheme"]');
+      if (meta) meta.content = next;
       localStorage.setItem("pids-theme", next);
     });
   }

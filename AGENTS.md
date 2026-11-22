@@ -49,7 +49,7 @@ Next.js 16.4.x(정확한 버전은 package.json의 next). `node_modules/next/dis
 
 ## 변경 금지 (의도적 설계)
 
-- `src/lib/clientLinks.ts`의 SALT·ADMIN_KEY 평문 상수는 현 공개 쇼케이스 설계상 의도적 수용 — 데이터 비공개 전환 전까지 env var로 옮기거나 토큰 스킴을 바꾸지 말 것(발주처 전용 링크 /safety-map/c/<token>·관리자 목록 /safety-map/links?key= 깨짐 — 옛 /api/facility-links는 2026-06-14에 없앰).
+- `src/lib/clientLinks.ts`의 SALT·ADMIN_KEY 평문 상수는 현 공개 쇼케이스 설계상 의도적 수용 — 데이터 비공개 전환 전까지 env var로 옮기거나 토큰 스킴을 바꾸지 말 것(발주처 전용 링크 /safety-map/c/<token>·관리자 목록 /safety-map/links 키 입력(POST·쿠키 세션, 2026-11-22부터 ?key= 쿼리는 안 받음) 깨짐 — 옛 /api/facility-links는 2026-06-14에 없앰).
 - `next.config.ts`의 부분 CSP(form-action/frame-ancestors만)는 SSG nonce 한계로 의도적 — default-src/script-src 임의 추가 금지.
 - apex→www 308 redirect·보안헤더 5종은 의도적 유지.
 - `vercel.json` `regions: ["syd1"]` = 함수를 DB(Supabase, 호주 시드니) 옆에서 돌린다(2026-11-05 운영 실측 TTFB 중앙값 /safety-report·/board(2026-11-17 없앰)·/blog: iad1 1.49·0.99·0.99초 → icn1 0.78·0.56·0.57초 → syd1 0.45·0.30·0.34초). 지역을 바꾸면 개인정보처리방침 6번 Vercel 서버 처리 지역도 같은 커밋에서 고친다.
