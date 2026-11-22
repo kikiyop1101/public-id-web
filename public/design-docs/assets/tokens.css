@@ -452,10 +452,12 @@
   --color-bg-canvas: var(--color-navy-500);
   --color-bg-subtle: var(--color-navy-600);
   --color-bg-inverse: var(--color-gray-50);
+  --color-bg-paper: var(--color-navy-500);
   --color-surface-default: var(--color-navy-600);
   --color-surface-raised: var(--color-navy-400);
   --color-surface-sunken: var(--color-navy-700);
   --color-surface-inverse: var(--color-white);
+  --color-surface-paper: var(--color-navy-500);
   --color-text-heading: var(--color-white);
   --color-text-primary: #EAF1F2;
   --color-text-secondary: #B9CCD2;
@@ -508,10 +510,12 @@
     --color-bg-canvas: var(--color-navy-500);
     --color-bg-subtle: var(--color-navy-600);
     --color-bg-inverse: var(--color-gray-50);
+    --color-bg-paper: var(--color-navy-500);
     --color-surface-default: var(--color-navy-600);
     --color-surface-raised: var(--color-navy-400);
     --color-surface-sunken: var(--color-navy-700);
     --color-surface-inverse: var(--color-white);
+    --color-surface-paper: var(--color-navy-500);
     --color-text-heading: var(--color-white);
     --color-text-primary: #EAF1F2;
     --color-text-secondary: #B9CCD2;
