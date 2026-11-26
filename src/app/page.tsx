@@ -7,6 +7,7 @@ import DesignRefStrip from "@/components/sections/DesignRefStrip";
 import ProductGateway from "@/components/sections/ProductGateway";
 import ProofSection from "@/components/sections/ProofSection";
 import PlayStrip from "@/components/sections/PlayStrip";
+import DioramaTeaser from "@/components/sections/DioramaTeaser";
 import Story from "@/components/sections/Story";
 import NewsStrip from "@/components/sections/NewsStrip";
 import ContactCTA from "@/components/sections/ContactCTA";
@@ -62,6 +63,8 @@ export default function Home() {
     <>
       <Hero />
       <TrustBar />
+      {/* 2026-11-27 대표 "모르는 사람이 궁금함을 가지고 누를 수 있게" — 3D 디지털 디오라마 입구(숨은 18곳 찾기) */}
+      <DioramaTeaser />
       <ProductGateway />
       <ShowcaseStrip />
       {/* 2026-11-19 디자인 시안 레퍼런스 최근 4건(시안 사이트에서 읽어 옴) — 작품 줄과 같은 흰 면에 이어 붙는다 */}

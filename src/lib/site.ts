@@ -39,6 +39,7 @@ export const site = {
       // — 대표 지적 2026-08-26 "제품이 메뉴와 하단 구성이 맞질 않아".
       label: "제품", en: "Products", href: "/products",
       children: [
+        { label: "3D로 둘러보기 · 숨은 18곳", href: "/diorama" }, // 2026-11-27 3D 디지털 디오라마
         { label: "친환경 그래픽 노면표시재", href: "/products#roadmark" },
         { label: "노란발자국", href: "/products#footprint" },
         { label: "친환경 그래픽 직물시트", href: "/products#fabric" },
@@ -88,6 +89,7 @@ export const site = {
       label: "제품",
       links: [
         { label: "제품 전체", href: "/products" },
+        { label: "3D 디지털 디오라마", href: "/diorama" },
         { label: "친환경 그래픽 노면표시재", href: "/products#roadmark" },
         { label: "노란발자국", href: "/products#footprint" },
         { label: "친환경 그래픽 직물시트", href: "/products#fabric" },
