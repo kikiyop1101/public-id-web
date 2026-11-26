@@ -94,6 +94,8 @@ const nextConfig: NextConfig = {
     // Canonical host = www (metadataBase/sitemap/robots/JSON-LD all use www);
     // apex previously served duplicate 200s, splitting SEO signals.
     return [
+      // 2026-11-26 세이프타운 디지털 디오라마(정적 3D 페이지, public/diorama-3d) — 짧은 주소.
+      { source: "/diorama", destination: "/diorama-3d/index.html", permanent: false },
       // 2026-08-26 대표 지시 — /design 전용 페이지 복원("눌러서 다 볼 수 있던 게 없어졌다").
       // 08-25의 /design→/subscribe#design-system 301은 해제, 구독 안 요약 섹션은 유지.
       {
