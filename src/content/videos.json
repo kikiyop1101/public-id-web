@@ -1,5 +1,40 @@
 [
   {
+    "id": "NDzG_wqua9E",
+    "title": "전기차 충전구역·지하주차장·캠핑장 안내, 무엇을 붙이나?",
+    "published": "2026-11-26",
+    "category": "소상공인·우리회사OS",
+    "kind": "long"
+  },
+  {
+    "id": "KKgYBpdStY8",
+    "title": "세종 시민은 왜 책을 제일 많이 빌릴까? 1인당 6.07권｜세종 왜?",
+    "published": "2026-11-26",
+    "category": "생활·계절",
+    "kind": "short"
+  },
+  {
+    "id": "6COje0W71tE",
+    "title": "밤 열 시의 책상이 사라진 날",
+    "published": "2026-11-26",
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
+  },
+  {
+    "id": "T5qMzObe0Ww",
+    "title": "정부세종청사 옥상 3.6km 길은 어떻게 이어졌나｜지도로 본 세종",
+    "published": "2026-11-26",
+    "category": "생활·계절",
+    "kind": "short"
+  },
+  {
+    "id": "BlQfqOrWPlk",
+    "title": "12월 8일 해외 온라인 판로지원 신청, 입점 뒤 문의 답은 준비됐나요",
+    "published": "2026-11-26",
+    "category": "소상공인·우리회사OS",
+    "kind": "short"
+  },
+  {
     "id": "xGPc7BNJ8wc",
     "title": "세종 스마트시티 첫 삽까지 8년? 3조 원 넘게 투입｜퍼이의 세종",
     "published": "2026-11-25",
@@ -1858,13 +1893,6 @@
     "kind": "short"
   },
   {
-    "id": "exBqYdeLvHY",
-    "title": "계약서 서명 전에 이것부터 점검하세요",
-    "published": "2026-09-26",
-    "category": "소상공인·우리회사OS",
-    "kind": "short"
-  },
-  {
     "id": "rK9LRtIfqOc",
     "title": "세종 행정수도, 대통령은 '신속히'라 했다 — 남은 건 국회",
     "published": "2026-09-22",
@@ -2305,27 +2333,6 @@
     "id": "aXc9VRItxl0",
     "title": "정부세종청사는 왜 구불구불 이어져 있을까? 3.6km 옥상정원",
     "published": "2026-09-27",
-    "category": "생활·계절",
-    "kind": "short"
-  },
-  {
-    "id": "pFpxrnoLh-U",
-    "title": "지원 대상을 가릴 때 원가와 판관비까지 본다는데, 우리 가게 숫자는 정리돼 있나요",
-    "published": "2026-09-26",
-    "category": "소상공인·우리회사OS",
-    "kind": "short"
-  },
-  {
-    "id": "dBfK86PV1Lg",
-    "title": "GD 마크는 어떻게 붙을까요? 올해 224건이 선정됐어요",
-    "published": "2026-09-26",
-    "category": "안전·시공",
-    "kind": "short"
-  },
-  {
-    "id": "DT6gxEISQvg",
-    "title": "세종을 위에서 보면 왜 반지 모양일까? 가운데 비운 도시",
-    "published": "2026-09-26",
     "category": "생활·계절",
     "kind": "short"
   }
