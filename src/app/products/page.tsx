@@ -150,6 +150,22 @@ export default function ProductsPage() {
         description="관련 특허받은 부착식 노면표시재부터 직물시트·홍보판촉물·출력 라인업까지 — 현장 사진과 기준가를 그대로 보여드립니다. 아래 탭으로 바로 이동하세요."
       />
 
+      {/* 2026-11-26 세이프타운 디지털 디오라마(정적 3D 페이지 /diorama)로 가는 길 — 제품이 실제 크기로 놓인 동네 */}
+      <div className="mx-auto max-w-[1200px] px-5 pt-8 sm:px-8">
+        <a
+          href="/diorama"
+          className="group flex items-center justify-between gap-4 rounded-2xl border border-line bg-white px-6 py-5 transition hover:border-teal"
+        >
+          <span>
+            <span className="block text-sm font-semibold text-teal-700">3D 디지털 디오라마</span>
+            <span className="mt-1 block text-base font-bold text-ink group-hover:text-teal-700 sm:text-lg">
+              우리 제품 18가지가 실제 크기로 놓인 동네를 직접 돌려 보세요
+            </span>
+          </span>
+          <span aria-hidden className="text-xl text-teal-700">→</span>
+        </a>
+      </div>
+
       <ProductTabs />
 
       {PRODUCTS.map((product, index) => (
