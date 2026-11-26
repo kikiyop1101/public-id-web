@@ -8,24 +8,25 @@
    "size": "정지선 4,800×300mm · 발자국 238×240mm(1족)",
    "desc": "횡단보도 앞 인도에 노란 정지선과 발자국을 붙여, 아이가 차도에서 한 걸음 물러나 멈춰 설 자리를 만듭니다. 발자국은 정지선 바로 뒤 인도 위에, 발가락이 차도 쪽을 향하게 붙입니다.",
    "anchor": [
-    -13.0,
-    6.800000190734863,
-    0.40349999999999997
+    -13.6,
+    7.6,
+    0.45
    ],
    "view": {
     "pos": [
-     -10.6,
-     2.2,
-     6.2
+     -14.6,
+     12.6,
+     4.6
     ],
     "target": [
-     -13.4,
-     7.7,
-     0.2
+     -13.2,
+     6.9,
+     0.1
     ]
    },
    "print": "img/print-foot.webp",
-   "photo": "img/photo-foot.jpg"
+   "photo": "img/photo-foot.jpg",
+   "photo_cap": "횡단보도 앞 노란발자국 시공 현장"
   },
   {
    "id": "foot2",
@@ -52,34 +53,8 @@
     ]
    },
    "print": "img/print-foot2.webp",
-   "photo": null
-  },
-  {
-   "id": "bollard",
-   "title": "노란볼라드",
-   "sub": "기존 볼라드 드레스업",
-   "mat": "친환경직물시트",
-   "size": "볼라드 몸통 둘레에 맞춰 제작",
-   "desc": "이미 설치된 볼라드 위에 친환경 직물시트를 입혀, 멀리서도 어린이보호구역이 보이게 합니다. 2023 우수디자인(GD) 선정 · 디자인등록 제품입니다.",
-   "anchor": [
-    -13.0,
-    6.95,
-    0.85
-   ],
-   "view": {
-    "pos": [
-     -10.9,
-     2.6,
-     1.25
-    ],
-    "target": [
-     -16.8,
-     7.2,
-     0.55
-    ]
-   },
-   "print": null,
-   "photo": "img/photo-bollard.jpg"
+   "photo": null,
+   "photo_cap": "퍼블릭아이디 실제 시공 현장"
   },
   {
    "id": "play",
@@ -106,7 +81,8 @@
     ]
    },
    "print": "img/print-play.webp",
-   "photo": "img/photo-play.jpg"
+   "photo": "img/photo-play.jpg",
+   "photo_cap": "광장 바닥 안전놀이표지 시공 현장"
   },
   {
    "id": "walk",
@@ -133,7 +109,8 @@
     ]
    },
    "print": "img/print-walk.webp",
-   "photo": "img/photo-walk.jpg"
+   "photo": "img/photo-walk.jpg",
+   "photo_cap": "산책로 걷기운동 노면표지 시공 현장"
   },
   {
    "id": "dropoff",
@@ -160,7 +137,8 @@
     ]
    },
    "print": "img/print-dropoff.webp",
-   "photo": null
+   "photo": null,
+   "photo_cap": "퍼블릭아이디 실제 시공 현장"
   },
   {
    "id": "c05",
@@ -168,11 +146,11 @@
    "sub": "연석 부착 표지",
    "mat": "친환경그래픽노면표시재",
    "size": "4,800×300mm",
-   "desc": "연석 위에 붙여 어린이보호구역 안 주정차 금지를 운전자 눈높이에서 알립니다.",
+   "desc": "연석 위에 붙여, 차를 대려는 그 자리에서 어린이보호구역 주정차 금지를 바로 알립니다.",
    "anchor": [
-    -29.0,
+    -27.4,
     6.66,
-    0.41000000000000003
+    0.4
    ],
    "view": {
     "pos": [
@@ -187,7 +165,8 @@
     ]
    },
    "print": "img/print-c05.webp",
-   "photo": null
+   "photo": null,
+   "photo_cap": "퍼블릭아이디 실제 시공 현장"
   },
   {
    "id": "c02",
@@ -214,7 +193,8 @@
     ]
    },
    "print": "img/print-c02.webp",
-   "photo": null
+   "photo": null,
+   "photo_cap": "퍼블릭아이디 실제 시공 현장"
   },
   {
    "id": "smombie",
@@ -241,7 +221,8 @@
     ]
    },
    "print": "img/print-smombie.webp",
-   "photo": null
+   "photo": null,
+   "photo_cap": "퍼블릭아이디 실제 시공 현장"
   },
   {
    "id": "corner",
@@ -249,7 +230,7 @@
    "sub": "연석 부착 표지",
    "mat": "친환경그래픽노면표시재",
    "size": "5,000×150mm · 1,200×100mm",
-   "desc": "교차로 모퉁이 5m, 횡단보도 정지선 안처럼 법으로 정한 주정차 금지 구간을 연석에서 바로 보이게 합니다.",
+   "desc": "교차로 모퉁이 5m 이내, 횡단보도 10m 이내처럼 주정차가 금지된 구간을 연석에서 바로 보이게 합니다.",
    "anchor": [
     20.5,
     6.5,
@@ -268,7 +249,8 @@
     ]
    },
    "print": "img/print-corner.webp",
-   "photo": null
+   "photo": null,
+   "photo_cap": "퍼블릭아이디 실제 시공 현장"
   },
   {
    "id": "c03",
@@ -295,7 +277,8 @@
     ]
    },
    "print": "img/print-c03.webp",
-   "photo": null
+   "photo": null,
+   "photo_cap": "퍼블릭아이디 실제 시공 현장"
   },
   {
    "id": "drain",
@@ -303,7 +286,7 @@
    "sub": "차도 가장자리",
    "mat": "친환경그래픽노면표시재",
    "size": "머리 330×400 · 띠 1,000×150 · 꼬리 300×400mm",
-   "desc": "빗물받이 둘레를 물고기 모양으로 꾸며 '쓰레기 안 돼요'를 알립니다. 담배꽁초가 하천으로 가는 길을 막습니다.",
+   "desc": "빗물받이 둘레를 물고기 모양으로 꾸며 '쓰레기 안 돼요'를 알립니다. 빗물받이에 버린 쓰레기가 하천으로 흘러간다는 것을 그 자리에서 알립니다.",
    "anchor": [
     46.0,
     -5.97,
@@ -311,18 +294,19 @@
    ],
    "view": {
     "pos": [
-     47.6,
-     -3.4,
-     2.3
+     46.8,
+     -9.6,
+     2.6
     ],
     "target": [
      46.0,
-     -6.2,
+     -6.1,
      0.0
     ]
    },
    "print": "img/print-drain.webp",
-   "photo": null
+   "photo": null,
+   "photo_cap": "퍼블릭아이디 실제 시공 현장"
   },
   {
    "id": "wayfind",
@@ -330,7 +314,7 @@
    "sub": "공원 산책로",
    "mat": "친환경그래픽노면표시재",
    "size": "300×1,200mm · 400×1,200mm",
-   "desc": "바닥 화살표와 목적지 이름으로 동선을 안내합니다. 건물·공원·역사 어디든 맞춤 제작합니다.",
+   "desc": "바닥 화살표와 목적지 이름으로 동선을 안내합니다. 건물, 공원, 역 어디든 맞춤 제작합니다.",
    "anchor": [
     18.5,
     -18.5,
@@ -349,7 +333,8 @@
     ]
    },
    "print": "img/print-wayfind.webp",
-   "photo": "img/photo-wayfind.jpg"
+   "photo": "img/photo-wayfind.jpg",
+   "photo_cap": "청사 바닥 안내 표지 시공 현장"
   },
   {
    "id": "cpted",
@@ -366,17 +351,18 @@
    "view": {
     "pos": [
      -30.5,
-     -10.0,
-     6.5
+     -33.5,
+     6.0
     ],
     "target": [
      -30.5,
-     -24.0,
+     -22.0,
      0.0
     ]
    },
    "print": "img/print-cpted.webp",
-   "photo": "img/photo-cpted.jpg"
+   "photo": "img/photo-cpted.jpg",
+   "photo_cap": "산책로 긴급신고 위치 표지 시공 현장"
   },
   {
    "id": "notrash",
@@ -403,7 +389,8 @@
     ]
    },
    "print": "img/print-notrash.webp",
-   "photo": null
+   "photo": null,
+   "photo_cap": "퍼블릭아이디 실제 시공 현장"
   },
   {
    "id": "nomoto",
@@ -430,34 +417,8 @@
     ]
    },
    "print": "img/print-nomoto.webp",
-   "photo": null
-  },
-  {
-   "id": "fabric",
-   "title": "직물시트 금연구역 표지",
-   "sub": "골목 벽면",
-   "mat": "친환경직물시트",
-   "size": "400×600mm",
-   "desc": "벽에 붙이는 친환경 직물시트 표지입니다. 벽면 그래픽·기둥 안내까지 같은 소재로 만듭니다.",
-   "anchor": [
-    -34.88049801635742,
-    -17.0,
-    1.85
-   ],
-   "view": {
-    "pos": [
-     -30.2,
-     -15.4,
-     1.9
-    ],
-    "target": [
-     -34.9,
-     -17.0,
-     1.6
-    ]
-   },
-   "print": "img/print-fabric.webp",
-   "photo": "img/photo-fabric.jpg"
+   "photo": null,
+   "photo_cap": "퍼블릭아이디 실제 시공 현장"
   },
   {
    "id": "nosmoke",
@@ -484,7 +445,64 @@
     ]
    },
    "print": "img/print-nosmoke.webp",
-   "photo": "img/photo-nosmoke.jpg"
+   "photo": "img/photo-nosmoke.jpg",
+   "photo_cap": "산책로 바닥 금연구역 표지 시공 현장"
+  },
+  {
+   "id": "bollard",
+   "title": "노란볼라드",
+   "sub": "기존 볼라드 드레스업",
+   "mat": "친환경 직물시트",
+   "size": "볼라드 몸통 둘레에 맞춰 제작",
+   "desc": "이미 설치된 볼라드 위에 친환경 직물시트를 입혀, 멀리서도 어린이보호구역이 보이게 합니다. 2023 우수디자인(GD) 선정 · 디자인등록 제품입니다.",
+   "anchor": [
+    -16.8,
+    7.2,
+    1.15
+   ],
+   "view": {
+    "pos": [
+     -10.9,
+     2.6,
+     1.25
+    ],
+    "target": [
+     -16.8,
+     7.2,
+     0.55
+    ]
+   },
+   "print": null,
+   "photo": "img/photo-bollard.jpg",
+   "photo_cap": "학교 앞 노란볼라드 드레스업 현장"
+  },
+  {
+   "id": "fabric",
+   "title": "직물시트 금연구역 표지",
+   "sub": "골목 벽면",
+   "mat": "친환경 직물시트",
+   "size": "400×600mm",
+   "desc": "벽에 붙이는 친환경 직물시트 표지입니다. 벽면 그래픽·기둥 안내까지 같은 소재로 만듭니다.",
+   "anchor": [
+    -34.88049801635742,
+    -17.0,
+    1.85
+   ],
+   "view": {
+    "pos": [
+     -30.2,
+     -15.4,
+     1.9
+    ],
+    "target": [
+     -34.9,
+     -17.0,
+     1.6
+    ]
+   },
+   "print": "img/print-fabric.webp",
+   "photo": "img/photo-fabric.jpg",
+   "photo_cap": "벽면 직물시트 부착 전 바탕 정리 — 퍼블릭아이디 시공팀"
   }
  ],
  "overview": {

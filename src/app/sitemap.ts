@@ -91,5 +91,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${base}/design-docs/${u}`,
     priority: 0.4,
   }));
-  return [...staticEntries, ...newsEntries, ...answerEntries, ...kitEntries, ...designDocEntries, ...(await blogEntries())];
+  // 2026-11-26 세이프타운 디지털 디오라마(정적 3D 페이지 — /diorama는 이 주소로 넘기는 짧은 주소)
+  const dioramaEntry: MetadataRoute.Sitemap = [{ url: `${base}/diorama-3d/index.html`, priority: 0.7 }];
+  return [...staticEntries, ...dioramaEntry, ...newsEntries, ...answerEntries, ...kitEntries, ...designDocEntries, ...(await blogEntries())];
 }
